@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bh2atol3e41nj"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 02 Start Menu.mp3-9be74e6abd49e1a2250abe8c77393e74.mp3str"
+
+[deps]
+
+source_file="res://audio/toby fox - UNDERTALE Soundtrack - 02 Start Menu.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 02 Start Menu.mp3-9be74e6abd49e1a2250abe8c77393e74.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
