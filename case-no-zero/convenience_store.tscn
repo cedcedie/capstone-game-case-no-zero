@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://e60p3553grh0"]
+
+[sub_resource type="TileSet" id="TileSet_xyecc"]
+tile_size = Vector2i(32, 32)
+
+[node name="convenience store" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_xyecc")
+format = 2
+
+[node name="ground" type="TileMapLayer" parent="TileMap"]
+tile_set = SubResource("TileSet_xyecc")
