@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c8r4pr68atq0c"]
+
+[node name="barangayhall interior" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="ground" type="TileMapLayer" parent="TileMap"]
