@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyu55ksa0k3dd"
-path="res://.godot/imported/Modern_Exteriors_Complete_Tileset_32x32.png-e2547ab48bc0d543eee12051bc43347a.ctex"
+uid="uid://ddjukyu5srqti"
+path="res://.godot/imported/Interiors_32x32.png-c367887ae41a9175e942a0fde629b5f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Modern_Exteriors_Complete_Tileset_32x32.png"
-dest_files=["res://.godot/imported/Modern_Exteriors_Complete_Tileset_32x32.png-e2547ab48bc0d543eee12051bc43347a.ctex"]
+source_file="res://New folder/Interiors_32x32.png"
+dest_files=["res://.godot/imported/Interiors_32x32.png-c367887ae41a9175e942a0fde629b5f6.ctex"]
 
 [params]
 
