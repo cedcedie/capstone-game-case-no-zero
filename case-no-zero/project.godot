@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://mwffq2juy88x"
+run/main_scene="uid://d4mwuvoqdee3o"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1366
+window/size/viewport_height=768
 
 [rendering]
 
