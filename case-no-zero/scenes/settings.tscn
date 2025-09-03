@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpga2v85gjam7"]
 
-[ext_resource type="PackedScene" uid="uid://dq0f42ltdgskk" path="res://Transition.tscn" id="2_6wm04"]
+[ext_resource type="PackedScene" uid="uid://dq0f42ltdgskk" path="res://scenes/Transition.tscn" id="2_6wm04"]
 
 [sub_resource type="GDScript" id="GDScript_5p8wc"]
 script/source = "extends Node2D

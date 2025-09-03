@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://o1jcvt5eesm2"]
+
+[sub_resource type="TileSet" id="TileSet_yyvol"]
+tile_size = Vector2i(32, 32)
+
+[node name="alley" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_yyvol")
+format = 2
+
+[node name="ground" type="TileMapLayer" parent="TileMap"]
+tile_set = SubResource("TileSet_yyvol")
