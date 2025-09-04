@@ -1,101 +1,101 @@
 [gd_scene load_steps=28 format=3 uid="uid://ce5bmjrxdrc4q"]
 
-[ext_resource type="Texture2D" uid="uid://3ngba120ogdn" path="res://npcSpriteSheet/npc9.png" id="1_duu5t"]
+[ext_resource type="Texture2D" uid="uid://3ngba120ogdn" path="res://npcSpriteSheet/npc9.png" id="1_1tsjw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4x071"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(192, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bt78"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(224, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvlm3"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(256, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bo8xd"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(288, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndyfv"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(320, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbbn8"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(352, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xdly"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(576, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyhu5"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(608, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtdgi"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(640, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_od0ts"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(672, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4pnqc"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(704, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2sqm"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(736, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0gdp"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(384, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gpv0m"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(416, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0fnkq"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(448, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_faxby"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(480, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51mn1"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(512, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wrro"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(544, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf0dh"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(0, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jx1v"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(32, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_it6nj"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(64, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j506h"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(96, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_papen"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(128, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6e8wg"]
-atlas = ExtResource("1_duu5t")
+atlas = ExtResource("1_1tsjw")
 region = Rect2(160, 0, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8d7p2"]
