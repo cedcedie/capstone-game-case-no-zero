@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://cnywq1kctexx0"]
 
-[ext_resource type="Texture2D" uid="uid://dx6jmnvp0tqhq" path="res://char/sdsdsd.png" id="1_ideak"]
+[ext_resource type="Texture2D" uid="uid://dx6jmnvp0tqhq" path="res://npcSpriteSheet/npc1.png" id="1_ideak"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxcha"]
 atlas = ExtResource("1_ideak")
@@ -203,7 +203,7 @@ size = Vector2(20, 16)
 
 [node name="npc1" type="CharacterBody2D"]
 
-[node name="idle" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8d7p2")
 animation = &"idle_front"
 autoplay = "idle_front"
@@ -212,5 +212,3 @@ offset = Vector2(0, -32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_swplc")
-
-[node name="Npc" type="Node2D" parent="."]
