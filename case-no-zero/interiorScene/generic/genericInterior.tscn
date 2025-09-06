@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://b4bbgp6x07qxd"]
+[gd_scene load_steps=12 format=4 uid="uid://b4bbgp6x07qxd"]
 
 [ext_resource type="Texture2D" uid="uid://b5nujm3blo4t" path="res://interiorScene/generic/Generic_Home_1_Layer_1_32x32.png" id="1_fpppt"]
 [ext_resource type="Texture2D" uid="uid://dd1omodbwdhsq" path="res://interiorScene/generic/Generic_Home_1_Layer_2_32x32.png" id="2_51gun"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dej7tno7w5s77" path="res://npcIdle/npc20.tscn" id="4_sn8ee"]
 [ext_resource type="PackedScene" uid="uid://ldo8yvc05tjt" path="res://npcIdle/npc18.tscn" id="5_jsycp"]
 [ext_resource type="PackedScene" uid="uid://x0wl6qtg6ke1" path="res://npcIdle/npc14.tscn" id="6_q3u83"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://playerScene/playerM.tscn" id="7_q3u83"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sn8ee"]
 texture = ExtResource("1_fpppt")
@@ -265,6 +266,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_jsycp")
 
 [node name="GenericInterior" type="Node2D"]
+y_sort_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1363.0
@@ -290,3 +292,6 @@ position = Vector2(752, 320)
 
 [node name="npc14" parent="." instance=ExtResource("6_q3u83")]
 position = Vector2(528, 320)
+
+[node name="PlayerM" parent="." instance=ExtResource("7_q3u83")]
+position = Vector2(656, 544)
