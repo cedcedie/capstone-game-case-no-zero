@@ -5,18 +5,16 @@ extends Node2D
 
 var timeline : Array = []
 var index : int = 0
-var input_locked : bool = false  # Prevent double clicks
+var input_locked : bool = false  
 
 # Fade durations
 var text_fade_duration := 0.5
 var sprite_fade_duration := 0.5
 
 func _ready():
-	# Hide Leo at start
 	leo_sprite.visible = false
 	leo_sprite.modulate.a = 0.0
 
-	# Load JSON timeline
 	var file = FileAccess.open("res://json/intro_timeline.json", FileAccess.READ)
 	if not file:
 		push_error("Cannot open res://json/intro_timeline.json")
@@ -25,7 +23,6 @@ func _ready():
 	var data = file.get_as_text()
 	file.close()
 
-	# Parse JSON (top-level array)
 	var parsed = JSON.parse_string(data)
 	if typeof(parsed) != TYPE_ARRAY:
 		push_error("Timeline JSON is not an array")
@@ -38,15 +35,14 @@ func _ready():
 
 func play_next_event():
 	if index >= timeline.size():
-		return  # Timeline ended
+		return  
 
-	input_locked = true  # Lock input while fading
+	input_locked = true 
 	var entry = timeline[index]
 	index += 1
 
 	match entry.type:
 		"narration":
-			# Fade out previous text first
 			await fade_text_out()
 			label.text = entry.text
 			await fade_text_in()
@@ -68,8 +64,6 @@ func play_next_event():
 			input_locked = false
 			play_next_event()
 
-
-# Text fade-in
 func fade_text_in():
 	label.visible = true
 	label.modulate.a = 0.0
@@ -77,25 +71,20 @@ func fade_text_in():
 	tween.tween_property(label, "modulate:a", 1.0, text_fade_duration)
 	await tween.finished
 
-
-# Text fade-out
 func fade_text_out():
 	var tween = create_tween()
 	tween.tween_property(label, "modulate:a", 0.0, text_fade_duration)
 	await tween.finished
 
-
-# Wait for player input with invisible lock
 func wait_for_input() -> void:
 	while true:
 		await get_tree().process_frame
 		if input_locked:
-			continue  # ignore input during fade animations
+			continue  
 		if Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			break
 
 
-# Input to skip current narration (does nothing if locked)
 func _input(event):
 	if input_locked:
 		return  # prevent double-click
