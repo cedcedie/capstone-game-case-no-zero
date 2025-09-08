@@ -1,0 +1,10 @@
+[
+  {"type": "narration", "text": "A city alive at all hours..."},
+  {"type": "narration", "text": "In the barangays, peace rests in the hands of the vigilant."},
+  {"type": "narration", "text": "One of them was Leo Mendoza..."},
+  {"type": "show_sprite", "target": "leo_mendoza"},
+  {"type": "narration", "text": "A young tanod trainee dreaming of serving his community."},
+  {"type": "hide_sprite", "target": "leo_mendoza"},
+  {"type": "narration", "text": "Leo steps into the night, unaware of the danger ahead."},
+  {"type": "narration", "text": "The streets are silent once again..."}
+]
