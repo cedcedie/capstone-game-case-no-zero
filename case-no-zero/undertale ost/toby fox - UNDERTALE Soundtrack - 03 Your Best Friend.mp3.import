@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1qxa38y05fpo"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 03 Your Best Friend.mp3-73fbd2158a895870a391995786c9c7af.mp3str"
+
+[deps]
+
+source_file="res://undertale ost/toby fox - UNDERTALE Soundtrack - 03 Your Best Friend.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 03 Your Best Friend.mp3-73fbd2158a895870a391995786c9c7af.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

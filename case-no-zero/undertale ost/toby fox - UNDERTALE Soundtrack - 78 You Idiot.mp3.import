@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bncd4enoxx2so"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 78 You Idiot.mp3-1baf1dcc946a27972d4b4467581cc647.mp3str"
+
+[deps]
+
+source_file="res://undertale ost/toby fox - UNDERTALE Soundtrack - 78 You Idiot.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 78 You Idiot.mp3-1baf1dcc946a27972d4b4467581cc647.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

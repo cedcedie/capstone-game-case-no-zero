@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://copnelxxcshs2"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 67 Oh My....mp3-09ea5ebd52df3c667eb08f4e60d031a0.mp3str"
+
+[deps]
+
+source_file="res://undertale ost/toby fox - UNDERTALE Soundtrack - 67 Oh My....mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 67 Oh My....mp3-09ea5ebd52df3c667eb08f4e60d031a0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

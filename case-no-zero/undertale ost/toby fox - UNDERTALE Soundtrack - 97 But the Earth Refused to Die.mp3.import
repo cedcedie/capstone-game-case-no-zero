@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://p57jd187r46b"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 97 But the Earth Refused to Die.mp3-774b296a361dd05c035851e31d498981.mp3str"
+
+[deps]
+
+source_file="res://undertale ost/toby fox - UNDERTALE Soundtrack - 97 But the Earth Refused to Die.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 97 But the Earth Refused to Die.mp3-774b296a361dd05c035851e31d498981.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

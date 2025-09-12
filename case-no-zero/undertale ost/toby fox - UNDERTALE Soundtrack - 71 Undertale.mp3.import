@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dl88tuan3krmv"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 71 Undertale.mp3-f7d913676017c6bf95dd7f1b56df6b78.mp3str"
+
+[deps]
+
+source_file="res://undertale ost/toby fox - UNDERTALE Soundtrack - 71 Undertale.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 71 Undertale.mp3-f7d913676017c6bf95dd7f1b56df6b78.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

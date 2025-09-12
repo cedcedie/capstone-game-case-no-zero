@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cybcyb2jbtujo"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 87 Hopes and Dreams.mp3-68414065a95a8ea117cd22130d2c792b.mp3str"
+
+[deps]
+
+source_file="res://undertale ost/toby fox - UNDERTALE Soundtrack - 87 Hopes and Dreams.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 87 Hopes and Dreams.mp3-68414065a95a8ea117cd22130d2c792b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

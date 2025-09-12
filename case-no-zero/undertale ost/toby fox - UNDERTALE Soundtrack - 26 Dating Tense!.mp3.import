@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d22l0qmn8l83q"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 26 Dating Tense!.mp3-aa310ecf7ac370651eb074d31b967edf.mp3str"
+
+[deps]
+
+source_file="res://undertale ost/toby fox - UNDERTALE Soundtrack - 26 Dating Tense!.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 26 Dating Tense!.mp3-aa310ecf7ac370651eb074d31b967edf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

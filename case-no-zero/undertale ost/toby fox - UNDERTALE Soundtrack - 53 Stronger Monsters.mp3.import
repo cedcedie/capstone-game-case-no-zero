@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c07nqmeahl27r"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 53 Stronger Monsters.mp3-d9b3080179ab569a906ec236a0bf5118.mp3str"
+
+[deps]
+
+source_file="res://undertale ost/toby fox - UNDERTALE Soundtrack - 53 Stronger Monsters.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 53 Stronger Monsters.mp3-d9b3080179ab569a906ec236a0bf5118.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

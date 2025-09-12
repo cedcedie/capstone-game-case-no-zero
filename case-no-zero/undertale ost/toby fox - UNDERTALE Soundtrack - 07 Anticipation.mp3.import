@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7i08h61lhmcf"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 07 Anticipation.mp3-48a088567c0406119b7f8e0dc15edeee.mp3str"
+
+[deps]
+
+source_file="res://undertale ost/toby fox - UNDERTALE Soundtrack - 07 Anticipation.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 07 Anticipation.mp3-48a088567c0406119b7f8e0dc15edeee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

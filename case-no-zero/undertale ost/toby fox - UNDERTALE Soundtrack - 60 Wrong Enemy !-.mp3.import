@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8474am1rxvl5"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 60 Wrong Enemy !-.mp3-50a7e98c9967305d49f0361e29468b84.mp3str"
+
+[deps]
+
+source_file="res://undertale ost/toby fox - UNDERTALE Soundtrack - 60 Wrong Enemy !-.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 60 Wrong Enemy !-.mp3-50a7e98c9967305d49f0361e29468b84.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
