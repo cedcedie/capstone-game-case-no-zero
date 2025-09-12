@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5nujm3blo4t"
-path="res://.godot/imported/Generic_Home_1_Layer_1_32x32.png-a9ffa52d8bda4fbd0671fe5ffb754724.ctex"
+uid="uid://wcgpip827emi"
+path="res://.godot/imported/Shooting_Range_Design_layer_2_32x32.png-8f823338a29c05ce0170ab889a5134df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interiorScene/generic/Generic_Home_1_Layer_1_32x32.png"
-dest_files=["res://.godot/imported/Generic_Home_1_Layer_1_32x32.png-a9ffa52d8bda4fbd0671fe5ffb754724.ctex"]
+source_file="res://InteriorSample/shootingrangeInterior/Shooting_Range_Design_layer_2_32x32.png"
+dest_files=["res://.godot/imported/Shooting_Range_Design_layer_2_32x32.png-8f823338a29c05ce0170ab889a5134df.ctex"]
 
 [params]
 

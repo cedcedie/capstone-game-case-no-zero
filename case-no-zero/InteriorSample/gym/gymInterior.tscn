@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://ddc81nakd36xs"]
 
-[ext_resource type="Texture2D" uid="uid://tkh85t51bsq0" path="res://interiorScene/gym/Gym_layer_1_32x32.png" id="1_3bqmg"]
-[ext_resource type="Texture2D" uid="uid://c7mjcuxmgwttd" path="res://interiorScene/gym/Gym_layer_2_32x32.png" id="2_yqihq"]
+[ext_resource type="Texture2D" uid="uid://tkh85t51bsq0" path="res://InteriorSample/gym/Gym_layer_1_32x32.png" id="1_3bqmg"]
+[ext_resource type="Texture2D" uid="uid://c7mjcuxmgwttd" path="res://InteriorSample/gym/Gym_layer_2_32x32.png" id="2_yqihq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xr5py"]
 texture = ExtResource("1_3bqmg")

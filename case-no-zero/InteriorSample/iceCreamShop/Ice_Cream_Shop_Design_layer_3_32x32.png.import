@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8ojqckashfwr"
-path="res://.godot/imported/Museum_entrance_layer_1_32x32.png-a17baa460585be41ae13617c8631c44d.ctex"
+uid="uid://ifij6cvqfr1h"
+path="res://.godot/imported/Ice_Cream_Shop_Design_layer_3_32x32.png-b4fd86fd4c7cf6868ad7e3c25aa4195f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interiorScene/museum/Museum_entrance_layer_1_32x32.png"
-dest_files=["res://.godot/imported/Museum_entrance_layer_1_32x32.png-a17baa460585be41ae13617c8631c44d.ctex"]
+source_file="res://InteriorSample/iceCreamShop/Ice_Cream_Shop_Design_layer_3_32x32.png"
+dest_files=["res://.godot/imported/Ice_Cream_Shop_Design_layer_3_32x32.png-b4fd86fd4c7cf6868ad7e3c25aa4195f.ctex"]
 
 [params]
 
