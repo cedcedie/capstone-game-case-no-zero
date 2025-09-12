@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://cebnceoftmkd4"]
 
-[ext_resource type="Texture2D" uid="uid://c8ojqckashfwr" path="res://interiorScene/museum/Museum_entrance_layer_1_32x32.png" id="1_3qtjw"]
-[ext_resource type="Texture2D" uid="uid://c33fuvdvlvgoy" path="res://interiorScene/museum/Museum_entrance_layer_2_32x32.png" id="2_1eaee"]
+[ext_resource type="Texture2D" uid="uid://c8ojqckashfwr" path="res://InteriorSample/museum/Museum_entrance_layer_1_32x32.png" id="1_3qtjw"]
+[ext_resource type="Texture2D" uid="uid://c33fuvdvlvgoy" path="res://InteriorSample/museum/Museum_entrance_layer_2_32x32.png" id="2_1eaee"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8maho"]
 texture = ExtResource("1_3qtjw")
