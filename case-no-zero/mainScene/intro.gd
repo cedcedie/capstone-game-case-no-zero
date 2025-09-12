@@ -76,7 +76,7 @@ func change_scene_with_fade(scene_path: String):
 func play_next_event():
 	if index >= timeline.size():
 		await fade_text_out()
-		await change_scene_with_fade("res://scenes/next_scene.tscn")
+		await change_scene_with_fade("res://mainScene/bedroomScene.tscn")
 		return  
 
 	input_locked = true 
