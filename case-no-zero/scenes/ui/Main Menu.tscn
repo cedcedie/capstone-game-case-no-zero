@@ -142,7 +142,6 @@ text = "CASE NO ZERO"
 stream = ExtResource("4_kvg5l")
 volume_db = -5.0
 autoplay = true
-bus = &"Music"
 
 [node name="Options" type="Panel" parent="."]
 layout_mode = 1

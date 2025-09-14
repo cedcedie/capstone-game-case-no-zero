@@ -18,11 +18,6 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 buses/default_bus_layout=""
 
-[autoload]
-
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-SceneManager="*res://addons/scene_manager/SceneManager.tscn"
-
 [dialogic]
 
 directories/dch_directory={
