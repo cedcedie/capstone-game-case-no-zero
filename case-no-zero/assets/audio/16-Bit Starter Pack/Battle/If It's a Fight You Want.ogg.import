@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://csxfaajbgaua2"
+path="res://.godot/imported/If It's a Fight You Want.ogg-8a85fa747e405416b20cd9790bc4e948.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/16-Bit Starter Pack/Battle/If It's a Fight You Want.ogg"
+dest_files=["res://.godot/imported/If It's a Fight You Want.ogg-8a85fa747e405416b20cd9790bc4e948.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

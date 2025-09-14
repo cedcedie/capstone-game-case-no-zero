@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dpw38w1ap2m83"
+path="res://.godot/imported/Outside The Ruins.ogg-4b150b3ac1ed2332116032fbf41559bd.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/16-Bit Starter Pack/Dungeons/Outside The Ruins.ogg"
+dest_files=["res://.godot/imported/Outside The Ruins.ogg-4b150b3ac1ed2332116032fbf41559bd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://dfyuuvfmltt7m"
+run/main_scene="uid://5d4uo5rtdrrk"
 config/features=PackedStringArray("4.4", "Forward Plus")
+<<<<<<<Updatedupstreamrun/main_scene="uid://dfyuuvfmltt7m"
 
 [audio]
 
@@ -56,10 +57,6 @@ text/autopauses={}
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
-
-[editor_plugins]
-
-enabled=PackedStringArray()
 
 [input]
 

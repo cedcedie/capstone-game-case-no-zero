@@ -1455,6 +1455,11 @@ animations = [{
 "name": &"read_front",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"sit_right",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4qmub")
@@ -1556,7 +1561,7 @@ script = ExtResource("1_6fh6j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bpsoc")
-animation = &"pickup_back"
+animation = &"idle_front"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

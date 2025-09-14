@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ck1xl4v6v6s4y"
+path="res://.godot/imported/Merch City.ogg-70d6df72bc3c7836c78b844d7a353fbb.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/16-Bit Starter Pack/Towns/Merch City.ogg"
+dest_files=["res://.godot/imported/Merch City.ogg-70d6df72bc3c7836c78b844d7a353fbb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
