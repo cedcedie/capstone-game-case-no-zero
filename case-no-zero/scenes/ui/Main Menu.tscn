@@ -1,0 +1,221 @@
+[gd_scene load_steps=13 format=3 uid="uid://duhtucptqsw51"]
+
+[ext_resource type="Script" uid="uid://dcphrohp24wu7" path="res://scripts/manager/main_menu.gd" id="1_purnb"]
+[ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_t5uyg"]
+[ext_resource type="FontFile" uid="uid://06eojjyt34v5" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="3_neere"]
+[ext_resource type="AudioStream" uid="uid://bh2atol3e41nj" path="res://assets/audio/toby fox - UNDERTALE Soundtrack - 02 Start Menu.mp3" id="4_kvg5l"]
+[ext_resource type="Script" uid="uid://cgyrxj8eskx4q" path="res://scripts/manager/audio_control.gd" id="5_d61rm"]
+[ext_resource type="Script" uid="uid://rx80bji1rwwp" path="res://scripts/manager/fullscreen.gd" id="6_hng8r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvdtt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5qic"]
+bg_color = Color(0.744181, 0.744181, 0.744181, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12kdf"]
+bg_color = Color(0.401968, 0.401968, 0.401968, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwd2w"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ism2r"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_estw7"]
+color = Color(0.384666, 0.514452, 0.969606, 1)
+thickness = 6
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_purnb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.272655, 0.272655, 0.272655, 1)
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.5
+offset_top = -21.0
+offset_right = 210.5
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="start" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_t5uyg")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dvdtt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_12kdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xwd2w")
+text = "START"
+
+[node name="settings" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_t5uyg")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dvdtt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_12kdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xwd2w")
+text = "SETTINGS"
+
+[node name="exit" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_t5uyg")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dvdtt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_12kdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xwd2w")
+text = "EXIT"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.5
+offset_top = -234.0
+offset_right = 316.5
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_neere")
+theme_override_font_sizes/font_size = 90
+text = "CASE NO ZERO"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kvg5l")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
+
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -361.0
+offset_top = -127.0
+offset_right = 365.0
+offset_bottom = 279.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_neere")
+theme_override_font_sizes/font_size = 40
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exit" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 300.0
+offset_right = 569.0
+offset_bottom = 378.0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_t5uyg")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dvdtt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_12kdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xwd2w")
+text = "Back"
+
+[node name="AudioControl" type="HSlider" parent="Options"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 83.0
+offset_right = 576.0
+offset_bottom = 145.0
+theme_override_styles/slider = SubResource("StyleBoxLine_ism2r")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_estw7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_estw7")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_d61rm")
+audio_bus_name = "Music"
+
+[node name="Fullscreen" type="CheckButton" parent="Options"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 133.0
+offset_right = 578.0
+offset_bottom = 182.0
+text = "Fullscreen"
+script = ExtResource("6_hng8r")
+
+[connection signal="pressed" from="MainButtons/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainButtons/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainButtons/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Options/exit" to="." method="_on_back_options_pressed"]
+[connection signal="value_changed" from="Options/AudioControl" to="Options/AudioControl" method="_on_value_changed"]
+[connection signal="toggled" from="Options/Fullscreen" to="Options/Fullscreen" method="_on_toggled"]

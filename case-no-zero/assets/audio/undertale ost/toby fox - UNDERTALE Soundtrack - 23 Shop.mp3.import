@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://h1m3oo4kt82r"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 23 Shop.mp3-bc76e94731b76340bb7e0759a6c13001.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale ost/toby fox - UNDERTALE Soundtrack - 23 Shop.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 23 Shop.mp3-bc76e94731b76340bb7e0759a6c13001.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

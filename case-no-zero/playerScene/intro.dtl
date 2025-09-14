@@ -1,9 +1,0 @@
-Narrator: A city alive at all hours — where the streets echo with noise, and silence often carries the heaviest truths.
-Narrator: In the barangays, peace rests on the shoulders of those who choose to serve.
-Narrator: For some, it is just routine. For others… it is a calling.
-Narrator: One of them was Leo Mendoza.
-do SceneManager.get_entity("../leo_mendoza")
-[signal arg="show_leo"]
-Narrator: Leo Mendoza, 19, dreamed of serving his community.
-But that dream was about to be shattered...
-[signal arg="hide_leo"]

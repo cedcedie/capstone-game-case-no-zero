@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bck6rr1fc4m86"]
+
+[ext_resource type="PackedScene" uid="uid://dq0f42ltdgskk" path="res://scenes/ui/Transition.tscn" id="1_foi2v"]
+
+[node name="CaseOption" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 687.0
+offset_bottom = 322.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 318.0
+offset_top = 128.0
+offset_right = 358.0
+offset_bottom = 151.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "CASE OPTION"
+
+[node name="Transition" parent="." instance=ExtResource("1_foi2v")]
