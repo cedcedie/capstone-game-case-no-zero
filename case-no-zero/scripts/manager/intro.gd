@@ -25,9 +25,9 @@ func _ready():
 		bgm_player.play()
 		fade_audio_in()
 
-	var file = FileAccess.open("res://json/intro_timeline.json", FileAccess.READ)
+	var file = FileAccess.open("res://data/intro_timeline.json", FileAccess.READ)
 	if not file:
-		push_error("Cannot open res://json/intro_timeline.json")
+		push_error("Cannot open res://data/intro_timeline.json")
 		return
 
 	var data = file.get_as_text()
@@ -76,7 +76,7 @@ func change_scene_with_fade(scene_path: String):
 func play_next_event():
 	if index >= timeline.size():
 		await fade_text_out()
-		await change_scene_with_fade("res://mainScene/bedroomScene.tscn")
+		await change_scene_with_fade("res://scenes//cutscene//bedroomScene.tscn")
 		return  
 
 	input_locked = true 
