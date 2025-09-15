@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tkh85t51bsq0"
-path="res://.godot/imported/Gym_layer_1_32x32.png-a2ad899723c19bd9589615c54610a43a.ctex"
+uid="uid://wcgpip827emi"
+path="res://.godot/imported/Shooting_Range_Design_layer_2_32x32.png-19097059ced98510cba39339fdf8bb24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/maps/interior/gym/Gym_layer_1_32x32.png"
-dest_files=["res://.godot/imported/Gym_layer_1_32x32.png-a2ad899723c19bd9589615c54610a43a.ctex"]
+source_file="res://scenes/maps/Sample interior/shootingrangeInterior/Shooting_Range_Design_layer_2_32x32.png"
+dest_files=["res://.godot/imported/Shooting_Range_Design_layer_2_32x32.png-19097059ced98510cba39339fdf8bb24.ctex"]
 
 [params]
 

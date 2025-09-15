@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5j4b5ts38rht"
-path="res://.godot/imported/Ice_Cream_Shop_Design_layer_2_32x32.png-513cc2dbeec1bc7c15b832676e688c74.ctex"
+uid="uid://cj336md2tyk18"
+path="res://.godot/imported/Ice_Cream_Shop_Design_layer_1_32x32.png-de8ad1e242dcbd537eb1bc145c6c55f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/maps/interior/iceCreamShop/Ice_Cream_Shop_Design_layer_2_32x32.png"
-dest_files=["res://.godot/imported/Ice_Cream_Shop_Design_layer_2_32x32.png-513cc2dbeec1bc7c15b832676e688c74.ctex"]
+source_file="res://scenes/maps/Sample interior/iceCreamShop/Ice_Cream_Shop_Design_layer_1_32x32.png"
+dest_files=["res://.godot/imported/Ice_Cream_Shop_Design_layer_1_32x32.png-de8ad1e242dcbd537eb1bc145c6c55f3.ctex"]
 
 [params]
 

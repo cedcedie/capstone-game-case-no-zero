@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://b4bbgp6x07qxd"]
 
-[ext_resource type="Texture2D" uid="uid://b5nujm3blo4t" path="res://scenes/maps/interior/generic/Generic_Home_1_Layer_1_32x32.png" id="1_fpppt"]
-[ext_resource type="Texture2D" uid="uid://dd1omodbwdhsq" path="res://scenes/maps/interior/generic/Generic_Home_1_Layer_2_32x32.png" id="2_51gun"]
+[ext_resource type="Texture2D" uid="uid://b5nujm3blo4t" path="res://scenes/maps/Sample interior/generic/Generic_Home_1_Layer_1_32x32.png" id="1_fpppt"]
+[ext_resource type="Texture2D" uid="uid://dd1omodbwdhsq" path="res://scenes/maps/Sample interior/generic/Generic_Home_1_Layer_2_32x32.png" id="2_51gun"]
 [ext_resource type="PackedScene" uid="uid://cnywq1kctexx0" path="res://scenes/characters/npc/npc1.tscn" id="3_51gun"]
 [ext_resource type="PackedScene" uid="uid://dej7tno7w5s77" path="res://scenes/characters/npc/npc20.tscn" id="4_sn8ee"]
 [ext_resource type="PackedScene" uid="uid://ldo8yvc05tjt" path="res://scenes/characters/npc/npc18.tscn" id="5_jsycp"]

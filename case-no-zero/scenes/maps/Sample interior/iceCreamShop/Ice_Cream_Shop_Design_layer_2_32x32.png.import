@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wcgpip827emi"
-path="res://.godot/imported/Shooting_Range_Design_layer_2_32x32.png-825621f44ac575b3953e19ae9a383db5.ctex"
+uid="uid://b5j4b5ts38rht"
+path="res://.godot/imported/Ice_Cream_Shop_Design_layer_2_32x32.png-fdf719cca58c1643e35f5f8a4015f40d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/maps/interior/shootingrangeInterior/Shooting_Range_Design_layer_2_32x32.png"
-dest_files=["res://.godot/imported/Shooting_Range_Design_layer_2_32x32.png-825621f44ac575b3953e19ae9a383db5.ctex"]
+source_file="res://scenes/maps/Sample interior/iceCreamShop/Ice_Cream_Shop_Design_layer_2_32x32.png"
+dest_files=["res://.godot/imported/Ice_Cream_Shop_Design_layer_2_32x32.png-fdf719cca58c1643e35f5f8a4015f40d.ctex"]
 
 [params]
 

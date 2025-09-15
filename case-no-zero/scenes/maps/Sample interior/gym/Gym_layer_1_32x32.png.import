@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c33fuvdvlvgoy"
-path="res://.godot/imported/Museum_entrance_layer_2_32x32.png-a0211481879420c9e18c1a31fcafb89b.ctex"
+uid="uid://tkh85t51bsq0"
+path="res://.godot/imported/Gym_layer_1_32x32.png-d2bf8cde85125d82bd8300d110c2caeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/maps/interior/museum/Museum_entrance_layer_2_32x32.png"
-dest_files=["res://.godot/imported/Museum_entrance_layer_2_32x32.png-a0211481879420c9e18c1a31fcafb89b.ctex"]
+source_file="res://scenes/maps/Sample interior/gym/Gym_layer_1_32x32.png"
+dest_files=["res://.godot/imported/Gym_layer_1_32x32.png-d2bf8cde85125d82bd8300d110c2caeb.ctex"]
 
 [params]
 

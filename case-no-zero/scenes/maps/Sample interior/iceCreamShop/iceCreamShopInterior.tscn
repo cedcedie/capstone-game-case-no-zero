@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=4 uid="uid://cjv0k3kmwa5mh"]
 
-[ext_resource type="Texture2D" uid="uid://cj336md2tyk18" path="res://scenes/maps/interior/iceCreamShop/Ice_Cream_Shop_Design_layer_1_32x32.png" id="1_bgc0i"]
-[ext_resource type="Texture2D" uid="uid://b5j4b5ts38rht" path="res://scenes/maps/interior/iceCreamShop/Ice_Cream_Shop_Design_layer_2_32x32.png" id="2_epea7"]
-[ext_resource type="Texture2D" uid="uid://ifij6cvqfr1h" path="res://scenes/maps/interior/iceCreamShop/Ice_Cream_Shop_Design_layer_3_32x32.png" id="3_q6t0b"]
+[ext_resource type="Texture2D" uid="uid://cj336md2tyk18" path="res://scenes/maps/Sample interior/iceCreamShop/Ice_Cream_Shop_Design_layer_1_32x32.png" id="1_bgc0i"]
+[ext_resource type="Texture2D" uid="uid://b5j4b5ts38rht" path="res://scenes/maps/Sample interior/iceCreamShop/Ice_Cream_Shop_Design_layer_2_32x32.png" id="2_epea7"]
+[ext_resource type="Texture2D" uid="uid://ifij6cvqfr1h" path="res://scenes/maps/Sample interior/iceCreamShop/Ice_Cream_Shop_Design_layer_3_32x32.png" id="3_q6t0b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bi40m"]
 texture = ExtResource("1_bgc0i")

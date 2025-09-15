@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bhpv5kh1mdnrp"]
 
-[ext_resource type="Texture2D" uid="uid://gvsrgte1lal6" path="res://scenes/maps/interior/shootingrangeInterior/Shooting_Range_Design_layer_1_32x32.png" id="1_sx7ki"]
-[ext_resource type="Texture2D" uid="uid://wcgpip827emi" path="res://scenes/maps/interior/shootingrangeInterior/Shooting_Range_Design_layer_2_32x32.png" id="2_7k1mf"]
+[ext_resource type="Texture2D" uid="uid://gvsrgte1lal6" path="res://scenes/maps/Sample interior/shootingrangeInterior/Shooting_Range_Design_layer_1_32x32.png" id="1_sx7ki"]
+[ext_resource type="Texture2D" uid="uid://wcgpip827emi" path="res://scenes/maps/Sample interior/shootingrangeInterior/Shooting_Range_Design_layer_2_32x32.png" id="2_7k1mf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8fhj"]
 texture = ExtResource("1_sx7ki")
