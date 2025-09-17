@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://b1qvf3enoo2yr"]
+[gd_scene load_steps=3 format=3 uid="uid://b1qvf3enoo2yr"]
+
+[sub_resource type="TileSet" id="TileSet_whqor"]
+tile_size = Vector2i(32, 32)
+
+[sub_resource type="TileSet" id="TileSet_s0rvr"]
+tile_size = Vector2i(32, 32)
 
 [node name="1StFloor" type="Node2D"]
+
+[node name="ground" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_whqor")
+
+[node name="wall" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_s0rvr")
