@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5owjsmxnbf08"]
+
+[sub_resource type="TileSet" id="TileSet_ds36h"]
+tile_size = Vector2i(32, 16)
+
+[node name="SecurityxserverRoom" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_ds36h")
