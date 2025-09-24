@@ -2914,3 +2914,5 @@ tile_set = SubResource("TileSet_dd4c7")
 [node name="wall layer 2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAaAAAAAgAGAAYAAAAaAAEAAgAGAAcAAAAaAAIAAgAGAAcAAAAaAAMAAgAGAAcAAAAaAAQAAgAGAAcAAAAaAAUAAgAGAAcAAAAaAAYAAgAGAAcAAAAaAAcAAgAGAAcAAAAaAAgAAgAGAAgAAAAHAAgAAgAFAAYAAAAHAAkAAgAIAAcAAAAHAAoAAgAIAAcAAAAHAAsAAgAIAAcAAAAHAAwAAgAIAAgAAAA=")
 tile_set = SubResource("TileSet_evnfg")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
