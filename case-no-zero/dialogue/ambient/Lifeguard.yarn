@@ -1,0 +1,17 @@
+title: Lifeguard
+tags:
+position: 0,0
+---
+Lifeguard: Waves look calm till they don’t. That’s the trick.
+
+-> Ask about the water
+    Lifeguard: Read the flags, read the clouds. They’re honest.
+    <<jump Lifeguard>>
+-> Offer sunscreen
+    Lifeguard: Thanks. Sun doesn’t bargain with anyone.
+    <<jump Lifeguard>>
+-> Walk on
+    -> End
+===
+
+

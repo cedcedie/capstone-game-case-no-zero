@@ -1,0 +1,53 @@
+title: PoliceOfficer
+tags:
+position: 0,0
+---
+PoliceOfficer: Morning. If you see something odd, describe it twice—once calm.
+
+-> Is the station open?
+    PoliceOfficer: Front desk is, investigation wing isn’t.
+        -> Where do I file a report?
+            <<jump POReport>>
+        -> Can I speak to someone now?
+            <<jump POSpeak>>
+-> How’s the beat?
+    PoliceOfficer: Routine with surprises. The surprises teach most.
+        -> What kind?
+            <<jump POSurprises>>
+        -> Stay safe
+            <<jump PoliceOfficer>>
+-> I’ll move along
+    -> End
+===
+
+title: POReport
+tags:
+position: 0,0
+---
+PoliceOfficer: Fill the form, breathe, then add details you forgot the first time.
+
+-> Back
+    <<jump PoliceOfficer>>
+===
+
+title: POSpeak
+tags:
+position: 0,0
+---
+PoliceOfficer: Try the desk sergeant. Clear words get clear help.
+
+-> Back
+    <<jump PoliceOfficer>>
+===
+
+title: POSurprises
+tags:
+position: 0,0
+---
+PoliceOfficer: People helping each other when no one’s watching. That kind.
+
+-> Back
+    <<jump PoliceOfficer>>
+===
+
+

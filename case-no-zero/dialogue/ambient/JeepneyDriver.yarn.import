@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c20glptbdicig"
+path="res://.godot/imported/JeepneyDriver.yarn-c0f3f84c3c7e40dc83748855774c8bf5.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/JeepneyDriver.yarn"
+dest_files=["res://.godot/imported/JeepneyDriver.yarn-c0f3f84c3c7e40dc83748855774c8bf5.tres"]
+
+[params]
+

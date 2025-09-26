@@ -1,0 +1,44 @@
+title: HospitalNurse
+tags:
+position: 0,0
+---
+HospitalNurse: Long night. The monitor beeps start to sound like lullabies.
+
+-> How’s the shift?
+    HospitalNurse: Busy. Small victories matter.
+        -> What counts as a win?
+            <<jump NurseShift>>
+        -> How do you stay steady?
+            <<jump NurseCoping>>
+-> Need anything?
+    HospitalNurse: Kindness. And maybe a chair that doesn’t squeak.
+        -> Offer coffee
+            HospitalNurse: Bless you. Warm hands, warmer heart.
+            <<jump HospitalNurse>>
+        -> Offer silence
+            HospitalNurse: That too. Quiet makes room for breath.
+            <<jump HospitalNurse>>
+-> I’ll leave you to it
+    -> End
+===
+
+title: NurseShift
+tags:
+position: 0,0
+---
+HospitalNurse: A steady pulse after a scare. A thank-you whispered at 3 AM.
+
+-> Back
+    <<jump HospitalNurse>>
+===
+
+title: NurseCoping
+tags:
+position: 0,0
+---
+HospitalNurse: Deep breaths. Count meds, count blessings. Both keep us careful.
+
+-> Back
+    <<jump HospitalNurse>>
+===
+

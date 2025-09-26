@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cbiqyw7isjnec"
+path="res://.godot/imported/ConstructionWorker.yarn-01ba927c7f371a9e0daa8011147574ee.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/ConstructionWorker.yarn"
+dest_files=["res://.godot/imported/ConstructionWorker.yarn-01ba927c7f371a9e0daa8011147574ee.tres"]
+
+[params]
+

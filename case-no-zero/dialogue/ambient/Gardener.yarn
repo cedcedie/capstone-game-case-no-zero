@@ -1,0 +1,17 @@
+title: Gardener
+tags:
+position: 0,0
+---
+Gardener: Plants don’t rush. They win anyway.
+
+-> Ask what’s blooming
+    Gardener: Sampaguita by the gate, patience by the bench.
+    <<jump Gardener>>
+-> Compliment the garden
+    Gardener: Thank you. I prune noise, not just branches.
+    <<jump Gardener>>
+-> Keep strolling
+    -> End
+===
+
+

@@ -1,0 +1,17 @@
+title: StationGuard
+tags:
+position: 0,0
+---
+StationGuard: Trains late, people early. Balance is somewhere in between.
+
+-> Ask about the delay
+    StationGuard: Maintenance. We fix small things before they become headlines.
+    <<jump StationGuard>>
+-> Show ticket
+    StationGuard: You’re good. Platform Two—mind the gap and your thoughts.
+    <<jump StationGuard>>
+-> Move on
+    -> End
+===
+
+

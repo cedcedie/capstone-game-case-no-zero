@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://b4f6ysllxtinb"
+path="res://.godot/imported/SchoolTeacher.yarn-c120fd9e01c771d3971670f19aed2352.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/SchoolTeacher.yarn"
+dest_files=["res://.godot/imported/SchoolTeacher.yarn-c120fd9e01c771d3971670f19aed2352.tres"]
+
+[params]
+

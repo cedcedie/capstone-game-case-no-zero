@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://bdmu8rv0ihydm"
+path="res://.godot/imported/Firefighter.yarn-e7ec6e7f9276070bd94b4d5dbd902a22.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/Firefighter.yarn"
+dest_files=["res://.godot/imported/Firefighter.yarn-e7ec6e7f9276070bd94b4d5dbd902a22.tres"]
+
+[params]
+

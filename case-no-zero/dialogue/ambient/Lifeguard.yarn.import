@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://b15428863od3t"
+path="res://.godot/imported/Lifeguard.yarn-41a54c95ba9d7b3e31b97d6c186dbc48.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/Lifeguard.yarn"
+dest_files=["res://.godot/imported/Lifeguard.yarn-41a54c95ba9d7b3e31b97d6c186dbc48.tres"]
+
+[params]
+

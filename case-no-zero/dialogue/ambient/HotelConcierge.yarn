@@ -1,0 +1,17 @@
+title: HotelConcierge
+tags:
+position: 0,0
+---
+HotelConcierge: Welcome. Our smiles are complimentary, the umbrellas are not.
+
+-> Ask about vacancies
+    HotelConcierge: A few rooms left—quiet floors, city dreams.
+    <<jump HotelConcierge>>
+-> Ask for directions
+    HotelConcierge: Left at the fountain, right at the noise—follow the laughter.
+    <<jump HotelConcierge>>
+-> Leave politely
+    -> End
+===
+
+

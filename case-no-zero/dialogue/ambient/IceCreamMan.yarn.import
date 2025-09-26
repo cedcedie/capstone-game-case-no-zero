@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://mytjuj43bbjc"
+path="res://.godot/imported/IceCreamMan.yarn-8aeb03fffd6755a22be945fa6fbf6a39.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/IceCreamMan.yarn"
+dest_files=["res://.godot/imported/IceCreamMan.yarn-8aeb03fffd6755a22be945fa6fbf6a39.tres"]
+
+[params]
+

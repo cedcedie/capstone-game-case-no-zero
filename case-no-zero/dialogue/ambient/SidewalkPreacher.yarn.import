@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c4jv6efn82rcb"
+path="res://.godot/imported/SidewalkPreacher.yarn-91a0423f876bc6765f6d1c44e20be30e.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/SidewalkPreacher.yarn"
+dest_files=["res://.godot/imported/SidewalkPreacher.yarn-91a0423f876bc6765f6d1c44e20be30e.tres"]
+
+[params]
+

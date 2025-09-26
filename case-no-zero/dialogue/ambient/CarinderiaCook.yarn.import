@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c7nvlhi6iaj3t"
+path="res://.godot/imported/CarinderiaCook.yarn-5787ed80e95068611509e37b25b4d3ed.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/CarinderiaCook.yarn"
+dest_files=["res://.godot/imported/CarinderiaCook.yarn-5787ed80e95068611509e37b25b4d3ed.tres"]
+
+[params]
+

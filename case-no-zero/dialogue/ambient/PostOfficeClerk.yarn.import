@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cmtkeh3ospntb"
+path="res://.godot/imported/PostOfficeClerk.yarn-89969be594b185cab1ce7ad1b76cd5e3.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/PostOfficeClerk.yarn"
+dest_files=["res://.godot/imported/PostOfficeClerk.yarn-89969be594b185cab1ce7ad1b76cd5e3.tres"]
+
+[params]
+

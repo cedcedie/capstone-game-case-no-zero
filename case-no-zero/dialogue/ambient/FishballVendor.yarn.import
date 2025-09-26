@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://djaaeauxl1sdf"
+path="res://.godot/imported/FishballVendor.yarn-d9d7dc3ba0cdcac92445c48d17b75453.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/FishballVendor.yarn"
+dest_files=["res://.godot/imported/FishballVendor.yarn-d9d7dc3ba0cdcac92445c48d17b75453.tres"]
+
+[params]
+

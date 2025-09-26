@@ -1,0 +1,17 @@
+title: Foreman
+tags:
+position: 0,0
+---
+Foreman: We build slow to make it stand fast. That’s the trade.
+
+-> Ask timeline
+    Foreman: Weather and wages decide. I argue with both.
+    <<jump Foreman>>
+-> Offer praise
+    Foreman: Thanks. A straight line takes a steady hand.
+    <<jump Foreman>>
+-> Head out
+    -> End
+===
+
+

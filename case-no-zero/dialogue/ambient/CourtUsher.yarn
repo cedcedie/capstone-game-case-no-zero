@@ -1,0 +1,53 @@
+title: CourtUsher
+tags:
+position: 0,0
+---
+CourtUsher: Keep your voice low; nerves are loud enough.
+
+-> Where do I sit?
+    CourtUsher: Left bench for observers, right for parties.
+        -> Is the judge strict?
+            <<jump UsherJudge>>
+        -> Any advice?
+            <<jump UsherAdvice>>
+-> Is it always this tense?
+    CourtUsher: Justice breathes slowly. People don’t.
+        -> How do you handle it?
+            <<jump UsherHandle>>
+        -> I’ll manage, thanks
+            <<jump CourtUsher>>
+-> I’ll be quiet
+    -> End
+===
+
+title: UsherJudge
+tags:
+position: 0,0
+---
+CourtUsher: Fair, punctual, allergic to theatrics. Truth, not drama.
+
+-> Back
+    <<jump CourtUsher>>
+===
+
+title: UsherAdvice
+tags:
+position: 0,0
+---
+CourtUsher: Breathe before you speak. It makes words stand straighter.
+
+-> Back
+    <<jump CourtUsher>>
+===
+
+title: UsherHandle
+tags:
+position: 0,0
+---
+CourtUsher: Count door hinges. Sixteen here. It calms the room in my head.
+
+-> Back
+    <<jump CourtUsher>>
+===
+
+

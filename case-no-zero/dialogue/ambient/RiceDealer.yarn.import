@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://dut3hb7mhyhw4"
+path="res://.godot/imported/RiceDealer.yarn-6162dbc912e50e0f01312fce8ac1420a.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/RiceDealer.yarn"
+dest_files=["res://.godot/imported/RiceDealer.yarn-6162dbc912e50e0f01312fce8ac1420a.tres"]
+
+[params]
+

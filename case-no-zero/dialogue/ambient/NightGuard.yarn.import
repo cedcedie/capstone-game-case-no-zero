@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://bvs6g7fqhvt64"
+path="res://.godot/imported/NightGuard.yarn-e69cf321a7467ad50e21cbdf80634408.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/NightGuard.yarn"
+dest_files=["res://.godot/imported/NightGuard.yarn-e69cf321a7467ad50e21cbdf80634408.tres"]
+
+[params]
+

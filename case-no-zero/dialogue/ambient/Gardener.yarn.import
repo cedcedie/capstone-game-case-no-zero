@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://b6xk7lcwtb5qr"
+path="res://.godot/imported/Gardener.yarn-2654c86d6ad8ba411826483de85c9b57.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/Gardener.yarn"
+dest_files=["res://.godot/imported/Gardener.yarn-2654c86d6ad8ba411826483de85c9b57.tres"]
+
+[params]
+

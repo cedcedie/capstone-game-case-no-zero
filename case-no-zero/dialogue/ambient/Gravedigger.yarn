@@ -1,0 +1,17 @@
+title: Gravedigger
+tags:
+position: 0,0
+---
+Gravedigger: Ground’s soft after rain. Names feel heavier then.
+
+-> Offer a moment of silence
+    Gravedigger: Appreciate it. Quiet keeps the place honest.
+    <<jump Gravedigger>>
+-> Ask about work
+    Gravedigger: It’s care, not just labor. We tend memories here.
+    <<jump Gravedigger>>
+-> Step away
+    -> End
+===
+
+

@@ -1,0 +1,17 @@
+title: OfficeWorker
+tags:
+position: 0,0
+---
+OfficeWorker: My inbox is a hydra. I cut one email; two appear.
+
+-> Ask about deadlines
+    OfficeWorker: They move like clouds—still there even when you look away.
+    <<jump OfficeWorker>>
+-> Offer a snack
+    OfficeWorker: You’re a saint. Sugar is morale with good PR.
+    <<jump OfficeWorker>>
+-> Head to the elevator
+    -> End
+===
+
+

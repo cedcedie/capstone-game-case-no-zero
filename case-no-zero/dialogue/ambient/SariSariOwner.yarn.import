@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c3515pms4pto1"
+path="res://.godot/imported/SariSariOwner.yarn-75eaa1e89afa39d87bfee4b73189d999.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/SariSariOwner.yarn"
+dest_files=["res://.godot/imported/SariSariOwner.yarn-75eaa1e89afa39d87bfee4b73189d999.tres"]
+
+[params]
+

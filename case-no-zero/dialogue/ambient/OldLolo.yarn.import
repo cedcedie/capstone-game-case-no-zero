@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://dtqw1qakwfcpr"
+path="res://.godot/imported/OldLolo.yarn-f0bf3c999a667cf1195a5bde8c9ee4e9.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/OldLolo.yarn"
+dest_files=["res://.godot/imported/OldLolo.yarn-f0bf3c999a667cf1195a5bde8c9ee4e9.tres"]
+
+[params]
+

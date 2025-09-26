@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://pafwp7hmlil1"
+path="res://.godot/imported/StreetKid.yarn-dbfa3804c81ba898d00c33203e637dd8.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/StreetKid.yarn"
+dest_files=["res://.godot/imported/StreetKid.yarn-dbfa3804c81ba898d00c33203e637dd8.tres"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://bju851nsp1ut2"
+path="res://.godot/imported/Paramedic.yarn-d2a54a6180938e1bf7e3fc01c0a74164.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/Paramedic.yarn"
+dest_files=["res://.godot/imported/Paramedic.yarn-d2a54a6180938e1bf7e3fc01c0a74164.tres"]
+
+[params]
+

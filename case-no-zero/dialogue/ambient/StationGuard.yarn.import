@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://dqaoofpqdh5k8"
+path="res://.godot/imported/StationGuard.yarn-a85737cb8aaffc5b796e1714ce7074f1.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/StationGuard.yarn"
+dest_files=["res://.godot/imported/StationGuard.yarn-a85737cb8aaffc5b796e1714ce7074f1.tres"]
+
+[params]
+

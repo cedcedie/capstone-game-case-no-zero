@@ -1,0 +1,17 @@
+title: SchoolTeacher
+tags:
+position: 0,0
+---
+SchoolTeacher: Recess teaches more politics than any textbook.
+
+-> Ask about class
+    SchoolTeacher: Today’s lesson: mistakes are maps to better places.
+    <<jump SchoolTeacher>>
+-> Offer supplies
+    SchoolTeacher: Bless you. Pencils become bridges in small hands.
+    <<jump SchoolTeacher>>
+-> Leave quietly
+    -> End
+===
+
+

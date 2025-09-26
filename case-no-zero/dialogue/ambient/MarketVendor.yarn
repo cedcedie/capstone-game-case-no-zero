@@ -1,0 +1,17 @@
+title: MarketVendor
+tags:
+position: 0,0
+---
+MarketVendor: Fresh fruit, fresher gossip. Both bruise if handled wrong.
+
+-> Ask what’s sweet today
+    MarketVendor: Mangoes—sunlight you can eat. Take two, trust me.
+    <<jump MarketVendor>>
+-> Ask about the crowd
+    MarketVendor: Busy means breathing. Quiet makes me count worries.
+    <<jump MarketVendor>>
+-> Wave goodbye
+    -> End
+===
+
+

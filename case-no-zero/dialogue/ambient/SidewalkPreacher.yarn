@@ -1,0 +1,16 @@
+title: SidewalkPreacher
+tags:
+position: 0,0
+---
+SidewalkPreacher: Repent… of boring choices. Choose kindness, choose color.
+
+-> Ask for a verse
+    SidewalkPreacher: Love thy neighbor, even the noisy ones.
+    <<jump SidewalkPreacher>>
+-> Donate coins
+    SidewalkPreacher: Blessings multiply like jeepney seats.
+    <<jump SidewalkPreacher>>
+-> Walk on
+    -> End
+===
+
