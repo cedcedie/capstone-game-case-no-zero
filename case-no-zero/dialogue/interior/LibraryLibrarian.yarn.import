@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c4yx0yjwxu6sh"
+path="res://.godot/imported/LibraryLibrarian.yarn-6fecbcd6e18ac8fc9b8c74b9722c7957.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/LibraryLibrarian.yarn"
+dest_files=["res://.godot/imported/LibraryLibrarian.yarn-6fecbcd6e18ac8fc9b8c74b9722c7957.tres"]
+
+[params]
+

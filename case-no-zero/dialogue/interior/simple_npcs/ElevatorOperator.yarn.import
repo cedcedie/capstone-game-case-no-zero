@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cbq3f47m82q02"
+path="res://.godot/imported/ElevatorOperator.yarn-eb15da8fec189b9b93982ba77c937cb4.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/simple_npcs/ElevatorOperator.yarn"
+dest_files=["res://.godot/imported/ElevatorOperator.yarn-eb15da8fec189b9b93982ba77c937cb4.tres"]
+
+[params]
+

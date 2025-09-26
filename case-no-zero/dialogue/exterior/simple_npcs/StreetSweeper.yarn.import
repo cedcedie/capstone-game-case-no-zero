@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://brfpk3sjr5nq3"
+path="res://.godot/imported/StreetSweeper.yarn-6406d239869169c7239df26dc4bca42c.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/simple_npcs/StreetSweeper.yarn"
+dest_files=["res://.godot/imported/StreetSweeper.yarn-6406d239869169c7239df26dc4bca42c.tres"]
+
+[params]
+

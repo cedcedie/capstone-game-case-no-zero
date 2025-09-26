@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://bxdew80ayyyoe"
+path="res://.godot/imported/StreetArtist.yarn-01e1dc05065fab4ffb66be63130cdd46.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/StreetArtist.yarn"
+dest_files=["res://.godot/imported/StreetArtist.yarn-01e1dc05065fab4ffb66be63130cdd46.tres"]
+
+[params]
+

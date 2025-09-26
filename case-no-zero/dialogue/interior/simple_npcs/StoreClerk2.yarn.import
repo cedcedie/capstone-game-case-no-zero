@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://bjvbswmyajp8"
+path="res://.godot/imported/StoreClerk2.yarn-5c97951b2b9aeed30216015b6629b6a2.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/simple_npcs/StoreClerk2.yarn"
+dest_files=["res://.godot/imported/StoreClerk2.yarn-5c97951b2b9aeed30216015b6629b6a2.tres"]
+
+[params]
+

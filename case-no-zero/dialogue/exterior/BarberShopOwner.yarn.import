@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cg6lbtknckti3"
+path="res://.godot/imported/BarberShopOwner.yarn-5dfb740b0bad593f07af83b0d03a8392.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/BarberShopOwner.yarn"
+dest_files=["res://.godot/imported/BarberShopOwner.yarn-5dfb740b0bad593f07af83b0d03a8392.tres"]
+
+[params]
+

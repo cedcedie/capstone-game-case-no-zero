@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://wigwqsyab4ks"
+path="res://.godot/imported/StreetMusician.yarn-5936a645a3fc0a192446177b592f9387.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/StreetMusician.yarn"
+dest_files=["res://.godot/imported/StreetMusician.yarn-5936a645a3fc0a192446177b592f9387.tres"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://g2465onikbx8"
+path="res://.godot/imported/StreetCleaner.yarn-fe70fc5e98f83da92ae32180cfafe844.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/StreetCleaner.yarn"
+dest_files=["res://.godot/imported/StreetCleaner.yarn-fe70fc5e98f83da92ae32180cfafe844.tres"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://bi7dxx75cp3t3"
+path="res://.godot/imported/FoodStallOwner.yarn-7ad1d55054f854b8acb26164e800ade7.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/FoodStallOwner.yarn"
+dest_files=["res://.godot/imported/FoodStallOwner.yarn-7ad1d55054f854b8acb26164e800ade7.tres"]
+
+[params]
+

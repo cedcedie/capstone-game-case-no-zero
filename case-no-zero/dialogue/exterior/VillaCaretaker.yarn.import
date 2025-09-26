@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cn461ft4f3rs7"
+path="res://.godot/imported/VillaCaretaker.yarn-1092b52a79187ab619be82fd9d34da75.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/VillaCaretaker.yarn"
+dest_files=["res://.godot/imported/VillaCaretaker.yarn-1092b52a79187ab619be82fd9d34da75.tres"]
+
+[params]
+

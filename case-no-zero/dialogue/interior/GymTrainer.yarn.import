@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://df12bo1tbra0l"
+path="res://.godot/imported/GymTrainer.yarn-5da04fc5ac1291bdb5c700b8ade35b8e.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/GymTrainer.yarn"
+dest_files=["res://.godot/imported/GymTrainer.yarn-5da04fc5ac1291bdb5c700b8ade35b8e.tres"]
+
+[params]
+

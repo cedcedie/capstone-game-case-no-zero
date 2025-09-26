@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cpr6h0amawx85"
+path="res://.godot/imported/PoliceOfficer.yarn-07ede42942c4397eb50631ee5df50fd1.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/PoliceOfficer.yarn"
+dest_files=["res://.godot/imported/PoliceOfficer.yarn-07ede42942c4397eb50631ee5df50fd1.tres"]
+
+[params]
+

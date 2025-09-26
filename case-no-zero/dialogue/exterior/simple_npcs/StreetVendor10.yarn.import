@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://k5tis61bftik"
+path="res://.godot/imported/StreetVendor10.yarn-1e9b3916aa8e3ee04f5cc71ac869f0bc.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/simple_npcs/StreetVendor10.yarn"
+dest_files=["res://.godot/imported/StreetVendor10.yarn-1e9b3916aa8e3ee04f5cc71ac869f0bc.tres"]
+
+[params]
+

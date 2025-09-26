@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://tsro7m33dkh2"
+path="res://.godot/imported/MaintenanceWorker.yarn-cd5590cc3b418194a3bcbb44f83e2899.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/simple_npcs/MaintenanceWorker.yarn"
+dest_files=["res://.godot/imported/MaintenanceWorker.yarn-cd5590cc3b418194a3bcbb44f83e2899.tres"]
+
+[params]
+

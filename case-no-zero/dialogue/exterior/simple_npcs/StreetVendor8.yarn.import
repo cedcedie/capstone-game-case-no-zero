@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://b4b1qt0mvxtuf"
+path="res://.godot/imported/StreetVendor8.yarn-27a4ac940e8e250803bd6573fbfc8bee.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/simple_npcs/StreetVendor8.yarn"
+dest_files=["res://.godot/imported/StreetVendor8.yarn-27a4ac940e8e250803bd6573fbfc8bee.tres"]
+
+[params]
+

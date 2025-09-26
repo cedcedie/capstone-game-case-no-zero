@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://crsae7iht53uq"
+path="res://.godot/imported/Gravedigger.yarn-50f82a39a12a8e3037ca1f2cbdd40884.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/Gravedigger.yarn"
+dest_files=["res://.godot/imported/Gravedigger.yarn-50f82a39a12a8e3037ca1f2cbdd40884.tres"]
+
+[params]
+

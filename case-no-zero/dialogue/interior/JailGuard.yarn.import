@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://b4uawuavlxbas"
+path="res://.godot/imported/JailGuard.yarn-16243205916724edb3d62a27eca9fc5b.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/JailGuard.yarn"
+dest_files=["res://.godot/imported/JailGuard.yarn-16243205916724edb3d62a27eca9fc5b.tres"]
+
+[params]
+

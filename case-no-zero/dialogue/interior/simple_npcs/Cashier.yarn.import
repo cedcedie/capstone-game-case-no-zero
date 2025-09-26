@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://brggq1bk0muky"
+path="res://.godot/imported/Cashier.yarn-4fa8b2bc6326638f13d02e4de0a57080.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/simple_npcs/Cashier.yarn"
+dest_files=["res://.godot/imported/Cashier.yarn-4fa8b2bc6326638f13d02e4de0a57080.tres"]
+
+[params]
+

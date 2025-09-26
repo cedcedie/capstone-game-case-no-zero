@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://m4svgbvdi4l"
+path="res://.godot/imported/NewsstandOwner.yarn-8c4b17e5381b40d13f49908a42f20f3d.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/NewsstandOwner.yarn"
+dest_files=["res://.godot/imported/NewsstandOwner.yarn-8c4b17e5381b40d13f49908a42f20f3d.tres"]
+
+[params]
+

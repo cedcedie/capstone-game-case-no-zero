@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://dphcbfqf5qt7h"
+path="res://.godot/imported/ParkingAttendant.yarn-05d41f5f197a668bb7c06e9cd0797df7.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/simple_npcs/ParkingAttendant.yarn"
+dest_files=["res://.godot/imported/ParkingAttendant.yarn-05d41f5f197a668bb7c06e9cd0797df7.tres"]
+
+[params]
+

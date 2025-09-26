@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://ikoy8yw73s14"
+path="res://.godot/imported/SecurityGuard.yarn-483472637ad9ee9d6362c5c5465a9397.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/simple_npcs/SecurityGuard.yarn"
+dest_files=["res://.godot/imported/SecurityGuard.yarn-483472637ad9ee9d6362c5c5465a9397.tres"]
+
+[params]
+

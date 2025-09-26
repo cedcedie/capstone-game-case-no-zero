@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://pxy6q5t77qtk"
+path="res://.godot/imported/FlowerSeller.yarn-745cfed92908c38e5a5725b46f76ef5f.tres"
+
+[deps]
+
+source_file="res://dialogue/exterior/FlowerSeller.yarn"
+dest_files=["res://.godot/imported/FlowerSeller.yarn-745cfed92908c38e5a5725b46f76ef5f.tres"]
+
+[params]
+

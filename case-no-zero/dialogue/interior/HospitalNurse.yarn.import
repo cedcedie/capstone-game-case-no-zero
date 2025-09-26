@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://p2vjoinqgnq6"
+path="res://.godot/imported/HospitalNurse.yarn-d985715e4142014ce3f5a105eec2196f.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/HospitalNurse.yarn"
+dest_files=["res://.godot/imported/HospitalNurse.yarn-d985715e4142014ce3f5a105eec2196f.tres"]
+
+[params]
+

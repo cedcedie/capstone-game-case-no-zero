@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://5pxp3krv6rls"
+path="res://.godot/imported/MuseumCurator.yarn-0a8f23d95c0621089ecec5840a1c3045.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/MuseumCurator.yarn"
+dest_files=["res://.godot/imported/MuseumCurator.yarn-0a8f23d95c0621089ecec5840a1c3045.tres"]
+
+[params]
+
