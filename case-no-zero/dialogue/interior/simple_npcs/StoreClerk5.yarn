@@ -1,0 +1,15 @@
+title: StoreClerk5
+tags:
+position: 0,0
+---
+Store Clerk: Welcome! We have everything you need here. Is there anything specific you're looking for?
+
+-> Ask about specific items
+    Store Clerk: Just tell me what you need, and I'll help you find it. We have a good selection of products here.
+    -> End
+-> Ask about recommendations
+    Store Clerk: I can recommend some popular items if you're not sure what you want. Our customers seem to like them!
+    -> End
+-> Head out
+    -> End
+===

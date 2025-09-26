@@ -1,0 +1,15 @@
+title: StreetVendor10
+tags:
+position: 0,0
+---
+Street Vendor: Fresh meat! Chicken, pork, and beef! All fresh and properly stored!
+
+-> Buy meat
+    Street Vendor: Here you go! This is fresh and properly stored. Perfect for your cooking needs!
+    -> End
+-> Ask about the meat
+    Street Vendor: I get them fresh from the local suppliers every morning. Everything is properly stored and handled. You can trust the quality!
+    -> End
+-> Head out
+    -> End
+===

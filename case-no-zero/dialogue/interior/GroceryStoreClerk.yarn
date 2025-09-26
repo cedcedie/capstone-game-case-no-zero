@@ -1,0 +1,85 @@
+title: GroceryStoreClerk
+tags:
+position: 0,0
+---
+Grocery Store Clerk: Welcome to our grocery store! We have fresh produce, meat, and all your household essentials. What can I help you find today?
+
+-> Ask about fresh produce
+    Grocery Store Clerk: Our fruits and vegetables are delivered fresh every morning! We have local produce and some imported items. The mangoes are especially sweet this season!
+        -> What's in season?
+            <<jump GroceryClerkSeason>>
+        -> Local vs imported?
+            <<jump GroceryClerkLocal>>
+        -> How fresh is everything?
+            <<jump GroceryClerkFresh>>
+-> Ask about meat section
+    Grocery Store Clerk: We have fresh chicken, pork, beef, and fish. Everything is properly stored and handled. Our butcher is very experienced and can cut meat to your specifications!
+        -> What cuts are available?
+            <<jump GroceryClerkCuts>>
+        -> How do you store the meat?
+            <<jump GroceryClerkStorage>>
+        -> Can you cut to order?
+            <<jump GroceryClerkCutting>>
+-> Head out
+    -> End
+===
+
+title: GroceryClerkSeason
+tags:
+position: 0,0
+---
+Grocery Store Clerk: Right now we have great mangoes, bananas, and coconuts. The rainy season brings the best vegetables - leafy greens are especially fresh and cheap!
+
+-> Back
+    <<jump GroceryStoreClerk>>
+===
+
+title: GroceryClerkLocal
+tags:
+position: 0,0
+---
+Grocery Store Clerk: We support local farmers whenever possible! Local produce is fresher and cheaper. Imported items are for variety, but local is always better for the community.
+
+-> Back
+    <<jump GroceryStoreClerk>>
+===
+
+title: GroceryClerkFresh
+tags:
+position: 0,0
+---
+Grocery Store Clerk: We get deliveries every morning at 6 AM. If something doesn't look fresh, we don't sell it. Quality is more important than profit - happy customers come back!
+
+-> Back
+    <<jump GroceryStoreClerk>>
+===
+
+title: GroceryClerkCuts
+tags:
+position: 0,0
+---
+Grocery Store Clerk: We have all the standard cuts - pork chops, chicken breast, beef steak. Our butcher can also do special cuts if you ask. Just tell us what you're cooking!
+
+-> Back
+    <<jump GroceryStoreClerk>>
+===
+
+title: GroceryClerkStorage
+tags:
+position: 0,0
+---
+Grocery Store Clerk: Everything is kept at proper temperatures. We have refrigerated cases and freezers. Food safety is our top priority - we follow all health department guidelines!
+
+-> Back
+    <<jump GroceryStoreClerk>>
+===
+
+title: GroceryClerkCutting
+tags:
+position: 0,0
+---
+Grocery Store Clerk: Absolutely! Our butcher can cut meat however you want it. Thick, thin, bone-in, boneless - just tell us your preference. It's part of the service!
+
+-> Back
+    <<jump GroceryStoreClerk>>
+===

@@ -1,0 +1,15 @@
+title: ParkingAttendant
+tags:
+position: 0,0
+---
+Parking Attendant: 50 pesos for 2 hours, 100 pesos for the whole day. Take your pick!
+
+-> Ask about rates
+    Parking Attendant: It's pretty standard around here. Cheaper than the mall parking, that's for sure.
+    -> End
+-> Ask about security
+    Parking Attendant: I keep an eye on things, but you should still lock your car and don't leave valuables inside.
+    -> End
+-> Head out
+    -> End
+===

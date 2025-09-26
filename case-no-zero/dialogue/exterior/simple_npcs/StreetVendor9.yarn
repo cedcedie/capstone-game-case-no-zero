@@ -1,0 +1,15 @@
+title: StreetVendor9
+tags:
+position: 0,0
+---
+Street Vendor: Fresh fish! Bangus, tilapia, and shrimp! All fresh from the sea!
+
+-> Buy fish
+    Street Vendor: Great choice! These are fresh and delicious. Perfect for your dinner tonight!
+    -> End
+-> Ask about the fish
+    Street Vendor: I get them fresh from the fishermen every morning. The bangus is especially good today, and the shrimp is perfect for sinigang!
+    -> End
+-> Head out
+    -> End
+===

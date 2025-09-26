@@ -1,0 +1,15 @@
+title: StreetVendor2
+tags:
+position: 0,0
+---
+Street Vendor: Fresh buko juice! 25 pesos only! Perfect for this hot weather.
+
+-> Buy juice
+    Street Vendor: Here you go! Fresh from the coconut, no preservatives. Enjoy!
+    -> End
+-> Ask about the coconuts
+    Street Vendor: I get them fresh every morning from the province. Nothing beats a cold buko juice on a hot day!
+    -> End
+-> Head out
+    -> End
+===

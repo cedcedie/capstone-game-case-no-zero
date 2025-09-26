@@ -1,0 +1,15 @@
+title: StreetPhotographer
+tags:
+position: 0,0
+---
+Street Photographer: Beautiful day for photos! The light is perfect right now. Want me to take your picture?
+
+-> Ask about photography
+    Street Photographer: I love capturing the city's energy. Every corner has a story, you just have to look for it.
+    -> End
+-> Ask about the camera
+    Street Photographer: This old thing? It's been with me for years. Sometimes the best photos come from the simplest equipment.
+    -> End
+-> Head out
+    -> End
+===

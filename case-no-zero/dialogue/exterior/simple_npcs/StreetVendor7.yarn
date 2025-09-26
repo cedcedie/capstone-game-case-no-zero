@@ -1,0 +1,15 @@
+title: StreetVendor7
+tags:
+position: 0,0
+---
+Street Vendor: Fresh fruits! Mangoes, bananas, and coconuts! All fresh from the province!
+
+-> Buy fruits
+    Street Vendor: Great choice! These are the sweetest fruits you'll find in the city. Perfect for a healthy snack!
+    -> End
+-> Ask about the fruits
+    Street Vendor: I bring them fresh from the province every morning. The mangoes are especially sweet this season, and the coconuts are perfect for buko juice!
+    -> End
+-> Head out
+    -> End
+===

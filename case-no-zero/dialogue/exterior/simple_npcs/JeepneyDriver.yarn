@@ -1,0 +1,15 @@
+title: JeepneyDriver
+tags:
+position: 0,0
+---
+Jeepney Driver: Bayad po! Next stop, downtown. Hop on if you're going that way!
+
+-> Ask about route
+    Jeepney Driver: I go from here to the main market, then to the bus terminal. Standard route, 12 pesos fare.
+    -> End
+-> Ask about business
+    Jeepney Driver: Business is okay. Gas prices are killing us, but people still need to get around. Can't complain too much.
+    -> End
+-> Head out
+    -> End
+===

@@ -1,0 +1,15 @@
+title: CafeteriaWorker
+tags:
+position: 0,0
+---
+Cafeteria Worker: Lunch is ready! We have today's special and some fresh sandwiches. What can I get you?
+
+-> Ask about the special
+    Cafeteria Worker: Today's special is adobo with rice and vegetables. It's a customer favorite, very filling and delicious!
+    -> End
+-> Ask about the food
+    Cafeteria Worker: We make everything fresh daily. Nothing fancy, just good home-cooked style food that fills you up.
+    -> End
+-> Head out
+    -> End
+===

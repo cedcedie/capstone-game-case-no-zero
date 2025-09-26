@@ -1,0 +1,15 @@
+title: StoreClerk
+tags:
+position: 0,0
+---
+Store Clerk: Can I help you find anything? We have a wide selection of products here.
+
+-> Ask about products
+    Store Clerk: We have everything from basic necessities to specialty items. Just let me know what you're looking for!
+    -> End
+-> Ask about prices
+    Store Clerk: Our prices are competitive and fair. We also have regular sales and promotions, so you can get great deals!
+    -> End
+-> Head out
+    -> End
+===

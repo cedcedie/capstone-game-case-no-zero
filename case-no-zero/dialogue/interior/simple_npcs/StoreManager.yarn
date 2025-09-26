@@ -1,0 +1,15 @@
+title: StoreManager
+tags:
+position: 0,0
+---
+Store Manager: Good morning! I'm just checking on things around here. Is everything to your satisfaction?
+
+-> Ask about the store
+    Store Manager: We try to keep everything organized and well-stocked. Customer satisfaction is our top priority here.
+    -> End
+-> Ask about the staff
+    Store Manager: I have a great team working here. They're all trained and dedicated to providing excellent service.
+    -> End
+-> Head out
+    -> End
+===

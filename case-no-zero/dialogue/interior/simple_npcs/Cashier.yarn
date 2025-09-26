@@ -1,0 +1,15 @@
+title: Cashier
+tags:
+position: 0,0
+---
+Cashier: That'll be 150 pesos total. Thank you for your purchase!
+
+-> Ask about the total
+    Cashier: Let me break that down for you - the items are 120 pesos, plus 30 pesos tax. Total is 150 pesos.
+    -> End
+-> Ask about payment
+    Cashier: We accept cash, card, and GCash. Whatever's most convenient for you!
+    -> End
+-> Head out
+    -> End
+===

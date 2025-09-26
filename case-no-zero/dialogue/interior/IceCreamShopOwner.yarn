@@ -1,0 +1,85 @@
+title: IceCreamShopOwner
+tags:
+position: 0,0
+---
+Ice Cream Shop Owner: Welcome to our ice cream shop! We have the creamiest, most delicious ice cream in town. What flavor catches your eye?
+
+-> Ask about flavors
+    Ice Cream Shop Owner: We have classic flavors like vanilla and chocolate, plus some unique local flavors like ube, mango, and even buko! What's your favorite type of ice cream?
+        -> Local flavors?
+            <<jump IceCreamOwnerLocal>>
+        -> Classic flavors?
+            <<jump IceCreamOwnerClassic>>
+        -> What's your specialty?
+            <<jump IceCreamOwnerSpecialty>>
+-> Ask about the shop
+    Ice Cream Shop Owner: We make everything fresh daily using local ingredients. Our family has been in the ice cream business for 15 years - it's a labor of love!
+        -> How do you make it?
+            <<jump IceCreamOwnerMaking>>
+        -> What makes it special?
+            <<jump IceCreamOwnerSpecial>>
+        -> Family business?
+            <<jump IceCreamOwnerFamily>>
+-> Head out
+    -> End
+===
+
+title: IceCreamOwnerLocal
+tags:
+position: 0,0
+---
+Ice Cream Shop Owner: Our ube ice cream is made with real purple yam - it's naturally sweet and has that beautiful purple color. The mango flavor uses fresh local mangoes when they're in season!
+
+-> Back
+    <<jump IceCreamShopOwner>>
+===
+
+title: IceCreamOwnerClassic
+tags:
+position: 0,0
+---
+Ice Cream Shop Owner: You can't go wrong with our vanilla or chocolate! We use real vanilla beans and premium cocoa. Sometimes the classics are the best, you know?
+
+-> Back
+    <<jump IceCreamShopOwner>>
+===
+
+title: IceCreamOwnerSpecialty
+tags:
+position: 0,0
+---
+Ice Cream Shop Owner: Our specialty is the "Halo-Halo" ice cream - it's like the traditional dessert but in ice cream form! We also have a "Leche Flan" flavor that's absolutely divine!
+
+-> Back
+    <<jump IceCreamShopOwner>>
+===
+
+title: IceCreamOwnerMaking
+tags:
+position: 0,0
+---
+Ice Cream Shop Owner: We start early in the morning, mixing fresh cream with our secret recipes. Everything is made in small batches to ensure quality. It's a lot of work, but the results are worth it!
+
+-> Back
+    <<jump IceCreamShopOwner>>
+===
+
+title: IceCreamOwnerSpecial
+tags:
+position: 0,0
+---
+Ice Cream Shop Owner: We use only the freshest local ingredients and no artificial preservatives. Our ice cream is creamier and more flavorful because we take our time and do it right!
+
+-> Back
+    <<jump IceCreamShopOwner>>
+===
+
+title: IceCreamOwnerFamily
+tags:
+position: 0,0
+---
+Ice Cream Shop Owner: Yes! My parents started this business, and now my siblings and I run it together. It's hard work, but we love making people happy with our ice cream!
+
+-> Back
+    <<jump IceCreamShopOwner>>
+===

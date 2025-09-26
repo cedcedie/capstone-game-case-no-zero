@@ -1,0 +1,15 @@
+title: Janitor
+tags:
+position: 0,0
+---
+Janitor: Just keeping things clean around here. A clean building is a happy building, that's what I always say.
+
+-> Ask about the work
+    Janitor: It's honest work. I take pride in keeping this place spotless. People notice when things are clean.
+    -> End
+-> Comment on cleanliness
+    Janitor: Thanks! I do my best. It's not glamorous work, but someone's got to do it, and I don't mind.
+    -> End
+-> Head out
+    -> End
+===

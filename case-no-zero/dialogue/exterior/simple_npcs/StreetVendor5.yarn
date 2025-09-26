@@ -1,0 +1,15 @@
+title: StreetVendor5
+tags:
+position: 0,0
+---
+Street Vendor: Ice cream! Ice cream! 10 pesos per scoop! Perfect for this hot weather!
+
+-> Buy ice cream
+    Street Vendor: What flavor would you like? We have vanilla, chocolate, and strawberry. All homemade and delicious!
+    -> End
+-> Ask about flavors
+    Street Vendor: We make them fresh every day! The vanilla is creamy, chocolate is rich, and strawberry is sweet. You can't go wrong with any of them!
+    -> End
+-> Head out
+    -> End
+===

@@ -1,0 +1,15 @@
+title: StreetVendor3
+tags:
+position: 0,0
+---
+Street Vendor: Fresh corn on the cob! 20 pesos each, grilled to perfection!
+
+-> Buy corn
+    Street Vendor: Here you go! Hot and fresh, just the way you like it. Enjoy!
+    -> End
+-> Ask about the corn
+    Street Vendor: I get them fresh from the province every morning. Nothing beats grilled corn with a little salt and butter!
+    -> End
+-> Head out
+    -> End
+===

@@ -1,0 +1,15 @@
+title: OfficeClerk
+tags:
+position: 0,0
+---
+Office Clerk: Just filing some paperwork. The office never stops, but I like keeping things organized.
+
+-> Ask about the work
+    Office Clerk: It's mostly data entry and filing. Not exciting, but it pays the bills and I'm good at it.
+    -> End
+-> Ask about the office
+    Office Clerk: This place is always busy. Lots of different departments and people coming and going. Never a dull moment!
+    -> End
+-> Head out
+    -> End
+===

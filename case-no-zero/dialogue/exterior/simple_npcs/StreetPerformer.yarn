@@ -1,0 +1,15 @@
+title: StreetPerformer
+tags:
+position: 0,0
+---
+Street Performer: *strumming guitar* Hope you enjoyed the music! Every peso helps me keep doing what I love.
+
+-> Give tip
+    Street Performer: Thank you so much! Your support means everything to a struggling artist like me.
+    -> End
+-> Ask about the music
+    Street Performer: I write my own songs about life in the city. Music is my way of sharing stories and connecting with people.
+    -> End
+-> Head out
+    -> End
+===

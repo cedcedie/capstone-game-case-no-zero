@@ -1,0 +1,73 @@
+title: GymTrainer
+tags:
+position: 44,-2
+---
+Gym Trainer: Hey there! Welcome to our fitness center. I'm here to help you reach your fitness goals. What brings you in today?
+
+-> Ask about membership
+    Gym Trainer: We have monthly, quarterly, and annual memberships. The annual one gives you the best value, plus access to all our classes and equipment!
+        -> What classes do you offer?
+            <<jump GymTrainerClasses>>
+        -> What equipment is available?
+            <<jump GymTrainerEquipment>>
+        -> How much is membership?
+            <<jump GymTrainerPricing>>
+-> Ask for advice
+    Gym Trainer: I'd be happy to help! Whether you're a beginner or looking to level up your routine, I can create a plan that works for you.
+        -> Beginner advice?
+            <<jump GymTrainerBeginner>>
+        -> Advanced training?
+            <<jump GymTrainerAdvanced>>
+-> Head out
+    -> End
+===
+
+title: GymTrainerClasses
+tags:
+position: -163,94
+---
+Gym Trainer: We have yoga, Zumba, boxing, and HIIT classes. The Zumba class is always packed - Filipinos love to dance! It's like a party with exercise!
+
+-> Back
+    <<jump GymTrainer>>
+===
+
+title: GymTrainerEquipment
+tags:
+position: 312,-14
+---
+Gym Trainer: We have everything - treadmills, weights, resistance machines, and even a small pool for swimming. It's like a one-stop fitness shop!
+
+-> Back
+    <<jump GymTrainer>>
+===
+
+title: GymTrainerPricing
+tags:
+position: 460,-323
+---
+Gym Trainer: Monthly is 2,500 pesos, quarterly is 6,500, and annual is 20,000. The annual membership is like getting 2 months free! Pretty good deal, right?
+
+-> Back
+    <<jump GymTrainer>>
+===
+
+title: GymTrainerBeginner
+tags:
+position: 4,257
+---
+Gym Trainer: Start slow and steady! I always say, "It's not about being perfect, it's about being consistent." We'll build your strength gradually, no pressure!
+
+-> Back
+    <<jump GymTrainer>>
+===
+
+title: GymTrainerAdvanced
+tags:
+position: 12,-189
+---
+Gym Trainer: For advanced training, we can work on specific goals - strength, endurance, or muscle building. I'll push you, but safely. No shortcuts to real results!
+
+-> Back
+    <<jump GymTrainer>>
+===

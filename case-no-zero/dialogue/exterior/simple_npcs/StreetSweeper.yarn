@@ -1,0 +1,15 @@
+title: StreetSweeper
+tags:
+position: 0,0
+---
+Street Sweeper: Another day, another pile of trash to clean up. At least the weather's nice today.
+
+-> Keep working
+    Street Sweeper: Thanks for understanding. This city won't clean itself, you know.
+    -> End
+-> Offer help
+    Street Sweeper: That's kind of you, but I've got my routine down. Just don't litter, that's help enough!
+    -> End
+-> Head out
+    -> End
+===

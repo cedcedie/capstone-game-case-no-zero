@@ -1,0 +1,15 @@
+title: MaintenanceWorker
+tags:
+position: 0,0
+---
+Maintenance Worker: Just fixing a leaky faucet. These old buildings need constant attention, but I enjoy the work.
+
+-> Ask about the building
+    Maintenance Worker: This place has character, but it also has its quirks. Every day brings a new challenge to solve.
+    -> End
+-> Ask about the job
+    Maintenance Worker: I like working with my hands and solving problems. It's satisfying to fix things and keep everything running smoothly.
+    -> End
+-> Head out
+    -> End
+===

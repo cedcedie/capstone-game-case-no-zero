@@ -1,0 +1,15 @@
+title: SecurityGuard
+tags:
+position: 0,0
+---
+Security Guard: Good day! I'm here to keep everyone safe. Is there anything I can help you with?
+
+-> Ask about security
+    Security Guard: We have cameras, alarms, and regular patrols. Safety is our top priority here.
+    -> End
+-> Ask about the building
+    Security Guard: This is a secure facility. We monitor everything and make sure only authorized personnel are allowed in restricted areas.
+    -> End
+-> Head out
+    -> End
+===

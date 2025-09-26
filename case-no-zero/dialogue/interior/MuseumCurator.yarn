@@ -1,0 +1,85 @@
+title: MuseumCurator
+tags:
+position: 0,0
+---
+Museum Curator: Welcome to our museum! We have fascinating exhibits about local history, culture, and art. What interests you most?
+
+-> Ask about exhibits
+    Museum Curator: We have several permanent exhibits and rotating special displays. Our Filipino history section is particularly popular, and we have some beautiful local artwork too!
+        -> Filipino history?
+            <<jump MuseumCuratorHistory>>
+        -> Local artwork?
+            <<jump MuseumCuratorArt>>
+        -> Special exhibits?
+            <<jump MuseumCuratorSpecial>>
+-> Ask about the museum
+    Museum Curator: This museum has been here for over 20 years! We're dedicated to preserving and sharing our local heritage. Education and culture are our main goals.
+        -> How long have you worked here?
+            <<jump MuseumCuratorWork>>
+        -> What's your favorite exhibit?
+            <<jump MuseumCuratorFavorite>>
+        -> Do you have guided tours?
+            <<jump MuseumCuratorTours>>
+-> Head out
+    -> End
+===
+
+title: MuseumCuratorHistory
+tags:
+position: 0,0
+---
+Museum Curator: Our history section covers the Spanish colonial period, the American era, and the modern Philippines. We have artifacts, documents, and even some personal items from important historical figures!
+
+-> Back
+    <<jump MuseumCurator>>
+===
+
+title: MuseumCuratorArt
+tags:
+position: 0,0
+---
+Museum Curator: We showcase local artists and traditional crafts. From contemporary paintings to traditional weaving and pottery. It's amazing to see how art connects us to our cultural roots!
+
+-> Back
+    <<jump MuseumCurator>>
+===
+
+title: MuseumCuratorSpecial
+tags:
+position: 0,0
+---
+Museum Curator: Right now we have a special exhibit on traditional Filipino festivals. It's colorful and interactive - perfect for families! We change exhibits every 3 months.
+
+-> Back
+    <<jump MuseumCurator>>
+===
+
+title: MuseumCuratorWork
+tags:
+position: 0,0
+---
+Museum Curator: I've been here for 8 years! I started as a volunteer and fell in love with the work. There's always something new to learn about our history and culture.
+
+-> Back
+    <<jump MuseumCurator>>
+===
+
+title: MuseumCuratorFavorite
+tags:
+position: 0,0
+---
+Museum Curator: I love the traditional crafts section. Seeing how our ancestors made everyday objects with such skill and beauty - it's humbling and inspiring at the same time!
+
+-> Back
+    <<jump MuseumCurator>>
+===
+
+title: MuseumCuratorTours
+tags:
+position: 0,0
+---
+Museum Curator: Yes! We offer guided tours for groups of 10 or more. Just call ahead to schedule. Our guides are very knowledgeable and can answer all your questions!
+
+-> Back
+    <<jump MuseumCurator>>
+===

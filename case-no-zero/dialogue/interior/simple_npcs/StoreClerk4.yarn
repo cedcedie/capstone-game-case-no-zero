@@ -1,0 +1,15 @@
+title: StoreClerk4
+tags:
+position: 0,0
+---
+Store Clerk: Hello! We have a special promotion today. Buy 2, get 1 free on selected items!
+
+-> Ask about the promotion
+    Store Clerk: It's a great deal! You can save money and get more value for your purchase. The promotion is valid until the end of the week.
+    -> End
+-> Ask about selected items
+    Store Clerk: The promotion applies to several categories of items. I can show you which ones are included if you're interested!
+    -> End
+-> Head out
+    -> End
+===

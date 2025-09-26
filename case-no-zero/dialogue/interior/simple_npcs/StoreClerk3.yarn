@@ -1,0 +1,15 @@
+title: StoreClerk3
+tags:
+position: 0,0
+---
+Store Clerk: Good day! We have fresh arrivals today. Would you like to see what's new?
+
+-> Ask about new arrivals
+    Store Clerk: We just got some new items in this morning. They're all fresh and of good quality. Take a look!
+    -> End
+-> Ask about quality
+    Store Clerk: We only stock items that meet our quality standards. We want our customers to be satisfied with their purchases.
+    -> End
+-> Head out
+    -> End
+===

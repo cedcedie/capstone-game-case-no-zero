@@ -1,0 +1,85 @@
+title: ClothingStoreClerk
+tags:
+position: 0,0
+---
+Clothing Store Clerk: Hi there! Welcome to our clothing store. Are you looking for something specific, or would you like me to help you find the perfect outfit?
+
+-> Ask about clothing
+    Clothing Store Clerk: We have casual wear, formal attire, and even some traditional Filipino clothing. What's the occasion? I can help you put together something amazing!
+        -> Casual wear?
+            <<jump ClothingClerkCasual>>
+        -> Formal attire?
+            <<jump ClothingClerkFormal>>
+        -> Traditional clothing?
+            <<jump ClothingClerkTraditional>>
+-> Ask about sizes
+    Clothing Store Clerk: We have sizes from XS to XXL, and we can do alterations if needed. The fitting rooms are over there, and I'm here to help you find the perfect fit!
+        -> What if nothing fits?
+            <<jump ClothingClerkFitting>>
+        -> Do you do alterations?
+            <<jump ClothingClerkAlterations>>
+        -> Return policy?
+            <<jump ClothingClerkReturns>>
+-> Head out
+    -> End
+===
+
+title: ClothingClerkCasual
+tags:
+position: 0,0
+---
+Clothing Store Clerk: For casual wear, we have comfortable t-shirts, jeans, and summer dresses. Perfect for everyday wear or hanging out with friends. Style meets comfort!
+
+-> Back
+    <<jump ClothingStoreClerk>>
+===
+
+title: ClothingClerkFormal
+tags:
+position: 0,0
+---
+Clothing Store Clerk: We have business suits, formal dresses, and elegant blouses. Perfect for important meetings or special occasions. Dress to impress, as they say!
+
+-> Back
+    <<jump ClothingStoreClerk>>
+===
+
+title: ClothingClerkTraditional
+tags:
+position: 0,0
+---
+Clothing Store Clerk: We have barong tagalog, terno, and other traditional Filipino clothing. They're perfect for cultural events or when you want to show your Filipino pride!
+
+-> Back
+    <<jump ClothingStoreClerk>>
+===
+
+title: ClothingClerkFitting
+tags:
+position: 0,0
+---
+Clothing Store Clerk: Don't worry! We have different brands with different fits. Sometimes one brand's medium is another brand's large. It's all about finding what works for you!
+
+-> Back
+    <<jump ClothingStoreClerk>>
+===
+
+title: ClothingClerkAlterations
+tags:
+position: 0,0
+---
+Clothing Store Clerk: Yes! We have a seamstress who can adjust hems, take in waists, or let out seams. It usually takes 3-5 days, and the cost depends on the work needed!
+
+-> Back
+    <<jump ClothingStoreClerk>>
+===
+
+title: ClothingClerkReturns
+tags:
+position: 0,0
+---
+Clothing Store Clerk: We accept returns within 7 days with receipt, as long as the item is unworn and has tags. We want you to be happy with your purchase!
+
+-> Back
+    <<jump ClothingStoreClerk>>
+===

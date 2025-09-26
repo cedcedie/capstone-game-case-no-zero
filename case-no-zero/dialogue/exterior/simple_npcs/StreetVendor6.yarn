@@ -1,0 +1,15 @@
+title: StreetVendor6
+tags:
+position: 0,0
+---
+Street Vendor: Fresh flowers! Beautiful flowers for your loved ones! 50 pesos per bouquet!
+
+-> Buy flowers
+    Street Vendor: Here you go! These will brighten anyone's day. Fresh and beautiful, just like you!
+    -> End
+-> Ask about the flowers
+    Street Vendor: I get them fresh every morning from the flower market. Roses, daisies, and some local flowers too. Perfect for any occasion!
+    -> End
+-> Head out
+    -> End
+===

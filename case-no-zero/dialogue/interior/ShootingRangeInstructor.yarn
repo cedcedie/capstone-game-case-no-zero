@@ -1,0 +1,85 @@
+title: ShootingRangeInstructor
+tags:
+position: 0,0
+---
+Shooting Range Instructor: Welcome to our shooting range! Are you here for practice, or are you interested in learning how to shoot safely?
+
+-> Ask about lessons
+    Shooting Range Instructor: We offer beginner courses for those who've never shot before, and advanced training for experienced shooters. Safety is our top priority here!
+        -> Beginner lessons?
+            <<jump ShootingInstructorBeginner>>
+        -> Advanced training?
+            <<jump ShootingInstructorAdvanced>>
+        -> Safety protocols?
+            <<jump ShootingInstructorSafety>>
+-> Ask about the range
+    Shooting Range Instructor: We have a 25-meter indoor range with proper ventilation and soundproofing. We provide all necessary safety equipment and have certified instructors on staff.
+        -> What equipment do you provide?
+            <<jump ShootingInstructorEquipment>>
+        -> How long are sessions?
+            <<jump ShootingInstructorSessions>>
+        -> Do you rent firearms?
+            <<jump ShootingInstructorRental>>
+-> Head out
+    -> End
+===
+
+title: ShootingInstructorBeginner
+tags:
+position: 0,0
+---
+Shooting Range Instructor: Beginner lessons cover basic firearm safety, proper grip, stance, and aiming. We start with .22 caliber pistols - they're easier to handle and less intimidating for new shooters.
+
+-> Back
+    <<jump ShootingRangeInstructor>>
+===
+
+title: ShootingInstructorAdvanced
+tags:
+position: 0,0
+---
+Shooting Range Instructor: Advanced training includes tactical shooting, rapid fire, and precision shooting. We also offer defensive shooting courses for those interested in personal protection.
+
+-> Back
+    <<jump ShootingRangeInstructor>>
+===
+
+title: ShootingInstructorSafety
+tags:
+position: 0,0
+---
+Shooting Range Instructor: Safety is everything! We provide eye and ear protection, and we have strict rules about handling firearms. Every shooter must follow our safety protocols - no exceptions.
+
+-> Back
+    <<jump ShootingRangeInstructor>>
+===
+
+title: ShootingInstructorEquipment
+tags:
+position: 0,0
+---
+Shooting Range Instructor: We provide safety glasses, ear protection, and targets. We also have a variety of firearms available for rental, from pistols to rifles. Everything is properly maintained and inspected.
+
+-> Back
+    <<jump ShootingRangeInstructor>>
+===
+
+title: ShootingInstructorSessions
+tags:
+position: 0,0
+---
+Shooting Range Instructor: Sessions are typically 1-2 hours. Beginners usually start with 30-minute lessons, while experienced shooters can book longer sessions. We recommend starting slow and building up.
+
+-> Back
+    <<jump ShootingRangeInstructor>>
+===
+
+title: ShootingInstructorRental
+tags:
+position: 0,0
+---
+Shooting Range Instructor: Yes, we rent firearms to qualified individuals. You need a valid ID and must pass a basic safety check. We have everything from small pistols to larger rifles.
+
+-> Back
+    <<jump ShootingRangeInstructor>>
+===

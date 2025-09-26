@@ -1,6 +1,6 @@
 title: HospitalNurse
 tags:
-position: 0,0
+position: 0,-21
 ---
 HospitalNurse: Long night. The monitor beeps start to sound like lullabies.
 
@@ -24,7 +24,7 @@ HospitalNurse: Long night. The monitor beeps start to sound like lullabies.
 
 title: NurseShift
 tags:
-position: 0,0
+position: -18,177
 ---
 HospitalNurse: A steady pulse after a scare. A thank-you whispered at 3 AM.
 
@@ -34,7 +34,7 @@ HospitalNurse: A steady pulse after a scare. A thank-you whispered at 3 AM.
 
 title: NurseCoping
 tags:
-position: 0,0
+position: -58,-240
 ---
 HospitalNurse: Deep breaths. Count meds, count blessings. Both keep us careful.
 

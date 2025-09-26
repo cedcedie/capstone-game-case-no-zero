@@ -1,0 +1,15 @@
+title: ConstructionWorker
+tags:
+position: 0,0
+---
+Construction Worker: Hot work today! This building's going to be finished by next month if the weather holds up.
+
+-> Ask about the project
+    Construction Worker: It's going to be a new office building. Good for the neighborhood, brings jobs and business.
+    -> End
+-> Comment on the heat
+    Construction Worker: Yeah, the sun's brutal today. But that's construction work for you - rain or shine, we keep building.
+    -> End
+-> Head out
+    -> End
+===
