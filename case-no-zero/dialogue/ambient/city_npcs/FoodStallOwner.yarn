@@ -1,0 +1,61 @@
+title: FoodStallOwner
+tags:
+position: 0,0
+---
+FoodStallOwner: Hungry? I've got the best street food in the city! Made with love and a little bit of magic.
+
+-> Order food
+    FoodStallOwner: Good choice! This will fill your stomach and warm your heart.
+        -> What's your specialty?
+            <<jump FoodSpecialty>>
+        -> How spicy is it?
+            <<jump FoodSpicy>>
+-> Ask about the stall
+    FoodStallOwner: I've been cooking here for eight years. My recipes are family secrets.
+        -> What's your secret ingredient?
+            <<jump FoodSecret>>
+        -> Do you have regular customers?
+            <<jump FoodRegulars>>
+-> I'll come back later
+    -> End
+===
+
+title: FoodSpecialty
+tags:
+position: 0,0
+---
+FoodStallOwner: My adobo is legendary, but the lumpia is what keeps people coming back.
+
+-> Back
+    <<jump FoodStallOwner>>
+===
+
+title: FoodSpicy
+tags:
+position: 0,0
+---
+FoodStallOwner: I can make it mild, medium, or "are you sure you can handle this?"
+
+-> Back
+    <<jump FoodStallOwner>>
+===
+
+title: FoodSecret
+tags:
+position: 0,0
+---
+FoodStallOwner: Love, patience, and a pinch of something special that I'll never tell.
+
+-> Back
+    <<jump FoodStallOwner>>
+===
+
+title: FoodRegulars
+tags:
+position: 0,0
+---
+FoodStallOwner: Oh yes! Some people come here every day. I know their orders by heart.
+
+-> Back
+    <<jump FoodStallOwner>>
+===

@@ -1,0 +1,61 @@
+title: TaxiDriver
+tags:
+position: 0,0
+---
+TaxiDriver: Hop in! I know every shortcut in this city, and every traffic jam too.
+
+-> Ask for a ride
+    TaxiDriver: Where to? I'll get you there faster than GPS and with better conversation.
+        -> How much will it cost?
+            <<jump TaxiCost>>
+        -> Do you know a shortcut?
+            <<jump TaxiShortcut>>
+-> Ask about the city
+    TaxiDriver: I've been driving these streets for ten years. I know every pothole and every story.
+        -> What's the best part of your job?
+            <<jump TaxiBest>>
+        -> Any interesting passengers?
+            <<jump TaxiPassengers>>
+-> I'll walk
+    -> End
+===
+
+title: TaxiCost
+tags:
+position: 0,0
+---
+TaxiDriver: Depends on traffic, but I'll give you a fair price. No meter games here.
+
+-> Back
+    <<jump TaxiDriver>>
+===
+
+title: TaxiShortcut
+tags:
+position: 0,0
+---
+TaxiDriver: I know a back way that'll save you ten minutes and show you the real city.
+
+-> Back
+    <<jump TaxiDriver>>
+===
+
+title: TaxiBest
+tags:
+position: 0,0
+---
+TaxiDriver: Meeting new people every day. Everyone has a story, and I love hearing them.
+
+-> Back
+    <<jump TaxiDriver>>
+===
+
+title: TaxiPassengers
+tags:
+position: 0,0
+---
+TaxiDriver: Oh, I've heard it all. Love stories, business deals, and the occasional confession.
+
+-> Back
+    <<jump TaxiDriver>>
+===

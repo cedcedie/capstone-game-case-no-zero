@@ -1,0 +1,61 @@
+title: BeachVendor
+tags:
+position: 0,0
+---
+BeachVendor: Fresh buko juice! Guaranteed to make you feel like you're on vacation, even if you're not.
+
+-> Buy coconut water
+    BeachVendor: One buko, coming up! The ocean's salty, but my prices are sweet.
+        -> How fresh is it?
+            <<jump BeachFresh>>
+        -> Any other drinks?
+            <<jump BeachDrinks>>
+-> Ask about the beach
+    BeachVendor: Sand's free, sun's free, but my umbrella rental is premium priced.
+        -> Is it safe to swim?
+            <<jump BeachSafety>>
+        -> What's the best time to visit?
+            <<jump BeachTiming>>
+-> Just looking around
+    -> End
+===
+
+title: BeachFresh
+tags:
+position: 0,0
+---
+BeachVendor: Picked this morning! The coconuts are fresher than my jokes.
+
+-> Back
+    <<jump BeachVendor>>
+===
+
+title: BeachDrinks
+tags:
+position: 0,0
+---
+BeachVendor: Buko juice, calamansi, and water that's actually wet.
+
+-> Back
+    <<jump BeachVendor>>
+===
+
+title: BeachSafety
+tags:
+position: 0,0
+---
+BeachVendor: Lifeguard's on duty, sharks are on vacation. You're good to go.
+
+-> Back
+    <<jump BeachVendor>>
+===
+
+title: BeachTiming
+tags:
+position: 0,0
+---
+BeachVendor: Early morning for peace, late afternoon for drama. Choose your adventure.
+
+-> Back
+    <<jump BeachVendor>>
+===

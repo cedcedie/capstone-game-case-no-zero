@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://b5xhnwkwee5kx"
+path="res://.godot/imported/GarageSaleOwner.yarn-6719b8a0afd21cebc4c0a83f84916a18.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/GarageSaleOwner.yarn"
+dest_files=["res://.godot/imported/GarageSaleOwner.yarn-6719b8a0afd21cebc4c0a83f84916a18.tres"]
+
+[params]
+

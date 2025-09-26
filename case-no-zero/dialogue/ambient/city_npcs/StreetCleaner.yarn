@@ -1,0 +1,61 @@
+title: StreetCleaner
+tags:
+position: 0,0
+---
+StreetCleaner: Clean streets, clean conscience. Someone's got to keep this city looking good.
+
+-> Ask about the work
+    StreetCleaner: It's honest work. Early mornings, steady pace, and the satisfaction of seeing progress.
+        -> Is it hard work?
+            <<jump CleanerHard>>
+        -> How long have you been doing this?
+            <<jump CleanerLong>>
+-> Offer help
+    StreetCleaner: That's kind of you, but I've got my routine. Appreciate the thought though.
+        -> You do important work
+            <<jump CleanerImportant>>
+        -> Stay safe
+            <<jump CleanerSafe>>
+-> I'll get out of your way
+    -> End
+===
+
+title: CleanerHard
+tags:
+position: 0,0
+---
+StreetCleaner: Physical, yes. But there's something satisfying about making things clean and orderly.
+
+-> Back
+    <<jump StreetCleaner>>
+===
+
+title: CleanerLong
+tags:
+position: 0,0
+---
+StreetCleaner: Ten years of keeping these streets spotless. I know every corner, every crack.
+
+-> Back
+    <<jump StreetCleaner>>
+===
+
+title: CleanerImportant
+tags:
+position: 0,0
+---
+StreetCleaner: Thank you. Clean streets make for a better city, and a better city makes for better people.
+
+-> Back
+    <<jump StreetCleaner>>
+===
+
+title: CleanerSafe
+tags:
+position: 0,0
+---
+StreetCleaner: I will. Safety first, cleanliness second, but both are important.
+
+-> Back
+    <<jump StreetCleaner>>
+===

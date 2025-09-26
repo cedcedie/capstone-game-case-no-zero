@@ -1,0 +1,61 @@
+title: NewsstandOwner
+tags:
+position: 0,0
+---
+NewsstandOwner: Fresh news, old stories, and everything in between. Knowledge is power, and I'm the supplier.
+
+-> Buy a newspaper
+    NewsstandOwner: Good choice! Stay informed, stay aware, stay ahead of the game.
+        -> What's the big news today?
+            <<jump NewsBig>>
+        -> Do you have international papers?
+            <<jump NewsInternational>>
+-> Ask about the business
+    NewsstandOwner: I've been here for fifteen years. I've seen the city change, but people still want to know what's happening.
+        -> What's the most popular paper?
+            <<jump NewsPopular>>
+        -> Any interesting customers?
+            <<jump NewsCustomers>>
+-> I'll browse
+    -> End
+===
+
+title: NewsBig
+tags:
+position: 0,0
+---
+NewsstandOwner: Same old stories—politics, crime, and the occasional feel-good piece.
+
+-> Back
+    <<jump NewsstandOwner>>
+===
+
+title: NewsInternational
+tags:
+position: 0,0
+---
+NewsstandOwner: I've got a few. The world's getting smaller, but the news is getting bigger.
+
+-> Back
+    <<jump NewsstandOwner>>
+===
+
+title: NewsPopular
+tags:
+position: 0,0
+---
+NewsstandOwner: The local paper sells best, but the tabloids are what people really read.
+
+-> Back
+    <<jump NewsstandOwner>>
+===
+
+title: NewsCustomers
+tags:
+position: 0,0
+---
+NewsstandOwner: Oh, I've seen everyone—politicians, celebrities, and regular folks just trying to stay informed.
+
+-> Back
+    <<jump NewsstandOwner>>
+===

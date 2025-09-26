@@ -1,0 +1,61 @@
+title: CampingGuide
+tags:
+position: 104,374
+---
+CampingGuide: Welcome to the great outdoors! Where WiFi is weak but life is strong.
+
+-> Ask about camping
+    CampingGuide: Tents, fires, and stories that get taller with each retelling.
+        -> Any good spots?
+            <<jump CampingSpots>>
+        -> What about safety?
+            <<jump CampingSafety>>
+-> Ask about equipment
+    CampingGuide: We rent everything except common sense. That's BYOB.
+        -> What do you recommend?
+            <<jump CampingGear>>
+        -> How much for a tent?
+            <<jump CampingRates>>
+-> Just exploring
+    -> End
+===
+
+title: CampingSpots
+tags:
+position: 144,17
+---
+CampingGuide: Site 7 has the best sunrise view. Site 3 has the best mosquito buffet.
+
+-> Back
+    <<jump CampingGuide>>
+===
+
+title: CampingSafety
+tags:
+position: -51,-192
+---
+CampingGuide: Don't feed the wildlife, don't start forest fires, and don't forget your toothbrush.
+
+-> Back
+    <<jump CampingGuide>>
+===
+
+title: CampingGear
+tags:
+position: -3,160
+---
+CampingGuide: Sleeping bag, flashlight, and a sense of adventure. Everything else is optional.
+
+-> Back
+    <<jump CampingGuide>>
+===
+
+title: CampingRates
+tags:
+position: 226,-265
+---
+CampingGuide: Fifty pesos per night, or free if you help me scare away the raccoons.
+
+-> Back
+    <<jump CampingGuide>>
+===

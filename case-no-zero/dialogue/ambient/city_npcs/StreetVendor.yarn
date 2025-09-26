@@ -1,0 +1,61 @@
+title: StreetVendor
+tags:
+position: 0,0
+---
+StreetVendor: Fresh buko juice! Guaranteed to make your day better, or your money back!
+
+-> Buy something
+    StreetVendor: Good choice! This will put a smile on your face and energy in your step.
+        -> How fresh is it?
+            <<jump VendorFresh>>
+        -> What else do you have?
+            <<jump VendorOther>>
+-> Ask about business
+    StreetVendor: Some days are good, some days are great. Today's looking promising!
+        -> How long have you been here?
+            <<jump VendorLong>>
+        -> What's your secret?
+            <<jump VendorSecret>>
+-> Maybe later
+    -> End
+===
+
+title: VendorFresh
+tags:
+position: 0,0
+---
+StreetVendor: Made this morning! I wake up before the sun to make sure everything's perfect.
+
+-> Back
+    <<jump StreetVendor>>
+===
+
+title: VendorOther
+tags:
+position: 0,0
+---
+StreetVendor: Calamansi juice, fresh coconut, and the best smiles in the city!
+
+-> Back
+    <<jump StreetVendor>>
+===
+
+title: VendorLong
+tags:
+position: 0,0
+---
+StreetVendor: Five years in this spot. I know everyone, and everyone knows me.
+
+-> Back
+    <<jump StreetVendor>>
+===
+
+title: VendorSecret
+tags:
+position: 0,0
+---
+StreetVendor: Love what you do, and it shows in everything you make.
+
+-> Back
+    <<jump StreetVendor>>
+===

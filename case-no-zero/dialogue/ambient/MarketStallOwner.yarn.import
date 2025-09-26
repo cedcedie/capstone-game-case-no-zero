@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://csmtoigpm1fr2"
+path="res://.godot/imported/MarketStallOwner.yarn-b1e4b712c566d742e07c830c5d4f2bd7.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/MarketStallOwner.yarn"
+dest_files=["res://.godot/imported/MarketStallOwner.yarn-b1e4b712c566d742e07c830c5d4f2bd7.tres"]
+
+[params]
+

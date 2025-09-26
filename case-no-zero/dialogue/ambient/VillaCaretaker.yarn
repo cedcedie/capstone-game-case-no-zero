@@ -1,0 +1,51 @@
+title: VillaCaretaker
+tags:
+position: 0,0
+---
+VillaCaretaker: Welcome to the villas! Where the rich live and the rest of us work.
+
+-> Ask about the villas
+    VillaCaretaker: Big houses, bigger mortgages, and the biggest water bills you've ever seen.
+        -> Are they expensive?
+            <<jump VillaCost>>
+        -> What's it like living here?
+            <<jump VillaLife>>
+-> Ask for directions
+    VillaCaretaker: Villa 1 is the modest one, Villa 10 is the one with its own helicopter pad.
+        -> Which way to Villa 1?
+            <<jump VillaDirections>>
+        -> I'll find my way
+            <<jump VillaCaretaker>>
+-> Just admiring the view
+    -> End
+===
+
+title: VillaCost
+tags:
+position: 0,0
+---
+VillaCaretaker: If you have to ask, you probably can't afford it. But the view is free to look at.
+
+-> Back
+    <<jump VillaCaretaker>>
+===
+
+title: VillaLife
+tags:
+position: 0,0
+---
+VillaCaretaker: Quiet, peaceful, and expensive. Like living in a postcard that costs your life savings.
+
+-> Back
+    <<jump VillaCaretaker>>
+===
+
+title: VillaDirections
+tags:
+position: 0,0
+---
+VillaCaretaker: Follow the palm trees, turn left at the fountain, and try not to get lost in the driveway.
+
+-> Back
+    <<jump VillaCaretaker>>
+===

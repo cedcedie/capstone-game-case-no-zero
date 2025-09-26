@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://8tiw606xg5v"
+path="res://.godot/imported/MallSecurity.yarn-f3a8ed2d8d6b336339b7371e501f038c.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/MallSecurity.yarn"
+dest_files=["res://.godot/imported/MallSecurity.yarn-f3a8ed2d8d6b336339b7371e501f038c.tres"]
+
+[params]
+

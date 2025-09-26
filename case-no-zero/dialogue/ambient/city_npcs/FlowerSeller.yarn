@@ -1,0 +1,61 @@
+title: FlowerSeller
+tags:
+position: 0,0
+---
+FlowerSeller: Fresh flowers for every occasion! Love, apology, celebration—I've got the perfect bloom.
+
+-> Buy flowers
+    FlowerSeller: What's the occasion? I'll help you find the perfect flowers to express your feelings.
+        -> What's in season?
+            <<jump FlowerSeason>>
+        -> How long will they last?
+            <<jump FlowerLast>>
+-> Ask about the flowers
+    FlowerSeller: Each flower has its own story, its own meaning. I help people tell their stories.
+        -> What's your favorite flower?
+            <<jump FlowerFavorite>>
+        -> Do you grow them yourself?
+            <<jump FlowerGrow>>
+-> I'll think about it
+    -> End
+===
+
+title: FlowerSeason
+tags:
+position: 0,0
+---
+FlowerSeller: Spring brings tulips, summer brings sunflowers, and love brings roses year-round.
+
+-> Back
+    <<jump FlowerSeller>>
+===
+
+title: FlowerLast
+tags:
+position: 0,0
+---
+FlowerSeller: With proper care, these will brighten someone's day for a week or more.
+
+-> Back
+    <<jump FlowerSeller>>
+===
+
+title: FlowerFavorite
+tags:
+position: 0,0
+---
+FlowerSeller: Sampaguita—simple, fragrant, and it reminds me of home.
+
+-> Back
+    <<jump FlowerSeller>>
+===
+
+title: FlowerGrow
+tags:
+position: 0,0
+---
+FlowerSeller: Some I grow, some I buy from local farmers. Quality is what matters.
+
+-> Back
+    <<jump FlowerSeller>>
+===

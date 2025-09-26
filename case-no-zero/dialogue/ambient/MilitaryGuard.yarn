@@ -1,0 +1,51 @@
+title: MilitaryGuard
+tags:
+position: 0,0
+---
+MilitaryGuard: This is a restricted area. But I can tell you about the weather—it's restricted too.
+
+-> Ask about the base
+    MilitaryGuard: Classified information, but I can tell you the canteen serves great adobo.
+        -> What's it like working here?
+            <<jump MilitaryLife>>
+        -> Any interesting stories?
+            <<jump MilitaryStories>>
+-> Ask for directions
+    MilitaryGuard: I can point you to the exit, the canteen, or the nearest tourist spot.
+        -> Where's the canteen?
+            <<jump MilitaryCanteen>>
+        -> I'll find the exit
+            <<jump MilitaryGuard>>
+-> I'll move along
+    -> End
+===
+
+title: MilitaryLife
+tags:
+position: 0,0
+---
+MilitaryGuard: Early mornings, clean uniforms, and the satisfaction of keeping things orderly.
+
+-> Back
+    <<jump MilitaryGuard>>
+===
+
+title: MilitaryStories
+tags:
+position: 0,0
+---
+MilitaryGuard: The best stories are classified. The funny ones involve the canteen's mystery meat.
+
+-> Back
+    <<jump MilitaryGuard>>
+===
+
+title: MilitaryCanteen
+tags:
+position: 0,0
+---
+MilitaryGuard: Turn left at the flagpole, right at the barracks. You'll smell the adobo before you see it.
+
+-> Back
+    <<jump MilitaryGuard>>
+===

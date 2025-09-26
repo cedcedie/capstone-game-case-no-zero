@@ -1,0 +1,61 @@
+title: StreetMusician
+tags:
+position: 0,0
+---
+StreetMusician: Music is the language of the soul, and the street is my stage.
+
+-> Ask about their music
+    StreetMusician: I play from the heart. Every song tells a story, every note carries emotion.
+        -> What kind of music do you play?
+            <<jump MusicianStyle>>
+        -> How long have you been playing?
+            <<jump MusicianExperience>>
+-> Offer a tip
+    StreetMusician: Thank you! Every peso helps me keep the music alive.
+        -> You're very talented
+            <<jump MusicianTalent>>
+        -> Keep playing
+            <<jump MusicianKeep>>
+-> I'll listen for a while
+    -> End
+===
+
+title: MusicianStyle
+tags:
+position: 0,0
+---
+StreetMusician: A little bit of everything—folk, blues, and songs that make you feel something.
+
+-> Back
+    <<jump StreetMusician>>
+===
+
+title: MusicianExperience
+tags:
+position: 0,0
+---
+StreetMusician: Since I was a kid. Music chose me, and I chose the street.
+
+-> Back
+    <<jump StreetMusician>>
+===
+
+title: MusicianTalent
+tags:
+position: 0,0
+---
+StreetMusician: That means more than you know. Music is meant to be shared.
+
+-> Back
+    <<jump StreetMusician>>
+===
+
+title: MusicianKeep
+tags:
+position: 0,0
+---
+StreetMusician: I will! As long as people want to listen, I'll keep playing.
+
+-> Back
+    <<jump StreetMusician>>
+===

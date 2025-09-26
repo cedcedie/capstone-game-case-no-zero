@@ -1,0 +1,61 @@
+title: ParkingMeterAttendant
+tags:
+position: 0,0
+---
+ParkingMeterAttendant: Time is money, and parking is both. I help people manage their time and their money.
+
+-> Ask about parking
+    ParkingMeterAttendant: Two hours max, twenty pesos per hour. The meter doesn't lie, but people sometimes do.
+        -> What if I'm just running a quick errand?
+            <<jump MeterQuick>>
+        -> How do I pay?
+            <<jump MeterPay>>
+-> Ask about the job
+    ParkingMeterAttendant: It's about keeping things fair. Everyone gets the same rules, no exceptions.
+        -> Do you ever give warnings?
+            <<jump MeterWarnings>>
+        -> What's the hardest part?
+            <<jump MeterHard>>
+-> I'll find another spot
+    -> End
+===
+
+title: MeterQuick
+tags:
+position: 0,0
+---
+ParkingMeterAttendant: Quick errands still take time. Better safe than sorry with the meter.
+
+-> Back
+    <<jump ParkingMeterAttendant>>
+===
+
+title: MeterPay
+tags:
+position: 0,0
+---
+ParkingMeterAttendant: Coins in the slot, or use the app. Technology makes everything easier.
+
+-> Back
+    <<jump ParkingMeterAttendant>>
+===
+
+title: MeterWarnings
+tags:
+position: 0,0
+---
+ParkingMeterAttendant: Sometimes, if I'm feeling generous. But rules are rules for a reason.
+
+-> Back
+    <<jump ParkingMeterAttendant>>
+===
+
+title: MeterHard
+tags:
+position: 0,0
+---
+ParkingMeterAttendant: When people get angry about tickets. I'm just doing my job.
+
+-> Back
+    <<jump ParkingMeterAttendant>>
+===

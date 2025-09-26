@@ -1,0 +1,61 @@
+title: MarketStallOwner
+tags:
+position: 0,0
+---
+MarketStallOwner: Fresh vegetables, fresh prices, and fresh gossip. What more could you want?
+
+-> Buy vegetables
+    MarketStallOwner: Everything's fresh today! Except my jokes—those are recycled.
+        -> How fresh is this?
+            <<jump MarketFresh>>
+        -> Can I get a discount?
+            <<jump MarketDiscount>>
+-> Ask about the market
+    MarketStallOwner: Busy in the morning, quiet in the afternoon, and chaotic during sales.
+        -> What's the best time to shop?
+            <<jump MarketTiming>>
+        -> How long have you been here?
+            <<jump MarketDuration>>
+-> I'll look around first
+    -> End
+===
+
+title: MarketFresh
+tags:
+position: 0,0
+---
+MarketStallOwner: Picked yesterday! Fresher than my memory, older than my patience.
+
+-> Back
+    <<jump MarketStallOwner>>
+===
+
+title: MarketDiscount
+tags:
+position: 0,0
+---
+MarketStallOwner: Buy three, get one free. Buy five, get my eternal gratitude.
+
+-> Back
+    <<jump MarketStallOwner>>
+===
+
+title: MarketTiming
+tags:
+position: 0,0
+---
+MarketStallOwner: Early morning for the best selection, late afternoon for the best prices.
+
+-> Back
+    <<jump MarketStallOwner>>
+===
+
+title: MarketDuration
+tags:
+position: 0,0
+---
+MarketStallOwner: Twenty years of selling vegetables and twenty years of the same jokes.
+
+-> Back
+    <<jump MarketStallOwner>>
+===

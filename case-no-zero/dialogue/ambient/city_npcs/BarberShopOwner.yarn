@@ -1,0 +1,61 @@
+title: BarberShopOwner
+tags:
+position: 0,0
+---
+BarberShopOwner: Welcome! A good haircut is like a good conversation—it makes you feel better about yourself.
+
+-> Ask for a haircut
+    BarberShopOwner: What style are you thinking? I can make you look sharp or keep it simple.
+        -> What do you recommend?
+            <<jump BarberRecommend>>
+        -> How much does it cost?
+            <<jump BarberCost>>
+-> Ask about the shop
+    BarberShopOwner: This place has been here for twenty years. We've seen generations of customers.
+        -> What's your specialty?
+            <<jump BarberSpecialty>>
+        -> Any interesting stories?
+            <<jump BarberStories>>
+-> Just looking around
+    -> End
+===
+
+title: BarberRecommend
+tags:
+position: 0,0
+---
+BarberShopOwner: Something classic that'll look good today and tomorrow. Trust me, I know what works.
+
+-> Back
+    <<jump BarberShopOwner>>
+===
+
+title: BarberCost
+tags:
+position: 0,0
+---
+BarberShopOwner: Fifty pesos for a cut, seventy-five if you want the full treatment.
+
+-> Back
+    <<jump BarberShopOwner>>
+===
+
+title: BarberSpecialty
+tags:
+position: 0,0
+---
+BarberShopOwner: I can do anything from a simple trim to a full style. Your hair, your choice.
+
+-> Back
+    <<jump BarberShopOwner>>
+===
+
+title: BarberStories
+tags:
+position: 0,0
+---
+BarberShopOwner: Oh, I've heard everything in this chair. People talk when they're relaxed.
+
+-> Back
+    <<jump BarberShopOwner>>
+===

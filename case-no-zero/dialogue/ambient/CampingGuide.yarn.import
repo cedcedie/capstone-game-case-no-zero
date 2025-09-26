@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://bwd36btslv3by"
+path="res://.godot/imported/CampingGuide.yarn-464b89a37e658089340537b9e519e483.tres"
+
+[deps]
+
+source_file="res://dialogue/ambient/CampingGuide.yarn"
+dest_files=["res://.godot/imported/CampingGuide.yarn-464b89a37e658089340537b9e519e483.tres"]
+
+[params]
+

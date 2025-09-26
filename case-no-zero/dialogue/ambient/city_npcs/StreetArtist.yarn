@@ -1,0 +1,61 @@
+title: StreetArtist
+tags:
+position: 0,0
+---
+StreetArtist: Art is everywhere, you just have to know where to look. I help people see the beauty in the everyday.
+
+-> Ask about their art
+    StreetArtist: I paint what I see, what I feel, what the city tells me through its colors and shapes.
+        -> What's your style?
+            <<jump ArtistStyle>>
+        -> How long have you been painting?
+            <<jump ArtistExperience>>
+-> Ask about a painting
+    StreetArtist: This one? It's about the light that comes through the buildings in the morning.
+        -> How much is it?
+            <<jump ArtistPrice>>
+        -> Do you take commissions?
+            <<jump ArtistCommission>>
+-> I'll admire from here
+    -> End
+===
+
+title: ArtistStyle
+tags:
+position: 0,0
+---
+StreetArtist: I call it urban realism—the city as it really is, beautiful and complicated.
+
+-> Back
+    <<jump StreetArtist>>
+===
+
+title: ArtistExperience
+tags:
+position: 0,0
+---
+StreetArtist: Since I was a teenager. The street is my teacher, the city is my muse.
+
+-> Back
+    <<jump StreetArtist>>
+===
+
+title: ArtistPrice
+tags:
+position: 0,0
+---
+StreetArtist: Depends on the size and complexity, but I try to keep it affordable for everyone.
+
+-> Back
+    <<jump StreetArtist>>
+===
+
+title: ArtistCommission
+tags:
+position: 0,0
+---
+StreetArtist: Absolutely! I love painting people's stories, their memories, their dreams.
+
+-> Back
+    <<jump StreetArtist>>
+===
