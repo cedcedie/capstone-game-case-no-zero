@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="casenozero"
+<<<<<<< HEAD
 run/main_scene="uid://5d4uo5rtdrrk"
 config/features=PackedStringArray("4.4", "Forward Plus")
+=======
+run/main_scene="uid://d4mwuvoqdee3o"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+>>>>>>> 8f28176bb11c865712f8dfcbc17430c9be83b7fd
 <<<<<<<Updatedupstreamrun/main_scene="uid://dfyuuvfmltt7m"
 
 [audio]
