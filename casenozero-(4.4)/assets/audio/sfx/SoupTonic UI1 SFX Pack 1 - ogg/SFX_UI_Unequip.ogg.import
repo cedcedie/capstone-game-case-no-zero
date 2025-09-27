@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmu23ot3biqho"
+path="res://.godot/imported/SFX_UI_Unequip.ogg-b083bfb4c4dd3161e8a1269260a7b8cc.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/SoupTonic UI1 SFX Pack 1 - ogg/SFX_UI_Unequip.ogg"
+dest_files=["res://.godot/imported/SFX_UI_Unequip.ogg-b083bfb4c4dd3161e8a1269260a7b8cc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

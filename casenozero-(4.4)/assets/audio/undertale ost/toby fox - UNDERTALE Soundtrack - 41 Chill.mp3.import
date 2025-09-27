@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bk1vg1bya7ano"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 41 Chill.mp3-3313024d293dfa9aedf9bca401b78b42.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale ost/toby fox - UNDERTALE Soundtrack - 41 Chill.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 41 Chill.mp3-3313024d293dfa9aedf9bca401b78b42.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

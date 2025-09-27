@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ck0wxmf40jexx"
+path="res://.godot/imported/Minigame Monkey.ogg-50b91e257a7f42eb8211456b31cf41a5.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/16-Bit Starter Pack/Various Themes/Minigame Monkey.ogg"
+dest_files=["res://.godot/imported/Minigame Monkey.ogg-50b91e257a7f42eb8211456b31cf41a5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

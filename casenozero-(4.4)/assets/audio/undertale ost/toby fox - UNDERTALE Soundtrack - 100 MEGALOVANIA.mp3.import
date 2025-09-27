@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://du3v0or8hhtgn"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 100 MEGALOVANIA.mp3-1d62fa4e2d2eb8ea57f91705548134f3.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale ost/toby fox - UNDERTALE Soundtrack - 100 MEGALOVANIA.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 100 MEGALOVANIA.mp3-1d62fa4e2d2eb8ea57f91705548134f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

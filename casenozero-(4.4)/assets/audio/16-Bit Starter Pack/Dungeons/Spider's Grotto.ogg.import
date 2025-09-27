@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ogj7728nqcaj"
+path="res://.godot/imported/Spider's Grotto.ogg-d748e94576ef870f7abc012e7adb34b3.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/16-Bit Starter Pack/Dungeons/Spider's Grotto.ogg"
+dest_files=["res://.godot/imported/Spider's Grotto.ogg-d748e94576ef870f7abc012e7adb34b3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

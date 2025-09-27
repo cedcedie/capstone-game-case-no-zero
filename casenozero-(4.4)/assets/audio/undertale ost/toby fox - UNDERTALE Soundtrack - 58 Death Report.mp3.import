@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://caie0r0ysdq3i"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 58 Death Report.mp3-ccbe38b6fb1df87599946256a7df4cee.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale ost/toby fox - UNDERTALE Soundtrack - 58 Death Report.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 58 Death Report.mp3-ccbe38b6fb1df87599946256a7df4cee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

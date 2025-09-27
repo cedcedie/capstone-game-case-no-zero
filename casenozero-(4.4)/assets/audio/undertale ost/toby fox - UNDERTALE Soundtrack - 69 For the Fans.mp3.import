@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dyw2eeqecsx3v"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 69 For the Fans.mp3-65b03364f16f37ddda04b1f267d2fb3b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale ost/toby fox - UNDERTALE Soundtrack - 69 For the Fans.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 69 For the Fans.mp3-65b03364f16f37ddda04b1f267d2fb3b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
