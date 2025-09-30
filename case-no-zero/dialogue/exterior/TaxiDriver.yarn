@@ -2,21 +2,28 @@ title: TaxiDriver
 tags:
 position: 0,0
 ---
-TaxiDriver: Hop in! I know every shortcut in this city, and every traffic jam too.
+TaxiDriver: Need a ride? I know every street, every shortcut, and every pothole in this city! Plus, I've got the best stories and the worst jokes!
 
 -> Ask for a ride
-    TaxiDriver: Where to? I'll get you there faster than GPS and with better conversation.
+    TaxiDriver: Where to? I can get you there faster than a GPS and with more entertainment value!
         -> How much will it cost?
             <<jump TaxiCost>>
-        -> Do you know a shortcut?
-            <<jump TaxiShortcut>>
--> Ask about the city
-    TaxiDriver: I've been driving these streets for ten years. I know every pothole and every story.
-        -> What's the best part of your job?
-            <<jump TaxiBest>>
+        -> Do you know the way?
+            <<jump TaxiDirections>>
+        -> I'll think about it
+            <<jump TaxiDriver>>
+-> Ask about the job
+    TaxiDriver: Driving a taxi is like being a tour guide, therapist, and comedian all rolled into one! What would you like to know?
+        -> How long have you been driving?
+            <<jump TaxiExperience>>
         -> Any interesting passengers?
             <<jump TaxiPassengers>>
--> I'll walk
+        -> What's the best part?
+            <<jump TaxiBest>>
+        -> That's fascinating
+            <<jump TaxiDriver>>
+-> Just saying hi
+    TaxiDriver: Always good to see friendly faces! Remember, if you need a ride, just flag me down! I'm the one with the cleanest car and the biggest smile!
     -> End
 ===
 
@@ -24,27 +31,27 @@ title: TaxiCost
 tags:
 position: 0,0
 ---
-TaxiDriver: Depends on traffic, but I'll give you a fair price. No meter games here.
+TaxiDriver: Depends on where you're going! Short trips start at 50 pesos, longer ones are by the meter. But I promise, you'll get your money's worth in conversation!
 
 -> Back
     <<jump TaxiDriver>>
 ===
 
-title: TaxiShortcut
+title: TaxiDirections
 tags:
 position: 0,0
 ---
-TaxiDriver: I know a back way that'll save you ten minutes and show you the real city.
+TaxiDriver: I know this city like the back of my hand! I can get you anywhere, even if you don't know the exact address. Just tell me what you're looking for!
 
 -> Back
     <<jump TaxiDriver>>
 ===
 
-title: TaxiBest
+title: TaxiExperience
 tags:
 position: 0,0
 ---
-TaxiDriver: Meeting new people every day. Everyone has a story, and I love hearing them.
+TaxiDriver: Fifteen years behind the wheel! I've seen this city change, but one thing stays the same—people always need to get somewhere!
 
 -> Back
     <<jump TaxiDriver>>
@@ -54,7 +61,17 @@ title: TaxiPassengers
 tags:
 position: 0,0
 ---
-TaxiDriver: Oh, I've heard it all. Love stories, business deals, and the occasional confession.
+TaxiDriver: I've driven everyone from tourists to locals, from happy couples to people having the worst day of their lives. Each ride is a new adventure!
+
+-> Back
+    <<jump TaxiDriver>>
+===
+
+title: TaxiBest
+tags:
+position: 0,0
+---
+TaxiDriver: The best part is meeting new people every day! I've made friends, heard amazing stories, and even helped someone find their lost dog once!
 
 -> Back
     <<jump TaxiDriver>>

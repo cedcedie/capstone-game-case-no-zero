@@ -2,15 +2,77 @@ title: StationGuard
 tags:
 position: 0,0
 ---
-StationGuard: Trains late, people early. Balance is somewhere in between.
+StationGuard: Welcome to the station! I'm here to help keep everyone safe and make sure things run smoothly. Though I must say, most people are pretty well-behaved around here!
 
--> Ask about the delay
-    StationGuard: Maintenance. We fix small things before they become headlines.
-    <<jump StationGuard>>
--> Show ticket
-    StationGuard: You’re good. Platform Two—mind the gap and your thoughts.
-    <<jump StationGuard>>
--> Move on
+-> Ask about the station
+    StationGuard: This station serves the community in many ways. What would you like to know?
+        -> What services are available?
+            <<jump StationServices>>
+        -> How busy does it get?
+            <<jump StationBusy>>
+        -> Any safety tips?
+            <<jump StationSafety>>
+        -> That's good to know
+            <<jump StationGuard>>
+-> Ask about security
+    StationGuard: Security is important, but we try to keep things friendly too. We're here to help, not to intimidate!
+        -> What should I do if I see something suspicious?
+            <<jump StationSuspicious>>
+        -> How do you handle emergencies?
+            <<jump StationEmergency>>
+        -> You're doing good work
+            <<jump StationGuard>>
+-> Just passing through
+    StationGuard: Take your time! The station is here for everyone. Just remember to be respectful of others and follow the posted rules!
     -> End
 ===
 
+title: StationServices
+tags:
+position: 0,0
+---
+StationGuard: We've got ticket sales, information, lost and found, and emergency assistance. Plus, the coffee shop makes a mean cappuccino!
+
+-> Back
+    <<jump StationGuard>>
+===
+
+title: StationBusy
+tags:
+position: 0,0
+---
+StationGuard: Rush hour can get pretty hectic, but most of the time it's manageable. The trick is staying calm and helping people find what they need quickly!
+
+-> Back
+    <<jump StationGuard>>
+===
+
+title: StationSafety
+tags:
+position: 0,0
+---
+StationGuard: Keep your belongings close, don't leave bags unattended, and if you see something that doesn't look right, let us know! We'd rather be safe than sorry!
+
+-> Back
+    <<jump StationGuard>>
+===
+
+title: StationSuspicious
+tags:
+position: 0,0
+---
+StationGuard: Report anything unusual immediately. We have cameras everywhere, but human eyes are still the best security system we have!
+
+-> Back
+    <<jump StationGuard>>
+===
+
+title: StationEmergency
+tags:
+position: 0,0
+---
+StationGuard: We have protocols for everything from medical emergencies to security threats. The key is staying calm and following procedures. Panic helps no one!
+
+-> Back
+    <<jump StationGuard>>
+===

@@ -2,59 +2,64 @@ title: FlowerSeller
 tags:
 position: 0,0
 ---
-FlowerSeller: Fresh flowers for every occasion! Love, apology, celebration—I've got the perfect bloom.
+FlowerSeller: Beautiful flowers for beautiful people! Each bloom tells a story, and I'm here to help you tell yours!
 
 -> Buy flowers
-    FlowerSeller: What's the occasion? I'll help you find the perfect flowers to express your feelings.
-        -> What's in season?
-            <<jump FlowerSeason>>
-        -> How long will they last?
-            <<jump FlowerLast>>
--> Ask about the flowers
-    FlowerSeller: Each flower has its own story, its own meaning. I help people tell their stories.
-        -> What's your favorite flower?
-            <<jump FlowerFavorite>>
-        -> Do you grow them yourself?
-            <<jump FlowerGrow>>
--> I'll think about it
+    FlowerSeller: What's the occasion? I've got something perfect for every moment!
+        -> What do you recommend?
+            <<jump FlowerRecommend>>
+        -> How much are they?
+            <<jump FlowerPrice>>
+        -> I'll look around
+            <<jump FlowerSeller>>
+-> Ask about flowers
+    FlowerSeller: Flowers are nature's way of smiling! Each one has its own personality and meaning.
+        -> What do different flowers mean?
+            <<jump FlowerMeanings>>
+        -> How do you keep them fresh?
+            <<jump FlowerCare>>
+        -> That's beautiful
+            <<jump FlowerSeller>>
+-> Just admiring
+    FlowerSeller: Take your time! Flowers are meant to be enjoyed. Just don't smell them too hard—you might get pollen in your nose!
     -> End
 ===
 
-title: FlowerSeason
+title: FlowerRecommend
 tags:
 position: 0,0
 ---
-FlowerSeller: Spring brings tulips, summer brings sunflowers, and love brings roses year-round.
+FlowerSeller: For romance, roses! For friendship, sunflowers! For "I'm sorry I forgot your birthday," a big mixed bouquet with extra apologies!
 
 -> Back
     <<jump FlowerSeller>>
 ===
 
-title: FlowerLast
+title: FlowerPrice
 tags:
 position: 0,0
 ---
-FlowerSeller: With proper care, these will brighten someone's day for a week or more.
+FlowerSeller: Single stems start at 10 pesos, bouquets from 50 pesos. But the smiles they bring? Priceless!
 
 -> Back
     <<jump FlowerSeller>>
 ===
 
-title: FlowerFavorite
+title: FlowerMeanings
 tags:
 position: 0,0
 ---
-FlowerSeller: Sampaguita—simple, fragrant, and it reminds me of home.
+FlowerSeller: Roses for love, lilies for purity, sunflowers for happiness! Though honestly, any flower means "I was thinking of you," and that's the most important meaning of all!
 
 -> Back
     <<jump FlowerSeller>>
 ===
 
-title: FlowerGrow
+title: FlowerCare
 tags:
 position: 0,0
 ---
-FlowerSeller: Some I grow, some I buy from local farmers. Quality is what matters.
+FlowerSeller: Fresh water daily, trim the stems, and keep them away from direct sunlight! Treat them like friends—with love, attention, and the occasional compliment!
 
 -> Back
     <<jump FlowerSeller>>

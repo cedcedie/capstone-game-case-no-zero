@@ -1,0 +1,78 @@
+title: SurgeryDoctor2
+tags:
+position: 0,0
+---
+Surgery Doctor: Good morning! I'm Dr. Garcia, and I'm here to perform surgery today. I've been a surgeon for twelve years, and I'm passionate about helping patients.
+
+-> Ask about surgery
+    Surgery Doctor: Surgery is a complex field that requires skill, precision, and compassion. What would you like to know?
+        -> What kind of surgery do you specialize in?
+            <<jump SurgerySpecialty>>
+        -> How do you prepare for surgery?
+            <<jump SurgeryPrepare>>
+        -> What's the most rewarding part?
+            <<jump SurgeryRewarding>>
+        -> That's impressive
+            <<jump SurgeryDoctor2>>
+-> Ask about the patient
+    Surgery Doctor: I'm here to provide the best possible care for my patient. Every surgery is important, and I take my responsibility seriously.
+        -> How is the patient doing?
+            <<jump SurgeryPatient2>>
+        -> What's the procedure?
+            <<jump SurgeryProcedure2>>
+        -> That's good
+            <<jump SurgeryDoctor2>>
+-> Just saying hi
+    Surgery Doctor: Nice to meet you! I'm always happy to answer questions about my work and the medical field.
+    -> End
+===
+
+title: SurgerySpecialty
+tags:
+position: 0,0
+---
+Surgery Doctor: I specialize in general surgery, but I've performed many different types of procedures. Each one requires careful planning and execution.
+
+-> Back
+    <<jump SurgeryDoctor2>>
+===
+
+title: SurgeryPrepare
+tags:
+position: 0,0
+---
+Surgery Doctor: Preparation is key! I review the patient's history, plan the procedure carefully, and ensure all equipment is ready and sterile.
+
+-> Back
+    <<jump SurgeryDoctor2>>
+===
+
+title: SurgeryRewarding
+tags:
+position: 0,0
+---
+Surgery Doctor: The most rewarding part is seeing patients recover and return to their normal lives. It's why I do what I do.
+
+-> Back
+    <<jump SurgeryDoctor2>>
+===
+
+title: SurgeryPatient2
+tags:
+position: 0,0
+---
+Surgery Doctor: The patient is stable and ready for surgery. We've done all the necessary preparations, and I'm confident in the outcome.
+
+-> Back
+    <<jump SurgeryDoctor2>>
+===
+
+title: SurgeryProcedure2
+tags:
+position: 0,0
+---
+Surgery Doctor: I can't discuss specific patient details, but I can tell you that every procedure is performed with the utmost care and attention to detail.
+
+-> Back
+    <<jump SurgeryDoctor2>>
+===

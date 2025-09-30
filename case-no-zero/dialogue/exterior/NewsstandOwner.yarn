@@ -2,39 +2,56 @@ title: NewsstandOwner
 tags:
 position: 0,0
 ---
-NewsstandOwner: Fresh news, old stories, and everything in between. Knowledge is power, and I'm the supplier.
+NewsstandOwner: Get your news here! Fresh papers, magazines, and all the gossip that's fit to print! Plus some that probably isn't, but we print it anyway!
 
--> Buy a newspaper
-    NewsstandOwner: Good choice! Stay informed, stay aware, stay ahead of the game.
-        -> What's the big news today?
-            <<jump NewsBig>>
-        -> Do you have international papers?
-            <<jump NewsInternational>>
+-> Buy something
+    NewsstandOwner: What catches your eye? I've got everything from serious news to celebrity scandals!
+        -> What's the latest news?
+            <<jump NewsLatest>>
+        -> Do you have any magazines?
+            <<jump NewsMagazines>>
+        -> How much is everything?
+            <<jump NewsPrices>>
+        -> I'll look around
+            <<jump NewsstandOwner>>
 -> Ask about the business
-    NewsstandOwner: I've been here for fifteen years. I've seen the city change, but people still want to know what's happening.
+    NewsstandOwner: This newsstand has been here for fifteen years! I've seen the news change, but people's curiosity never does.
         -> What's the most popular paper?
             <<jump NewsPopular>>
-        -> Any interesting customers?
-            <<jump NewsCustomers>>
--> I'll browse
+        -> Any interesting stories?
+            <<jump NewsStories>>
+        -> That's fascinating
+            <<jump NewsstandOwner>>
+-> Just browsing
+    NewsstandOwner: Take your time! Reading is good for the soul, even if it's just the sports scores or the weather forecast!
     -> End
 ===
 
-title: NewsBig
+title: NewsLatest
 tags:
 position: 0,0
 ---
-NewsstandOwner: Same old stories—politics, crime, and the occasional feel-good piece.
+NewsstandOwner: Today's big story is about the new bridge construction! Plus there's a local cat that learned to ride a bicycle. The cat story is more interesting, if you ask me!
 
 -> Back
     <<jump NewsstandOwner>>
 ===
 
-title: NewsInternational
+title: NewsMagazines
 tags:
 position: 0,0
 ---
-NewsstandOwner: I've got a few. The world's getting smaller, but the news is getting bigger.
+NewsstandOwner: I've got cooking magazines, fashion magazines, and even a magazine about fishing! Though the fishing one is mostly just pictures of people holding really big fish!
+
+-> Back
+    <<jump NewsstandOwner>>
+===
+
+title: NewsPrices
+tags:
+position: 0,0
+---
+NewsstandOwner: Papers are 15 pesos, magazines start at 50 pesos. But the knowledge you gain? That's priceless! Well, actually, it's exactly the price I just told you!
 
 -> Back
     <<jump NewsstandOwner>>
@@ -44,17 +61,17 @@ title: NewsPopular
 tags:
 position: 0,0
 ---
-NewsstandOwner: The local paper sells best, but the tabloids are what people really read.
+NewsstandOwner: The local paper is always popular—people love reading about their neighbors! The national papers are for serious news, but the local one is for serious gossip!
 
 -> Back
     <<jump NewsstandOwner>>
 ===
 
-title: NewsCustomers
+title: NewsStories
 tags:
 position: 0,0
 ---
-NewsstandOwner: Oh, I've seen everyone—politicians, celebrities, and regular folks just trying to stay informed.
+NewsstandOwner: Once, someone bought a paper, read it, then came back an hour later to buy another copy because they wanted to show their friend a funny headline!
 
 -> Back
     <<jump NewsstandOwner>>

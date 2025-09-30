@@ -2,14 +2,15 @@ title: CafeteriaWorker
 tags:
 position: 0,0
 ---
-Cafeteria Worker: Lunch is ready! We have today's special and some fresh sandwiches. What can I get you?
+Cafeteria Worker: Welcome to the cafeteria! Today's special is chicken adobo with rice. Fresh and delicious!
 
--> Ask about the special
-    Cafeteria Worker: Today's special is adobo with rice and vegetables. It's a customer favorite, very filling and delicious!
+-> Order food
+    Cafeteria Worker: Coming right up! Hot and ready to eat. Enjoy your meal!
     -> End
--> Ask about the food
-    Cafeteria Worker: We make everything fresh daily. Nothing fancy, just good home-cooked style food that fills you up.
+-> Ask about the menu
+    Cafeteria Worker: We've got Filipino favorites - adobo, sinigang, and pancit! All homemade and tasty!
     -> End
--> Head out
+-> Decline
+    Cafeteria Worker: No problem! Come back when you're hungry!
     -> End
 ===

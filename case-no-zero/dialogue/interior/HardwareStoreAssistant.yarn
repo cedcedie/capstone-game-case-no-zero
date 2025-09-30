@@ -1,0 +1,66 @@
+title: HardwareStoreAssistant
+tags:
+position: 0,0
+---
+Hardware Store Assistant: Welcome! I'm here to help you find exactly what you need for your project. I've been working here for five years, and I love helping customers!
+
+-> Ask about the job
+    Hardware Store Assistant: I love working here! I get to help people with their projects and learn about all kinds of tools and materials.
+        -> What do you like most about the job?
+            <<jump HardwareAssistantLike>>
+        -> How did you get started?
+            <<jump HardwareAssistantStart>>
+        -> That's nice
+            <<jump HardwareStoreAssistant>>
+-> Ask about products
+    Hardware Store Assistant: We carry a wide range of hardware, tools, and building materials. I can help you find exactly what you need!
+        -> What's most popular?
+            <<jump HardwareAssistantPopular>>
+        -> Do you have any recommendations?
+            <<jump HardwareAssistantRecommend>>
+        -> That's helpful
+            <<jump HardwareStoreAssistant>>
+-> Just saying hi
+    Hardware Store Assistant: Nice to meet you! If you need any help finding what you need, just ask - I'm here to help!
+    -> End
+===
+
+title: HardwareAssistantLike
+tags:
+position: 0,0
+---
+Hardware Store Assistant: I love helping customers solve problems and find the right tools for their projects. It's like being a detective for hardware!
+
+-> Back
+    <<jump HardwareStoreAssistant>>
+===
+
+title: HardwareAssistantStart
+tags:
+position: 0,0
+---
+Hardware Store Assistant: I started as a part-time worker while I was in school, and I liked it so much that I stayed on full-time!
+
+-> Back
+    <<jump HardwareStoreAssistant>>
+===
+
+title: HardwareAssistantPopular
+tags:
+position: 0,0
+---
+Hardware Store Assistant: Hand tools are always popular, especially hammers, screwdrivers, and wrenches. Power tools are also big sellers!
+
+-> Back
+    <<jump HardwareStoreAssistant>>
+===
+
+title: HardwareAssistantRecommend
+tags:
+position: 0,0
+---
+Hardware Store Assistant: I'd recommend starting with good quality hand tools - they're the foundation of any good tool collection!
+
+-> Back
+    <<jump HardwareStoreAssistant>>
+===

@@ -2,14 +2,15 @@ title: ElevatorOperator
 tags:
 position: 0,0
 ---
-Elevator Operator: Going up! What floor would you like? I'll take you there safely.
+Elevator Operator: Good day! Which floor can I take you to?
 
--> Ask about the building
-    Elevator Operator: This is a busy place! Lots of offices and businesses. I know every floor like the back of my hand.
+-> Second floor
+    Elevator Operator: Second floor coming up! Hold on tight!
     -> End
--> Ask about the job
-    Elevator Operator: It's steady work. I meet interesting people every day, and I get to know the regulars pretty well.
+-> Third floor
+    Elevator Operator: Third floor it is! Going up!
     -> End
--> Head out
+-> Just staying here
+    Elevator Operator: No problem! I'll be here if you need a ride!
     -> End
 ===

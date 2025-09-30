@@ -1,0 +1,66 @@
+title: SurgeryPatient2
+tags:
+position: 0,0
+---
+Surgery Patient: Hello... I'm here for surgery today. The medical team has been wonderful in explaining everything to me and making me feel comfortable.
+
+-> Ask about the surgery
+    Surgery Patient: I'm having surgery today, and I'm trying to stay positive. The doctors and nurses have been very reassuring and kind.
+        -> How are you feeling?
+            <<jump SurgeryPatient2Feeling>>
+        -> Are you nervous?
+            <<jump SurgeryPatient2Nervous>>
+        -> That's good
+            <<jump SurgeryPatient2>>
+-> Ask about the care
+    Surgery Patient: The hospital staff has been amazing! They've answered all my questions and made me feel safe and well-cared for.
+        -> How are the doctors?
+            <<jump SurgeryPatient2Doctors>>
+        -> How are the nurses?
+            <<jump SurgeryPatient2Nurses>>
+        -> That's wonderful
+            <<jump SurgeryPatient2>>
+-> Just saying hi
+    Surgery Patient: Nice to meet you! I'm trying to stay calm and positive about everything. Your kind words help!
+    -> End
+===
+
+title: SurgeryPatient2Feeling
+tags:
+position: 0,0
+---
+Surgery Patient: I'm feeling okay, all things considered. A bit anxious, but the medical team has been very reassuring and supportive.
+
+-> Back
+    <<jump SurgeryPatient2>>
+===
+
+title: SurgeryPatient2Nervous
+tags:
+position: 0,0
+---
+Surgery Patient: A little nervous, yes, but that's normal. The doctors have explained everything so well that I feel more confident now.
+
+-> Back
+    <<jump SurgeryPatient2>>
+===
+
+title: SurgeryPatient2Doctors
+tags:
+position: 0,0
+---
+Surgery Patient: The doctors are wonderful! They're so knowledgeable and caring. I feel like I'm in excellent hands.
+
+-> Back
+    <<jump SurgeryPatient2>>
+===
+
+title: SurgeryPatient2Nurses
+tags:
+position: 0,0
+---
+Surgery Patient: The nurses are amazing! They're so kind and attentive. They've made this whole experience much easier and less stressful.
+
+-> Back
+    <<jump SurgeryPatient2>>
+===

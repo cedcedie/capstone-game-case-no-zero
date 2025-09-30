@@ -2,14 +2,15 @@ title: SecurityGuard
 tags:
 position: 0,0
 ---
-Security Guard: Good day! I'm here to keep everyone safe. Is there anything I can help you with?
+Security Guard: Good day! Please sign in at the logbook before proceeding. It's for everyone's safety!
 
+-> Sign in
+    Security Guard: Thank you! You're all set. Have a productive visit!
+    -> End
 -> Ask about security
-    Security Guard: We have cameras, alarms, and regular patrols. Safety is our top priority here.
+    Security Guard: We keep regular patrols and monitor all entrances. This is a safe building!
     -> End
--> Ask about the building
-    Security Guard: This is a secure facility. We monitor everything and make sure only authorized personnel are allowed in restricted areas.
-    -> End
--> Head out
+-> Just passing by
+    Security Guard: Have a great day! Remember to sign out when you leave!
     -> End
 ===

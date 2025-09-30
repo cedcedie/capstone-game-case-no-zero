@@ -2,83 +2,64 @@ title: JailGuard
 tags:
 position: 0,0
 ---
-Jail Guard: This is a restricted area. What's your business here?
+Jail Guard: This is a restricted area. I'm responsible for security and maintaining order in the jail. It's important work that requires vigilance and professionalism.
 
--> Ask about visiting
-    Jail Guard: Visiting hours are limited and you need proper authorization. This isn't a tourist destination, you know.
-        -> What are the visiting hours?
-            <<jump JailGuardVisiting>>
-        -> How do I get authorization?
-            <<jump JailGuardAuthorization>>
-        -> Just asking questions
-            <<jump JailGuardQuestions>>
--> Ask about the facility
-    Jail Guard: This is a detention facility. We house individuals awaiting trial or serving short sentences. Security is our top priority here.
-        -> How many people are here?
-            <<jump JailGuardCapacity>>
-        -> What's it like working here?
-            <<jump JailGuardWork>>
-        -> Is it safe?
-            <<jump JailGuardSafety>>
--> Head out
+-> Ask about the job
+    Jail Guard: Being a jail guard requires constant alertness, fairness, and the ability to handle difficult situations calmly.
+        -> How long have you been doing this?
+            <<jump JailGuardExperience>>
+        -> What's the most challenging part?
+            <<jump JailGuardChallenge>>
+        -> That's important work
+            <<jump JailGuard>>
+-> Ask about security
+    Jail Guard: Security is our top priority. We follow strict protocols to ensure the safety of both staff and inmates.
+        -> How do you maintain order?
+            <<jump JailGuardOrder>>
+        -> What are the protocols?
+            <<jump JailGuardProtocols>>
+        -> That's good
+            <<jump JailGuard>>
+-> Just saying hi
+    Jail Guard: I appreciate your respect for my work. It's not always easy, but it's necessary for our community's safety.
     -> End
 ===
 
-title: JailGuardVisiting
+title: JailGuardExperience
 tags:
 position: 0,0
 ---
-Jail Guard: Visiting hours are Tuesday and Thursday, 2 PM to 4 PM. You need to bring valid ID and be on the approved visitor list. No exceptions.
+Jail Guard: I've been working here for ten years now. It's taught me patience, firmness, and the importance of treating everyone with dignity.
 
 -> Back
     <<jump JailGuard>>
 ===
 
-title: JailGuardAuthorization
+title: JailGuardChallenge
 tags:
 position: 0,0
 ---
-Jail Guard: You need to contact the detainee's lawyer or family to get on the visitor list. We don't just let anyone in - this is a secure facility, not a social club.
+Jail Guard: The most challenging part is maintaining fairness and compassion while enforcing rules. Every inmate is a person, regardless of their crimes.
 
 -> Back
     <<jump JailGuard>>
 ===
 
-title: JailGuardQuestions
+title: JailGuardOrder
 tags:
 position: 0,0
 ---
-Jail Guard: I can answer general questions, but I won't discuss specific cases or individuals. Everything here is confidential for security reasons.
+Jail Guard: We maintain order through consistent enforcement of rules, fair treatment, and communication. Respect goes both ways.
 
 -> Back
     <<jump JailGuard>>
 ===
 
-title: JailGuardCapacity
+title: JailGuardProtocols
 tags:
 position: 0,0
 ---
-Jail Guard: We have capacity for about 50 detainees. Currently we're at about 70% capacity. It's a small facility, but we manage it well.
-
--> Back
-    <<jump JailGuard>>
-===
-
-title: JailGuardWork
-tags:
-position: 0,0
----
-Jail Guard: It's challenging work, but someone has to do it. We maintain order and ensure everyone's safety - both staff and detainees. It's not glamorous, but it's important.
-
--> Back
-    <<jump JailGuard>>
-===
-
-title: JailGuardSafety
-tags:
-position: 0,0
----
-Jail Guard: We have strict protocols and security measures in place. Our job is to keep everyone safe - that includes the detainees, staff, and visitors. Safety first, always.
+Jail Guard: We have strict protocols for security checks, visitor management, and emergency situations. Safety is always our top priority.
 
 -> Back
     <<jump JailGuard>>

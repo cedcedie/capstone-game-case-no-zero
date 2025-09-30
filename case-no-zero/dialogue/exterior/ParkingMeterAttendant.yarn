@@ -2,59 +2,76 @@ title: ParkingMeterAttendant
 tags:
 position: 0,0
 ---
-ParkingMeterAttendant: Time is money, and parking is both. I help people manage their time and their money.
+ParkingMeterAttendant: Parking enforcement is my job, but I'm not the bad guy! I'm just here to make sure everyone gets a fair chance at parking. Plus, I know all the best spots!
 
 -> Ask about parking
-    ParkingMeterAttendant: Two hours max, twenty pesos per hour. The meter doesn't lie, but people sometimes do.
-        -> What if I'm just running a quick errand?
-            <<jump MeterQuick>>
-        -> How do I pay?
-            <<jump MeterPay>>
+    ParkingMeterAttendant: Parking can be tricky around here! What do you need to know?
+        -> Where can I park?
+            <<jump ParkingSpots>>
+        -> How much does it cost?
+            <<jump ParkingCost>>
+        -> What are the rules?
+            <<jump ParkingRules>>
+        -> That's helpful
+            <<jump ParkingMeterAttendant>>
 -> Ask about the job
-    ParkingMeterAttendant: It's about keeping things fair. Everyone gets the same rules, no exceptions.
+    ParkingMeterAttendant: It's not the most glamorous job, but someone has to do it! I've met more people in this job than I ever did working in an office.
         -> Do you ever give warnings?
-            <<jump MeterWarnings>>
-        -> What's the hardest part?
-            <<jump MeterHard>>
--> I'll find another spot
+            <<jump ParkingWarnings>>
+        -> Any funny stories?
+            <<jump ParkingStories>>
+        -> You're doing important work
+            <<jump ParkingMeterAttendant>>
+-> Just saying hi
+    ParkingMeterAttendant: Always good to see friendly faces! Remember, if you see a meter about to expire, feed it! Your future self will thank you!
     -> End
 ===
 
-title: MeterQuick
+title: ParkingSpots
 tags:
 position: 0,0
 ---
-ParkingMeterAttendant: Quick errands still take time. Better safe than sorry with the meter.
+ParkingMeterAttendant: There's street parking on Main Street, a lot behind the market, and if you're lucky, you might find a spot near the park. But don't tell anyone I told you that!
 
 -> Back
     <<jump ParkingMeterAttendant>>
 ===
 
-title: MeterPay
+title: ParkingCost
 tags:
 position: 0,0
 ---
-ParkingMeterAttendant: Coins in the slot, or use the app. Technology makes everything easier.
+ParkingMeterAttendant: Street parking is 20 pesos per hour, the lot is 50 pesos for the whole day. It's cheaper than a parking ticket, trust me!
 
 -> Back
     <<jump ParkingMeterAttendant>>
 ===
 
-title: MeterWarnings
+title: ParkingRules
 tags:
 position: 0,0
 ---
-ParkingMeterAttendant: Sometimes, if I'm feeling generous. But rules are rules for a reason.
+ParkingMeterAttendant: No parking in loading zones, keep within the lines, and don't block driveways! The rules are simple, but you'd be surprised how many people forget them!
 
 -> Back
     <<jump ParkingMeterAttendant>>
 ===
 
-title: MeterHard
+title: ParkingWarnings
 tags:
 position: 0,0
 ---
-ParkingMeterAttendant: When people get angry about tickets. I'm just doing my job.
+ParkingMeterAttendant: I always give warnings for first-time violations! But if someone's been warned three times, well, then they're just not listening, are they?
+
+-> Back
+    <<jump ParkingMeterAttendant>>
+===
+
+title: ParkingStories
+tags:
+position: 0,0
+---
+ParkingMeterAttendant: Once, someone parked their car so crooked, it was taking up three spaces! When I asked them about it, they said they were "saving room for their friends"!
 
 -> Back
     <<jump ParkingMeterAttendant>>

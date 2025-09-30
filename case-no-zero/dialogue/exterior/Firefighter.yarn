@@ -1,0 +1,78 @@
+title: Firefighter
+tags:
+position: 0,0
+---
+Firefighter: Stay safe out there! Fire safety isn't just my job—it's my passion. And my excuse for having really cool equipment!
+
+-> Ask about fire safety
+    Firefighter: Prevention is the best protection! What would you like to know?
+        -> How can I prevent fires?
+            <<jump FirePrevention>>
+        -> What should I do in an emergency?
+            <<jump FireEmergency>>
+        -> Can I see the truck?
+            <<jump FireTruck>>
+        -> That's helpful
+            <<jump Firefighter>>
+-> Ask about the job
+    Firefighter: It's not all heroics and sliding down poles—though that part is pretty fun! It's about helping people when they need it most.
+        -> What's the hardest part?
+            <<jump FireHardest>>
+        -> Any funny stories?
+            <<jump FireStories>>
+        -> You're brave
+            <<jump Firefighter>>
+-> Just saying hi
+    Firefighter: Always good to see friendly faces! Remember, if you see something, say something. And if you see fire, definitely say something—loudly!
+    -> End
+===
+
+title: FirePrevention
+tags:
+position: 0,0
+---
+Firefighter: Keep flammable materials away from heat sources, never leave cooking unattended, and test your smoke alarms monthly! A working smoke alarm is like having a tiny firefighter in your house!
+
+-> Back
+    <<jump Firefighter>>
+===
+
+title: FireEmergency
+tags:
+position: 0,0
+---
+Firefighter: Get out, stay out, call for help! Don't go back for anything—not even your favorite socks. We can replace things, but we can't replace you!
+
+-> Back
+    <<jump Firefighter>>
+===
+
+title: FireTruck
+tags:
+position: 0,0
+---
+Firefighter: Sure! It's got 500 gallons of water, ladders that reach 30 feet, and enough hoses to water every garden in the neighborhood!
+
+-> Back
+    <<jump Firefighter>>
+===
+
+title: FireHardest
+tags:
+position: 0,0
+---
+Firefighter: The hardest part is when we can't save everyone. But the best part is when we do. That's what keeps us going through the tough calls.
+
+-> Back
+    <<jump Firefighter>>
+===
+
+title: FireStories
+tags:
+position: 0,0
+---
+Firefighter: Once we got called for a "fire" that turned out to be someone's birthday candles. They were really, really big candles. We still put them out—safety first!
+
+-> Back
+    <<jump Firefighter>>
+===

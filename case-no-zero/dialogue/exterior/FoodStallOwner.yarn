@@ -2,21 +2,28 @@ title: FoodStallOwner
 tags:
 position: 0,0
 ---
-FoodStallOwner: Hungry? I've got the best street food in the city! Made with love and a little bit of magic.
+FoodStallOwner: Hungry? You've come to the right place! My food is so good, even the seagulls line up for seconds!
 
 -> Order food
-    FoodStallOwner: Good choice! This will fill your stomach and warm your heart.
+    FoodStallOwner: What's your pleasure? I've got everything from sizzling sisig to sweet halo-halo!
         -> What's your specialty?
             <<jump FoodSpecialty>>
-        -> How spicy is it?
-            <<jump FoodSpicy>>
+        -> How much is everything?
+            <<jump FoodPrices>>
+        -> I'll take the special
+            <<jump FoodSpecial>>
+        -> Let me think
+            <<jump FoodStallOwner>>
 -> Ask about the stall
-    FoodStallOwner: I've been cooking here for eight years. My recipes are family secrets.
-        -> What's your secret ingredient?
+    FoodStallOwner: This little stall has been feeding hungry souls for ten years! Every dish is made with love and a secret ingredient—my grandmother's recipes!
+        -> What's the secret ingredient?
             <<jump FoodSecret>>
-        -> Do you have regular customers?
-            <<jump FoodRegulars>>
--> I'll come back later
+        -> How did you learn to cook?
+            <<jump FoodLearning>>
+        -> That's wonderful
+            <<jump FoodStallOwner>>
+-> Just looking
+    FoodStallOwner: No rush! But I should warn you, the longer you look, the hungrier you'll get. It's like my food has hypnotic powers!
     -> End
 ===
 
@@ -24,17 +31,27 @@ title: FoodSpecialty
 tags:
 position: 0,0
 ---
-FoodStallOwner: My adobo is legendary, but the lumpia is what keeps people coming back.
+FoodStallOwner: My adobo is legendary! It's been marinating in my family's secret sauce for generations. The recipe is so secret, even I don't know all of it!
 
 -> Back
     <<jump FoodStallOwner>>
 ===
 
-title: FoodSpicy
+title: FoodPrices
 tags:
 position: 0,0
 ---
-FoodStallOwner: I can make it mild, medium, or "are you sure you can handle this?"
+FoodStallOwner: Most dishes are 50-80 pesos. But the satisfaction of a full belly? That's free with every order!
+
+-> Back
+    <<jump FoodStallOwner>>
+===
+
+title: FoodSpecial
+tags:
+position: 0,0
+---
+FoodStallOwner: Excellent choice! Today's special is my famous kare-kare with extra vegetables. It's so good, you'll forget you're eating vegetables!
 
 -> Back
     <<jump FoodStallOwner>>
@@ -44,17 +61,17 @@ title: FoodSecret
 tags:
 position: 0,0
 ---
-FoodStallOwner: Love, patience, and a pinch of something special that I'll never tell.
+FoodStallOwner: If I told you, I'd have to... well, actually, I'd just have to make you promise not to tell anyone else! It's love. The secret ingredient is always love!
 
 -> Back
     <<jump FoodStallOwner>>
 ===
 
-title: FoodRegulars
+title: FoodLearning
 tags:
 position: 0,0
 ---
-FoodStallOwner: Oh yes! Some people come here every day. I know their orders by heart.
+FoodStallOwner: My grandmother taught me everything! She said cooking is like life—you need the right ingredients, patience, and the courage to taste-test everything!
 
 -> Back
     <<jump FoodStallOwner>>

@@ -2,15 +2,77 @@ title: Lifeguard
 tags:
 position: 0,0
 ---
-Lifeguard: Waves look calm till they don’t. That’s the trick.
+Lifeguard: Stay safe in the water! I'm here to make sure everyone has fun without any accidents. Though I must say, watching people try to swim is more entertaining than most TV shows!
 
--> Ask about the water
-    Lifeguard: Read the flags, read the clouds. They’re honest.
-    <<jump Lifeguard>>
--> Offer sunscreen
-    Lifeguard: Thanks. Sun doesn’t bargain with anyone.
-    <<jump Lifeguard>>
--> Walk on
+-> Ask about water safety
+    Lifeguard: Water safety is serious business! What would you like to know?
+        -> What are the main dangers?
+            <<jump WaterDangers>>
+        -> How can I stay safe?
+            <<jump WaterSafety>>
+        -> Any rescue stories?
+            <<jump WaterRescues>>
+        -> That's helpful
+            <<jump Lifeguard>>
+-> Ask about the beach
+    Lifeguard: This beach is beautiful, but it demands respect! The ocean doesn't care if you're having a good day or not.
+        -> How's the water today?
+            <<jump WaterConditions>>
+        -> Any good swimming spots?
+            <<jump WaterSpots>>
+        -> Thanks for the info
+            <<jump Lifeguard>>
+-> Just saying hi
+    Lifeguard: Always good to see friendly faces! Remember, if you see someone in trouble, don't be a hero—be a helper and get me!
     -> End
 ===
 
+title: WaterDangers
+tags:
+position: 0,0
+---
+Lifeguard: Rip currents, undertows, and overconfidence! The ocean is stronger than you think, and it doesn't give second chances. Respect the water, and it'll respect you back!
+
+-> Back
+    <<jump Lifeguard>>
+===
+
+title: WaterSafety
+tags:
+position: 0,0
+---
+Lifeguard: Never swim alone, stay within the designated areas, and if you get tired, float on your back and wave for help! It's better to look silly than to be in serious trouble!
+
+-> Back
+    <<jump Lifeguard>>
+===
+
+title: WaterRescues
+tags:
+position: 0,0
+---
+Lifeguard: Most rescues are just tired swimmers who got too far out. But once I had to rescue someone who was trying to teach their dog to surf. The dog was fine—the human needed help!
+
+-> Back
+    <<jump Lifeguard>>
+===
+
+title: WaterConditions
+tags:
+position: 0,0
+---
+Lifeguard: Today's conditions are good for swimming! The water's calm, visibility is clear, and the sharks are all on their lunch break. Just kidding about the sharks—mostly!
+
+-> Back
+    <<jump Lifeguard>>
+===
+
+title: WaterSpots
+tags:
+position: 0,0
+---
+Lifeguard: The area between the red flags is safest for swimming. If you want to snorkel, head over there where the water's shallow and the fish are friendly!
+
+-> Back
+    <<jump Lifeguard>>
+===

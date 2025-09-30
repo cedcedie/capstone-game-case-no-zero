@@ -1,0 +1,16 @@
+title: ReceptionistPoliceStation
+tags:
+position: 0,0
+---
+Receptionist Police Station: Welcome to the police station. How can I assist you today?
+
+-> File a report
+    Receptionist Police Station: Please fill out this form and wait in the sitting area. An officer will be with you shortly.
+    -> End
+-> Ask for information
+    Receptionist Police Station: I can help with general inquiries. What would you like to know?
+    -> End
+-> Just asking
+    Receptionist Police Station: If you need anything, I'm here to help. Have a safe day!
+    -> End
+===

@@ -1,0 +1,66 @@
+title: PatientLockdown
+tags:
+position: 0,0
+---
+Patient Lockdown: Hello... I'm in a special room for my safety. The staff is taking good care of me, and I'm trying to stay positive and focused on getting better.
+
+-> Ask about the room
+    Patient Lockdown: This room is designed to keep me safe while I recover. The staff checks on me regularly and makes sure I have everything I need.
+        -> How are you feeling?
+            <<jump LockdownFeeling>>
+        -> Are you comfortable?
+            <<jump LockdownComfortable>>
+        -> That's good
+            <<jump PatientLockdown>>
+-> Ask about the care
+    Patient Lockdown: The medical team has been wonderful! They're professional, caring, and always available when I need them.
+        -> How are the doctors?
+            <<jump LockdownDoctors>>
+        -> How are the nurses?
+            <<jump LockdownNurses>>
+        -> That's wonderful
+            <<jump PatientLockdown>>
+-> Just saying hi
+    Patient Lockdown: Nice to meet you! I'm trying to stay positive and focused on my recovery. Your kind words mean a lot!
+    -> End
+===
+
+title: LockdownFeeling
+tags:
+position: 0,0
+---
+Patient Lockdown: I'm feeling okay, all things considered. The medical team is taking good care of me, and I'm focused on getting better.
+
+-> Back
+    <<jump PatientLockdown>>
+===
+
+title: LockdownComfortable
+tags:
+position: 0,0
+---
+Patient Lockdown: The room is comfortable, and the staff makes sure I have everything I need. They're very attentive to my comfort and well-being.
+
+-> Back
+    <<jump PatientLockdown>>
+===
+
+title: LockdownDoctors
+tags:
+position: 0,0
+---
+Patient Lockdown: The doctors are excellent! They're knowledgeable, caring, and always available to answer my questions and address my concerns.
+
+-> Back
+    <<jump PatientLockdown>>
+===
+
+title: LockdownNurses
+tags:
+position: 0,0
+---
+Patient Lockdown: The nurses are amazing! They're so kind and professional. They make sure I'm comfortable and well-cared for at all times.
+
+-> Back
+    <<jump PatientLockdown>>
+===

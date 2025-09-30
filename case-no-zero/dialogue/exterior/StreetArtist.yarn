@@ -2,59 +2,76 @@ title: StreetArtist
 tags:
 position: 0,0
 ---
-StreetArtist: Art is everywhere, you just have to know where to look. I help people see the beauty in the everyday.
+StreetArtist: Art is everywhere if you know how to look! I'm here to show people the beauty in everyday life, one brushstroke at a time!
 
--> Ask about their art
-    StreetArtist: I paint what I see, what I feel, what the city tells me through its colors and shapes.
-        -> What's your style?
-            <<jump ArtistStyle>>
-        -> How long have you been painting?
-            <<jump ArtistExperience>>
--> Ask about a painting
-    StreetArtist: This one? It's about the light that comes through the buildings in the morning.
-        -> How much is it?
-            <<jump ArtistPrice>>
-        -> Do you take commissions?
-            <<jump ArtistCommission>>
--> I'll admire from here
+-> Ask about art
+    StreetArtist: Art is my passion and my way of connecting with the world. What would you like to know?
+        -> What kind of art do you do?
+            <<jump ArtStyle>>
+        -> Can I commission something?
+            <<jump ArtCommission>>
+        -> How did you get started?
+            <<jump ArtStarted>>
+        -> That's inspiring
+            <<jump StreetArtist>>
+-> Buy art
+    StreetArtist: Looking for something special? I've got original pieces, prints, and custom work available!
+        -> What do you have available?
+            <<jump ArtAvailable>>
+        -> How much are your pieces?
+            <<jump ArtPrices>>
+        -> I'll look around
+            <<jump StreetArtist>>
+-> Just admiring
+    StreetArtist: Take your time! Art is meant to be experienced, not rushed. Each piece tells a story, and I'm happy to share them!
     -> End
 ===
 
-title: ArtistStyle
+title: ArtStyle
 tags:
 position: 0,0
 ---
-StreetArtist: I call it urban realism—the city as it really is, beautiful and complicated.
+StreetArtist: I work in many styles—realistic portraits, abstract landscapes, and everything in between! My favorite is capturing the soul of a place in just a few colors!
 
 -> Back
     <<jump StreetArtist>>
 ===
 
-title: ArtistExperience
+title: ArtCommission
 tags:
 position: 0,0
 ---
-StreetArtist: Since I was a teenager. The street is my teacher, the city is my muse.
+StreetArtist: I love doing custom work! Whether it's a portrait, a landscape, or something completely unique, I'm always up for a creative challenge!
 
 -> Back
     <<jump StreetArtist>>
 ===
 
-title: ArtistPrice
+title: ArtStarted
 tags:
 position: 0,0
 ---
-StreetArtist: Depends on the size and complexity, but I try to keep it affordable for everyone.
+StreetArtist: I've been drawing since I was a child, but I started selling my art on the street about five years ago. It's scary putting your heart out there, but it's worth it!
 
 -> Back
     <<jump StreetArtist>>
 ===
 
-title: ArtistCommission
+title: ArtAvailable
 tags:
 position: 0,0
 ---
-StreetArtist: Absolutely! I love painting people's stories, their memories, their dreams.
+StreetArtist: I've got watercolors, sketches, and some mixed media pieces! Each one is unique, just like the people who buy them!
+
+-> Back
+    <<jump StreetArtist>>
+===
+
+title: ArtPrices
+tags:
+position: 0,0
+---
+StreetArtist: Small pieces start at 100 pesos, larger works go up to 500 pesos. But the joy of owning original art? That's priceless!
 
 -> Back
     <<jump StreetArtist>>

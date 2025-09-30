@@ -2,51 +2,77 @@ title: PoliceOfficer
 tags:
 position: 0,0
 ---
-PoliceOfficer: Morning. If you see something odd, describe it twice—once calm.
+Police Officer: Good day! I'm here to serve and protect our community. If you need any assistance or have concerns, I'm here to help!
 
--> Is the station open?
-    PoliceOfficer: Front desk is, investigation wing isn’t.
-        -> Where do I file a report?
-            <<jump POReport>>
-        -> Can I speak to someone now?
-            <<jump POSpeak>>
--> How’s the beat?
-    PoliceOfficer: Routine with surprises. The surprises teach most.
-        -> What kind?
-            <<jump POSurprises>>
-        -> Stay safe
+-> Ask about the job
+    Police Officer: Being a police officer is about serving the community, maintaining law and order, and helping people when they need it most.
+        -> How long have you been an officer?
+            <<jump PoliceOfficerExperience>>
+        -> What's the most challenging part?
+            <<jump PoliceOfficerChallenge>>
+        -> What's the most rewarding part?
+            <<jump PoliceOfficerRewarding>>
+        -> That's important work
             <<jump PoliceOfficer>>
--> I’ll move along
+-> Ask about community safety
+    Police Officer: Community safety is our priority! We work hard to prevent crime, respond to emergencies, and build good relationships with residents.
+        -> How can residents help?
+            <<jump PoliceOfficerHelp>>
+        -> Is the area safe?
+            <<jump PoliceOfficerSafe>>
+        -> That's reassuring
+            <<jump PoliceOfficer>>
+-> Just saying hi
+    Police Officer: Thank you for your support! Remember, we're here for you - don't hesitate to reach out if you need help!
     -> End
 ===
 
-title: POReport
+title: PoliceOfficerExperience
 tags:
 position: 0,0
 ---
-PoliceOfficer: Fill the form, breathe, then add details you forgot the first time.
+Police Officer: I've been on the force for twelve years now. Every day brings new challenges and opportunities to help people!
 
 -> Back
     <<jump PoliceOfficer>>
 ===
 
-title: POSpeak
+title: PoliceOfficerChallenge
 tags:
 position: 0,0
 ---
-PoliceOfficer: Try the desk sergeant. Clear words get clear help.
+Police Officer: The most challenging part is dealing with difficult situations while maintaining professionalism and compassion. Every call is different!
 
 -> Back
     <<jump PoliceOfficer>>
 ===
 
-title: POSurprises
+title: PoliceOfficerRewarding
 tags:
 position: 0,0
 ---
-PoliceOfficer: People helping each other when no one’s watching. That kind.
+Police Officer: The most rewarding part is when we can help someone and make a real difference in their life. That's why I do this job!
 
 -> Back
     <<jump PoliceOfficer>>
 ===
 
+title: PoliceOfficerHelp
+tags:
+position: 0,0
+---
+Police Officer: Residents can help by reporting suspicious activity, looking out for their neighbors, and maintaining open communication with us!
+
+-> Back
+    <<jump PoliceOfficer>>
+===
+
+title: PoliceOfficerSafe
+tags:
+position: 0,0
+---
+Police Officer: This is generally a safe area! We maintain regular patrols and respond quickly to any concerns. Community cooperation helps keep it that way!
+
+-> Back
+    <<jump PoliceOfficer>>
+===

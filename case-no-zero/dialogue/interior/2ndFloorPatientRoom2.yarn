@@ -1,0 +1,66 @@
+title: 2ndFloorPatientRoom2
+tags:
+position: 0,0
+---
+2nd Floor Patient Room 2: Hello... I'm recovering in this room. The medical team has been wonderful in taking care of me, and I'm feeling much better than when I first arrived.
+
+-> Ask about recovery
+    2nd Floor Patient Room 2: I'm recovering well, thank you! The doctors and nurses have been so kind and attentive. I'm grateful for their care.
+        -> How are you feeling?
+            <<jump 2ndFloorPatientRoom2Feeling>>
+        -> Are you comfortable?
+            <<jump 2ndFloorPatientRoom2Comfortable>>
+        -> That's good
+            <<jump 2ndFloorPatientRoom2>>
+-> Ask about the care
+    2nd Floor Patient Room 2: The hospital staff has been amazing! They're professional, caring, and always available when I need them.
+        -> How are the doctors?
+            <<jump 2ndFloorPatientRoom2Doctors>>
+        -> How are the nurses?
+            <<jump 2ndFloorPatientRoom2Nurses>>
+        -> That's wonderful
+            <<jump 2ndFloorPatientRoom2>>
+-> Just saying hi
+    2nd Floor Patient Room 2: Nice to meet you! I'm trying to stay positive and focused on my recovery. Your kind words mean a lot!
+    -> End
+===
+
+title: 2ndFloorPatientRoom2Feeling
+tags:
+position: 0,0
+---
+2nd Floor Patient Room 2: I'm feeling much better, thank you! The medical team has been taking such good care of me, and I'm making good progress.
+
+-> Back
+    <<jump 2ndFloorPatientRoom2>>
+===
+
+title: 2ndFloorPatientRoom2Comfortable
+tags:
+position: 0,0
+---
+2nd Floor Patient Room 2: The room is comfortable, and the staff makes sure I have everything I need. They're very attentive to my comfort and well-being.
+
+-> Back
+    <<jump 2ndFloorPatientRoom2>>
+===
+
+title: 2ndFloorPatientRoom2Doctors
+tags:
+position: 0,0
+---
+2nd Floor Patient Room 2: The doctors are excellent! They're knowledgeable, caring, and always available to answer my questions and address my concerns.
+
+-> Back
+    <<jump 2ndFloorPatientRoom2>>
+===
+
+title: 2ndFloorPatientRoom2Nurses
+tags:
+position: 0,0
+---
+2nd Floor Patient Room 2: The nurses are amazing! They're so kind and professional. They make sure I'm comfortable and well-cared for at all times.
+
+-> Back
+    <<jump 2ndFloorPatientRoom2>>
+===

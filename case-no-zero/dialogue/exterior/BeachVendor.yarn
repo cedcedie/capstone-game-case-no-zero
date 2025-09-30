@@ -2,29 +2,34 @@ title: BeachVendor
 tags:
 position: 0,0
 ---
-BeachVendor: Fresh buko juice! Guaranteed to make you feel like you're on vacation, even if you're not.
+BeachVendor: Fresh coconuts! Cold drinks! Everything you need for a perfect beach day!
 
--> Buy coconut water
-    BeachVendor: One buko, coming up! The ocean's salty, but my prices are sweet.
-        -> How fresh is it?
-            <<jump BeachFresh>>
-        -> Any other drinks?
+-> Buy something
+    BeachVendor: What catches your eye? I've got the sweetest coconuts this side of the island!
+        -> How much for a coconut?
+            <<jump BeachCoconut>>
+        -> What drinks do you have?
             <<jump BeachDrinks>>
+        -> I'll take a look
+            <<jump BeachVendor>>
 -> Ask about the beach
-    BeachVendor: Sand's free, sun's free, but my umbrella rental is premium priced.
-        -> Is it safe to swim?
-            <<jump BeachSafety>>
-        -> What's the best time to visit?
-            <<jump BeachTiming>>
--> Just looking around
+    BeachVendor: This beach is paradise! The water's clear, the sand's soft, and the sunsets? Absolutely magical.
+        -> Is it always this busy?
+            <<jump BeachBusy>>
+        -> Any good spots to visit?
+            <<jump BeachSpots>>
+        -> Sounds wonderful
+            <<jump BeachVendor>>
+-> Just browsing
+    BeachVendor: No pressure! But if you change your mind, I'll be here all day. The coconuts aren't going anywhere—they're already here!
     -> End
 ===
 
-title: BeachFresh
+title: BeachCoconut
 tags:
 position: 0,0
 ---
-BeachVendor: Picked this morning! The coconuts are fresher than my jokes.
+BeachVendor: Twenty pesos for a fresh coconut! I'll crack it open right here and give you a straw. It's like nature's own energy drink, but without the weird aftertaste!
 
 -> Back
     <<jump BeachVendor>>
@@ -34,27 +39,27 @@ title: BeachDrinks
 tags:
 position: 0,0
 ---
-BeachVendor: Buko juice, calamansi, and water that's actually wet.
+BeachVendor: I've got buko juice, fresh calamansi, and ice-cold water. All guaranteed to cool you down faster than jumping in the ocean!
 
 -> Back
     <<jump BeachVendor>>
 ===
 
-title: BeachSafety
+title: BeachBusy
 tags:
 position: 0,0
 ---
-BeachVendor: Lifeguard's on duty, sharks are on vacation. You're good to go.
+BeachVendor: Weekends are crazy busy! But weekdays? It's like having your own private beach. Just you, the sand, and me selling coconuts to the seagulls!
 
 -> Back
     <<jump BeachVendor>>
 ===
 
-title: BeachTiming
+title: BeachSpots
 tags:
 position: 0,0
 ---
-BeachVendor: Early morning for peace, late afternoon for drama. Choose your adventure.
+BeachVendor: The rock formations over there are perfect for photos! And if you walk down that way, there's a hidden cove where the water is so clear you can see your own reflection!
 
 -> Back
     <<jump BeachVendor>>

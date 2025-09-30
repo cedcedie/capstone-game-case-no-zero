@@ -1,30 +1,47 @@
 title: CampingGuide
 tags:
-position: 104,374
+position: 0,0
 ---
-CampingGuide: Welcome to the great outdoors! Where WiFi is weak but life is strong.
+CampingGuide: Ready for an adventure? The great outdoors is calling, and I'm here to make sure you answer safely!
 
 -> Ask about camping
-    CampingGuide: Tents, fires, and stories that get taller with each retelling.
-        -> Any good spots?
-            <<jump CampingSpots>>
-        -> What about safety?
-            <<jump CampingSafety>>
--> Ask about equipment
-    CampingGuide: We rent everything except common sense. That's BYOB.
-        -> What do you recommend?
+    CampingGuide: Camping is all about preparation and respect for nature. What would you like to know?
+        -> What should I bring?
             <<jump CampingGear>>
-        -> How much for a tent?
-            <<jump CampingRates>>
--> Just exploring
+        -> Where are the best spots?
+            <<jump CampingSpots>>
+        -> Any safety tips?
+            <<jump CampingSafety>>
+        -> I'm new to camping
+            <<jump CampingNewbie>>
+-> Book a guided trip
+    CampingGuide: I lead groups into the wilderness every weekend. It's like a nature documentary, but you're the star!
+        -> How much does it cost?
+            <<jump CampingCost>>
+        -> What's included?
+            <<jump CampingIncluded>>
+        -> Maybe next time
+            <<jump CampingGuide>>
+-> Just looking
+    CampingGuide: No worries! The mountains aren't going anywhere. But if you change your mind, I'll be here with my backpack and my terrible campfire songs!
     -> End
+===
+
+title: CampingGear
+tags:
+position: 0,0
+---
+CampingGuide: Essentials: tent, sleeping bag, water, food, and a good attitude! Everything else is just extra weight. Though I do recommend bringing marshmallows—they're nature's perfect food!
+
+-> Back
+    <<jump CampingGuide>>
 ===
 
 title: CampingSpots
 tags:
-position: 144,17
+position: 0,0
 ---
-CampingGuide: Site 7 has the best sunrise view. Site 3 has the best mosquito buffet.
+CampingGuide: The ridge trail has amazing views, but it's a tough hike. The lakeside spots are easier but more crowded. Choose your adventure level!
 
 -> Back
     <<jump CampingGuide>>
@@ -32,29 +49,39 @@ CampingGuide: Site 7 has the best sunrise view. Site 3 has the best mosquito buf
 
 title: CampingSafety
 tags:
-position: -51,-192
+position: 0,0
 ---
-CampingGuide: Don't feed the wildlife, don't start forest fires, and don't forget your toothbrush.
+CampingGuide: Always tell someone where you're going, bring a first aid kit, and remember: if you're lost, stay put! The search party will find you faster than you'll find your way back!
 
 -> Back
     <<jump CampingGuide>>
 ===
 
-title: CampingGear
+title: CampingNewbie
 tags:
-position: -3,160
+position: 0,0
 ---
-CampingGuide: Sleeping bag, flashlight, and a sense of adventure. Everything else is optional.
+CampingGuide: Everyone starts somewhere! I recommend starting with a day hike, then maybe an overnight near the parking lot. Baby steps to becoming a wilderness warrior!
 
 -> Back
     <<jump CampingGuide>>
 ===
 
-title: CampingRates
+title: CampingCost
 tags:
-position: 226,-265
+position: 0,0
 ---
-CampingGuide: Fifty pesos per night, or free if you help me scare away the raccoons.
+CampingGuide: Guided trips are 500 pesos per person, including gear rental and my expert commentary on every tree we pass!
+
+-> Back
+    <<jump CampingGuide>>
+===
+
+title: CampingIncluded
+tags:
+position: 0,0
+---
+CampingGuide: Everything! Tent, sleeping bag, meals, and my guarantee that you'll see at least one squirrel doing something hilarious!
 
 -> Back
     <<jump CampingGuide>>

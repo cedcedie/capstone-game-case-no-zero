@@ -2,14 +2,15 @@ title: StreetVendor8
 tags:
 position: 0,0
 ---
-Street Vendor: Fresh vegetables! Carrots, cabbage, and tomatoes! Perfect for cooking!
+Street Vendor: Fresh vegetables! Carrots, tomatoes, and leafy greens! Perfect for cooking or salads! 30 pesos per kilo!
 
 -> Buy vegetables
-    Street Vendor: Here you go! These are fresh and crisp, perfect for your cooking. Your family will love them!
+    Street Vendor: Here you go! These will make any meal healthier and more delicious!
     -> End
 -> Ask about the vegetables
-    Street Vendor: I get them fresh from the local farmers every morning. No pesticides, just natural and healthy vegetables for your family!
+    Street Vendor: I get them from local farmers every morning. Nothing beats vegetables that were picked today!
     -> End
--> Head out
+-> Decline
+    Street Vendor: That's fine! Fresh vegetables are always better when you're planning to cook something special!
     -> End
 ===

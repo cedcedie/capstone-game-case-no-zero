@@ -1,0 +1,66 @@
+title: BarangayTanodResting
+tags:
+position: 0,0
+---
+Barangay Tanod: *yawns* Sorry, just catching a quick nap. Night shift last night was long, and we don't have much time to rest!
+
+-> Ask about the night shift
+    Barangay Tanod: Night shift can be tough. You have to stay alert even when everything is quiet and you're exhausted.
+        -> What happens during night shift?
+            <<jump BarangayTanodRestingNight>>
+        -> How do you stay awake?
+            <<jump BarangayTanodRestingAwake>>
+        -> Get some rest
+            <<jump BarangayTanodResting>>
+-> Ask about the job
+    Barangay Tanod: Being a tanod is 24/7 work. We're always on call, always ready to help. It's tiring but rewarding!
+        -> Do you get enough rest?
+            <<jump BarangayTanodRestingRest>>
+        -> What keeps you motivated?
+            <<jump BarangayTanodRestingMotivated>>
+        -> That's dedication
+            <<jump BarangayTanodResting>>
+-> Let them rest
+    Barangay Tanod: *yawns* Thanks for understanding... zzz...
+    -> End
+===
+
+title: BarangayTanodRestingNight
+tags:
+position: 0,0
+---
+Barangay Tanod: We patrol, check on businesses, and make sure everything is secure. Most nights are quiet, but you never know!
+
+-> Back
+    <<jump BarangayTanodResting>>
+===
+
+title: BarangayTanodRestingAwake
+tags:
+position: 0,0
+---
+Barangay Tanod: Coffee, lots of coffee! And we keep each other alert by talking and staying active during patrols.
+
+-> Back
+    <<jump BarangayTanodResting>>
+===
+
+title: BarangayTanodRestingRest
+tags:
+position: 0,0
+---
+Barangay Tanod: We try to rest when we can, but it's not always easy. That's why these quick naps are so important!
+
+-> Back
+    <<jump BarangayTanodResting>>
+===
+
+title: BarangayTanodRestingMotivated
+tags:
+position: 0,0
+---
+Barangay Tanod: Knowing that we're keeping our community safe and helping our neighbors. That's what keeps us going!
+
+-> Back
+    <<jump BarangayTanodResting>>
+===

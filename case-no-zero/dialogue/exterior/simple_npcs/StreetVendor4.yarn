@@ -2,14 +2,15 @@ title: StreetVendor4
 tags:
 position: 0,0
 ---
-Street Vendor: Balut! Fresh balut! 15 pesos each! Perfect for merienda!
+Street Vendor: Balut! Fresh balut! 15 pesos each! Don't knock it till you try it!
 
+-> Buy balut
+    Street Vendor: Here you go! Crack it open and enjoy! It's an acquired taste, but once you like it, you'll love it!
+    -> End
 -> Ask about balut
-    Street Vendor: It's a Filipino delicacy! Duck egg with a developing embryo inside. Sounds strange, but it's actually quite tasty!
+    Street Vendor: It's a Filipino delicacy! Duck egg with a partially developed embryo. Sounds weird, tastes amazing!
     -> End
--> Ask about the price
-    Street Vendor: 15 pesos is a good price! Cheaper than the restaurants, and just as fresh. Try one, you might like it!
-    -> End
--> Head out
+-> Decline
+    Street Vendor: I understand! It's not for everyone. But if you're feeling adventurous, I'll be here!
     -> End
 ===

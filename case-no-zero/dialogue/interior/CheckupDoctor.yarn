@@ -1,0 +1,78 @@
+title: CheckupDoctor
+tags:
+position: 0,0
+---
+Checkup Doctor: Good morning! I'm Dr. Reyes, and I'm here to perform checkups and routine examinations. Preventive care is so important for maintaining good health!
+
+-> Ask about checkups
+    Checkup Doctor: Regular checkups are essential for catching health issues early and maintaining overall wellness. What would you like to know?
+        -> What does a checkup involve?
+            <<jump CheckupInvolve>>
+        -> How often should I get one?
+            <<jump CheckupFrequency>>
+        -> What should I expect?
+            <<jump CheckupExpect>>
+        -> That's helpful
+            <<jump CheckupDoctor>>
+-> Ask about health
+    Checkup Doctor: I'm here to help you maintain good health and catch any potential issues early. Prevention is always better than treatment!
+        -> What are the most important health tips?
+            <<jump CheckupTips>>
+        -> How can I stay healthy?
+            <<jump CheckupHealthy>>
+        -> That's good advice
+            <<jump CheckupDoctor>>
+-> Just saying hi
+    Checkup Doctor: Nice to meet you! I'm always happy to answer questions about health and wellness. Prevention is key!
+    -> End
+===
+
+title: CheckupInvolve
+tags:
+position: 0,0
+---
+Checkup Doctor: A checkup typically includes a physical examination, blood pressure check, and discussion of any health concerns you might have.
+
+-> Back
+    <<jump CheckupDoctor>>
+===
+
+title: CheckupFrequency
+tags:
+position: 0,0
+---
+Checkup Doctor: I recommend annual checkups for most adults, but it depends on your age, health status, and risk factors.
+
+-> Back
+    <<jump CheckupDoctor>>
+===
+
+title: CheckupExpect
+tags:
+position: 0,0
+---
+Checkup Doctor: You can expect a thorough examination, honest discussion about your health, and personalized recommendations for staying healthy.
+
+-> Back
+    <<jump CheckupDoctor>>
+===
+
+title: CheckupTips
+tags:
+position: 0,0
+---
+Checkup Doctor: The most important things are regular exercise, a balanced diet, adequate sleep, and managing stress. Small changes can make a big difference!
+
+-> Back
+    <<jump CheckupDoctor>>
+===
+
+title: CheckupHealthy
+tags:
+position: 0,0
+---
+Checkup Doctor: Stay active, eat well, get enough sleep, and don't ignore any health concerns. Early detection is crucial for good outcomes!
+
+-> Back
+    <<jump CheckupDoctor>>
+===

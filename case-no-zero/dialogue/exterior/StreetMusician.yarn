@@ -2,59 +2,76 @@ title: StreetMusician
 tags:
 position: 0,0
 ---
-StreetMusician: Music is the language of the soul, and the street is my stage.
+StreetMusician: Music is the universal language! I'm here to share my songs with anyone who'll listen. Plus, it's a great way to make a living doing what I love!
 
--> Ask about their music
-    StreetMusician: I play from the heart. Every song tells a story, every note carries emotion.
+-> Ask about music
+    StreetMusician: Music is my life! What would you like to know?
         -> What kind of music do you play?
-            <<jump MusicianStyle>>
+            <<jump MusicStyle>>
         -> How long have you been playing?
-            <<jump MusicianExperience>>
--> Offer a tip
-    StreetMusician: Thank you! Every peso helps me keep the music alive.
+            <<jump MusicExperience>>
+        -> Can you play requests?
+            <<jump MusicRequests>>
+        -> That's wonderful
+            <<jump StreetMusician>>
+-> Ask about performing
+    StreetMusician: Street performing is like having a conversation with the whole world! Every song is a story, and every listener is part of that story.
+        -> Do you make good money?
+            <<jump MusicMoney>>
+        -> What's your favorite song to play?
+            <<jump MusicFavorite>>
         -> You're very talented
-            <<jump MusicianTalent>>
-        -> Keep playing
-            <<jump MusicianKeep>>
--> I'll listen for a while
+            <<jump StreetMusician>>
+-> Just listening
+    StreetMusician: Music is meant to be shared! Whether you stay for one song or the whole set, I'm just happy to have an audience!
     -> End
 ===
 
-title: MusicianStyle
+title: MusicStyle
 tags:
 position: 0,0
 ---
-StreetMusician: A little bit of everything—folk, blues, and songs that make you feel something.
+StreetMusician: I play a bit of everything—folk, pop, rock, and some original songs! My guitar and I can handle just about any genre you throw at us!
 
 -> Back
     <<jump StreetMusician>>
 ===
 
-title: MusicianExperience
+title: MusicExperience
 tags:
 position: 0,0
 ---
-StreetMusician: Since I was a kid. Music chose me, and I chose the street.
+StreetMusician: I've been playing guitar for fifteen years, but I've only been performing on the street for three. It's scary at first, but now I can't imagine doing anything else!
 
 -> Back
     <<jump StreetMusician>>
 ===
 
-title: MusicianTalent
+title: MusicRequests
 tags:
 position: 0,0
 ---
-StreetMusician: That means more than you know. Music is meant to be shared.
+StreetMusician: Absolutely! I love taking requests! Though I should warn you, if you ask for something I don't know, I might just make up my own version!
 
 -> Back
     <<jump StreetMusician>>
 ===
 
-title: MusicianKeep
+title: MusicMoney
 tags:
 position: 0,0
 ---
-StreetMusician: I will! As long as people want to listen, I'll keep playing.
+StreetMusician: Some days are better than others! But I'm not in it for the money—I'm in it for the music and the connections I make with people!
+
+-> Back
+    <<jump StreetMusician>>
+===
+
+title: MusicFavorite
+tags:
+position: 0,0
+---
+StreetMusician: I love playing "Wonderwall" because everyone knows it and sings along! But my favorite is this original song I wrote about finding beauty in unexpected places!
 
 -> Back
     <<jump StreetMusician>>

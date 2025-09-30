@@ -1,0 +1,78 @@
+title: DoctorScan
+tags:
+position: 0,0
+---
+Doctor Scan: Good morning! I'm Dr. Martinez, and I specialize in diagnostic imaging and scans. I help doctors see what's happening inside the body.
+
+-> Ask about scans
+    Doctor Scan: Diagnostic scans are crucial for accurate diagnosis and treatment planning. What would you like to know?
+        -> What types of scans do you do?
+            <<jump ScanTypes>>
+        -> How do scans work?
+            <<jump ScanWork>>
+        -> Are scans safe?
+            <<jump ScanSafe>>
+        -> That's interesting
+            <<jump DoctorScan>>
+-> Ask about the process
+    Doctor Scan: I work closely with other doctors to ensure patients get the right scans at the right time. It's all about providing the best care possible.
+        -> How long do scans take?
+            <<jump ScanTime>>
+        -> What should patients expect?
+            <<jump ScanExpect>>
+        -> That's helpful
+            <<jump DoctorScan>>
+-> Just saying hi
+    Doctor Scan: Nice to meet you! I'm always happy to explain how diagnostic imaging works and answer any questions you might have.
+    -> End
+===
+
+title: ScanTypes
+tags:
+position: 0,0
+---
+Doctor Scan: I perform various types of scans including X-rays, CT scans, MRIs, and ultrasounds. Each has its own purpose and benefits.
+
+-> Back
+    <<jump DoctorScan>>
+===
+
+title: ScanWork
+tags:
+position: 0,0
+---
+Doctor Scan: Scans use different technologies to create images of the inside of the body, helping doctors see what's happening and make accurate diagnoses.
+
+-> Back
+    <<jump DoctorScan>>
+===
+
+title: ScanSafe
+tags:
+position: 0,0
+---
+Doctor Scan: All scans are performed with safety as the top priority. We use the lowest possible radiation doses and follow strict safety protocols.
+
+-> Back
+    <<jump DoctorScan>>
+===
+
+title: ScanTime
+tags:
+position: 0,0
+---
+Doctor Scan: Scan times vary depending on the type and complexity. Some take just a few minutes, while others might take 30-60 minutes.
+
+-> Back
+    <<jump DoctorScan>>
+===
+
+title: ScanExpect
+tags:
+position: 0,0
+---
+Doctor Scan: Patients can expect a comfortable experience with clear explanations of what's happening. We're here to make the process as easy as possible.
+
+-> Back
+    <<jump DoctorScan>>
+===

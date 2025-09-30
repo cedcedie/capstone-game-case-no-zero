@@ -2,15 +2,77 @@ title: HotelConcierge
 tags:
 position: 0,0
 ---
-HotelConcierge: Welcome. Our smiles are complimentary, the umbrellas are not.
+Hotel Concierge: Welcome to our hotel! I'm here to make your stay as comfortable and enjoyable as possible. How may I assist you today?
 
--> Ask about vacancies
-    HotelConcierge: A few rooms left—quiet floors, city dreams.
-    <<jump HotelConcierge>>
--> Ask for directions
-    HotelConcierge: Left at the fountain, right at the noise—follow the laughter.
-    <<jump HotelConcierge>>
--> Leave politely
+-> Ask about services
+    Hotel Concierge: We offer a wide range of services including room service, tours, transportation, and restaurant recommendations!
+        -> Can you recommend restaurants?
+            <<jump ConciergeRestaurants>>
+        -> Do you arrange tours?
+            <<jump ConciergeTours>>
+        -> What about transportation?
+            <<jump ConciergeTransport>>
+        -> That's helpful
+            <<jump HotelConcierge>>
+-> Ask about the hotel
+    Hotel Concierge: Our hotel offers comfortable rooms, excellent service, and a prime location. We're dedicated to making your stay memorable!
+        -> What amenities do you have?
+            <<jump ConciergeAmenities>>
+        -> What's nearby?
+            <<jump ConciergeNearby>>
+        -> That sounds great
+            <<jump HotelConcierge>>
+-> Just saying hi
+    Hotel Concierge: It's a pleasure to meet you! If you need anything during your stay, don't hesitate to ask!
     -> End
 ===
 
+title: ConciergeRestaurants
+tags:
+position: 0,0
+---
+Hotel Concierge: I can recommend excellent restaurants for any cuisine and budget! Just let me know what you're in the mood for!
+
+-> Back
+    <<jump HotelConcierge>>
+===
+
+title: ConciergeTours
+tags:
+position: 0,0
+---
+Hotel Concierge: Yes! I can arrange city tours, cultural excursions, and adventure activities. Whatever you're interested in exploring!
+
+-> Back
+    <<jump HotelConcierge>>
+===
+
+title: ConciergeTransport
+tags:
+position: 0,0
+---
+Hotel Concierge: I can arrange taxis, car rentals, or private transportation. Just let me know where you need to go!
+
+-> Back
+    <<jump HotelConcierge>>
+===
+
+title: ConciergeAmenities
+tags:
+position: 0,0
+---
+Hotel Concierge: We have a restaurant, fitness center, business center, and free Wi-Fi throughout the hotel!
+
+-> Back
+    <<jump HotelConcierge>>
+===
+
+title: ConciergeNearby
+tags:
+position: 0,0
+---
+Hotel Concierge: We're close to shopping, dining, and major attractions. You can walk to many places or I can arrange transportation!
+
+-> Back
+    <<jump HotelConcierge>>
+===

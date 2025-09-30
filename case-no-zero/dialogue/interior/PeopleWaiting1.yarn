@@ -1,0 +1,66 @@
+title: PeopleWaiting1
+tags:
+position: 0,0
+---
+People Waiting: Hello! I'm just waiting here for my appointment. The waiting room is comfortable, and there are magazines to read while I wait.
+
+-> Ask about waiting
+    People Waiting: I'm here for a routine checkup. The wait isn't too bad - it gives me time to relax and catch up on some reading.
+        -> How long have you been waiting?
+            <<jump PeopleWaiting1Time>>
+        -> Is this your first time here?
+            <<jump PeopleWaiting1First>>
+        -> That's nice
+            <<jump PeopleWaiting1>>
+-> Ask about the hospital
+    People Waiting: This hospital has a good reputation, and the staff seems friendly and professional. I feel comfortable here.
+        -> What do you think of the staff?
+            <<jump PeopleWaiting1Staff>>
+        -> How's the atmosphere?
+            <<jump PeopleWaiting1Atmosphere>>
+        -> That's good
+            <<jump PeopleWaiting1>>
+-> Just saying hi
+    People Waiting: Nice to meet you! Waiting can be boring, but it's nice to have someone to talk to!
+    -> End
+===
+
+title: PeopleWaiting1Time
+tags:
+position: 0,0
+---
+People Waiting: About 15 minutes so far. Not too bad - I've had longer waits at other places!
+
+-> Back
+    <<jump PeopleWaiting1>>
+===
+
+title: PeopleWaiting1First
+tags:
+position: 0,0
+---
+People Waiting: No, I've been here before. The doctors are good, and the staff is always helpful and friendly.
+
+-> Back
+    <<jump PeopleWaiting1>>
+===
+
+title: PeopleWaiting1Staff
+tags:
+position: 0,0
+---
+People Waiting: The staff is wonderful! They're professional, caring, and always willing to help. It makes the whole experience much better.
+
+-> Back
+    <<jump PeopleWaiting1>>
+===
+
+title: PeopleWaiting1Atmosphere
+tags:
+position: 0,0
+---
+People Waiting: The atmosphere is calm and welcoming. It doesn't feel like a typical hospital - more like a comfortable medical center.
+
+-> Back
+    <<jump PeopleWaiting1>>
+===

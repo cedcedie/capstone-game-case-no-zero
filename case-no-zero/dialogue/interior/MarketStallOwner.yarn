@@ -2,59 +2,76 @@ title: MarketStallOwner
 tags:
 position: 0,0
 ---
-MarketStallOwner: Fresh vegetables, fresh prices, and fresh gossip. What more could you want?
+Market Stall Owner: Welcome to my stall! I've been selling here for fifteen years, and I pride myself on quality products and fair prices!
 
--> Buy vegetables
-    MarketStallOwner: Everything's fresh today! Except my jokes—those are recycled.
-        -> How fresh is this?
-            <<jump MarketFresh>>
-        -> Can I get a discount?
-            <<jump MarketDiscount>>
--> Ask about the market
-    MarketStallOwner: Busy in the morning, quiet in the afternoon, and chaotic during sales.
-        -> What's the best time to shop?
-            <<jump MarketTiming>>
-        -> How long have you been here?
-            <<jump MarketDuration>>
--> I'll look around first
+-> Ask about products
+    Market Stall Owner: I sell a variety of goods - everything from household items to snacks and treats! What are you looking for today?
+        -> What's your specialty?
+            <<jump MarketStallSpecialty>>
+        -> What's most popular?
+            <<jump MarketStallPopular>>
+        -> How are the prices?
+            <<jump MarketStallPrices>>
+        -> I'll browse
+            <<jump MarketStallOwner>>
+-> Ask about the business
+    Market Stall Owner: I've been running this stall for fifteen years! It's hard work, but I love meeting customers and being part of this market community.
+        -> How did you get started?
+            <<jump MarketStallStart>>
+        -> What do you love about it?
+            <<jump MarketStallLove>>
+        -> That's impressive
+            <<jump MarketStallOwner>>
+-> Just looking
+    Market Stall Owner: Take your time! I'm here to help if you need anything or have questions!
     -> End
 ===
 
-title: MarketFresh
+title: MarketStallSpecialty
 tags:
 position: 0,0
 ---
-MarketStallOwner: Picked yesterday! Fresher than my memory, older than my patience.
+Market Stall Owner: My specialty is finding unique items you won't find anywhere else! I source products from all over and only sell quality goods!
 
 -> Back
     <<jump MarketStallOwner>>
 ===
 
-title: MarketDiscount
+title: MarketStallPopular
 tags:
 position: 0,0
 ---
-MarketStallOwner: Buy three, get one free. Buy five, get my eternal gratitude.
+Market Stall Owner: My homemade snacks are very popular! I also have household items that people come back for again and again!
 
 -> Back
     <<jump MarketStallOwner>>
 ===
 
-title: MarketTiming
+title: MarketStallPrices
 tags:
 position: 0,0
 ---
-MarketStallOwner: Early morning for the best selection, late afternoon for the best prices.
+Market Stall Owner: I keep my prices fair and competitive! Quality products at reasonable prices - that's my motto!
 
 -> Back
     <<jump MarketStallOwner>>
 ===
 
-title: MarketDuration
+title: MarketStallStart
 tags:
 position: 0,0
 ---
-MarketStallOwner: Twenty years of selling vegetables and twenty years of the same jokes.
+Market Stall Owner: I started with just a small table and a few items. Over the years, I've built up my business and my reputation!
+
+-> Back
+    <<jump MarketStallOwner>>
+===
+
+title: MarketStallLove
+tags:
+position: 0,0
+---
+Market Stall Owner: I love meeting people and building relationships with my customers! Some have been coming here for years - they're like family!
 
 -> Back
     <<jump MarketStallOwner>>

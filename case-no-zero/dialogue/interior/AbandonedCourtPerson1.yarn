@@ -1,0 +1,66 @@
+title: AbandonedCourtPerson1
+tags:
+position: 0,0
+---
+Abandoned Court Person: This place has seen better days. The court has been abandoned for years, but some of us still come here for various reasons.
+
+-> Ask about the court
+    Abandoned Court Person: This used to be a busy courthouse, but it's been closed for a long time. Now it's mostly empty and forgotten.
+        -> Why was it abandoned?
+            <<jump AbandonedCourtWhy1>>
+        -> What do you do here?
+            <<jump AbandonedCourtDo1>>
+        -> That's interesting
+            <<jump AbandonedCourtPerson1>>
+-> Ask about the area
+    Abandoned Court Person: This area used to be the center of legal activity in the city. Now it's quiet and mostly ignored by most people.
+        -> Is it safe here?
+            <<jump AbandonedCourtSafe1>>
+        -> Do many people come here?
+            <<jump AbandonedCourtPeople1>>
+        -> That's sad
+            <<jump AbandonedCourtPerson1>>
+-> Just saying hi
+    Abandoned Court Person: Be careful if you're exploring. This place isn't as safe as it used to be.
+    -> End
+===
+
+title: AbandonedCourtWhy1
+tags:
+position: 0,0
+---
+Abandoned Court Person: The building became too old and expensive to maintain. They built a new courthouse elsewhere and left this one to decay.
+
+-> Back
+    <<jump AbandonedCourtPerson1>>
+===
+
+title: AbandonedCourtDo1
+tags:
+position: 0,0
+---
+Abandoned Court Person: I come here for... personal reasons. This place holds memories for some of us who remember when it was active.
+
+-> Back
+    <<jump AbandonedCourtPerson1>>
+===
+
+title: AbandonedCourtSafe1
+tags:
+position: 0,0
+---
+Abandoned Court Person: It's not as safe as it used to be. The building is deteriorating, and there are some unsavory characters who sometimes hang around.
+
+-> Back
+    <<jump AbandonedCourtPerson1>>
+===
+
+title: AbandonedCourtPeople1
+tags:
+position: 0,0
+---
+Abandoned Court Person: Not many people come here anymore. Mostly just a few of us who have... connections to this place.
+
+-> Back
+    <<jump AbandonedCourtPerson1>>
+===

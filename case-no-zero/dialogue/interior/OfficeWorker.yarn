@@ -2,15 +2,77 @@ title: OfficeWorker
 tags:
 position: 0,0
 ---
-OfficeWorker: My inbox is a hydra. I cut one email; two appear.
+Office Worker: Hi there! Just taking a short break from work. The office can get pretty intense, so these moments of peace are valuable!
 
--> Ask about deadlines
-    OfficeWorker: They move like clouds—still there even when you look away.
-    <<jump OfficeWorker>>
--> Offer a snack
-    OfficeWorker: You’re a saint. Sugar is morale with good PR.
-    <<jump OfficeWorker>>
--> Head to the elevator
+-> Ask about work
+    Office Worker: I work in admin here. It's a lot of paperwork, phone calls, and coordination, but it keeps things running smoothly!
+        -> What do you do exactly?
+            <<jump OfficeWorkerJob>>
+        -> Do you like it?
+            <<jump OfficeWorkerLike>>
+        -> How long have you worked here?
+            <<jump OfficeWorkerExperience>>
+        -> That sounds busy
+            <<jump OfficeWorker>>
+-> Ask about the office
+    Office Worker: The office is pretty good to work in! We have a good team, and management is generally fair and supportive.
+        -> How's the atmosphere?
+            <<jump OfficeWorkerAtmosphere>>
+        -> What's the best part?
+            <<jump OfficeWorkerBest>>
+        -> That's great
+            <<jump OfficeWorker>>
+-> Just saying hi
+    Office Worker: Nice to meet you! I should get back to work soon, but it's been nice chatting!
     -> End
 ===
 
+title: OfficeWorkerJob
+tags:
+position: 0,0
+---
+Office Worker: I handle administrative tasks, coordinate between departments, and make sure everything runs smoothly. It's like being the glue that holds things together!
+
+-> Back
+    <<jump OfficeWorker>>
+===
+
+title: OfficeWorkerLike
+tags:
+position: 0,0
+---
+Office Worker: Most days, yes! It can be stressful sometimes, but I like feeling productive and helping the team succeed!
+
+-> Back
+    <<jump OfficeWorker>>
+===
+
+title: OfficeWorkerExperience
+tags:
+position: 0,0
+---
+Office Worker: I've been here for about four years now. I've learned a lot and grown professionally in that time!
+
+-> Back
+    <<jump OfficeWorker>>
+===
+
+title: OfficeWorkerAtmosphere
+tags:
+position: 0,0
+---
+Office Worker: The atmosphere is generally professional but friendly! We work hard, but we also support each other and have a good team spirit!
+
+-> Back
+    <<jump OfficeWorker>>
+===
+
+title: OfficeWorkerBest
+tags:
+position: 0,0
+---
+Office Worker: The best part is working with a good team and feeling like my work makes a difference. It's satisfying when everything runs smoothly!
+
+-> Back
+    <<jump OfficeWorker>>
+===

@@ -2,15 +2,77 @@ title: Gardener
 tags:
 position: 0,0
 ---
-Gardener: Plants don’t rush. They win anyway.
+Gardener: Welcome to my little slice of paradise! Every plant here has a story, and I'm happy to share them with anyone who'll listen!
 
--> Ask what’s blooming
-    Gardener: Sampaguita by the gate, patience by the bench.
-    <<jump Gardener>>
--> Compliment the garden
-    Gardener: Thank you. I prune noise, not just branches.
-    <<jump Gardener>>
--> Keep strolling
+-> Ask about gardening
+    Gardener: Gardening is like raising children, but plants don't talk back! What would you like to know?
+        -> What's your favorite plant?
+            <<jump GardenFavorite>>
+        -> How do you keep them healthy?
+            <<jump GardenCare>>
+        -> Any tips for beginners?
+            <<jump GardenTips>>
+        -> That's interesting
+            <<jump Gardener>>
+-> Buy plants
+    Gardener: Looking to start your own garden? I've got everything from easy-care succulents to challenging orchids!
+        -> What's easy to grow?
+            <<jump GardenEasy>>
+        -> How much are they?
+            <<jump GardenPrices>>
+        -> I'll browse
+            <<jump Gardener>>
+-> Just admiring
+    Gardener: Take your time! Plants are like art—they're meant to be appreciated. Just don't touch the cacti unless you want a painful lesson in boundaries!
     -> End
 ===
 
+title: GardenFavorite
+tags:
+position: 0,0
+---
+Gardener: My jasmine bush! It's been with me for fifteen years and still smells like heaven every morning. It's like having a natural air freshener that actually works!
+
+-> Back
+    <<jump Gardener>>
+===
+
+title: GardenCare
+tags:
+position: 0,0
+---
+Gardener: Water, sunlight, and love! But not too much of any of them. Plants are like people—they need balance, not smothering!
+
+-> Back
+    <<jump Gardener>>
+===
+
+title: GardenTips
+tags:
+position: 0,0
+---
+Gardener: Start small! Get a few easy plants first, learn their language, then expand. It's better to have three happy plants than twenty sad ones!
+
+-> Back
+    <<jump Gardener>>
+===
+
+title: GardenEasy
+tags:
+position: 0,0
+---
+Gardener: Succulents are perfect for beginners! They're like the cats of the plant world—independent, low-maintenance, and they'll survive even if you forget about them for a week!
+
+-> Back
+    <<jump Gardener>>
+===
+
+title: GardenPrices
+tags:
+position: 0,0
+---
+Gardener: Small plants start at 20 pesos, larger ones up to 100 pesos. But the joy of watching them grow? That's priceless!
+
+-> Back
+    <<jump Gardener>>
+===

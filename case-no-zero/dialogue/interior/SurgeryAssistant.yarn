@@ -1,0 +1,78 @@
+title: SurgeryAssistant
+tags:
+position: 0,0
+---
+Surgery Assistant: Good morning! I'm here to assist with surgery today. I work closely with the doctors to ensure everything runs smoothly and safely.
+
+-> Ask about the job
+    Surgery Assistant: Being a surgery assistant is challenging but rewarding. I help the doctors with procedures and make sure patients receive the best care.
+        -> What does your job involve?
+            <<jump AssistantInvolve>>
+        -> How long have you been doing this?
+            <<jump AssistantExperience>>
+        -> What's the most challenging part?
+            <<jump AssistantChallenge>>
+        -> That's impressive
+            <<jump SurgeryAssistant>>
+-> Ask about the surgery
+    Surgery Assistant: I'm here to support the surgical team and ensure the patient receives the best possible care. Every surgery is important to me.
+        -> How do you prepare for surgery?
+            <<jump AssistantPrepare>>
+        -> What's your role during surgery?
+            <<jump AssistantRole>>
+        -> That's important
+            <<jump SurgeryAssistant>>
+-> Just saying hi
+    Surgery Assistant: Nice to meet you! I'm always happy to answer questions about my work and the medical field.
+    -> End
+===
+
+title: AssistantInvolve
+tags:
+position: 0,0
+---
+Surgery Assistant: My job involves preparing the operating room, assisting during procedures, and ensuring all equipment is ready and sterile.
+
+-> Back
+    <<jump SurgeryAssistant>>
+===
+
+title: AssistantExperience
+tags:
+position: 0,0
+---
+Surgery Assistant: I've been working as a surgery assistant for eight years now. It's a field that requires constant learning and attention to detail.
+
+-> Back
+    <<jump SurgeryAssistant>>
+===
+
+title: AssistantChallenge
+tags:
+position: 0,0
+---
+Surgery Assistant: The most challenging part is staying focused and alert during long procedures. But it's also the most rewarding part of the job.
+
+-> Back
+    <<jump SurgeryAssistant>>
+===
+
+title: AssistantPrepare
+tags:
+position: 0,0
+---
+Surgery Assistant: Preparation is crucial! I check all equipment, ensure the operating room is sterile, and review the procedure with the surgical team.
+
+-> Back
+    <<jump SurgeryAssistant>>
+===
+
+title: AssistantRole
+tags:
+position: 0,0
+---
+Surgery Assistant: During surgery, I assist the doctors, monitor equipment, and ensure everything runs smoothly. It's a team effort!
+
+-> Back
+    <<jump SurgeryAssistant>>
+===

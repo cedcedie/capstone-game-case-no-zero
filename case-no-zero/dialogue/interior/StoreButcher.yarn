@@ -1,0 +1,78 @@
+title: StoreButcher
+tags:
+position: 0,0
+---
+Store Butcher: Welcome to my butcher shop! I've been cutting meat for twenty years, and I know exactly what you need for any meal!
+
+-> Ask about meat
+    Store Butcher: I've got the freshest cuts available! What are you cooking today?
+        -> What's your specialty?
+            <<jump ButcherSpecialty>>
+        -> How fresh is the meat?
+            <<jump ButcherFresh>>
+        -> What do you recommend?
+            <<jump ButcherRecommend>>
+        -> I'll look around
+            <<jump StoreButcher>>
+-> Ask about the shop
+    Store Butcher: This shop has been in my family for three generations! We take pride in quality and customer service.
+        -> How long have you been here?
+            <<jump ButcherExperience>>
+        -> What makes your meat special?
+            <<jump ButcherSpecial>>
+        -> That's impressive
+            <<jump StoreButcher>>
+-> Just browsing
+    Store Butcher: Take your time! Good meat is worth the wait, and I'm here to help you find exactly what you need!
+    -> End
+===
+
+title: ButcherSpecialty
+tags:
+position: 0,0
+---
+Store Butcher: My specialty is custom cuts! I can cut any piece of meat exactly how you want it. Plus, I make the best sausages in town!
+
+-> Back
+    <<jump StoreButcher>>
+===
+
+title: ButcherFresh
+tags:
+position: 0,0
+---
+Store Butcher: All my meat is fresh daily! I get deliveries every morning and cut everything to order. You can't get fresher than this!
+
+-> Back
+    <<jump StoreButcher>>
+===
+
+title: ButcherRecommend
+tags:
+position: 0,0
+---
+Store Butcher: For a special dinner, I'd recommend my ribeye steaks. For everyday cooking, my ground beef is perfect. What are you planning to cook?
+
+-> Back
+    <<jump StoreButcher>>
+===
+
+title: ButcherExperience
+tags:
+position: 0,0
+---
+Store Butcher: I've been cutting meat for twenty years, and my father before me for thirty years. It's in our blood!
+
+-> Back
+    <<jump StoreButcher>>
+===
+
+title: ButcherSpecial
+tags:
+position: 0,0
+---
+Store Butcher: I only buy from local farms I trust, and I cut everything by hand. No machines, no shortcuts - just old-fashioned quality!
+
+-> Back
+    <<jump StoreButcher>>
+===

@@ -1,0 +1,66 @@
+title: MainApartmentCharacter1
+tags:
+position: 0,0
+---
+Main Apartment Character: Welcome to our building! I'm one of the main residents here. We've been living in this apartment for several years now.
+
+-> Ask about the building
+    Main Apartment Character: This is a great building with a wonderful community! The neighbors are friendly and the management is responsive.
+        -> What's the community like?
+            <<jump MainApartmentCommunity1>>
+        -> How's the management?
+            <<jump MainApartmentManagement1>>
+        -> That sounds nice
+            <<jump MainApartmentCharacter1>>
+-> Ask about living here
+    Main Apartment Character: We love living here! It's convenient, safe, and we've made great friends with our neighbors.
+        -> What do you like most?
+            <<jump MainApartmentLike1>>
+        -> Any downsides?
+            <<jump MainApartmentDownsides1>>
+        -> That's great
+            <<jump MainApartmentCharacter1>>
+-> Just saying hi
+    Main Apartment Character: Nice to meet you! If you're new to the building, feel free to ask if you need anything!
+    -> End
+===
+
+title: MainApartmentCommunity1
+tags:
+position: 0,0
+---
+Main Apartment Character: The community is wonderful! People look out for each other, and we often have building events and gatherings.
+
+-> Back
+    <<jump MainApartmentCharacter1>>
+===
+
+title: MainApartmentManagement1
+tags:
+position: 0,0
+---
+Main Apartment Character: The management is excellent! They're responsive to concerns and keep the building well-maintained.
+
+-> Back
+    <<jump MainApartmentCharacter1>>
+===
+
+title: MainApartmentLike1
+tags:
+position: 0,0
+---
+Main Apartment Character: I love the sense of community and the convenience of the location. Plus, the building is well-maintained and secure.
+
+-> Back
+    <<jump MainApartmentCharacter1>>
+===
+
+title: MainApartmentDownsides1
+tags:
+position: 0,0
+---
+Main Apartment Character: Honestly, there aren't many downsides! Maybe the occasional noise, but that's normal in apartment living.
+
+-> Back
+    <<jump MainApartmentCharacter1>>
+===

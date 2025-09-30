@@ -1,0 +1,66 @@
+title: 2ndFloorWaitingOldWoman
+tags:
+position: 0,0
+---
+2nd Floor Waiting Old Woman: Good morning, dear! I'm here for my regular checkup. The waiting area is comfortable, and the staff is always so kind and helpful.
+
+-> Ask about the appointment
+    2nd Floor Waiting Old Woman: I'm here for my regular checkup. The doctors here are wonderful, and they always take such good care of me.
+        -> How are you feeling?
+            <<jump 2ndFloorWaitingOldWomanFeeling>>
+        -> Are you nervous?
+            <<jump 2ndFloorWaitingOldWomanNervous>>
+        -> That's good
+            <<jump 2ndFloorWaitingOldWoman>>
+-> Ask about the hospital
+    2nd Floor Waiting Old Woman: This hospital has been taking care of me for years. The doctors are excellent, and the staff is always so caring and professional.
+        -> What do you think of the staff?
+            <<jump 2ndFloorWaitingOldWomanStaff>>
+        -> How's the atmosphere?
+            <<jump 2ndFloorWaitingOldWomanAtmosphere>>
+        -> That's wonderful
+            <<jump 2ndFloorWaitingOldWoman>>
+-> Just saying hi
+    2nd Floor Waiting Old Woman: Nice to meet you, dear! It's always nice to have someone to chat with while waiting!
+    -> End
+===
+
+title: 2ndFloorWaitingOldWomanFeeling
+tags:
+position: 0,0
+---
+2nd Floor Waiting Old Woman: I'm feeling quite well, thank you! The doctors here have been taking such good care of me.
+
+-> Back
+    <<jump 2ndFloorWaitingOldWoman>>
+===
+
+title: 2ndFloorWaitingOldWomanNervous
+tags:
+position: 0,0
+---
+2nd Floor Waiting Old Woman: Not at all, dear! I've been coming here for years, and I trust the doctors completely. They're so kind and reassuring.
+
+-> Back
+    <<jump 2ndFloorWaitingOldWoman>>
+===
+
+title: 2ndFloorWaitingOldWomanStaff
+tags:
+position: 0,0
+---
+2nd Floor Waiting Old Woman: The staff is absolutely wonderful! They're so caring and professional. They make me feel safe and well-cared for.
+
+-> Back
+    <<jump 2ndFloorWaitingOldWoman>>
+===
+
+title: 2ndFloorWaitingOldWomanAtmosphere
+tags:
+position: 0,0
+---
+2nd Floor Waiting Old Woman: The atmosphere is so calm and welcoming. It doesn't feel like a typical hospital - more like a comfortable medical center.
+
+-> Back
+    <<jump 2ndFloorWaitingOldWoman>>
+===

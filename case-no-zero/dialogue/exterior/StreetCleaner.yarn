@@ -2,59 +2,76 @@ title: StreetCleaner
 tags:
 position: 0,0
 ---
-StreetCleaner: Clean streets, clean conscience. Someone's got to keep this city looking good.
+StreetCleaner: Keeping the streets clean is my job, but it's also my way of taking care of our community! Plus, I get to see the sunrise every morning—that's a pretty good perk!
 
 -> Ask about the work
-    StreetCleaner: It's honest work. Early mornings, steady pace, and the satisfaction of seeing progress.
-        -> Is it hard work?
-            <<jump CleanerHard>>
+    StreetCleaner: It's honest work that makes a real difference! What would you like to know?
         -> How long have you been doing this?
-            <<jump CleanerLong>>
--> Offer help
-    StreetCleaner: That's kind of you, but I've got my routine. Appreciate the thought though.
-        -> You do important work
-            <<jump CleanerImportant>>
-        -> Stay safe
-            <<jump CleanerSafe>>
--> I'll get out of your way
+            <<jump CleanerExperience>>
+        -> What's the hardest part?
+            <<jump CleanerHardest>>
+        -> Do you enjoy it?
+            <<jump CleanerEnjoy>>
+        -> That's admirable
+            <<jump StreetCleaner>>
+-> Ask about the area
+    StreetCleaner: This neighborhood is my responsibility, and I take pride in keeping it beautiful! Every clean street is a small victory.
+        -> How do you keep up with it all?
+            <<jump CleanerKeepup>>
+        -> Any interesting finds?
+            <<jump CleanerFinds>>
+        -> You're doing great work
+            <<jump StreetCleaner>>
+-> Just saying hi
+    StreetCleaner: Always good to see friendly faces! Remember, if you see trash, pick it up! We're all in this together!
     -> End
 ===
 
-title: CleanerHard
+title: CleanerExperience
 tags:
 position: 0,0
 ---
-StreetCleaner: Physical, yes. But there's something satisfying about making things clean and orderly.
+StreetCleaner: Ten years now! I've seen this neighborhood change, but one thing stays the same—people always need someone to clean up after them!
 
 -> Back
     <<jump StreetCleaner>>
 ===
 
-title: CleanerLong
+title: CleanerHardest
 tags:
 position: 0,0
 ---
-StreetCleaner: Ten years of keeping these streets spotless. I know every corner, every crack.
+StreetCleaner: The weather can be tough—rain makes everything soggy, and wind spreads trash everywhere! But the hardest part is when people don't appreciate the work.
 
 -> Back
     <<jump StreetCleaner>>
 ===
 
-title: CleanerImportant
+title: CleanerEnjoy
 tags:
 position: 0,0
 ---
-StreetCleaner: Thank you. Clean streets make for a better city, and a better city makes for better people.
+StreetCleaner: I do! There's something satisfying about seeing a clean street at the end of the day. Plus, I get to meet all kinds of interesting people!
 
 -> Back
     <<jump StreetCleaner>>
 ===
 
-title: CleanerSafe
+title: CleanerKeepup
 tags:
 position: 0,0
 ---
-StreetCleaner: I will. Safety first, cleanliness second, but both are important.
+StreetCleaner: It's a constant battle, but I have my routine! Early morning is best—fewer people around, and I can get a lot done before the day gets busy!
+
+-> Back
+    <<jump StreetCleaner>>
+===
+
+title: CleanerFinds
+tags:
+position: 0,0
+---
+StreetCleaner: You'd be surprised what people throw away! I've found everything from perfectly good books to loose change. Once I found a wedding ring—turned it in to the police!
 
 -> Back
     <<jump StreetCleaner>>

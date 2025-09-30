@@ -1,0 +1,66 @@
+title: Hotel2ndFloorResident2
+tags:
+position: 0,0
+---
+Hotel 2nd Floor Resident: Hello! I'm in room 202. It's a comfortable room, though the air conditioning could be better. Still, it's a good place to stay!
+
+-> Ask about the room
+    Hotel 2nd Floor Resident: It's clean and has everything I need! The bed is comfortable, and there's a nice desk for working.
+        -> How's the air conditioning?
+            <<jump HotelAC>>
+        -> Is it quiet?
+            <<jump HotelQuiet>>
+        -> That sounds good
+            <<jump Hotel2ndFloorResident2>>
+-> Ask about the stay
+    Hotel 2nd Floor Resident: I've been here for a week now, and it's been pleasant! The staff is nice, and the location is convenient.
+        -> How long are you staying?
+            <<jump HotelLength>>
+        -> What brings you here?
+            <<jump HotelPurpose>>
+        -> That's nice
+            <<jump Hotel2ndFloorResident2>>
+-> Just saying hi
+    Hotel 2nd Floor Resident: Nice to meet you! I'm usually around if you need anything!
+    -> End
+===
+
+title: HotelAC
+tags:
+position: 0,0
+---
+Hotel 2nd Floor Resident: It works, but it's not the strongest. I keep it on high, and it's comfortable enough!
+
+-> Back
+    <<jump Hotel2ndFloorResident2>>
+===
+
+title: HotelQuiet
+tags:
+position: 0,0
+---
+Hotel 2nd Floor Resident: It's pretty quiet! The walls are thick, and most guests are respectful of others.
+
+-> Back
+    <<jump Hotel2ndFloorResident2>>
+===
+
+title: HotelLength
+tags:
+position: 0,0
+---
+Hotel 2nd Floor Resident: I'm here for another week. It's a long business trip, but the hotel makes it bearable!
+
+-> Back
+    <<jump Hotel2ndFloorResident2>>
+===
+
+title: HotelPurpose
+tags:
+position: 0,0
+---
+Hotel 2nd Floor Resident: I'm here for work! I travel a lot for my job, so I'm used to staying in hotels.
+
+-> Back
+    <<jump Hotel2ndFloorResident2>>
+===

@@ -2,14 +2,15 @@ title: StreetVendor10
 tags:
 position: 0,0
 ---
-Street Vendor: Fresh meat! Chicken, pork, and beef! All fresh and properly stored!
+Street Vendor: Fresh meat! Beef, pork, and chicken! All from local farms and butchered fresh! 120 pesos per kilo!
 
 -> Buy meat
-    Street Vendor: Here you go! This is fresh and properly stored. Perfect for your cooking needs!
+    Street Vendor: Here you go! This is the best quality meat you'll find anywhere!
     -> End
 -> Ask about the meat
-    Street Vendor: I get them fresh from the local suppliers every morning. Everything is properly stored and handled. You can trust the quality!
+    Street Vendor: I get it from local farms every morning. You can taste the difference when it's truly fresh!
     -> End
--> Head out
+-> Decline
+    Street Vendor: That's okay! Fresh meat is always better when you're planning a special dinner!
     -> End
 ===

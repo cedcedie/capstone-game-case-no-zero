@@ -2,14 +2,15 @@ title: StreetPerformer
 tags:
 position: 0,0
 ---
-Street Performer: *strumming guitar* Hope you enjoyed the music! Every peso helps me keep doing what I love.
+Street Performer: Step right up! I'm about to perform my amazing juggling act! Three balls, two hands, and one very nervous performer!
 
--> Give tip
-    Street Performer: Thank you so much! Your support means everything to a struggling artist like me.
+-> Watch the show
+    Street Performer: Ta-da! And that's how you juggle without dropping anything! Well, most of the time anyway.
     -> End
--> Ask about the music
-    Street Performer: I write my own songs about life in the city. Music is my way of sharing stories and connecting with people.
+-> Ask about tips
+    Street Performer: If you enjoyed the show, tips are always appreciated! Even a few pesos helps keep the act going!
     -> End
--> Head out
+-> Keep walking
+    Street Performer: No worries! I'll be here all day if you want to catch the show later!
     -> End
 ===

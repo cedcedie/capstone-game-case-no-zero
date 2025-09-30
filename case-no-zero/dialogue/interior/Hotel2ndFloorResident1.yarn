@@ -1,0 +1,66 @@
+title: Hotel2ndFloorResident1
+tags:
+position: 0,0
+---
+Hotel 2nd Floor Resident: Good evening! I'm staying in room 201. It's a nice, quiet room with a great view of the city. Perfect for business travel!
+
+-> Ask about the hotel
+    Hotel 2nd Floor Resident: It's a decent place! Clean rooms, good service, and the location is convenient for my work.
+        -> How's the service?
+            <<jump HotelService>>
+        -> What's the view like?
+            <<jump HotelView>>
+        -> That sounds nice
+            <<jump Hotel2ndFloorResident1>>
+-> Ask about the area
+    Hotel 2nd Floor Resident: There are plenty of restaurants and shops nearby. Plus, it's close to the business district, which is perfect for me.
+        -> Any good restaurants?
+            <<jump HotelRestaurants>>
+        -> Is it safe around here?
+            <<jump HotelSafety>>
+        -> That's convenient
+            <<jump Hotel2ndFloorResident1>>
+-> Just saying hi
+    Hotel 2nd Floor Resident: Nice to meet you! I'm here for a few more days if you need anything!
+    -> End
+===
+
+title: HotelService
+tags:
+position: 0,0
+---
+Hotel 2nd Floor Resident: The staff is friendly and helpful! They clean the room daily and are always available if you need anything.
+
+-> Back
+    <<jump Hotel2ndFloorResident1>>
+===
+
+title: HotelView
+tags:
+position: 0,0
+---
+Hotel 2nd Floor Resident: The view is amazing! You can see the whole city from up here. It's especially beautiful at sunset!
+
+-> Back
+    <<jump Hotel2ndFloorResident1>>
+===
+
+title: HotelRestaurants
+tags:
+position: 0,0
+---
+Hotel 2nd Floor Resident: There's a great Italian place down the street, and a local diner that makes amazing breakfast!
+
+-> Back
+    <<jump Hotel2ndFloorResident1>>
+===
+
+title: HotelSafety
+tags:
+position: 0,0
+---
+Hotel 2nd Floor Resident: It's very safe! The hotel has good security, and the neighborhood is well-lit and busy.
+
+-> Back
+    <<jump Hotel2ndFloorResident1>>
+===

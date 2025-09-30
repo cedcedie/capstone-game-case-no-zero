@@ -1,0 +1,66 @@
+title: BarangayLobbyHelpDesk1
+tags:
+position: 0,0
+---
+Barangay Lobby Help Desk: Welcome to the barangay hall! I'm here to help you with any barangay-related services or concerns.
+
+-> Ask about services
+    Barangay Lobby Help Desk: We provide various barangay services including permits, certificates, and community assistance programs.
+        -> What services do you offer?
+            <<jump BarangayServices1>>
+        -> How do I get a permit?
+            <<jump BarangayPermit1>>
+        -> That's helpful
+            <<jump BarangayLobbyHelpDesk1>>
+-> Ask about the barangay
+    Barangay Lobby Help Desk: Our barangay serves the community with various programs and services. We're here to help residents with their needs.
+        -> What programs do you have?
+            <<jump BarangayPrograms1>>
+        -> How can I get involved?
+            <<jump BarangayInvolve1>>
+        -> That's great
+            <<jump BarangayLobbyHelpDesk1>>
+-> Just saying hi
+    Barangay Lobby Help Desk: Nice to meet you! If you need any barangay services, just let me know!
+    -> End
+===
+
+title: BarangayServices1
+tags:
+position: 0,0
+---
+Barangay Lobby Help Desk: We offer business permits, barangay clearance, community programs, and assistance with various government services.
+
+-> Back
+    <<jump BarangayLobbyHelpDesk1>>
+===
+
+title: BarangayPermit1
+tags:
+position: 0,0
+---
+Barangay Lobby Help Desk: You'll need to fill out an application form and provide the required documents. I can help you with the process!
+
+-> Back
+    <<jump BarangayLobbyHelpDesk1>>
+===
+
+title: BarangayPrograms1
+tags:
+position: 0,0
+---
+Barangay Lobby Help Desk: We have community health programs, youth activities, senior citizen services, and various development projects.
+
+-> Back
+    <<jump BarangayLobbyHelpDesk1>>
+===
+
+title: BarangayInvolve1
+tags:
+position: 0,0
+---
+Barangay Lobby Help Desk: You can join community meetings, volunteer for programs, or participate in barangay activities. We welcome community involvement!
+
+-> Back
+    <<jump BarangayLobbyHelpDesk1>>
+===

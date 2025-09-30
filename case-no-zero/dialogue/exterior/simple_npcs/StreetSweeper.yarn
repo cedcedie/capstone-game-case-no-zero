@@ -2,14 +2,15 @@ title: StreetSweeper
 tags:
 position: 0,0
 ---
-Street Sweeper: Another day, another pile of trash to clean up. At least the weather's nice today.
+Street Sweeper: Good morning! Just keeping the streets clean and tidy. A clean city is a happy city!
 
--> Keep working
-    Street Sweeper: Thanks for understanding. This city won't clean itself, you know.
+-> Comment on the work
+    Street Sweeper: It's honest work! Someone's got to keep things looking nice around here.
     -> End
--> Offer help
-    Street Sweeper: That's kind of you, but I've got my routine down. Just don't litter, that's help enough!
+-> Ask about the area
+    Street Sweeper: This block is usually pretty clean. People around here are pretty good about not littering.
     -> End
--> Head out
+-> Just saying hi
+    Street Sweeper: Have a great day! And remember, if you see trash, pick it up - we're all in this together!
     -> End
 ===

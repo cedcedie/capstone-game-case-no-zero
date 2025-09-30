@@ -2,14 +2,15 @@ title: JeepneyDriver
 tags:
 position: 0,0
 ---
-Jeepney Driver: Bayad po! Next stop, downtown. Hop on if you're going that way!
+Jeepney Driver: Hop in! I'm heading downtown - 15 pesos for a ride to anywhere along the route!
 
--> Ask about route
-    Jeepney Driver: I go from here to the main market, then to the bus terminal. Standard route, 12 pesos fare.
+-> Get on
+    Jeepney Driver: Welcome aboard! Hold on tight, it's going to be a bumpy ride!
     -> End
--> Ask about business
-    Jeepney Driver: Business is okay. Gas prices are killing us, but people still need to get around. Can't complain too much.
+-> Ask about the route
+    Jeepney Driver: I go through the market, past the school, and end up at the main plaza. Takes about 20 minutes if traffic's good.
     -> End
--> Head out
+-> Decline
+    Jeepney Driver: No problem! I'll be back around in about 30 minutes if you change your mind.
     -> End
 ===

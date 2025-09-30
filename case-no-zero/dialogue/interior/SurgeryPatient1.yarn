@@ -1,0 +1,66 @@
+title: SurgeryPatient1
+tags:
+position: 0,0
+---
+Surgery Patient: Hello... I'm a bit nervous about my surgery today, but the doctors and nurses have been very reassuring. They're taking good care of me.
+
+-> Ask about the surgery
+    Surgery Patient: I'm having surgery today, and I'm trying to stay positive. The medical team has been wonderful in explaining everything to me.
+        -> How are you feeling?
+            <<jump SurgeryPatient1Feeling>>
+        -> Are you nervous?
+            <<jump SurgeryPatient1Nervous>>
+        -> That's good
+            <<jump SurgeryPatient1>>
+-> Ask about the care
+    Surgery Patient: The hospital staff has been amazing! They've answered all my questions and made me feel comfortable and safe.
+        -> How are the doctors?
+            <<jump SurgeryPatient1Doctors>>
+        -> How are the nurses?
+            <<jump SurgeryPatient1Nurses>>
+        -> That's wonderful
+            <<jump SurgeryPatient1>>
+-> Just saying hi
+    Surgery Patient: Nice to meet you! I'm trying to stay calm and positive about everything. Your kind words help!
+    -> End
+===
+
+title: SurgeryPatient1Feeling
+tags:
+position: 0,0
+---
+Surgery Patient: I'm feeling okay, all things considered. A bit anxious, but the medical team has been very reassuring.
+
+-> Back
+    <<jump SurgeryPatient1>>
+===
+
+title: SurgeryPatient1Nervous
+tags:
+position: 0,0
+---
+Surgery Patient: A little nervous, yes, but that's normal. The doctors have explained everything so well that I feel more confident now.
+
+-> Back
+    <<jump SurgeryPatient1>>
+===
+
+title: SurgeryPatient1Doctors
+tags:
+position: 0,0
+---
+Surgery Patient: The doctors are wonderful! They're so knowledgeable and caring. I feel like I'm in good hands.
+
+-> Back
+    <<jump SurgeryPatient1>>
+===
+
+title: SurgeryPatient1Nurses
+tags:
+position: 0,0
+---
+Surgery Patient: The nurses are amazing! They're so kind and attentive. They've made this whole experience much easier.
+
+-> Back
+    <<jump SurgeryPatient1>>
+===

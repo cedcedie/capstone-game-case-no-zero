@@ -1,0 +1,66 @@
+title: MainApartmentCharacter2
+tags:
+position: 0,0
+---
+Main Apartment Character: Hello! I'm another main resident here. We've been part of this building community for quite some time now.
+
+-> Ask about the building
+    Main Apartment Character: This building has been our home for years! It's a great place to live with wonderful neighbors and good management.
+        -> How long have you lived here?
+            <<jump MainApartmentTime2>>
+        -> What's changed over the years?
+            <<jump MainApartmentChanges2>>
+        -> That's nice
+            <<jump MainApartmentCharacter2>>
+-> Ask about the neighborhood
+    Main Apartment Character: The neighborhood is great! It's safe, convenient, and has everything we need within walking distance.
+        -> What's nearby?
+            <<jump MainApartmentNearby2>>
+        -> Is it safe?
+            <<jump MainApartmentSafe2>>
+        -> That's convenient
+            <<jump MainApartmentCharacter2>>
+-> Just saying hi
+    Main Apartment Character: Nice to meet you! Welcome to our building community!
+    -> End
+===
+
+title: MainApartmentTime2
+tags:
+position: 0,0
+---
+Main Apartment Character: We've been here for about five years now. It's been a great experience living in this building!
+
+-> Back
+    <<jump MainApartmentCharacter2>>
+===
+
+title: MainApartmentChanges2
+tags:
+position: 0,0
+---
+Main Apartment Character: The building has been well-maintained over the years. They've made some improvements and the community has grown stronger.
+
+-> Back
+    <<jump MainApartmentCharacter2>>
+===
+
+title: MainApartmentNearby2
+tags:
+position: 0,0
+---
+Main Apartment Character: There are grocery stores, restaurants, and public transportation nearby. Everything we need is within easy reach!
+
+-> Back
+    <<jump MainApartmentCharacter2>>
+===
+
+title: MainApartmentSafe2
+tags:
+position: 0,0
+---
+Main Apartment Character: Yes, it's very safe! The building has good security, and the neighborhood is well-lit and well-patrolled.
+
+-> Back
+    <<jump MainApartmentCharacter2>>
+===

@@ -10,13 +10,18 @@ BarberShopOwner: Welcome! A good haircut is like a good conversation—it makes 
             <<jump BarberRecommend>>
         -> How much does it cost?
             <<jump BarberCost>>
+        -> I'll think about it
+            <<jump BarberShopOwner>>
 -> Ask about the shop
     BarberShopOwner: This place has been here for twenty years. We've seen generations of customers.
         -> What's your specialty?
             <<jump BarberSpecialty>>
         -> Any interesting stories?
             <<jump BarberStories>>
+        -> That's impressive
+            <<jump BarberShopOwner>>
 -> Just looking around
+    BarberShopOwner: Take your time! A good haircut is an investment in yourself.
     -> End
 ===
 
@@ -24,7 +29,7 @@ title: BarberRecommend
 tags:
 position: 0,0
 ---
-BarberShopOwner: Something classic that'll look good today and tomorrow. Trust me, I know what works.
+BarberShopOwner: Something classic that'll look good today and tomorrow. Trust me, I know what works. I've been cutting hair longer than you've been alive!
 
 -> Back
     <<jump BarberShopOwner>>
@@ -34,7 +39,7 @@ title: BarberCost
 tags:
 position: 0,0
 ---
-BarberShopOwner: Fifty pesos for a cut, seventy-five if you want the full treatment.
+BarberShopOwner: Fifty pesos for a cut, seventy-five if you want the full treatment. That includes a shave so smooth you'll forget you ever had a beard!
 
 -> Back
     <<jump BarberShopOwner>>
@@ -44,7 +49,7 @@ title: BarberSpecialty
 tags:
 position: 0,0
 ---
-BarberShopOwner: I can do anything from a simple trim to a full style. Your hair, your choice.
+BarberShopOwner: I can do anything from a simple trim to a full style. Your hair, your choice. Though I must warn you, I'm terrible at mohawks—they always end up looking like confused roosters!
 
 -> Back
     <<jump BarberShopOwner>>
@@ -54,7 +59,7 @@ title: BarberStories
 tags:
 position: 0,0
 ---
-BarberShopOwner: Oh, I've heard everything in this chair. People talk when they're relaxed.
+BarberShopOwner: Oh, I've heard everything in this chair. People talk when they're relaxed. Once had a customer confess to stealing his neighbor's mangoes while I was trimming his sideburns!
 
 -> Back
     <<jump BarberShopOwner>>

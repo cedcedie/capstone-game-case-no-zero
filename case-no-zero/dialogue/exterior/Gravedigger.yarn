@@ -2,15 +2,65 @@ title: Gravedigger
 tags:
 position: 0,0
 ---
-Gravedigger: Ground’s soft after rain. Names feel heavier then.
+Gravedigger: This is sacred work, you know. Every grave I dig is someone's final resting place, and I make sure it's done with respect and dignity.
 
--> Offer a moment of silence
-    Gravedigger: Appreciate it. Quiet keeps the place honest.
-    <<jump Gravedigger>>
--> Ask about work
-    Gravedigger: It’s care, not just labor. We tend memories here.
-    <<jump Gravedigger>>
--> Step away
+-> Ask about the work
+    Gravedigger: It's not the most cheerful job, but someone has to do it. I take pride in doing it right.
+        -> How long have you been doing this?
+            <<jump GraveExperience>>
+        -> Is it difficult work?
+            <<jump GraveDifficulty>>
+        -> That's admirable
+            <<jump Gravedigger>>
+-> Ask about the cemetery
+    Gravedigger: This place has been here for over a hundred years. Every stone tells a story, every grave holds memories.
+        -> Any interesting stories?
+            <<jump GraveStories>>
+        -> How do you maintain it?
+            <<jump GraveMaintenance>>
+        -> It's peaceful here
+            <<jump Gravedigger>>
+-> Just passing through
+    Gravedigger: Take your time. This is a place for reflection and remembrance. Just remember to be respectful—the residents here are very particular about noise levels!
     -> End
 ===
 
+title: GraveExperience
+tags:
+position: 0,0
+---
+Gravedigger: Twenty years now. I've dug graves for babies and centenarians, for rich and poor. Death is the great equalizer, and I help ensure everyone gets the same dignity.
+
+-> Back
+    <<jump Gravedigger>>
+===
+
+title: GraveDifficulty
+tags:
+position: 0,0
+---
+Gravedigger: Physically? Yes, it's hard work. Emotionally? Sometimes. But I find comfort in knowing I'm helping families say their final goodbyes properly.
+
+-> Back
+    <<jump Gravedigger>>
+===
+
+title: GraveStories
+tags:
+position: 0,0
+---
+Gravedigger: Once, a family asked me to bury their pet dog next to their grandmother. Said the dog was her best friend. I did it—love is love, whether it's human or animal.
+
+-> Back
+    <<jump Gravedigger>>
+===
+
+title: GraveMaintenance
+tags:
+position: 0,0
+---
+Gravedigger: I keep the grass trimmed, the stones clean, and the paths clear. It's like tending a garden, but instead of flowers, I'm caring for memories.
+
+-> Back
+    <<jump Gravedigger>>
+===

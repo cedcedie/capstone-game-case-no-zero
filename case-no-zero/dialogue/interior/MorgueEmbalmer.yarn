@@ -1,0 +1,66 @@
+title: MorgueEmbalmer
+tags:
+position: 0,0
+---
+Morgue Embalmer: Good morning. I'm here to perform embalming services. It's a specialized field that requires skill, respect, and attention to detail.
+
+-> Ask about embalming
+    Morgue Embalmer: Embalming is a specialized process that requires technical skill and respect for the deceased. It's about preserving dignity and helping families.
+        -> How long have you been doing this?
+            <<jump MorgueEmbalmerExperience>>
+        -> What's the process like?
+            <<jump MorgueEmbalmerProcess>>
+        -> That's important work
+            <<jump MorgueEmbalmer>>
+-> Ask about the profession
+    Morgue Embalmer: This profession requires both technical expertise and emotional sensitivity. It's about serving families during their most difficult times.
+        -> What training is required?
+            <<jump MorgueEmbalmerTraining>>
+        -> How do you handle the emotional aspect?
+            <<jump MorgueEmbalmerEmotional>>
+        -> That's admirable
+            <<jump MorgueEmbalmer>>
+-> Just saying hi
+    Morgue Embalmer: Thank you for your understanding. This work requires a special kind of person who can balance technical skill with compassion.
+    -> End
+===
+
+title: MorgueEmbalmerExperience
+tags:
+position: 0,0
+---
+Morgue Embalmer: I've been practicing embalming for twelve years now. It's a field that requires constant learning and attention to detail.
+
+-> Back
+    <<jump MorgueEmbalmer>>
+===
+
+title: MorgueEmbalmerProcess
+tags:
+position: 0,0
+---
+Morgue Embalmer: The process involves preservation techniques and preparation for viewing. It's done with the utmost respect and care for the deceased and their family.
+
+-> Back
+    <<jump MorgueEmbalmer>>
+===
+
+title: MorgueEmbalmerTraining
+tags:
+position: 0,0
+---
+Morgue Embalmer: It requires specialized education and certification. You need to understand anatomy, chemistry, and the emotional needs of grieving families.
+
+-> Back
+    <<jump MorgueEmbalmer>>
+===
+
+title: MorgueEmbalmerEmotional
+tags:
+position: 0,0
+---
+Morgue Embalmer: You have to maintain professionalism while being sensitive to the emotional needs of families. It's about providing comfort during difficult times.
+
+-> Back
+    <<jump MorgueEmbalmer>>
+===

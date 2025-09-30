@@ -1,0 +1,66 @@
+title: MarketBuyer2
+tags:
+position: 0,0
+---
+Market Buyer: Hello! I'm here to buy some fresh ingredients for dinner tonight. There's nothing like cooking with fresh, local produce!
+
+-> Ask about cooking
+    Market Buyer: I love to cook! There's something special about using fresh ingredients - it makes everything taste better.
+        -> What are you cooking tonight?
+            <<jump MarketBuyer2Cooking>>
+        -> Do you cook often?
+            <<jump MarketBuyer2Often>>
+        -> That's wonderful
+            <<jump MarketBuyer2>>
+-> Ask about ingredients
+    Market Buyer: I'm looking for the freshest vegetables and some good meat. The quality here is always excellent!
+        -> What vegetables are you looking for?
+            <<jump MarketBuyer2Vegetables>>
+        -> Where do you usually shop?
+            <<jump MarketBuyer2Shop>>
+        -> That's great
+            <<jump MarketBuyer2>>
+-> Just saying hi
+    Market Buyer: Nice to meet you! If you're looking for cooking tips, I'm always happy to share what I know!
+    -> End
+===
+
+title: MarketBuyer2Cooking
+tags:
+position: 0,0
+---
+Market Buyer: I'm making a vegetable stir-fry with some fresh chicken. Simple but delicious!
+
+-> Back
+    <<jump MarketBuyer2>>
+===
+
+title: MarketBuyer2Often
+tags:
+position: 0,0
+---
+Market Buyer: I cook almost every day! It's my way of relaxing and taking care of myself and my family.
+
+-> Back
+    <<jump MarketBuyer2>>
+===
+
+title: MarketBuyer2Vegetables
+tags:
+position: 0,0
+---
+Market Buyer: I need some bell peppers, onions, and broccoli. Maybe some carrots too - they add great color and flavor!
+
+-> Back
+    <<jump MarketBuyer2>>
+===
+
+title: MarketBuyer2Shop
+tags:
+position: 0,0
+---
+Market Buyer: I usually come here for fresh produce, and then I go to the butcher for meat. It's worth the extra trip for quality!
+
+-> Back
+    <<jump MarketBuyer2>>
+===

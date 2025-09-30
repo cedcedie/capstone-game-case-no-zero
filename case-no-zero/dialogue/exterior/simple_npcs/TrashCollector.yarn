@@ -2,14 +2,15 @@ title: TrashCollector
 tags:
 position: 0,0
 ---
-Trash Collector: Morning! Just doing my rounds. This neighborhood's pretty clean, which makes my job easier.
+Trash Collector: Good morning! Just doing my rounds, keeping the neighborhood clean. It's not glamorous work, but someone's got to do it!
 
--> Comment on cleanliness
-    Trash Collector: Yeah, people here are pretty responsible. Makes a big difference when everyone does their part.
+-> Comment on the work
+    Trash Collector: It's honest work! A clean neighborhood is a happy neighborhood.
     -> End
--> Ask about the job
-    Trash Collector: It's honest work. Someone's got to do it, and I don't mind. Keeps the city looking good.
+-> Ask about the schedule
+    Trash Collector: I come through here every Tuesday and Friday. Just put your trash out the night before!
     -> End
--> Head out
+-> Just saying hi
+    Trash Collector: Have a great day! And remember, if you see trash, pick it up - we're all in this together!
     -> End
 ===
