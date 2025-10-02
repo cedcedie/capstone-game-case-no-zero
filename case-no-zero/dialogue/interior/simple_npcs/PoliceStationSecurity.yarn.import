@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://d23vaugdinpch"
+path="res://.godot/imported/PoliceStationSecurity.yarn-9cc62f4738cbe449ff4c7623e22bdb20.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/simple_npcs/PoliceStationSecurity.yarn"
+dest_files=["res://.godot/imported/PoliceStationSecurity.yarn-9cc62f4738cbe449ff4c7623e22bdb20.tres"]
+
+[params]
+

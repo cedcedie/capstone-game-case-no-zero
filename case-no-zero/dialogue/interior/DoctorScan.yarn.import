@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cow6l0c3m4ufd"
+path="res://.godot/imported/DoctorScan.yarn-ae1aa3ecd2fa78ca4e53133277c18d86.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/DoctorScan.yarn"
+dest_files=["res://.godot/imported/DoctorScan.yarn-ae1aa3ecd2fa78ca4e53133277c18d86.tres"]
+
+[params]
+

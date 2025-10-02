@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cv0ne4ybs4t3h"
+path="res://.godot/imported/AbandonedCourtPerson2.yarn-713550f609c95797c7bebd5b1b845d0f.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/AbandonedCourtPerson2.yarn"
+dest_files=["res://.godot/imported/AbandonedCourtPerson2.yarn-713550f609c95797c7bebd5b1b845d0f.tres"]
+
+[params]
+

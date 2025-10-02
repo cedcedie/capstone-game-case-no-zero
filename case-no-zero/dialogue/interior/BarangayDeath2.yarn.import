@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://lgd01542q0nv"
+path="res://.godot/imported/BarangayDeath2.yarn-e4721d2f44e032bfaf5363f4e204fc19.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/BarangayDeath2.yarn"
+dest_files=["res://.godot/imported/BarangayDeath2.yarn-e4721d2f44e032bfaf5363f4e204fc19.tres"]
+
+[params]
+

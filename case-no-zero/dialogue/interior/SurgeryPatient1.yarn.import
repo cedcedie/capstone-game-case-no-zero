@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c6l8vv51g4d4a"
+path="res://.godot/imported/SurgeryPatient1.yarn-3fdf7d53c560864a0bc7e99c0d5a19f4.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/SurgeryPatient1.yarn"
+dest_files=["res://.godot/imported/SurgeryPatient1.yarn-3fdf7d53c560864a0bc7e99c0d5a19f4.tres"]
+
+[params]
+

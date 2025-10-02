@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://csy5clu6nwbcc"
+path="res://.godot/imported/CheckupDoctor.yarn-1b9ecbff3161b133f68f42f67f0fb7c1.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/CheckupDoctor.yarn"
+dest_files=["res://.godot/imported/CheckupDoctor.yarn-1b9ecbff3161b133f68f42f67f0fb7c1.tres"]
+
+[params]
+

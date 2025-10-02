@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://dfef1nov6lq8w"
+path="res://.godot/imported/Hotel2ndFloorResident2.yarn-a9a2511be11ded26819502905eda19d1.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/Hotel2ndFloorResident2.yarn"
+dest_files=["res://.godot/imported/Hotel2ndFloorResident2.yarn-a9a2511be11ded26819502905eda19d1.tres"]
+
+[params]
+

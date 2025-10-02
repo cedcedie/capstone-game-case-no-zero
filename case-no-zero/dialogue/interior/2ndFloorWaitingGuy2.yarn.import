@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://ntcmxsy83ahg"
+path="res://.godot/imported/2ndFloorWaitingGuy2.yarn-bfe5ee61881a2089487b9916bf53f294.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/2ndFloorWaitingGuy2.yarn"
+dest_files=["res://.godot/imported/2ndFloorWaitingGuy2.yarn-bfe5ee61881a2089487b9916bf53f294.tres"]
+
+[params]
+

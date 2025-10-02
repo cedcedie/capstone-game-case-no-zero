@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c7iwa61tlllm6"
+path="res://.godot/imported/BarangayLobbyHelpDesk1.yarn-994a5da223213dd5241275c992c51cad.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/BarangayLobbyHelpDesk1.yarn"
+dest_files=["res://.godot/imported/BarangayLobbyHelpDesk1.yarn-994a5da223213dd5241275c992c51cad.tres"]
+
+[params]
+

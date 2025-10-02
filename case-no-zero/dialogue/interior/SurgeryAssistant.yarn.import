@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cyfjydns64mc7"
+path="res://.godot/imported/SurgeryAssistant.yarn-610823602fc92c00a5b543739457f69d.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/SurgeryAssistant.yarn"
+dest_files=["res://.godot/imported/SurgeryAssistant.yarn-610823602fc92c00a5b543739457f69d.tres"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://0vtlhkekhgcd"
+path="res://.godot/imported/FruitSeller.yarn-35e8222f2d5f76b915143f379ca8a992.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/FruitSeller.yarn"
+dest_files=["res://.godot/imported/FruitSeller.yarn-35e8222f2d5f76b915143f379ca8a992.tres"]
+
+[params]
+

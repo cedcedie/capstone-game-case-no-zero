@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://qqxjqelx36op"
+path="res://.godot/imported/BarangayTanod2.yarn-61c2b712236b18904be98acedcbea07c.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/BarangayTanod2.yarn"
+dest_files=["res://.godot/imported/BarangayTanod2.yarn-61c2b712236b18904be98acedcbea07c.tres"]
+
+[params]
+

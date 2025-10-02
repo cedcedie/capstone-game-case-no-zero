@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://bbl7e2iqhsr8w"
+path="res://.godot/imported/PatientLockdown.yarn-7365e127bbd117b9802ebf90da68f0a7.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/PatientLockdown.yarn"
+dest_files=["res://.godot/imported/PatientLockdown.yarn-7365e127bbd117b9802ebf90da68f0a7.tres"]
+
+[params]
+

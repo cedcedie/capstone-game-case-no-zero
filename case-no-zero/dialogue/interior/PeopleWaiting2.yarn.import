@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c66fiw6071i1y"
+path="res://.godot/imported/PeopleWaiting2.yarn-c462b7a12ad86ba9b7e8f6583fc1382c.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/PeopleWaiting2.yarn"
+dest_files=["res://.godot/imported/PeopleWaiting2.yarn-c462b7a12ad86ba9b7e8f6583fc1382c.tres"]
+
+[params]
+

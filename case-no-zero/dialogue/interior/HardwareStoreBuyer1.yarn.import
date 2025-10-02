@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://bxwvb2v2q1dp3"
+path="res://.godot/imported/HardwareStoreBuyer1.yarn-4ae0f3b86dca4bc4d8ffffaf23e74ce5.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/HardwareStoreBuyer1.yarn"
+dest_files=["res://.godot/imported/HardwareStoreBuyer1.yarn-4ae0f3b86dca4bc4d8ffffaf23e74ce5.tres"]
+
+[params]
+

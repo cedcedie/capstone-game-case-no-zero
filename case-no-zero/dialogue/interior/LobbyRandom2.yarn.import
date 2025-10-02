@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c52ra0es2cal6"
+path="res://.godot/imported/LobbyRandom2.yarn-1a53fe72b4ca84346f07018c170dde66.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/LobbyRandom2.yarn"
+dest_files=["res://.godot/imported/LobbyRandom2.yarn-1a53fe72b4ca84346f07018c170dde66.tres"]
+
+[params]
+

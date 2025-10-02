@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cqpjr4dyjnkc8"
+path="res://.godot/imported/SurgeryDoctor1.yarn-a48156283733a619abf0e796fea807c7.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/SurgeryDoctor1.yarn"
+dest_files=["res://.godot/imported/SurgeryDoctor1.yarn-a48156283733a619abf0e796fea807c7.tres"]
+
+[params]
+

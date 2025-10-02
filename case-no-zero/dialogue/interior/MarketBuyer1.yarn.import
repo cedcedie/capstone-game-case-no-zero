@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://dn4c8tm8vnwx4"
+path="res://.godot/imported/MarketBuyer1.yarn-613fa7f7dfa380fdc85708716b9804a3.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/MarketBuyer1.yarn"
+dest_files=["res://.godot/imported/MarketBuyer1.yarn-613fa7f7dfa380fdc85708716b9804a3.tres"]
+
+[params]
+

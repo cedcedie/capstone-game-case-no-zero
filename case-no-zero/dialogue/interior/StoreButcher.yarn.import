@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://dadcl8aibgele"
+path="res://.godot/imported/StoreButcher.yarn-d11ce5e0d3898e1cd7b3213f33d92606.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/StoreButcher.yarn"
+dest_files=["res://.godot/imported/StoreButcher.yarn-d11ce5e0d3898e1cd7b3213f33d92606.tres"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://13y5jl30tpra"
+path="res://.godot/imported/Apartment2Resident.yarn-c1562debbc741c9614a9ef701bb5b12b.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/Apartment2Resident.yarn"
+dest_files=["res://.godot/imported/Apartment2Resident.yarn-c1562debbc741c9614a9ef701bb5b12b.tres"]
+
+[params]
+

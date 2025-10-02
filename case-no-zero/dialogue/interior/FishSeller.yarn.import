@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://diau68uxcq50i"
+path="res://.godot/imported/FishSeller.yarn-f5926a3888de90f7b37ca4ed45e08cd8.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/FishSeller.yarn"
+dest_files=["res://.godot/imported/FishSeller.yarn-f5926a3888de90f7b37ca4ed45e08cd8.tres"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://c6qdybivuy6mn"
+path="res://.godot/imported/HotelConcierge.yarn-e10004c7c6f544d77e86daaa8efdcb7c.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/HotelConcierge.yarn"
+dest_files=["res://.godot/imported/HotelConcierge.yarn-e10004c7c6f544d77e86daaa8efdcb7c.tres"]
+
+[params]
+

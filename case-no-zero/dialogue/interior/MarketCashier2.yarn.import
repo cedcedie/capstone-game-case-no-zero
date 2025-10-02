@@ -1,0 +1,14 @@
+[remap]
+
+importer="yarnscript"
+type="Resource"
+uid="uid://cpe4nf3f574mt"
+path="res://.godot/imported/MarketCashier2.yarn-842c4bd0e7cba9243ddbfc4e7b5bad54.tres"
+
+[deps]
+
+source_file="res://dialogue/interior/MarketCashier2.yarn"
+dest_files=["res://.godot/imported/MarketCashier2.yarn-842c4bd0e7cba9243ddbfc4e7b5bad54.tres"]
+
+[params]
+
