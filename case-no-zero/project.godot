@@ -11,9 +11,8 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://d4mwuvoqdee3o"
+run/main_scene="res://apartment1.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
-<<<<<<<Updatedupstreamrun/main_scene="uid://dfyuuvfmltt7m"
 
 [audio]
 
