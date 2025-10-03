@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://5d4uo5rtdrrk"]
+[gd_scene load_steps=84 format=4 uid="uid://5d4uo5rtdrrk"]
 
 [ext_resource type="Script" uid="uid://dy2v4pd1ffrug" path="res://scenes/cutscene/bedroom_scene.gd" id="1_2e68i"]
 [ext_resource type="Texture2D" uid="uid://q7u1l1cvwbcj" path="res://assets/PNG/interior/Room_Builder_3d_walls_32x32.png" id="1_4eorf"]
@@ -22086,6 +22086,57 @@ sources/23 = SubResource("TileSetAtlasSource_lk7eb")
 sources/24 = SubResource("TileSetAtlasSource_wrqiv")
 sources/25 = SubResource("TileSetAtlasSource_pecvl")
 
+[sub_resource type="Animation" id="Animation_muwu8"]
+resource_name = "Intro"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerM:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(65, 438), Vector2(360, 441)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerM")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["walk_right"],
+"method": &"play_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_muphy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerM:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(65, 438)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_csu0h"]
+_data = {
+&"Intro": SubResource("Animation_muwu8"),
+&"RESET": SubResource("Animation_muphy")
+}
+
 [node name="BedroomScene" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(359, 106)
@@ -22140,3 +22191,9 @@ bbcode_enabled = true
 
 [node name="KnockSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("39_muwu8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_csu0h")
+}
+autoplay = "Intro"

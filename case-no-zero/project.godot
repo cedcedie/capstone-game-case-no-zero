@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="res://apartment1.tscn"
+run/main_scene="uid://5d4uo5rtdrrk"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
 [audio]
@@ -63,7 +63,7 @@ project/assembly_name="casenozero"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/YarnSpinner-Godot/plugin.cfg")
 
 [input]
 

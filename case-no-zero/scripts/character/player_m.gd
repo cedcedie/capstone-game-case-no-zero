@@ -6,17 +6,23 @@ extends CharacterBody2D
 
 var direction: Vector2 = Vector2.ZERO
 var last_facing: String = "front"
-var control_enabled: bool = true
+
+var control_enabled: bool = true     # can the player move?
+var cutscene_mode: bool = false      # are we in a cutscene?
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if control_enabled:
 		_handle_input()
 	else:
+		# stop physics-based movement when disabled
 		velocity = Vector2.ZERO
 		move_and_slide()
 
 
+# --------------------
+# INPUT + MOVEMENT
+# --------------------
 func _handle_input() -> void:
 	direction = Vector2.ZERO
 
@@ -32,7 +38,7 @@ func _handle_input() -> void:
 	direction = direction.normalized()
 
 	var current_speed = walk_speed
-	if Input.is_action_pressed("ui_select"):
+	if Input.is_action_pressed("ui_select"):  # run key
 		current_speed = run_speed
 		anim_sprite.speed_scale = 2.0
 	else:
@@ -41,7 +47,8 @@ func _handle_input() -> void:
 	velocity = direction * current_speed
 	move_and_slide()
 
-	_update_animation(direction)
+	if not cutscene_mode:
+		_update_animation(direction)
 
 
 func _update_animation(dir: Vector2) -> void:
@@ -56,13 +63,25 @@ func _update_animation(dir: Vector2) -> void:
 		anim_sprite.play("walk_" + last_facing)
 
 
-# --- Helpers for cutscenes ---
+# --------------------
+# HELPERS FOR CUTSCENES
+# --------------------
+func disable_control() -> void:
+	control_enabled = false
+	cutscene_mode = true
+
+func enable_control() -> void:
+	control_enabled = true
+	cutscene_mode = false
+
 func play_animation(anim_name: String) -> void:
-	if anim_sprite.has_animation(anim_name):
+	cutscene_mode = true
+	if anim_sprite.sprite_frames.has_animation(anim_name):
 		anim_sprite.play(anim_name)
 
 
-func face_direction(direction: String) -> void:
-	last_facing = direction
-	if anim_sprite.has_animation("idle_" + direction):
-		anim_sprite.play("idle_" + direction)
+func face_direction(dir: String) -> void:
+	cutscene_mode = true
+	last_facing = dir
+	if anim_sprite.sprite_frames.has_animation("idle_" + dir):
+		anim_sprite.play("idle_" + dir)
