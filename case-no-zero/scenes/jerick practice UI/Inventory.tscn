@@ -33,8 +33,8 @@ grow_vertical = 2
 layout_mode = 0
 offset_left = 109.0
 offset_top = 35.0
-offset_right = 465.0
-offset_bottom = 343.0
+offset_right = 466.0
+offset_bottom = 344.0
 texture = ExtResource("1_cpjuh")
 region_rect = Rect2(26, 600, 44, 48)
 patch_margin_left = 32
@@ -45,9 +45,9 @@ patch_margin_bottom = 32
 [node name="EXit" type="NinePatchRect" parent="."]
 layout_direction = 3
 layout_mode = 2
-offset_left = 910.0
+offset_left = 908.0
 offset_top = 48.0
-offset_right = 942.0
+offset_right = 940.0
 offset_bottom = 80.0
 texture = ExtResource("1_cpjuh")
 region_rect = Rect2(898, 769, 28, 32)
@@ -201,9 +201,9 @@ patch_margin_bottom = 32
 
 [node name="Inventory menu" type="NinePatchRect" parent="."]
 layout_direction = 3
-offset_left = 1207.0
+offset_left = 1212.0
 offset_top = 49.0
-offset_right = 1239.0
+offset_right = 1244.0
 offset_bottom = 81.0
 texture = ExtResource("1_cpjuh")
 region_rect = Rect2(1058, 738, 28, 30)
@@ -212,9 +212,9 @@ patch_margin_top = 32
 
 [node name="settings" type="NinePatchRect" parent="."]
 layout_direction = 3
-offset_left = 1171.0
+offset_left = 1176.0
 offset_top = 47.0
-offset_right = 1203.0
+offset_right = 1208.0
 offset_bottom = 79.0
 texture = ExtResource("1_cpjuh")
 region_rect = Rect2(1281, 864, 29, 32)
@@ -223,9 +223,9 @@ patch_margin_top = 32
 
 [node name="Inventory menu3" type="NinePatchRect" parent="."]
 layout_direction = 3
-offset_left = 1135.0
+offset_left = 1140.0
 offset_top = 47.0
-offset_right = 1167.0
+offset_right = 1172.0
 offset_bottom = 79.0
 texture = ExtResource("1_cpjuh")
 region_rect = Rect2(1154, 832, 28, 32)
