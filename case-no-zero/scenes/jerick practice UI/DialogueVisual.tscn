@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyr5alfg2badh"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hjxkp"]
+size = Vector2(2, 2)
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 18.0
+offset_right = 506.0
+offset_bottom = 226.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 15.0
+offset_right = 112.0
+offset_bottom = 47.0
+text = "NAME"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 57.0
+offset_right = 389.0
+offset_bottom = 162.0
+text = "Words......."
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 33.0
+offset_right = 479.0
+offset_bottom = 76.0
+texture = SubResource("PlaceholderTexture2D_hjxkp")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 27.0
+offset_top = 183.0
+offset_right = 102.0
+offset_bottom = 214.0
+text = "previous"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 2
+offset_left = 234.0
+offset_top = 183.0
+offset_right = 277.0
+offset_bottom = 214.0
+text = "next"
+
+[node name="Button3" type="Button" parent="."]
+layout_direction = 2
+layout_mode = 2
+offset_left = 433.0
+offset_top = 183.0
+offset_right = 478.0
+offset_bottom = 214.0
+text = "skip"
+
+[node name="Timer" type="Timer" parent="."]

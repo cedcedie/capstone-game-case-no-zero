@@ -63,7 +63,7 @@ project/assembly_name="casenozero"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/YarnSpinner-Godot/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
