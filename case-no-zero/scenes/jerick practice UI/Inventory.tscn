@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7w3vk6bm847b"]
+[gd_scene load_steps=5 format=3 uid="uid://c7w3vk6bm847b"]
 
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/PNG/ui/Modern_UI_Style_1_32x32.png" id="1_cpjuh"]
 
@@ -10,10 +10,15 @@ outline_size = 9
 outline_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cpjuh"]
-line_spacing = 10.0
-paragraph_spacing = 15.0
-font_size = 14
-outline_size = 5
+line_spacing = 0.0
+font_size = 12
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_accfc"]
+line_spacing = 0.0
+font_size = 15
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Inventory" type="Control"]
@@ -24,12 +29,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+[node name="background" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 51.0
-offset_right = 398.0
-offset_bottom = 322.0
+offset_left = 109.0
+offset_top = 35.0
+offset_right = 465.0
+offset_bottom = 343.0
 texture = ExtResource("1_cpjuh")
 region_rect = Rect2(26, 600, 44, 48)
 patch_margin_left = 32
@@ -37,12 +42,24 @@ patch_margin_top = 32
 patch_margin_right = 32
 patch_margin_bottom = 32
 
+[node name="EXit" type="NinePatchRect" parent="."]
+layout_direction = 3
+layout_mode = 2
+offset_left = 910.0
+offset_top = 47.0
+offset_right = 942.0
+offset_bottom = 79.0
+texture = ExtResource("1_cpjuh")
+region_rect = Rect2(930, 770, 28, 30)
+patch_margin_left = 32
+patch_margin_top = 32
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 22.0
-offset_right = 421.0
-offset_bottom = 340.0
+offset_left = 88.0
+offset_top = 45.0
+offset_right = 488.0
+offset_bottom = 363.0
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
@@ -74,11 +91,18 @@ patch_margin_top = 32
 patch_margin_right = 32
 patch_margin_bottom = 32
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridContainer3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/GridContainer3"]
 layout_mode = 2
-text = "Description:
-"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Item:"
 label_settings = SubResource("LabelSettings_cpjuh")
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Description:"
+label_settings = SubResource("LabelSettings_accfc")
 
 [node name="GridContainer2" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_direction = 2
@@ -174,3 +198,36 @@ patch_margin_left = 32
 patch_margin_top = 32
 patch_margin_right = 32
 patch_margin_bottom = 32
+
+[node name="Inventory menu" type="NinePatchRect" parent="."]
+layout_direction = 3
+offset_left = 1207.0
+offset_top = 47.0
+offset_right = 1239.0
+offset_bottom = 79.0
+texture = ExtResource("1_cpjuh")
+region_rect = Rect2(1026, 736, 28, 288)
+patch_margin_left = 32
+patch_margin_top = 32
+
+[node name="settings" type="NinePatchRect" parent="."]
+layout_direction = 3
+offset_left = 1171.0
+offset_top = 47.0
+offset_right = 1203.0
+offset_bottom = 79.0
+texture = ExtResource("1_cpjuh")
+region_rect = Rect2(1281, 864, 29, 32)
+patch_margin_left = 32
+patch_margin_top = 32
+
+[node name="Inventory menu3" type="NinePatchRect" parent="."]
+layout_direction = 3
+offset_left = 1135.0
+offset_top = 47.0
+offset_right = 1167.0
+offset_bottom = 79.0
+texture = ExtResource("1_cpjuh")
+region_rect = Rect2(1154, 832, 28, 32)
+patch_margin_left = 32
+patch_margin_top = 32
