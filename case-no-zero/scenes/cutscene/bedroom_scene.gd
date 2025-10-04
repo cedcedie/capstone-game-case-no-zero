@@ -1,11 +1,15 @@
 extends Node
 
-# References to key nodes
+# --- Node references ---
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
-@onready var dialogue_runner: Node = $RoundedYarnSpinnerCanvasLayer/DialogueRunner
-@onready var player: Node = $PlayerM  # Adjust path if needed
-@onready var dialogue_runner: Node = $RoundedYarnSpinnerCanvasLayer/DialogueRunner
+@onready var player: Node = $PlayerM
+@onready var dialogue_ui: DialogueUI = $CanvasLayer/DialogueUiTest
+@onready var character_sprite: AnimatedSprite2D = $PlayerM/AnimatedSprite2D
 
+# --- Dialogue data ---
+var dialogue_lines: Array = []
+var current_line: int = 0
+var waiting_for_next: bool = false
 
 # --- Player control helpers ---
 func disable_control():
@@ -16,40 +20,77 @@ func enable_control():
 	if player:
 		player.control_enabled = true
 
-# --- Called by AnimationPlayer Call Method Track ---
-func start_dialogue():
-	# Pause the current cutscene animation
-	anim_player.pause()
-	
-	# Start the dialogue from the Start Node set in DialogueRunner Inspector
-	dialogue_runner.start_node("Intro")
+# --- Start cutscene ---
+func start_cutscene():
+	# Load JSON
+	var file = FileAccess.open("res://dialogue/mainStory/Intro.json", FileAccess.READ)
+	if not file:
+		push_error("Cannot open Intro.json")
+		return
 
-# --- DialogueRunner signals ---
-func _on_dialogue_runner_on_dialogue_start() -> void:
-	print("Dialogue started")
+	var json_text = file.get_as_text()
+	file.close()
+
+	var parse_result = JSON.parse_string(json_text)  # returns Dictionary in Godot 4.4
+
+	# Correct bracket syntax for JSON keys
+	if parse_result["error"] != OK:
+		push_error("Failed to parse JSON: %s" % parse_result["error_string"])
+		return
+
+	var json_data = parse_result["result"]
+	if not json_data.has("Intro"):
+		push_error("JSON missing 'Intro' key")
+		return
+
+	dialogue_lines = json_data["Intro"]
+	current_line = 0
+
 	disable_control()
+	show_next_line()
 
-func _on_dialogue_runner_on_dialogue_complete() -> void:
-	print("Dialogue finished")
+	# Optional: play cosmetic cutscene animation
+	if anim_player.has_animation("IntroCutscene"):
+		anim_player.play("IntroCutscene")
+	else:
+		push_warning("AnimationPlayer missing 'IntroCutscene' animation!")
+
+# --- Show next dialogue line ---
+func show_next_line():
+	if current_line < dialogue_lines.size():
+		var line = dialogue_lines[current_line]
+		dialogue_ui.show_dialogue_line(line["speaker"], line["text"])
+		waiting_for_next = true
+
+		# Switch character animation while speaking
+		match line["speaker"]:
+			"Miguel", "Celine":
+				character_sprite.animation = "talk"
+			_:
+				character_sprite.animation = "idle"
+	else:
+		end_cutscene()
+
+# --- Called when Next button pressed ---
+func _on_next_pressed():
+	if waiting_for_next:
+		waiting_for_next = false
+		current_line += 1
+		show_next_line()
+
+# --- End cutscene ---
+func end_cutscene():
+	dialogue_ui.hide_dialogue()
 	enable_control()
-	anim_player.play()  # Resume the animation
+	character_sprite.animation = "idle"
+	anim_player.stop()  # optional outro animation
 
-func _on_dialogue_runner_on_node_start(nodeName: String) -> void:
-	print("Dialogue node started:", nodeName)
-
-func _on_dialogue_runner_on_node_complete(nodeName: String) -> void:
-	print("Dialogue node completed:", nodeName)
-
-func _on_dialogue_runner_on_unhandled_command(commandText: String) -> void:
-	print("Unhandled command:", commandText)
-
+# --- Ready setup ---
 func _ready():
-	# Connect DialogueRunner signals to this node
-	dialogue_runner.onDialogueStart.connect(_on_dialogue_runner_on_dialogue_start)
-	dialogue_runner.onDialogueComplete.connect(_on_dialogue_runner_on_dialogue_complete)
-	dialogue_runner.onNodeStart.connect(_on_dialogue_runner_on_node_start)
-	dialogue_runner.onNodeComplete.connect(_on_dialogue_runner_on_node_complete)
-	dialogue_runner.onUnhandledCommand.connect(_on_dialogue_runner_on_unhandled_command)
-	
-func _on_dialogue_runner_ready() -> void:
-	print("DialogueRunner is ready")
+	# Connect Next signal safely
+	var cb = Callable(self, "_on_next_pressed")
+	if not dialogue_ui.is_connected("next_pressed", cb):
+		dialogue_ui.connect("next_pressed", cb)
+
+	# Start cutscene automatically for testing
+	start_cutscene()
