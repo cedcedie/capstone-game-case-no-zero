@@ -11,7 +11,8 @@ outline_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cpjuh"]
 line_spacing = 10.0
-paragraph_spacing = 5.0
+paragraph_spacing = 15.0
+font_size = 14
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -24,6 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
+layout_mode = 0
 offset_left = 42.0
 offset_top = 51.0
 offset_right = 398.0
@@ -75,7 +77,7 @@ patch_margin_bottom = 32
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridContainer3"]
 layout_mode = 2
 text = "Description:
-Date Obtained:"
+"
 label_settings = SubResource("LabelSettings_cpjuh")
 
 [node name="GridContainer2" type="GridContainer" parent="MarginContainer/VBoxContainer"]
