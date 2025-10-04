@@ -46,11 +46,11 @@ patch_margin_bottom = 32
 layout_direction = 3
 layout_mode = 2
 offset_left = 910.0
-offset_top = 47.0
+offset_top = 48.0
 offset_right = 942.0
-offset_bottom = 79.0
+offset_bottom = 80.0
 texture = ExtResource("1_cpjuh")
-region_rect = Rect2(930, 770, 28, 30)
+region_rect = Rect2(898, 769, 28, 32)
 patch_margin_left = 32
 patch_margin_top = 32
 
@@ -202,11 +202,11 @@ patch_margin_bottom = 32
 [node name="Inventory menu" type="NinePatchRect" parent="."]
 layout_direction = 3
 offset_left = 1207.0
-offset_top = 47.0
+offset_top = 49.0
 offset_right = 1239.0
-offset_bottom = 79.0
+offset_bottom = 81.0
 texture = ExtResource("1_cpjuh")
-region_rect = Rect2(1026, 736, 28, 288)
+region_rect = Rect2(1058, 738, 28, 30)
 patch_margin_left = 32
 patch_margin_top = 32
 
