@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://7x3miw42cliy"]
+[gd_scene load_steps=40 format=3 uid="uid://7x3miw42cliy"]
 
 [ext_resource type="Texture2D" uid="uid://b5w77arqh0msb" path="res://assets/PNG/characters/celine_navarro.png" id="1_rwirx"]
 
@@ -122,6 +122,30 @@ region = Rect2(704, 128, 32, 64)
 atlas = ExtResource("1_rwirx")
 region = Rect2(736, 128, 32, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dddgv"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myce1"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig7n2"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(64, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6ag4"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(96, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q24ww"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(128, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jao8"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(160, 128, 32, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8d7p2"]
 animations = [{
 "frames": [],
@@ -243,6 +267,29 @@ animations = [{
 "loop": true,
 "name": &"walk_down",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dddgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myce1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig7n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6ag4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q24ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jao8")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swplc"]
@@ -252,7 +299,7 @@ size = Vector2(20, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8d7p2")
-animation = &"idle_front"
+animation = &"walk_right"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
