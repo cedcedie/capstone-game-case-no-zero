@@ -18,14 +18,14 @@ script = ExtResource("1_mlr52")
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 320.0
-offset_bottom = 96.0
+offset_bottom = 80.0
 pivot_offset = Vector2(160, 0)
 
 [node name="Dialogue" type="Label" parent="."]
 layout_mode = 0
 offset_left = 64.0
 offset_right = 320.0
-offset_bottom = 64.0
+offset_bottom = 48.0
 label_settings = SubResource("LabelSettings_mlr52")
 autowrap_mode = 3
 
@@ -40,8 +40,10 @@ autowrap_mode = 3
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 280.0
-offset_top = 64.0
+offset_top = 56.0
 offset_right = 316.0
-offset_bottom = 88.0
+offset_bottom = 80.0
 theme = SubResource("Theme_owpfv")
 text = "next"
+
+[node name="TypingSound" type="AudioStreamPlayer" parent="."]

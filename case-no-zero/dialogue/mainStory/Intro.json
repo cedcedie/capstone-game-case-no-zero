@@ -1,24 +1,64 @@
 {
   "Intro": [
-	{"speaker": "Miguel", "text": "…Again? Another nap pretending to be sleep. These cases keep piling, and I can’t even remember the last night I closed my eyes without a file under my cheek."},
-	{"speaker": "Miguel", "text": "Door’s open. Watch your step—mess is part of the décor."},
-	{"speaker": "Celine", "text": "Figures. I half-expected to find you fossilized under your case files. Guess you crawled out before the archeologists got here."},
-	{"speaker": "Miguel", "text": "Celine. Sharp as ever. Persistent, annoying, impossible to ignore. Always chasing a story, always dragging me back into fights I swore I left behind."},
-	{"speaker": "Miguel", "text": "I was reviewing… horizontally. You should try it sometime."},
-	{"speaker": "Celine", "text": "There’s been another one, Miguel. Another murder."},
+	{"speaker": "Miguel", "text": "…Again? Another nap pretending to be sleep."},
+	{"speaker": "Miguel", "text": "These cases keep piling, and I can’t even remember the last night I closed my eyes without a file under my cheek."},
+
+	{"speaker": "Miguel", "text": "Door’s open."},
+	{"speaker": "Miguel", "text": "Watch your step—mess is part of the décor."},
+
+	{"speaker": "Celine", "text": "Figures. I half-expected to find you fossilized under your case files."},
+	{"speaker": "Celine", "text": "Guess you crawled out before the archeologists got here."},
+
+	{"speaker": "Miguel", "text": "Celine. Sharp as ever. Persistent, annoying, impossible to ignore."},
+	{"speaker": "Miguel", "text": "Always chasing a story, always dragging me back into fights I swore I left behind."},
+
+	{"speaker": "Miguel", "text": "I was reviewing… horizontally."},
+	{"speaker": "Miguel", "text": "You should try it sometime."},
+
+	{"speaker": "Celine", "text": "There’s been another one, Miguel."},
+	{"speaker": "Celine", "text": "Another murder."},
+
 	{"speaker": "Miguel", "text": "…Who?"},
-	{"speaker": "Celine", "text": "Leo Mendoza. Tanod trainee. Young. Too young."},
-	{"speaker": "Miguel", "text": "Leo… barely nineteen. Still believed the city could be saved. Now he’s another report in a folder. Another kid erased."},
-	{"speaker": "Miguel", "text": "I heard whispers earlier. Didn’t think it was him."},
-	{"speaker": "Celine", "text": "They didn’t waste time. They’ve already arrested someone. Erwin Santiago. You know him better as…"},
+
+	{"speaker": "Celine", "text": "Leo Mendoza. Tanod trainee. Young."},
+	{"speaker": "Celine", "text": "Too young."},
+
+	{"speaker": "Miguel", "text": "Leo… barely nineteen. Still believed the city could be saved."},
+	{"speaker": "Miguel", "text": "Now he’s another report in a folder. Another kid erased."},
+
+	{"speaker": "Miguel", "text": "I heard whispers earlier."},
+	{"speaker": "Miguel", "text": "Didn’t think it was him."},
+
+	{"speaker": "Celine", "text": "They didn’t waste time."},
+	{"speaker": "Celine", "text": "They’ve already arrested someone—Erwin Santiago."},
+	{"speaker": "Celine", "text": "You know him better as…"},
+
 	{"speaker": "Miguel", "text": "…Boy Trip."},
-	{"speaker": "Miguel", "text": "Erwin. A street rat, yeah—but not a killer. He tried to go straight, but this city always drags people back into the gutter."},
-	{"speaker": "Celine", "text": "Exactly. They’re painting him as the perfect suspect: addict, loiterer, history with the barangay. Too neat. Too… convenient."},
-	{"speaker": "Miguel", "text": "…Celine, I said I was finished. These cases chew you up. In the end, what’s left? A bitter truth no one cares about, and another body waiting for its turn."},
-	{"speaker": "Celine", "text": "Maybe. But this isn’t just another case. This is Erwin. And you know he won’t stand a chance without you. If you don’t step in, no one will."},
-	{"speaker": "Miguel", "text": "She’s right. Damn it. I can already see the script—Erwin condemned, another scapegoat sacrificed. And me pretending I didn’t see it coming. Pretending I could live with it."},
+
+	{"speaker": "Miguel", "text": "Erwin. A street rat, yeah—but not a killer."},
+	{"speaker": "Miguel", "text": "He tried to go straight, but this city always drags people back into the gutter."},
+
+	{"speaker": "Celine", "text": "Exactly. They’re painting him as the perfect suspect: addict, loiterer, history with the barangay."},
+	{"speaker": "Celine", "text": "Too neat. Too… convenient."},
+
+	{"speaker": "Miguel", "text": "…Celine, I said I was finished."},
+	{"speaker": "Miguel", "text": "These cases chew you up. In the end, what’s left?"},
+	{"speaker": "Miguel", "text": "A bitter truth no one cares about, and another body waiting for its turn."},
+
+	{"speaker": "Celine", "text": "Maybe. But this isn’t just another case."},
+	{"speaker": "Celine", "text": "This is Erwin. And you know he won’t stand a chance without you."},
+	{"speaker": "Celine", "text": "If you don’t step in, no one will."},
+
+	{"speaker": "Miguel", "text": "She’s right. Damn it."},
+	{"speaker": "Miguel", "text": "I can already see the script—Erwin condemned, another scapegoat sacrificed."},
+	{"speaker": "Miguel", "text": "And me pretending I didn’t see it coming."},
+	{"speaker": "Miguel", "text": "Pretending I could live with it."},
+
 	{"speaker": "Miguel", "text": "…You never give me a choice, do you?"},
+
 	{"speaker": "Celine", "text": "Justice doesn’t wait for the well-rested."},
-	{"speaker": "Miguel", "text": "…Alright, Erwin. Let’s see what kind of hell you’ve stumbled into this time."}
+
+	{"speaker": "Miguel", "text": "…Alright, Erwin."},
+	{"speaker": "Miguel", "text": "Let’s see what kind of hell you’ve stumbled into this time."}
   ]
 }

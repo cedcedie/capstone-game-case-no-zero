@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://5d4uo5rtdrrk"]
+[gd_scene load_steps=86 format=4 uid="uid://5d4uo5rtdrrk"]
 
 [ext_resource type="Script" uid="uid://dy2v4pd1ffrug" path="res://scenes/cutscene/bedroom_scene.gd" id="1_2e68i"]
 [ext_resource type="Texture2D" uid="uid://q7u1l1cvwbcj" path="res://assets/PNG/interior/Room_Builder_3d_walls_32x32.png" id="1_4eorf"]
@@ -42,7 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main/celine_navarro.tscn" id="38_csu0h"]
 [ext_resource type="AudioStream" uid="uid://d1fshkp328kuu" path="res://assets/audio/sfx/fast-knocking-on-door-352704.mp3" id="39_muwu8"]
 [ext_resource type="PackedScene" uid="uid://4ow32s47c3o" path="res://dialogueUi.tscn" id="40_muphy"]
-[ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="42_26cbc"]
+[ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperator-Bold.ttf" id="43_26cbc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wkb85"]
 texture = ExtResource("1_4eorf")
@@ -22090,6 +22090,10 @@ sources/23 = SubResource("TileSetAtlasSource_lk7eb")
 sources/24 = SubResource("TileSetAtlasSource_wrqiv")
 sources/25 = SubResource("TileSetAtlasSource_pecvl")
 
+[sub_resource type="LabelSettings" id="LabelSettings_0qw23"]
+font = ExtResource("43_26cbc")
+font_size = 18
+
 [node name="BedroomScene" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(359, 106)
@@ -22153,15 +22157,6 @@ offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CinematicText" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 456.0
-offset_top = 320.0
-offset_right = 496.0
-offset_bottom = 360.0
-scale = Vector2(6.36054, 1.36956)
-theme_override_fonts/normal_font = ExtResource("42_26cbc")
-bbcode_enabled = true
-
 [node name="FadeOverlay" type="ColorRect" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -22169,6 +22164,15 @@ color = Color(0, 0, 0, 1)
 
 [node name="BGM_Mystery" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("37_gk4ge")
+
+[node name="CinematicText" type="Label" parent="."]
+offset_left = 97.0
+offset_top = 214.0
+offset_right = 361.0
+offset_bottom = 310.0
+label_settings = SubResource("LabelSettings_0qw23")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [connection signal="next_pressed" from="CanvasLayer/DialogueUi" to="." method="_on_dialogue_ui_test_next_pressed"]
 
