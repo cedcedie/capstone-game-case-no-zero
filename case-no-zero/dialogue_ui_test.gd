@@ -1,5 +1,5 @@
 extends Control
-class_name DialogueUI  # unique class_name for type hints
+class_name DialogueUI
 
 @onready var name_label = $Name
 @onready var dialogue_label = $Dialogue
@@ -10,21 +10,27 @@ var waiting_for_next: bool = false
 
 func _ready():
 	hide()
-	next_button.hide()
+	modulate.a = 0.0
 	next_button.pressed.connect(_on_next_pressed)
 
-func show_dialogue_line(speaker: String, text: String):
+# Smooth fade-in
+func show_ui():
 	show()
-	next_button.show()
+	var t = create_tween()
+	t.tween_property(self, "modulate:a", 1.0, 0.4)
+
+# Smooth fade-out
+func hide_ui():
+	var t = create_tween()
+	t.tween_property(self, "modulate:a", 0.0, 0.4)
+	await t.finished
+	hide()
+
+func show_dialogue_line(speaker: String, text: String):
+	show_ui()
 	name_label.text = speaker
 	dialogue_label.text = text
 	waiting_for_next = true
-	print("DEBUG: Showing line:", speaker, text)
-
-func hide_dialogue():
-	hide()
-	next_button.hide()
-	waiting_for_next = false
 
 func _on_next_pressed():
 	if waiting_for_next:

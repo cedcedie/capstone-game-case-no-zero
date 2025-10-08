@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://5d4uo5rtdrrk"]
+[gd_scene load_steps=83 format=4 uid="uid://5d4uo5rtdrrk"]
 
 [ext_resource type="Script" uid="uid://dy2v4pd1ffrug" path="res://scenes/cutscene/bedroom_scene.gd" id="1_2e68i"]
 [ext_resource type="Texture2D" uid="uid://q7u1l1cvwbcj" path="res://assets/PNG/interior/Room_Builder_3d_walls_32x32.png" id="1_4eorf"]
@@ -36,10 +36,11 @@
 [ext_resource type="Texture2D" uid="uid://ikty23evb787" path="res://assets/PNG/interior/8_Gym_32x32.png" id="33_0vsi7"]
 [ext_resource type="Texture2D" uid="uid://bjwpfqjaw43q1" path="res://assets/PNG/interior/9_Fishing_32x32.png" id="34_epoxu"]
 [ext_resource type="Texture2D" uid="uid://cqj48sh5buudm" path="res://assets/PNG/interior/10_Birthday_party_32x32.png" id="35_reg1n"]
-[ext_resource type="AudioStream" uid="uid://dablaxbvoldyy" path="res://assets/audio/16-Bit Starter Pack/Various Themes/Simpler Times.ogg" id="37_gk4ge"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="38_2ikr4"]
+[ext_resource type="Script" uid="uid://crdvxi7b07kbs" path="res://scenes/characters/main/celine_navarro.gd" id="38_22wn0"]
+[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main/celine_navarro.tscn" id="38_csu0h"]
 [ext_resource type="AudioStream" uid="uid://d1fshkp328kuu" path="res://assets/audio/sfx/fast-knocking-on-door-352704.mp3" id="39_muwu8"]
-[ext_resource type="PackedScene" uid="uid://4ow32s47c3o" path="res://dialogueUiTest.tscn" id="40_muphy"]
+[ext_resource type="PackedScene" uid="uid://4ow32s47c3o" path="res://dialogueUi.tscn" id="40_muphy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wkb85"]
 texture = ExtResource("1_4eorf")
@@ -22087,114 +22088,6 @@ sources/23 = SubResource("TileSetAtlasSource_lk7eb")
 sources/24 = SubResource("TileSetAtlasSource_wrqiv")
 sources/25 = SubResource("TileSetAtlasSource_pecvl")
 
-[sub_resource type="Animation" id="Animation_muphy"]
-resource_name = "IntroCutscene"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerM:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(225, 206)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerM/AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle_front"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.76667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/DialogueUiTest")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.73333, 3.06667, 4.26667, 5.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"values": [{
-"args": ["", ""],
-"method": &"show_dialogue_line"
-}, {
-"args": ["", ""],
-"method": &"show_dialogue_line"
-}, {
-"args": ["", ""],
-"method": &"show_dialogue_line"
-}, {
-"args": ["", ""],
-"method": &"show_dialogue_line"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_csu0h"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerM:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(225, 206)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerM/AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle_front"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_csu0h"]
-_data = {
-&"IntroCutscene": SubResource("Animation_muphy"),
-&"RESET": SubResource("Animation_csu0h")
-}
-
 [node name="BedroomScene" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(359, 106)
@@ -22233,9 +22126,9 @@ position = Vector2(-31, 14)
 tile_map_data = PackedByteArray("AAAAAAoAAAAFABQAAAAAAAsAAAAFABUAAAAAAAwAAwAMAC0AAAAAAA0AAwAMAC4AAAAAAA4AAwAAAC0AAAAAAA8AAwAAADAAAAABAAoAAAAFABQAAAABAAsAAAAFABUAAAABAAwAAwANAC0AAAABAA0AAwANAC4AAAABAA4AAwABAC0AAAABAA8AAwABADAAAAACAAoAAQAFAA8AAAACAAsAAQAFABAAAAACAAwAAwAOAC0AAAACAA0AAwAOAC4AAAACAA4AAwACAC0AAAACAA8AAwACADAAAAADAAoAAQAGAA8AAAADAAsAAQAGABAAAAAEAAoAAQAAAA0AAAAEAAsAAQAAAA4AAAAFAAMAAQAAAAUAAAAFAAQAAQAAAAYAAAAFAAYAAAAAACUAAAAFAAcAAAAAACYAAAAFAAgAAAAAACcAAAAFAAoAAwAEAEkAAAAFAAsAAwAEAEoAAAAGAAYAAAABACUAAAAGAAcAAAABACYAAAAGAAgAAAABACcAAAAGAAkAAwABAEcAAAAGAAoAAwABAEgAAAAGAAsAAwAFAEoAAAAHAAYAAAAEACUAAAAHAAcAAAAEACYAAAAHAAgAAAAEACcAAAAIAAYAAAAEACUAAAAIAAcAAAAEACYAAAAIAAgAAAAEACcAAAAJAAYAAAAEACUAAAAJAAcAAAAEACYAAAAJAAgAAAAEACcAAAAKAAYAAAACACUAAAAKAAcAAAACACYAAAAKAAgAAAACACcAAAALAAYAAAADACUAAAALAAcAAAADACYAAAALAAgAAAADACcAAAARAAwAAgAOABcAAAASAAwAAgAMABoAAAASAA0AAgAMABsAAAASAA4AAgAMABwAAAAUAAwAAgAIAA4AAAAUAA0AAgAIAA8AAAAUAA4AAgAIABAAAAAUAA8AAgAIABEAAAAVAAwAAgAJAA4AAAAVAA0AAgAJAA8AAAAVAA4AAgAJABAAAAAVAA8AAgAJABEAAAA=")
 tile_set = SubResource("TileSet_4gxye")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("37_gk4ge")
-volume_db = -10.0
+[node name="Celine" parent="." instance=ExtResource("38_csu0h")]
+position = Vector2(49, 206)
+script = ExtResource("38_22wn0")
 
 [node name="PlayerM" parent="." instance=ExtResource("38_2ikr4")]
 position = Vector2(225, 206)
@@ -22245,7 +22138,7 @@ stream = ExtResource("39_muwu8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DialogueUiTest" parent="CanvasLayer" instance=ExtResource("40_muphy")]
+[node name="DialogueUi" parent="CanvasLayer" instance=ExtResource("40_muphy")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -22258,12 +22151,7 @@ offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_csu0h")
-}
-autoplay = "IntroCutscene"
+[connection signal="next_pressed" from="CanvasLayer/DialogueUi" to="." method="_on_dialogue_ui_test_next_pressed"]
 
-[connection signal="next_pressed" from="CanvasLayer/DialogueUiTest" to="." method="_on_dialogue_ui_test_next_pressed"]
-
+[editable path="Celine"]
 [editable path="PlayerM"]

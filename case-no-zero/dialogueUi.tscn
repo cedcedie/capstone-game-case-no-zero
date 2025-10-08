@@ -9,7 +9,7 @@ font = ExtResource("1_4ubpf")
 [sub_resource type="Theme" id="Theme_owpfv"]
 default_font = ExtResource("1_4ubpf")
 
-[node name="DialogueUiTest" type="Control"]
+[node name="DialogueUi" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 pivot_offset = Vector2(160, 0)
