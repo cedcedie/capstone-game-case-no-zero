@@ -1,25 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7w3vk6bm847b"]
+[gd_scene load_steps=3 format=3 uid="uid://c7w3vk6bm847b"]
 
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/PNG/ui/Modern_UI_Style_1_32x32.png" id="1_cpjuh"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_152jj"]
-line_spacing = 5.0
-paragraph_spacing = 5.0
-font_size = 36
-outline_size = 9
-outline_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_cpjuh"]
-line_spacing = 0.0
-font_size = 12
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_accfc"]
-line_spacing = 0.0
-font_size = 15
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="FontFile" uid="uid://06eojjyt34v5" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_accfc"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -72,11 +54,15 @@ layout_mode = 2
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-text = "Inventory"
-label_settings = SubResource("LabelSettings_152jj")
-uppercase = true
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_accfc")
+theme_override_font_sizes/font_size = 50
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GridContainer3" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -94,15 +80,23 @@ patch_margin_bottom = 32
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/GridContainer3"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridContainer3/VBoxContainer"]
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/GridContainer3/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_accfc")
+theme_override_font_sizes/font_size = 20
 text = "Item:"
-label_settings = SubResource("LabelSettings_cpjuh")
+vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer3/VBoxContainer"]
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/GridContainer3/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_accfc")
+theme_override_font_sizes/font_size = 15
 text = "Description:"
-label_settings = SubResource("LabelSettings_accfc")
+vertical_alignment = 1
 
 [node name="GridContainer2" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_direction = 2
@@ -201,6 +195,7 @@ patch_margin_bottom = 32
 
 [node name="Inventory menu" type="NinePatchRect" parent="."]
 layout_direction = 3
+layout_mode = 0
 offset_left = 1212.0
 offset_top = 49.0
 offset_right = 1244.0
@@ -212,6 +207,7 @@ patch_margin_top = 32
 
 [node name="settings" type="NinePatchRect" parent="."]
 layout_direction = 3
+layout_mode = 0
 offset_left = 1176.0
 offset_top = 47.0
 offset_right = 1208.0
@@ -223,6 +219,7 @@ patch_margin_top = 32
 
 [node name="Inventory menu3" type="NinePatchRect" parent="."]
 layout_direction = 3
+layout_mode = 0
 offset_left = 1140.0
 offset_top = 47.0
 offset_right = 1172.0

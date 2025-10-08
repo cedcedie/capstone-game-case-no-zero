@@ -6,14 +6,6 @@
 [ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperator-Bold.ttf" id="4_ertfl"]
 [ext_resource type="Script" uid="uid://rx80bji1rwwp" path="res://scripts/manager/fullscreen.gd" id="5_4snl2"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_tydli"]
-color = Color(1, 1, 1, 1)
-thickness = 6
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_uib8q"]
-color = Color(0.384666, 0.514452, 0.969606, 1)
-thickness = 6
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vnl7s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40lqp"]
@@ -39,6 +31,14 @@ corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 4)
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tydli"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_uib8q"]
+color = Color(0.384666, 0.514452, 0.969606, 1)
+thickness = 6
+
 [node name="Settings" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -62,13 +62,73 @@ offset_left = 4.0
 offset_top = 6.0
 offset_right = 423.0
 offset_bottom = 300.0
-color = Color(0.164706, 0.164706, 0.164706, 1)
+color = Color(0.815686, 0.745098, 0.611765, 1)
 
-[node name="AudioControl" type="HSlider" parent="NinePatchRect"]
+[node name="ColorRect2" type="ColorRect" parent="NinePatchRect/ColorRect"]
+layout_mode = 0
+offset_right = 419.0
+offset_bottom = 66.0
+color = Color(0.639216, 0.52549, 0.407843, 1)
+
+[node name="Label" type="Label" parent="NinePatchRect/ColorRect/ColorRect2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = 65.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_lsqeh")
+theme_override_font_sizes/font_size = 40
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 224.0
+offset_right = 397.0
+offset_bottom = 267.0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ertfl")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vnl7s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_40lqp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4sji1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dy1w5")
+text = "Back"
+
+[node name="Volume" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = 80.0
+offset_right = -1.0
+offset_bottom = 105.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_lsqeh")
+theme_override_font_sizes/font_size = 15
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioControl" type="HSlider" parent="NinePatchRect/Volume"]
+layout_mode = 0
 offset_left = 73.0
-offset_top = 81.0
-offset_right = 354.0
-offset_bottom = 128.0
+offset_top = 11.0
+offset_right = 353.0
+offset_bottom = 58.0
 theme_override_styles/slider = SubResource("StyleBoxLine_tydli")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_uib8q")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_uib8q")
@@ -78,43 +138,29 @@ value = 1.0
 script = ExtResource("2_vr2x7")
 audio_bus_name = "Music"
 
-[node name="Label" type="Label" parent="NinePatchRect"]
+[node name="Screenlabel" type="Label" parent="NinePatchRect"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 71.0
+offset_left = 73.0
+offset_top = 154.0
+offset_right = -64.0
+offset_bottom = 190.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_lsqeh")
-theme_override_font_sizes/font_size = 40
-text = "Options"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 15
+text = "Fullscreen "
 vertical_alignment = 1
 
-[node name="exit" type="Button" parent="NinePatchRect"]
-offset_left = 138.0
-offset_top = 208.0
-offset_right = 290.0
-offset_bottom = 249.0
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_ertfl")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxEmpty_vnl7s")
-theme_override_styles/hover = SubResource("StyleBoxFlat_40lqp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4sji1")
-theme_override_styles/normal = SubResource("StyleBoxFlat_dy1w5")
-text = "Back"
-
-[node name="Fullscreen" type="CheckButton" parent="NinePatchRect"]
-offset_left = 71.0
-offset_top = 132.0
-offset_right = 356.0
-offset_bottom = 173.0
-text = "Fullscreen"
+[node name="Fullscreen" type="CheckButton" parent="NinePatchRect/Screenlabel"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -1.0
+offset_right = 289.0
+offset_bottom = 40.0
 script = ExtResource("5_4snl2")
 
-[connection signal="value_changed" from="NinePatchRect/AudioControl" to="NinePatchRect/AudioControl" method="_on_value_changed"]
-[connection signal="toggled" from="NinePatchRect/Fullscreen" to="NinePatchRect/Fullscreen" method="_on_toggled"]
+[connection signal="value_changed" from="NinePatchRect/Volume/AudioControl" to="NinePatchRect/Volume/AudioControl" method="_on_value_changed"]
+[connection signal="toggled" from="NinePatchRect/Screenlabel/Fullscreen" to="NinePatchRect/Screenlabel/Fullscreen" method="_on_toggled"]
