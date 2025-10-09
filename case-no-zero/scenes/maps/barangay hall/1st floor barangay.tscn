@@ -7347,7 +7347,9 @@ texture_region_size = Vector2i(32, 32)
 15:16/0 = 0
 0:17/0 = 0
 1:17/0 = 0
+1:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.01026, -7.91899, 16, -8.02052, 16, 16, -4.01026, 16)
 2:17/0 = 0
+2:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.90873, -7.91899, 3.70568, 16, -16, 16, -16, -8.02052)
 3:17/0 = 0
 4:17/0 = 0
 5:17/0 = 0
@@ -22390,6 +22392,7 @@ texture_region_size = Vector2i(32, 32)
 7:0/0 = 0
 8:0/0 = 0
 9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(12.0404, 0.0839052, 12.0404, 16, -11.9565, 16, -11.9565, 0.0839052)
 10:0/0 = 0
 11:0/0 = 0
 12:0/0 = 0
@@ -22521,6 +22524,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_lvu5a"]
 tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_28er7")
 sources/1 = SubResource("TileSetAtlasSource_yqp4b")
 sources/2 = SubResource("TileSetAtlasSource_b4fxj")
@@ -22726,6 +22730,7 @@ texture_region_size = Vector2i(32, 32)
 0:13/0 = 0
 1:13/0 = 0
 2:13/0 = 0
+2:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.0003, -16, 10.0003, -16, 10.1018, -6.09153, 4.01026, 2.03051, -3.60416, 2.03051, -9.89874, -6.39611)
 3:13/0 = 0
 4:13/0 = 0
 5:13/0 = 0
@@ -22817,6 +22822,7 @@ texture_region_size = Vector2i(32, 32)
 2:19/0 = 0
 3:19/0 = 0
 4:19/0 = 0
+4:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(7.84516, 2.26545, 8.01297, 7.8032, 3.98551, 11.9985, -3.8177, 11.8307, -8.01297, 7.63539, -8.01297, 0.0839062)
 5:19/0 = 0
 6:19/0 = 0
 7:19/0 = 0
@@ -22833,6 +22839,7 @@ texture_region_size = Vector2i(32, 32)
 2:20/0 = 0
 3:20/0 = 0
 4:20/0 = 0
+4:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(7.84516, 2.26545, 8.01297, 7.8032, 3.98551, 11.9985, -3.8177, 11.8307, -8.01297, 7.63539, -8.01297, 0.0839062)
 5:20/0 = 0
 6:20/0 = 0
 7:20/0 = 0
@@ -24089,6 +24096,7 @@ texture_region_size = Vector2i(32, 32)
 7:0/0 = 0
 8:0/0 = 0
 9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(11.9617, 0.277373, 11.9617, 16, -12.0311, 16, -12.0308, 0.203051)
 10:0/0 = 0
 11:0/0 = 0
 12:0/0 = 0
@@ -24220,6 +24228,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_ut8hw"]
 tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cj1yw")
 sources/1 = SubResource("TileSetAtlasSource_lvu5a")
 
@@ -24247,7 +24256,9 @@ collision_visibility_mode = 1
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAOAAUABQAOAAYAAAAOAAMABQAOAAQAAAAOAAQABQAOAAUAAAAPAAMABQAPAAQAAAAPAAQABQAPAAUAAAAPAAUABQAPAAYAAAAQAAUABQAOABYAAAAQAAYABQAOABcAAAAQAAMABQAOABYAAAAQAAQABQAOABcAAAATAAMABwAJAAAAAAATAAQABwAJAAEAAAATAAYABwAJAAAAAAATAAcABwAJAAEAAAARAAMABwAOAAAAAAARAAQABwAOAAEAAAADAAEABAAAAAYAAAAEAAEABAABAAYAAAA=")
 tile_set = SubResource("TileSet_lvu5a")
+collision_visibility_mode = 1
 
 [node name="TileMapLayer4" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAOAAUAAAACAAsAAAAOAAYAAAACAAwAAAAOAAcAAAACAA0AAAAQAAcAAAAEABQAAAAQAAMAAAAEABMAAAATAAQAAQAJAAAAAAATAAUAAQAJAAEAAAATAAcAAQAJAAAAAAATAAgAAQAJAAEAAAA=")
 tile_set = SubResource("TileSet_ut8hw")
+collision_visibility_mode = 1
