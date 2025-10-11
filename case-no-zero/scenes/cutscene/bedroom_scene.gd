@@ -7,6 +7,7 @@ extends Node
 @onready var knock_sfx: AudioStreamPlayer = $KnockSFX
 @onready var bgm_mystery: AudioStreamPlayer = $BGM_Mystery
 @onready var cinematic_text: Label = $CinematicText
+@onready var door: Area2D = $Door
 @onready var fade_overlay: ColorRect = $CanvasLayer/FadeOverlay
 @onready var tilemaps: Array = [
 	$"Ground layer",
@@ -127,7 +128,7 @@ func start_intro() -> void:
 	player.anim_sprite.play("idle_front")
 	player.last_facing = "front"
 
-	celine.position = Vector2(49, 86)
+	celine.position = Vector2(49, 62)
 	celine.visible = false
 
 	await get_tree().create_timer(1.0).timeout
@@ -309,6 +310,8 @@ func start_cinematic() -> void:
 	tilemap_tween.set_parallel(true)  # Run all tweens in parallel
 	for tilemap in tilemaps:
 		tilemap_tween.tween_property(tilemap, "modulate:a", 0.0, fade_duration * 0.6)
+	if door:
+		tilemap_tween.tween_property(door, "modulate:a", 0.0, fade_duration * 0.6)
 	await tilemap_tween.finished
 	
 	# Hide tilemaps after fade
@@ -319,14 +322,14 @@ func start_cinematic() -> void:
 	await smooth_fade_in(fade_overlay, fade_duration * 1.2)
 
 	# --- CINEMATIC PART 1 ---
-	await show_cinematic_text("…Alright, Erwin.", 1.0, 1.8)
+	await show_cinematic_text("…Sige, Erwin.", 1.0, 1.8)
 	await smooth_fade_out(cinematic_text, text_fade_duration)
 	
 	# Brief pause between texts
 	await get_tree().create_timer(0.5).timeout
 
 	# --- CINEMATIC PART 2 ---
-	await show_cinematic_text("Let's see what kind of hell you've stumbled into this time.", 1.2, 2.5)
+	await show_cinematic_text("Tingnan natin kung anong gulong napasukan mo.", 1.2, 2.5)
 	
 	# Smooth transition back to game
 	await smooth_fade_out(cinematic_text, text_fade_duration * 1.2)
@@ -335,11 +338,17 @@ func start_cinematic() -> void:
 	for tilemap in tilemaps:
 		tilemap.visible = true
 		tilemap.modulate.a = 0.0
+	if door:
+		door.visible = true
+		door.modulate.a = 0.0
+
 	
 	var tilemap_fade_in: Tween = create_tween()
 	tilemap_fade_in.set_parallel(true)  # Run all tweens in parallel
 	for tilemap in tilemaps:
 		tilemap_fade_in.tween_property(tilemap, "modulate:a", 1.0, fade_duration * 0.8)
+	if door:
+		tilemap_fade_in.tween_property(door, "modulate:a", 1.0, fade_duration * 0.8)
 	await tilemap_fade_in.finished
 	
 	# Restore Celine with smooth fade in
