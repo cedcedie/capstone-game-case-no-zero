@@ -20,8 +20,8 @@ buses/default_bus_layout=""
 
 [autoload]
 
-TaskManager="*res://TaskManager.gd"
-TaskDisplay="*res://TaskDisplay.tscn"
+TaskManager="*res://scripts/manager/TaskManager.gd"
+TaskDisplay="*res://scenes/ui/TaskDisplay.tscn"
 
 [dialogic]
 
