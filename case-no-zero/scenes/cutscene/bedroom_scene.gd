@@ -17,6 +17,9 @@ extends Node
 	$upperuppermisc
 ]
 
+# --- Task Manager reference ---
+var task_manager: Node = null
+
 # --- Dialogue data ---
 var dialogue_lines: Array = []
 var current_line: int = 0
@@ -395,6 +398,20 @@ func show_movement_tutorial() -> void:
 	print("🔍 Debug - intro_complete:", intro_complete, "celine_interactable:", celine_interactable)
 	dialogue_ui.show_dialogue_line("", "Press WASD to move freely around the room.")
 	waiting_for_next = true
+	
+	# Start the first task after a brief delay
+	await get_tree().create_timer(0.5).timeout
+	start_first_task()
+
+# --------------------------
+# TASK MANAGEMENT
+# --------------------------
+func start_first_task() -> void:
+	if task_manager:
+		print("📋 Starting first task...")
+		task_manager.start_next_task()
+	else:
+		print("⚠️ TaskManager not found!")
 
 # --------------------------
 # STEP 9: End intro
@@ -410,6 +427,13 @@ func end_intro() -> void:
 # --------------------------
 func _ready() -> void:
 	await get_tree().process_frame
+	
+	# Get TaskManager autoload
+	if TaskManager:
+		task_manager = TaskManager
+		print("✅ TaskManager connected")
+	else:
+		print("⚠️ TaskManager autoload not found - task system disabled")
 	
 	# Connect dialogue UI signals
 	if dialogue_ui:

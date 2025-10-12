@@ -18,6 +18,11 @@ config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
 buses/default_bus_layout=""
 
+[autoload]
+
+TaskManager="*res://TaskManager.gd"
+TaskDisplay="*res://TaskDisplay.tscn"
+
 [dialogic]
 
 directories/dch_directory={
