@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://brm4grij188xa"]
+[gd_scene load_steps=6 format=3 uid="uid://dueumdkqgudq6"]
 
 [ext_resource type="Script" uid="uid://doalwwi2xdtmn" path="res://scripts/interactables/door.gd" id="1_1vvux"]
 [ext_resource type="Texture2D" uid="uid://d24sl3eexjk15" path="res://assets/PNG/interiorAnimations/animated_door_6_locked_32x32.png" id="2_iu8q0"]
