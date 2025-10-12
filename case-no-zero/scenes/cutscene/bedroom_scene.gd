@@ -1,7 +1,7 @@
 extends Node
 
 # --- Node references ---
-@onready var dialogue_ui: Control = $CanvasLayer/DialogueUi
+var dialogue_ui: CanvasLayer = null  # Will reference global DialogueUI autoload
 @onready var player: CharacterBody2D = $PlayerM
 @onready var celine: CharacterBody2D = $Celine
 @onready var knock_sfx: AudioStreamPlayer = $KnockSFX
@@ -88,9 +88,8 @@ func move_character_smoothly(character: CharacterBody2D, target_pos: Vector2, wa
 
 func show_dialogue_with_transition(speaker: String, text: String, hide_first: bool = false) -> void:
 	if hide_first:
-		dialogue_ui.hide()
+		await dialogue_ui.hide_ui()
 		await get_tree().create_timer(transition_pause).timeout
-		dialogue_ui.show()
 	
 	dialogue_ui.show_dialogue_line(speaker, text)
 	waiting_for_next = true
@@ -99,7 +98,7 @@ func show_dialogue_with_transition(speaker: String, text: String, hide_first: bo
 # STEP 1: Load JSON dialogue
 # --------------------------
 func load_dialogue() -> void:
-	var file: FileAccess = FileAccess.open("res://dialogue/mainStory/Intro.json", FileAccess.READ)
+	var file: FileAccess = FileAccess.open("res://data/dialogues/Intro.json", FileAccess.READ)
 	if file == null:
 		push_error("Cannot open Intro.json")
 		return
@@ -283,7 +282,7 @@ func _on_next_pressed() -> void:
 		
 		# If we're showing the movement tutorial, enable control and end
 		if intro_complete and celine_interactable:
-			dialogue_ui.hide()
+			await dialogue_ui.hide_ui()
 			if "control_enabled" in player:
 				player.control_enabled = true
 				print("✅ Movement tutorial complete — player control enabled.")
@@ -302,7 +301,7 @@ func start_cinematic() -> void:
 	is_cinematic_active = true
 	
 	# Smooth transition out of dialogue
-	dialogue_ui.hide()
+	await dialogue_ui.hide_ui()
 	
 	# Fade out Celine smoothly before hiding environment
 	await smooth_fade_out(celine, fade_duration * 0.8)
@@ -417,7 +416,7 @@ func start_first_task() -> void:
 # STEP 9: End intro
 # --------------------------
 func end_intro() -> void:
-	dialogue_ui.hide()
+	await dialogue_ui.hide_ui()
 	if "control_enabled" in player:
 		player.control_enabled = true
 	print("✅ Intro complete — control re-enabled.")
@@ -434,6 +433,13 @@ func _ready() -> void:
 		print("✅ TaskManager connected")
 	else:
 		print("⚠️ TaskManager autoload not found - task system disabled")
+	
+	# Get DialogueUI autoload
+	if DialogueUI:
+		dialogue_ui = DialogueUI
+		print("✅ DialogueUI connected")
+	else:
+		print("⚠️ DialogueUI autoload not found - dialogue system disabled")
 	
 	# Connect dialogue UI signals
 	if dialogue_ui:

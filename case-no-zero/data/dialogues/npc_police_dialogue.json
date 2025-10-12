@@ -1,0 +1,32 @@
+{
+  "npc_police": {
+	"first_interaction": [
+	  {
+		"speaker": "Pulis",
+		"text": "Maligayang pagdating sa istasyon ng pulis. Ano ang maitutulong ko sa iyo?"
+	  },
+	  {
+		"speaker": "Manlalaro",
+		"text": "Saan banda ang kulungan?"
+	  },
+	  {
+		"speaker": "Pulis",
+		"text": "Ang kulungan ay nasa ibabang lobby. Bumaba ka lang sa hagdan, makikita mo agad."
+	  },
+	  {
+		"speaker": "Pulis",
+		"text": "Mag-ingat ka roon. Sabihin mo kung may iba ka pang kailangan."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Pulis",
+		"text": "Ang kulungan ay nasa ibabang lobby."
+	  },
+	  {
+		"speaker": "Pulis",
+		"text": "May iba ka pa bang kailangan?"
+	  }
+	]
+  }
+}

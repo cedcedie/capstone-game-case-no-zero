@@ -1,10 +1,10 @@
-extends Control
-class_name DialogueUI
+extends CanvasLayer
 
-@onready var name_label = $Name
-@onready var dialogue_label = $Dialogue
-@onready var next_button = $Button
-@onready var typing_sound = $TypingSound 
+@onready var container = $Container
+@onready var name_label = $Container/Name
+@onready var dialogue_label = $Container/Dialogue
+@onready var next_button = $Container/Button
+@onready var typing_sound = $Container/TypingSound 
 
 signal next_pressed
 var waiting_for_next: bool = false
@@ -13,7 +13,7 @@ var typing_speed := 0.01
 
 func _ready():
 	hide()
-	modulate.a = 0.0
+	container.modulate.a = 0.0
 	next_button.hide()
 	next_button.pressed.connect(_on_next_pressed)
 
@@ -21,12 +21,12 @@ func _ready():
 func show_ui():
 	show()
 	var t = create_tween()
-	t.tween_property(self, "modulate:a", 1.0, 0.4)
+	t.tween_property(container, "modulate:a", 1.0, 0.4)
 
 # Smooth fade-out
 func hide_ui():
 	var t = create_tween()
-	t.tween_property(self, "modulate:a", 0.0, 0.4)
+	t.tween_property(container, "modulate:a", 0.0, 0.4)
 	await t.finished
 	hide()
 
