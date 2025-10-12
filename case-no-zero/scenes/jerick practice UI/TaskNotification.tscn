@@ -10,8 +10,8 @@ anchors_preset = 0
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_left = 19.0
-offset_top = 15.0
-offset_right = 226.0
+offset_top = 17.0
+offset_right = 234.0
 offset_bottom = 188.0
 texture = ExtResource("1_ehibr")
 region_rect = Rect2(26, 600, 44, 48)
@@ -24,7 +24,7 @@ patch_margin_bottom = 32
 layout_mode = 0
 offset_left = 5.0
 offset_top = 6.0
-offset_right = 203.0
+offset_right = 209.0
 offset_bottom = 167.0
 color = Color(0.815686, 0.745098, 0.611765, 1)
 
@@ -63,9 +63,9 @@ offset_bottom = 30.0
 
 [node name="Label4" type="Label" parent="NinePatchRect/CheckBox"]
 layout_mode = 0
-offset_left = 22.0
+offset_left = 32.0
 offset_top = 5.0
-offset_right = 128.0
+offset_right = 138.0
 offset_bottom = 19.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -83,9 +83,9 @@ offset_bottom = 50.0
 
 [node name="Label4" type="Label" parent="NinePatchRect/CheckBox2"]
 layout_mode = 0
-offset_left = 22.0
+offset_left = 32.0
 offset_top = 5.0
-offset_right = 128.0
+offset_right = 138.0
 offset_bottom = 19.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -103,9 +103,9 @@ offset_bottom = 70.0
 
 [node name="Label5" type="Label" parent="NinePatchRect/CheckBox3"]
 layout_mode = 0
-offset_left = 22.0
+offset_left = 32.0
 offset_top = 5.0
-offset_right = 128.0
+offset_right = 138.0
 offset_bottom = 19.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -123,9 +123,9 @@ offset_bottom = 90.0
 
 [node name="Label6" type="Label" parent="NinePatchRect/CheckBox4"]
 layout_mode = 0
-offset_left = 22.0
+offset_left = 32.0
 offset_top = 5.0
-offset_right = 128.0
+offset_right = 138.0
 offset_bottom = 19.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -143,9 +143,9 @@ offset_bottom = 110.0
 
 [node name="Label7" type="Label" parent="NinePatchRect/CheckBox5"]
 layout_mode = 0
-offset_left = 22.0
+offset_left = 32.0
 offset_top = 5.0
-offset_right = 128.0
+offset_right = 138.0
 offset_bottom = 19.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -163,9 +163,9 @@ offset_bottom = 130.0
 
 [node name="Label4" type="Label" parent="NinePatchRect/CheckBox6"]
 layout_mode = 0
-offset_left = 22.0
+offset_left = 32.0
 offset_top = 5.0
-offset_right = 128.0
+offset_right = 138.0
 offset_bottom = 19.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -183,9 +183,9 @@ offset_bottom = 150.0
 
 [node name="Label4" type="Label" parent="NinePatchRect/CheckBox7"]
 layout_mode = 0
-offset_left = 22.0
+offset_left = 32.0
 offset_top = 5.0
-offset_right = 128.0
+offset_right = 138.0
 offset_bottom = 19.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -203,9 +203,9 @@ offset_bottom = 170.0
 
 [node name="Label4" type="Label" parent="NinePatchRect/CheckBox8"]
 layout_mode = 0
-offset_left = 22.0
+offset_left = 32.0
 offset_top = 5.0
-offset_right = 128.0
+offset_right = 138.0
 offset_bottom = 19.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
