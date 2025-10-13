@@ -1155,7 +1155,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7igds")
 }],
 "loop": true,
-"name": &"idle_front",
+"name": &"idle_down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1503,7 +1503,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_47bqr")
 }],
 "loop": true,
-"name": &"walk_front",
+"name": &"walk_down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1561,8 +1561,8 @@ script = ExtResource("1_6fh6j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bpsoc")
-animation = &"idle_front"
-autoplay = "idle_front"
+animation = &"idle_down"
+autoplay = "idle_down"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

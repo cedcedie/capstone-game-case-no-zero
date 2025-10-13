@@ -15,7 +15,7 @@ var spawn_positions: Dictionary = {
 		},
 		"from_head_police_room": {
 			"position": Vector2(808, 328), 
-			"animation": "idle_front"
+			"animation": "idle_down"
 		},
 		"from_lower_level_station": {
 			"position": Vector2(1032, 544),
@@ -23,7 +23,7 @@ var spawn_positions: Dictionary = {
 		},
 		"default": {
 			"position": Vector2(312, 528),
-			"animation": "idle_front"
+			"animation": "idle_down"
 		}
 	}
 }

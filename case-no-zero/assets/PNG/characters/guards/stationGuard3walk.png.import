@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6nqhgg6unile"
-path="res://.godot/imported/erwin.png-1f22adf0da62bd1acffa5211a69c3a46.ctex"
+uid="uid://3dwfn2m5fjb4"
+path="res://.godot/imported/stationGuard3walk.png-c7c52911785f50053d19bf9545ba2b7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://erwin.png"
-dest_files=["res://.godot/imported/erwin.png-1f22adf0da62bd1acffa5211a69c3a46.ctex"]
+source_file="res://assets/PNG/characters/guards/stationGuard3walk.png"
+dest_files=["res://.godot/imported/stationGuard3walk.png-c7c52911785f50053d19bf9545ba2b7d.ctex"]
 
 [params]
 

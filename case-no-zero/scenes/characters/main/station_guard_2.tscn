@@ -1,7 +1,7 @@
 [gd_scene load_steps=53 format=3 uid="uid://c8aylibpehy0u"]
 
-[ext_resource type="Texture2D" uid="uid://ccd413kk1quxm" path="res://stationGuard2.png" id="1_xt6pj"]
-[ext_resource type="Texture2D" uid="uid://cowgbbbnfx1rb" path="res://stationGuard2walk.png" id="2_vbm05"]
+[ext_resource type="Texture2D" uid="uid://ccd413kk1quxm" path="res://assets/PNG/characters/guards/stationGuard2.png" id="1_xt6pj"]
+[ext_resource type="Texture2D" uid="uid://cowgbbbnfx1rb" path="res://assets/PNG/characters/guards/stationGuard2walk.png" id="2_vbm05"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ealp"]
 atlas = ExtResource("1_xt6pj")

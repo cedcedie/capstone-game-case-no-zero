@@ -127,7 +127,7 @@ func start_intro() -> void:
 		player.control_enabled = false
 
 	# Setup initial states
-	player.anim_sprite.play("idle_front")
+	player.anim_sprite.play("idle_down")
 	player.last_facing = "front"
 
 	celine.position = Vector2(49, 62)
@@ -154,7 +154,7 @@ func show_next_line() -> void:
 	match current_line:
 		# Opening lines - player alone
 		0, 1:
-			await play_character_animation(player, "idle_front", transition_pause)
+			await play_character_animation(player, "idle_down", transition_pause)
 			show_dialogue_with_transition(speaker, text)
 
 		# Knock at door sequence
@@ -206,7 +206,7 @@ func show_next_line() -> void:
 
 		# BGM starts and player faces front
 		15:
-			await play_character_animation(player, "idle_front", transition_pause)
+			await play_character_animation(player, "idle_down", transition_pause)
 			show_dialogue_with_transition(speaker, text)
 			
 			# Start background music with smooth fade
@@ -232,7 +232,7 @@ func show_next_line() -> void:
 			show_dialogue_with_transition(speaker, text)
 
 		23:
-			await play_character_animation(player, "idle_front", transition_pause)
+			await play_character_animation(player, "idle_down", transition_pause)
 			show_dialogue_with_transition(speaker, text)
 
 		24:
@@ -259,7 +259,7 @@ func show_next_line() -> void:
 
 		# Player faces front
 		34, 35, 36, 37:
-			await play_character_animation(player, "idle_front", transition_pause)
+			await play_character_animation(player, "idle_down", transition_pause)
 			show_dialogue_with_transition(speaker, text)
 
 		# Celine faces front
@@ -366,7 +366,7 @@ func start_cinematic() -> void:
 	await smooth_fade_out(fade_overlay, fade_duration * 1.5)
 	
 	# Restore player animation
-	player.anim_sprite.play("idle_front")
+	player.anim_sprite.play("idle_down")
 	
 	# Set flags for tutorial
 	intro_complete = true

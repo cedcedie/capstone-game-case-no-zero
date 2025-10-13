@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var direction: Vector2 = Vector2.ZERO
-var last_facing: String = "front"
+var last_facing: String = "down"
 var control_enabled: bool = true   # can the player move?
 var last_direction: Vector2 = Vector2.ZERO  # Track last movement direction
 
@@ -42,8 +42,8 @@ func _check_and_reposition_based_on_entry():
 		anim_sprite.play(animation)
 		
 		# Update last_facing based on animation
-		if animation.contains("front"):
-			last_facing = "front"
+		if animation.contains("down"):
+			last_facing = "down"
 		elif animation.contains("back"):
 			last_facing = "back"
 		elif animation.contains("left"):
@@ -143,6 +143,6 @@ func _update_animation(dir: Vector2) -> void:
 		if abs(dir.x) > abs(dir.y):
 			last_facing = "right" if dir.x > 0 else "left"
 		else:
-			last_facing = "front" if dir.y > 0 else "back"
+			last_facing = "down" if dir.y > 0 else "back"
 
 		anim_sprite.play("walk_" + last_facing)

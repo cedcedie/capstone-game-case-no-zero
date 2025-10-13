@@ -36,7 +36,7 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_police_lobby": "police_lobby"
 	}
 	
-	var entry_point = entry_point_map.get(name, "unknown")
+	var _entry_point = entry_point_map.get(name, "unknown")
 	
 	# Set the entry point in SpawnManager - use the current scene name as the entry point
 	# This tells the target scene which scene the player came FROM

@@ -38,4 +38,3 @@ func _wait_for_scene_ready():
 	
 	# Small delay to ensure everything is settled
 	await get_tree().create_timer(0.08).timeout
-

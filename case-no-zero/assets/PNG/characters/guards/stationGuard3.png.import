@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://beu2mtiwkbt7a"
-path="res://.godot/imported/stationGuard3.png-64b30e8389f3c24b575ec64cc6598664.ctex"
+path="res://.godot/imported/stationGuard3.png-1351c522bd60af10901e35c59c178e70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stationGuard3.png"
-dest_files=["res://.godot/imported/stationGuard3.png-64b30e8389f3c24b575ec64cc6598664.ctex"]
+source_file="res://assets/PNG/characters/guards/stationGuard3.png"
+dest_files=["res://.godot/imported/stationGuard3.png-1351c522bd60af10901e35c59c178e70.ctex"]
 
 [params]
 

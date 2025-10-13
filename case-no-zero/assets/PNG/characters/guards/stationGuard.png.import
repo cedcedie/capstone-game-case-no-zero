@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cowgbbbnfx1rb"
-path="res://.godot/imported/stationGuard2walk.png-9fb85f25384640da5ea1487c5e4fedd2.ctex"
+uid="uid://dh62a8ktk5lo1"
+path="res://.godot/imported/stationGuard.png-b26ee5781be1a5d6b784a64d9d51c0f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stationGuard2walk.png"
-dest_files=["res://.godot/imported/stationGuard2walk.png-9fb85f25384640da5ea1487c5e4fedd2.ctex"]
+source_file="res://assets/PNG/characters/guards/stationGuard.png"
+dest_files=["res://.godot/imported/stationGuard.png-b26ee5781be1a5d6b784a64d9d51c0f6.ctex"]
 
 [params]
 
