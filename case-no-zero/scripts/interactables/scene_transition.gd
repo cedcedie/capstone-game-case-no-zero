@@ -17,7 +17,35 @@ func _on_body_entered(body):
 			player_reference = body
 			if body.has_method("disable_movement"):
 				body.disable_movement()
+			
+			# Set entry point information for the target scene
+			_set_entry_point_for_target(target_scene_path)
+			
 			_start_transition(target_scene_path)
+
+func _set_entry_point_for_target(target_scene_path: String):
+	"""Set the entry point information in SpawnManager"""
+	var current_scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
+	var target_scene_name = target_scene_path.get_file().get_basename()
+	
+	# Map area names to entry point names
+	var entry_point_map = {
+		"Area2D_lower_level": "lower_level",
+		"Area2D_head_police": "head_police", 
+		"Area2D_security_server": "security_server",
+		"Area2D_police_lobby": "police_lobby"
+	}
+	
+	var entry_point = entry_point_map.get(name, "unknown")
+	
+	# Set the entry point in SpawnManager - use the current scene name as the entry point
+	# This tells the target scene which scene the player came FROM
+	if has_node("/root/SpawnManager"):
+		var spawn_manager = get_node("/root/SpawnManager")
+		spawn_manager.set_entry_point(current_scene_name, current_scene_name)
+		print("🔄 Scene Transition: Set entry point from ", current_scene_name, " to ", target_scene_name, " via ", current_scene_name)
+	else:
+		print("⚠️ Scene Transition: SpawnManager not found!")
 
 func _get_target_scene_path_from_area_name() -> String:
 	# Get the scene path based on the Area2D's name

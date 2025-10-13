@@ -7,6 +7,56 @@ extends CharacterBody2D
 var direction: Vector2 = Vector2.ZERO
 var last_facing: String = "front"
 var control_enabled: bool = true   # can the player move?
+var last_direction: Vector2 = Vector2.ZERO  # Track last movement direction
+
+# Add this new function
+func _ready():
+	# Wait a frame to ensure scene is fully loaded
+	await get_tree().process_frame
+	
+	# Check if we need to reposition based on entry point
+	_check_and_reposition_based_on_entry()
+
+func _check_and_reposition_based_on_entry():
+	"""Check if we need to reposition based on entry point"""
+	print("🔍 Player: Checking for repositioning...")
+	
+	if not has_node("/root/SpawnManager"):
+		print("⚠️ Player: SpawnManager not found!")
+		return
+	
+	var spawn_manager = get_node("/root/SpawnManager")
+	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
+	print("🔍 Player: Current scene name: ", scene_name)
+	print("🔍 Player: SpawnManager entry_point: ", spawn_manager.entry_point)
+	
+	var spawn_data = spawn_manager.get_spawn_data(scene_name)
+	print("🔍 Player: Spawn data: ", spawn_data)
+	
+	if not spawn_data.is_empty():
+		# Set position
+		global_position = spawn_data.position
+		
+		# Set animation and facing direction
+		var animation = spawn_data.animation
+		anim_sprite.play(animation)
+		
+		# Update last_facing based on animation
+		if animation.contains("front"):
+			last_facing = "front"
+		elif animation.contains("back"):
+			last_facing = "back"
+		elif animation.contains("left"):
+			last_facing = "left"
+		elif animation.contains("right"):
+			last_facing = "right"
+		
+		print("📍 Player: Repositioned to ", spawn_data.position, " with animation ", animation, " for scene ", scene_name)
+	else:
+		print("⚠️ Player: No spawn data found, using default position")
+	
+	# Clear the entry point after use
+	spawn_manager.clear_entry_point()
 
 # Function to disable movement (called by NPCs during dialogue)
 func disable_movement():
@@ -34,16 +84,44 @@ func _physics_process(_delta: float) -> void:
 func _handle_input() -> void:
 	direction = Vector2.ZERO
 
+	# 4-directional movement only (no diagonals)
+	# Check all currently pressed keys and use the most recent one
+	var pressed_directions = []
+	
+	# Collect all currently pressed directions
 	if Input.is_action_pressed("ui_right"):
-		direction.x += 1
+		pressed_directions.append(Vector2.RIGHT)
 	if Input.is_action_pressed("ui_left"):
-		direction.x -= 1
+		pressed_directions.append(Vector2.LEFT)
 	if Input.is_action_pressed("ui_down"):
-		direction.y += 1
+		pressed_directions.append(Vector2.DOWN)
 	if Input.is_action_pressed("ui_up"):
-		direction.y -= 1
-
-	direction = direction.normalized()
+		pressed_directions.append(Vector2.UP)
+	
+	# If any keys are pressed, choose the direction
+	if pressed_directions.size() > 0:
+		# If multiple keys are pressed, prioritize the most recently pressed one
+		# Check for newly pressed keys first
+		if Input.is_action_just_pressed("ui_right"):
+			direction = Vector2.RIGHT
+			last_direction = Vector2.RIGHT
+		elif Input.is_action_just_pressed("ui_left"):
+			direction = Vector2.LEFT
+			last_direction = Vector2.LEFT
+		elif Input.is_action_just_pressed("ui_down"):
+			direction = Vector2.DOWN
+			last_direction = Vector2.DOWN
+		elif Input.is_action_just_pressed("ui_up"):
+			direction = Vector2.UP
+			last_direction = Vector2.UP
+		else:
+			# No new key pressed, continue in last direction if it's still held
+			if last_direction in pressed_directions:
+				direction = last_direction
+			else:
+				# Last direction not held, use the first available direction
+				direction = pressed_directions[0]
+				last_direction = direction
 
 	var current_speed = walk_speed
 	if Input.is_action_pressed("ui_select"):  # run key
