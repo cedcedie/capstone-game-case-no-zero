@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://7x3miw42cliy"]
+[gd_scene load_steps=52 format=3 uid="uid://7x3miw42cliy"]
 
 [ext_resource type="Texture2D" uid="uid://b5w77arqh0msb" path="res://assets/PNG/characters/celine_navarro.png" id="1_rwirx"]
 
@@ -98,6 +98,30 @@ region = Rect2(128, 64, 32, 64)
 atlas = ExtResource("1_rwirx")
 region = Rect2(160, 64, 32, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmdt3"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(192, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk0w2"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(224, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18o7a"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(256, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obks2"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(288, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1474"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(320, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioy45"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(352, 64, 32, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwirx"]
 atlas = ExtResource("1_rwirx")
 region = Rect2(576, 128, 32, 64)
@@ -121,6 +145,30 @@ region = Rect2(704, 128, 32, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8jp0"]
 atlas = ExtResource("1_rwirx")
 region = Rect2(736, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdbt1"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(384, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxtjh"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(416, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r4o2"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(448, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4vhy"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(480, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3nx6"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(512, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kqev"]
+atlas = ExtResource("1_rwirx")
+region = Rect2(544, 128, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dddgv"]
 atlas = ExtResource("1_rwirx")
@@ -148,11 +196,6 @@ region = Rect2(160, 128, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8d7p2"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0gw1m")
@@ -247,6 +290,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qmdt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk0w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18o7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obks2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1474")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioy45")
+}],
+"loop": true,
+"name": &"walk_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rwirx")
 }, {
 "duration": 1.0,
@@ -266,6 +332,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdbt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxtjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r4o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4vhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3nx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kqev")
+}],
+"loop": true,
+"name": &"walk_left",
 "speed": 5.0
 }, {
 "frames": [{
@@ -299,7 +388,7 @@ size = Vector2(20, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8d7p2")
-animation = &"idle_front"
+animation = &"idle_back"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 
