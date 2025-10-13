@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://rsdvopdfs4yh"]
 
-[ext_resource type="Script" path="res://scripts/character/npc_police.gd" id="1_3j8qv"]
+[ext_resource type="Script" uid="uid://c1ckuscmccobv" path="res://scripts/character/npc_police.gd" id="1_3j8qv"]
 [ext_resource type="Texture2D" uid="uid://fjoa7s8clpqg" path="res://assets/PNG/characters/leo_idle.png" id="1_xf7kk"]
 [ext_resource type="Texture2D" uid="uid://cv2syuw53mxax" path="res://assets/PNG/characters/npcSpriteSheet/police.png" id="2_q8dvw"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="3_ggs4y"]
