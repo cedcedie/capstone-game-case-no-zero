@@ -23,7 +23,7 @@ func _ready():
 	find_player()
 
 func find_player():
-	"""Find the player character to follow"""
+	"""Find the player character (kept for compatibility)"""
 	# Try to find player in current scene
 	var current_scene = get_tree().current_scene
 	if current_scene:
@@ -37,7 +37,7 @@ func find_player():
 	print("🎯 DialogChooser: Player found:", player != null)
 
 func show_choices(choices: Array):
-	"""Show 2 choices, positioned relative to player"""
+	"""Show 2 choices following the player"""
 	current_choices = choices
 	
 	# Hide all first
@@ -50,44 +50,38 @@ func show_choices(choices: Array):
 		choice1.visible = true
 		choice2.visible = true
 		
-		# Position choices relative to player/camera
-		position_choices_relative_to_player()
+		# Position the entire CanvasLayer to follow the player
+		position_canvas_following_player()
 	
 	# Show the dialog chooser
 	visible = true
 
-func position_choices_relative_to_player():
-	"""Position choices relative to player position"""
+func position_canvas_following_player():
+	"""Position the entire CanvasLayer to follow the player"""
 	if not player:
 		find_player()
 	
 	if player:
-		# Get player's screen position
-		var player_screen_pos = get_viewport().get_camera_2d().to_screen_coordinate(player.global_position)
+		# Get player's world position
+		var player_pos = player.global_position
 		
-		# Position choices above player
-		var choice_y_offset = -80  # Above player
-		var choice_spacing = 40    # Space between choices
-		
-		# Choice 1 position
-		choice1.position = Vector2(
-			player_screen_pos.x - 160,  # Center horizontally (320px / 2)
-			player_screen_pos.y + choice_y_offset
-		)
-		
-		# Choice 2 position
-		choice2.position = Vector2(
-			player_screen_pos.x - 160,  # Center horizontally (320px / 2)
-			player_screen_pos.y + choice_y_offset + choice_spacing
-		)
-		
-		print("🎯 DialogChooser: Positioned at player screen pos:", player_screen_pos)
+		# Convert world position to screen position
+		var camera = get_viewport().get_camera_2d()
+		if camera:
+			var player_screen_pos = camera.to_screen_coordinate(player_pos)
+			
+			# Set the CanvasLayer's offset to center on the player
+			# This makes your centered choices appear at the player's screen position
+			offset = Vector2(
+				player_screen_pos.x - (get_viewport().get_visible_rect().size.x / 2),
+				player_screen_pos.y - (get_viewport().get_visible_rect().size.y / 2)
+			)
+			
+			print("🎯 DialogChooser: Following player at screen pos:", player_screen_pos)
+		else:
+			print("⚠️ DialogChooser: No camera found")
 	else:
-		# Fallback to center of screen if no player found
-		var screen_size = get_viewport().get_visible_rect().size
-		choice1.position = Vector2(screen_size.x / 2 - 160, screen_size.y / 2 - 40)
-		choice2.position = Vector2(screen_size.x / 2 - 160, screen_size.y / 2)
-		print("⚠️ DialogChooser: No player found, using screen center")
+		print("⚠️ DialogChooser: No player found")
 
 func hide_all_choices():
 	"""Hide all choice boxes"""
