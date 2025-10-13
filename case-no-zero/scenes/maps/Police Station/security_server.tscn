@@ -5608,6 +5608,7 @@ texture_region_size = Vector2i(32, 32)
 15:17/0 = 0
 1:18/0 = 0
 2:18/0 = 0
+2:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 13.8582, -16, 13.9598, 3.90873, -16, 4.01026)
 3:18/0 = 0
 4:18/0 = 0
 5:18/0 = 0
@@ -5652,6 +5653,7 @@ texture_region_size = Vector2i(32, 32)
 12:20/0 = 0
 13:20/0 = 0
 14:20/0 = 0
+14:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.0634, -7.99454, -7.87992, -11.9488, 7.99454, -11.9488, 12.0061, -7.82261, 12.0311, 3.98724, 16, 4.05658, 16, 9.95076, 11.9485, 10.0207, 11.9293, 16, -11.9617, 16, -11.9871, 10.0199, -16, 10.0894, -16, 4.05658, -12.0129, 3.91753)
 15:20/0 = 0
 0:21/0 = 0
 1:21/0 = 0
@@ -5669,6 +5671,7 @@ texture_region_size = Vector2i(32, 32)
 15:21/0 = 0
 0:22/0 = 0
 1:22/0 = 0
+1:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.1018, -16, 5.93925, -16, 6.04077, 1.97975, -9.89874, 1.97975)
 3:22/0 = 0
 4:22/0 = 0
 5:22/0 = 0
@@ -5680,6 +5683,7 @@ texture_region_size = Vector2i(32, 32)
 13:22/0 = 0
 14:22/0 = 0
 15:22/0 = 0
+15:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.0634, -7.99454, -7.87992, -11.9488, 7.99454, -11.9488, 12.0061, -7.82261, 12.0311, 3.98724, 16, 4.05658, 16, 9.95076, 11.9485, 10.0207, 11.9293, 16, -11.9617, 16, -11.9871, 10.0199, -16, 10.0894, -16, 4.05658, -12.0129, 3.91753)
 0:23/0 = 0
 1:23/0 = 0
 2:23/0 = 0
@@ -5982,6 +5986,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_swsfr"]
 tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jr5kr")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cl1ug"]
@@ -6017,6 +6022,7 @@ tile_set = SubResource("TileSet_dp24l")
 position = Vector2(352, 176)
 tile_map_data = PackedByteArray("AAAOAAMAAAAOABQAAAAOAAIAAAACABEAAAAQAAIAAAABABUAAAAQAAMAAAABABYAAAAPAAIAAAABABEAAAAPAAMAAAABABIAAAAOAAQAAAAOABUAAAANAAMAAAAAABEAAAAMAAEAAAAPAA0AAAAMAAIAAAAPAA4AAAAMAAMAAAAPAA8AAAARAAEAAAAPAA0AAAARAAIAAAAPAA4AAAARAAMAAAAPAA8AAAAJAAgAAAABABUAAAAJAAkAAAABABYAAAAKAAkAAAACABIAAAAMAAkAAAAAABEAAAARAAYAAAABAAoAAAARAAAAAAABAAoAAAAHAAAAAAABAAoAAAADAAAAAAAAAAoAAAALAAkAAAAPABYAAAALAAoAAAAPABcAAAA=")
 tile_set = SubResource("TileSet_swsfr")
+collision_visibility_mode = 1
 
 [node name="Area2D_police_lobby" type="Area2D" parent="."]
 script = ExtResource("8_scene_transition")
