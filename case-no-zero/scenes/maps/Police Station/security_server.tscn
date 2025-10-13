@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://b5owjsmxnbf08"]
+[gd_scene load_steps=24 format=4 uid="uid://b5owjsmxnbf08"]
 
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/PNG/interior/Room_Builder_Floors_32x32.png" id="1_n0tdn"]
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/PNG/interior/Room_Builder_borders_32x32.png" id="2_t3lxb"]
@@ -5935,15 +5935,11 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_jr5kr")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cl1ug"]
-size = Vector2(53, 18)
+size = Vector2(53, 42)
 
 [node name="SecurityxserverRoom" type="Node2D"]
 script = ExtResource("9_scene_fade_in")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1368.0
-offset_bottom = 768.0
-color = Color(0, 0, 0, 1)
 
 [node name="ground" type="TileMapLayer" parent="."]
 position = Vector2(352, 176)
@@ -5971,14 +5967,14 @@ position = Vector2(352, 176)
 tile_map_data = PackedByteArray("AAAOAAMAAAAOABQAAAAOAAIAAAACABEAAAAQAAIAAAABABUAAAAQAAMAAAABABYAAAAPAAIAAAABABEAAAAPAAMAAAABABIAAAAOAAQAAAAOABUAAAANAAMAAAAAABEAAAAMAAEAAAAPAA0AAAAMAAIAAAAPAA4AAAAMAAMAAAAPAA8AAAARAAEAAAAPAA0AAAARAAIAAAAPAA4AAAARAAMAAAAPAA8AAAAJAAgAAAABABUAAAAJAAkAAAABABYAAAAKAAkAAAACABIAAAAMAAkAAAAAABEAAAARAAYAAAABAAoAAAARAAAAAAABAAoAAAAHAAAAAAABAAoAAAADAAAAAAAAAAoAAAALAAkAAAAPABYAAAALAAoAAAAPABcAAAA=")
 tile_set = SubResource("TileSet_swsfr")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D_police_lobby" type="Area2D" parent="."]
 script = ExtResource("8_scene_transition")
 
-[node name="police_lobby" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(544, 183)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_lobby"]
+position = Vector2(544, 195)
 shape = SubResource("RectangleShape2D_cl1ug")
 
 [node name="PlayerM" parent="." instance=ExtResource("7_10akm")]
-position = Vector2(544, 248)
+position = Vector2(544, 288)
 
 [editable path="PlayerM"]

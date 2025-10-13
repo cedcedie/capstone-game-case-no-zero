@@ -8,6 +8,18 @@ var direction: Vector2 = Vector2.ZERO
 var last_facing: String = "front"
 var control_enabled: bool = true   # can the player move?
 
+# Function to disable movement (called by NPCs during dialogue)
+func disable_movement():
+	control_enabled = false
+	# Stop animation and set to idle
+	anim_sprite.play("idle_" + last_facing)
+	print("Player movement disabled during dialogue")
+
+# Function to enable movement (called by NPCs after dialogue)
+func enable_movement():
+	control_enabled = true
+	print("Player movement enabled after dialogue")
+
 func _physics_process(_delta: float) -> void:
 	if control_enabled:
 		_handle_input()

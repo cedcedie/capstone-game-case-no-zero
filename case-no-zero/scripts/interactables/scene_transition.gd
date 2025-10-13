@@ -1,9 +1,8 @@
 extends Area2D
 
-@export var transition_duration: float = 0.3
-@export var fade_color: Color = Color.BLACK
-
 var is_transitioning: bool = false
+var fade_duration: float = 0.25  # Faster fade since we check scene readiness
+var player_reference: Node = null
 
 func _ready():
 	# Connect the body_entered signal to handle player entering the area
@@ -12,71 +11,75 @@ func _ready():
 func _on_body_entered(body):
 	# Check if the body is the player and we're not already transitioning
 	if body.name == "PlayerM" and not is_transitioning:
-		# Find which collision shape the player entered
-		var target_scene = _get_target_scene_from_position(body.global_position)
-		if target_scene:
-			_start_transition(target_scene)
+		var target_scene_path = _get_target_scene_path_from_area_name()
+		if target_scene_path != "":
+			# Store player reference and disable movement during transition
+			player_reference = body
+			if body.has_method("disable_movement"):
+				body.disable_movement()
+			_start_transition(target_scene_path)
 
-func _get_target_scene_from_position(player_pos: Vector2) -> String:
-	# Check each collision shape to see which one the player is in
-	for child in get_children():
-		if child is CollisionShape2D:
-			var collision_shape = child as CollisionShape2D
-			var area_pos = global_position + collision_shape.position
-			var shape = collision_shape.shape as RectangleShape2D
-			
-			if shape:
-				var rect = Rect2(area_pos - shape.size / 2, shape.size)
-				if rect.has_point(player_pos):
-					return _get_scene_path_from_collision_name(collision_shape.name)
-	return ""
-
-func _get_scene_path_from_collision_name(collision_name: String) -> String:
-	# Map collision shape names to their corresponding scene paths
-	match collision_name:
-		"police_lobby":
-			return "res://scenes/maps/Police Station/police_lobby.tscn"
-		"lower_level_station":
+func _get_target_scene_path_from_area_name() -> String:
+	# Get the scene path based on the Area2D's name
+	var area_name = name
+	match area_name:
+		"Area2D_lower_level":
 			return "res://scenes/maps/Police Station/lower_level_station.tscn"
-		"head_police_room":
+		"Area2D_head_police":
 			return "res://scenes/maps/Police Station/head_police_room.tscn"
-		"security_server":
+		"Area2D_security_server":
 			return "res://scenes/maps/Police Station/security_server.tscn"
+		"Area2D_police_lobby":
+			return "res://scenes/maps/Police Station/police_lobby.tscn"
 		_:
-			print("Unknown collision shape name: ", collision_name)
 			return ""
 
-func _start_transition(target_scene: String):
+func _start_transition(target_scene_path: String):
 	is_transitioning = true
 	
-	# Create a ColorRect for the fade effect
+	# Create full-screen fade overlay on the CanvasLayer to be above everything
+	var canvas_layer = CanvasLayer.new()
 	var fade_rect = ColorRect.new()
-	fade_rect.color = fade_color
+	fade_rect.color = Color.BLACK
 	fade_rect.color.a = 0.0
 	fade_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	get_tree().current_scene.add_child(fade_rect)
+	canvas_layer.add_child(fade_rect)
+	get_tree().current_scene.add_child(canvas_layer)
 	
-	# Simple fade in
+	# Move canvas layer to be on top of everything
+	canvas_layer.layer = 100
+	
+	# Smooth fade in to cover entire scene
 	var tween = create_tween()
-	tween.tween_property(fade_rect, "color:a", 1.0, transition_duration)
+	tween.tween_property(fade_rect, "color:a", 1.0, fade_duration)
 	
-	# Wait for fade in to complete, then change scene
+	# Wait for fade in, then change scene
 	await tween.finished
 	
-	# Change to the target scene
-	var result = get_tree().change_scene_to_file(target_scene)
+	# Small delay to ensure fade is complete before scene change
+	await get_tree().create_timer(0.05).timeout
+	
+	# Change scene
+	var result = get_tree().change_scene_to_file(target_scene_path)
 	if result != OK:
-		print("Failed to change scene to: ", target_scene)
-		# If scene change failed, fade out and reset
-		_fade_out_and_cleanup(fade_rect)
+		print("Failed to change scene to: ", target_scene_path)
+		is_transitioning = false
+		# If scene change failed, fade out
+		_fade_out_and_cleanup(canvas_layer)
 	else:
-		# Scene change successful, the new scene will handle its own fade-in
-		fade_rect.queue_free()
+		# Scene change successful, canvas layer will be destroyed with old scene
+		pass
 
-func _fade_out_and_cleanup(fade_rect: ColorRect):
-	# Fade out and clean up
+func _fade_out_and_cleanup(canvas_layer: CanvasLayer):
+	# Fade out and clean up if scene change failed
+	var fade_rect = canvas_layer.get_child(0) as ColorRect
 	var tween = create_tween()
-	tween.tween_property(fade_rect, "color:a", 0.0, transition_duration)
+	tween.tween_property(fade_rect, "color:a", 0.0, fade_duration)
 	await tween.finished
-	fade_rect.queue_free()
+	canvas_layer.queue_free()
 	is_transitioning = false
+	
+	# Re-enable player movement if scene change failed
+	if player_reference and player_reference.has_method("enable_movement"):
+		player_reference.enable_movement()
+	player_reference = null

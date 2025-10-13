@@ -23242,10 +23242,6 @@ sources/3 = SubResource("TileSetAtlasSource_csyt1")
 [node name="Courtroom" type="Node2D"]
 y_sort_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1366.0
-offset_bottom = 768.0
-color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

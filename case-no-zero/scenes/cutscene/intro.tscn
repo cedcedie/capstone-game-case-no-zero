@@ -7,10 +7,6 @@
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_a08vw")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1367.0
-offset_bottom = 765.0
-color = Color(0, 0, 0, 1)
 
 [node name="leo_mendoza" parent="." instance=ExtResource("2_tpm51")]
 position = Vector2(669, 390)

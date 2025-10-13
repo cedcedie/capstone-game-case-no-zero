@@ -11,6 +11,7 @@ var dialogue_data: Dictionary = {}
 var has_interacted: bool = false
 var is_player_nearby: bool = false
 var player_reference: Node2D = null
+var is_in_dialogue: bool = false  # Prevent E key spam during dialogue
 
 # Animation settings
 var label_fade_duration: float = 0.3
@@ -36,8 +37,8 @@ func _ready():
 		animated_sprite.play("idle_front")
 
 func _process(_delta):
-	# Check for interaction input when player is nearby
-	if is_player_nearby and Input.is_action_just_pressed("interact"):
+	# Check for interaction input when player is nearby and not in dialogue
+	if is_player_nearby and Input.is_action_just_pressed("interact") and not is_in_dialogue:
 		interact()
 
 func load_dialogue():
@@ -93,7 +94,12 @@ func hide_interaction_label():
 
 func interact():
 	print("💬 Interacting with police officer")
+	is_in_dialogue = true  # Prevent E key spam
 	hide_interaction_label()
+	
+	# Disable player movement during dialogue
+	if player_reference and player_reference.has_method("disable_movement"):
+		player_reference.disable_movement()
 	
 	# Choose dialogue based on interaction history
 	if not has_interacted:
@@ -107,6 +113,10 @@ func interact():
 		show_dialogue()
 	else:
 		print("⚠️ No dialogue lines loaded")
+		is_in_dialogue = false  # Reset if no dialogue
+		# Re-enable player movement if no dialogue
+		if player_reference and player_reference.has_method("enable_movement"):
+			player_reference.enable_movement()
 
 func show_dialogue():
 	# Use the global DialogueUI autoload
@@ -133,6 +143,13 @@ func show_dialogue():
 	
 	# Hide dialogue after all lines shown
 	DialogueUI.hide_ui()
+	
+	# Reset dialogue state
+	is_in_dialogue = false
+	
+	# Re-enable player movement after dialogue
+	if player_reference and player_reference.has_method("enable_movement"):
+		player_reference.enable_movement()
 	
 	# Show the label again if player is still nearby
 	if is_player_nearby:
