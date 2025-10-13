@@ -1,19 +1,21 @@
-[gd_scene load_steps=32 format=4 uid="uid://ci31atmmys44c"]
+[gd_scene load_steps=35 format=4 uid="uid://ci31atmmys44c"]
 
-[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/PNG/interior/Room_Builder_Floors_32x32.png" id="1_uu72n"]
-[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/PNG/interior/Room_Builder_Walls_32x32.png" id="2_k20uy"]
-[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/PNG/interior/Room_Builder_borders_32x32.png" id="3_lb5yp"]
-[ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/PNG/interior/19_Hospital_32x32.png" id="4_1cs5d"]
-[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/PNG/interior/1_Generic_32x32.png" id="5_b5hmf"]
-[ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/PNG/interior/2_LivingRoom_32x32.png" id="6_pg8g2"]
-[ext_resource type="Texture2D" uid="uid://cqn2g1cxl6v7w" path="res://assets/PNG/interior/14_Basement_32x32.png" id="7_g68jc"]
-[ext_resource type="Texture2D" uid="uid://cj4yp0lhfkuvl" path="res://assets/PNG/interior/6_Music_and_sport_32x32.png" id="8_5u4qg"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="9_d4agr"]
-[ext_resource type="Texture2D" uid="uid://bko828tu8yow7" path="res://assets/PNG/interior/18_Jail_32x32.png" id="10_bmi70"]
-[ext_resource type="Texture2D" uid="uid://bva64e84lhmr3" path="res://assets/PNG/interior/15_Christmas_32x32.png" id="10_k20uy"]
+[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/PNG/interior/Room_Builder_Floors_32x32.png" id="1_e5ift"]
+[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/PNG/interior/Room_Builder_Walls_32x32.png" id="2_ugl1s"]
+[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/PNG/interior/Room_Builder_borders_32x32.png" id="3_6inlr"]
+[ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/PNG/interior/19_Hospital_32x32.png" id="4_vg6x6"]
+[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/PNG/interior/1_Generic_32x32.png" id="5_rk57l"]
+[ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/PNG/interior/2_LivingRoom_32x32.png" id="6_ksmdh"]
+[ext_resource type="Texture2D" uid="uid://cqn2g1cxl6v7w" path="res://assets/PNG/interior/14_Basement_32x32.png" id="7_k47ab"]
+[ext_resource type="Texture2D" uid="uid://cj4yp0lhfkuvl" path="res://assets/PNG/interior/6_Music_and_sport_32x32.png" id="8_dcruy"]
+[ext_resource type="Texture2D" uid="uid://bko828tu8yow7" path="res://assets/PNG/interior/18_Jail_32x32.png" id="9_tqgjl"]
+[ext_resource type="Texture2D" uid="uid://bva64e84lhmr3" path="res://assets/PNG/interior/15_Christmas_32x32.png" id="10_btb02"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_pqm10"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="12_scene_transition"]
+[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="13_scene_fade_in"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cxmj2"]
-texture = ExtResource("1_uu72n")
+texture = ExtResource("1_e5ift")
 texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 1:2/0 = 0
@@ -453,7 +455,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_cxmj2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ld6a"]
-texture = ExtResource("2_k20uy")
+texture = ExtResource("2_ugl1s")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -1432,7 +1434,7 @@ texture_region_size = Vector2i(32, 32)
 20:37/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_41cmc"]
-texture = ExtResource("3_lb5yp")
+texture = ExtResource("3_6inlr")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -1698,7 +1700,7 @@ sources/0 = SubResource("TileSetAtlasSource_2ld6a")
 sources/1 = SubResource("TileSetAtlasSource_41cmc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gy5im"]
-texture = ExtResource("4_1cs5d")
+texture = ExtResource("4_vg6x6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -3261,7 +3263,7 @@ texture_region_size = Vector2i(32, 32)
 6:106/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2fct"]
-texture = ExtResource("5_b5hmf")
+texture = ExtResource("5_rk57l")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -4357,7 +4359,7 @@ texture_region_size = Vector2i(32, 32)
 10:75/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bina"]
-texture = ExtResource("6_pg8g2")
+texture = ExtResource("6_ksmdh")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
@@ -4952,7 +4954,7 @@ texture_region_size = Vector2i(32, 32)
 15:44/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6a2k"]
-texture = ExtResource("7_g68jc")
+texture = ExtResource("7_k47ab")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 3:0/0 = 0
@@ -5680,7 +5682,7 @@ texture_region_size = Vector2i(32, 32)
 10:49/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcf0l"]
-texture = ExtResource("8_5u4qg")
+texture = ExtResource("8_dcruy")
 texture_region_size = Vector2i(32, 32)
 4:0/0 = 0
 5:0/0 = 0
@@ -6334,7 +6336,7 @@ sources/4 = SubResource("TileSetAtlasSource_x6a2k")
 sources/7 = SubResource("TileSetAtlasSource_jcf0l")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrtjs"]
-texture = ExtResource("5_b5hmf")
+texture = ExtResource("5_rk57l")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -7440,7 +7442,7 @@ texture_region_size = Vector2i(32, 32)
 10:75/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnbsk"]
-texture = ExtResource("10_bmi70")
+texture = ExtResource("9_tqgjl")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -8085,7 +8087,7 @@ texture_region_size = Vector2i(32, 32)
 10:44/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1og0"]
-texture = ExtResource("6_pg8g2")
+texture = ExtResource("6_ksmdh")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
@@ -8668,7 +8670,7 @@ texture_region_size = Vector2i(32, 32)
 15:44/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb5yp"]
-texture = ExtResource("10_k20uy")
+texture = ExtResource("10_btb02")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -8885,7 +8887,7 @@ texture_region_size = Vector2i(32, 32)
 6:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1cs5d"]
-texture = ExtResource("7_g68jc")
+texture = ExtResource("7_k47ab")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 3:0/0 = 0
@@ -9625,7 +9627,7 @@ sources/4 = SubResource("TileSetAtlasSource_lb5yp")
 sources/5 = SubResource("TileSetAtlasSource_1cs5d")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jnf8u"]
-texture = ExtResource("10_bmi70")
+texture = ExtResource("9_tqgjl")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -10272,7 +10274,7 @@ texture_region_size = Vector2i(32, 32)
 10:44/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b5hmf"]
-texture = ExtResource("7_g68jc")
+texture = ExtResource("7_k47ab")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 3:0/0 = 0
@@ -11007,27 +11009,54 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jnf8u")
 sources/1 = SubResource("TileSetAtlasSource_b5hmf")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xebd"]
+size = Vector2(96, 18)
+
 [node name="HeadPoliceRoom" type="Node2D"]
+script = ExtResource("13_scene_fade_in")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1368.0
+offset_bottom = 768.0
+color = Color(0, 0, 0, 1)
 
 [node name="ground" type="TileMapLayer" parent="."]
+position = Vector2(312, 200)
 tile_map_data = PackedByteArray("AAAEAAEAAAABAB8AAAAEAAIAAAABAB8AAAAEAAMAAAABAB8AAAAEAAQAAAABAB8AAAAEAAUAAAABAB8AAAAEAAYAAAABAB8AAAAEAAcAAAABAB8AAAAEAAgAAAABAB8AAAAEAAkAAAABAB8AAAAFAAEAAAABAB8AAAAFAAIAAAABAB8AAAAFAAMAAAABAB8AAAAFAAQAAAABAB8AAAAFAAUAAAABAB8AAAAFAAYAAAABAB8AAAAFAAcAAAABAB8AAAAFAAgAAAABAB8AAAAFAAkAAAABAB8AAAAGAAEAAAABAB8AAAAGAAIAAAABAB8AAAAGAAMAAAABAB8AAAAGAAQAAAABAB8AAAAGAAUAAAABAB8AAAAGAAYAAAABAB8AAAAGAAcAAAABAB8AAAAGAAgAAAABAB8AAAAGAAkAAAABAB8AAAAHAAEAAAABAB8AAAAHAAIAAAABAB8AAAAHAAMAAAABAB8AAAAHAAQAAAABAB8AAAAHAAUAAAABAB8AAAAHAAYAAAABAB8AAAAHAAcAAAABAB8AAAAHAAgAAAABAB8AAAAHAAkAAAABAB8AAAAIAAEAAAABAB8AAAAIAAIAAAABAB8AAAAIAAMAAAABAB8AAAAIAAQAAAABAB8AAAAIAAUAAAABAB8AAAAIAAYAAAABAB8AAAAIAAcAAAABAB8AAAAIAAgAAAABAB8AAAAIAAkAAAABAB8AAAAJAAEAAAABAB8AAAAJAAIAAAABAB8AAAAJAAMAAAABAB8AAAAJAAQAAAABAB8AAAAJAAUAAAABAB8AAAAJAAYAAAABAB8AAAAJAAcAAAABAB8AAAAJAAgAAAABAB8AAAAJAAkAAAABAB8AAAAKAAEAAAABAB8AAAAKAAIAAAABAB8AAAAKAAMAAAABAB8AAAAKAAQAAAABAB8AAAAKAAUAAAABAB8AAAAKAAYAAAABAB8AAAAKAAcAAAABAB8AAAAKAAgAAAABAB8AAAAKAAkAAAABAB8AAAALAAEAAAABAB8AAAALAAIAAAABAB8AAAALAAMAAAABAB8AAAALAAQAAAABAB8AAAALAAUAAAABAB8AAAALAAYAAAABAB8AAAALAAcAAAABAB8AAAALAAgAAAABAB8AAAALAAkAAAABAB8AAAAMAAEAAAABAB8AAAAMAAIAAAABAB8AAAAMAAMAAAABAB8AAAAMAAQAAAABAB8AAAAMAAUAAAABAB8AAAAMAAYAAAABAB8AAAAMAAcAAAABAB8AAAAMAAgAAAABAB8AAAAMAAkAAAABAB8AAAANAAEAAAABAB8AAAANAAIAAAABAB8AAAANAAMAAAABAB8AAAANAAQAAAABAB8AAAANAAUAAAABAB8AAAANAAYAAAABAB8AAAANAAcAAAABAB8AAAANAAgAAAABAB8AAAANAAkAAAABAB8AAAAOAAEAAAABAB8AAAAOAAIAAAABAB8AAAAOAAMAAAABAB8AAAAOAAQAAAABAB8AAAAOAAUAAAABAB8AAAAOAAYAAAABAB8AAAAOAAcAAAABAB8AAAAOAAgAAAABAB8AAAAOAAkAAAABAB8AAAAPAAEAAAABAB8AAAAPAAIAAAABAB8AAAAPAAMAAAABAB8AAAAPAAQAAAABAB8AAAAPAAUAAAABAB8AAAAPAAYAAAABAB8AAAAPAAcAAAABAB8AAAAPAAgAAAABAB8AAAAPAAkAAAABAB8AAAAQAAEAAAABAB8AAAAQAAIAAAABAB8AAAAQAAMAAAABAB8AAAAQAAQAAAABAB8AAAAQAAUAAAABAB8AAAAQAAYAAAABAB8AAAAQAAcAAAABAB8AAAAQAAgAAAABAB8AAAAQAAkAAAABAB8AAAARAAEAAAABAB8AAAARAAIAAAABAB8AAAARAAMAAAABAB8AAAARAAQAAAABAB8AAAARAAUAAAABAB8AAAARAAYAAAABAB8AAAARAAcAAAABAB8AAAARAAgAAAABAB8AAAARAAkAAAABAB8AAAASAAEAAAABAB8AAAASAAIAAAABAB8AAAASAAMAAAABAB8AAAASAAQAAAABAB8AAAASAAUAAAABAB8AAAASAAYAAAABAB8AAAASAAcAAAABAB8AAAASAAgAAAABAB8AAAASAAkAAAABAB8AAAAQAAoAAAABACMAAAAQAAsAAAABACMAAAARAAoAAAABACMAAAARAAsAAAABACMAAAASAAoAAAABACMAAAASAAsAAAABACMAAAA=")
 tile_set = SubResource("TileSet_m2fct")
 
 [node name="walls" type="TileMapLayer" parent="."]
+position = Vector2(312, 200)
 tile_map_data = PackedByteArray("AAAFAAAAAAABAAQAAAAGAAAAAAABAAQAAAAHAAAAAAABAAQAAAAIAAAAAAABAAQAAAAJAAAAAAABAAQAAAAKAAAAAAABAAQAAAALAAAAAAABAAQAAAAMAAAAAAABAAQAAAANAAAAAAABAAQAAAAOAAAAAAABAAQAAAAPAAAAAAABAAQAAAAQAAAAAAABAAQAAAARAAAAAAABAAQAAAASAAAAAAABAAQAAAAEAAAAAAABAAQAAAASAAEAAAAFAAQAAAARAAEAAAAFAAQAAAAQAAEAAAAFAAQAAAAPAAEAAAAFAAQAAAAOAAEAAAAFAAQAAAANAAEAAAAFAAQAAAAMAAEAAAAFAAQAAAALAAEAAAAFAAQAAAAKAAEAAAAFAAQAAAAJAAEAAAAFAAQAAAAIAAEAAAAFAAQAAAAHAAEAAAAFAAQAAAAGAAEAAAAFAAQAAAAFAAEAAAAFAAQAAAAEAAEAAAAFAAQAAAASAAIAAAABAAUAAAARAAIAAAABAAUAAAAQAAIAAAABAAUAAAAPAAIAAAABAAUAAAAOAAIAAAABAAUAAAANAAIAAAABAAUAAAAMAAIAAAABAAUAAAALAAIAAAABAAUAAAAKAAIAAAABAAUAAAAJAAIAAAABAAUAAAAIAAIAAAABAAUAAAAHAAIAAAABAAUAAAAGAAIAAAABAAUAAAAFAAIAAAABAAUAAAAEAAIAAAABAAUAAAADAAAAAQAGAAYAAAATAAAAAQAIAAYAAAADAAEAAQAGAAcAAAADAAIAAQAGAAcAAAADAAMAAQAGAAcAAAADAAQAAQAGAAcAAAADAAUAAQAGAAcAAAADAAYAAQAGAAcAAAADAAcAAQAGAAcAAAADAAgAAQAGAAcAAAADAAkAAQAGAAcAAAADAAoAAQAGAAgAAAAEAAoAAQAHAAgAAAAFAAoAAQAHAAgAAAAGAAoAAQAHAAgAAAAHAAoAAQAHAAgAAAAIAAoAAQAHAAgAAAAJAAoAAQAHAAgAAAAKAAoAAQAHAAgAAAALAAoAAQAHAAgAAAAMAAoAAQAHAAgAAAANAAoAAQAHAAgAAAAOAAoAAQAHAAgAAAATAAEAAQAIAAcAAAATAAIAAQAIAAcAAAATAAMAAQAIAAcAAAATAAQAAQAIAAcAAAATAAUAAQAIAAcAAAATAAYAAQAIAAcAAAATAAcAAQAIAAcAAAATAAgAAQAIAAcAAAATAAkAAQAIAAcAAAATAAoAAQAIAAcAAAAPAAoAAQAEAAYAAAASAAwAAQAHAAgAAAARAAwAAQAHAAgAAAAQAAwAAQAHAAgAAAATAAwAAQAIAAgAAAAPAAwAAQAGAAgAAAAPAAsAAQAGAAcAAAATAAsAAQAIAAcAAAA=")
 tile_set = SubResource("TileSet_1bina")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(312, 200)
 tile_map_data = PackedByteArray("AAAQAAoAAAAKAC4AAAASAAoAAAALAC4AAAARAAoAAAANAC4AAAAQAAsAAAAGAC4AAAASAAsAAAAHAC4AAAARAAsAAAAJAC4AAAAOAAgAAAADAA4AAAAOAAkAAAADAA8AAAAPAAgAAAAEAA4AAAAPAAkAAAAEAA8AAAAFAAEAAAACAAAAAAAFAAIAAAACAAEAAAAGAAEAAAADAAAAAAAGAAIAAAADAAEAAAAKAAEAAAAFAAYAAAAKAAIAAAAFAAcAAAAKAAMAAAAFAAgAAAALAAEAAAAGAAYAAAALAAIAAAAGAAcAAAALAAMAAAAGAAgAAAAMAAEAAAANAAYAAAAMAAIAAAANAAcAAAAMAAMAAAANAAgAAAAPAAEAAAAMAAkAAAAPAAIAAAAMAAoAAAAPAAMAAAAMAAsAAAAQAAEAAAANAAkAAAAQAAIAAAANAAoAAAAQAAMAAAANAAsAAAAIAAAAAQABAB8AAAAIAAEAAQABACAAAAAJAAAAAQACAB8AAAAJAAEAAQACACAAAAANAAAAAQABAB8AAAANAAEAAQABACAAAAAOAAAAAQACAB8AAAAOAAEAAQACACAAAAAEAAIAAQAFABQAAAAEAAMAAQAFABUAAAAMAAkAAgALACcAAAAKAAkAAgAMACUAAAALAAkAAgANACUAAAARAAEAAgAAABoAAAARAAIAAgAAABsAAAAHAAkAAgAKABsAAAAIAAkAAgALABsAAAAFAAkAAgAKABsAAAAGAAkAAgALABsAAAAHAAIAAgABAAwAAAAHAAMAAgAAAA4AAAAHAAEAAgABAAsAAAAIAAIAAgAFAAsAAAAIAAMAAgAFAAwAAAAJAAIAAgAGAAoAAAAJAAMAAgAGAAwAAAAFAAUABAACACUAAAAFAAYABAACACYAAAAGAAUABAADACUAAAAGAAYABAADACYAAAAJAAUABAAJACwAAAAJAAYABAAJAC0AAAAJAAcABAAJAC4AAAAKAAUABAAKACwAAAAKAAYABAAKAC0AAAAKAAcABAAKAC4AAAALAAUABAALACwAAAALAAYABAALAC0AAAALAAcABAALAC4AAAAMAAUABAAMACwAAAAMAAYABAAMAC0AAAAMAAcABAAMAC4AAAASAAIABwAHACQAAAASAAMABwAHACUAAAA=")
 tile_set = SubResource("TileSet_cxmj2")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
+position = Vector2(312, 200)
 tile_map_data = PackedByteArray("AAAEAAIAAAAJAEEAAAAFAAUAAAAAACUAAAAFAAYAAAAAACYAAAAFAAcAAAAAACcAAAAGAAAAAQABAAsAAAAGAAUAAAABACUAAAAGAAYAAAABACYAAAAGAAcAAAAOACIAAAAHAAUAAAADACUAAAAHAAYAAAADACYAAAAHAAcAAAADACcAAAAQAAAAAQABAAsAAAASAAAAAAANAD0AAAASAAEAAAANAD4AAAASAAgAAQABAAoAAAARAAMABQADAAQAAAARAAQABQADAAUAAAARAAUABQADAAYAAAASAAMABQAEAAQAAAASAAQABQAEAAUAAAASAAUABQAEAAYAAAAQAAQABQAFAAIAAAAQAAYABQAFAAIAAAA=")
 tile_set = SubResource("TileSet_jnf8u")
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
+position = Vector2(312, 200)
 tile_map_data = PackedByteArray("AAAGAAYAAAABABYAAFAGAAUAAAAAABEAAAARAAUAAQADAAQAAAARAAYAAQADAAUAAAARAAcAAQADAAYAAAASAAUAAQAEAAQAAAASAAYAAQAEAAUAAAASAAcAAQAEAAYAAAA=")
 tile_set = SubResource("TileSet_2ov7g")
 
-[node name="PlayerM" parent="." instance=ExtResource("9_d4agr")]
-position = Vector2(307, 209)
+[node name="PlayerM" parent="." instance=ExtResource("11_pqm10")]
+position = Vector2(872, 544)
+
+[node name="AnimatedSprite2D" parent="PlayerM" index="0"]
+animation = &"idle_back"
+autoplay = "idle_back"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("12_scene_transition")
+
+[node name="police_lobby" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(872, 576)
+shape = SubResource("RectangleShape2D_1xebd")
+
+[editable path="PlayerM"]
