@@ -70,10 +70,6 @@ window/size/viewport_height=768
 
 project/assembly_name="casenozero"
 
-[editor_plugins]
-
-enabled=PackedStringArray()
-
 [input]
 
 ui_accept={
