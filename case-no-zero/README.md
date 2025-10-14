@@ -6,9 +6,6 @@ A narrative-driven detective game built with Godot 4.
 
 ```
 case-no-zero/
-├── addons/                    # Godot plugins
-│   ├── Tile_Set_Helper/      # Tile set management plugin
-│   └── YarnSpinner-Godot/    # Dialogue system plugin
 ├── assets/                    # Game assets
 │   ├── audio/                # Sound effects and music
 │   ├── fonts/                # Font files
@@ -20,9 +17,6 @@ case-no-zero/
 │       └── ui/               # UI elements and icons
 ├── data/                     # Game data files
 │   └── dialogues/           # JSON dialogue files
-├── dialogue/                 # Yarn dialogue files
-│   ├── exterior/            # Exterior dialogue
-│   └── interior/            # Interior dialogue
 ├── docs/                     # Documentation
 │   └── plugin-screenshots/  # Plugin documentation images
 ├── scenes/                   # Godot scene files
@@ -41,7 +35,7 @@ case-no-zero/
 
 ## Features
 
-- **Dialogue System**: Uses YarnSpinner for narrative dialogue
+- **Dialogue System**: Uses JSON-based dialogue system with choice mechanics
 - **Character System**: Multiple NPCs with unique interactions
 - **Scene Management**: Organized scene structure for different game areas
 - **Audio System**: Background music and sound effects
@@ -56,7 +50,7 @@ case-no-zero/
 ### Setup
 1. Clone the repository
 2. Open the project in Godot 4
-3. Ensure all plugins are enabled in Project Settings
+3. The project uses a custom JSON-based dialogue system
 
 ### Key Scripts
 - `scripts/manager/lower_level_station.gd` - Main station scene manager
