@@ -1,18 +1,19 @@
-[gd_scene load_steps=30 format=4 uid="uid://dsa8iyd5awqd8"]
+[gd_scene load_steps=31 format=4 uid="uid://dsa8iyd5awqd8"]
 
-[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/PNG/interior/Room_Builder_borders_32x32.png" id="1_53w0n"]
-[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/PNG/interior/Room_Builder_Floors_32x32.png" id="2_718xn"]
-[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/PNG/interior/Room_Builder_Walls_32x32.png" id="3_ik820"]
-[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/PNG/interior/1_Generic_32x32.png" id="4_ik820"]
-[ext_resource type="Texture2D" uid="uid://ca2o3d64xiq0x" path="res://assets/PNG/interior/17_Visibile_Upstairs_System_32x32.png" id="5_k5lkh"]
-[ext_resource type="Texture2D" uid="uid://cqn2g1cxl6v7w" path="res://assets/PNG/interior/14_Basement_32x32.png" id="6_1hbtt"]
-[ext_resource type="Texture2D" uid="uid://d25s372ojqspt" path="res://assets/PNG/interior/3_Bathroom_32x32.png" id="7_8ykoq"]
-[ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/PNG/interior/4_Bedroom_32x32.png" id="8_8ykoq"]
-[ext_resource type="Texture2D" uid="uid://dr38kdsh40l27" path="res://assets/PNG/interior/12_Kitchen_32x32.png" id="8_f8kpn"]
-[ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/PNG/interior/2_LivingRoom_32x32.png" id="9_8ohey"]
+[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/PNG/interior/Room_Builder_borders_32x32.png" id="1_2e1te"]
+[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/PNG/interior/Room_Builder_Floors_32x32.png" id="2_f8r81"]
+[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/PNG/interior/Room_Builder_Walls_32x32.png" id="3_vnnxc"]
+[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/PNG/interior/1_Generic_32x32.png" id="4_vwv8o"]
+[ext_resource type="Texture2D" uid="uid://ca2o3d64xiq0x" path="res://assets/PNG/interior/17_Visibile_Upstairs_System_32x32.png" id="5_5gruu"]
+[ext_resource type="Texture2D" uid="uid://cqn2g1cxl6v7w" path="res://assets/PNG/interior/14_Basement_32x32.png" id="6_ql6ok"]
+[ext_resource type="Texture2D" uid="uid://d25s372ojqspt" path="res://assets/PNG/interior/3_Bathroom_32x32.png" id="7_qv5fr"]
+[ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/PNG/interior/4_Bedroom_32x32.png" id="8_72cmb"]
+[ext_resource type="Texture2D" uid="uid://dr38kdsh40l27" path="res://assets/PNG/interior/12_Kitchen_32x32.png" id="9_lwjpf"]
+[ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/PNG/interior/2_LivingRoom_32x32.png" id="10_j6lx3"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_f8r81"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5lkh"]
-texture = ExtResource("1_53w0n")
+texture = ExtResource("1_2e1te")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -276,7 +277,7 @@ texture_region_size = Vector2i(32, 32)
 20:8/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_afv0e"]
-texture = ExtResource("2_718xn")
+texture = ExtResource("2_f8r81")
 texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 1:2/0 = 0
@@ -712,7 +713,7 @@ texture_region_size = Vector2i(32, 32)
 14:37/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xpkbi"]
-texture = ExtResource("3_ik820")
+texture = ExtResource("3_vnnxc")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -1697,7 +1698,7 @@ texture_region_size = Vector2i(32, 32)
 20:37/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1hbtt"]
-texture = ExtResource("4_ik820")
+texture = ExtResource("4_vwv8o")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -2799,7 +2800,7 @@ sources/2 = SubResource("TileSetAtlasSource_xpkbi")
 sources/4 = SubResource("TileSetAtlasSource_1hbtt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ykoq"]
-texture = ExtResource("4_ik820")
+texture = ExtResource("4_vwv8o")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -3906,7 +3907,7 @@ texture_region_size = Vector2i(32, 32)
 10:75/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f8kpn"]
-texture = ExtResource("5_k5lkh")
+texture = ExtResource("5_5gruu")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -4240,7 +4241,7 @@ texture_region_size = Vector2i(32, 32)
 2:26/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ovsup"]
-texture = ExtResource("6_1hbtt")
+texture = ExtResource("6_ql6ok")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 3:0/0 = 0
@@ -4988,7 +4989,7 @@ texture_region_size = Vector2i(32, 32)
 10:49/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 1.92899, -16, -16, -6.1423, -16, -6.04087, 1.96058)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ycud"]
-texture = ExtResource("7_8ykoq")
+texture = ExtResource("7_qv5fr")
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
 4:0/0 = 0
@@ -5728,7 +5729,7 @@ texture_region_size = Vector2i(32, 32)
 6:54/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ohey"]
-texture = ExtResource("8_8ykoq")
+texture = ExtResource("8_72cmb")
 texture_region_size = Vector2i(32, 32)
 9:0/0 = 0
 10:0/0 = 0
@@ -7107,7 +7108,7 @@ texture_region_size = Vector2i(32, 32)
 7:106/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s54qv"]
-texture = ExtResource("8_f8kpn")
+texture = ExtResource("9_lwjpf")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -7852,7 +7853,7 @@ sources/7 = SubResource("TileSetAtlasSource_8ohey")
 sources/8 = SubResource("TileSetAtlasSource_s54qv")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_baefi"]
-texture = ExtResource("6_1hbtt")
+texture = ExtResource("6_ql6ok")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 3:0/0 = 0
@@ -8576,7 +8577,7 @@ texture_region_size = Vector2i(32, 32)
 10:49/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3p2ek"]
-texture = ExtResource("8_f8kpn")
+texture = ExtResource("9_lwjpf")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -9311,7 +9312,7 @@ texture_region_size = Vector2i(32, 32)
 15:48/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nfawa"]
-texture = ExtResource("9_8ohey")
+texture = ExtResource("10_j6lx3")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
@@ -9894,7 +9895,7 @@ texture_region_size = Vector2i(32, 32)
 15:44/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nxuba"]
-texture = ExtResource("4_ik820")
+texture = ExtResource("4_vwv8o")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -10988,7 +10989,7 @@ texture_region_size = Vector2i(32, 32)
 10:75/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rk5mx"]
-texture = ExtResource("7_8ykoq")
+texture = ExtResource("7_qv5fr")
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
 4:0/0 = 0
@@ -11720,7 +11721,7 @@ texture_region_size = Vector2i(32, 32)
 6:54/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r7fmk"]
-texture = ExtResource("8_8ykoq")
+texture = ExtResource("8_72cmb")
 texture_region_size = Vector2i(32, 32)
 9:0/0 = 0
 10:0/0 = 0
@@ -13131,3 +13132,6 @@ collision_visibility_mode = 1
 tile_map_data = PackedByteArray("AAABAAkABAALAB8AAAABAAoABAALACAAAAADAAkABAAPABcAAAAEAAQABQAHAEMAAAAEAAUABQAHAEQAAAAFAAQABQAIAEMAAAAFAAUABQAIAEQAAAABAAIABQAGAD0AAAABAAMABQAAAD8AAAABAAQABQACADwAAAACAAIABQAHAD0AAAACAAMABQABAD8AAAACAAQABQADADwAAAAEAAMABQAEAEoAAAAFAAMABQAFAEoAAAAEAAIABQAEAEkAAAAFAAIABQACAEgAAAAFAAEABQACAEcAAAAVAAgAAAAOAAAAAFAUAAgAAAAOAAEAAFAVAAUAAAANAAAAAFAUAAUAAAANAAEAAFAQAAgAAAAPAAIAAAAQAAkAAAAPAAMAAAAQAAUAAAAPAAQAAAAQAAYAAAAPAAUAAAABAAUAAAAMAB8AAAABAAYAAAAMACAAAAACAAUAAAANAB8AAAACAAYAAAANACAAAAARAAkAAQAIAC4AAAARAAgAAQAFAC8AAAARAAYAAQADACkAAAARAAUAAQAPAC8AAAA=")
 tile_set = SubResource("TileSet_s54qv")
 collision_visibility_mode = 1
+
+[node name="PlayerM" parent="." instance=ExtResource("11_f8r81")]
+position = Vector2(368, 152)

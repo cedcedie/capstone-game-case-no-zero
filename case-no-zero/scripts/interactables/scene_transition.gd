@@ -33,7 +33,9 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_lower_level": "lower_level",
 		"Area2D_head_police": "head_police", 
 		"Area2D_security_server": "security_server",
-		"Area2D_police_lobby": "police_lobby"
+		"Area2D_police_lobby": "police_lobby",
+		"Area2D_barangay_hall": "barangay_hall",
+		"Area2D_barangay_hall_second_floor": "barangay_hall_second_floor"
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
@@ -59,6 +61,10 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/maps/Police Station/security_server.tscn"
 		"Area2D_police_lobby":
 			return "res://scenes/maps/Police Station/police_lobby.tscn"
+		"Area2D_barangay_hall":
+			return "res://scenes/maps/barangay hall/barangay_hall.tscn"
+		"Area2D_barangay_hall_second_floor":
+			return "res://scenes/maps/barangay hall/barangay_hall_second_floor.tscn"
 		_:
 			return ""
 
@@ -87,8 +93,16 @@ func _start_transition(target_scene_path: String):
 	# Small delay to ensure fade is complete before scene change
 	await get_tree().create_timer(0.05).timeout
 	
-	# Change scene
-	var result = get_tree().change_scene_to_file(target_scene_path)
+	# Comment out preloading logic for debugging - use file loading only
+	var result = OK
+	# if ScenePreloader and ScenePreloader.is_scene_preloaded(target_scene_path):
+	# 	print("🚀 Using preloaded scene: ", target_scene_path.get_file())
+	# 	var preloaded_scene = ScenePreloader.get_preloaded_scene(target_scene_path)
+	# 	result = get_tree().change_scene_to_packed(preloaded_scene)
+	# else:
+	print("📁 Loading scene from file: ", target_scene_path.get_file())
+	result = get_tree().change_scene_to_file(target_scene_path)
+	
 	if result != OK:
 		print("Failed to change scene to: ", target_scene_path)
 		is_transitioning = false
