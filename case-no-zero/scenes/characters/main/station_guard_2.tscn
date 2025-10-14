@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c8aylibpehy0u"]
+[gd_scene load_steps=54 format=3 uid="uid://c8aylibpehy0u"]
 
 [ext_resource type="Texture2D" uid="uid://ccd413kk1quxm" path="res://assets/PNG/characters/guards/stationGuard2.png" id="1_xt6pj"]
 [ext_resource type="Texture2D" uid="uid://cowgbbbnfx1rb" path="res://assets/PNG/characters/guards/stationGuard2walk.png" id="2_vbm05"]
@@ -385,6 +385,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swplc"]
 size = Vector2(20, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xt6pj"]
+radius = 17.1172
+
 [node name="station_guard_2" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -396,3 +399,9 @@ offset = Vector2(0, -32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_swplc")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_xt6pj")

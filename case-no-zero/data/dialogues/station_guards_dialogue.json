@@ -1,0 +1,84 @@
+{
+  "station_guard": {
+    "first_interaction": [
+      {
+        "speaker": "Station Guard",
+        "text": "Hinto! Hindi ka na makakalapit kay Erwin."
+      },
+      {
+        "speaker": "Station Guard",
+        "text": "Tapos na ang oras ninyo. Kailangan namin siyang ihiwalay."
+      },
+      {
+        "speaker": "Station Guard",
+        "text": "Umalis na kayo dito."
+      }
+    ],
+    "repeated_interaction": [
+      {
+        "speaker": "Station Guard",
+        "text": "Sabi ko na, tapos na ang oras ninyo."
+      },
+      {
+        "speaker": "Station Guard",
+        "text": "Umalis na kayo."
+      }
+    ]
+  },
+  "station_guard_2": {
+    "first_interaction": [
+      {
+        "speaker": "Station Guard 2",
+        "text": "Hindi na kayo makakausap ni Erwin."
+      },
+      {
+        "speaker": "Station Guard 2",
+        "text": "May mga bagay na kailangan naming gawin."
+      },
+      {
+        "speaker": "Station Guard 2",
+        "text": "Magsama na kayo."
+      }
+    ],
+    "repeated_interaction": [
+      {
+        "speaker": "Station Guard 2",
+        "text": "Hindi na kayo makakausap ni Erwin."
+      },
+      {
+        "speaker": "Station Guard 2",
+        "text": "Umalis na kayo."
+      }
+    ]
+  },
+  "station_guard_3": {
+    "first_interaction": [
+      {
+        "speaker": "Station Guard 3",
+        "text": "Uy, kamusta ka naman?"
+      },
+      {
+        "speaker": "Station Guard 3",
+        "text": "Nakakalungkot naman yung nangyari kay Erwin."
+      },
+      {
+        "speaker": "Station Guard 3",
+        "text": "Pero ganun talaga ang buhay. May mga bagay na hindi natin kontrolado."
+      },
+      {
+        "speaker": "Station Guard 3",
+        "text": "Sana okay lang kayo."
+      }
+    ],
+    "repeated_interaction": [
+      {
+        "speaker": "Station Guard 3",
+        "text": "Kamusta ka na ulit?"
+      },
+      {
+        "speaker": "Station Guard 3",
+        "text": "Sana okay lang kayo."
+      }
+    ]
+  }
+}

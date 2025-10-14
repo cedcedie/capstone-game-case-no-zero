@@ -1,6 +1,6 @@
 {
   "npc_police": {
-	"first_interaction": [
+	"story_first_interaction": [
 	  {
 		"speaker": "Pulis",
 		"text": "Maligayang pagdating sa istasyon ng pulis. Ano ang maitutulong ko sa iyo?"
@@ -18,7 +18,7 @@
 		"text": "Mag-ingat ka roon. Sabihin mo kung may iba ka pang kailangan."
 	  }
 	],
-	"repeated_interaction": [
+	"story_repeated_interaction": [
 	  {
 		"speaker": "Pulis",
 		"text": "Ang kulungan ay nasa ibabang lobby."
@@ -26,6 +26,30 @@
 	  {
 		"speaker": "Pulis",
 		"text": "May iba ka pa bang kailangan?"
+	  }
+	],
+	"modern_first_interaction": [
+	  {
+		"speaker": "Pulis",
+		"text": "Kamusta ka? May kailangan ka ba?"
+	  },
+	  {
+		"speaker": "Pulis",
+		"text": "Kung may problema ka, sabihin mo lang sa amin."
+	  },
+	  {
+		"speaker": "Pulis",
+		"text": "Ingat ka sa paglalakad ha."
+	  }
+	],
+	"modern_repeated_interaction": [
+	  {
+		"speaker": "Pulis",
+		"text": "Kamusta ka na ulit?"
+	  },
+	  {
+		"speaker": "Pulis",
+		"text": "Ingat ka sa paglalakad."
 	  }
 	]
   }

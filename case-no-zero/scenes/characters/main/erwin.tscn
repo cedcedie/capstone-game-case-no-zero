@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c51hdm5vg2hjd"]
+[gd_scene load_steps=52 format=3 uid="uid://c51hdm5vg2hjd"]
 
 [ext_resource type="Texture2D" uid="uid://c6nqhgg6unile" path="res://assets/PNG/characters/erwin.png" id="1_dou7r"]
 
@@ -122,51 +122,27 @@ region = Rect2(320, 128, 32, 64)
 atlas = ExtResource("1_dou7r")
 region = Rect2(352, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yvemn"]
-atlas = ExtResource("1_dou7r")
-region = Rect2(0, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_skrc7"]
-atlas = ExtResource("1_dou7r")
-region = Rect2(32, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aeb2d"]
-atlas = ExtResource("1_dou7r")
-region = Rect2(64, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke7hw"]
-atlas = ExtResource("1_dou7r")
-region = Rect2(96, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pid6i"]
-atlas = ExtResource("1_dou7r")
-region = Rect2(128, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uytxw"]
-atlas = ExtResource("1_dou7r")
-region = Rect2(160, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mjj1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dou7r"]
 atlas = ExtResource("1_dou7r")
 region = Rect2(576, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dp3k1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvemn"]
 atlas = ExtResource("1_dou7r")
 region = Rect2(608, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_plsbi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_skrc7"]
 atlas = ExtResource("1_dou7r")
 region = Rect2(640, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_da20m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeb2d"]
 atlas = ExtResource("1_dou7r")
 region = Rect2(672, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l650t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke7hw"]
 atlas = ExtResource("1_dou7r")
 region = Rect2(704, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0u15p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pid6i"]
 atlas = ExtResource("1_dou7r")
 region = Rect2(736, 128, 32, 64)
 
@@ -337,6 +313,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dou7r")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yvemn")
 }, {
 "duration": 1.0,
@@ -350,27 +329,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pid6i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uytxw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0mjj1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dp3k1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_plsbi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_da20m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l650t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0u15p")
 }],
 "loop": true,
 "name": &"walk_down",
@@ -430,7 +388,7 @@ size = Vector2(20, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8d7p2")
-animation = &"idle_front"
+animation = &"walk_down"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

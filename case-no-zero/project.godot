@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://5d4uo5rtdrrk"
+run/main_scene="uid://bq8dv1vpnd7hq"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
 [audio]
@@ -25,6 +25,7 @@ TaskDisplay="*res://scenes/ui/TaskDisplay.tscn"
 DialogueUI="*res://scenes/ui/dialogueUi.tscn"
 SpawnManager="*res://scripts/manager/SpawnManager.gd"
 DialogChooser="*res://scenes/ui/DialogChooser.tscn"
+CheckpointManager="*res://scripts/manager/CheckpointManager.gd"
 
 [dialogic]
 

@@ -15,9 +15,19 @@ func _ready():
 	# Initially hide all choices
 	hide_all_choices()
 	
+	# Enable mouse input on NinePatchRect nodes
+	choice1.mouse_filter = Control.MOUSE_FILTER_PASS
+	choice2.mouse_filter = Control.MOUSE_FILTER_PASS
+	
 	# Connect mouse input to choices
 	choice1.gui_input.connect(_on_choice1_input)
 	choice2.gui_input.connect(_on_choice2_input)
+	
+	# Connect mouse enter/exit for hover effects
+	choice1.mouse_entered.connect(_on_choice1_entered)
+	choice1.mouse_exited.connect(_on_choice1_exited)
+	choice2.mouse_entered.connect(_on_choice2_entered)
+	choice2.mouse_exited.connect(_on_choice2_exited)
 	
 	# Find the player character
 	find_player()
@@ -57,36 +67,29 @@ func show_choices(choices: Array):
 	visible = true
 
 func position_canvas_following_player():
-	"""Position the entire CanvasLayer to follow the player"""
-	if not player:
-		find_player()
+	"""Position the choices centered on screen"""
+	# Reset offset to center the choices on screen
+	offset = Vector2.ZERO
 	
-	if player:
-		# Get player's world position
-		var player_pos = player.global_position
-		
-		# Convert world position to screen position
-		var camera = get_viewport().get_camera_2d()
-		if camera:
-			var player_screen_pos = camera.to_screen_coordinate(player_pos)
-			
-			# Set the CanvasLayer's offset to center on the player
-			# This makes your centered choices appear at the player's screen position
-			offset = Vector2(
-				player_screen_pos.x - (get_viewport().get_visible_rect().size.x / 2),
-				player_screen_pos.y - (get_viewport().get_visible_rect().size.y / 2)
-			)
-			
-			print("🎯 DialogChooser: Following player at screen pos:", player_screen_pos)
-		else:
-			print("⚠️ DialogChooser: No camera found")
-	else:
-		print("⚠️ DialogChooser: No player found")
+	# Position choices in the center of the screen
+	var screen_size = get_viewport().get_visible_rect().size
+	var center_x = screen_size.x / 2
+	var center_y = screen_size.y / 2
+	
+	# Position choice1 above center
+	choice1.position = Vector2(center_x - choice1.size.x / 2, center_y - 60)
+	# Position choice2 below center  
+	choice2.position = Vector2(center_x - choice2.size.x / 2, center_y + 20)
+	
+	print("🎯 DialogChooser: Choices positioned at center of screen")
 
 func hide_all_choices():
 	"""Hide all choice boxes"""
 	choice1.visible = false
 	choice2.visible = false
+	# Reset hover effects
+	choice1.modulate = Color.WHITE
+	choice2.modulate = Color.WHITE
 	visible = false
 
 func _on_choice1_input(event):
@@ -100,6 +103,18 @@ func _on_choice2_input(event):
 		selected_choice = 1
 		choice_selected.emit(1)
 		hide_all_choices()
+
+func _on_choice1_entered():
+	choice1.modulate = Color(1.2, 1.2, 1.2, 1.0)
+
+func _on_choice1_exited():
+	choice1.modulate = Color.WHITE
+
+func _on_choice2_entered():
+	choice2.modulate = Color(1.2, 1.2, 1.2, 1.0)
+
+func _on_choice2_exited():
+	choice2.modulate = Color.WHITE
 
 func _input(event):
 	# Handle keyboard input for choices

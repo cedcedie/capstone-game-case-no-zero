@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://b2pnbrfyn6egj"]
+[gd_scene load_steps=36 format=4 uid="uid://b2pnbrfyn6egj"]
 
 [ext_resource type="Texture2D" uid="uid://q7u1l1cvwbcj" path="res://assets/PNG/interior/Room_Builder_3d_walls_32x32.png" id="1_qkfs6"]
 [ext_resource type="Texture2D" uid="uid://yrv68jycvhs5" path="res://assets/PNG/interior/Room_Builder_Arched_Entryways_32x32.png" id="2_7bs30"]
@@ -6688,9 +6688,6 @@ sources/2 = SubResource("TileSetAtlasSource_jy8lb")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdvq8"]
 size = Vector2(90.5, 41)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qp3p"]
-size = Vector2(96, 23)
-
 [node name="lower_level_station" type="Node2D"]
 script = ExtResource("13_lower_level_station")
 
@@ -6703,7 +6700,7 @@ tile_map_data = PackedByteArray("AAA0AAkABAAMABAAAAABAAAABAAMABAAAAABAAEABAAMABE
 tile_set = SubResource("TileSet_wwu5g")
 
 [node name="erwin" parent="." instance=ExtResource("9_fmxda")]
-position = Vector2(504, 376)
+position = Vector2(536, 368)
 
 [node name="walls" type="TileMapLayer" parent="."]
 position = Vector2(200, 232)
@@ -6727,7 +6724,7 @@ position = Vector2(546.75, 195.5)
 shape = SubResource("RectangleShape2D_gdvq8")
 
 [node name="PlayerM" parent="." instance=ExtResource("11_5nimq")]
-position = Vector2(520, 496)
+position = Vector2(1115, 320)
 
 [node name="celine" parent="." instance=ExtResource("14_8qp3p")]
 position = Vector2(560, 496)
@@ -6737,13 +6734,6 @@ position = Vector2(248, 512)
 
 [node name="station_guard_3" parent="." instance=ExtResource("17_t1h6s")]
 position = Vector2(1040, 368)
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-64, 8)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1176, 328)
-shape = SubResource("RectangleShape2D_8qp3p")
 
 [editable path="erwin"]
 [editable path="station_guard_2"]

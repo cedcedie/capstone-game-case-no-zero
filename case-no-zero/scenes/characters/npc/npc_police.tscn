@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://rsdvopdfs4yh"]
+[gd_scene load_steps=20 format=3 uid="uid://dgdxadjady47t"]
 
 [ext_resource type="Script" uid="uid://c1ckuscmccobv" path="res://scripts/character/npc_police.gd" id="1_3j8qv"]
 [ext_resource type="Texture2D" uid="uid://fjoa7s8clpqg" path="res://assets/PNG/characters/leo_idle.png" id="1_xf7kk"]
@@ -9,7 +9,7 @@
 size = Vector2(20, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hl0to"]
-radius = 32.0
+radius = 64.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0274k"]
 atlas = ExtResource("1_xf7kk")

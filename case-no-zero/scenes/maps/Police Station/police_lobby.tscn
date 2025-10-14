@@ -1,14 +1,17 @@
-[gd_scene load_steps=25 format=4 uid="uid://bq8dv1vpnd7hq"]
+[gd_scene load_steps=28 format=4 uid="uid://bq8dv1vpnd7hq"]
 
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/PNG/interior/Room_Builder_Walls_32x32.png" id="1_0lod6"]
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/PNG/interior/Room_Builder_borders_32x32.png" id="2_pdy5u"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/PNG/interior/Room_Builder_Floors_32x32.png" id="3_stvh0"]
 [ext_resource type="Texture2D" uid="uid://bko828tu8yow7" path="res://assets/PNG/interior/18_Jail_32x32.png" id="4_4iqi4"]
-[ext_resource type="PackedScene" uid="uid://cosp1r0oa08eu" path="res://scenes/characters/npc/npc_police.tscn" id="4_pdy5u"]
+[ext_resource type="PackedScene" uid="uid://dgdxadjady47t" path="res://scenes/characters/npc/npc_police.tscn" id="4_pdy5u"]
 [ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/PNG/interior/19_Hospital_32x32.png" id="5_hqxgl"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="6_kpen6"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="7_scene_transition"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="8_scene_fade_in"]
+[ext_resource type="PackedScene" uid="uid://ca3g2ar4tvnir" path="res://station_lobby2.tscn" id="10_3ddup"]
+[ext_resource type="PackedScene" uid="uid://c7f3wqwh3y5tj" path="res://station_lobby.tscn" id="11_07ohx"]
+[ext_resource type="PackedScene" uid="uid://d2qgmximf6ysb" path="res://station_lobby3.tscn" id="12_ejbl2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mw853"]
 texture = ExtResource("1_0lod6")
@@ -7182,4 +7185,16 @@ script = ExtResource("7_scene_transition")
 position = Vector2(439.75, 592)
 shape = SubResource("RectangleShape2D_4iqi4")
 
+[node name="StationLobby2" parent="." instance=ExtResource("10_3ddup")]
+position = Vector2(832, 336)
+
+[node name="station_lobby" parent="." instance=ExtResource("11_07ohx")]
+position = Vector2(784, 336)
+
+[node name="StationLobby3" parent="." instance=ExtResource("12_ejbl2")]
+position = Vector2(440, 552)
+
 [editable path="PlayerM"]
+[editable path="StationLobby2"]
+[editable path="station_lobby"]
+[editable path="StationLobby3"]

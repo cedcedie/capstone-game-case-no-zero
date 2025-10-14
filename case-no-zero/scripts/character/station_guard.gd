@@ -19,9 +19,8 @@ var label_slide_offset: float = 10.0
 var label_show_position: float = -72.0  # Position above the NPC's head
 
 func _ready():
-	print("🔍 npc_police: _ready() called")
 	# Hide label initially
-	interaction_label.modulate = Color(1.0, 1.0, 0.0, 0.0)  # Yellow color, transparent initially
+	interaction_label.modulate.a = 0.0
 	interaction_label.position.y = label_show_position + label_slide_offset  # Start slightly lower
 	interaction_label.text = "Press E to interact"
 	
@@ -29,17 +28,13 @@ func _ready():
 	if interaction_area:
 		interaction_area.connect("body_entered", Callable(self, "_on_body_entered"))
 		interaction_area.connect("body_exited", Callable(self, "_on_body_exited"))
-		print("🔍 npc_police: Area2D signals connected")
-	else:
-		print("⚠️ npc_police: No Area2D found!")
 	
 	# Load dialogue
 	load_dialogue()
 	
 	# Play idle animation
 	if animated_sprite:
-		animated_sprite.play("idle_front")
-		print("🔍 npc_police: Animation started")
+		animated_sprite.play("idle_right")
 
 func _process(_delta):
 	# Check for interaction input when player is nearby and not in dialogue
@@ -47,46 +42,44 @@ func _process(_delta):
 		interact()
 
 func load_dialogue():
-	var file: FileAccess = FileAccess.open("res://data/dialogues/npc_police_dialogue.json", FileAccess.READ)
+	var file: FileAccess = FileAccess.open("res://data/dialogues/station_guard_dialogue.json", FileAccess.READ)
 	if file == null:
-		push_error("Cannot open npc_police_dialogue.json")
+		push_error("Cannot open station_guard_dialogue.json")
 		return
 	
 	var text: String = file.get_as_text()
 	file.close()
 	
 	var parsed: Variant = JSON.parse_string(text)
-	if typeof(parsed) != TYPE_DICTIONARY or not parsed.has("npc_police"):
-		push_error("Failed to parse npc_police_dialogue.json")
+	if typeof(parsed) != TYPE_DICTIONARY or not parsed.has("station_guard"):
+		push_error("Failed to parse station_guard dialogue")
 		return
 	
-	dialogue_data = parsed["npc_police"]
-	print("✅ Loaded NPC Police dialogue")
+	dialogue_data = parsed["station_guard"]
+	print("✅ Loaded Station Guard dialogue")
 
 func _on_body_entered(body):
-	print("🔍 npc_police: Body entered - ", body.name)
 	if body.name == "PlayerM":
 		is_player_nearby = true
 		player_reference = body
 		show_interaction_label()
-		print("👮 Player near police officer")
+		print("👮 Player near station guard")
 
 func _on_body_exited(body):
 	if body == player_reference:
 		is_player_nearby = false
 		player_reference = null
 		hide_interaction_label()
-		print("👮 Player left police officer")
+		print("👮 Player left station guard")
 
 func show_interaction_label():
-	print("🔍 npc_police: Showing interaction label")
 	# Slide up and fade in animation
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_BACK)
 	
-	tween.tween_property(interaction_label, "modulate", Color(1.0, 1.0, 0.0, 1.0), label_fade_duration)  # Yellow color, fully visible
+	tween.tween_property(interaction_label, "modulate:a", 1.0, label_fade_duration)
 	tween.tween_property(interaction_label, "position:y", label_show_position, label_fade_duration)
 
 func hide_interaction_label():
@@ -96,11 +89,11 @@ func hide_interaction_label():
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	
-	tween.tween_property(interaction_label, "modulate", Color(1.0, 1.0, 0.0, 0.0), label_fade_duration)  # Yellow color, transparent
+	tween.tween_property(interaction_label, "modulate:a", 0.0, label_fade_duration)
 	tween.tween_property(interaction_label, "position:y", label_show_position + label_slide_offset, label_fade_duration)
 
 func interact():
-	print("💬 Interacting with police officer")
+	print("💬 Interacting with station guard")
 	is_in_dialogue = true  # Prevent E key spam
 	hide_interaction_label()
 	
@@ -108,21 +101,12 @@ func interact():
 	if player_reference and player_reference.has_method("disable_movement"):
 		player_reference.disable_movement()
 	
-	# Choose dialogue based on checkpoint state and interaction history
-	var checkpoint_manager = get_node("/root/CheckpointManager")
-	var lower_level_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
-	
+	# Choose dialogue based on interaction history
 	if not has_interacted:
-		if lower_level_completed:
-			dialogue_lines = dialogue_data.get("modern_first_interaction", [])
-		else:
-			dialogue_lines = dialogue_data.get("story_first_interaction", [])
+		dialogue_lines = dialogue_data.get("first_interaction", [])
 		has_interacted = true
 	else:
-		if lower_level_completed:
-			dialogue_lines = dialogue_data.get("modern_repeated_interaction", [])
-		else:
-			dialogue_lines = dialogue_data.get("story_repeated_interaction", [])
+		dialogue_lines = dialogue_data.get("repeated_interaction", [])
 	
 	# Start showing dialogue
 	if dialogue_lines.size() > 0:
@@ -135,13 +119,12 @@ func interact():
 			player_reference.enable_movement()
 
 func show_dialogue():
-	# Use the global DialogueUI autoload
 	if not DialogueUI:
 		print("⚠️ DialogueUI autoload not found")
 		return
 	
 	print("==================================================")
-	print("📋 NPC POLICE DIALOGUE:")
+	print("📋 STATION GUARD DIALOGUE:")
 	for line in dialogue_lines:
 		var speaker = line.get("speaker", "")
 		var text = line.get("text", "")

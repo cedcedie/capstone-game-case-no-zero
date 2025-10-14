@@ -1,0 +1,32 @@
+{
+  "station_guard_3": {
+    "first_interaction": [
+      {
+        "speaker": "Station Guard 3",
+        "text": "Uy, kamusta ka naman?"
+      },
+      {
+        "speaker": "Station Guard 3",
+        "text": "Nakakalungkot naman yung nangyari kay Erwin."
+      },
+      {
+        "speaker": "Station Guard 3",
+        "text": "Pero ganun talaga ang buhay. May mga bagay na hindi natin kontrolado."
+      },
+      {
+        "speaker": "Station Guard 3",
+        "text": "Sana okay lang kayo."
+      }
+    ],
+    "repeated_interaction": [
+      {
+        "speaker": "Station Guard 3",
+        "text": "Kamusta ka na ulit?"
+      },
+      {
+        "speaker": "Station Guard 3",
+        "text": "Sana okay lang kayo."
+      }
+    ]
+  }
+}
