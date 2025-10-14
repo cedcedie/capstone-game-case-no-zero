@@ -7,7 +7,9 @@ signal checkpoint_cleared(checkpoint_name: String)
 # Available checkpoints
 enum CheckpointType {
 	BEDROOM_COMPLETED,
-	LOWER_LEVEL_COMPLETED
+	BEDROOM_CUTSCENE_COMPLETED,
+	LOWER_LEVEL_COMPLETED,
+	POLICE_LOBBY_CUTSCENE_COMPLETED
 }
 
 # Current checkpoint states

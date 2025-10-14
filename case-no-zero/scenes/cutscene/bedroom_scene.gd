@@ -372,6 +372,11 @@ func start_cinematic() -> void:
 	intro_complete = true
 	celine_interactable = true
 	
+	# Set global checkpoint to prevent cutscene from replaying
+	var checkpoint_manager = get_node("/root/CheckpointManager")
+	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
+	print("🎯 Global checkpoint set: BEDROOM_CUTSCENE_COMPLETED")
+	
 	# Show movement tutorial dialogue
 	show_movement_tutorial()
 	
@@ -447,5 +452,46 @@ func _ready() -> void:
 		if not dialogue_ui.is_connected("next_pressed", cb):
 			dialogue_ui.connect("next_pressed", cb)
 	
-	print("🟢 Scene ready — starting intro...")
-	start_intro()
+	# Check if bedroom cutscene has already been played
+	var checkpoint_manager = get_node("/root/CheckpointManager")
+	var cutscene_already_played = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
+	
+	print("🔍 Bedroom Scene Cutscene Debug:")
+	print("  - cutscene_already_played:", cutscene_already_played)
+	print("  - checkpoint exists:", checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED))
+	
+	if cutscene_already_played:
+		print("🔍 Bedroom cutscene already played (global checkpoint) - skipping to post-cutscene state")
+		skip_to_post_cutscene_state()
+	else:
+		print("🟢 Scene ready — starting intro...")
+		start_intro()
+
+func skip_to_post_cutscene_state() -> void:
+	"""Skip to the state after cutscene completion"""
+	print("🎭 Skipping to post-cutscene state")
+	
+	# Set flags as if cutscene was completed
+	intro_complete = true
+	celine_interactable = true
+	
+	# Position characters in their final positions
+	if player:
+		player.anim_sprite.play("idle_down")
+		player.last_facing = "front"
+	
+	if celine:
+		celine.anim_sprite.play("idle_front")
+		celine.modulate.a = 1.0
+		celine.visible = true
+	
+	# Hide fade overlay
+	if fade_overlay:
+		fade_overlay.visible = false
+		fade_overlay.modulate.a = 0.0
+	
+	# Enable player control
+	if "control_enabled" in player:
+		player.control_enabled = true
+	
+	print("✅ Post-cutscene state loaded - ready for interaction")

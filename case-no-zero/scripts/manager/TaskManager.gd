@@ -35,6 +35,12 @@ func initialize_tasks():
 			"scene_target": "police_lobby"
 		},
 		{
+			"id": "go_to_barangay_hall",
+			"name": "Go to Barangay Hall",
+			"description": "Investigate the crime scene behind the barangay hall.",
+			"scene_target": "barangay_hall"
+		},
+		{
 			"id": "next_task_placeholder",
 			"name": "Continue Investigation",
 			"description": "Placeholder for the next task.",
@@ -104,3 +110,24 @@ func get_current_task_scene_target() -> String:
 	if current_task.is_empty():
 		return ""
 	return current_task.get("scene_target", "")
+
+func set_current_task(task_id: String) -> void:
+	"""Set the current task by ID (for development/testing)"""
+	for task in task_queue:
+		if task.id == task_id:
+			current_task = task
+			print("==================================================")
+			print("📋 TaskManager: SET CURRENT TASK")
+			print("✨ Task Name:", current_task.name)
+			print("📝 Description:", current_task.description)
+			print("🎯 Target Scene:", current_task.scene_target)
+			print("==================================================")
+			
+			# Show task in UI
+			if task_display:
+				task_display.show_task(current_task.name)
+			
+			emit_signal("task_started", current_task.name)
+			return
+	
+	print("⚠️ TaskManager: Task ID not found:", task_id)

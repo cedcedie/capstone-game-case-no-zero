@@ -1,0 +1,38 @@
+{
+	"police_lobby_cutscene": {
+		"dialogue_lines": [
+			{
+				"speaker": "Celine",
+				"text": "Miguel, ang weird nga ng mga sinasabi ni Erwin kanina, diba?"
+			},
+			{
+				"speaker": "Miguel", 
+				"text": "Oo, parang may tinatago siya. Yung mga details niya, hindi nagma-match."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Totoo! Tapos may mga moments na parang nag-iisip siya ng sasabihin. Obvious na may hindi niya sinasabi."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Ganun din ang pakiramdam ko. Kaya nga gusto kong mag-investigate pa."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Perfect! Alam mo ba na yung crime scene ay nasa likod ng barangay hall? Pwede tayong magtulungan doon."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Magandang ideya yan!"
+			},
+			{
+				"speaker": "Celine",
+				"text": "Oo, pero may pupuntahan muna ako. Tapos tayo na magtuloy sa barangay hall."
+			},
+			{
+				"speaker": "Celine",
+				"text": "At saka, ang bagal mo kasi! Haha, joke lang. See you later!"
+			}
+		]
+	}
+}

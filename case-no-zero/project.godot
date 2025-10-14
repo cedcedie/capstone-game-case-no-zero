@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://bq8dv1vpnd7hq"
-config/features=PackedStringArray("4.4", "Forward Plus")
+run/main_scene="uid://5d4uo5rtdrrk"
+config/features=PackedStringArray("4.4")
 
 [audio]
 
@@ -66,6 +66,9 @@ text/autopauses={}
 window/size/viewport_width=1366
 window/size/viewport_height=768
 
+[dotnet]
+
+project/assembly_name="casenozero"
 
 [input]
 

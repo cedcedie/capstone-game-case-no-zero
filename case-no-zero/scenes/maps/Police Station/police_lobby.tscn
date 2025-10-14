@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bq8dv1vpnd7hq"]
+[gd_scene load_steps=30 format=4 uid="uid://bq8dv1vpnd7hq"]
 
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/PNG/interior/Room_Builder_Walls_32x32.png" id="1_0lod6"]
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/PNG/interior/Room_Builder_borders_32x32.png" id="2_pdy5u"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://ca3g2ar4tvnir" path="res://scenes/maps/Police Station/lobby/station_lobby2.tscn" id="10_3ddup"]
 [ext_resource type="PackedScene" uid="uid://c7f3wqwh3y5tj" path="res://scenes/maps/Police Station/lobby/station_lobby.tscn" id="11_07ohx"]
 [ext_resource type="PackedScene" uid="uid://d2qgmximf6ysb" path="res://scenes/maps/Police Station/lobby/station_lobby3.tscn" id="12_ejbl2"]
+[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main/celine_navarro.tscn" id="13_celine"]
+[ext_resource type="Script" uid="uid://r4s5s1bg206q" path="res://scripts/manager/police_lobby_cutscene.gd" id="14_cutscene"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mw853"]
 texture = ExtResource("1_0lod6")
@@ -7131,6 +7133,9 @@ size = Vector2(64.5, 21)
 [node name="PoliceLobby" type="Node2D"]
 script = ExtResource("8_scene_fade_in")
 
+[node name="SceneFadeIn" type="Node2D" parent="."]
+script = ExtResource("8_scene_fade_in")
+
 [node name="walls below layer" type="TileMapLayer" parent="."]
 position = Vector2(184, 184)
 tile_map_data = PackedByteArray("AAAYAAoAAAAFAAQAAAAJAAoAAAAFAAQAAAAJAAsAAAABAAUAAAAXAAsAAAABAAUAAAAYAAsAAAABAAUAAAAJAAkAAAAAAAQAAAAYAAkAAAACAAQAAAA=")
@@ -7161,7 +7166,7 @@ tile_set = SubResource("TileSet_qtg2g")
 position = Vector2(312, 528)
 
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]
-animation = &"idle_back"
+animation = &"walk_down"
 autoplay = "idle_back"
 
 [node name="Area2D_lower_level" type="Area2D" parent="."]
@@ -7194,7 +7199,16 @@ position = Vector2(784, 336)
 [node name="StationLobby3" parent="." instance=ExtResource("12_ejbl2")]
 position = Vector2(440, 552)
 
+[node name="Celine" parent="." instance=ExtResource("13_celine")]
+visible = false
+position = Vector2(968, 416)
+
+[node name="PoliceLobbyCutscene" type="Node" parent="."]
+script = ExtResource("14_cutscene")
+
+[editable path="NpcPolice"]
 [editable path="PlayerM"]
 [editable path="StationLobby2"]
 [editable path="station_lobby"]
 [editable path="StationLobby3"]
+[editable path="Celine"]

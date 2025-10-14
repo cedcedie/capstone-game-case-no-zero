@@ -566,10 +566,6 @@ func end_scene():
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
 	print("🎯 Lower level checkpoint set")
 	
-	# Add new task: Go to barangay hall
-	if task_manager:
-		task_manager.add_task("Go to the barangay hall")
-		print("📋 Task added: Go to the barangay hall")
 	
 	# Transition to next scene or enable player control
 	if player and "control_enabled" in player:
