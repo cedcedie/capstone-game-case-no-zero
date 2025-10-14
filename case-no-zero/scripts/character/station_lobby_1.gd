@@ -19,7 +19,7 @@ var label_slide_offset: float = 10.0
 var label_show_position: float = -72.0  # Position above the NPC's head
 
 func _ready():
-	print("🔍 station_guard: _ready() called")
+	print("🔍 station_lobby_1: _ready() called")
 	# Hide label initially
 	interaction_label.modulate = Color(1.0, 1.0, 0.0, 0.0)  # Yellow color, transparent initially
 	interaction_label.position.y = label_show_position + label_slide_offset  # Start slightly lower
@@ -29,17 +29,17 @@ func _ready():
 	if interaction_area:
 		interaction_area.connect("body_entered", Callable(self, "_on_body_entered"))
 		interaction_area.connect("body_exited", Callable(self, "_on_body_exited"))
-		print("🔍 station_guard: Area2D signals connected")
+		print("🔍 station_lobby_1: Area2D signals connected")
 	else:
-		print("⚠️ station_guard: No Area2D found!")
+		print("⚠️ station_lobby_1: No Area2D found!")
 	
 	# Load dialogue
 	load_dialogue()
 	
 	# Play idle animation
 	if animated_sprite:
-		animated_sprite.play("idle_right")
-		print("🔍 station_guard: Animation started")
+		animated_sprite.play("idle_front")
+		print("🔍 station_lobby_1: Animation started")
 
 func _process(_delta):
 	# Check for interaction input when player is nearby and not in dialogue
@@ -47,39 +47,39 @@ func _process(_delta):
 		interact()
 
 func load_dialogue():
-	var file: FileAccess = FileAccess.open("res://data/dialogues/station_guard_dialogue.json", FileAccess.READ)
+	var file: FileAccess = FileAccess.open("res://data/dialogues/station_lobby_1_dialogue.json", FileAccess.READ)
 	if file == null:
-		push_error("Cannot open station_guard_dialogue.json")
+		push_error("Cannot open station_lobby_1_dialogue.json")
 		return
 	
 	var text: String = file.get_as_text()
 	file.close()
 	
 	var parsed: Variant = JSON.parse_string(text)
-	if typeof(parsed) != TYPE_DICTIONARY or not parsed.has("station_guard"):
-		push_error("Failed to parse station_guard dialogue")
+	if typeof(parsed) != TYPE_DICTIONARY or not parsed.has("station_lobby_1"):
+		push_error("Failed to parse station_lobby_1_dialogue.json")
 		return
 	
-	dialogue_data = parsed["station_guard"]
-	print("✅ Loaded Station Guard dialogue")
+	dialogue_data = parsed["station_lobby_1"]
+	print("✅ Loaded Station Lobby 1 dialogue")
 
 func _on_body_entered(body):
-	print("🔍 station_guard: Body entered - ", body.name)
+	print("🔍 station_lobby_1: Body entered - ", body.name)
 	if body.name == "PlayerM":
 		is_player_nearby = true
 		player_reference = body
 		show_interaction_label()
-		print("👮 Player near station guard")
+		print("👮 Player near station lobby 1")
 
 func _on_body_exited(body):
 	if body == player_reference:
 		is_player_nearby = false
 		player_reference = null
 		hide_interaction_label()
-		print("👮 Player left station guard")
+		print("👮 Player left station lobby 1")
 
 func show_interaction_label():
-	print("🔍 station_guard: Showing interaction label")
+	print("🔍 station_lobby_1: Showing interaction label")
 	# Slide up and fade in animation
 	var tween = create_tween()
 	tween.set_parallel(true)
@@ -100,7 +100,7 @@ func hide_interaction_label():
 	tween.tween_property(interaction_label, "position:y", label_show_position + label_slide_offset, label_fade_duration)
 
 func interact():
-	print("💬 Interacting with station guard")
+	print("💬 Interacting with station lobby 1")
 	is_in_dialogue = true  # Prevent E key spam
 	hide_interaction_label()
 	
@@ -131,7 +131,7 @@ func show_dialogue():
 		return
 	
 	print("==================================================")
-	print("📋 STATION GUARD DIALOGUE:")
+	print("📋 STATION LOBBY 1 DIALOGUE:")
 	for line in dialogue_lines:
 		var speaker = line.get("speaker", "")
 		var text = line.get("text", "")

@@ -19,8 +19,9 @@ var label_slide_offset: float = 10.0
 var label_show_position: float = -72.0  # Position above the NPC's head
 
 func _ready():
+	print("🔍 station_guard_2: _ready() called")
 	# Hide label initially
-	interaction_label.modulate.a = 0.0
+	interaction_label.modulate = Color(1.0, 1.0, 0.0, 0.0)  # Yellow color, transparent initially
 	interaction_label.position.y = label_show_position + label_slide_offset  # Start slightly lower
 	interaction_label.text = "Press E to interact"
 	
@@ -28,6 +29,9 @@ func _ready():
 	if interaction_area:
 		interaction_area.connect("body_entered", Callable(self, "_on_body_entered"))
 		interaction_area.connect("body_exited", Callable(self, "_on_body_exited"))
+		print("🔍 station_guard_2: Area2D signals connected")
+	else:
+		print("⚠️ station_guard_2: No Area2D found!")
 	
 	# Load dialogue
 	load_dialogue()
@@ -35,6 +39,7 @@ func _ready():
 	# Play idle animation
 	if animated_sprite:
 		animated_sprite.play("idle_right")
+		print("🔍 station_guard_2: Animation started")
 
 func _process(_delta):
 	# Check for interaction input when player is nearby and not in dialogue
@@ -59,6 +64,7 @@ func load_dialogue():
 	print("✅ Loaded Station Guard 2 dialogue")
 
 func _on_body_entered(body):
+	print("🔍 station_guard_2: Body entered - ", body.name)
 	if body.name == "PlayerM":
 		is_player_nearby = true
 		player_reference = body
@@ -73,13 +79,14 @@ func _on_body_exited(body):
 		print("👮 Player left station guard 2")
 
 func show_interaction_label():
+	print("🔍 station_guard_2: Showing interaction label")
 	# Slide up and fade in animation
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_BACK)
 	
-	tween.tween_property(interaction_label, "modulate:a", 1.0, label_fade_duration)
+	tween.tween_property(interaction_label, "modulate", Color(1.0, 1.0, 0.0, 1.0), label_fade_duration)  # Yellow color, fully visible
 	tween.tween_property(interaction_label, "position:y", label_show_position, label_fade_duration)
 
 func hide_interaction_label():
@@ -89,7 +96,7 @@ func hide_interaction_label():
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	
-	tween.tween_property(interaction_label, "modulate:a", 0.0, label_fade_duration)
+	tween.tween_property(interaction_label, "modulate", Color(1.0, 1.0, 0.0, 0.0), label_fade_duration)  # Yellow color, transparent
 	tween.tween_property(interaction_label, "position:y", label_show_position + label_slide_offset, label_fade_duration)
 
 func interact():

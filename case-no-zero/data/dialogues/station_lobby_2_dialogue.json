@@ -1,0 +1,32 @@
+{
+  "station_lobby_2": {
+    "first_interaction": [
+      {
+        "speaker": "Station Lobby 2",
+        "text": "Grabe naman yung nangyari kay PO1 Darwin. Laging nag-iisip ng malalim."
+      },
+      {
+        "speaker": "Station Lobby 1",
+        "text": "Oo nga! Parang may tinatago siyang impormasyon. Laging secretive."
+      },
+      {
+        "speaker": "Station Lobby 2", 
+        "text": "Sabi nila may connection daw siya sa kaso ni Leo. Pero hindi namin alam kung ano."
+      },
+      {
+        "speaker": "Station Lobby 1",
+        "text": "Basta, hindi ka makakapasok dito. May mga bagay na kailangan naming gawin."
+      }
+    ],
+    "repeated_interaction": [
+      {
+        "speaker": "Station Lobby 2",
+        "text": "Hindi ka pa rin makakapasok dito."
+      },
+      {
+        "speaker": "Station Lobby 1",
+        "text": "Umalis na kayo dito."
+      }
+    ]
+  }
+}

@@ -3,25 +3,13 @@
     "first_interaction": [
       {
         "speaker": "Station Guard",
-        "text": "Hinto! Hindi ka na makakalapit kay Erwin."
-      },
-      {
-        "speaker": "Station Guard",
-        "text": "Tapos na ang oras ninyo. Kailangan namin siyang ihiwalay."
-      },
-      {
-        "speaker": "Station Guard",
-        "text": "Hindi ka na makakapasok dito."
+        "text": "Sorry, hindi ka makakapasok dito."
       }
     ],
     "repeated_interaction": [
       {
         "speaker": "Station Guard",
-        "text": "Sabi ko na, hindi ka na makakapasok."
-      },
-      {
-        "speaker": "Station Guard",
-        "text": "Umalis na kayo dito."
+        "text": "Sabi ko na, hindi ka makakapasok dito."
       }
     ]
   }

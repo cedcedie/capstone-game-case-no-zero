@@ -1,0 +1,16 @@
+{
+  "station_lobby_3": {
+    "first_interaction": [
+      {
+        "speaker": "Station Lobby 3",
+        "text": "Hindi ka makakapasok dito."
+      }
+    ],
+    "repeated_interaction": [
+      {
+        "speaker": "Station Lobby 3",
+        "text": "Hindi ka pa rin makakapasok dito."
+      }
+    ]
+  }
+}

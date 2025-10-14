@@ -1,7 +1,9 @@
-[gd_scene load_steps=54 format=3 uid="uid://dwdlsm85mahql"]
+[gd_scene load_steps=56 format=3 uid="uid://dwdlsm85mahql"]
 
 [ext_resource type="Texture2D" uid="uid://beu2mtiwkbt7a" path="res://assets/PNG/characters/guards/stationGuard3.png" id="1_mktye"]
 [ext_resource type="Texture2D" uid="uid://3dwfn2m5fjb4" path="res://assets/PNG/characters/guards/stationGuard3walk.png" id="2_og8vw"]
+[ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="3_og8vw"]
+[ext_resource type="Script" uid="uid://cqwindj0uxvff" path="res://scripts/character/station_guard_3.gd" id="4_script"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4p07"]
 atlas = ExtResource("1_mktye")
@@ -386,9 +388,10 @@ animations = [{
 size = Vector2(20, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mktye"]
-radius = 17.1172
+radius = 40.0
 
 [node name="station_guard_3" type="CharacterBody2D"]
+script = ExtResource("4_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8d7p2")
@@ -403,5 +406,18 @@ shape = SubResource("RectangleShape2D_swplc")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -16)
+position = Vector2(0, -24)
 shape = SubResource("CircleShape2D_mktye")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -64.0
+offset_top = -70.0
+offset_right = 64.0
+offset_bottom = -45.0
+theme_override_fonts/font = ExtResource("3_og8vw")
+theme_override_font_sizes/font_size = 14
+text = "Press E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

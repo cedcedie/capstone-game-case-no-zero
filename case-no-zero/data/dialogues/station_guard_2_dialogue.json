@@ -3,25 +3,13 @@
     "first_interaction": [
       {
         "speaker": "Station Guard 2",
-        "text": "Hindi ka na makakapasok dito."
-      },
-      {
-        "speaker": "Station Guard 2",
-        "text": "May mga bagay na kailangan naming gawin."
-      },
-      {
-        "speaker": "Station Guard 2",
-        "text": "Umalis na kayo dito."
+        "text": "Gaya ng sinabi niya, hindi ka makakapasok dito."
       }
     ],
     "repeated_interaction": [
       {
         "speaker": "Station Guard 2",
-        "text": "Hindi ka na makakapasok dito."
-      },
-      {
-        "speaker": "Station Guard 2",
-        "text": "Umalis na kayo."
+        "text": "Gaya ng sinabi niya, hindi ka pa rin makakapasok dito."
       }
     ]
   }

@@ -1,6 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://d2qgmximf6ysb"]
+[gd_scene load_steps=31 format=3 uid="uid://d2qgmximf6ysb"]
 
-[ext_resource type="Texture2D" uid="uid://bbcww1uyt73x1" path="res://station_lobby3.png" id="1_1rkpp"]
+[ext_resource type="Texture2D" uid="uid://bbcww1uyt73x1" path="res://scenes/maps/Police Station/lobby/station_lobby3.png" id="1_1rkpp"]
+[ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_2htvy"]
+[ext_resource type="Script" uid="uid://bwjyddvp6jeyy" path="res://scripts/character/station_lobby_3.gd" id="3_script"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxo3w"]
 atlas = ExtResource("1_1rkpp")
@@ -201,7 +203,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g14s4"]
 size = Vector2(20, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b0ivx"]
+radius = 40.0
+
 [node name="StationLobby3" type="CharacterBody2D"]
+script = ExtResource("3_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_13cr0")
@@ -212,3 +218,22 @@ offset = Vector2(0, -32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_g14s4")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -64.0
+offset_top = -70.0
+offset_right = 64.0
+offset_bottom = -45.0
+theme_override_fonts/font = ExtResource("2_2htvy")
+theme_override_font_sizes/font_size = 14
+text = "Press E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_b0ivx")
