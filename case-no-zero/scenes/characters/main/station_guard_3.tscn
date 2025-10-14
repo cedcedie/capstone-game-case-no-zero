@@ -1,7 +1,7 @@
 [gd_scene load_steps=56 format=3 uid="uid://dwdlsm85mahql"]
 
-[ext_resource type="Texture2D" uid="uid://beu2mtiwkbt7a" path="res://assets/PNG/characters/guards/stationGuard3.png" id="1_mktye"]
-[ext_resource type="Texture2D" uid="uid://3dwfn2m5fjb4" path="res://assets/PNG/characters/guards/stationGuard3walk.png" id="2_og8vw"]
+[ext_resource type="Texture2D" uid="uid://beu2mtiwkbt7a" path="res://assets/sprites/characters/guards/stationGuard3.png" id="1_mktye"]
+[ext_resource type="Texture2D" uid="uid://3dwfn2m5fjb4" path="res://assets/sprites/characters/guards/stationGuard3walk.png" id="2_og8vw"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="3_og8vw"]
 [ext_resource type="Script" uid="uid://cqwindj0uxvff" path="res://scripts/character/station_guard_3.gd" id="4_script"]
 

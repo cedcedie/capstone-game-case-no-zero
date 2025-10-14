@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgooyga8hi4xj"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 93 Menu (Full).mp3-6f94c27578f32d7dee68be35eef8dec6.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 93 Menu (Full).mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 93 Menu (Full).mp3-6f94c27578f32d7dee68be35eef8dec6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ju3vy3cg08fa"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 47 Ooo.mp3-ff4ae5f266515533ed3b726ab81a71c1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 47 Ooo.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 47 Ooo.mp3-ff4ae5f266515533ed3b726ab81a71c1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -4,7 +4,7 @@ extends Area2D
 @onready var collider = $CollisionShape2D
 
 @export var allowed_players: Array = ["PlayerM", "Celine"]
-@export var target_scene: String = "res://scenes/maps/Police Station/police_lobby.tscn"  # Optional: if you want to change scenes
+@export var target_scene: String = "res://scenes/environments/Police Station/police_lobby.tscn"  # Optional: if you want to change scenes
 
 var player_in_range: Node2D = null
 var is_open = false

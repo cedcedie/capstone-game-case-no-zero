@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bv4ogkor0ag1a"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 89 SAVE the World.mp3-d6b305df1e09aabaf04e47a89d1f0273.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 89 SAVE the World.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 89 SAVE the World.mp3-d6b305df1e09aabaf04e47a89d1f0273.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

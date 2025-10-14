@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://brm4grij188xa"]
 
 [ext_resource type="Script" path="res://scripts/interactables/door.gd" id="1_1vvux"]
-[ext_resource type="Texture2D" uid="uid://d24sl3eexjk15" path="res://assets/PNG/interiorAnimations/animated_door_6_locked_32x32.png" id="2_iu8q0"]
+[ext_resource type="Texture2D" uid="uid://d24sl3eexjk15" path="res://assets/sprites/interiorAnimations/animated_door_6_locked_32x32.png" id="2_iu8q0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iu8q0"]
 size = Vector2(32, 16)

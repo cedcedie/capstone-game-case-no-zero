@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://v5xrmcnxgnen"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 65 CORE.mp3-1ea467fa7f567f4bf3f7f805d050caa2.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 65 CORE.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 65 CORE.mp3-1ea467fa7f567f4bf3f7f805d050caa2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

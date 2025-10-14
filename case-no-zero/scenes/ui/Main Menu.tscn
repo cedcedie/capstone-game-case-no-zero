@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://duhtucptqsw51"]
 
-[ext_resource type="Script" uid="uid://dcphrohp24wu7" path="res://scripts/manager/main_menu.gd" id="1_purnb"]
+[ext_resource type="Script" uid="uid://dcphrohp24wu7" path="res://scripts/managers/main_menu.gd" id="1_purnb"]
 [ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_t5uyg"]
 [ext_resource type="FontFile" uid="uid://06eojjyt34v5" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="3_neere"]
 [ext_resource type="AudioStream" uid="uid://bh2atol3e41nj" path="res://assets/audio/toby fox - UNDERTALE Soundtrack - 02 Start Menu.mp3" id="4_kvg5l"]
-[ext_resource type="Script" uid="uid://cgyrxj8eskx4q" path="res://scripts/manager/audio_control.gd" id="5_d61rm"]
-[ext_resource type="Script" uid="uid://rx80bji1rwwp" path="res://scripts/manager/fullscreen.gd" id="6_hng8r"]
+[ext_resource type="Script" uid="uid://cgyrxj8eskx4q" path="res://scripts/managers/audio_control.gd" id="5_d61rm"]
+[ext_resource type="Script" uid="uid://rx80bji1rwwp" path="res://scripts/managers/fullscreen.gd" id="6_hng8r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvdtt"]
 

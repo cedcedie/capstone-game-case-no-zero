@@ -8,12 +8,12 @@ A narrative-driven detective game built with Godot 4.
 case-no-zero/
 ├── assets/                    # Game assets
 │   ├── audio/                # Sound effects and music
+│   │   ├── music/           # Background music
+│   │   └── sfx/             # Sound effects
 │   ├── fonts/                # Font files
-│   └── PNG/                  # Sprite assets
+│   └── sprites/              # Sprite assets
 │       ├── characters/       # Character sprites
-│       ├── exterior/         # Exterior environment sprites
-│       ├── interior/         # Interior environment sprites
-│       ├── interiorAnimations/ # Interior animation sprites
+│       ├── environments/     # Environment sprites
 │       └── ui/               # UI elements and icons
 ├── data/                     # Game data files
 │   └── dialogues/           # JSON dialogue files
@@ -21,14 +21,15 @@ case-no-zero/
 │   └── plugin-screenshots/  # Plugin documentation images
 ├── scenes/                   # Godot scene files
 │   ├── characters/          # Character scenes
-│   ├── cutscene/            # Cutscene scenes
-│   ├── maps/                # Map scenes
+│   ├── cutscenes/           # Cutscene scenes
+│   ├── environments/        # Environment/map scenes
 │   ├── objects/             # Interactive objects
 │   └── ui/                  # UI scenes
 ├── scripts/                  # GDScript files
-│   ├── character/           # Character scripts
+│   ├── characters/          # Character scripts
+│   ├── environments/        # Environment/level scripts
 │   ├── interactables/       # Interactive object scripts
-│   ├── manager/             # Game management scripts
+│   ├── managers/            # Game management scripts
 │   └── ui/                  # UI scripts
 └── project.godot            # Godot project file
 ```

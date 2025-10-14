@@ -1,0 +1,215 @@
+[gd_scene load_steps=3 format=3 uid="uid://c60sofc0aj711"]
+
+[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="1_ehibr"]
+[ext_resource type="FontFile" uid="uid://06eojjyt34v5" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_3ab8w"]
+
+[node name="TaskNotification" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 17.0
+offset_right = 234.0
+offset_bottom = 188.0
+texture = ExtResource("1_ehibr")
+region_rect = Rect2(26, 600, 44, 48)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 209.0
+offset_bottom = 167.0
+color = Color(0.815686, 0.745098, 0.611765, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="NinePatchRect/ColorRect"]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 54.0
+offset_bottom = 162.0
+color = Color(0.639216, 0.52549, 0.407843, 1)
+
+[node name="Label" type="Label" parent="NinePatchRect/ColorRect/ColorRect2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -1.0
+offset_bottom = 164.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3ab8w")
+theme_override_font_sizes/font_size = 30
+text = "T
+A
+S
+K
+S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 6.0
+offset_right = 83.0
+offset_bottom = 30.0
+
+[node name="Label4" type="Label" parent="NinePatchRect/CheckBox"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 138.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3ab8w")
+theme_override_font_sizes/font_size = 10
+text = "Unlocked item"
+vertical_alignment = 1
+
+[node name="CheckBox2" type="CheckBox" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 26.0
+offset_right = 83.0
+offset_bottom = 50.0
+
+[node name="Label4" type="Label" parent="NinePatchRect/CheckBox2"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 138.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3ab8w")
+theme_override_font_sizes/font_size = 10
+text = "Unlocked item"
+vertical_alignment = 1
+
+[node name="CheckBox3" type="CheckBox" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 46.0
+offset_right = 83.0
+offset_bottom = 70.0
+
+[node name="Label5" type="Label" parent="NinePatchRect/CheckBox3"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 138.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3ab8w")
+theme_override_font_sizes/font_size = 10
+text = "Unlocked item"
+vertical_alignment = 1
+
+[node name="CheckBox4" type="CheckBox" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 66.0
+offset_right = 83.0
+offset_bottom = 90.0
+
+[node name="Label6" type="Label" parent="NinePatchRect/CheckBox4"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 138.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3ab8w")
+theme_override_font_sizes/font_size = 10
+text = "Unlocked item"
+vertical_alignment = 1
+
+[node name="CheckBox5" type="CheckBox" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 86.0
+offset_right = 83.0
+offset_bottom = 110.0
+
+[node name="Label7" type="Label" parent="NinePatchRect/CheckBox5"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 138.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3ab8w")
+theme_override_font_sizes/font_size = 10
+text = "Talk to people"
+vertical_alignment = 1
+
+[node name="CheckBox6" type="CheckBox" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 106.0
+offset_right = 83.0
+offset_bottom = 130.0
+
+[node name="Label4" type="Label" parent="NinePatchRect/CheckBox6"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 138.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3ab8w")
+theme_override_font_sizes/font_size = 10
+text = "Unlocked item"
+vertical_alignment = 1
+
+[node name="CheckBox7" type="CheckBox" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 126.0
+offset_right = 83.0
+offset_bottom = 150.0
+
+[node name="Label4" type="Label" parent="NinePatchRect/CheckBox7"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 138.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3ab8w")
+theme_override_font_sizes/font_size = 10
+text = "Pickup Trash"
+vertical_alignment = 1
+
+[node name="CheckBox8" type="CheckBox" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 146.0
+offset_right = 83.0
+offset_bottom = 170.0
+
+[node name="Label4" type="Label" parent="NinePatchRect/CheckBox8"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 138.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3ab8w")
+theme_override_font_sizes/font_size = 10
+text = "Unlocked item"
+vertical_alignment = 1

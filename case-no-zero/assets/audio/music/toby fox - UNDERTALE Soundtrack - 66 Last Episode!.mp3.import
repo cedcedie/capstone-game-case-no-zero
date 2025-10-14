@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://colrv2s3fxjdw"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 66 Last Episode!.mp3-329ed4dcb6e328b41f39337a4d44f721.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 66 Last Episode!.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 66 Last Episode!.mp3-329ed4dcb6e328b41f39337a4d44f721.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

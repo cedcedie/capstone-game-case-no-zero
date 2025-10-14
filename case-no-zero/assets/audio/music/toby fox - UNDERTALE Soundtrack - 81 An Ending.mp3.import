@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctl38qqybx1fm"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 81 An Ending.mp3-2fafd99c7ddfe91fc103373b9f983c8d.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 81 An Ending.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 81 An Ending.mp3-2fafd99c7ddfe91fc103373b9f983c8d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://4thqnqltwp3x" path="res://assets/fonts/PixelOperatorSC.ttf" id="1_4ubpf"]
 [ext_resource type="Script" uid="uid://dyx4vg5kqme13" path="res://scripts/ui/dialogue_ui.gd" id="1_mlr52"]
-[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/PNG/ui/Modern_UI_Style_1_32x32.png" id="2_i8ph7"]
+[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="2_i8ph7"]
 [ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperator-Bold.ttf" id="4_nyru1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mlr52"]

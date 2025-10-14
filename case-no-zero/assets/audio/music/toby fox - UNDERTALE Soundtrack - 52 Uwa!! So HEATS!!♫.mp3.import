@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcpqosyq7wp5d"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 52 Uwa!! So HEATS!!♫.mp3-aa664dc2d8c41fd0819bdf7ad764078d.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 52 Uwa!! So HEATS!!♫.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 52 Uwa!! So HEATS!!♫.mp3-aa664dc2d8c41fd0819bdf7ad764078d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

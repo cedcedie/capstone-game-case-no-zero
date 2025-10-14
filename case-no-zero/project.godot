@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://b1qvf3enoo2yr"
+run/main_scene="uid://5d4uo5rtdrrk"
 config/features=PackedStringArray("4.4")
 
 [audio]
@@ -20,24 +20,18 @@ buses/default_bus_layout=""
 
 [autoload]
 
-TaskManager="*res://scripts/manager/TaskManager.gd"
+TaskManager="*res://scripts/managers/TaskManager.gd"
 TaskDisplay="*res://scenes/ui/TaskDisplay.tscn"
 DialogueUI="*res://scenes/ui/dialogueUi.tscn"
-SpawnManager="*res://scripts/manager/SpawnManager.gd"
+SpawnManager="*res://scripts/managers/SpawnManager.gd"
 DialogChooser="*res://scenes/ui/DialogChooser.tscn"
-CheckpointManager="*res://scripts/manager/CheckpointManager.gd"
-ScenePreloader="*res://scripts/manager/ScenePreloader.gd"
+CheckpointManager="*res://scripts/managers/CheckpointManager.gd"
+ScenePreloader="*res://scripts/managers/ScenePreloader.gd"
 
 [dialogic]
 
-directories/dch_directory={
-"Narrator": "res://playerScene/Narrator.dch",
-"Patricia Tan": "res://playerScene/Patricia Tan.dch"
-}
-directories/dtl_directory={
-"intro": "res://playerScene/intro.dtl",
-"intro2": "res://playerScene/intro2.dtl"
-}
+directories/dch_directory={}
+directories/dtl_directory={}
 glossary/default_case_sensitive=true
 layout/style_list=[]
 layout/default_style=""

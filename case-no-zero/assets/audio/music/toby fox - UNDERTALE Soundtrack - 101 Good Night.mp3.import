@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bc54h2etrj77i"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 101 Good Night.mp3-c92d7f7e7089727cb3a1ad4d21567a4d.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 101 Good Night.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 101 Good Night.mp3-c92d7f7e7089727cb3a1ad4d21567a4d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

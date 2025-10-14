@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bowk7jfhm77ac"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 40 Ghouliday.mp3-9199c1ecec716356d2f85f3802292fb6.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 40 Ghouliday.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 40 Ghouliday.mp3-9199c1ecec716356d2f85f3802292fb6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

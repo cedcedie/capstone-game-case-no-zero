@@ -60,19 +60,19 @@ func _get_target_scene_path_from_area_name() -> String:
 	var area_name = name
 	match area_name:
 		"Area2D_lower_level":
-			return "res://scenes/maps/Police Station/lower_level_station.tscn"
+			return "res://scenes/environments/Police Station/lower_level_station.tscn"
 		"Area2D_head_police":
-			return "res://scenes/maps/Police Station/head_police_room.tscn"
+			return "res://scenes/environments/Police Station/head_police_room.tscn"
 		"Area2D_security_server":
-			return "res://scenes/maps/Police Station/security_server.tscn"
+			return "res://scenes/environments/Police Station/security_server.tscn"
 		"Area2D_police_lobby":
-			return "res://scenes/maps/Police Station/police_lobby.tscn"
+			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		"Area2D_barangay_hall":
-			return "res://scenes/maps/barangay hall/barangay_hall.tscn"
+			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
 		"Area2D_barangay_hall_second_floor":
-			return "res://scenes/maps/barangay hall/barangay_hall_second_floor.tscn"
+			return "res://scenes/environments/barangay hall/barangay_hall_second_floor.tscn"
 		"Area2D_barangay_hall_return":
-			return "res://scenes/maps/barangay hall/barangay_hall.tscn"
+			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
 		_:
 			return ""
 

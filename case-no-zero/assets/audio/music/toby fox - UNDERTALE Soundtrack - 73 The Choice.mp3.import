@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://lnbml1tn65ei"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 73 The Choice.mp3-e1264892d232b8998337b87696406ec1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 73 The Choice.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 73 The Choice.mp3-e1264892d232b8998337b87696406ec1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
