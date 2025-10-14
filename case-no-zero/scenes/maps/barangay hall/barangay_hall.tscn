@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/PNG/interior/4_Bedroom_32x32.png" id="15_xl2oy"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="16_ev27n"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="17_scene_transition"]
+[ext_resource type="Script" path="res://scripts/manager/barangay_hall_manager.gd" id="18_barangay_manager"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k0sqd"]
 texture = ExtResource("2_ev27n")
@@ -24287,3 +24288,6 @@ script = ExtResource("17_scene_transition")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_barangay_hall_second_floor"]
 position = Vector2(680, 272)
 shape = SubResource("RectangleShape2D_barangay_second_floor")
+
+[node name="BarangayHallManager" type="Node" parent="."]
+script = ExtResource("18_barangay_manager")

@@ -13,6 +13,11 @@ func _on_body_entered(body):
 	if body.name == "PlayerM" and not is_transitioning:
 		var target_scene_path = _get_target_scene_path_from_area_name()
 		if target_scene_path != "":
+			# Check if player has access to barangay hall
+			if not _check_barangay_hall_access(target_scene_path):
+				print("🚫 Access denied: Barangay hall access not granted yet")
+				return
+			
 			# Store player reference and disable movement during transition
 			player_reference = body
 			if body.has_method("disable_movement"):
@@ -35,7 +40,8 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_security_server": "security_server",
 		"Area2D_police_lobby": "police_lobby",
 		"Area2D_barangay_hall": "barangay_hall",
-		"Area2D_barangay_hall_second_floor": "barangay_hall_second_floor"
+		"Area2D_barangay_hall_second_floor": "barangay_hall_second_floor",
+		"Area2D_barangay_hall_return": "barangay_hall"
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
@@ -65,8 +71,24 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/maps/barangay hall/barangay_hall.tscn"
 		"Area2D_barangay_hall_second_floor":
 			return "res://scenes/maps/barangay hall/barangay_hall_second_floor.tscn"
+		"Area2D_barangay_hall_return":
+			return "res://scenes/maps/barangay hall/barangay_hall.tscn"
 		_:
 			return ""
+
+func _check_barangay_hall_access(target_scene_path: String) -> bool:
+	"""Check if player has access to barangay hall"""
+	var scene_name = target_scene_path.get_file().get_basename()
+	
+	# Barangay hall only accessible after police lobby interaction
+	if scene_name == "barangay_hall" or scene_name == "barangay_hall_second_floor":
+		var checkpoint_manager = get_node("/root/CheckpointManager")
+		var has_police_lobby_context = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
+		print("🔍 Barangay hall access check: ", has_police_lobby_context)
+		return has_police_lobby_context
+	
+	# Allow access to all other scenes
+	return true
 
 func _start_transition(target_scene_path: String):
 	is_transitioning = true

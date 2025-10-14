@@ -232,8 +232,10 @@ func enable_player_and_update_task():
 	
 	is_in_cutscene = false
 	
-	# Set global checkpoint to prevent cutscene from replaying
+	# Set global checkpoints to prevent cutscene from replaying and grant barangay hall access
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
+	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
 	print("🎯 Global checkpoint set: POLICE_LOBBY_CUTSCENE_COMPLETED")
+	print("🎯 Global checkpoint set: BARANGAY_HALL_ACCESS_GRANTED")
 	print("🎬 Police lobby cutscene completed")
