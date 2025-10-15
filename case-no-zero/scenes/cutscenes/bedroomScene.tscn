@@ -22098,6 +22098,10 @@ font_size = 18
 y_sort_enabled = true
 position = Vector2(359, 106)
 script = ExtResource("1_2e68i")
+walk_speed = null
+fade_duration = null
+text_fade_duration = null
+transition_pause = null
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -358.0

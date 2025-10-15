@@ -15,27 +15,15 @@
 	  },
 	  {
 		"speaker": "Miguel",
-		"text": "Good morning po, Kapitana. Kami po si Miguel at Celine. May mga tanong po kami tungkol kay Leo, yung pulis na namatay."
+		"text": "Good morning po, Kapitana. Kami po si Miguel at Celine. May mga tanong po kami tungkol kay Leo."
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",
-		"text": "Ah, kayo pala yung mga nag-iinvestigate. Oo, nakakalungkot talaga yung nangyari sa kanya. Si Leo ay mabuting pulis. Ano ba ang gusto ninyong malaman?"
+		"text": "Ah, kayo pala yung mga nag-iinvestigate. Si Leo ay mabuting pulis. Ano ba ang gusto ninyong malaman?"
 	  },
 	  {
 		"speaker": "Miguel",
 		"text": "Kapitana, may mga tanong po kami tungkol kay Leo."
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Wala naman. Si Leo ay maayos na pulis. Hindi siya nag-report ng kahit anong unusual. Normal lang ang lahat dito sa area namin."
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Kapitana, pwede po ba naming makita yung patrol logbook para sa gabi na namatay si Leo?"
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Hmm... sige, pero wala kayong makikita doon. Normal lang ang lahat ng entries. Nandito lang yung logbook sa desk ko."
 	  },
 	  {
 		"speaker": "Celine",
@@ -43,15 +31,15 @@
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",
-		"text": "Oo, pero sandali lang. May mga kailangan akong gawin sa taas. Babalik ako agad."
+		"text": "Oo, pero-"
 	  },
 	  {
 		"speaker": "Barangay NPC",
-		"text": "Kapitana, may tawag po sa inyo sa second floor. May mga documents na kailangan ninyong i-check."
+		"text": "Kapitana, may tawag po sa inyo sa second floor."
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",
-		"text": "Ah, sige. Kayo muna dito. Babalik ako agad. Pwede ninyong tingnan yung logbook habang wala ako."
+		"text": "Ah, sige. Kayo muna dito. Babalik ako teka lang."
 	  },
 	  {
 		"speaker": "Celine",
@@ -83,14 +71,6 @@
 	  },
 	  {
 		"speaker": "Miguel",
-		"text": "Kapitana, nakita namin na may mali sa patrol logbook. May nag-fake ng entry ni Leo."
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Ano? Hindi totoo yan! Normal lang ang lahat ng entries sa logbook."
-	  },
-	  {
-		"speaker": "Miguel",
 		"text": "Kapitana, may nakita kaming handwriting sample ni Leo. Hindi match sa entry sa logbook."
 	  },
 	  {
@@ -108,10 +88,6 @@
 	  {
 		"speaker": "Miguel",
 		"text": "Sige po, Kapitana. Pero may mga tanong pa kami na kailangan namin ng sagot."
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Hindi ko na kayo matutulungan. Umalis na kayo dito."
 	  },
 	  {
 		"speaker": "Celine",
@@ -132,8 +108,8 @@
 		"Pwede po ba naming makita yung patrol logbook?"
 	  ],
 	  "responses": [
-		"Wala naman. Si Leo ay maayos na pulis. Hindi siya nag-report ng kahit anong unusual. Normal lang ang lahat dito sa area namin.",
-		"Hmm... sige, pero wala kayong makikita doon. Normal lang ang lahat ng entries. Nandito lang yung logbook sa desk ko."
+		"Wala naman. Si Leo ay maayos na pulis. Normal lang ang lahat dito sa area namin.",
+		"Hmm... sige, pero wala kayong makikita doon. Normal lang ang lahat ng entries."
 	  ]
 	},
 	{

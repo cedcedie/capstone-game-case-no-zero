@@ -1,6 +1,6 @@
 [gd_scene load_steps=54 format=3 uid="uid://blneit8blyobn"]
 
-[ext_resource type="Texture2D" uid="uid://b2k0ov3bjncmr" path="res://kapitanaPalma.png" id="1_oi7rb"]
+[ext_resource type="Texture2D" uid="uid://b2k0ov3bjncmr" path="res://assets/sprites/characters/kapitanaPalma.png" id="1_oi7rb"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_7bsnn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pk044"]
@@ -392,8 +392,8 @@ radius = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b40tf")
-animation = &"idle_back"
-autoplay = "idle_right"
+animation = &"idle_front"
+autoplay = "idle_front"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

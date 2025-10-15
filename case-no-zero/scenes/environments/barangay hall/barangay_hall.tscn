@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://b1qvf3enoo2yr"]
+[gd_scene load_steps=62 format=4 uid="uid://b1qvf3enoo2yr"]
 
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="1_t0wts"]
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/Room_Builder_borders_32x32.png" id="2_ev27n"]
@@ -18,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="16_ev27n"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="17_scene_transition"]
 [ext_resource type="Script" uid="uid://bomlysk3xeasd" path="res://scripts/environments/barangay_hall_manager.gd" id="18_barangay_manager"]
+[ext_resource type="PackedScene" uid="uid://blneit8blyobn" path="res://scenes/characters/kapitanaPalma.tscn" id="19_dit16"]
+[ext_resource type="PackedScene" uid="uid://ds78xmibbqylq" path="res://scenes/characters/barangay_npc.tscn" id="20_7a2pv"]
+[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main/celine_navarro.tscn" id="20_mc44i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k0sqd"]
 texture = ExtResource("2_ev27n")
@@ -24239,7 +24242,8 @@ sources/1 = SubResource("TileSetAtlasSource_lvu5a")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_barangay_second_floor"]
 size = Vector2(96, 32)
 
-[node name="1StFloor" type="Node2D"]
+[node name="baranggay_hall" type="Node2D"]
+y_sort_enabled = true
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = ExtResource("1_t0wts")
@@ -24280,7 +24284,11 @@ tile_set = SubResource("TileSet_ut8hw")
 collision_visibility_mode = 1
 
 [node name="PlayerM" parent="." instance=ExtResource("16_ev27n")]
-position = Vector2(504, 560)
+position = Vector2(528, 560)
+
+[node name="AnimatedSprite2D" parent="PlayerM" index="0"]
+animation = &"idle_back"
+autoplay = "idle_back"
 
 [node name="Area2D_barangay_hall_second_floor" type="Area2D" parent="."]
 script = ExtResource("17_scene_transition")
@@ -24291,3 +24299,28 @@ shape = SubResource("RectangleShape2D_barangay_second_floor")
 
 [node name="BarangayHallManager" type="Node" parent="."]
 script = ExtResource("18_barangay_manager")
+
+[node name="KapitanaPalma" parent="." instance=ExtResource("19_dit16")]
+position = Vector2(504, 416)
+
+[node name="AnimatedSprite2D" parent="KapitanaPalma" index="0"]
+animation = &"idle_back"
+autoplay = "idle_back"
+
+[node name="barangay_npc" parent="." instance=ExtResource("20_7a2pv")]
+position = Vector2(680, 112)
+
+[node name="AnimatedSprite2D" parent="barangay_npc" index="0"]
+animation = &"walk_down"
+autoplay = "idle_front"
+
+[node name="celine" parent="." instance=ExtResource("20_mc44i")]
+position = Vector2(480, 560)
+
+[node name="AnimatedSprite2D" parent="celine" index="0"]
+animation = &"idle_back"
+autoplay = "idle_back"
+
+[editable path="PlayerM"]
+[editable path="KapitanaPalma"]
+[editable path="barangay_npc"]

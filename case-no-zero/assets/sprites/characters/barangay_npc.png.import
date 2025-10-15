@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cha75djbrixvi"
-path="res://.godot/imported/baranggayHallNpcWalk.png-9ce9e74bd1d2da04374feb43ed617f7c.ctex"
+uid="uid://bl7moxsw1e2qj"
+path="res://.godot/imported/barangay_npc.png-aa2226fa54cf31a1f5173654e33d1c87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/baranggayHallNpcWalk.png"
-dest_files=["res://.godot/imported/baranggayHallNpcWalk.png-9ce9e74bd1d2da04374feb43ed617f7c.ctex"]
+source_file="res://assets/sprites/characters/barangay_npc.png"
+dest_files=["res://.godot/imported/barangay_npc.png-aa2226fa54cf31a1f5173654e33d1c87.ctex"]
 
 [params]
 
