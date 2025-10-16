@@ -1,0 +1,32 @@
+{
+	"evidence": {
+		"handwriting_sample": {
+			"name": "Handwriting Sample",
+			"description": "A handwritten note found at the crime scene with suspicious inconsistencies."
+		},
+		"logbook": {
+			"name": "Logbook Evidence",
+			"description": "Official police logbook revealing timeline discrepancies in the incident report."
+		},
+		"broken_body_cam": {
+			"name": "Broken Body Camera",
+			"description": "Damaged police body camera with potentially recoverable footage."
+		},
+		"cctv_footage": {
+			"name": "CCTV Footage",
+			"description": "Security footage showing suspicious activity before the incident."
+		},
+		"radio_log": {
+			"name": "Radio Communication Log",
+			"description": "Police radio communications revealing communication gaps and coordination issues."
+		},
+		"autopsy_report": {
+			"name": "Autopsy Report",
+			"description": "Medical report with inconsistencies contradicting the official police narrative."
+		},
+		"leos_notebook": {
+			"name": "Leo's Notebook",
+			"description": "Personal notes raising serious questions about police conduct during the incident."
+		}
+	}
+}

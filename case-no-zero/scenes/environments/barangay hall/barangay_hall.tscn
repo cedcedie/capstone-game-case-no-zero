@@ -24311,15 +24311,10 @@ autoplay = "idle_back"
 position = Vector2(680, 112)
 
 [node name="AnimatedSprite2D" parent="barangay_npc" index="0"]
-animation = &"walk_down"
 autoplay = "idle_front"
 
 [node name="celine" parent="." instance=ExtResource("20_mc44i")]
 position = Vector2(480, 560)
-
-[node name="AnimatedSprite2D" parent="celine" index="0"]
-animation = &"idle_back"
-autoplay = "idle_back"
 
 [editable path="PlayerM"]
 [editable path="KapitanaPalma"]

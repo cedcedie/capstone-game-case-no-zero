@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ds78xmibbqylq"]
+[gd_scene load_steps=54 format=3 uid="uid://ds78xmibbqylq"]
 
 [ext_resource type="Texture2D" uid="uid://bl7moxsw1e2qj" path="res://assets/sprites/characters/barangay_npc.png" id="1_t1ha6"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="3_kwjsv"]
@@ -98,30 +98,6 @@ region = Rect2(128, 64, 32, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pa3c2"]
 atlas = ExtResource("1_t1ha6")
 region = Rect2(160, 64, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7tjeh"]
-atlas = ExtResource("1_t1ha6")
-region = Rect2(384, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnghk"]
-atlas = ExtResource("1_t1ha6")
-region = Rect2(416, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2xaod"]
-atlas = ExtResource("1_t1ha6")
-region = Rect2(448, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_whlw8"]
-atlas = ExtResource("1_t1ha6")
-region = Rect2(480, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_40fd2"]
-atlas = ExtResource("1_t1ha6")
-region = Rect2(512, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0gr5y"]
-atlas = ExtResource("1_t1ha6")
-region = Rect2(544, 128, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_om7rx"]
 atlas = ExtResource("1_t1ha6")
@@ -315,24 +291,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7tjeh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wnghk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2xaod")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whlw8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_40fd2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0gr5y")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_om7rx")
 }, {
 "duration": 1.0,
@@ -434,7 +392,7 @@ radius = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5dpsp")
-animation = &"idle_back"
+animation = &"walk_back"
 autoplay = "idle_right"
 offset = Vector2(0, -32)
 

@@ -26,6 +26,7 @@ var choice_completed: bool = false
 
 # --- Scene state ---
 var cutscene_played: bool = false
+var evidence_collection_phase: bool = false
 
 # --- Movement and transition tuning ---
 @export var walk_speed: float = 200.0
@@ -175,6 +176,57 @@ func tween_camera_zoom(target_zoom: float) -> void:
 	zoom_tween.set_ease(Tween.EASE_IN_OUT)
 	zoom_tween.set_trans(Tween.TRANS_CUBIC)
 	zoom_tween.tween_property(camera, "zoom", Vector2(target_zoom, target_zoom), camera_zoom_duration)
+
+func show_evidence_collected() -> void:
+	"""Show evidence collected using TaskManager"""
+	print("📋 Showing evidence collected via TaskManager")
+	
+	# Show evidence collection in task display
+	if task_manager and task_manager.task_display:
+		task_manager.task_display.show_task("Evidence collected")
+		print("📋 Evidence collection shown in task display")
+	else:
+		print("⚠️ TaskManager or TaskDisplay not available")
+
+func _input(event):
+	"""Handle evidence inventory input during cutscene"""
+	if event.is_action_pressed("evidence_inventory"):
+		# Only handle during evidence collection phase (line 12 exception)
+		if evidence_collection_phase:
+			# Allow inventory access during evidence collection phase
+			if has_node("/root/EvidenceInventorySettings"):
+				var evidence_ui = get_node("/root/EvidenceInventorySettings")
+				
+				if evidence_ui.is_visible:
+					# Close evidence inventory and wait for animation to complete
+					await evidence_ui.hide_evidence_inventory()
+					print("📋 Evidence inventory closed")
+					
+					# Show dialogue after inventory is completely closed
+					if dialogue_ui:
+						dialogue_ui.show()
+						print("📋 Dialogue shown after inventory closed")
+					
+					# End evidence collection phase
+					evidence_collection_phase = false
+					print("📋 Evidence collection phase ended")
+				else:
+					# Hide dialogue when showing inventory
+					if dialogue_ui:
+						dialogue_ui.hide()
+						print("📋 Dialogue hidden for inventory")
+					
+					# Hide task display
+					if task_manager and task_manager.task_display:
+						task_manager.task_display.hide_task()
+						print("📋 Task display hidden")
+					
+					# Show evidence inventory
+					evidence_ui.show_evidence_inventory()
+					print("📋 Evidence inventory shown")
+			
+			# Consume the input so it doesn't trigger the global handler
+			get_viewport().set_input_as_handled()
 
 func find_character_references():
 	"""Find character references from the scene root"""
@@ -642,17 +694,115 @@ func show_next_line() -> void:
 				await get_tree().create_timer(max_wait).timeout
 				print("🎭 Both NPC and Kapitana reached final destinations")
 				
-				# Fade out NPC
-				var tween = create_tween()
-				tween.tween_property(barangay_npc, "modulate:a", 0.0, 1.0)
-				await tween.finished
-				print("🎭 Barangay NPC: Faded out")
+				# Fade out both NPC and Kapitana
+				var npc_tween = create_tween()
+				npc_tween.tween_property(barangay_npc, "modulate:a", 0.0, 1.0)
+				
+				var kapitana_tween = create_tween()
+				kapitana_tween.tween_property(kapitana, "modulate:a", 0.0, 1.0)
+				
+				await npc_tween.finished
+				await kapitana_tween.finished
+				print("🎭 Both Barangay NPC and Kapitana: Faded out")
 			
-			# Show dialogue after all movements complete
+			# PlayerM additional movements after fade out
+			if player:
+				print("🎭 PlayerM: Starting additional movements after fade out")
+				
+				# Step 1: walk_right to 552.0x
+				var player_step1 = Vector2(552.0, player.position.y)
+				await move_character_smoothly(player, player_step1, "walk_right", "idle_right")
+				print("🎭 PlayerM: Step 1 completed - walk_right to 552.0x")
+				
+				# Step 2: walk_back to 384.0y
+				var player_step2 = Vector2(552.0, 384.0)
+				await move_character_smoothly(player, player_step2, "walk_back", "idle_back")
+				print("🎭 PlayerM: Step 2 completed - walk_back to 384.0y")
+			
+			# Show evidence collected notification
+			show_evidence_collected()
+			
+			# Wait for "Evidence collected" to show and animate
+			await get_tree().create_timer(2.0).timeout
+			
+			# Hide "Evidence collected" message
+			if task_manager and task_manager.task_display:
+				task_manager.task_display.hide_task()
+				print("📋 Evidence collected message hidden")
+			
+			# Wait for hide animation to complete
+			await get_tree().create_timer(0.8).timeout
+			
+			# Start evidence collection phase - TAB input will now show evidence inventory
+			evidence_collection_phase = true
+			print("📋 Evidence collection phase started - TAB input enabled")
+			
+			# Show evidence inventory automatically and wait for it to be closed
+			if has_node("/root/EvidenceInventorySettings"):
+				var evidence_ui = get_node("/root/EvidenceInventorySettings")
+				
+				# Hide dialogue when showing inventory
+				if dialogue_ui:
+					dialogue_ui.hide()
+					print("📋 Dialogue hidden for inventory")
+				
+				# Show evidence inventory
+				evidence_ui.show_evidence_inventory()
+				print("📋 Evidence inventory shown")
+				
+				# Add handwriting sample evidence
+				evidence_ui.add_evidence("handwriting_sample")
+				
+				# Mark task as completed
+				if task_manager:
+					task_manager.complete_current_task()
+					print("📋 Task marked as completed after evidence collection")
+				
+				# Show "Tab to close inventory" message
+				if task_manager and task_manager.task_display:
+					task_manager.task_display.show_task("Tab to close inventory")
+					print("📋 Task display: Tab to close inventory")
+				
+				# Wait for inventory to be closed (evidence_collection_phase will be set to false when closed)
+				while evidence_collection_phase:
+					await get_tree().process_frame
+				
+				# Hide task manager display only after inventory is closed
+				if task_manager and task_manager.task_display:
+					task_manager.task_display.hide_task()
+					print("📋 Task display hidden after inventory closed")
+				
+				print("📋 Evidence inventory closed, now showing dialogue")
+			
+			# Show dialogue after inventory is closed
 			show_dialogue_with_transition(speaker, text)
 		
-		# Normal dialogue lines 12-18
-		12, 13, 14, 15, 16, 17, 18:
+		# Line 12 - PlayerM additional movements
+		12:
+			print("🎭 Line 12: PlayerM additional movements")
+			# Hide dialogue during movement
+			if dialogue_ui:
+				dialogue_ui.hide()
+			
+			# PlayerM: walk_front to 424.0y then walk_right to 488.0x
+			if player:
+				print("🎭 PlayerM: Starting additional movements for line 12")
+				
+				# Step 1: walk_front to 424.0y
+				var player_step1 = Vector2(player.position.x, 424.0)
+				await move_character_smoothly(player, player_step1, "walk_front", "idle_front")
+				print("🎭 PlayerM: Step 1 completed - walk_front to 424.0y")
+				
+				# Step 2: walk_right to 488.0x
+				var player_step2 = Vector2(488.0, 424.0)
+				await move_character_smoothly(player, player_step2, "walk_left", "idle_left")
+				print("🎭 PlayerM: Step 2 completed - walk_left to 488.0x")
+			
+			# Show dialogue after movement
+			show_dialogue_with_transition(speaker, text)
+		
+		# Normal dialogue lines 13-18
+		13, 14, 15, 16, 17, 18:
 			show_dialogue_with_transition(speaker, text)
 		
 		# Miguel's confrontation - choice line
@@ -690,6 +840,16 @@ func _on_next_pressed() -> void:
 	if waiting_for_next:
 		waiting_for_next = false
 		
+		# Check if we're trying to proceed from line 12 and evidence inventory is still open
+		if current_line == 12 and evidence_collection_phase:
+			if has_node("/root/EvidenceInventorySettings"):
+				var evidence_ui = get_node("/root/EvidenceInventorySettings")
+				if evidence_ui.is_visible:
+					print("⚠️ Cannot proceed to next line - evidence inventory is still open")
+					print("📋 Please close evidence inventory with TAB before continuing")
+					waiting_for_next = true  # Reset waiting state
+					return
+		
 		# Check if we just finished a choice line and need to show choices
 		# Only show choices if we haven't already completed them
 		if (current_line == 5 or current_line == 19 or current_line == 27) and not choice_completed:
@@ -715,6 +875,11 @@ func end_cutscene():
 	
 	# Mark cutscene as played
 	cutscene_played = true
+	
+	# End evidence collection phase if still active
+	if evidence_collection_phase:
+		evidence_collection_phase = false
+		print("📋 Evidence collection phase ended with cutscene")
 	
 	# Enable player control
 	if player and "control_enabled" in player:
