@@ -183,8 +183,8 @@ func show_evidence_collected() -> void:
 	
 	# Show evidence collection in task display
 	if task_manager and task_manager.task_display:
-		task_manager.task_display.show_task("Evidence collected")
-		print("📋 Evidence collection shown in task display")
+		task_manager.task_display.show_task("2 Evidence Items Collected!\nHandwriting Sample\nLogbook")
+		print("📋 Evidence collection shown in task display (2 items)")
 	else:
 		print("⚠️ TaskManager or TaskDisplay not available")
 
@@ -750,8 +750,10 @@ func show_next_line() -> void:
 				evidence_ui.show_evidence_inventory()
 				print("📋 Evidence inventory shown")
 				
-				# Add handwriting sample evidence
+				# Add both evidence items - handwriting sample and logbook
 				evidence_ui.add_evidence("handwriting_sample")
+				evidence_ui.add_evidence("logbook")
+				print("📋 Added 2 evidence items: handwriting_sample and logbook")
 				
 				# Mark task as completed
 				if task_manager:
@@ -784,14 +786,14 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.hide()
 			
-			# PlayerM: walk_front to 424.0y then walk_right to 488.0x
+			# PlayerM: walk_down to 424.0y then walk_right to 488.0x
 			if player:
 				print("🎭 PlayerM: Starting additional movements for line 12")
 				
-				# Step 1: walk_front to 424.0y
+				# Step 1: walk_down to 424.0y
 				var player_step1 = Vector2(player.position.x, 424.0)
-				await move_character_smoothly(player, player_step1, "walk_front", "idle_front")
-				print("🎭 PlayerM: Step 1 completed - walk_front to 424.0y")
+				await move_character_smoothly(player, player_step1, "walk_down", "idle_down")
+				print("🎭 PlayerM: Step 1 completed - walk_down to 424.0y")
 				
 				# Step 2: walk_right to 488.0x
 				var player_step2 = Vector2(488.0, 424.0)
@@ -801,8 +803,55 @@ func show_next_line() -> void:
 			# Show dialogue after movement
 			show_dialogue_with_transition(speaker, text)
 		
-		# Normal dialogue lines 13-18
-		13, 14, 15, 16, 17, 18:
+		# Normal dialogue lines 13-15
+		13, 14, 15:
+			show_dialogue_with_transition(speaker, text)
+		
+		# Line 16 - Kapitana movement with PlayerM and Celine animations
+		16:
+			print("🎭 Line 16: Kapitana movement with character animations")
+			# Hide dialogue during animation
+			if dialogue_ui:
+				dialogue_ui.hide()
+			
+			# Set PlayerM to idle_right immediately
+			if player:
+				var player_anim = player.get_node_or_null("AnimatedSprite2D")
+				if player_anim:
+					player_anim.play("idle_right")
+					print("✅ PlayerM set to idle_right")
+			
+			# Kapitana: walk_down to (680, 472)
+			if kapitana:
+				print("🎭 Kapitana: Starting walk_down to (680, 472)")
+				var kapitana_step1 = Vector2(680.0, 472.0)
+				await move_character_smoothly(kapitana, kapitana_step1, "walk_down", "idle_down")
+				print("🎭 Kapitana: Reached (680, 472) - idle_down")
+				
+				# Set Celine and PlayerM to idle_front and idle_down while Kapitana is at this position
+				if celine:
+					var celine_anim = celine.get_node_or_null("AnimatedSprite2D")
+					if celine_anim:
+						celine_anim.play("idle_front")
+						print("✅ Celine set to idle_front")
+				
+				if player:
+					var player_anim2 = player.get_node_or_null("AnimatedSprite2D")
+					if player_anim2:
+						player_anim2.play("idle_down")
+						print("✅ PlayerM set to idle_down")
+				
+				# Kapitana: walk_right to (472, 472)
+				print("🎭 Kapitana: Starting walk_right to (472, 472)")
+				var kapitana_step2 = Vector2(472.0, 472.0)
+				await move_character_smoothly(kapitana, kapitana_step2, "walk_right", "idle_back")
+				print("🎭 Kapitana: Reached (472, 472) - idle_back")
+			
+			# Show dialogue after all animations complete
+			show_dialogue_with_transition(speaker, text)
+		
+		# Normal dialogue lines 17-18
+		17, 18:
 			show_dialogue_with_transition(speaker, text)
 		
 		# Miguel's confrontation - choice line

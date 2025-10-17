@@ -24287,7 +24287,6 @@ collision_visibility_mode = 1
 position = Vector2(528, 560)
 
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]
-animation = &"idle_back"
 autoplay = "idle_back"
 
 [node name="Area2D_barangay_hall_second_floor" type="Area2D" parent="."]
@@ -24301,7 +24300,7 @@ shape = SubResource("RectangleShape2D_barangay_second_floor")
 script = ExtResource("18_barangay_manager")
 
 [node name="KapitanaPalma" parent="." instance=ExtResource("19_dit16")]
-position = Vector2(504, 416)
+position = Vector2(512, 416)
 
 [node name="AnimatedSprite2D" parent="KapitanaPalma" index="0"]
 animation = &"idle_back"
@@ -24319,3 +24318,4 @@ position = Vector2(480, 560)
 [editable path="PlayerM"]
 [editable path="KapitanaPalma"]
 [editable path="barangay_npc"]
+[editable path="celine"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctedvnuw0elhs"]
+[gd_scene load_steps=14 format=3 uid="uid://bo1b5j33tcvc"]
 
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="1_1075l"]
 [ext_resource type="Script" uid="uid://bnwo4ujfjlg4u" path="res://scripts/ui/evidence_inventory_settings.gd" id="1_evidence_script"]
@@ -23,7 +23,7 @@ font = ExtResource("4_g1gxs")
 font_size = 13
 font_color = Color(0, 0, 0, 1)
 
-[node name="EvidenceInventory" type="CanvasLayer"]
+[node name="EvidenceInventory2" type="CanvasLayer"]
 script = ExtResource("1_evidence_script")
 
 [node name="UIContainer" type="Control" parent="."]
@@ -148,6 +148,12 @@ position = Vector2(24.1851, 25)
 scale = Vector2(1.05153, 1)
 texture = ExtResource("6_ph1hf")
 
+[node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence1"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+flat = true
+
 [node name="Evidence2" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
 offset_left = 92.5345
@@ -165,6 +171,12 @@ patch_margin_bottom = 24
 position = Vector2(24.1851, 25)
 scale = Vector2(1.05153, 1)
 texture = ExtResource("5_umk2s")
+
+[node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence2"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+flat = true
 
 [node name="Evidence3" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
@@ -184,6 +196,12 @@ position = Vector2(24.1851, 25)
 scale = Vector2(1.05153, 1)
 texture = ExtResource("7_pa4yr")
 
+[node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence3"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+flat = true
+
 [node name="Evidence4" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
 offset_left = 210.306
@@ -201,6 +219,12 @@ patch_margin_bottom = 24
 position = Vector2(24.1848, 25)
 scale = Vector2(1.05153, 1)
 texture = ExtResource("8_cgtgs")
+
+[node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence4"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+flat = true
 
 [node name="Evidence5" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
@@ -220,6 +244,12 @@ position = Vector2(24.1852, 25)
 scale = Vector2(1.05153, 1)
 texture = ExtResource("9_qy8d8")
 
+[node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence5"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+flat = true
+
 [node name="Evidence6" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
 offset_left = 328.077
@@ -238,6 +268,12 @@ position = Vector2(24.1849, 25)
 scale = Vector2(1.05153, 1)
 texture = ExtResource("10_b6idw")
 
+[node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence6"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+flat = true
+
 [node name="Evidence7" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
 offset_left = 386.962
@@ -255,6 +291,12 @@ patch_margin_bottom = 24
 position = Vector2(24.1855, 25)
 scale = Vector2(1.05153, 1)
 texture = ExtResource("11_nob0d")
+
+[node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence7"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+flat = true
 
 [node name="EvidenceTab" type="NinePatchRect" parent="UIContainer"]
 layout_mode = 0
@@ -281,6 +323,12 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
+[node name="Button" type="Button" parent="UIContainer/EvidenceTab"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+flat = true
+
 [node name="SettingsTab" type="NinePatchRect" parent="UIContainer"]
 layout_mode = 0
 offset_left = 40.0
@@ -305,3 +353,9 @@ patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+
+[node name="Button" type="Button" parent="UIContainer/SettingsTab"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+flat = true

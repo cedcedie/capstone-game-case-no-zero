@@ -19,7 +19,6 @@ var evidence_name: Label
 var evidence_description: Label
 var evidence_tab: NinePatchRect
 var settings_tab: NinePatchRect
-var main_bg: NinePatchRect
 
 # Evidence textures - preload them for better performance
 var handwriting_sample_texture = preload("res://assets/sprites/evidence/handwriting_sample_evidence.png")
@@ -56,6 +55,12 @@ func _ready():
 func show_evidence_inventory():
 	"""Show the evidence inventory UI with smooth fade animation from center"""
 	if not is_visible:
+		# Make sure Settings is hidden before showing Evidence Inventory
+		if has_node("/root/Settings"):
+			var settings_ui = get_node("/root/Settings")
+			if settings_ui.is_visible:
+				await settings_ui.hide_settings()
+		
 		is_visible = true
 		show()
 		
@@ -82,6 +87,9 @@ func show_evidence_inventory():
 			tween.set_trans(Tween.TRANS_BACK)
 		
 		print("📋 EvidenceInventorySettings: Shown with smooth center scale animation")
+		
+		# Check if we're in evidence collection phase and disable Settings tab
+		_update_settings_tab_state()
 		
 		# Find player camera
 		_find_player_camera()
@@ -119,6 +127,11 @@ func toggle_evidence_inventory():
 	if is_visible:
 		hide_evidence_inventory()
 	else:
+		# Also hide Settings if it's visible (unified system)
+		if has_node("/root/Settings"):
+			var settings_ui = get_node("/root/Settings")
+			if settings_ui.is_visible:
+				settings_ui.hide_settings()
 		show_evidence_inventory()
 
 func _load_evidence_data():
@@ -147,7 +160,6 @@ func _get_ui_references():
 	evidence_description = ui_container.get_node("EvidenceBoxDesvriptionBG/EvidenceDescription")
 	evidence_tab = ui_container.get_node("EvidenceTab")
 	settings_tab = ui_container.get_node("SettingsTab")
-	main_bg = ui_container.get_node("EvidenceBoxMainBG")
 
 func _setup_evidence_slots():
 	"""Setup evidence slots with click detection and hover effects"""
@@ -158,36 +170,39 @@ func _setup_evidence_slots():
 		var evidence_slot = evidence_list_bg.get_node_or_null("Evidence" + str(i))
 		if evidence_slot:
 			evidence_slots.append(evidence_slot)
-			# Make it clickable and hoverable
-			evidence_slot.gui_input.connect(_on_evidence_slot_clicked.bind(i - 1))  # Use 0-based index
-			evidence_slot.mouse_entered.connect(_on_evidence_slot_hover.bind(i - 1, true))
-			evidence_slot.mouse_exited.connect(_on_evidence_slot_hover.bind(i - 1, false))
+			
+			# Get the button child for click detection
+			var button = evidence_slot.get_node_or_null("Button")
+			if button:
+				button.pressed.connect(_on_evidence_slot_pressed.bind(i - 1))  # Use 0-based index
+				button.mouse_entered.connect(_on_evidence_slot_hover.bind(i - 1, true))
+				button.mouse_exited.connect(_on_evidence_slot_hover.bind(i - 1, false))
+				print("📋 Evidence slot " + str(i) + " button connected")
 	
-	# Setup hover effects for tabs and main background
-	if evidence_tab:
-		evidence_tab.gui_input.connect(_on_evidence_tab_clicked)
-		evidence_tab.mouse_entered.connect(_on_evidence_tab_hover.bind(true))
-		evidence_tab.mouse_exited.connect(_on_evidence_tab_hover.bind(false))
+	# Setup hover effects for tabs using their buttons
+	var evidence_tab_button = ui_container.get_node_or_null("EvidenceTab/Button")
+	if evidence_tab_button:
+		evidence_tab_button.pressed.connect(_on_evidence_tab_pressed)
+		evidence_tab_button.mouse_entered.connect(_on_evidence_tab_hover.bind(true))
+		evidence_tab_button.mouse_exited.connect(_on_evidence_tab_hover.bind(false))
+		print("📋 Evidence tab button connected")
 	
-	if settings_tab:
-		settings_tab.gui_input.connect(_on_settings_tab_clicked)
-		settings_tab.mouse_entered.connect(_on_settings_tab_hover.bind(true))
-		settings_tab.mouse_exited.connect(_on_settings_tab_hover.bind(false))
-	
-	if main_bg:
-		main_bg.gui_input.connect(_on_main_bg_clicked)
-		main_bg.mouse_entered.connect(_on_main_bg_hover.bind(true))
-		main_bg.mouse_exited.connect(_on_main_bg_hover.bind(false))
+	var settings_tab_button = ui_container.get_node_or_null("SettingsTab/Button")
+	if settings_tab_button:
+		settings_tab_button.pressed.connect(_on_settings_tab_pressed)
+		settings_tab_button.mouse_entered.connect(_on_settings_tab_hover.bind(true))
+		settings_tab_button.mouse_exited.connect(_on_settings_tab_hover.bind(false))
+		print("📋 Settings tab button connected")
 
 func _initialize_evidence_visibility():
 	"""Initialize evidence visibility - hide all evidence initially"""
 	for i in range(evidence_slots.size()):
 		evidence_slots[i].visible = false
 
-func _on_evidence_slot_clicked(evidence_index: int, event: InputEvent):
-	"""Handle evidence slot click"""
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		_select_evidence(evidence_index)
+func _on_evidence_slot_pressed(evidence_index: int):
+	"""Handle evidence slot button press"""
+	_select_evidence(evidence_index)
+	print("📋 Evidence slot " + str(evidence_index + 1) + " clicked")
 
 func _select_evidence(evidence_index: int):
 	"""Select and display evidence"""
@@ -255,6 +270,21 @@ func add_evidence(evidence_id: String):
 			if collected_evidence.size() == 1:
 				_select_evidence(0)
 
+func _update_settings_tab_state():
+	"""Update Settings tab state based on evidence collection phase"""
+	var current_scene = get_tree().current_scene
+	var in_evidence_collection = current_scene and "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase
+	
+	if settings_tab:
+		if in_evidence_collection:
+			# Gray out the Settings tab during evidence collection
+			settings_tab.modulate = Color(0.5, 0.5, 0.5, 1.0)
+			print("📋 Settings tab disabled during evidence collection phase")
+		else:
+			# Normal color when not in evidence collection
+			settings_tab.modulate = Color.WHITE
+			print("📋 Settings tab enabled")
+
 func _find_player_camera():
 	"""Find the player's camera for positioning"""
 	var scene_root = get_tree().current_scene
@@ -299,9 +329,17 @@ func _input(event):
 		elif in_cutscene:
 			print("⚠️ Evidence inventory access blocked during cutscene (except line 12)")
 		else:
-			toggle_evidence_inventory()
-			get_viewport().set_input_as_handled()
-			print("📋 Evidence inventory toggled via TAB (bedroom cutscene completed)")
+			# Check if Settings is visible or just closed - if so, don't toggle Evidence
+			var settings_ui = get_node_or_null("/root/Settings")
+			if settings_ui and (settings_ui.is_visible or settings_ui.just_closed):
+				# Settings will handle its own hiding via its _input, or just closed
+				print("📋 Settings is visible or just closed, not toggling Evidence Inventory")
+				get_viewport().set_input_as_handled()
+			else:
+				# Toggle Evidence Inventory normally
+				toggle_evidence_inventory()
+				get_viewport().set_input_as_handled()
+				print("📋 Evidence inventory toggled via TAB (bedroom cutscene completed)")
 	
 	# Handle closing the evidence inventory with ESC
 	if is_visible and event.is_action_pressed("ui_cancel"):
@@ -313,49 +351,64 @@ func _on_evidence_slot_hover(evidence_index: int, is_hovering: bool):
 	"""Handle evidence slot hover effects"""
 	if evidence_index < evidence_slots.size():
 		var evidence_slot = evidence_slots[evidence_index]
+		# Only show hover if this slot is visible (has collected evidence)
+		if not evidence_slot.visible:
+			return
+		
 		if is_hovering:
-			# Hover effect - slightly brighten
-			evidence_slot.modulate = Color(1.2, 1.2, 1.2, 1.0)
+			# Hover effect - brighten and scale up
+			var tween = create_tween()
+			tween.set_parallel(true)
+			tween.tween_property(evidence_slot, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
+			tween.tween_property(evidence_slot, "scale", Vector2(1.1, 1.1), 0.1)
+			print("📋 Evidence slot " + str(evidence_index + 1) + " hovered")
 		else:
 			# Normal state
-			evidence_slot.modulate = Color.WHITE
+			var tween = create_tween()
+			tween.set_parallel(true)
+			tween.tween_property(evidence_slot, "modulate", Color.WHITE, 0.1)
+			tween.tween_property(evidence_slot, "scale", Vector2.ONE, 0.1)
 
 func _on_evidence_tab_hover(is_hovering: bool):
 	"""Handle evidence tab hover effects"""
 	if evidence_tab:
 		if is_hovering:
-			evidence_tab.modulate = Color(1.2, 1.2, 1.2, 1.0)
+			var tween = create_tween()
+			tween.tween_property(evidence_tab, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
+			print("📋 Evidence tab hovered")
 		else:
-			evidence_tab.modulate = Color.WHITE
+			var tween = create_tween()
+			tween.tween_property(evidence_tab, "modulate", Color.WHITE, 0.1)
 
 func _on_settings_tab_hover(is_hovering: bool):
 	"""Handle settings tab hover effects"""
 	if settings_tab:
 		if is_hovering:
-			settings_tab.modulate = Color(1.2, 1.2, 1.2, 1.0)
+			var tween = create_tween()
+			tween.tween_property(settings_tab, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
+			print("📋 Settings tab hovered")
 		else:
-			settings_tab.modulate = Color.WHITE
+			var tween = create_tween()
+			tween.tween_property(settings_tab, "modulate", Color.WHITE, 0.1)
 
-func _on_main_bg_hover(is_hovering: bool):
-	"""Handle main background hover effects"""
-	if main_bg:
-		if is_hovering:
-			main_bg.modulate = Color(1.1, 1.1, 1.1, 1.0)
-		else:
-			main_bg.modulate = Color.WHITE
+# Click functions for tabs
+func _on_evidence_tab_pressed():
+	"""Evidence tab pressed (already on evidence)"""
+	print("📋 Already on Evidence tab")
 
-# Click functions for tabs and background
-func _on_evidence_tab_clicked(event: InputEvent):
-	"""Handle evidence tab click"""
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		print("📋 Evidence tab clicked")
-
-func _on_settings_tab_clicked(event: InputEvent):
-	"""Handle settings tab click"""
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		print("📋 Settings tab clicked")
-
-func _on_main_bg_clicked(event: InputEvent):
-	"""Handle main background click"""
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		print("📋 Main background clicked")
+func _on_settings_tab_pressed():
+	"""Switch to Settings"""
+	# Check if we're in evidence collection phase (cutscene) - block Settings access
+	var current_scene = get_tree().current_scene
+	if current_scene and "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
+		print("⚠️ Settings access blocked during evidence collection phase")
+		return
+	
+	print("📋 Switching from Evidence Inventory to Settings")
+	await hide_evidence_inventory()
+	# Access Settings autoload
+	if has_node("/root/Settings"):
+		var settings_ui = get_node("/root/Settings")
+		settings_ui.show_settings()
+	else:
+		print("⚠️ Settings autoload not found! Make sure Settings.tscn is in autoload.")

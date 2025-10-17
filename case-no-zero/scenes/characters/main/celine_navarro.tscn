@@ -100,27 +100,27 @@ region = Rect2(160, 64, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmdt3"]
 atlas = ExtResource("1_rwirx")
-region = Rect2(192, 64, 32, 64)
+region = Rect2(192, 128, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bk0w2"]
 atlas = ExtResource("1_rwirx")
-region = Rect2(224, 64, 32, 64)
+region = Rect2(224, 128, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_18o7a"]
 atlas = ExtResource("1_rwirx")
-region = Rect2(256, 64, 32, 64)
+region = Rect2(256, 128, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obks2"]
 atlas = ExtResource("1_rwirx")
-region = Rect2(288, 64, 32, 64)
+region = Rect2(288, 128, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1474"]
 atlas = ExtResource("1_rwirx")
-region = Rect2(320, 64, 32, 64)
+region = Rect2(320, 128, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ioy45"]
 atlas = ExtResource("1_rwirx")
-region = Rect2(352, 64, 32, 64)
+region = Rect2(352, 128, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwirx"]
 atlas = ExtResource("1_rwirx")
@@ -388,7 +388,7 @@ size = Vector2(20, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8d7p2")
-animation = &"walk_down"
+animation = &"walk_back"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

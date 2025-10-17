@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5a4es4du7klb"]
+[gd_scene load_steps=12 format=3 uid="uid://clk6pnobykpdw"]
 
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="1_ipiji"]
 [ext_resource type="Script" uid="uid://cgyrxj8eskx4q" path="res://scripts/managers/audio_control.gd" id="2_vr2x7"]

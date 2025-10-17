@@ -27,7 +27,8 @@ SpawnManager="*res://scripts/managers/SpawnManager.gd"
 DialogChooser="*res://scenes/ui/DialogChooser.tscn"
 CheckpointManager="*res://scripts/managers/CheckpointManager.gd"
 ScenePreloader="*res://scripts/managers/ScenePreloader.gd"
-EvidenceInventorySettings="*res://EvidenceInventorySettings.tscn"
+EvidenceInventorySettings="*res://EvidenceInventory.tscn"
+Settings="*res://Settings.tscn"
 
 [dialogic]
 
