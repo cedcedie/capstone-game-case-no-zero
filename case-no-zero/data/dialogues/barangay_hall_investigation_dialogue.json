@@ -86,10 +86,6 @@
 		"text": "Wala akong tinatago! Kailangan ko lang gawin ang mga kapitana things. Umalis na kayo."
 	  },
 	  {
-		"speaker": "Miguel",
-		"text": "Sige po, Kapitana. Pero may mga tanong pa kami na kailangan namin ng sagot."
-	  },
-	  {
 		"speaker": "Celine",
 		"text": "Miguel, may nakita tayong evidence. Fake Patrol Logbook Entry at Handwriting Sample. May tinatago siya."
 	  },
@@ -122,18 +118,6 @@
 	  "responses": [
 		"Hindi ninyo dapat ginagawa yan. Hindi kayo authorized na mag-snoop around dito.",
 		"Ano? Hindi totoo yan! Normal lang ang lahat ng entries sa logbook."
-	  ]
-	},
-	{
-	  "choice_id": "final_response",
-	  "line_index": 27,
-	  "choices": [
-		"Sige po, pero may mga tanong pa kami.",
-		"May nakita tayong evidence."
-	  ],
-	  "responses": [
-		"Hindi ko na kayo matutulungan. Umalis na kayo dito.",
-		"Hindi ko alam kung ano ang sinasabi ninyo. Pero kailangan ninyong umalis na dito."
 	  ]
 	}
   ]

@@ -123,29 +123,29 @@ region = Rect2(320, 128, 32, 64)
 atlas = ExtResource("1_oi7rb")
 region = Rect2(352, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fnlep"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx2dl"]
 atlas = ExtResource("1_oi7rb")
-region = Rect2(576, 64, 32, 64)
+region = Rect2(576, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_basq2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fapsg"]
 atlas = ExtResource("1_oi7rb")
-region = Rect2(608, 64, 32, 64)
+region = Rect2(608, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q5vwv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1um8m"]
 atlas = ExtResource("1_oi7rb")
-region = Rect2(640, 64, 32, 64)
+region = Rect2(640, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uhkuf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e48ar"]
 atlas = ExtResource("1_oi7rb")
-region = Rect2(672, 64, 32, 64)
+region = Rect2(672, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g33d1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tv3b"]
 atlas = ExtResource("1_oi7rb")
-region = Rect2(704, 64, 32, 64)
+region = Rect2(704, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sunup"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrfj5"]
 atlas = ExtResource("1_oi7rb")
-region = Rect2(736, 64, 32, 64)
+region = Rect2(736, 128, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6thgm"]
 atlas = ExtResource("1_oi7rb")
@@ -314,22 +314,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fnlep")
+"texture": SubResource("AtlasTexture_jx2dl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_basq2")
+"texture": SubResource("AtlasTexture_fapsg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q5vwv")
+"texture": SubResource("AtlasTexture_1um8m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uhkuf")
+"texture": SubResource("AtlasTexture_e48ar")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g33d1")
+"texture": SubResource("AtlasTexture_8tv3b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sunup")
+"texture": SubResource("AtlasTexture_xrfj5")
 }],
 "loop": true,
 "name": &"walk_down",
@@ -392,7 +392,7 @@ radius = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b40tf")
-animation = &"idle_front"
+animation = &"walk_down"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

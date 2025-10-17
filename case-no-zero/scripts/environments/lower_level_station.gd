@@ -632,7 +632,7 @@ func check_checkpoint_and_start() -> void:
 	var lower_level_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
 	
 	# DEBUG: Reset checkpoints for testing (commented out for normal gameplay)
-	reset_checkpoints()
+	# reset_checkpoints()  # Commented out to prevent clearing checkpoints after police_lobby
 	
 	if lower_level_completed:
 		print("🎯 Lower level already completed - skipping cutscene")

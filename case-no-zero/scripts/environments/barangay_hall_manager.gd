@@ -293,15 +293,24 @@ func _ready():
 		if not dialogue_ui.is_connected("next_pressed", cb):
 			dialogue_ui.connect("next_pressed", cb)
 	
-	# DEBUG: Auto-complete police lobby checkpoint for testing
-	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
-	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
+	# ============================================================
+	# DEBUG MODE: Comment/uncomment these lines to control debugging
+	# ============================================================
 	
-	# DEBUG: Clear barangay hall cutscene checkpoint to allow replay
-	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
-	print("🔄 DEBUG: Police lobby checkpoint auto-completed for testing")
-	print("🔄 DEBUG: Barangay hall cutscene checkpoint cleared to allow replay")
-	print("🔄 DEBUG: All checkpoints after clearing:", checkpoint_manager.checkpoints)
+	# Option 1: Clear ALL checkpoints to test from bedroom scene start
+	# Uncomment this to test the full game flow: bedroom → lower level → police lobby → barangay hall
+	checkpoint_manager.checkpoints.clear()
+	print("🔄 DEBUG MODE: ALL CHECKPOINTS CLEARED - Starting from beginning")
+	print("🔄 DEBUG: Test flow: bedroom → lower level → police lobby → barangay hall")
+	
+	# Option 2: Auto-complete prerequisites to test barangay hall scene only
+	# Uncomment these lines to jump directly to barangay hall cutscene
+	# checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
+	# checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
+	# checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
+	# print("🔄 DEBUG MODE: Barangay hall checkpoint cleared for replay")
+	
+	print("🔄 DEBUG: Current checkpoints:", checkpoint_manager.checkpoints)
 	
 	# Check if cutscene already played
 	var cutscene_already_played = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
@@ -423,13 +432,6 @@ func show_next_line() -> void:
 	var text: String = String(line.get("text", ""))
 
 	print("🗨️ Showing line", current_line, "Speaker:", speaker)
-
-	# Check if this line has a choice for Miguel
-	var choice_data = get_choice_for_line(current_line)
-	if choice_data and speaker == "Miguel":
-		# Show choice instead of regular dialogue
-		show_miguel_choice(choice_data)
-		return
 
 	# Organized by scene beats for better readability
 	match current_line:
@@ -814,6 +816,12 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.hide()
 			
+			# Fade in Kapitana before walking (she was faded out in line 11)
+			if kapitana:
+				smooth_fade_in(kapitana, fade_duration)
+				await get_tree().create_timer(fade_duration).timeout
+				print("✅ Kapitana faded in")
+			
 			# Set PlayerM to idle_right immediately
 			if player:
 				var player_anim = player.get_node_or_null("AnimatedSprite2D")
@@ -841,11 +849,11 @@ func show_next_line() -> void:
 						player_anim2.play("idle_down")
 						print("✅ PlayerM set to idle_down")
 				
-				# Kapitana: walk_right to (472, 472)
-				print("🎭 Kapitana: Starting walk_right to (472, 472)")
-				var kapitana_step2 = Vector2(472.0, 472.0)
-				await move_character_smoothly(kapitana, kapitana_step2, "walk_right", "idle_back")
-				print("🎭 Kapitana: Reached (472, 472) - idle_back")
+			# Kapitana: walk_left to (472, 472)
+			print("🎭 Kapitana: Starting walk_left to (472, 472)")
+			var kapitana_step2 = Vector2(472.0, 472.0)
+			await move_character_smoothly(kapitana, kapitana_step2, "walk_left", "idle_back")
+			print("🎭 Kapitana: Reached (472, 472) - idle_back")
 			
 			# Show dialogue after all animations complete
 			show_dialogue_with_transition(speaker, text)
@@ -862,20 +870,55 @@ func show_next_line() -> void:
 			show_dialogue_with_transition(speaker, text)
 			# The choice will be shown in _on_next_pressed() after this dialogue
 		
-		# Normal dialogue lines 20-26
-		20, 21, 22, 23, 24, 25, 26:
+		# Normal dialogue line 20
+		20:
 			show_dialogue_with_transition(speaker, text)
 		
-		# Miguel's final response - choice line
-		27:
-			# Reset choice completed flag for this new choice
-			choice_completed = false
-			# Show Miguel's dialogue first
+		# Line 21 - Kapitana walks and fades out, then character animations
+		21:
+			print("🎭 Line 21: Kapitana walks and fades out")
+			# Hide dialogue during movement
+			if dialogue_ui:
+				dialogue_ui.hide()
+			
+			# Kapitana: walk_right to (504, 472)
+			if kapitana:
+				print("🎭 Kapitana: Starting walk_right to (504, 472)")
+				var kapitana_step1 = Vector2(504.0, 472.0)
+				await move_character_smoothly(kapitana, kapitana_step1, "walk_right", "idle_down")
+				print("🎭 Kapitana: Reached (504, 472)")
+				
+				# Kapitana: walk_down to (504, 600)
+				print("🎭 Kapitana: Starting walk_down to (504, 600)")
+				var kapitana_step2 = Vector2(504.0, 600.0)
+				await move_character_smoothly(kapitana, kapitana_step2, "walk_down", "idle_down")
+				print("🎭 Kapitana: Reached (504, 600)")
+				
+				# Fade out Kapitana
+				var kapitana_tween = create_tween()
+				kapitana_tween.tween_property(kapitana, "modulate:a", 0.0, 1.0)
+				await kapitana_tween.finished
+				print("🎭 Kapitana: Faded out")
+			
+			# Set Celine to idle_right
+			if celine:
+				var celine_anim = celine.get_node_or_null("AnimatedSprite2D")
+				if celine_anim:
+					celine_anim.play("idle_right")
+					print("✅ Celine set to idle_right")
+			
+			# Set PlayerM to idle_left
+			if player:
+				var player_anim = player.get_node_or_null("AnimatedSprite2D")
+				if player_anim:
+					player_anim.play("idle_left")
+					print("✅ PlayerM set to idle_left")
+			
+			# Show dialogue after animations
 			show_dialogue_with_transition(speaker, text)
-			# The choice will be shown in _on_next_pressed() after this dialogue
 		
-		# Final dialogue lines
-		28, 29:
+		# Final dialogue line 22 (last line)
+		22:
 			show_dialogue_with_transition(speaker, text)
 		
 		# Default: Regular dialogue for other lines
@@ -901,7 +944,7 @@ func _on_next_pressed() -> void:
 		
 		# Check if we just finished a choice line and need to show choices
 		# Only show choices if we haven't already completed them
-		if (current_line == 5 or current_line == 19 or current_line == 27) and not choice_completed:
+		if (current_line == 5 or current_line == 19) and not choice_completed:
 			print("🔍 Checking choice for line:", current_line, "choice_completed:", choice_completed)
 			var choice_data = get_choice_for_line(current_line)
 			print("🔍 Choice data for line", current_line, ":", choice_data)
@@ -930,11 +973,104 @@ func end_cutscene():
 		evidence_collection_phase = false
 		print("📋 Evidence collection phase ended with cutscene")
 	
+	# Hide dialogue UI
+	if dialogue_ui:
+		dialogue_ui.hide()
+	
+	# Wait a moment before fading
+	await get_tree().create_timer(0.5).timeout
+	
+	# Fade out transition
+	await fade_out_scene()
+	
+	# Reposition Miguel to spawn point
+	reposition_after_cutscene()
+	
+	# Fade in transition
+	await fade_in_scene()
+	
 	# Enable player control
 	if player and "control_enabled" in player:
 		player.control_enabled = true
+		print("🎮 Player control enabled")
 	
 	# Set the checkpoint to prevent replay
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
 	print("🎯 Global checkpoint set: BARANGAY_HALL_CUTSCENE_COMPLETED")
 	print("🎬 Barangay hall cutscene completed")
+
+func fade_out_scene() -> void:
+	"""Fade out all characters and scene elements"""
+	print("🎭 Fading out scene...")
+	
+	var scene_root = get_tree().current_scene
+	var fade_tween = create_tween()
+	fade_tween.set_parallel(true)
+	
+	# Fade out all characters
+	if player:
+		fade_tween.tween_property(player, "modulate:a", 0.0, fade_duration)
+	if celine:
+		fade_tween.tween_property(celine, "modulate:a", 0.0, fade_duration)
+	if kapitana:
+		fade_tween.tween_property(kapitana, "modulate:a", 0.0, fade_duration)
+	if barangay_npc:
+		fade_tween.tween_property(barangay_npc, "modulate:a", 0.0, fade_duration)
+	
+	# Fade out tilemap/tileset (get all TileMap nodes)
+	for child in scene_root.get_children():
+		if child is TileMap:
+			fade_tween.tween_property(child, "modulate:a", 0.0, fade_duration)
+	
+	await fade_tween.finished
+	print("✅ Scene faded out")
+
+func reposition_after_cutscene() -> void:
+	"""Reposition characters after cutscene"""
+	print("🎭 Repositioning characters for normal gameplay...")
+	
+	# Reposition Miguel to spawn point
+	if player:
+		player.global_position = Vector2(504.0, 560.0)
+		var player_anim = player.get_node_or_null("AnimatedSprite2D")
+		if player_anim:
+			player_anim.play("idle_front")
+		print("✅ Miguel repositioned to (504, 560)")
+	
+	# Hide cutscene-only characters
+	if celine:
+		celine.visible = false
+		print("✅ Celine hidden")
+	
+	if kapitana:
+		kapitana.visible = false
+		print("✅ Kapitana hidden")
+	
+	if barangay_npc:
+		barangay_npc.visible = false
+		print("✅ Barangay NPC hidden")
+	
+	# TODO: Spawn other NPCs here later
+	print("🎭 Repositioning complete")
+
+func fade_in_scene() -> void:
+	"""Fade in scene for normal gameplay"""
+	print("🎭 Fading in scene...")
+	
+	var scene_root = get_tree().current_scene
+	var fade_tween = create_tween()
+	fade_tween.set_parallel(true)
+	
+	# Fade in player
+	if player:
+		player.modulate.a = 0.0
+		fade_tween.tween_property(player, "modulate:a", 1.0, fade_duration)
+	
+	# Fade in tilemap/tileset
+	for child in scene_root.get_children():
+		if child is TileMap:
+			child.modulate.a = 0.0
+			fade_tween.tween_property(child, "modulate:a", 1.0, fade_duration)
+	
+	await fade_tween.finished
+	print("✅ Scene faded in - normal gameplay ready")

@@ -24300,10 +24300,9 @@ shape = SubResource("RectangleShape2D_barangay_second_floor")
 script = ExtResource("18_barangay_manager")
 
 [node name="KapitanaPalma" parent="." instance=ExtResource("19_dit16")]
-position = Vector2(512, 416)
+position = Vector2(504, 416)
 
 [node name="AnimatedSprite2D" parent="KapitanaPalma" index="0"]
-animation = &"idle_back"
 autoplay = "idle_back"
 
 [node name="barangay_npc" parent="." instance=ExtResource("20_7a2pv")]

@@ -37,15 +37,19 @@ func _ready():
 	print("  - cutscene_checkpoint exists:", checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED))
 	
 	# Set Celine visibility based on checkpoint (preload her if needed)
-	if lower_level_completed and celine:
+	# Only show Celine if lower level is completed AND cutscene hasn't been played yet
+	if lower_level_completed and not cutscene_already_played and celine:
 		celine.visible = true
 		celine.modulate.a = 1.0
 		celine.get_node("AnimatedSprite2D").play("idle_right")
-		print("👩 Celine preloaded and visible")
+		print("👩 Celine preloaded and visible for cutscene")
 	else:
 		if celine:
 			celine.visible = false
-			print("👩 Celine hidden (no checkpoint)")
+			if cutscene_already_played:
+				print("👩 Celine hidden (cutscene already played)")
+			else:
+				print("👩 Celine hidden (no checkpoint)")
 	
 	# Only play cutscene if lower level is completed AND cutscene hasn't been played yet
 	if lower_level_completed and not cutscene_already_played:
