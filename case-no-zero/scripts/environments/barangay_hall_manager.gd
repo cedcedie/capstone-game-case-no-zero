@@ -112,6 +112,8 @@ func smooth_fade_in(node: CanvasItem, duration: float = fade_duration) -> void:
 	current_tween.set_trans(Tween.TRANS_CUBIC)
 	node.modulate.a = 0.0
 	node.visible = true
+	# Enable collision when fading in
+	enable_character_collision(node)
 	current_tween.tween_property(node, "modulate:a", 1.0, duration)
 
 func smooth_fade_out(node: CanvasItem, duration: float = fade_duration) -> void:
@@ -123,6 +125,42 @@ func smooth_fade_out(node: CanvasItem, duration: float = fade_duration) -> void:
 	current_tween.tween_property(node, "modulate:a", 0.0, duration)
 	await current_tween.finished
 	node.visible = false
+	# Disable collision when fading out
+	disable_character_collision(node)
+
+func disable_character_collision(character: Node) -> void:
+	"""Disable collision for a character when hiding/fading"""
+	if not character:
+		return
+	
+	# Disable collision shape
+	var collision_shape = character.get_node_or_null("CollisionShape2D")
+	if collision_shape:
+		collision_shape.disabled = true
+		print("🚫 Collision disabled for:", character.name)
+	
+	# Also disable any Area2D collision if it exists
+	var area_collision = character.get_node_or_null("Area2D/CollisionShape2D")
+	if area_collision:
+		area_collision.disabled = true
+		print("🚫 Area collision disabled for:", character.name)
+
+func enable_character_collision(character: Node) -> void:
+	"""Enable collision for a character when showing/fading in"""
+	if not character:
+		return
+	
+	# Enable collision shape
+	var collision_shape = character.get_node_or_null("CollisionShape2D")
+	if collision_shape:
+		collision_shape.disabled = false
+		print("✅ Collision enabled for:", character.name)
+	
+	# Also enable any Area2D collision if it exists
+	var area_collision = character.get_node_or_null("Area2D/CollisionShape2D")
+	if area_collision:
+		area_collision.disabled = false
+		print("✅ Area collision enabled for:", character.name)
 
 func play_character_animation(character: CharacterBody2D, animation: String, duration: float = transition_pause) -> void:
 	if not character:
@@ -299,26 +337,28 @@ func _ready():
 	
 	# Option 1: Clear ALL checkpoints to test from bedroom scene start
 	# Uncomment this to test the full game flow: bedroom → lower level → police lobby → barangay hall
-	checkpoint_manager.checkpoints.clear()
-	print("🔄 DEBUG MODE: ALL CHECKPOINTS CLEARED - Starting from beginning")
-	print("🔄 DEBUG: Test flow: bedroom → lower level → police lobby → barangay hall")
+	# checkpoint_manager.checkpoints.clear()
+	# print("🔄 DEBUG MODE: ALL CHECKPOINTS CLEARED - Starting from beginning")
+	# print("🔄 DEBUG: Test flow: bedroom → lower level → police lobby → barangay hall")
 	
 	# Option 2: Auto-complete prerequisites to test barangay hall scene only
 	# Uncomment these lines to jump directly to barangay hall cutscene
-	# checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
-	# checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
-	# checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
-	# print("🔄 DEBUG MODE: Barangay hall checkpoint cleared for replay")
+	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
+	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
+	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
+	print("🔄 DEBUG MODE: Barangay hall checkpoint cleared for replay - cutscene will always play")
 	
 	print("🔄 DEBUG: Current checkpoints:", checkpoint_manager.checkpoints)
 	
 	# Check if cutscene already played
 	var cutscene_already_played = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
+	var police_lobby_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
 	
 	print("🔍 Barangay Hall Manager Debug:")
 	print("  - cutscene_already_played:", cutscene_already_played)
-	print("  - police_lobby_completed:", checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED))
+	print("  - police_lobby_completed:", police_lobby_completed)
 	print("  - barangay_access_granted:", checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED))
+	print("🔍 All available checkpoints:", checkpoint_manager.checkpoints.keys())
 	
 	# Complete the "Go to Barangay Hall" task if it's active and fade task display
 	if task_manager and task_manager.is_task_active():
@@ -333,15 +373,18 @@ func _ready():
 				task_manager.fade_task_display()
 				print("📋 Task display faded")
 	
-	# Play cutscene if not already played
-	if not cutscene_already_played:
+	# Play cutscene ONLY if police lobby is completed AND cutscene hasn't been played
+	if police_lobby_completed and not cutscene_already_played:
 		print("🎬 Starting barangay hall investigation cutscene")
 		print("🎬 About to call play_barangay_hall_cutscene()")
 		# Wait for scene to fully load
 		await get_tree().create_timer(0.5).timeout
 		play_barangay_hall_cutscene()
 	else:
-		print("🔍 Barangay hall cutscene already played - skipping")
+		if cutscene_already_played:
+			print("🔍 Barangay hall cutscene already played - skipping")
+		else:
+			print("🔍 Police lobby not completed yet - no cutscene")
 
 # --------------------------
 # CUTSCENE START
@@ -379,9 +422,9 @@ func setup_initial_positions() -> void:
 	print("  - celine:", celine != null, "name:", celine.name if celine else "null")
 	print("  - kapitana:", kapitana != null, "name:", kapitana.name if kapitana else "null")
 	
-	# Celine - idle_back at 480.0, 560.0 (already invisible in editor)
+	# Celine - idle_back at 440.0, 528.0 (already invisible in editor)
 	if celine:
-		celine.global_position = Vector2(480.0, 560.0)
+		celine.global_position = Vector2(440.0, 528.0)
 		var celine_anim = celine.get_node_or_null("AnimatedSprite2D")
 		if celine_anim:
 			celine_anim.play("idle_back")
@@ -391,9 +434,9 @@ func setup_initial_positions() -> void:
 	else:
 		print("❌ Celine not found")
 	
-	# PlayerM - idle_back at 528.0, 560.0 (already invisible in editor)
+	# PlayerM - idle_back at 488.0, 528.0 (already invisible in editor)
 	if player:
-		player.global_position = Vector2(528.0, 560.0)
+		player.global_position = Vector2(488.0, 528.0)
 		var player_anim = player.get_node_or_null("AnimatedSprite2D")
 		if player_anim:
 			player_anim.play("idle_back")
@@ -403,9 +446,9 @@ func setup_initial_positions() -> void:
 	else:
 		print("❌ Player not found")
 	
-	# Kapitana - idle_back at 504.0, 416.0 (already invisible in editor)
+	# Kapitana - idle_back at 464.0, 384.0 (already invisible in editor)
 	if kapitana:
-		kapitana.global_position = Vector2(504.0, 416.0)
+		kapitana.global_position = Vector2(464.0, 384.0)
 		var kapitana_anim = kapitana.get_node_or_null("AnimatedSprite2D")
 		if kapitana_anim:
 			kapitana_anim.play("idle_back")
@@ -498,8 +541,8 @@ func show_next_line() -> void:
 				dialogue_ui.hide()
 			
 			# Move both characters simultaneously
-			var player_target = Vector2(528.0, 464.0)
-			var celine_target = Vector2(480.0, 464.0)
+			var player_target = Vector2(488.0, 432.0)
+			var celine_target = Vector2(440.0, 432.0)
 			
 			print("🎭 Current positions - Player:", player.position if player else "null", "Celine:", celine.position if celine else "null")
 			print("🎭 Target positions - Player:", player_target, "Celine:", celine_target)
@@ -546,8 +589,8 @@ func show_next_line() -> void:
 				print("🎭 Barangay NPC found, starting movement")
 				print("🎭 Current position:", barangay_npc.position)
 				
-				# Step 1: Walk down to 680.0, 504.0 (walk_down) - wait for completion
-				var intermediate_pos = Vector2(680.0, 504.0)
+				# Step 1: Walk down to 640.0, 472.0 (walk_down) - wait for completion
+				var intermediate_pos = Vector2(640.0, 472.0)
 				move_character_smoothly(barangay_npc, intermediate_pos, "walk_down", "idle_down")
 				# Calculate wait time based on distance
 				var distance1 = barangay_npc.position.distance_to(intermediate_pos)
@@ -555,8 +598,8 @@ func show_next_line() -> void:
 				await get_tree().create_timer(wait_time1).timeout
 				print("🎭 Step 1 completed - NPC at intermediate position")
 				
-				# Step 2: Walk left to 504.0, 504.0 (walk_left) - wait for completion
-				var final_pos = Vector2(504.0, 504.0)
+				# Step 2: Walk left to 464.0, 472.0 (walk_left) - wait for completion
+				var final_pos = Vector2(464.0, 472.0)
 				move_character_smoothly(barangay_npc, final_pos, "walk_left", "idle_back")
 				# Calculate wait time based on distance
 				var distance2 = intermediate_pos.distance_to(final_pos)
@@ -618,11 +661,11 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.hide()
 			
-			# Celine: walk_left to 456.0x then walk_back to 424y
+			# Celine: walk_left to 416.0x then walk_back to 392y
 			if celine:
 				print("🎭 Celine: Starting complex movement")
-				# Step 1: walk_left to 456.0x
-				var celine_intermediate = Vector2(456.0, celine.position.y)
+				# Step 1: walk_left to 416.0x
+				var celine_intermediate = Vector2(416.0, celine.position.y)
 				move_character_smoothly(celine, celine_intermediate, "walk_left", "idle_left")
 				var celine_distance1 = celine.position.distance_to(celine_intermediate)
 				var celine_wait1 = celine_distance1 / walk_speed
@@ -630,17 +673,17 @@ func show_next_line() -> void:
 				print("🎭 Celine: Step 1 completed")
 				
 				# Step 2: walk_back to 424y
-				var celine_final = Vector2(456.0, 424.0)
+				var celine_final = Vector2(416.0, 392.0)
 				move_character_smoothly(celine, celine_final, "walk_back", "idle_right")
 				var celine_distance2 = celine_intermediate.distance_to(celine_final)
 				var celine_wait2 = celine_distance2 / walk_speed
 				await get_tree().create_timer(celine_wait2).timeout
 				print("🎭 Celine: Movement completed - idle_right")
 			
-			# PlayerM: walk_left to 456.0x (after Celine completes)
+			# PlayerM: walk_left to 416.0x (after Celine completes)
 			if player:
-				print("🎭 PlayerM: Starting walk_left to 456.0x")
-				var player_target = Vector2(456.0, player.position.y)
+				print("🎭 PlayerM: Starting walk_left to 416.0x")
+				var player_target = Vector2(416.0, player.position.y)
 				move_character_smoothly(player, player_target, "walk_left", "idle_right")
 				var player_distance = player.position.distance_to(player_target)
 				var player_wait = player_distance / walk_speed
@@ -656,15 +699,15 @@ func show_next_line() -> void:
 				
 				# NPC: walk_right to 680x then walk_back to 112y then fade out
 				# Step 1: walk_right to 680x
-				var npc_intermediate = Vector2(680.0, barangay_npc.position.y)
+				var npc_intermediate = Vector2(640.0, barangay_npc.position.y)
 				move_character_smoothly(barangay_npc, npc_intermediate, "walk_right", "idle_back")
 				var npc_distance1 = barangay_npc.position.distance_to(npc_intermediate)
 				var npc_wait1 = npc_distance1 / walk_speed
 				await get_tree().create_timer(npc_wait1).timeout
 				print("🎭 Barangay NPC: Step 1 completed")
 				
-				# Kapitana: walk_down to 504,504 (simultaneous with NPC step 1)
-				var kapitana_intermediate = Vector2(504.0, 504.0)
+				# Kapitana: walk_down to 464,472 (simultaneous with NPC step 1)
+				var kapitana_intermediate = Vector2(464.0, 472.0)
 				move_character_smoothly(kapitana, kapitana_intermediate, "walk_down", "idle_back")
 				var kapitana_distance1 = kapitana.position.distance_to(kapitana_intermediate)
 				var kapitana_wait1 = kapitana_distance1 / walk_speed
@@ -673,18 +716,18 @@ func show_next_line() -> void:
 				
 				# Both move to final destinations simultaneously
 				# NPC: walk_back to 112y
-				var npc_final = Vector2(680.0, 112.0)
+				var npc_final = Vector2(640.0, 80.0)
 				move_character_smoothly(barangay_npc, npc_final, "walk_back", "idle_back")
 				
 				# Kapitana: walk_right to 680x then walk_back to 112y (same as NPC)
-				var kapitana_step2 = Vector2(680.0, 504.0)
+				var kapitana_step2 = Vector2(640.0, 472.0)
 				move_character_smoothly(kapitana, kapitana_step2, "walk_right", "idle_back")
 				var kapitana_distance2 = kapitana_intermediate.distance_to(kapitana_step2)
 				var kapitana_wait2 = kapitana_distance2 / walk_speed
 				await get_tree().create_timer(kapitana_wait2).timeout
 				
 				# Kapitana: walk_back to 112y (same as NPC)
-				var kapitana_final = Vector2(680.0, 112.0)
+				var kapitana_final = Vector2(640.0, 80.0)
 				move_character_smoothly(kapitana, kapitana_final, "walk_back", "idle_back")
 				
 				# Wait for both to reach final destinations
@@ -711,13 +754,13 @@ func show_next_line() -> void:
 			if player:
 				print("🎭 PlayerM: Starting additional movements after fade out")
 				
-				# Step 1: walk_right to 552.0x
-				var player_step1 = Vector2(552.0, player.position.y)
+				# Step 1: walk_right to 512.0x
+				var player_step1 = Vector2(512.0, player.position.y)
 				await move_character_smoothly(player, player_step1, "walk_right", "idle_right")
-				print("🎭 PlayerM: Step 1 completed - walk_right to 552.0x")
+				print("🎭 PlayerM: Step 1 completed - walk_right to 512.0x")
 				
 				# Step 2: walk_back to 384.0y
-				var player_step2 = Vector2(552.0, 384.0)
+				var player_step2 = Vector2(512.0, 352.0)
 				await move_character_smoothly(player, player_step2, "walk_back", "idle_back")
 				print("🎭 PlayerM: Step 2 completed - walk_back to 384.0y")
 			
@@ -788,19 +831,19 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.hide()
 			
-			# PlayerM: walk_down to 424.0y then walk_right to 488.0x
+			# PlayerM: walk_down to 392.0y then walk_right to 448.0x
 			if player:
 				print("🎭 PlayerM: Starting additional movements for line 12")
 				
-				# Step 1: walk_down to 424.0y
-				var player_step1 = Vector2(player.position.x, 424.0)
+				# Step 1: walk_down to 392.0y
+				var player_step1 = Vector2(player.position.x, 392.0)
 				await move_character_smoothly(player, player_step1, "walk_down", "idle_down")
-				print("🎭 PlayerM: Step 1 completed - walk_down to 424.0y")
+				print("🎭 PlayerM: Step 1 completed - walk_down to 392.0y")
 				
-				# Step 2: walk_right to 488.0x
-				var player_step2 = Vector2(488.0, 424.0)
+				# Step 2: walk_left to 448.0x
+				var player_step2 = Vector2(448.0, 392.0)
 				await move_character_smoothly(player, player_step2, "walk_left", "idle_left")
-				print("🎭 PlayerM: Step 2 completed - walk_left to 488.0x")
+				print("🎭 PlayerM: Step 2 completed - walk_left to 448.0x")
 			
 			# Show dialogue after movement
 			show_dialogue_with_transition(speaker, text)
@@ -831,10 +874,10 @@ func show_next_line() -> void:
 			
 			# Kapitana: walk_down to (680, 472)
 			if kapitana:
-				print("🎭 Kapitana: Starting walk_down to (680, 472)")
-				var kapitana_step1 = Vector2(680.0, 472.0)
+				print("🎭 Kapitana: Starting walk_down to (640, 440)")
+				var kapitana_step1 = Vector2(640.0, 440.0)
 				await move_character_smoothly(kapitana, kapitana_step1, "walk_down", "idle_down")
-				print("🎭 Kapitana: Reached (680, 472) - idle_down")
+				print("🎭 Kapitana: Reached (640, 440) - idle_down")
 				
 				# Set Celine and PlayerM to idle_front and idle_down while Kapitana is at this position
 				if celine:
@@ -849,11 +892,11 @@ func show_next_line() -> void:
 						player_anim2.play("idle_down")
 						print("✅ PlayerM set to idle_down")
 				
-			# Kapitana: walk_left to (472, 472)
-			print("🎭 Kapitana: Starting walk_left to (472, 472)")
-			var kapitana_step2 = Vector2(472.0, 472.0)
+			# Kapitana: walk_left to (432, 440)
+			print("🎭 Kapitana: Starting walk_left to (432, 440)")
+			var kapitana_step2 = Vector2(432.0, 440.0)
 			await move_character_smoothly(kapitana, kapitana_step2, "walk_left", "idle_back")
-			print("🎭 Kapitana: Reached (472, 472) - idle_back")
+			print("🎭 Kapitana: Reached (432, 440) - idle_back")
 			
 			# Show dialogue after all animations complete
 			show_dialogue_with_transition(speaker, text)
@@ -883,16 +926,16 @@ func show_next_line() -> void:
 			
 			# Kapitana: walk_right to (504, 472)
 			if kapitana:
-				print("🎭 Kapitana: Starting walk_right to (504, 472)")
-				var kapitana_step1 = Vector2(504.0, 472.0)
+				print("🎭 Kapitana: Starting walk_right to (464, 440)")
+				var kapitana_step1 = Vector2(464.0, 440.0)
 				await move_character_smoothly(kapitana, kapitana_step1, "walk_right", "idle_down")
-				print("🎭 Kapitana: Reached (504, 472)")
+				print("🎭 Kapitana: Reached (464, 440)")
 				
-				# Kapitana: walk_down to (504, 600)
-				print("🎭 Kapitana: Starting walk_down to (504, 600)")
-				var kapitana_step2 = Vector2(504.0, 600.0)
+				# Kapitana: walk_down to (464, 568)
+				print("🎭 Kapitana: Starting walk_down to (464, 568)")
+				var kapitana_step2 = Vector2(464.0, 568.0)
 				await move_character_smoothly(kapitana, kapitana_step2, "walk_down", "idle_down")
-				print("🎭 Kapitana: Reached (504, 600)")
+				print("🎭 Kapitana: Reached (464, 568)")
 				
 				# Fade out Kapitana
 				var kapitana_tween = create_tween()
@@ -1031,24 +1074,27 @@ func reposition_after_cutscene() -> void:
 	
 	# Reposition Miguel to spawn point
 	if player:
-		player.global_position = Vector2(504.0, 560.0)
+		player.global_position = Vector2(464.0, 528.0)
 		var player_anim = player.get_node_or_null("AnimatedSprite2D")
 		if player_anim:
 			player_anim.play("idle_front")
-		print("✅ Miguel repositioned to (504, 560)")
+		print("✅ Miguel repositioned to (464, 528)")
 	
-	# Hide cutscene-only characters
+	# Hide cutscene-only characters and disable their collisions
 	if celine:
 		celine.visible = false
-		print("✅ Celine hidden")
+		disable_character_collision(celine)
+		print("✅ Celine hidden and collision disabled")
 	
 	if kapitana:
 		kapitana.visible = false
-		print("✅ Kapitana hidden")
+		disable_character_collision(kapitana)
+		print("✅ Kapitana hidden and collision disabled")
 	
 	if barangay_npc:
 		barangay_npc.visible = false
-		print("✅ Barangay NPC hidden")
+		disable_character_collision(barangay_npc)
+		print("✅ Barangay NPC hidden and collision disabled")
 	
 	# TODO: Spawn other NPCs here later
 	print("🎭 Repositioning complete")

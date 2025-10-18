@@ -15,7 +15,7 @@ func _on_body_entered(body):
 		if target_scene_path != "":
 			# Check if player has access to barangay hall
 			if not _check_barangay_hall_access(target_scene_path):
-				print("🚫 Access denied: Barangay hall access not granted yet")
+				# Access denied - no debug spam
 				return
 			
 			# Store player reference and disable movement during transition
@@ -80,12 +80,10 @@ func _check_barangay_hall_access(target_scene_path: String) -> bool:
 	"""Check if player has access to barangay hall"""
 	var scene_name = target_scene_path.get_file().get_basename()
 	
-	# Barangay hall only accessible after police lobby interaction
+	# Barangay hall is ALWAYS accessible for exploration
+	# The cutscene only triggers if police lobby is completed (handled in barangay_hall_manager.gd)
 	if scene_name == "barangay_hall" or scene_name == "barangay_hall_second_floor":
-		var checkpoint_manager = get_node("/root/CheckpointManager")
-		var has_police_lobby_context = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
-		print("🔍 Barangay hall access check: ", has_police_lobby_context)
-		return has_police_lobby_context
+		return true  # Always allow access - cutscene logic is in the manager script
 	
 	# Allow access to all other scenes
 	return true

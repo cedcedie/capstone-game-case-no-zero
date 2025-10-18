@@ -30,6 +30,43 @@ var choice_completed: bool = false
 
 # --- Scene state ---
 var cutscene_played: bool = false
+
+# --------------------------
+# HELPER FUNCTIONS
+# --------------------------
+func disable_character_collision(character: Node) -> void:
+	"""Disable collision for a character when hiding/fading"""
+	if not character:
+		return
+	
+	# Disable collision shape
+	var collision_shape = character.get_node_or_null("CollisionShape2D")
+	if collision_shape:
+		collision_shape.disabled = true
+		print("🚫 Collision disabled for:", character.name)
+	
+	# Also disable any Area2D collision if it exists
+	var area_collision = character.get_node_or_null("Area2D/CollisionShape2D")
+	if area_collision:
+		area_collision.disabled = true
+		print("🚫 Area collision disabled for:", character.name)
+
+func enable_character_collision(character: Node) -> void:
+	"""Enable collision for a character when showing/fading in"""
+	if not character:
+		return
+	
+	# Enable collision shape
+	var collision_shape = character.get_node_or_null("CollisionShape2D")
+	if collision_shape:
+		collision_shape.disabled = false
+		print("✅ Collision enabled for:", character.name)
+	
+	# Also enable any Area2D collision if it exists
+	var area_collision = character.get_node_or_null("Area2D/CollisionShape2D")
+	if area_collision:
+		area_collision.disabled = false
+		print("✅ Area collision enabled for:", character.name)
 # --- Movement and transition tuning ---
 @export var walk_speed: float = 200.0
 @export var fade_duration: float = 1.2
@@ -131,15 +168,15 @@ func setup_initial_positions() -> void:
 	if guard_3 and guard_3.get_node_or_null("AnimatedSprite2D"):
 		guard_3.get_node("AnimatedSprite2D").play("idle_right")
 	
-	# PlayerM - idle_right at 1112.0, 368.0
+	# PlayerM - idle_right at 1056.0, 352.0
 	if player:
-		player.global_position = Vector2(1112.0, 368.0)
+		player.global_position = Vector2(1056.0, 352.0)
 		if player.get_node_or_null("AnimatedSprite2D"):
 			player.get_node("AnimatedSprite2D").play("idle_right")
 	
-	# Celine - idle_left at 1112.0, 400.0
+	# Celine - idle_left at 1056.0, 384.0
 	if celine:
-		celine.global_position = Vector2(1112.0, 400.0)
+		celine.global_position = Vector2(1056.0, 384.0)
 		if celine.get_node_or_null("AnimatedSprite2D"):
 			celine.get_node("AnimatedSprite2D").play("idle_left")
 	
@@ -298,31 +335,32 @@ func fade_in_all() -> void:
 
 func reposition_characters_after_fade() -> void:
 	"""Reposition characters after fade transition"""
-	# Celine is now not visible
+	# Celine is now not visible and collision disabled
 	if celine:
 		celine.visible = false
+		disable_character_collision(celine)
 	
-	# Erwin: 536.0, 368.0 (back to original position)
+	# Erwin: 480.0, 352.0 (back to original position)
 	if boy_trip:
-		boy_trip.global_position = Vector2(536.0, 368.0)
+		boy_trip.global_position = Vector2(480.0, 352.0)
 		if boy_trip.get_node_or_null("AnimatedSprite2D"):
 			boy_trip.get_node("AnimatedSprite2D").play("idle_front")
 	
-	# Station guard 2: 728.0, 480.0 idle_right
+	# Station guard 2: 672.0, 464.0 idle_right
 	if guard_2:
-		guard_2.global_position = Vector2(728.0, 480.0)
+		guard_2.global_position = Vector2(672.0, 464.0)
 		if guard_2.get_node_or_null("AnimatedSprite2D"):
 			guard_2.get_node("AnimatedSprite2D").play("idle_right")
 	
-	# Station guard: 728.0, 520.0 idle_right
+	# Station guard: 672.0, 504.0 idle_right
 	if guard:
-		guard.global_position = Vector2(728.0, 520.0)
+		guard.global_position = Vector2(672.0, 504.0)
 		if guard.get_node_or_null("AnimatedSprite2D"):
 			guard.get_node("AnimatedSprite2D").play("idle_right")
 	
-	# Player M: 896.0, 488.0 idle_right
+	# Player M: 840.0, 472.0 idle_right
 	if player:
-		player.global_position = Vector2(896.0, 488.0)
+		player.global_position = Vector2(840.0, 472.0)
 		if player.get_node_or_null("AnimatedSprite2D"):
 			player.get_node("AnimatedSprite2D").play("idle_right")
 		
@@ -386,10 +424,10 @@ func show_next_line() -> void:
 				boy_trip.get_node("AnimatedSprite2D").play("idle_front")
 			
 			# Miguel's movement sequence
-			# Miguel: walk_down to 1112.0, 496.0
-			await move_character_smoothly(player, Vector2(1112.0, 496.0), "walk_down", "idle_back")
-			# Miguel: walk_left to 520.0, 496.0
-			await move_character_smoothly(player, Vector2(520.0, 496.0), "walk_left", "idle_back")
+			# Miguel: walk_down to 1056.0, 480.0
+			await move_character_smoothly(player, Vector2(1056.0, 480.0), "walk_down", "idle_back")
+			# Miguel: walk_left to 464.0, 480.0
+			await move_character_smoothly(player, Vector2(464.0, 480.0), "walk_left", "idle_back")
 			
 			# Show dialogue UI and dialogue after Miguel walks
 			if dialogue_ui:
@@ -403,10 +441,10 @@ func show_next_line() -> void:
 				dialogue_ui.hide()
 			
 			# Celine's movement sequence
-			# Celine: walk_down to 1112.0, 496.0
-			await move_character_smoothly(celine, Vector2(1112.0, 496.0), "walk_down", "idle_back")
-			# Celine: walk_left to 560.0, 496.0
-			await move_character_smoothly(celine, Vector2(560.0, 496.0), "walk_left", "idle_back")
+			# Celine: walk_down to 1056.0, 480.0
+			await move_character_smoothly(celine, Vector2(1056.0, 480.0), "walk_down", "idle_back")
+			# Celine: walk_left to 504.0, 480.0
+			await move_character_smoothly(celine, Vector2(504.0, 480.0), "walk_left", "idle_back")
 			
 			# Show dialogue UI and dialogue after Celine walks
 			if dialogue_ui:
@@ -421,8 +459,8 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.hide()
 			
-			# Boy Trip moves to 536.0, 440.0 with walk_down animation
-			await move_character_smoothly(boy_trip, Vector2(536.0, 440.0), "walk_down", "idle_front")
+			# Boy Trip moves to 480.0, 424.0 with walk_down animation
+			await move_character_smoothly(boy_trip, Vector2(480.0, 424.0), "walk_down", "idle_front")
 			
 			# Show dialogue UI and dialogue after Boy Trip moves
 			if dialogue_ui:
@@ -469,10 +507,10 @@ func show_next_line() -> void:
 				dialogue_ui.hide()
 			
 			# Station guard 2 movement sequence
-			# Guard 2: walk_down to 760.0, 496.0
-			await move_character_smoothly(guard_2, Vector2(760.0, 496.0), "walk_down", "idle_left")
-			# Guard 2: walk_left to 600.0, 496.0
-			await move_character_smoothly(guard_2, Vector2(600.0, 496.0), "walk_left", "idle_left")
+			# Guard 2: walk_down to 704.0, 480.0
+			await move_character_smoothly(guard_2, Vector2(704.0, 480.0), "walk_down", "idle_left")
+			# Guard 2: walk_left to 544.0, 480.0
+			await move_character_smoothly(guard_2, Vector2(544.0, 480.0), "walk_left", "idle_left")
 			
 			# Change character animations when guard reaches destination
 			if celine and celine.get_node_or_null("AnimatedSprite2D"):
@@ -631,8 +669,7 @@ func check_checkpoint_and_start() -> void:
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	var lower_level_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
 	
-	# DEBUG: Reset checkpoints for testing (commented out for normal gameplay)
-	# reset_checkpoints()  # Commented out to prevent clearing checkpoints after police_lobby
+	# DEBUG: Reset checkpoints for testing (removed for normal gameplay)
 	
 	if lower_level_completed:
 		print("🎯 Lower level already completed - skipping cutscene")
@@ -655,7 +692,7 @@ func skip_to_post_cutscene_state() -> void:
 	
 	# But put Player M at original spawn position for smoother experience
 	if player:
-		player.global_position = Vector2(1112.0, 368.0)  # Original spawn position
+		player.global_position = Vector2(1056.0, 352.0)  # Original spawn position
 		if player.get_node_or_null("AnimatedSprite2D"):
 			player.get_node("AnimatedSprite2D").play("idle_right")
 	

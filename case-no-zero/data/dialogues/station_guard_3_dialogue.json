@@ -1,32 +1,32 @@
 {
   "station_guard_3": {
-    "first_interaction": [
-      {
-        "speaker": "Station Guard 3",
-        "text": "Hmm... ang hirap naman ng trabaho namin dito sa istasyon."
-      },
-      {
-        "speaker": "Station Guard 3",
-        "text": "Laging may mga kaso na kailangan namin i-monitor. Nakakastress talaga."
-      },
-      {
-        "speaker": "Station Guard 3",
-        "text": "Pero ganun talaga ang buhay ng isang station guard. Kailangan namin maging alerto."
-      },
-      {
-        "speaker": "Station Guard 3",
-        "text": "Sana makahanap ako ng mas magandang trabaho sa susunod na taon."
-      }
-    ],
-    "repeated_interaction": [
-      {
-        "speaker": "Station Guard 3",
-        "text": "Ang hirap pa rin ng trabaho namin dito."
-      },
-      {
-        "speaker": "Station Guard 3",
-        "text": "Sana makahanap ako ng mas magandang trabaho."
-      }
-    ]
+	"first_interaction": [
+	  {
+		"speaker": "Station Guard 3",
+		"text": "Hmm... ang hirap naman ng trabaho namin dito sa istasyon."
+	  },
+	  {
+		"speaker": "Station Guard 3",
+		"text": "Laging may mga kaso na kailangan namin i-monitor. Nakakastress talaga."
+	  },
+	  {
+		"speaker": "Station Guard 3",
+		"text": "Pero ganun talaga ang buhay ng isang station guard. Kailangan namin maging alerto."
+	  },
+	  {
+		"speaker": "Station Guard 3",
+		"text": "Sana makahanap ako ng mas magandang trabaho sa susunod na taon."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Station Guard 3",
+		"text": "Ang hirap pa rin ng trabaho namin dito."
+	  },
+	  {
+		"speaker": "Station Guard 3",
+		"text": "Sana makahanap ako ng mas magandang trabaho."
+	  }
+	]
   }
 }

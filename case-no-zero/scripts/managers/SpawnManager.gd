@@ -10,19 +10,19 @@ var entry_point: String = ""
 var spawn_positions: Dictionary = {
 	"police_lobby": {
 		"from_security_server": {
-			"position": Vector2(444, 544),
+			"position": Vector2(400, 488),
 			"animation": "idle_back"
 		},
 		"from_head_police_room": {
-			"position": Vector2(808, 328), 
+			"position": Vector2(768, 288), 
 			"animation": "idle_down"
 		},
 		"from_lower_level_station": {
-			"position": Vector2(1032, 544),
+			"position": Vector2(992, 488),
 			"animation": "idle_back"
 		},
 		"default": {
-			"position": Vector2(312, 528),
+			"position": Vector2(272, 480),
 			"animation": "idle_down"
 		}
 	}

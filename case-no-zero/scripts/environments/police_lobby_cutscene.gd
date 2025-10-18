@@ -14,21 +14,57 @@ var is_in_cutscene: bool = false
 # Task Manager reference
 var task_manager: Node = null
 
+# --------------------------
+# HELPER FUNCTIONS
+# --------------------------
+func disable_character_collision(character: Node) -> void:
+	"""Disable collision for a character when hiding/fading"""
+	if not character:
+		return
+	
+	# Disable collision shape
+	var collision_shape = character.get_node_or_null("CollisionShape2D")
+	if collision_shape:
+		collision_shape.disabled = true
+		print("🚫 Collision disabled for:", character.name)
+	
+	# Also disable any Area2D collision if it exists
+	var area_collision = character.get_node_or_null("Area2D/CollisionShape2D")
+	if area_collision:
+		area_collision.disabled = true
+		print("🚫 Area collision disabled for:", character.name)
+
+func enable_character_collision(character: Node) -> void:
+	"""Enable collision for a character when showing/fading in"""
+	if not character:
+		return
+	
+	# Enable collision shape
+	var collision_shape = character.get_node_or_null("CollisionShape2D")
+	if collision_shape:
+		collision_shape.disabled = false
+		print("✅ Collision enabled for:", character.name)
+	
+	# Also enable any Area2D collision if it exists
+	var area_collision = character.get_node_or_null("Area2D/CollisionShape2D")
+	if area_collision:
+		area_collision.disabled = false
+		print("✅ Area collision enabled for:", character.name)
+
 func _ready():
 	print("🔍 Police Lobby Cutscene: _ready() called")
 	
 	# Get task manager reference
 	task_manager = get_node("/root/TaskManager")
 	
-	# DEBUG: Clear checkpoint for testing (uncomment the line below to disable cutscene)
-	# var checkpoint_manager = get_node("/root/CheckpointManager")
-	# checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
-	# print("🔄 DEBUG: Lower level checkpoint cleared for testing")
-	
 	# Check if we should play the cutscene
 	var checkpoint_manager = get_node("/root/CheckpointManager")
+	
+	# Check if we should play the cutscene
 	var lower_level_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
 	var cutscene_already_played = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
+	
+	# DEBUG: Clear checkpoint for testing (removed for normal gameplay)
 	
 	print("🔍 Police Lobby Cutscene Debug:")
 	print("  - lower_level_completed:", lower_level_completed)
@@ -41,19 +77,27 @@ func _ready():
 	if lower_level_completed and not cutscene_already_played and celine:
 		celine.visible = true
 		celine.modulate.a = 1.0
+		celine.global_position = Vector2(912.0, 368.0)  # Set Celine spawn position
 		celine.get_node("AnimatedSprite2D").play("idle_right")
-		print("👩 Celine preloaded and visible for cutscene")
+		print("👩 Celine preloaded and visible for cutscene at (912, 368)")
 	else:
 		if celine:
 			celine.visible = false
+			disable_character_collision(celine)
 			if cutscene_already_played:
-				print("👩 Celine hidden (cutscene already played)")
+				print("👩 Celine hidden and collision disabled (cutscene already played)")
 			else:
-				print("👩 Celine hidden (no checkpoint)")
+				print("👩 Celine hidden and collision disabled (no checkpoint)")
 	
 	# Only play cutscene if lower level is completed AND cutscene hasn't been played yet
 	if lower_level_completed and not cutscene_already_played:
 		print("🎬 Starting police lobby cutscene")
+		
+		# Disable player movement immediately when cutscene is about to start
+		if player and player.has_method("disable_movement"):
+			player.disable_movement()
+			print("🚫 Player movement disabled for cutscene")
+		
 		# Wait for scene_fade_in to complete (scene transition)
 		await get_tree().create_timer(1.5).timeout  # Wait for scene fade-in to complete
 		play_cutscene()
@@ -103,10 +147,10 @@ func player_movement_sequence():
 		print("⚠️ Player AnimatedSprite2D not found")
 		return
 	
-	# Step 1: Player walk_back to (1032, 416)
-	print("🚶 Player walking back to (1032, 416)")
+	# Step 1: Player walk_back to (992, 368)
+	print("🚶 Player walking back to (992, 368)")
 	player_sprite.play("walk_back")
-	var target_pos_1 = Vector2(1032.0, 416.0)
+	var target_pos_1 = Vector2(992.0, 368.0)
 	var distance_1 = player.position.distance_to(target_pos_1)
 	var duration_1 = distance_1 / walk_speed
 	
@@ -114,10 +158,10 @@ func player_movement_sequence():
 	tween_1.tween_property(player, "position", target_pos_1, duration_1)
 	await tween_1.finished
 	
-	# Step 2: Player walk_left to (1000, 416)
-	print("🚶 Player walking left to (1000, 416)")
+	# Step 2: Player walk_left to (952, 368)
+	print("🚶 Player walking left to (952, 368)")
 	player_sprite.play("walk_left")
-	var target_pos_2 = Vector2(1000.0, 416.0)
+	var target_pos_2 = Vector2(952.0, 368.0)
 	var distance_2 = player.position.distance_to(target_pos_2)
 	var duration_2 = distance_2 / walk_speed
 	
@@ -216,11 +260,12 @@ func celine_walkout():
 	# Wait for fade to complete
 	await fade_tween.finished
 	
-	# Make Celine invisible
+	# Make Celine invisible and disable collision
 	celine.visible = false
 	celine.modulate.a = 1.0  # Reset alpha for next time
+	disable_character_collision(celine)
 	
-	print("👩 Celine has walked out and faded")
+	print("👩 Celine has walked out, faded, and collision disabled")
 
 func enable_player_and_update_task():
 	print("🎮 Enabling player movement and updating task")
@@ -242,4 +287,5 @@ func enable_player_and_update_task():
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
 	print("🎯 Global checkpoint set: POLICE_LOBBY_CUTSCENE_COMPLETED")
 	print("🎯 Global checkpoint set: BARANGAY_HALL_ACCESS_GRANTED")
+	print("🔍 All checkpoints after police lobby completion:", checkpoint_manager.checkpoints.keys())
 	print("🎬 Police lobby cutscene completed")

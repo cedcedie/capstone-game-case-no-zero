@@ -130,7 +130,7 @@ func start_intro() -> void:
 	player.anim_sprite.play("idle_down")
 	player.last_facing = "front"
 
-	celine.position = Vector2(49, 62)
+	celine.position = Vector2(9, 40)
 	celine.visible = false
 
 	await get_tree().create_timer(1.0).timeout
@@ -174,7 +174,7 @@ func show_next_line() -> void:
 		4:
 			dialogue_ui.hide()
 			celine.visible = true
-			await move_character_smoothly(celine, Vector2(49, 206), "walk_down", "idle_right")
+			await move_character_smoothly(celine, Vector2(9, 184), "walk_down", "idle_right")
 			
 			# Player reaction sequence
 			await play_character_animation(player, "idle_left", 0.4)
@@ -197,7 +197,7 @@ func show_next_line() -> void:
 
 		# Celine moves right
 		13:
-			await move_character_smoothly(celine, Vector2(177, celine.position.y), "walk_right", "idle_right")
+			await move_character_smoothly(celine, Vector2(137, celine.position.y), "walk_right", "idle_right")
 			show_dialogue_with_transition(speaker, text)
 
 		# More conversation
@@ -455,9 +455,9 @@ func _ready() -> void:
 	# Check if bedroom cutscene has already been played
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	
-	# DEBUG: Reset checkpoints for testing
+	# DEBUG: Reset checkpoints for testing (uncomment to start fresh)
 	checkpoint_manager.clear_checkpoint_file()
-	print("🔄 DEBUG: All checkpoints cleared for testing")
+	print("🔄 DEBUG: All checkpoints cleared for fresh start")
 	
 	var cutscene_already_played = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	
