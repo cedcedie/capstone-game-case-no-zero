@@ -23,7 +23,7 @@ var task_manager: Node = null
 # --- Dialogue data ---
 var dialogue_lines: Array = []
 var current_line: int = 0
-var waiting_for_next: bool = false
+var waiting_for_next: bool = false  # kept for compatibility but not used for cutscene advance
 
 # --- Movement and transition tuning ---
 @export var walk_speed: float = 200.0
@@ -92,7 +92,19 @@ func show_dialogue_with_transition(speaker: String, text: String, hide_first: bo
 		await get_tree().create_timer(transition_pause).timeout
 	
 	dialogue_ui.show_dialogue_line(speaker, text)
-	waiting_for_next = true
+	
+	# Calculate dynamic wait time based on text length
+	# Typing speed is 0.01s per character, plus extra reading time
+	var typing_time = text.length() * 0.01  # Time for typing animation
+	var reading_time = max(1.0, text.length() * 0.02)  # Reading time (20ms per char, min 1s)
+	var total_wait = typing_time + reading_time
+	
+	print("💬 Auto-advancing dialogue: ", text.length(), " chars, waiting ", total_wait, "s")
+	await get_tree().create_timer(total_wait).timeout
+	
+	# Auto-advance to next line
+	current_line += 1
+	show_next_line()
 
 # --------------------------
 # STEP 1: Load JSON dialogue
@@ -133,6 +145,9 @@ func start_intro() -> void:
 	celine.position = Vector2(9, 40)
 	celine.visible = false
 
+	# Enable cutscene mode in DialogueUI (hide Next, auto-advance handled by timers)
+	if dialogue_ui and dialogue_ui.has_method("set_cutscene_mode"):
+		dialogue_ui.set_cutscene_mode(true)
 	await get_tree().create_timer(1.0).timeout
 	show_next_line()
 
@@ -274,26 +289,6 @@ func show_next_line() -> void:
 # --------------------------
 # STEP 7: On next pressed
 # --------------------------
-func _on_next_pressed() -> void:
-	if waiting_for_next:
-		waiting_for_next = false
-		
-		print("🔍 Debug - intro_complete:", intro_complete, "celine_interactable:", celine_interactable)
-		
-		# If we're showing the movement tutorial, enable control and end
-		if intro_complete and celine_interactable:
-			await dialogue_ui.hide_ui()
-			if "control_enabled" in player:
-				player.control_enabled = true
-				print("✅ Movement tutorial complete — player control enabled.")
-			else:
-				print("❌ Player doesn't have control_enabled property")
-			return
-		
-		# Otherwise, continue with normal dialogue
-		current_line += 1
-		show_next_line()
-
 # --------------------------
 # STEP 8: Cinematic fade for last line
 # --------------------------
@@ -368,19 +363,27 @@ func start_cinematic() -> void:
 	# Restore player animation
 	player.anim_sprite.play("idle_down")
 	
-	# Set flags for tutorial
+	# Set flags after cinematic; no Celine interaction in bedroom
 	intro_complete = true
-	celine_interactable = true
+	celine_interactable = false
 	
 	# Set global checkpoint to prevent cutscene from replaying
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	print("🎯 Global checkpoint set: BEDROOM_CUTSCENE_COMPLETED")
 	
-	# Show movement tutorial dialogue
-	show_movement_tutorial()
+	# Hide Celine and disable her collision after fade-in
+	if celine:
+		celine.visible = false
+		var cshape := celine.get_node_or_null("CollisionShape2D")
+		if cshape:
+			cshape.disabled = true
 	
-	print("✅ Cinematic complete — ready for movement tutorial.")
+	# Start the first task shortly after
+	await get_tree().create_timer(0.5).timeout
+	start_first_task()
+	
+	print("✅ Cinematic complete — starting first task.")
 
 func show_cinematic_text(text: String, fade_in_duration: float, hold_duration: float) -> void:
 	cinematic_text.text = text
@@ -398,14 +401,8 @@ func show_cinematic_text(text: String, fade_in_duration: float, hold_duration: f
 	await get_tree().create_timer(hold_duration).timeout
 
 func show_movement_tutorial() -> void:
-	print("🎮 Showing movement tutorial...")
-	print("🔍 Debug - intro_complete:", intro_complete, "celine_interactable:", celine_interactable)
-	dialogue_ui.show_dialogue_line("", "Press WASD to move freely around the room.")
-	waiting_for_next = true
-	
-	# Start the first task after a brief delay
-	await get_tree().create_timer(0.5).timeout
-	start_first_task()
+	# Tutorial removed per request
+	pass
 
 # --------------------------
 # TASK MANAGEMENT
@@ -422,9 +419,27 @@ func start_first_task() -> void:
 # --------------------------
 func end_intro() -> void:
 	await dialogue_ui.hide_ui()
+	if dialogue_ui and dialogue_ui.has_method("set_cutscene_mode"):
+		dialogue_ui.set_cutscene_mode(false)
 	if "control_enabled" in player:
 		player.control_enabled = true
 	print("✅ Intro complete — control re-enabled.")
+
+# --------------------------
+# DEBUG: Skip/complete cutscene
+# --------------------------
+func debug_complete_bedroom_cutscene() -> void:
+	var checkpoint_manager = get_node("/root/CheckpointManager")
+	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
+	if dialogue_ui and dialogue_ui.has_method("set_cutscene_mode"):
+		dialogue_ui.set_cutscene_mode(false)
+	skip_to_post_cutscene_state()
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Press F10 to instantly complete the bedroom cutscene (debug only)
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.physical_keycode == KEY_F10:
+			debug_complete_bedroom_cutscene()
 
 # --------------------------
 # STEP 10: Ready
@@ -435,14 +450,12 @@ func _ready() -> void:
 	# Get TaskManager autoload
 	if TaskManager:
 		task_manager = TaskManager
-		print("✅ TaskManager connected")
 	else:
 		print("⚠️ TaskManager autoload not found - task system disabled")
 	
 	# Get DialogueUI autoload
 	if DialogueUI:
 		dialogue_ui = DialogueUI
-		print("✅ DialogueUI connected")
 	else:
 		print("⚠️ DialogueUI autoload not found - dialogue system disabled")
 	
@@ -454,31 +467,21 @@ func _ready() -> void:
 	
 	# Check if bedroom cutscene has already been played
 	var checkpoint_manager = get_node("/root/CheckpointManager")
-	
-	# DEBUG: Reset checkpoints for testing (uncomment to start fresh)
-	checkpoint_manager.clear_checkpoint_file()
-	print("🔄 DEBUG: All checkpoints cleared for fresh start")
-	
+	# DEBUG: reset bedroom cutscene for repetitive testing — comment out when done
+	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	var cutscene_already_played = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	
-	print("🔍 Bedroom Scene Cutscene Debug:")
-	print("  - cutscene_already_played:", cutscene_already_played)
-	print("  - checkpoint exists:", checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED))
-	
 	if cutscene_already_played:
-		print("🔍 Bedroom cutscene already played (global checkpoint) - skipping to post-cutscene state")
 		skip_to_post_cutscene_state()
 	else:
-		print("🟢 Scene ready — starting intro...")
 		start_intro()
 
 func skip_to_post_cutscene_state() -> void:
 	"""Skip to the state after cutscene completion"""
-	print("🎭 Skipping to post-cutscene state")
 	
 	# Set flags as if cutscene was completed
 	intro_complete = true
-	celine_interactable = true
+	celine_interactable = false
 	
 	# Position characters in their final positions
 	if player:
@@ -499,4 +502,3 @@ func skip_to_post_cutscene_state() -> void:
 	if "control_enabled" in player:
 		player.control_enabled = true
 	
-	print("✅ Post-cutscene state loaded - ready for interaction")

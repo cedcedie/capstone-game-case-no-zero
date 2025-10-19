@@ -102,6 +102,9 @@ func _ready():
 		await get_tree().create_timer(1.5).timeout  # Wait for scene fade-in to complete
 		play_cutscene()
 	else:
+		# Ensure DialogueUI is back to normal during regular gameplay
+		if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+			DialogueUI.set_cutscene_mode(false)
 		if cutscene_already_played:
 			print("🔍 Police lobby cutscene already played (global checkpoint)")
 		else:
@@ -125,6 +128,9 @@ func play_cutscene():
 	# Wait a moment before starting dialogue
 	await get_tree().create_timer(0.3).timeout
 	
+	# Enable cutscene mode for DialogueUI (hide Next)
+	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(true)
 	# Start the dialogue
 	await play_dialogue()
 	
@@ -133,6 +139,9 @@ func play_cutscene():
 	
 	# Enable player movement and update task
 	enable_player_and_update_task()
+	# Disable cutscene mode for DialogueUI
+	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(false)
 
 func player_movement_sequence():
 	print("🚶 Starting player movement sequence")
@@ -221,14 +230,20 @@ func play_dialogue():
 		print("⚠️ Failed to load dialogue from JSON")
 		return
 	
-	# Show each dialogue line
+	# Show each dialogue line (auto-advance for cutscene)
 	for line in dialogue_lines:
 		var speaker = line.get("speaker", "")
 		var text = line.get("text", "")
 		DialogueUI.show_dialogue_line(speaker, text)
 		
-		# Wait for player to press next
-		await DialogueUI.next_pressed
+		# Calculate dynamic wait time based on text length
+		# Typing speed is 0.01s per character, plus extra reading time
+		var typing_time = text.length() * 0.01  # Time for typing animation
+		var reading_time = max(1.0, text.length() * 0.02)  # Reading time (20ms per char, min 1s)
+		var total_wait = typing_time + reading_time
+		
+		print("💬 Auto-advancing dialogue: ", text.length(), " chars, waiting ", total_wait, "s")
+		await get_tree().create_timer(total_wait).timeout
 	
 	# Hide dialogue after all lines shown
 	DialogueUI.hide_ui()

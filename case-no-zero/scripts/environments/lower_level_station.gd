@@ -139,7 +139,11 @@ func _on_choice_selected(choice_index: int):
 	
 	# Show the response
 	dialogue_ui.show_dialogue_line("Boy Trip", response)
-	waiting_for_next = true
+	await get_tree().create_timer(2.0).timeout
+	
+	# Advance to next line after choice
+	current_line += 1
+	call_deferred("show_next_line")
 	
 	print("✅ Choice selected:", choice_index, "Response:", response)
 
@@ -159,7 +163,9 @@ func start_detention_scene() -> void:
 	setup_initial_positions()
 	
 	# Start dialogue sequence
-	show_next_line()
+	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(true)
+	call_deferred("show_next_line")
 
 func setup_initial_positions() -> void:
 	print("🎭 Setting up initial character positions...")
@@ -248,6 +254,24 @@ func show_dialogue_with_transition(speaker: String, text: String, hide_first: bo
 	if dialogue_ui:
 		dialogue_ui.show_dialogue_line(speaker, text)
 		waiting_for_next = true
+
+func show_dialogue_with_auto_advance(speaker: String, text: String) -> void:
+	"""Show dialogue with auto-advance for cutscenes"""
+	if not dialogue_ui:
+		print("⚠️ Lower Level: DialogueUI not available")
+		# Ensure this function remains awaitable even when UI is missing
+		await get_tree().process_frame
+		return
+	
+	dialogue_ui.show_dialogue_line(speaker, text)
+	
+	# Calculate dynamic wait time based on text length
+	var typing_time = text.length() * 0.01  # Time for typing animation
+	var reading_time = max(1.0, text.length() * 0.02)  # Reading time (20ms per char, min 1s)
+	var total_wait = typing_time + reading_time
+	
+	print("💬 Auto-advancing dialogue: ", text.length(), " chars, waiting ", total_wait, "s")
+	await get_tree().create_timer(total_wait).timeout
 
 func camera_shake() -> void:
 	"""Add camera shake effect for emotional emphasis"""
@@ -398,20 +422,21 @@ func show_next_line() -> void:
 		# Opening line - Miguel's initial dialogue
 		0:
 			await play_character_animation(player, "idle_left", transition_pause)
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Boy Trip's emotional response with camera shake
 		1:
-			# Add camera shake for emotional emphasis before Boy Trip speaks
+			# Build-up: shake + zoom before the dialogue for stronger emphasis
 			await camera_shake()
-			# Hide dialogue during animation
 			if dialogue_ui:
 				dialogue_ui.hide()
 			await play_character_animation(boy_trip, "idle_right", transition_pause)
-			show_dialogue_with_transition(speaker, text)
-			
-			# Tween camera zoom from 1.8 to 1.4 after Boy Trip's line
 			await tween_camera_zoom(1.4)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 
 		# Miguel walks before line 2
 		2:
@@ -433,6 +458,9 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.show()
 			show_dialogue_with_transition(speaker, text)
+			await get_tree().create_timer(2.5).timeout
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Celine walks before line 3
 		3:
@@ -450,6 +478,9 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.show()
 			show_dialogue_with_transition(speaker, text)
+			await get_tree().create_timer(2.5).timeout
+			current_line += 1
+			call_deferred("show_next_line")
 
 		# Boy Trip's frustration after Celine's line
 		4:
@@ -466,10 +497,15 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.show()
 			show_dialogue_with_transition(speaker, text)
+			await get_tree().create_timer(2.5).timeout
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Normal dialogue lines
 		5, 6:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Line 7: Show dialogue first, then show choices
 		7:
@@ -477,12 +513,18 @@ func show_next_line() -> void:
 			choice_completed = false
 			# Show Miguel's dialogue first
 			show_dialogue_with_transition(speaker, text)
-			# Wait for player to press next before showing choices
-			# The choice will be shown in _on_next_pressed() after this dialogue
+			await get_tree().create_timer(2.5).timeout
+			# Automatically show choices after dialogue
+			var choice_data_7 = get_choice_for_line(current_line)
+			if choice_data_7:
+				show_miguel_choice(choice_data_7)
+			return
 		
 		# Normal dialogue lines 8-14
 		8, 9, 10, 11, 12, 13, 14:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Line 15: Show dialogue first, then show choices (notebook question)
 		15:
@@ -490,16 +532,24 @@ func show_next_line() -> void:
 			choice_completed = false
 			# Show Boy Trip's dialogue first
 			show_dialogue_with_transition(speaker, text)
-			# Don't set waiting_for_next here - let the dialogue show first
-			# The choice will be shown in _on_next_pressed() after this dialogue
+			await get_tree().create_timer(2.5).timeout
+			# Automatically show choices after dialogue
+			var choice_data_15 = get_choice_for_line(current_line)
+			if choice_data_15:
+				show_miguel_choice(choice_data_15)
+			return
 		
 		# Normal dialogue lines 16-21
 		16, 17, 18, 19, 20, 21:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Line 22: Station guard 2 movement first, then dialogue
 		22:
 			show_dialogue_with_transition(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		# Line 23: Normal dialogue
 		23:
 			# Hide dialogue during movement
@@ -521,7 +571,9 @@ func show_next_line() -> void:
 			# Show dialogue UI and dialogue after guard movement
 			if dialogue_ui:
 				dialogue_ui.show()
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		
 		# Line 25: Player changes to idle_back
@@ -529,19 +581,30 @@ func show_next_line() -> void:
 			# Change player to idle_back
 			if player and player.get_node_or_null("AnimatedSprite2D"):
 				player.get_node("AnimatedSprite2D").play("idle_back")
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Normal dialogue lines 25-26
 		25, 26:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Fade transition and reposition after line 27
 		27:
-			# Show dialogue first
+			# Show final dialogue
 			show_dialogue_with_transition(speaker, text)
+			await get_tree().create_timer(0.2).timeout
 			
-			# Wait for player to press next after dialogue completes
-			# The fade will happen in _on_next_pressed() after this dialogue
+			# Hide dialogue UI then fade out, reposition, fade in, end
+			if dialogue_ui:
+				await dialogue_ui.hide_ui()
+			await fade_out_all()
+			reposition_characters_after_fade()
+			await fade_in_all()
+			end_scene()
+			return
 		
 		# Default: Regular dialogue for other lines
 		_:
@@ -551,44 +614,14 @@ func show_next_line() -> void:
 # INPUT HANDLING
 # --------------------------
 func _on_next_pressed() -> void:
-	if waiting_for_next:
-		waiting_for_next = false
-		
-		# Check if we just finished line 27 and need to start fade transition
-		if current_line == 27:
-			# Hide dialogue UI (last dialogue)
-			if dialogue_ui:
-				dialogue_ui.hide()
-			
-			# Start fade transition
-			await fade_out_all()
-			
-			# Reposition characters
-			reposition_characters_after_fade()
-			
-			# Fade in everything
-			await fade_in_all()
-			
-			# End the scene
-			end_scene()
-			return
-		
-		# Check if we just finished a choice line and need to show choices
-		# Only show choices if we haven't already completed them
-		if (current_line == 7 or current_line == 15) and not choice_completed:
-			print("🔍 Checking choice for line:", current_line, "choice_completed:", choice_completed)
-			var choice_data = get_choice_for_line(current_line)
-			print("🔍 Choice data for line", current_line, ":", choice_data)
-			if choice_data:
-				# Add a small delay to ensure dialogue is fully displayed
-				await get_tree().create_timer(0.1).timeout
-				show_miguel_choice(choice_data)
-				return
-			else:
-				print("⚠️ No choice data found for line", current_line)
-		
-		current_line += 1
-		show_next_line()
+	# Only used to reveal choices on specific lines (e.g., 7 and 15)
+	var choice_data = get_choice_for_line(current_line)
+	if choice_data and not waiting_for_choice and not choice_completed:
+		show_miguel_choice(choice_data)
+		return
+	# If no choice or choice already completed, advance normally
+	current_line += 1
+	call_deferred("show_next_line")
 
 # --------------------------
 # SCENE END
@@ -608,6 +641,8 @@ func end_scene():
 	# Transition to next scene or enable player control
 	if player and "control_enabled" in player:
 		player.control_enabled = true
+	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(false)
 
 
 # --------------------------
@@ -679,6 +714,19 @@ func check_checkpoint_and_start() -> void:
 		print("🎯 First time in lower level - starting cutscene")
 		# Play the cutscene normally
 		start_detention_scene()
+
+# --------------------------
+# DEBUG: F10 skip
+# --------------------------
+func _unhandled_input(event: InputEvent) -> void:
+	# Press F10 to instantly complete the lower level cutscene (debug only)
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.physical_keycode == KEY_F10:
+			var checkpoint_manager = get_node("/root/CheckpointManager")
+			checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
+			if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+				DialogueUI.set_cutscene_mode(false)
+			skip_to_post_cutscene_state()
 
 func skip_to_post_cutscene_state() -> void:
 	"""Skip to the state after cutscene completion"""

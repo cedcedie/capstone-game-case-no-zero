@@ -10,6 +10,14 @@ signal next_pressed
 var waiting_for_next: bool = false
 var is_typing: bool = false
 var typing_speed := 0.01
+var cutscene_mode: bool = false
+
+func set_cutscene_mode(enabled: bool) -> void:
+	cutscene_mode = enabled
+	if cutscene_mode:
+		next_button.hide()
+		waiting_for_next = false
+	# when disabling, button will be shown after next line finishes typing
 
 func _ready():
 	hide()
@@ -46,10 +54,16 @@ func show_dialogue_line(speaker: String, text: String) -> void:
 		await get_tree().create_timer(typing_speed).timeout
 
 	is_typing = false
-	waiting_for_next = true
-	next_button.show() # Show the next button only after typing finishes
+	if cutscene_mode:
+		waiting_for_next = false
+		next_button.hide()
+	else:
+		waiting_for_next = true
+		next_button.show() # Show the next button only after typing finishes
 
 func _on_next_pressed():
+	if cutscene_mode:
+		return
 	if waiting_for_next and not is_typing:
 		waiting_for_next = false
 		next_button.hide()

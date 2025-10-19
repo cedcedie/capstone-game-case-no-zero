@@ -24299,6 +24299,11 @@ shape = SubResource("RectangleShape2D_barangay_second_floor")
 
 [node name="BarangayHallManager" type="Node" parent="."]
 script = ExtResource("18_barangay_manager")
+walk_speed = null
+fade_duration = null
+text_fade_duration = null
+transition_pause = null
+camera_zoom_duration = null
 
 [node name="KapitanaPalma" parent="." instance=ExtResource("19_dit16")]
 position = Vector2(1096, -48)

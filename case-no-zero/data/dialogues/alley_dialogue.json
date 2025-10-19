@@ -1,0 +1,50 @@
+{
+  "alley_investigation": {
+    "dialogue_lines": [
+      {
+        "speaker": "Miguel",
+        "text": "Dito sa alley... parang may nangyari dito."
+      },
+      {
+        "speaker": "Celine",
+        "text": "Oo, nakita mo ba yung mga marka sa pader? Parang may struggle na nangyari."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Tingnan mo yung mga bakas ng dugo. Hindi ito simpleng aksidente."
+      },
+      {
+        "speaker": "Celine",
+        "text": "Kailangan nating maghanap ng iba pang clues dito. Baka may makita tayong evidence."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Oo, mag-ingat tayo. Hindi natin alam kung may nagbabantay dito."
+      },
+      {
+        "speaker": "Celine",
+        "text": "Tingnan mo yung mga basura. Parang may mga papel na nakatago."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Mukhang may nagtatago ng mga bagay dito. Baka may makita tayong importante."
+      },
+      {
+        "speaker": "Celine",
+        "text": "Ang daming mga bakas ng paa. Parang may maraming tao dito nung nangyari."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Hindi lang si Leo at si Erwin ang nandito. May iba pa."
+      },
+      {
+        "speaker": "Celine",
+        "text": "Kailangan nating maghanap ng iba pang evidence. Baka may makita tayo sa mga sulok."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Oo, mag-ingat tayo. Hindi natin alam kung may nagbabantay dito."
+      }
+    ]
+  }
+}

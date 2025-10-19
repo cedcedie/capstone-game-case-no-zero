@@ -205,6 +205,22 @@ func show_dialogue_with_transition(speaker: String, text: String, hide_first: bo
 		dialogue_ui.show_dialogue_line(speaker, text)
 		waiting_for_next = true
 
+func show_dialogue_with_auto_advance(speaker: String, text: String) -> void:
+	"""Show dialogue with auto-advance for cutscenes"""
+	if not dialogue_ui:
+		print("⚠️ Barangay Hall: DialogueUI not available")
+		return
+	
+	dialogue_ui.show_dialogue_line(speaker, text)
+	
+	# Calculate dynamic wait time based on text length
+	var typing_time = text.length() * 0.01  # Time for typing animation
+	var reading_time = max(1.0, text.length() * 0.02)  # Reading time (20ms per char, min 1s)
+	var total_wait = typing_time + reading_time
+	
+	print("💬 Auto-advancing dialogue: ", text.length(), " chars, waiting ", total_wait, "s")
+	await get_tree().create_timer(total_wait).timeout
+
 func tween_camera_zoom(target_zoom: float) -> void:
 	"""Tween camera zoom to target value"""
 	if not camera:
@@ -381,6 +397,9 @@ func _ready():
 		await get_tree().create_timer(0.5).timeout
 		play_barangay_hall_cutscene()
 	else:
+		# Ensure DialogueUI is normal for regular gameplay
+		if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+			DialogueUI.set_cutscene_mode(false)
 		if cutscene_already_played:
 			print("🔍 Barangay hall cutscene already played - skipping")
 		else:
@@ -411,6 +430,8 @@ func play_barangay_hall_cutscene():
 	await get_tree().create_timer(1.0).timeout
 	
 	# Start dialogue sequence (animations will be handled in match case)
+	if dialogue_ui and dialogue_ui.has_method("set_cutscene_mode"):
+		dialogue_ui.set_cutscene_mode(true)
 	show_next_line()
 
 func setup_initial_positions() -> void:
@@ -492,8 +513,8 @@ func show_next_line() -> void:
 			await play_character_animation(player, "idle_left", 0.4)
 			await play_character_animation(player, "idle_back", 0.3)
 			await play_character_animation(player, "idle_left", 0.2)
-			# Show dialogue after animation
-			show_dialogue_with_transition(speaker, text)
+            # Show dialogue after animation (auto-advance)
+			await show_dialogue_with_auto_advance(speaker, text)
 		
 		# Celine's line 1 - Celine animation
 		1:
@@ -502,8 +523,8 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.hide()
 			await play_character_animation(celine, "idle_right", 0.5)
-			# Show dialogue after animation
-			show_dialogue_with_transition(speaker, text)
+            # Show dialogue after animation (auto-advance)
+			await show_dialogue_with_auto_advance(speaker, text)
 		
 		# Kapitana's line 2 - All three characters animate in sync
 		2:
@@ -530,8 +551,8 @@ func show_next_line() -> void:
 			# Wait for final animation
 			await get_tree().create_timer(0.5).timeout
 			
-			# Show dialogue after animation
-			show_dialogue_with_transition(speaker, text)
+			# Show dialogue after animation (auto-advance)
+			await show_dialogue_with_auto_advance(speaker, text)
 		
 		# Miguel's introduction - both characters walk to new positions
 		3:
@@ -559,18 +580,18 @@ func show_next_line() -> void:
 			print("🎭 Movement completed - Player:", player.position if player else "null", "Celine:", celine.position if celine else "null")
 			
 			# Show dialogue after movement
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
 		
 		# Kapitana's response
 		4:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
 		
 		# Miguel's questions - choice line
 		5:
 			# Reset choice completed flag for this new choice
 			choice_completed = false
 			# Show Miguel's dialogue first
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
 			# The choice will be shown in _on_next_pressed() after this dialogue
 		
 		# Normal dialogue lines 6-7
@@ -972,35 +993,8 @@ func show_next_line() -> void:
 # INPUT HANDLING
 # --------------------------
 func _on_next_pressed() -> void:
-	if waiting_for_next:
-		waiting_for_next = false
-		
-		# Check if we're trying to proceed from line 12 and evidence inventory is still open
-		if current_line == 12 and evidence_collection_phase:
-			if has_node("/root/EvidenceInventorySettings"):
-				var evidence_ui = get_node("/root/EvidenceInventorySettings")
-				if evidence_ui.is_visible:
-					print("⚠️ Cannot proceed to next line - evidence inventory is still open")
-					print("📋 Please close evidence inventory with TAB before continuing")
-					waiting_for_next = true  # Reset waiting state
-					return
-		
-		# Check if we just finished a choice line and need to show choices
-		# Only show choices if we haven't already completed them
-		if (current_line == 5 or current_line == 19) and not choice_completed:
-			print("🔍 Checking choice for line:", current_line, "choice_completed:", choice_completed)
-			var choice_data = get_choice_for_line(current_line)
-			print("🔍 Choice data for line", current_line, ":", choice_data)
-			if choice_data:
-				# Add a small delay to ensure dialogue is fully displayed
-				await get_tree().create_timer(0.1).timeout
-				show_miguel_choice(choice_data)
-				return
-			else:
-				print("⚠️ No choice data found for line", current_line)
-		
-		current_line += 1
-		show_next_line()
+    # Keep for choice/evidence interactions only; cutscene lines auto-advance via timers
+    pass
 
 # --------------------------
 # CUTSCENE END
@@ -1019,6 +1013,8 @@ func end_cutscene():
 	# Hide dialogue UI
 	if dialogue_ui:
 		dialogue_ui.hide()
+		if dialogue_ui.has_method("set_cutscene_mode"):
+			dialogue_ui.set_cutscene_mode(false)
 	
 	# Wait a moment before fading
 	await get_tree().create_timer(0.5).timeout
