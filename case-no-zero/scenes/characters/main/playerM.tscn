@@ -1561,7 +1561,7 @@ script = ExtResource("1_6fh6j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bpsoc")
-animation = &"idle_down"
+animation = &"pickup_front"
 autoplay = "idle_down"
 offset = Vector2(0, -32)
 

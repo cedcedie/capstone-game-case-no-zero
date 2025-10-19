@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cta55h0h2j6gh"
+path="res://.godot/imported/Pandora Palace.ogg-945622aba74e51b8859e398e64b9e82d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltaruneAud/Pandora Palace.ogg"
+dest_files=["res://.godot/imported/Pandora Palace.ogg-945622aba74e51b8859e398e64b9e82d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bdecfvald8h7m"
+path="res://.godot/imported/Hammer of Justice.ogg-3f5d786cc7e0cfd3e0990510833e4e5e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltaruneAud/Hammer of Justice.ogg"
+dest_files=["res://.godot/imported/Hammer of Justice.ogg-3f5d786cc7e0cfd3e0990510833e4e5e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

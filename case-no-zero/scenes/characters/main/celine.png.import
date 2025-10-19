@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5w77arqh0msb"
-path="res://.godot/imported/celine_navarro.png-5a9394be6427f706b365270bddf19f52.ctex"
+uid="uid://dcoaspq36dp7g"
+path="res://.godot/imported/celine.png-1d24a044b263cb53b982b6a499787acb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/celine_navarro.png"
-dest_files=["res://.godot/imported/celine_navarro.png-5a9394be6427f706b365270bddf19f52.ctex"]
+source_file="res://scenes/characters/main/celine.png"
+dest_files=["res://.godot/imported/celine.png-1d24a044b263cb53b982b6a499787acb.ctex"]
 
 [params]
 

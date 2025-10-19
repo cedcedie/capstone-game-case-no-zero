@@ -1,64 +1,78 @@
 {
   "Intro": [
-	{"speaker": "Miguel", "text": "Na naman? Tulog-tulugan ulit."},
-	{"speaker": "Miguel", "text": "Ang daming kaso. Di ko na maalala ang huling gabing nakapahinga ako nang maayos."},
+	{"speaker": "Miguel", "text": "Ugh... ano na naman 'to?"},
+	{"speaker": "Miguel", "text": "Alas-siyete pa lang. Bakit ang aga ng ingay?"},
+	{"speaker": "Miguel", "text": "Sana naman walang emergency na naman."},
+	{"speaker": "Miguel", "text": "Hindi pa ako nakakakain ng almusal."},
 
 	{"speaker": "Miguel", "text": "Bukas ang pinto."},
-	{"speaker": "Miguel", "text": "Ingat ka. Magulo dito."},
+	{"speaker": "Miguel", "text": "Ingat ka. Magulo dito sa bahay."},
+	{"speaker": "Miguel", "text": "Hindi pa ako nakakapag-ayos."},
 
-	{"speaker": "Celine", "text": "Sakto. Akala ko matatagpuan kitang nakabaon sa mga papel."},
-	{"speaker": "Celine", "text": "Buti gising ka pa bago dumating ang taga-linis."},
+	{"speaker": "Celine", "text": "Miguel! Buti naman gising ka na."},
+	{"speaker": "Celine", "text": "Akala ko matatagpuan kitang nakahiga pa rin."},
+	{"speaker": "Celine", "text": "Kailangan na natin mag-usap."},
 
-	{"speaker": "Miguel", "text": "Celine. Laging matalas. Laging maingay. Laging nandito."},
-	{"speaker": "Miguel", "text": "Lagi kang may balita. Lagi mo akong binabalik sa mga bagay na gusto ko nang kalimutan."},
+	{"speaker": "Miguel", "text": "Celine... laging may emergency."},
+	{"speaker": "Miguel", "text": "Ano na naman ang problema ngayon?"},
+	{"speaker": "Miguel", "text": "Hindi ba pwedeng magpahinga muna ako?"},
 
-	{"speaker": "Miguel", "text": "Nagre-review lang ako habang nakahiga."},
-	{"speaker": "Miguel", "text": "Subukan mo minsan."},
-
-	{"speaker": "Celine", "text": "May bagong kaso, Miguel."},
+	{"speaker": "Celine", "text": "May bagong kaso. Kailangan mo na naman."},
 	{"speaker": "Celine", "text": "May pinatay na naman."},
+	{"speaker": "Celine", "text": "At kailangan mo na naman magsalita."},
 
-	{"speaker": "Miguel", "text": "Sino?"},
+	{"speaker": "Miguel", "text": "Sino naman ang biktima?"},
+	{"speaker": "Miguel", "text": "Sana naman hindi kilala."},
 
-	{"speaker": "Celine", "text": "Si Leo Mendoza. Tanod trainee. Bata pa."},
-	{"speaker": "Celine", "text": "Sobrang bata pa."},
+	{"speaker": "Celine", "text": "Si Leo. Labing-siyam lang."},
+	{"speaker": "Celine", "text": "May pangarap pa."},
 
-	{"speaker": "Miguel", "text": "Si Leo… labing-siyam lang. Akala niya kaya pang ayusin ang siyudad."},
-	{"speaker": "Miguel", "text": "Ngayon, pangalan na lang sa ulat."},
+	{"speaker": "Miguel", "text": "Si Leo..."},
+	{"speaker": "Miguel", "text": "Sino ang suspek?"},
 
-	{"speaker": "Miguel", "text": "May narinig akong usapan kanina."},
-	{"speaker": "Miguel", "text": "Di ko alam siya pala iyon."},
+	{"speaker": "Celine", "text": "Si Boy Trip."},
 
-	{"speaker": "Celine", "text": "Mabilis silang kumilos."},
-	{"speaker": "Celine", "text": "May inaresto na—si Erwin Santiago."},
-	{"speaker": "Celine", "text": "Kilala mo siya bilang..."},
+	{"speaker": "Miguel", "text": "Boy Trip? Hindi siya mamamatay-tao."},
+	{"speaker": "Miguel", "text": "Alam ko siya. May pamilya siya."},
 
-	{"speaker": "Miguel", "text": "Boy Trip."},
+	{"speaker": "Celine", "text": "Nandiyan na ang ebidensya."},
+	{"speaker": "Celine", "text": "Nakulong na siya."},
 
-	{"speaker": "Miguel", "text": "Si Erwin, oo tambay, pero hindi mamamatay-tao."},
-	{"speaker": "Miguel", "text": "Sinubukan niyang magbago. Pero laging hinihila siya ng siyudad pabalik."},
+	{"speaker": "Miguel", "text": "Saan nangyari?"},
 
-	{"speaker": "Celine", "text": "Ginagawa nilang perpektong suspek. Adik. Tambay. May record sa barangay."},
-	{"speaker": "Celine", "text": "Masyadong maayos. Masyadong madali."},
+	{"speaker": "Celine", "text": "Sa eskinita. Kagabi."},
+	{"speaker": "Celine", "text": "Nalinis na nila. Parang may nag-utos."},
 
-	{"speaker": "Miguel", "text": "Sabi ko tapos na ako."},
-	{"speaker": "Miguel", "text": "Nakakapagod ang mga kasong ganito."},
-	{"speaker": "Miguel", "text": "Sa huli, patay lang ang may kwento."},
+	{"speaker": "Miguel", "text": "Ano ang ebidensya?"},
 
-	{"speaker": "Celine", "text": "Hindi ito basta kaso lang."},
-	{"speaker": "Celine", "text": "Si Erwin ‘to. Alam mong wala siyang laban kung wala ka."},
-	{"speaker": "Celine", "text": "Kung hindi ka kikilos, walang kikilos."},
+	{"speaker": "Celine", "text": "Bodycam. Nasira, pero may recording."},
+	{"speaker": "Celine", "text": "Nakita siyang tumatakbo."},
 
-	{"speaker": "Miguel", "text": "Tama ka."},
-	{"speaker": "Miguel", "text": "Alam ko na mangyayari. Siya na naman ang isasakripisyo."},
-	{"speaker": "Miguel", "text": "At ako, magmamaang-maangan."},
-	{"speaker": "Miguel", "text": "Parang ayos lang sa akin."},
+	{"speaker": "Miguel", "text": "Bakit nasira?"},
 
-	{"speaker": "Miguel", "text": "Hindi mo talaga ako tinatantanan."},
+	{"speaker": "Celine", "text": "Hindi ko alam."},
+	{"speaker": "Celine", "text": "Pero kailangan natin makita si Boy Trip."},
 
-	{"speaker": "Celine", "text": "Hindi naghihintay ang hustisya sa mga natutulog."},
+	{"speaker": "Miguel", "text": "Saan siya?"},
+
+	{"speaker": "Celine", "text": "Sa police station."},
+	{"speaker": "Celine", "text": "Kailangan nating pumunta doon."},
+
+	{"speaker": "Miguel", "text": "Delikado yan."},
+
+	{"speaker": "Celine", "text": "Wala tayong choice."},
+	{"speaker": "Celine", "text": "Para kay Leo. Para kay Boy Trip."},
+
+	{"speaker": "Miguel", "text": "Alam mo bang mahirap 'to?"},
+
+	{"speaker": "Celine", "text": "Alam ko."},
+	{"speaker": "Celine", "text": "Pero kailangan natin gawin."},
+
+	{"speaker": "Miguel", "text": "Sige. Mag-ingat tayo."},
+
+	{"speaker": "Celine", "text": "Tara na."},
 
 	{"speaker": "Miguel", "text": "Sige, Erwin."},
-	{"speaker": "Miguel", "text": "Tingnan natin kung anong gulong napasukan mo."}
+	{"speaker": "Miguel", "text": "Tingnan natin kung paano tayo makakalabas."}
   ]
 }
