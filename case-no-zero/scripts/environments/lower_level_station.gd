@@ -702,18 +702,22 @@ func _ready() -> void:
 func check_checkpoint_and_start() -> void:
 	"""Check if lower level cutscene has been completed"""
 	var checkpoint_manager = get_node("/root/CheckpointManager")
+	var bedroom_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	var lower_level_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
 	
-	# DEBUG: Reset checkpoints for testing (removed for normal gameplay)
 	
 	if lower_level_completed:
 		print("🎯 Lower level already completed - skipping cutscene")
 		# Skip cutscene and go directly to post-cutscene state
 		skip_to_post_cutscene_state()
-	else:
-		print("🎯 First time in lower level - starting cutscene")
+	elif bedroom_completed:
+		print("🎯 Bedroom completed, first time in lower level - starting cutscene")
 		# Play the cutscene normally
 		start_detention_scene()
+	else:
+		print("🔍 Bedroom cutscene not completed yet - skipping lower level cutscene")
+		# Skip to post-cutscene state without playing cutscene
+		skip_to_post_cutscene_state()
 
 # --------------------------
 # DEBUG: F10 skip

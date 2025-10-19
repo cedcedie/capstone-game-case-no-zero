@@ -64,7 +64,6 @@ func _ready():
 	var lower_level_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
 	var cutscene_already_played = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
 	
-	# DEBUG: Clear checkpoint for testing (removed for normal gameplay)
 	
 	print("🔍 Police Lobby Cutscene Debug:")
 	print("  - lower_level_completed:", lower_level_completed)

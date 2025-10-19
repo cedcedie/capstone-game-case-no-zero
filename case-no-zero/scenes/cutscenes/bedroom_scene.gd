@@ -467,8 +467,8 @@ func _ready() -> void:
 	
 	# Check if bedroom cutscene has already been played
 	var checkpoint_manager = get_node("/root/CheckpointManager")
-	# DEBUG: reset bedroom cutscene for repetitive testing — comment out when done
-	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
+	# TEMPORARY: Clear all checkpoints for testing full flow - remove this line when done
+	checkpoint_manager.clear_checkpoint_file()
 	var cutscene_already_played = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	
 	if cutscene_already_played:

@@ -97,7 +97,11 @@ func _on_choice_selected(choice_index: int):
 	
 	# Show the response
 	dialogue_ui.show_dialogue_line("Kapitana Lourdes", response)
-	waiting_for_next = true
+	await get_tree().create_timer(2.0).timeout
+	
+	# Advance to next line after choice
+	current_line += 1
+	call_deferred("show_next_line")
 	
 	print("✅ Choice selected:", choice_index, "Response:", response)
 
@@ -359,10 +363,10 @@ func _ready():
 	
 	# Option 2: Auto-complete prerequisites to test barangay hall scene only
 	# Uncomment these lines to jump directly to barangay hall cutscene
-	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
-	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
-	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
-	print("🔄 DEBUG MODE: Barangay hall checkpoint cleared for replay - cutscene will always play")
+	# checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
+	# checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
+	# checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
+	# print("🔄 DEBUG MODE: Barangay hall checkpoint cleared for replay - cutscene will always play")
 	
 	print("🔄 DEBUG: Current checkpoints:", checkpoint_manager.checkpoints)
 	
@@ -513,8 +517,10 @@ func show_next_line() -> void:
 			await play_character_animation(player, "idle_left", 0.4)
 			await play_character_animation(player, "idle_back", 0.3)
 			await play_character_animation(player, "idle_left", 0.2)
-            # Show dialogue after animation (auto-advance)
+			# Show dialogue after animation (auto-advance)
 			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Celine's line 1 - Celine animation
 		1:
@@ -523,8 +529,10 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.hide()
 			await play_character_animation(celine, "idle_right", 0.5)
-            # Show dialogue after animation (auto-advance)
+			# Show dialogue after animation (auto-advance)
 			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Kapitana's line 2 - All three characters animate in sync
 		2:
@@ -553,6 +561,8 @@ func show_next_line() -> void:
 			
 			# Show dialogue after animation (auto-advance)
 			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Miguel's introduction - both characters walk to new positions
 		3:
@@ -581,10 +591,14 @@ func show_next_line() -> void:
 			
 			# Show dialogue after movement
 			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Kapitana's response
 		4:
 			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Miguel's questions - choice line
 		5:
@@ -592,11 +606,17 @@ func show_next_line() -> void:
 			choice_completed = false
 			# Show Miguel's dialogue first
 			await show_dialogue_with_auto_advance(speaker, text)
-			# The choice will be shown in _on_next_pressed() after this dialogue
+			# Automatically show choices after dialogue
+			var choice_data = get_choice_for_line(current_line)
+			if choice_data:
+				show_miguel_choice(choice_data)
+			return
 		
 		# Normal dialogue lines 6-7
 		6, 7:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Barangay NPC line 8 - NPC walks to position
 		8:
@@ -646,7 +666,9 @@ func show_next_line() -> void:
 				print("❌ Barangay NPC not found")
 			
 			# Show dialogue after movement
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Line 9 - Miguel and Celine back to idle_back
 		9:
@@ -669,11 +691,15 @@ func show_next_line() -> void:
 					print("✅ Celine set to idle_back")
 			
 			# Show dialogue after animation
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Normal dialogue line 10
 		10:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Line 11 - Complex simultaneous character movements
 		11:
@@ -843,7 +869,9 @@ func show_next_line() -> void:
 				print("📋 Evidence inventory closed, now showing dialogue")
 			
 			# Show dialogue after inventory is closed
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Line 12 - PlayerM additional movements
 		12:
@@ -867,11 +895,15 @@ func show_next_line() -> void:
 				print("🎭 PlayerM: Step 2 completed - walk_left to 448.0x")
 			
 			# Show dialogue after movement
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Normal dialogue lines 13-15
 		13, 14, 15:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Line 16 - Kapitana movement with PlayerM and Celine animations
 		16:
@@ -920,23 +952,33 @@ func show_next_line() -> void:
 			print("🎭 Kapitana: Reached (432, 440) - idle_back")
 			
 			# Show dialogue after all animations complete
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Normal dialogue lines 17-18
 		17, 18:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Miguel's confrontation - choice line
 		19:
 			# Reset choice completed flag for this new choice
 			choice_completed = false
 			# Show Miguel's dialogue first
-			show_dialogue_with_transition(speaker, text)
-			# The choice will be shown in _on_next_pressed() after this dialogue
+			await show_dialogue_with_auto_advance(speaker, text)
+			# Automatically show choices after dialogue
+			var choice_data = get_choice_for_line(current_line)
+			if choice_data:
+				show_miguel_choice(choice_data)
+			return
 		
 		# Normal dialogue line 20
 		20:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Line 21 - Kapitana walks and fades out, then character animations
 		21:
@@ -979,22 +1021,28 @@ func show_next_line() -> void:
 					print("✅ PlayerM set to idle_left")
 			
 			# Show dialogue after animations
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Final dialogue line 22 (last line)
 		22:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 		
 		# Default: Regular dialogue for other lines
 		_:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			current_line += 1
+			call_deferred("show_next_line")
 
 # --------------------------
 # INPUT HANDLING
 # --------------------------
 func _on_next_pressed() -> void:
-    # Keep for choice/evidence interactions only; cutscene lines auto-advance via timers
-    pass
+	# Keep for choice/evidence interactions only; cutscene lines auto-advance via timers
+	pass
 
 # --------------------------
 # CUTSCENE END
@@ -1116,3 +1164,16 @@ func fade_in_scene() -> void:
 	
 	await fade_tween.finished
 	print("✅ Scene faded in - normal gameplay ready")
+
+# --------------------------
+# DEBUG: F10 skip
+# --------------------------
+func _unhandled_input(event: InputEvent) -> void:
+	# Press F10 to instantly complete the barangay hall cutscene (debug only)
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.physical_keycode == KEY_F10:
+			var checkpoint_manager = get_node("/root/CheckpointManager")
+			checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
+			if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+				DialogueUI.set_cutscene_mode(false)
+			end_cutscene()
