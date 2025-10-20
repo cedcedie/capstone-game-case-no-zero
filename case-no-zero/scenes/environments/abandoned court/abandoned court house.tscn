@@ -1,14 +1,14 @@
 [gd_scene load_steps=27 format=4 uid="uid://d3licrfxjprt0"]
 
-[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/Room_Builder_Walls_32x32.png" id="1_6rsvy"]
-[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/Room_Builder_Floors_32x32.png" id="2_o0o8n"]
-[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/Room_Builder_borders_32x32.png" id="3_utqjx"]
-[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/1_Generic_32x32.png" id="4_ovot3"]
-[ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/sprites/environments/2_LivingRoom_32x32.png" id="5_ki4la"]
-[ext_resource type="Texture2D" uid="uid://cj4yp0lhfkuvl" path="res://assets/sprites/environments/6_Music_and_sport_32x32.png" id="6_brp1g"]
-[ext_resource type="Texture2D" uid="uid://ikty23evb787" path="res://assets/sprites/environments/8_Gym_32x32.png" id="7_5ghb4"]
-[ext_resource type="Texture2D" uid="uid://bjwpfqjaw43q1" path="res://assets/sprites/environments/9_Fishing_32x32.png" id="8_sxkiu"]
-[ext_resource type="Texture2D" uid="uid://dr38kdsh40l27" path="res://assets/sprites/environments/12_Kitchen_32x32.png" id="9_ap80a"]
+[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="1_6rsvy"]
+[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_o0o8n"]
+[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="3_utqjx"]
+[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="4_ovot3"]
+[ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/sprites/environments/interior/2_LivingRoom_32x32.png" id="5_ki4la"]
+[ext_resource type="Texture2D" uid="uid://cj4yp0lhfkuvl" path="res://assets/sprites/environments/interior/6_Music_and_sport_32x32.png" id="6_brp1g"]
+[ext_resource type="Texture2D" uid="uid://ikty23evb787" path="res://assets/sprites/environments/interior/8_Gym_32x32.png" id="7_5ghb4"]
+[ext_resource type="Texture2D" uid="uid://bjwpfqjaw43q1" path="res://assets/sprites/environments/interior/9_Fishing_32x32.png" id="8_sxkiu"]
+[ext_resource type="Texture2D" uid="uid://dr38kdsh40l27" path="res://assets/sprites/environments/interior/12_Kitchen_32x32.png" id="9_ap80a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c1k5"]
 texture = ExtResource("1_6rsvy")

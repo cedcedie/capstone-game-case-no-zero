@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=4 uid="uid://d0i4ttyoydcwx"]
 
-[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/Room_Builder_borders_32x32.png" id="1_bhjy6"]
-[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/Room_Builder_Floors_32x32.png" id="2_nnsve"]
-[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/Room_Builder_Walls_32x32.png" id="3_evnfg"]
+[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_bhjy6"]
+[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_nnsve"]
+[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="3_evnfg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ubknc"]
 texture = ExtResource("1_bhjy6")
