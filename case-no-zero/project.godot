@@ -29,6 +29,7 @@ CheckpointManager="*res://scripts/managers/CheckpointManager.gd"
 ScenePreloader="*res://scripts/managers/ScenePreloader.gd"
 EvidenceInventorySettings="*res://EvidenceInventory.tscn"
 Settings="*res://Settings.tscn"
+VoiceBlipManager="*res://scripts/managers/voice_blip_manager.gd"
 
 [dialogic]
 

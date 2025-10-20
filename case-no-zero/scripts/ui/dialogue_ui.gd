@@ -5,12 +5,14 @@ extends CanvasLayer
 @onready var dialogue_label = $Container/Dialogue
 @onready var next_button = $Container/Button
 @onready var typing_sound = $Container/TypingSound 
+@onready var portrait_rect: TextureRect = $Container/Face/TextureRect if has_node("Container/Face/TextureRect") else null
 
 signal next_pressed
 var waiting_for_next: bool = false
 var is_typing: bool = false
 var typing_speed := 0.01
 var cutscene_mode: bool = false
+var blip_interval: int = 3  # play a voice blip every N characters
 
 func set_cutscene_mode(enabled: bool) -> void:
 	cutscene_mode = enabled
@@ -42,15 +44,23 @@ func hide_ui():
 func show_dialogue_line(speaker: String, text: String) -> void:
 	show_ui()
 	name_label.text = speaker
+	_apply_portrait_for_speaker(speaker)
 	next_button.hide()
 	dialogue_label.text = ""
 	waiting_for_next = false
 	is_typing = true
 
+	# Blips are triggered rhythmically during typing; no initial blip
+
 	for i in text.length():
 		dialogue_label.text = text.substr(0, i + 1)
 		if not typing_sound.playing:
 			typing_sound.play() # Play the typing sound each step (short "tick" or "blip" sound works best)
+		
+		# Play voice blip every few characters during typing (like Undertale)
+		if VoiceBlipManager and blip_interval > 0 and i % blip_interval == 0:
+			VoiceBlipManager.play_voice_blip(speaker)
+		
 		await get_tree().create_timer(typing_speed).timeout
 
 	is_typing = false
@@ -60,6 +70,19 @@ func show_dialogue_line(speaker: String, text: String) -> void:
 	else:
 		waiting_for_next = true
 		next_button.show() # Show the next button only after typing finishes
+
+func _apply_portrait_for_speaker(speaker: String) -> void:
+	if portrait_rect == null:
+		return
+	var tex: Texture2D = null
+	match speaker.to_lower():
+		"miguel", "erwin":
+			tex = load("res://Main_character_closeup.png")
+		"celine":
+			tex = load("res://new_celine_closeup.png")
+		_:
+			tex = null
+	portrait_rect.texture = tex
 
 func _on_next_pressed():
 	if cutscene_mode:

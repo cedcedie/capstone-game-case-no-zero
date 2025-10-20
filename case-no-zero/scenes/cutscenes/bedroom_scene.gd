@@ -5,9 +5,11 @@ var dialogue_ui: CanvasLayer = null  # Will reference global DialogueUI autoload
 @onready var player: CharacterBody2D = $PlayerM
 @onready var celine: CharacterBody2D = $Celine
 @onready var knock_sfx: AudioStreamPlayer = $KnockSFX
-@onready var bgm_mystery: AudioStreamPlayer = $BGM_Mystery
+@onready var bgm: AudioStreamPlayer = $BGM
+@onready var shock_sfx: AudioStreamPlayer = $ShockSFX
 @onready var cinematic_text: Label = $CinematicText
 @onready var door: Area2D = $Door
+@onready var fade_overlay: ColorRect = $CanvasLayer/FadeOverlay
 @onready var tilemaps: Array = [
 	$"Ground layer",
 	$"border layer",
@@ -66,9 +68,10 @@ func load_dialogue() -> void:
 func start_intro() -> void:
 	load_dialogue()
 
-	# Disable player control
-	if "control_enabled" in player:
-		player.control_enabled = false
+	# Disable player movement
+	if player and player.has_method("disable_movement"):
+		player.disable_movement()
+		print("📋 Player movement disabled for cutscene")
 
 	# Setup initial states
 	player.anim_sprite.play("idle_down")
@@ -76,6 +79,10 @@ func start_intro() -> void:
 
 	celine.position = Vector2(9, 40)
 	celine.visible = false
+
+	# Hide the fade overlay initially to prevent black square
+	if fade_overlay:
+		fade_overlay.visible = false
 
 	# Enable cutscene mode in DialogueUI (hide Next, auto-advance handled by timers)
 	if dialogue_ui and dialogue_ui.has_method("set_cutscene_mode"):
@@ -137,14 +144,20 @@ func show_dialogue_line(line_index: int):
 	if line_index >= 0 and line_index < dialogue_lines.size():
 		var line = dialogue_lines[line_index]
 		var text = line["text"]
+		var speaker = line["speaker"]
 		
 		# Calculate faster timing for testing (2 seconds per dialogue)
 		var typing_time = text.length() * 0.005  # Faster typing: 5ms per character
 		var reading_time = max(0.5, text.length() * 0.01)  # Faster reading: 10ms per char, min 0.5s
 		var total_wait = typing_time + reading_time
 		
-		# Show dialogue
-		dialogue_ui.show_dialogue_line(line["speaker"], text)
+		# Show dialogue (voice blip is handled automatically in DialogueUI)
+		dialogue_ui.show_dialogue_line(speaker, text)
+		
+		# Play voice blip for bedroom scene (since AnimationPlayer bypasses DialogueUI typing)
+		if VoiceBlipManager:
+			VoiceBlipManager.play_voice_blip(speaker)
+			print("🎵 Voice blip called for speaker: " + speaker)
 		
 		# Wait for the calculated time
 		await get_tree().create_timer(total_wait).timeout
@@ -155,6 +168,12 @@ func auto_vanish_dialogue():
 
 # Shocked camera shake - more dramatic and sudden
 func camera_shake_shocked():
+	# Play shock sound effect immediately
+	if shock_sfx:
+		shock_sfx.volume_db = -20  # Louder for impact
+		shock_sfx.play()
+		print("💥 Shock sound effect played with camera shake")
+	
 	var camera = get_viewport().get_camera_2d()
 	if not camera:
 		return
@@ -215,30 +234,6 @@ func show_dialogue_40(): show_dialogue_line(40)
 func show_dialogue_41(): show_dialogue_line(41)
 func show_dialogue_42(): show_dialogue_line(42)
 func show_dialogue_43(): show_dialogue_line(43)
-func show_dialogue_44(): show_dialogue_line(44)
-func show_dialogue_45(): show_dialogue_line(45)
-func show_dialogue_46(): show_dialogue_line(46)
-func show_dialogue_47(): show_dialogue_line(47)
-func show_dialogue_48(): show_dialogue_line(48)
-func show_dialogue_49(): show_dialogue_line(49)
-func show_dialogue_50(): show_dialogue_line(50)
-func show_dialogue_51(): show_dialogue_line(51)
-func show_dialogue_52(): show_dialogue_line(52)
-func show_dialogue_53(): show_dialogue_line(53)
-func show_dialogue_54(): show_dialogue_line(54)
-func show_dialogue_55(): show_dialogue_line(55)
-func show_dialogue_56(): show_dialogue_line(56)
-func show_dialogue_57(): show_dialogue_line(57)
-func show_dialogue_58(): show_dialogue_line(58)
-func show_dialogue_59(): show_dialogue_line(59)
-func show_dialogue_60(): show_dialogue_line(60)
-func show_dialogue_61(): show_dialogue_line(61)
-func show_dialogue_62(): show_dialogue_line(62)
-func show_dialogue_63(): show_dialogue_line(63)
-func show_dialogue_64(): show_dialogue_line(64)
-func show_dialogue_65(): show_dialogue_line(65)
-func show_dialogue_66(): show_dialogue_line(66)
-func show_dialogue_67(): show_dialogue_line(67)
 
 # Special action functions
 func play_knock_sound():
@@ -246,9 +241,10 @@ func play_knock_sound():
 		knock_sfx.play()
 
 func start_bgm():
-	if bgm_mystery and not bgm_mystery.playing:
-		bgm_mystery.volume_db = -20
-		bgm_mystery.play()
+	if bgm and not bgm.playing:
+		bgm.volume_db = -20
+		bgm.play()
+
 
 func hide_celine():
 	celine.visible = false
@@ -359,9 +355,16 @@ func end_cutscene():
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	
-	# Re-enable player control
-	if "control_enabled" in player:
-		player.control_enabled = true
+	# Add the first evidence (bodycam) to the evidence inventory
+	if has_node("/root/EvidenceInventorySettings"):
+		var evidence_ui = get_node("/root/EvidenceInventorySettings")
+		evidence_ui.add_evidence("broken_body_cam")
+		print("📋 Added bodycam evidence to inventory after bedroom cutscene")
+	
+	# Re-enable player movement
+	if player and player.has_method("enable_movement"):
+		player.enable_movement()
+		print("📋 Player movement enabled after cutscene")
 	
 	# Disable cutscene mode
 	if dialogue_ui and dialogue_ui.has_method("set_cutscene_mode"):
@@ -380,18 +383,23 @@ func start_cinematic() -> void:
 	# Hide dialogue UI
 	await dialogue_ui.hide_ui()
 	
-	# Simple fade out Celine
-	celine.modulate.a = 0.0
-	celine.visible = false
-
-	# Hide all tilemaps
+	# Ensure all elements are visible and at full opacity before fading out
 	for tilemap in tilemaps:
-		tilemap.visible = false
+		if tilemap:
+			tilemap.visible = true
+			tilemap.modulate.a = 1.0
+	if player:
+		player.visible = true
+		player.modulate.a = 1.0
+	if celine:
+		celine.visible = true
+		celine.modulate.a = 1.0
 	if door:
-		door.visible = false
-
-	# Fade to black (using fade_all_out instead of fade_overlay)
-	await fade_all_out(fade_duration)
+		door.visible = true
+		door.modulate.a = 1.0
+	
+	# Slow fade out everything (including door) to black
+	await fade_all_out(fade_duration * 3.0)  # Slower fade out
 
 	# --- CINEMATIC PART 1 ---
 	await show_cinematic_text("…Sige, Erwin.", 1.0, 1.8)
@@ -404,20 +412,20 @@ func start_cinematic() -> void:
 	await show_cinematic_text("Tingnan natin kung anong gulong napasukan mo.", 1.2, 2.5)
 	cinematic_text.visible = false
 	
-	# Restore all tilemaps
+	# Restore all tilemaps and door
 	for tilemap in tilemaps:
 		tilemap.visible = true
-		tilemap.modulate.a = 1.0
+		tilemap.modulate.a = 0.0  # Start transparent for fade in
 	if door:
 		door.visible = true
-		door.modulate.a = 1.0
+		door.modulate.a = 0.0  # Start transparent for fade in
 	
 	# Restore Celine
 	celine.visible = true
-	celine.modulate.a = 1.0
+	celine.modulate.a = 0.0  # Start transparent for fade in
 	
-	# Fade out (using fade_all_in instead of fade_overlay)
-	await fade_all_in(fade_duration)
+	# Slow fade in everything (including door)
+	await fade_all_in(fade_duration * 3.0)  # Match fade out duration
 	
 	# Restore player animation
 	player.anim_sprite.play("idle_down")
@@ -464,13 +472,32 @@ func show_cinematic_text(text: String, fade_in_duration: float, hold_duration: f
 
 # Cinematic sequence functions for AnimationPlayer
 func cinematic_sequence_70_71():
-	# Instantly fade out tileset and Celine
+	# Fade out only tileset, door, and Celine (keep Miguel visible)
+	var tween = create_tween()
+	tween.set_parallel(true)
+	
+	# Fade out tilemaps
 	for tilemap in tilemaps:
 		if tilemap:
-			tilemap.modulate.a = 0.0
-			tilemap.visible = false
+			tween.tween_property(tilemap, "modulate:a", 0.0, 2.0)
+	
+	# Fade out door
+	if door:
+		tween.tween_property(door, "modulate:a", 0.0, 2.0)
+	
+	# Fade out Celine
 	if celine:
-		celine.modulate.a = 0.0
+		tween.tween_property(celine, "modulate:a", 0.0, 2.0)
+	
+	await tween.finished
+	
+	# Hide elements after fade out (but keep Miguel visible)
+	for tilemap in tilemaps:
+		if tilemap:
+			tilemap.visible = false
+	if door:
+		door.visible = false
+	if celine:
 		celine.visible = false
 		# Disable Celine's collision permanently
 		var cshape := celine.get_node_or_null("CollisionShape2D")
@@ -481,21 +508,26 @@ func cinematic_sequence_70_71():
 	await show_cinematic_text("Sige, Erwin.", 1.0, 2.0)
 	await show_cinematic_text("Papatunayan kita na hindi ka ang may kasalanan.", 1.0, 2.0)
 	
-	# Fade only tileset back in (NOT Celine)
+	# Fade only tileset and door back in (NOT Celine)
 	for tilemap in tilemaps:
 		if tilemap:
 			tilemap.visible = true
 			tilemap.modulate.a = 0.0
+	if door:
+		door.visible = true
+		door.modulate.a = 0.0
 	
-	# Fade in only tileset elements (Celine stays hidden)
-	var tween = create_tween()
-	tween.set_parallel(true)
+	# Fade in only tileset and door elements (Celine stays hidden)
+	var fade_in_tween = create_tween()
+	fade_in_tween.set_parallel(true)
 	
 	for tilemap in tilemaps:
 		if tilemap:
-			tween.tween_property(tilemap, "modulate:a", 1.0, 1.5)
+			fade_in_tween.tween_property(tilemap, "modulate:a", 1.0, 1.5)
+	if door:
+		fade_in_tween.tween_property(door, "modulate:a", 1.0, 1.5)
 	
-	await tween.finished
+	await fade_in_tween.finished
 
 func show_movement_tutorial() -> void:
 	# Tutorial removed per request
@@ -505,6 +537,12 @@ func show_movement_tutorial() -> void:
 # TASK MANAGEMENT
 # --------------------------
 func start_first_task() -> void:
+	# Add the first evidence (bodycam) to the evidence inventory
+	if has_node("/root/EvidenceInventorySettings"):
+		var evidence_ui = get_node("/root/EvidenceInventorySettings")
+		evidence_ui.add_evidence("broken_body_cam")
+		print("📋 Added bodycam evidence to inventory when starting first task")
+	
 	if task_manager:
 		task_manager.start_next_task()
 	else:
@@ -528,9 +566,37 @@ func debug_complete_bedroom_cutscene() -> void:
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	if dialogue_ui and dialogue_ui.has_method("set_cutscene_mode"):
 		dialogue_ui.set_cutscene_mode(false)
+	
+	# Re-enable player movement
+	if player and player.has_method("enable_movement"):
+		player.enable_movement()
+		print("📋 Player movement enabled after debug cutscene completion")
+	
 	skip_to_post_cutscene_state()
 
 func _unhandled_input(event: InputEvent) -> void:
+	# Handle evidence inventory input (TAB key)
+	if event.is_action_pressed("evidence_inventory"):
+		# Check if bedroom cutscene is completed
+		var checkpoint_manager = get_node_or_null("/root/CheckpointManager")
+		var bedroom_cutscene_completed = false
+		
+		if checkpoint_manager:
+			bedroom_cutscene_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
+		
+		# Only allow evidence inventory access after bedroom cutscene is completed
+		if not bedroom_cutscene_completed:
+			print("⚠️ Evidence inventory access denied - bedroom cutscene not completed")
+		elif is_cinematic_active:
+			print("⚠️ Evidence inventory access blocked during cinematic")
+		else:
+			# Toggle Evidence Inventory
+			if has_node("/root/EvidenceInventorySettings"):
+				var evidence_ui = get_node("/root/EvidenceInventorySettings")
+				evidence_ui.toggle_evidence_inventory()
+				print("📋 Evidence inventory toggled via TAB in bedroom scene")
+			get_viewport().set_input_as_handled()
+	
 	# Press F10 to instantly complete the bedroom cutscene (debug only)
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_F10:
@@ -566,6 +632,12 @@ func _ready() -> void:
 		if not dialogue_ui.is_connected("next_pressed", cb):
 			dialogue_ui.connect("next_pressed", cb)
 	
+	# Start BGM music automatically when scene loads
+	if bgm and not bgm.playing:
+		bgm.volume_db = -20
+		bgm.play()
+		print("🎵 BGM music started on scene load")
+	
 	# Check if bedroom cutscene has already been played
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	# TEMPORARY DEBUG: Clear checkpoint to test cutscene repeatedly
@@ -594,9 +666,18 @@ func skip_to_post_cutscene_state() -> void:
 		celine.modulate.a = 1.0
 		celine.visible = true
 	
-	# Note: fade_overlay node has been removed
+	# Hide the fade overlay to prevent black square
+	if fade_overlay:
+		fade_overlay.visible = false
 	
-	# Enable player control
-	if "control_enabled" in player:
-		player.control_enabled = true
+	# Add the first evidence (bodycam) to the evidence inventory
+	if has_node("/root/EvidenceInventorySettings"):
+		var evidence_ui = get_node("/root/EvidenceInventorySettings")
+		evidence_ui.add_evidence("broken_body_cam")
+		print("📋 Added bodycam evidence to inventory when skipping to post-cutscene state")
+	
+	# Enable player movement
+	if player and player.has_method("enable_movement"):
+		player.enable_movement()
+		print("📋 Player movement enabled in post-cutscene state")
 	

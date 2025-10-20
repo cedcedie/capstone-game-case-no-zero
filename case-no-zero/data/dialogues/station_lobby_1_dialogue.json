@@ -1,36 +1,36 @@
 {
   "station_lobby_1": {
-    "first_interaction": [
-      {
-        "speaker": "Station Lobby 1",
-        "text": "Nakita mo ba si PO1 Darwin kanina? Mukhang stressed na stressed siya."
-      },
-      {
-        "speaker": "Station Lobby 2", 
-        "text": "Oo nga! Laging may hawak na kape at nagsusulat sa notebook niya."
-      },
-      {
-        "speaker": "Station Lobby 1",
-        "text": "Sabi nila may problema daw sa kaso ni Leo Mendoza. Ang daming inconsistencies."
-      },
-      {
-        "speaker": "Station Lobby 2",
-        "text": "Kaya pala laging nagmamadali si PO1 Darwin. Baka may deadline sila."
-      },
-      {
-        "speaker": "Station Lobby 1",
-        "text": "Pero hindi ka makakapasok dito. May mga bagay na kailangan naming gawin."
-      }
-    ],
-    "repeated_interaction": [
-      {
-        "speaker": "Station Lobby 1",
-        "text": "Hindi ka pa rin makakapasok dito."
-      },
-      {
-        "speaker": "Station Lobby 2",
-        "text": "Umalis na kayo dito."
-      }
-    ]
+	"first_interaction": [
+	  {
+		"speaker": "Station Lobby 1",
+		"text": "Nakita mo ba si PO1 Darwin kanina? Mukhang stressed na stressed siya."
+	  },
+	  {
+		"speaker": "Station Lobby 2", 
+		"text": "Oo nga! Laging may hawak na kape at nagsusulat sa notebook niya."
+	  },
+	  {
+		"speaker": "Station Lobby 1",
+		"text": "Sabi nila may problema daw sa kaso ni Leo Mendoza. Ang daming inconsistencies."
+	  },
+	  {
+		"speaker": "Station Lobby 2",
+		"text": "Kaya pala laging nagmamadali si PO1 Darwin. Baka may deadline sila."
+	  },
+	  {
+		"speaker": "Station Lobby 1",
+		"text": "Pero hindi ka makakapasok dito. May mga bagay na kailangan naming gawin."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Station Lobby 1",
+		"text": "Hindi ka pa rin makakapasok dito."
+	  },
+	  {
+		"speaker": "Station Lobby 2",
+		"text": "Umalis na kayo dito."
+	  }
+	]
   }
 }

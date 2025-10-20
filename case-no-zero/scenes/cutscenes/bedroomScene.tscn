@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://5d4uo5rtdrrk"]
+[gd_scene load_steps=91 format=4 uid="uid://5d4uo5rtdrrk"]
 
 [ext_resource type="Script" uid="uid://dy2v4pd1ffrug" path="res://scenes/cutscenes/bedroom_scene.gd" id="1_2e68i"]
 [ext_resource type="Texture2D" uid="uid://q7u1l1cvwbcj" path="res://assets/sprites/environments/interior/Room_Builder_3d_walls_32x32.png" id="1_4eorf"]
@@ -38,12 +38,13 @@
 [ext_resource type="Texture2D" uid="uid://bjwpfqjaw43q1" path="res://assets/sprites/environments/interior/9_Fishing_32x32.png" id="34_epoxu"]
 [ext_resource type="Texture2D" uid="uid://cqj48sh5buudm" path="res://assets/sprites/environments/interior/10_Birthday_party_32x32.png" id="35_reg1n"]
 [ext_resource type="PackedScene" uid="uid://brm4grij188xa" path="res://scenes/objects/Door.tscn" id="37_0qw23"]
-[ext_resource type="AudioStream" uid="uid://dablaxbvoldyy" path="res://assets/audio/16-Bit Starter Pack/Various Themes/Simpler Times.ogg" id="37_gk4ge"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="38_2ikr4"]
 [ext_resource type="Script" uid="uid://crdvxi7b07kbs" path="res://scenes/characters/main/celine_navarro.gd" id="38_22wn0"]
 [ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main/celine_navarro.tscn" id="38_csu0h"]
 [ext_resource type="AudioStream" uid="uid://d1fshkp328kuu" path="res://assets/audio/sfx/fast-knocking-on-door-352704.mp3" id="39_muwu8"]
 [ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperator-Bold.ttf" id="43_26cbc"]
+[ext_resource type="AudioStream" uid="uid://dvahxerwc8lsa" path="res://assets/audio/deltaruneAud/You Can Always Come Home.ogg" id="44_bl48i"]
+[ext_resource type="AudioStream" uid="uid://bw4wlfk14keab" path="res://powerUp(1).wav" id="45_r3u26"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wkb85"]
 texture = ExtResource("1_4eorf")
@@ -22095,9 +22096,84 @@ sources/25 = SubResource("TileSetAtlasSource_pecvl")
 font = ExtResource("43_26cbc")
 font_size = 18
 
+[sub_resource type="Animation" id="Animation_r3u26"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Celine/AnimatedSprite2D:Miguel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerM:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(185, 184)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"gun_idle_right"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerM/Camera2D:zoom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Celine/AnimatedSprite2D:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_back"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Celine:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(137, 184)]
+}
+
 [sub_resource type="Animation" id="Animation_bl48i"]
 resource_name = "bedroom_scene"
-length = 120.0
+length = 90.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22105,7 +22181,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 3, 5, 7, 9, 14, 16, 18, 20, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 36.5, 38, 39.5, 41.5, 43, 44.5, 46, 48, 49.5, 51, 52.5, 54, 55.5, 57, 58.5, 60, 61.5, 63, 64.5, 66, 67.5, 69, 70.5, 72, 73.5, 75, 76.5, 78, 79.5, 80, 90),
+"times": PackedFloat32Array(1, 3, 5, 7, 9, 14, 16, 18, 20, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 36.5, 38, 39.5, 41.5, 43, 44.5, 46, 48, 49.5, 51, 52.5, 54, 55.5, 57, 58.5, 60, 61.5, 63, 64.5, 66, 67.5, 69, 70.5, 72, 73.5, 75, 76.5, 78, 79.5, 80, 89.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [0],
@@ -22365,81 +22441,6 @@ tracks/8/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_r3u26"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Celine/AnimatedSprite2D:Miguel")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerM:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(185, 184)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerM/AnimatedSprite2D:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"gun_idle_right"]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerM/Camera2D:zoom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.5, 1.5)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Celine/AnimatedSprite2D:animation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walk_back"]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Celine:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(137, 184)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r3u26"]
 _data = {
 &"RESET": SubResource("Animation_r3u26"),
@@ -22492,6 +22493,7 @@ position = Vector2(185, 184)
 
 [node name="KnockSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("39_muwu8")
+volume_db = -20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -22499,9 +22501,6 @@ stream = ExtResource("39_muwu8")
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
-
-[node name="BGM_Mystery" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("37_gk4ge")
 
 [node name="CinematicText" type="Label" parent="."]
 offset_left = 53.0
@@ -22516,3 +22515,11 @@ autowrap_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_r3u26")
 }
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("44_bl48i")
+volume_db = -20.0
+
+[node name="ShockSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("45_r3u26")
+volume_db = -20.0

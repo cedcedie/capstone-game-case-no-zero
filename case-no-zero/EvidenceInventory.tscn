@@ -143,10 +143,10 @@ patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
 
-[node name="HandwritingSampleEvidence" type="Sprite2D" parent="UIContainer/EvidenceBoxListBG/Evidence1"]
-position = Vector2(24.1851, 25)
+[node name="BrokenBodyCamEvidence" type="Sprite2D" parent="UIContainer/EvidenceBoxListBG/Evidence1"]
+position = Vector2(24.1852, 25)
 scale = Vector2(1.05153, 1)
-texture = ExtResource("6_ph1hf")
+texture = ExtResource("7_pa4yr")
 
 [node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence1"]
 layout_mode = 0
@@ -191,10 +191,11 @@ patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
 
-[node name="BrokenBodyCamEvidence" type="Sprite2D" parent="UIContainer/EvidenceBoxListBG/Evidence3"]
-position = Vector2(24.1851, 25)
-scale = Vector2(1.05153, 1)
-texture = ExtResource("7_pa4yr")
+[node name="HandwritingSampleEvidence" type="Sprite2D" parent="UIContainer/EvidenceBoxListBG/Evidence3"]
+z_index = 1
+position = Vector2(24.1852, 25)
+scale = Vector2(1.15011, 1.03125)
+texture = ExtResource("6_ph1hf")
 
 [node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence3"]
 layout_mode = 0
