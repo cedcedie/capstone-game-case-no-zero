@@ -2,31 +2,31 @@
 	"evidence": {
 		"handwriting_sample": {
 			"name": "Handwriting Sample",
-			"description": "A handwritten note found at the crime scene with suspicious inconsistencies."
+			"description": "Isang sulat-kamay na natagpuan sa crime scene na may mga kahina-hinalang pagkakaiba."
 		},
 		"logbook": {
 			"name": "Logbook Evidence",
-			"description": "Official police logbook revealing timeline discrepancies in the incident report."
+			"description": "Opisyal na police logbook na nagpapakita ng mga pagkakaiba sa timeline ng incident report."
 		},
 		"broken_body_cam": {
 			"name": "Broken Body Camera",
-			"description": "Damaged police body camera with potentially recoverable footage."
+			"description": "Nasirang police body camera na may potensyal na ma-recover na footage at audio."
 		},
 		"cctv_footage": {
 			"name": "CCTV Footage",
-			"description": "Security footage showing suspicious activity before the incident."
+			"description": "Security footage na nagpapakita ng kahina-hinalang aktibidad bago ang insidente."
 		},
 		"radio_log": {
 			"name": "Radio Communication Log",
-			"description": "Police radio communications revealing communication gaps and coordination issues."
+			"description": "Police radio communications na nagpapakita ng mga gaps sa komunikasyon at coordination issues."
 		},
 		"autopsy_report": {
 			"name": "Autopsy Report",
-			"description": "Medical report with inconsistencies contradicting the official police narrative."
+			"description": "Medical report na may mga pagkakaiba na sumasalungat sa opisyal na police narrative."
 		},
 		"leos_notebook": {
 			"name": "Leo's Notebook",
-			"description": "Personal notes raising serious questions about police conduct during the incident."
+			"description": "Personal na mga tala na nagtataas ng mga seryosong tanong tungkol sa police conduct sa panahon ng insidente."
 		}
 	}
 }
