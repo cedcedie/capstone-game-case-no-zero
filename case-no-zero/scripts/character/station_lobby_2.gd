@@ -38,7 +38,7 @@ func _ready():
 	
 	# Play idle animation
 	if animated_sprite:
-		animated_sprite.play("idle_front")
+		animated_sprite.play("idle_left")
 		print("🔍 station_lobby_2: Animation started")
 
 func _process(_delta):
@@ -68,6 +68,7 @@ func _on_body_entered(body):
 	if body.name == "PlayerM":
 		is_player_nearby = true
 		player_reference = body
+		face_player(body.global_position)
 		show_interaction_label()
 		print("👮 Player near station lobby 2")
 
@@ -75,6 +76,7 @@ func _on_body_exited(body):
 	if body == player_reference:
 		is_player_nearby = false
 		player_reference = null
+		restore_original_animation()  # Return to original pose when player leaves
 		hide_interaction_label()
 		print("👮 Player left station lobby 2")
 
@@ -98,6 +100,27 @@ func hide_interaction_label():
 	
 	tween.tween_property(interaction_label, "modulate", Color(1.0, 1.0, 0.0, 0.0), label_fade_duration)  # Yellow color, transparent
 	tween.tween_property(interaction_label, "position:y", label_show_position + label_slide_offset, label_fade_duration)
+
+func face_player(player_position: Vector2):
+	"""Make NPC face the player"""
+	var direction = player_position - global_position
+	
+	if abs(direction.x) > abs(direction.y):
+		# Player is more to the left or right
+		if direction.x > 0:
+			animated_sprite.play("idle_right")
+		else:
+			animated_sprite.play("idle_left")
+	else:
+		# Player is more above or below
+		if direction.y > 0:
+			animated_sprite.play("idle_front")
+		else:
+			animated_sprite.play("idle_back")
+
+func restore_original_animation():
+	"""Restore the NPC's original idle animation after dialogue"""
+	animated_sprite.play("idle_left")
 
 func interact():
 	print("💬 Interacting with station lobby 2")
@@ -152,6 +175,9 @@ func show_dialogue():
 	
 	# Reset dialogue state
 	is_in_dialogue = false
+	
+	# Restore original animation after dialogue
+	restore_original_animation()
 	
 	# Re-enable player movement after dialogue
 	if player_reference and player_reference.has_method("enable_movement"):

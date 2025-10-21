@@ -54,6 +54,11 @@ func enable_character_collision(character: Node) -> void:
 func _ready():
 	print("🔍 Police Lobby Cutscene: _ready() called")
 	
+	# Set scene BGM using AudioManager
+	if AudioManager:
+		AudioManager.set_scene_bgm("police_lobby")
+		print("🎵 Police Lobby: Scene BGM set")
+	
 	# Get task manager reference
 	task_manager = get_node("/root/TaskManager")
 	

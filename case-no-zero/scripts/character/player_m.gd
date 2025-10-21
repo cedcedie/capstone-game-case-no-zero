@@ -70,6 +70,10 @@ func enable_movement():
 	control_enabled = true
 	print("Player movement enabled after dialogue")
 
+# Function to get camera reference
+func get_camera() -> Camera2D:
+	return $Camera2D
+
 func _physics_process(_delta: float) -> void:
 	if control_enabled:
 		_handle_input()
@@ -138,6 +142,9 @@ func _handle_input() -> void:
 
 func _update_animation(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
+		# Safety check: ensure last_facing is valid for player animations
+		if last_facing == "front":
+			last_facing = "down"  # Player doesn't have idle_front, use idle_down instead
 		anim_sprite.play("idle_" + last_facing)
 	else:
 		if abs(dir.x) > abs(dir.y):

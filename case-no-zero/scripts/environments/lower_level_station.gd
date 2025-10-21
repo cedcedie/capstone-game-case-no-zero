@@ -10,7 +10,7 @@ var dialog_chooser: CanvasLayer = null  # Will reference DialogChooser autoload
 @onready var guard_2: CharacterBody2D = $station_guard_2
 @onready var guard_3: CharacterBody2D = $station_guard_3
 @onready var police_lobby_trigger: Area2D = $Area2D_police_lobby
-@onready var camera: Camera2D = $PlayerM/Camera2D
+# Camera is now managed by CameraZoomManager autoload
 
 # --- Task Manager reference ---
 var task_manager: Node = null
@@ -72,7 +72,7 @@ func enable_character_collision(character: Node) -> void:
 @export var fade_duration: float = 1.2
 @export var text_fade_duration: float = 0.8
 @export var transition_pause: float = 0.3
-@export var camera_zoom_duration: float = 1.5
+# Camera zoom duration removed - now managed by CameraZoomManager
 @export var shake_intensity: float = 12.0
 @export var shake_duration: float = 0.5
 var current_tween: Tween
@@ -155,6 +155,11 @@ func start_detention_scene() -> void:
 	print("🎬 Detention cell scene starting...")
 	load_dialogue()
 
+	# Change BGM to cutscene music
+	if AudioManager:
+		AudioManager.play_cutscene_bgm("lower_level_cutscene")
+		print("🎵 Lower Level: Cutscene BGM started")
+
 	# Disable player control
 	if player and "control_enabled" in player:
 		player.control_enabled = false
@@ -191,9 +196,8 @@ func setup_initial_positions() -> void:
 		if boy_trip.get_node_or_null("AnimatedSprite2D"):
 			boy_trip.get_node("AnimatedSprite2D").play("idle_right")
 	
-	# Set initial camera zoom to 1.8
-	if camera:
-		camera.zoom = Vector2(1.8, 1.8)
+	# Camera zoom is now managed by CameraZoomManager autoload
+	# No need to manually set zoom here
 
 # --------------------------
 # HELPER FUNCTIONS
@@ -275,10 +279,12 @@ func show_dialogue_with_auto_advance(speaker: String, text: String) -> void:
 
 func camera_shake() -> void:
 	"""Add camera shake effect for emotional emphasis"""
-	if not camera:
+	# Get camera from player
+	var player_camera = player.get_node_or_null("Camera2D")
+	if not player_camera:
 		return
 	
-	var original_offset = camera.offset
+	var original_offset = player_camera.offset
 	var shake_tween = create_tween()
 	shake_tween.set_loops()
 	
@@ -288,22 +294,59 @@ func camera_shake() -> void:
 			randf_range(-shake_intensity, shake_intensity),
 			randf_range(-shake_intensity, shake_intensity)
 		)
-		shake_tween.tween_property(camera, "offset", original_offset + random_offset, shake_duration / 10.0)
+		shake_tween.tween_property(player_camera, "offset", original_offset + random_offset, shake_duration / 10.0)
 	
 	# Return to original position
 	await get_tree().create_timer(shake_duration).timeout
 	shake_tween.kill()
-	camera.offset = original_offset
+	player_camera.offset = original_offset
 
-func tween_camera_zoom(target_zoom: float) -> void:
-	"""Tween camera zoom to target value"""
-	if not camera:
+func focus_camera_on_erwin() -> void:
+	"""Focus camera on Erwin - just moves camera, doesn't return automatically"""
+	if not player or not boy_trip:
 		return
 	
-	var zoom_tween = create_tween()
-	zoom_tween.set_ease(Tween.EASE_IN_OUT)
-	zoom_tween.set_trans(Tween.TRANS_CUBIC)
-	zoom_tween.tween_property(camera, "zoom", Vector2(target_zoom, target_zoom), camera_zoom_duration)
+	var player_camera = player.get_node_or_null("Camera2D")
+	if not player_camera:
+		return
+	
+	# Calculate position to show both Miguel and Erwin
+	var miguel_pos = player.global_position
+	var erwin_pos = boy_trip.global_position
+	var center_pos = (miguel_pos + erwin_pos) / 2.0
+	
+	# Create focus animation
+	var focus_tween = create_tween()
+	focus_tween.set_ease(Tween.EASE_IN_OUT)
+	focus_tween.set_trans(Tween.TRANS_CUBIC)
+	
+	# Move camera to center between Miguel and Erwin
+	focus_tween.tween_property(player_camera, "offset", center_pos - player.global_position, 1.0)
+	# Keep zoom at 2.0 (no zoom change)
+	focus_tween.parallel().tween_property(player_camera, "zoom", Vector2(2.0, 2.0), 1.0)
+	
+	print("📸 Camera focused on Erwin")
+
+func return_camera_to_original() -> void:
+	"""Return camera to original position and zoom"""
+	if not player:
+		return
+	
+	var player_camera = player.get_node_or_null("Camera2D")
+	if not player_camera:
+		return
+	
+	# Return camera to original position and zoom
+	var return_tween = create_tween()
+	return_tween.set_ease(Tween.EASE_IN_OUT)
+	return_tween.set_trans(Tween.TRANS_CUBIC)
+	return_tween.tween_property(player_camera, "offset", Vector2.ZERO, 1.0)
+	return_tween.parallel().tween_property(player_camera, "zoom", Vector2(2.0, 2.0), 1.0)
+	
+	print("📸 Camera returned to original position")
+
+# Camera zoom is now managed by CameraZoomManager autoload
+# This function is no longer needed
 
 func fade_out_all() -> void:
 	"""Fade out all visible elements"""
@@ -430,11 +473,15 @@ func show_next_line() -> void:
 		1:
 			# Build-up: shake + zoom before the dialogue for stronger emphasis
 			await camera_shake()
+			# Focus camera on Erwin to show both characters
+			await focus_camera_on_erwin()
 			if dialogue_ui:
 				dialogue_ui.hide()
 			await play_character_animation(boy_trip, "idle_right", transition_pause)
-			await tween_camera_zoom(1.4)
+			# Show dialogue while camera is focused on Erwin
 			await show_dialogue_with_auto_advance(speaker, text)
+			# Return camera to original position after dialogue
+			await return_camera_to_original()
 			current_line += 1
 			call_deferred("show_next_line")
 
@@ -632,6 +679,10 @@ func end_scene():
 	cutscene_played = true
 	print("🔍 cutscene_played set to: ", cutscene_played)
 	
+	# DON'T restore scene BGM - let it continue playing seamlessly
+	# This allows the audio to continue across all 4 station scenes
+	print("🎵 Lower Level: BGM continues playing (no restart)")
+	
 	# Set checkpoint for lower level completion
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
@@ -655,9 +706,7 @@ func _ready() -> void:
 	print("🔍 Scene children:")
 	for child in get_children():
 		print("  - ", child.name, " (", child.get_class(), ")")
-	
-	print("🔍 Found nodes - Player:", player != null, "Celine:", celine != null, "BoyTrip:", boy_trip != null, "Guard:", guard != null, "Guard2:", guard_2 != null, "Guard3:", guard_3 != null, "PoliceLobbyTrigger:", police_lobby_trigger != null, "Camera:", camera != null)
-	
+		
 	# Get TaskManager autoload
 	if has_node("/root/TaskManager"):
 		task_manager = get_node("/root/TaskManager")
@@ -688,6 +737,9 @@ func _ready() -> void:
 			dialogue_ui.connect("next_pressed", cb)
 	
 	# Guard interactions will be handled by individual guard scripts
+	
+	# Scene BGM is handled by AudioManager autoload automatically
+	# No need to set it manually here to prevent audio restart
 	
 	print("🟢 Scene ready — checking checkpoints...")
 	check_checkpoint_and_start()
@@ -751,6 +803,9 @@ func skip_to_post_cutscene_state() -> void:
 	# Enable player movement
 	if player and player.has_method("enable_movement"):
 		player.enable_movement()
+	
+	# DON'T set scene BGM again - it's already playing from the cutscene
+	# This prevents the audio from restarting
 	
 	print("✅ Post-cutscene state loaded - Player M at original spawn position")
 

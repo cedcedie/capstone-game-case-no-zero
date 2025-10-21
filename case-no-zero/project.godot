@@ -30,6 +30,8 @@ ScenePreloader="*res://scripts/managers/ScenePreloader.gd"
 EvidenceInventorySettings="*res://EvidenceInventory.tscn"
 Settings="*res://Settings.tscn"
 VoiceBlipManager="*res://scripts/managers/voice_blip_manager.gd"
+CameraZoomManager="*res://scripts/managers/CameraZoomManager.gd"
+AudioManager="*res://scripts/managers/AudioManager.gd"
 
 [dialogic]
 
