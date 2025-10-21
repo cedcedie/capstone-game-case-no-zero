@@ -1,15 +1,15 @@
 [gd_scene load_steps=22 format=4 uid="uid://bkxx1m4vbvfhf"]
 
-[ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_ujmqd"]
-[ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_k5aon"]
-[ext_resource type="Texture2D" uid="uid://c4dc4eui4vkjj" path="res://assets/sprites/environments/exterior/7_Villas_32x32.png" id="3_gph8c"]
-[ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="3_k5aon"]
-[ext_resource type="Texture2D" uid="uid://dbhv2u8uyh4i5" path="res://assets/sprites/environments/exterior/11_Camping_32x32.png" id="4_gph8c"]
-[ext_resource type="Texture2D" uid="uid://d1qcv8l4s823i" path="res://assets/sprites/environments/exterior/17_Garden_32x32.png" id="4_ubhsf"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="7_ubhsf"]
+[ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_hk5i3"]
+[ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_e7r7a"]
+[ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="3_mkakp"]
+[ext_resource type="Texture2D" uid="uid://dbhv2u8uyh4i5" path="res://assets/sprites/environments/exterior/11_Camping_32x32.png" id="4_itpeu"]
+[ext_resource type="Texture2D" uid="uid://c4dc4eui4vkjj" path="res://assets/sprites/environments/exterior/7_Villas_32x32.png" id="5_gn0w3"]
+[ext_resource type="Texture2D" uid="uid://d1qcv8l4s823i" path="res://assets/sprites/environments/exterior/17_Garden_32x32.png" id="6_272kh"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="7_0poe2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgmrl"]
-texture = ExtResource("1_ujmqd")
+texture = ExtResource("1_hk5i3")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -3853,7 +3853,7 @@ texture_region_size = Vector2i(32, 32)
 38:102/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8y0ko"]
-texture = ExtResource("2_k5aon")
+texture = ExtResource("2_e7r7a")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -5022,7 +5022,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gph8c"]
-texture = ExtResource("3_k5aon")
+texture = ExtResource("3_mkakp")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -9377,7 +9377,7 @@ sources/1 = SubResource("TileSetAtlasSource_8y0ko")
 sources/2 = SubResource("TileSetAtlasSource_gph8c")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5aon"]
-texture = ExtResource("2_k5aon")
+texture = ExtResource("2_e7r7a")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -10546,7 +10546,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ubhsf"]
-texture = ExtResource("3_k5aon")
+texture = ExtResource("3_mkakp")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -14895,7 +14895,7 @@ texture_region_size = Vector2i(32, 32)
 30:223/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eo8mp"]
-texture = ExtResource("4_gph8c")
+texture = ExtResource("4_itpeu")
 texture_region_size = Vector2i(32, 32)
 22:0/0 = 0
 23:0/0 = 0
@@ -18904,7 +18904,7 @@ sources/1 = SubResource("TileSetAtlasSource_ubhsf")
 sources/2 = SubResource("TileSetAtlasSource_eo8mp")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lg3ff"]
-texture = ExtResource("3_gph8c")
+texture = ExtResource("5_gn0w3")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
@@ -20222,7 +20222,7 @@ texture_region_size = Vector2i(32, 32)
 21:56/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cooq5"]
-texture = ExtResource("4_ubhsf")
+texture = ExtResource("6_272kh")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -24133,7 +24133,7 @@ texture_region_size = Vector2i(32, 32)
 26:195/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qjx8r"]
-texture = ExtResource("4_gph8c")
+texture = ExtResource("4_itpeu")
 texture_region_size = Vector2i(32, 32)
 22:0/0 = 0
 23:0/0 = 0
@@ -28142,7 +28142,7 @@ sources/1 = SubResource("TileSetAtlasSource_cooq5")
 sources/2 = SubResource("TileSetAtlasSource_qjx8r")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t63rl"]
-texture = ExtResource("4_ubhsf")
+texture = ExtResource("6_272kh")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -32076,7 +32076,7 @@ tile_set = SubResource("TileSet_t63rl")
 tile_map_data = PackedByteArray("AAASACsAAAAcAAoAAAASACwAAAAcAAsAAAATACsAAAAdAAoAAAATACwAAAAdAAsAAAAUACsAAAAeAAoAAAAUACwAAAAeAAsAAAAVACsAAAAfAAoAAAAVACwAAAAfAAsAAAALACwAAAAXAAgAAAALAC0AAAAXAAkAAAALAC4AAAAXAAoAAAALAC8AAAAXAAsAAAAMACwAAAAYAAgAAAAMAC0AAAAYAAkAAAANACwAAAAZAAgAAAANAC0AAAAZAAkAAAAOACwAAAAaAAgAAAAOAC0AAAAaAAkAAAAPACwAAAAbAAgAAAAPAC0AAAAbAAkAAAAPAC4AAAAbAAoAAAAPAC8AAAAbAAsAAAATACQAAAAKABEAAAATACUAAAAKABIAAAATACYAAAAKABMAAAAUACQAAAALABEAAAAUACUAAAALABIAAAAUACYAAAALABMAAAAVACQAAAAfAAAAAAAVACUAAAAfAAEAAAAVACYAAAAfAAIAAAASACQAAAAfAAAAAAASACUAAAAfAAEAAAASACYAAAAfAAIAAAARACQAAAAcAA8AAAARACUAAAAcABAAAAAOACQAAAAaAAUAAAAOACUAAAAaAAYAAAAPACQAAAAbAAUAAAAPACUAAAAbAAYAAAABACQAAAAaAAUAAAABACUAAAAaAAYAAAACACQAAAAbAAUAAAACACUAAAAbAAYAAAAHACUAAAAeABgAAAAIACUAAAAfABgAAAAJACQAAAAbABcAAAAJACUAAAAbABgAAAACACwAAAAYACEAAAACAC0AAAAYACIAAAADACsAAAAZACAAAAADACwAAAAZACEAAAADAC0AAAAZACIAAAAGACMAAAAeAC8AAAAGACQAAAAeADAAAAAGACUAAAAeADEAAAABACcAAAAZADQAAAABACgAAAAZADUAAAABACkAAAAZADYAAAAKACYAAAAaADAAAAAKACcAAAAaADEAAAALACYAAAAbADAAAAALACcAAAAbADEAAAAMACUAAAAcAC8AAAAMACYAAAAcADAAAAAMACcAAAAcADEAAAAVACcAAAAfADUAAAAVACgAAAAfADYAAAAVACkAAAAfADcAAAAVACoAAAAfADgAAAARACYAAAAVADgAAAA=")
 tile_set = SubResource("TileSet_eo8mp")
 
-[node name="PlayerM" parent="." instance=ExtResource("7_ubhsf")]
+[node name="PlayerM" parent="." instance=ExtResource("7_0poe2")]
 z_index = 1
 position = Vector2(720, 1112)
 
