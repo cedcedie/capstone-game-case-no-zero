@@ -1,10 +1,10 @@
-[gd_scene load_steps=30 format=4 uid="uid://bq8dv1vpnd7hq"]
+[gd_scene load_steps=29 format=4 uid="uid://bq8dv1vpnd7hq"]
 
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="1_0lod6"]
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="2_pdy5u"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="3_stvh0"]
 [ext_resource type="Texture2D" uid="uid://bko828tu8yow7" path="res://assets/sprites/environments/interior/18_Jail_32x32.png" id="4_4iqi4"]
-[ext_resource type="PackedScene" uid="uid://dgdxadjady47t" path="res://scenes/characters/npc/npc_police.tscn" id="4_pdy5u"]
+[ext_resource type="PackedScene" uid="uid://rsdvopdfs4yh" path="res://scenes/characters/npc/npc_police.tscn" id="4_pdy5u"]
 [ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/sprites/environments/interior/19_Hospital_32x32.png" id="5_hqxgl"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="6_kpen6"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="7_scene_transition"]
@@ -4070,9 +4070,9 @@ texture_region_size = Vector2i(32, 32)
 2:47/0 = 0
 3:47/0 = 0
 4:47/0 = 0
-4:47/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.96976, -16, 16, -16, 16, 16, -7.96976, 16)
+4:47/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 0, 16, 16, -7.87992, 16, -7.93723, 0.114617)
 5:47/0 = 0
-5:47/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 7.86823, -16, 7.96976, 16, -16, 16)
+5:47/0/physics_layer_0/polygon_0/points = PackedVector2Array(7.99454, 16, -16, 16, -16, 0.0573082, 7.98731, 0.0441899)
 6:47/0 = 0
 7:47/0 = 0
 8:47/0 = 0
@@ -7124,9 +7124,6 @@ sources/1 = SubResource("TileSetAtlasSource_qtg2g")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdy5u"]
 size = Vector2(96, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_stvh0"]
-size = Vector2(96, 42.5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4iqi4"]
 size = Vector2(64.5, 17.25)
 
@@ -7178,10 +7175,6 @@ shape = SubResource("RectangleShape2D_pdy5u")
 
 [node name="Area2D_head_police" type="Area2D" parent="."]
 script = ExtResource("7_scene_transition")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_head_police"]
-position = Vector2(768, 194.75)
-shape = SubResource("RectangleShape2D_stvh0")
 
 [node name="Area2D_security_server" type="Area2D" parent="."]
 script = ExtResource("7_scene_transition")
