@@ -26,37 +26,6 @@ font_color = Color(0, 0, 0, 1)
 [node name="EvidenceInventory2" type="CanvasLayer"]
 script = ExtResource("1_evidence_script")
 
-[node name="SettingsTab" type="NinePatchRect" parent="."]
-offset_left = 445.0
-offset_top = 208.0
-offset_right = 485.0
-offset_bottom = 248.0
-texture = ExtResource("1_1075l")
-region_rect = Rect2(928, 384, 32, 32)
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="SettingsIcon" type="NinePatchRect" parent="SettingsTab"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("1_1075l")
-region_rect = Rect2(320, 370, 30, 30)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="Button" type="Button" parent="SettingsTab"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-flat = true
-
 [node name="UIContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
@@ -356,6 +325,36 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 
 [node name="Button" type="Button" parent="UIContainer/EvidenceTab"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+flat = true
+
+[node name="SettingsTab" type="NinePatchRect" parent="UIContainer"]
+offset_left = 40.0
+offset_right = 80.0
+offset_bottom = 40.0
+texture = ExtResource("1_1075l")
+region_rect = Rect2(928, 384, 32, 32)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="SettingsIcon" type="NinePatchRect" parent="UIContainer/SettingsTab"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_1075l")
+region_rect = Rect2(320, 370, 30, 30)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Button" type="Button" parent="UIContainer/SettingsTab"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
