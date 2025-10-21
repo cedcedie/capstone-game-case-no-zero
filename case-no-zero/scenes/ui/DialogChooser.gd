@@ -29,8 +29,28 @@ func _ready():
 	choice2.mouse_entered.connect(_on_choice2_entered)
 	choice2.mouse_exited.connect(_on_choice2_exited)
 	
+	# Setup autosizing for choice labels
+	_setup_autosizing()
+	
 	# Find the player character
 	find_player()
+
+func _setup_autosizing():
+	"""Setup autosizing for DialogChooser labels"""
+	# Enable autosizing for choice labels
+	if label1:
+		label1.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		label1.clip_contents = false
+		# Use size_flags_vertical for autosizing in Godot 4.4.1
+		label1.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		print("📝 DialogChooser: Choice 1 label autosizing enabled")
+	
+	if label2:
+		label2.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		label2.clip_contents = false
+		# Use size_flags_vertical for autosizing in Godot 4.4.1
+		label2.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		print("📝 DialogChooser: Choice 2 label autosizing enabled")
 
 func find_player():
 	"""Find the player character (kept for compatibility)"""

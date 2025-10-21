@@ -243,7 +243,7 @@ func play_dialogue():
 		# Calculate dynamic wait time based on text length
 		# Typing speed is 0.01s per character, plus extra reading time
 		var typing_time = text.length() * 0.01  # Time for typing animation
-		var reading_time = max(1.0, text.length() * 0.02)  # Reading time (20ms per char, min 1s)
+		var reading_time = 1.5  # Fixed 1.5s reading time for all dialogue
 		var total_wait = typing_time + reading_time
 		
 		print("💬 Auto-advancing dialogue: ", text.length(), " chars, waiting ", total_wait, "s")
@@ -308,3 +308,21 @@ func enable_player_and_update_task():
 	print("🎯 Global checkpoint set: BARANGAY_HALL_ACCESS_GRANTED")
 	print("🔍 All checkpoints after police lobby completion:", checkpoint_manager.checkpoints.keys())
 	print("🎬 Police lobby cutscene completed")
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Press F10 to instantly complete the police lobby cutscene (debug only)
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.physical_keycode == KEY_F10:
+			var debug_checkpoint_manager = get_node("/root/CheckpointManager")
+			debug_checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
+			if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+				DialogueUI.set_cutscene_mode(false)
+			enable_player_and_update_task()
+			return
+	
+	# Block TAB key during cutscene
+	if event.is_action_pressed("evidence_inventory"):
+		if is_in_cutscene:
+			print("⚠️ Evidence inventory access blocked during cutscene")
+			# Don't call set_input_as_handled() to allow global handler to work
+			return

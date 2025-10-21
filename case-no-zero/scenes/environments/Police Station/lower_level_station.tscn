@@ -7765,6 +7765,7 @@ z_index = 1
 position = Vector2(1056, 320)
 
 [node name="celine" parent="." instance=ExtResource("14_8qp3p")]
+z_index = 1
 position = Vector2(560, 496)
 
 [node name="station_guard" parent="." instance=ExtResource("15_fmxda")]

@@ -392,7 +392,7 @@ radius = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b40tf")
-animation = &"walk_down"
+animation = &"idle_front"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

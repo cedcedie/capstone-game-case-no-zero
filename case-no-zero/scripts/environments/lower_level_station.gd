@@ -155,10 +155,8 @@ func start_detention_scene() -> void:
 	print("🎬 Detention cell scene starting...")
 	load_dialogue()
 
-	# Change BGM to cutscene music
-	if AudioManager:
-		AudioManager.play_cutscene_bgm("lower_level_cutscene")
-		print("🎵 Lower Level: Cutscene BGM started")
+	# Cutscene audio is handled by the scene's own audio system
+	# No need to change BGM for cutscenes
 
 	# Disable player control
 	if player and "control_enabled" in player:
@@ -271,7 +269,7 @@ func show_dialogue_with_auto_advance(speaker: String, text: String) -> void:
 	
 	# Calculate dynamic wait time based on text length
 	var typing_time = text.length() * 0.01  # Time for typing animation
-	var reading_time = max(1.0, text.length() * 0.02)  # Reading time (20ms per char, min 1s)
+	var reading_time = 1.5  # Fixed 1.5s reading time for all dialogue
 	var total_wait = typing_time + reading_time
 	
 	print("💬 Auto-advancing dialogue: ", text.length(), " chars, waiting ", total_wait, "s")
@@ -623,11 +621,16 @@ func show_next_line() -> void:
 			call_deferred("show_next_line")
 		
 		
-		# Line 25: Player changes to idle_back
+		# Line 24: Boy Trip's plea (after guard movement completes)
 		24:
+			# Wait for guard movement to fully complete before showing dialogue
+			await get_tree().create_timer(0.5).timeout
+			
 			# Change player to idle_back
 			if player and player.get_node_or_null("AnimatedSprite2D"):
 				player.get_node("AnimatedSprite2D").play("idle_back")
+			
+			# Show dialogue after guard movement is completely finished
 			await show_dialogue_with_auto_advance(speaker, text)
 			current_line += 1
 			call_deferred("show_next_line")
@@ -738,8 +741,10 @@ func _ready() -> void:
 	
 	# Guard interactions will be handled by individual guard scripts
 	
-	# Scene BGM is handled by AudioManager autoload automatically
-	# No need to set it manually here to prevent audio restart
+	# Set scene BGM using AudioManager
+	if AudioManager:
+		AudioManager.set_scene_bgm("lower_level_station")
+		print("🎵 Lower Level Station: Scene BGM set via AudioManager")
 	
 	print("🟢 Scene ready — checking checkpoints...")
 	check_checkpoint_and_start()
@@ -775,6 +780,13 @@ func check_checkpoint_and_start() -> void:
 # DEBUG: F10 skip
 # --------------------------
 func _unhandled_input(event: InputEvent) -> void:
+	# Block TAB key during cutscene
+	if event.is_action_pressed("evidence_inventory"):
+		if not cutscene_played:
+			print("⚠️ Evidence inventory access blocked during cutscene")
+			# Don't call set_input_as_handled() to allow global handler to work
+			return
+	
 	# Press F10 to instantly complete the lower level cutscene (debug only)
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_F10:

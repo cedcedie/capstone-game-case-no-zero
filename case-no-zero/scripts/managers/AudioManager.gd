@@ -8,7 +8,6 @@ signal bgm_restored()
 # Audio settings
 var current_bgm: String = ""
 var scene_bgm: String = ""  # The BGM that should play for the current scene
-var cutscene_bgm: String = ""  # The BGM that plays during cutscenes
 var bgm_player: AudioStreamPlayer = null
 
 # Scene BGM mapping
@@ -17,16 +16,13 @@ var scene_bgm_map: Dictionary = {
 	"head_police": "res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 19 Scarlet Forest.ogg", 
 	"security_server": "res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 19 Scarlet Forest.ogg",
 	"police_lobby": "res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 19 Scarlet Forest.ogg",
-	"bedroom": "res://assets/audio/music/bedroom_bgm.mp3",
-	"barangay_hall": "res://assets/audio/music/barangay_bgm.mp3"
+	"bedroom": "res://assets/audio/deltaruneAud/You Can Always Come Home.ogg",
+	"bedroomScene": "res://assets/audio/deltaruneAud/You Can Always Come Home.ogg",
+	"barangay_hall": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3",
+	"barangay_hall_second_floor": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3"
 }
 
-# Cutscene BGM mapping
-var cutscene_bgm_map: Dictionary = {
-	"lower_level_cutscene": "res://assets/audio/music/detention_cutscene.mp3",
-	"bedroom_cutscene": "res://assets/audio/music/bedroom_cutscene.mp3",
-	"barangay_cutscene": "res://assets/audio/music/barangay_cutscene.mp3"
-}
+# Cutscene BGM mapping removed - scenes handle their own cutscene audio
 
 func _ready():
 	print("🎵 AudioManager: Ready")
@@ -38,6 +34,12 @@ func _ready():
 	
 	# Auto-detect scene and set BGM
 	call_deferred("_on_scene_changed")
+	
+	# Also try to set BGM immediately if scene is already loaded
+	await get_tree().process_frame
+	if get_tree().current_scene:
+		print("🎵 AudioManager: Scene already loaded, setting BGM immediately")
+		_on_scene_changed()
 
 func set_scene_bgm(scene_name: String):
 	"""Set the BGM for a specific scene"""
@@ -52,26 +54,32 @@ func set_scene_bgm(scene_name: String):
 	var is_station_scene = scene_name in ["lower_level_station", "head_police", "security_server", "police_lobby"]
 	var current_is_station = current_bgm.contains("Scarlet Forest")
 	
+	# Check if we're switching between barangay hall scenes
+	var is_barangay_scene = scene_name in ["barangay_hall", "barangay_hall_second_floor"]
+	var current_is_barangay = current_bgm.contains("Waterfall")
+	
 	# If switching between station scenes, don't restart the audio
 	if is_station_scene and current_is_station and bgm_player and bgm_player.playing:
 		print("🎵 AudioManager: Continuing Scarlet Forest BGM for", scene_name, "- no restart needed")
 		scene_bgm = bgm_path
 		return
 	
+	# If switching between barangay hall scenes, don't restart the audio
+	if is_barangay_scene and current_is_barangay and bgm_player and bgm_player.playing:
+		print("🎵 AudioManager: Continuing Waterfall BGM for", scene_name, "- no restart needed")
+		scene_bgm = bgm_path
+		return
+	
+	# If switching between different scene groups, fade out current BGM first
+	if bgm_player and bgm_player.playing:
+		print("🎵 AudioManager: Fading out current BGM before switching to", scene_name)
+		await fade_out_bgm()
+	
 	scene_bgm = bgm_path
 	play_bgm(bgm_path)
 	print("🎵 AudioManager: Scene BGM set for", scene_name, ":", bgm_path)
 
-func play_cutscene_bgm(cutscene_name: String):
-	"""Play BGM for a specific cutscene"""
-	var bgm_path = cutscene_bgm_map.get(cutscene_name, "")
-	if bgm_path == "":
-		print("⚠️ AudioManager: No cutscene BGM defined for:", cutscene_name)
-		return
-	
-	cutscene_bgm = bgm_path
-	play_bgm(bgm_path)
-	print("🎵 AudioManager: Cutscene BGM set for", cutscene_name, ":", bgm_path)
+# play_cutscene_bgm function removed - scenes handle their own cutscene audio
 
 func restore_scene_bgm():
 	"""Restore the scene BGM after cutscene ends"""
@@ -83,7 +91,7 @@ func restore_scene_bgm():
 		print("⚠️ AudioManager: No scene BGM to restore")
 
 func play_bgm(bgm_path: String):
-	"""Play a BGM file"""
+	"""Play a BGM file with fade-in"""
 	print("🎵 AudioManager: play_bgm called with:", bgm_path)
 	if not bgm_player:
 		print("⚠️ AudioManager: BGM player not available")
@@ -101,6 +109,9 @@ func play_bgm(bgm_path: String):
 		bgm_changed.emit(bgm_path)
 		print("🎵 AudioManager: Playing BGM:", bgm_path, "at -15 dB")
 		print("🎵 AudioManager: BGM playing:", bgm_player.playing)
+		
+		# Fade in the new BGM
+		await fade_in_bgm(0.3)
 	else:
 		print("⚠️ AudioManager: Failed to load BGM:", bgm_path)
 
@@ -131,12 +142,41 @@ func should_continue_bgm(scene_name: String) -> bool:
 	
 	return is_station_scene and current_is_station and bgm_player and bgm_player.playing
 
+func fade_out_bgm(duration: float = 0.3):
+	"""Fade out the current BGM smoothly"""
+	if not bgm_player or not bgm_player.playing:
+		return
+	
+	var original_volume = bgm_player.volume_db
+	var fade_tween = create_tween()
+	fade_tween.set_ease(Tween.EASE_IN_OUT)
+	fade_tween.set_trans(Tween.TRANS_CUBIC)
+	fade_tween.tween_property(bgm_player, "volume_db", -80.0, duration)
+	await fade_tween.finished
+	bgm_player.stop()
+	bgm_player.volume_db = original_volume
+	print("🎵 AudioManager: BGM faded out")
+
+func fade_in_bgm(duration: float = 0.3):
+	"""Fade in the current BGM smoothly"""
+	if not bgm_player or not bgm_player.playing:
+		return
+	
+	var target_volume = bgm_player.volume_db
+	bgm_player.volume_db = -80.0
+	var fade_tween = create_tween()
+	fade_tween.set_ease(Tween.EASE_IN_OUT)
+	fade_tween.set_trans(Tween.TRANS_CUBIC)
+	fade_tween.tween_property(bgm_player, "volume_db", target_volume, duration)
+	print("🎵 AudioManager: BGM faded in")
+
 # Scene change detection
 func _on_scene_changed():
 	"""Called when scene changes - set appropriate BGM"""
 	await get_tree().process_frame
 	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	print("🎵 AudioManager: Auto-detecting scene:", scene_name)
+	print("🎵 AudioManager: Scene file path:", get_tree().current_scene.scene_file_path)
 	set_scene_bgm(scene_name)
 
 # Debug controls
@@ -144,8 +184,8 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		match event.physical_keycode:
 			KEY_F3:
-				# F3 - Test lower level cutscene BGM
-				play_cutscene_bgm("lower_level_cutscene")
+				# F3 - Test current BGM (cutscene BGM removed)
+				print("🎵 AudioManager: Current BGM:", current_bgm)
 			KEY_F2:
 				# F2 - Restore scene BGM
 				restore_scene_bgm()

@@ -241,10 +241,11 @@ func play_knock_sound():
 	if knock_sfx:
 		knock_sfx.play()
 
-func start_bgm():
-	if bgm and not bgm.playing:
-		bgm.volume_db = -20
-		bgm.play()
+# AudioManager now handles BGM - this function is no longer needed
+# func start_bgm():
+#	if bgm and not bgm.playing:
+#		bgm.volume_db = -20
+#		bgm.play()
 
 
 func hide_celine():
@@ -696,11 +697,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		if checkpoint_manager:
 			bedroom_cutscene_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 		
-		# Only allow evidence inventory access after bedroom cutscene is completed
-		if not bedroom_cutscene_completed:
-			print("⚠️ Evidence inventory access denied - bedroom cutscene not completed")
-		elif is_cinematic_active:
-			print("⚠️ Evidence inventory access blocked during cinematic")
+		# Block TAB key during cutscene or cinematic
+		if not bedroom_cutscene_completed or is_cinematic_active:
+			print("⚠️ Evidence inventory access blocked during cutscene")
+			get_viewport().set_input_as_handled()
+			return
 		else:
 			# Toggle Evidence Inventory
 			if has_node("/root/EvidenceInventorySettings"):
@@ -747,11 +748,16 @@ func _ready() -> void:
 		if not dialogue_ui.is_connected("next_pressed", cb):
 			dialogue_ui.connect("next_pressed", cb)
 	
-	# Start BGM music automatically when scene loads
-	if bgm and not bgm.playing:
-		bgm.volume_db = -20
-		bgm.play()
-		print("🎵 BGM music started on scene load")
+	# Set scene BGM using AudioManager
+	if AudioManager:
+		AudioManager.set_scene_bgm("bedroom")
+		print("🎵 Bedroom: Scene BGM set via AudioManager")
+	
+	# AudioManager now handles BGM - no need for manual BGM playing
+	# if bgm and not bgm.playing:
+	#	bgm.volume_db = -20
+	#	bgm.play()
+	#	print("🎵 BGM music started on scene load")
 	
 	# Check if bedroom cutscene has already been played
 	var checkpoint_manager = get_node("/root/CheckpointManager")

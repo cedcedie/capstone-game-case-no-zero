@@ -12,6 +12,8 @@ var has_interacted: bool = false
 var is_player_nearby: bool = false
 var player_reference: Node2D = null
 var is_in_dialogue: bool = false  # Prevent E key spam during dialogue
+var last_interaction_time: float = 0.0
+var interaction_cooldown: float = 0.5  # 0.5 second cooldown
 
 # Animation settings
 var label_fade_duration: float = 0.3
@@ -20,6 +22,9 @@ var label_show_position: float = -72.0  # Position above the NPC's head
 
 func _ready():
 	print("🔍 station_guard_2: _ready() called")
+	# Add to station guards group for dialogue checking
+	add_to_group("station_guards")
+	
 	# Hide label initially
 	interaction_label.modulate = Color(1.0, 1.0, 0.0, 0.0)  # Yellow color, transparent initially
 	interaction_label.position.y = label_show_position + label_slide_offset  # Start slightly lower
@@ -44,7 +49,40 @@ func _ready():
 func _process(_delta):
 	# Check for interaction input when player is nearby and not in dialogue
 	if is_player_nearby and Input.is_action_just_pressed("interact") and not is_in_dialogue:
-		interact()
+		# Check cooldown to prevent spam
+		var current_time = Time.get_time_dict_from_system()
+		var time_since_last = current_time.second - last_interaction_time
+		
+		if time_since_last >= interaction_cooldown:
+			# Check if any other NPC is currently in dialogue to prevent multiple dialogues
+			if not is_any_npc_in_dialogue():
+				last_interaction_time = current_time.second
+				interact()
+			else:
+				print("⚠️ Station Guard 2: Cannot start dialogue - another NPC is already talking")
+		else:
+			print("⚠️ Station Guard 2: Interaction on cooldown - please wait")
+	
+	# Safety check: If dialogue is marked as finished but movement is still disabled, re-enable it
+	if not is_in_dialogue and player_reference and player_reference.has_method("enable_movement"):
+		# Check if player movement is actually disabled and re-enable if needed
+		if player_reference.has_method("is_movement_disabled") and player_reference.is_movement_disabled():
+			player_reference.enable_movement()
+			print("🔧 Station Guard 2: Safety re-enabled player movement")
+
+func is_any_npc_in_dialogue() -> bool:
+	"""Check if any NPC in the scene is currently in dialogue"""
+	# Check all station guards in the scene
+	var station_guards = get_tree().get_nodes_in_group("station_guards")
+	for guard in station_guards:
+		if guard.has_method("get") and guard.get("is_in_dialogue"):
+			return true
+	
+	# Check if DialogueUI is currently showing dialogue
+	if DialogueUI and DialogueUI.has_method("is_dialogue_active"):
+		return DialogueUI.is_dialogue_active()
+	
+	return false
 
 func load_dialogue():
 	var file: FileAccess = FileAccess.open("res://data/dialogues/station_guard_2_dialogue.json", FileAccess.READ)
@@ -161,6 +199,11 @@ func show_dialogue():
 		print(speaker + ": " + text)
 	print("==================================================")
 	
+	# Ensure player movement stays disabled throughout entire dialogue
+	if player_reference and player_reference.has_method("disable_movement"):
+		player_reference.disable_movement()
+		print("👮 Station Guard 2: Player movement DISABLED for entire dialogue")
+	
 	# Show each dialogue line using the global DialogueUI
 	for line in dialogue_lines:
 		var speaker = line.get("speaker", "")
@@ -169,6 +212,12 @@ func show_dialogue():
 		
 		# Wait for player to press next
 		await DialogueUI.next_pressed
+		
+		# CRITICAL: Keep movement disabled after each line - do NOT re-enable
+		# The movement should stay disabled throughout the entire dialogue
+		if player_reference and player_reference.has_method("disable_movement"):
+			player_reference.disable_movement()
+			print("👮 Station Guard 2: Player movement kept disabled after line")
 	
 	# Hide dialogue after all lines shown
 	DialogueUI.hide_ui()
@@ -179,10 +228,14 @@ func show_dialogue():
 	# Restore original animation after dialogue
 	restore_original_animation()
 	
-	# Re-enable player movement after dialogue
+	# CRITICAL: Always re-enable player movement after dialogue
 	if player_reference and player_reference.has_method("enable_movement"):
 		player_reference.enable_movement()
+		print("👮 Station Guard 2: Player movement re-enabled after dialogue")
+	else:
+		print("⚠️ Station Guard 2: Failed to re-enable player movement - player reference or method not found")
 	
-	# Show the label again if player is still nearby
+	# Hide the interaction label first, then show it again if player is still nearby
+	hide_interaction_label()
 	if is_player_nearby:
 		show_interaction_label()

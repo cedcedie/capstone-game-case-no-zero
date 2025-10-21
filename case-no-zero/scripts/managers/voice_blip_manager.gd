@@ -49,22 +49,30 @@ func play_voice_blip(speaker: String):
 func get_beep_for_speaker(speaker: String) -> String:
 	"""Get specific beep file for each character"""
 	match speaker.to_lower():
-		"miguel", "erwin":
+		"miguel":
 			return "res://assets/audio/sfx/bleep001.ogg"  # Miguel gets bleep001
+		"erwin", "boy trip":
+			return "res://assets/audio/sfx/bleep003.ogg"  # Erwin/Boy Trip gets bleep003
 		"celine":
 			return "res://assets/audio/sfx/bleep002.ogg"  # Celine gets bleep002
+		"kapitana", "kapitana lourdes":
+			return "res://assets/audio/sfx/bleep006.ogg"  # Kapitana gets bleep006
 		"narrator", "system":
-			return "res://assets/audio/sfx/bleep003.ogg"  # Narrator gets bleep003
+			return "res://assets/audio/sfx/bleep004.ogg"  # Narrator gets bleep004
 		_:
-			return "res://assets/audio/sfx/bleep004.ogg"  # Default gets bleep004
+			return "res://assets/audio/sfx/bleep005.ogg"  # Default gets bleep005
 
 func get_pitch_for_speaker(speaker: String) -> float:
 	"""Get pitch scale for different speakers"""
 	match speaker.to_lower():
-		"miguel", "erwin":
+		"miguel":
 			return 0.8  # Lower pitch
+		"erwin", "boy trip":
+			return 0.9  # Slightly higher than Miguel
 		"celine":
 			return 1.2  # Higher pitch
+		"kapitana", "kapitana lourdes":
+			return 0.7  # Lower pitch for authority figure
 		"narrator", "system":
 			return 1.0  # Normal pitch
 		_:
