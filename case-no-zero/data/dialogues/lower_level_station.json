@@ -22,7 +22,7 @@
 	},
 	{
 	  "speaker": "Miguel",
-	  "text": "Hindi kami nandito para sa music review. Ako si Miguel Ramos, abogado mo."
+	  "text": "Erwin, hindi kami nandito para sa music review. Ako si Miguel Ramos, abogado mo."
 	},
 	{
 	  "speaker": "Boy Trip",
@@ -118,11 +118,11 @@
 	  "choice_id": "childhood_memory",
 	  "line_index": 7,
 	  "choices": [
-		"Naalala ko yung ice cream incident.",
+		"Kilala kita, Erwin.",
 		"Focus tayo sa kaso."
 	  ],
 	  "responses": [
-		"Oo! Ikaw ang nagbayad para sa akin!",
+		"Oo! Kilala mo ako, Miguel! Hindi ako ganun!",
 		"Tama. Pero kilala mo ako, Miguel."
 	  ]
 	},
@@ -130,7 +130,7 @@
 	  "choice_id": "notebook_question",
 	  "line_index": 15,
 	  "choices": [
-		"Ano ang laman ng notebook?",
+		"Ano ang laman?",
 		"Sino ang may gusto mawala si Leo?"
 	  ],
 	  "responses": [

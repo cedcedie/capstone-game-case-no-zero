@@ -76,10 +76,14 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 		return
 	var tex: Texture2D = null
 	match speaker.to_lower():
-		"miguel", "erwin":
+		"miguel":
 			tex = load("res://Main_character_closeup.png")
+		"erwin", "boy trip":
+			tex = load("res://erwin_tambay_closeup.png")
 		"celine":
 			tex = load("res://new_celine_closeup.png")
+		"kapitana palma", "kapitana":
+			tex = load("res://kapitana_palma_closeup.png")
 		_:
 			tex = null
 	portrait_rect.texture = tex
