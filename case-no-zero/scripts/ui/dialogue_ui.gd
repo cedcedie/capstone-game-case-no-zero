@@ -82,7 +82,7 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 			tex = load("res://erwin_tambay_closeup.png")
 		"celine":
 			tex = load("res://new_celine_closeup.png")
-		"kapitana palma", "kapitana":
+		"kapitana palma", "kapitana", "kapitana lourdes":
 			tex = load("res://kapitana_palma_closeup.png")
 		_:
 			tex = null

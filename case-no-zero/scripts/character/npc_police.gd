@@ -177,16 +177,8 @@ func show_dialogue():
 		var text = line.get("text", "")
 		DialogueUI.show_dialogue_line(speaker, text)
 		
-		# Wait for player to press next - with timeout protection
-		var timeout = 0.0
-		while not DialogueUI.next_pressed and timeout < 30.0:  # 30 second timeout
-			await get_tree().process_frame
-			timeout += get_process_delta_time()
-		
-		# If timeout reached, break the dialogue
-		if timeout >= 30.0:
-			print("⚠️ Dialogue timeout - breaking dialogue")
-			break
+		# Wait for player to press next
+		await DialogueUI.next_pressed
 	
 	# Hide dialogue after all lines shown
 	DialogueUI.hide_ui()
