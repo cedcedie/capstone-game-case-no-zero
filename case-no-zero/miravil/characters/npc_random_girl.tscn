@@ -1,0 +1,174 @@
+[gd_scene load_steps=18 format=3 uid="uid://8t88hn34ixlf"]
+
+[ext_resource type="Texture2D" uid="uid://0n0psjwc03gj" path="res://miravil/sprites/npc_random_girl.png" id="1_orp72"]
+[ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_dgk3v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agfcn"]
+atlas = ExtResource("1_orp72")
+region = Rect2(0, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_by31d"]
+atlas = ExtResource("1_orp72")
+region = Rect2(32, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qehg6"]
+atlas = ExtResource("1_orp72")
+region = Rect2(64, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf0ju"]
+atlas = ExtResource("1_orp72")
+region = Rect2(96, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccv26"]
+atlas = ExtResource("1_orp72")
+region = Rect2(128, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mseyj"]
+atlas = ExtResource("1_orp72")
+region = Rect2(160, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etog3"]
+atlas = ExtResource("1_orp72")
+region = Rect2(192, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfthm"]
+atlas = ExtResource("1_orp72")
+region = Rect2(224, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82bxn"]
+atlas = ExtResource("1_orp72")
+region = Rect2(256, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st8q2"]
+atlas = ExtResource("1_orp72")
+region = Rect2(288, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lapp"]
+atlas = ExtResource("1_orp72")
+region = Rect2(320, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6j1o"]
+atlas = ExtResource("1_orp72")
+region = Rect2(352, 384, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_acw5p"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agfcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_by31d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qehg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf0ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccv26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mseyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etog3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfthm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82bxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st8q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lapp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6j1o")
+}],
+"loop": true,
+"name": &"idle_cellphone_front",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_front",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_back",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1mo2"]
+size = Vector2(20, 17)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6dcpi"]
+radius = 26.0192
+
+[node name="NpcRandomGirl" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_acw5p")
+animation = &"idle_cellphone_front"
+autoplay = "idle_cellphone_front"
+offset = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_c1mo2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_6dcpi")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -64.0
+offset_top = -70.0
+offset_right = 64.0
+offset_bottom = -45.0
+theme_override_fonts/font = ExtResource("2_dgk3v")
+theme_override_font_sizes/font_size = 14
+text = "Press E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_group_ = true
