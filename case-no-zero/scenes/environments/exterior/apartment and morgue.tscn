@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://shri80h54bqk"]
+[gd_scene load_steps=35 format=4 uid="uid://shri80h54bqk"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_0dxn2"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_gv3jt"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="6_akeks"]
 [ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="7_c0je7"]
 [ext_resource type="Texture2D" uid="uid://doakv45h8tpuk" path="res://assets/sprites/environments/exterior/20_Subway_and_Train_Station_32x32.png" id="8_akeks"]
+[ext_resource type="PackedScene" uid="uid://56ldwej8xfdd" path="res://miravil/characters/npc_backpack_man.tscn" id="9_b1us4"]
+[ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="10_40vog"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_4hipe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3ex5"]
 texture = ExtResource("1_0dxn2")
@@ -50298,3 +50301,27 @@ tile_set = SubResource("TileSet_l8vic")
 [node name="front misc" type="TileMapLayer" parent="ground/wall behind/buildingh/misc/roof"]
 tile_map_data = PackedByteArray("AAA7AAoAAQAUAB8AAAA7AAsAAQAUACAAAAA7AAwAAQAUACEAAAA7AA0AAQAUACIAAAA8AAoAAQAVAB8AAAA8AAsAAQAVACAAAAA8AAwAAQAVACEAAAA8AA0AAQAVACIAAAAlAAoAAQAUAB8AAAAlAAsAAQAUACAAAAAlAAwAAQAUACEAAAAlAA0AAQAUACIAAAAmAAoAAQAVAB8AAAAmAAsAAQAVACAAAAAmAAwAAQAVACEAAAAmAA0AAQAVACIAAAAqAAsAAQAWAB8AAAAqAAwAAQAWACAAAAArAAsAAQAXAB8AAAArAAwAAQAXACAAAAAqAA4AAQAWAB8AAAAqAA8AAQAWACAAAAArAA4AAQAXAB8AAAArAA8AAQAXACAAAAAsAAsAAQAaACEAAAAsAAwAAQAaACIAAAAsAA4AAQAaACEAAAAsAA8AAQAaACIAAAAlAA4AAQASAB8AAAAlAA8AAQASACAAAAAmAA4AAQATAB8AAAAmAA8AAQATACAAAABJAAsAAQASABsAAABJAAwAAQASABwAAABJAA0AAQASAB0AAABJAA4AAQASAB4AAABKAAsAAQATABsAAABKAAwAAQATABwAAABKAA0AAQATAB0AAABKAA4AAQATAB4AAABLAAsAAQAUABsAAABLAAwAAQAUABwAAABLAA0AAQAUAB0AAABLAA4AAQAUAB4AAABHAAsAAQAbACAAAABHAAwAAQAbACEAAABHAA0AAQAbACIAAABIAAsAAQAcACAAAABIAAwAAQAcACEAAABIAA0AAQAcACIAAABEAAsAAQAbACAAAABEAAwAAQAbACEAAABEAA0AAQAbACIAAABFAAsAAQAcACAAAABFAAwAAQAcACEAAABFAA0AAQAcACIAAABFAA4AAQAYAB8AAABFAA8AAQAYACAAAABGAA4AAQAZAB8AAABGAA8AAQAZACAAAABBAA4AAQAYAB8AAABBAA8AAQAYACAAAABCAA4AAQAZAB8AAABCAA8AAQAZACAAAABBAAsAAQAWAB8AAABBAAwAAQAWACAAAABCAAsAAQAXAB8AAABCAAwAAQAXACAAAAA/ABIAAAAVAAAAAAA/ABMAAAAVAAEAAABAABIAAAAWAAAAAABAABMAAAAWAAEAAAA8ABIAAAAWABoAAAA8ABMAAAAWABsAAAA9ABMAAAAAABIAAAA+ABMAAAABABIAAAA=")
 tile_set = SubResource("TileSet_7ipk8")
+
+[node name="NpcBackpackMan" parent="." instance=ExtResource("9_b1us4")]
+position = Vector2(735, 349)
+
+[node name="AnimatedSprite2D" parent="NpcBackpackMan" index="0"]
+animation = &"idle_front"
+
+[node name="NpcBeardMan" parent="." instance=ExtResource("10_40vog")]
+position = Vector2(664, 349)
+
+[node name="AnimatedSprite2D" parent="NpcBeardMan" index="0"]
+animation = &"idle_right"
+autoplay = "idle_right"
+
+[node name="PlayerM" parent="." instance=ExtResource("11_4hipe")]
+position = Vector2(760, 224)
+
+[node name="Camera2D" parent="PlayerM" index="2"]
+limit_right = 5000
+limit_bottom = 5000
+
+[editable path="NpcBackpackMan"]
+[editable path="NpcBeardMan"]
+[editable path="PlayerM"]

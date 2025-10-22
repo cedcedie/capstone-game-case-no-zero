@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcto1txlkqyi7"
-path="res://.godot/imported/npc_camp.png-023b651139aeb25b81b258386881786f.ctex"
+uid="uid://cymygvy7fove5"
+path="res://.godot/imported/npc_boy_kunat.png-787e1a557b0ae365f7e66cb938b62efd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://npc_camp.png"
-dest_files=["res://.godot/imported/npc_camp.png-023b651139aeb25b81b258386881786f.ctex"]
+source_file="res://docs/npc_boy_kunat.png"
+dest_files=["res://.godot/imported/npc_boy_kunat.png-787e1a557b0ae365f7e66cb938b62efd.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://u7gdrwiolokf"]
 
-[ext_resource type="Texture2D" uid="uid://bcto1txlkqyi7" path="res://npc_camp.png" id="1_bc3lq"]
+[ext_resource type="Texture2D" uid="uid://bcto1txlkqyi7" path="res://miravil/sprites/npc_camp.png" id="1_bc3lq"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_rtuvm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6oxap"]

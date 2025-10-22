@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cij3qgvd5ycfl"]
+[gd_scene load_steps=32 format=4 uid="uid://cij3qgvd5ycfl"]
 
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="1_6rqqf"]
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="2_ud8h3"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bbdw6ejhaifk0" path="res://assets/sprites/environments/exterior/4_Generic_Buildings_32x32.png" id="4_ktjg5"]
 [ext_resource type="Texture2D" uid="uid://cbwr76w0kuqa0" path="res://assets/sprites/environments/exterior/9_Shopping_Center_and_Markets_32x32.png" id="5_pocjb"]
 [ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="6_ud8h3"]
+[ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="7_0315w"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_jpuf4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5t6fk"]
 texture = ExtResource("1_6rqqf")
@@ -53696,3 +53698,14 @@ tile_set = SubResource("TileSet_je41u")
 z_index = 5
 tile_map_data = PackedByteArray("AAAoAP7/AAAYACgAAAAoAP//AAAYACkAAAAoAAAAAAAYACoAAAApAP//AAAZACkAAAApAAAAAAAZACoAAAAqAP//AAAaACkAAAAqAAAAAAAaACoAAAArAP7/AAAbACgAAAArAP//AAAbACkAAAArAAAAAAAbACoAAAAnAAEAAAAcACgAAAAnAAIAAAAcACkAAAAnAAMAAAAcACoAAAAoAAIAAAAdACkAAAAoAAMAAAAdACoAAAApAAIAAAAeACkAAAApAAMAAAAeACoAAAAqAAEAAAAfACgAAAAqAAIAAAAfACkAAAAqAAMAAAAfACoAAAAwAAEAAAAYACsAAAAwAAIAAAAYACwAAAAwAAMAAAAYAC0AAAAxAAIAAAAZACwAAAAxAAMAAAAZAC0AAAAyAAIAAAAaACwAAAAyAAMAAAAaAC0AAAAzAAEAAAAbACsAAAAzAAIAAAAbACwAAAAzAAMAAAAbAC0AAAAtAP7/AAAYAB8AAAAtAP//AAAYACAAAAAtAAAAAAAYACEAAAAuAP//AAAZACAAAAAuAAAAAAAZACEAAAAvAP//AAAaACAAAAAvAAAAAAAaACEAAAAtAPz/AAAYAB0AAAAtAP3/AAAYAB4AAAAuAPz/AAAZAB0AAAAuAP3/AAAZAB4AAAAuAP7/AAAZAB8AAAAvAPz/AAAaAB0AAAAvAP3/AAAaAB4AAAAvAP7/AAAaAB8AAAAsAAMAAAACABIAAAAtAAMAAAADABIAAAAuAAMAAAAEABIAAAA=")
 tile_set = SubResource("TileSet_jko22")
+
+[node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("7_0315w")]
+position = Vector2(1048, 696)
+
+[node name="AnimatedSprite2D" parent="NpcBoyIcecreamHair" index="0"]
+autoplay = "idle_right"
+
+[node name="PlayerM" parent="." instance=ExtResource("8_jpuf4")]
+position = Vector2(936, 696)
+
+[editable path="NpcBoyIcecreamHair"]
