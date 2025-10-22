@@ -30,6 +30,7 @@ var autopsy_report_texture = preload("res://assets/sprites/evidence/autopsy_evid
 var leos_notebook_texture = preload("res://assets/sprites/evidence/leos_notebook_evidence.png")
 
 func _ready():
+	print("🚀 EvidenceInventorySettings: _ready() called")
 	# Start hidden
 	hide()
 	ui_container = $UIContainer
@@ -39,9 +40,11 @@ func _ready():
 	
 	# Get UI references
 	_get_ui_references()
+	print("🔍 DEBUG: After _get_ui_references()")
 	
 	# Setup evidence slots
 	_setup_evidence_slots()
+	print("🔍 DEBUG: After _setup_evidence_slots()")
 	
 	# Initially hide all evidence except the first one
 	_initialize_evidence_visibility()
@@ -160,6 +163,10 @@ func _get_ui_references():
 	evidence_description = ui_container.get_node("EvidenceBoxDesvriptionBG/EvidenceDescription")
 	evidence_tab = ui_container.get_node("EvidenceTab")
 	settings_tab = ui_container.get_node("SettingsTab")
+	
+	# Debug: Check if references are working
+	print("📋 DEBUG: Evidence tab reference: ", evidence_tab != null)
+	print("📋 DEBUG: Settings tab reference: ", settings_tab != null)
 
 func _setup_evidence_slots():
 	"""Setup evidence slots with click detection and hover effects"""
@@ -188,11 +195,14 @@ func _setup_evidence_slots():
 		print("📋 Evidence tab button connected")
 	
 	var settings_tab_button = ui_container.get_node_or_null("SettingsTab/Button")
+	print("📋 DEBUG: Settings tab button found: ", settings_tab_button != null)
 	if settings_tab_button:
 		settings_tab_button.pressed.connect(_on_settings_tab_pressed)
 		settings_tab_button.mouse_entered.connect(_on_settings_tab_hover.bind(true))
 		settings_tab_button.mouse_exited.connect(_on_settings_tab_hover.bind(false))
 		print("📋 Settings tab button connected")
+	else:
+		print("⚠️ Settings tab button NOT FOUND - check node path!")
 
 func _initialize_evidence_visibility():
 	"""Initialize evidence visibility - hide all evidence initially"""
@@ -276,13 +286,20 @@ func _update_settings_tab_state():
 	var in_evidence_collection = current_scene and "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase
 	
 	if settings_tab:
+		# Get the settings icon for grouped animation
+		var settings_icon = settings_tab.get_node_or_null("SettingsIcon")
+		
 		if in_evidence_collection:
-			# Gray out the Settings tab during evidence collection
+			# Gray out both the Settings tab and icon during evidence collection
 			settings_tab.modulate = Color(0.5, 0.5, 0.5, 1.0)
+			if settings_icon:
+				settings_icon.modulate = Color(0.5, 0.5, 0.5, 1.0)
 			print("📋 Settings tab disabled during evidence collection phase")
 		else:
 			# Normal color when not in evidence collection
 			settings_tab.modulate = Color.WHITE
+			if settings_icon:
+				settings_icon.modulate = Color.WHITE
 			print("📋 Settings tab enabled")
 
 func _find_player_camera():
@@ -311,23 +328,45 @@ func _input(event):
 	if checkpoint_manager:
 		bedroom_cutscene_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	
-	# Check if we're in a cutscene (any scene with cutscene_played = false)
+	# Check if we're in a cutscene - comprehensive detection for all scenes
 	var in_cutscene = false
 	var current_scene = get_tree().current_scene
-	if current_scene and current_scene.has_method("_input"):
-		# Check if this scene has cutscene_played property and it's false
-		if "cutscene_played" in current_scene and not current_scene.cutscene_played:
-			in_cutscene = true
+	var current_scene_name = ""
+	
+	if current_scene:
+		current_scene_name = current_scene.name.to_lower()
+		
+		# Check for cutscene indicators in all target scenes
+		if current_scene.has_method("_input"):
+			# Check if this scene has cutscene_played property and it's false
+			if "cutscene_played" in current_scene and not current_scene.cutscene_played:
+				in_cutscene = true
+				print("📋 Cutscene detected: cutscene_played = false")
+		
+		# Check for specific scene cutscene states
+		if "bedroom" in current_scene_name or "police_lobby" in current_scene_name or "lower_level" in current_scene_name or "barangay" in current_scene_name:
+			# Check for cutscene flags in these specific scenes
+			if "in_cutscene" in current_scene and current_scene.in_cutscene:
+				in_cutscene = true
+				print("📋 Cutscene detected: in_cutscene = true")
+			elif "cutscene_active" in current_scene and current_scene.cutscene_active:
+				in_cutscene = true
+				print("📋 Cutscene detected: cutscene_active = true")
+			elif "dialogue_active" in current_scene and current_scene.dialogue_active:
+				in_cutscene = true
+				print("📋 Cutscene detected: dialogue_active = true")
+		
 		# Special case: check if we're in evidence collection phase (line 12 exception)
-		elif "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
+		if "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
 			in_cutscene = false  # Allow during evidence collection phase
+			print("📋 Evidence collection phase - TAB allowed")
 	
 	# Only allow evidence inventory access after bedroom cutscene is completed
 	if event.is_action_pressed("evidence_inventory"):
 		if not bedroom_cutscene_completed:
 			print("⚠️ Evidence inventory access denied - bedroom cutscene not completed")
 		elif in_cutscene:
-			print("⚠️ Evidence inventory access blocked during cutscene (except line 12)")
+			print("⚠️ Evidence inventory access blocked during cutscene in scene: " + current_scene_name)
 		else:
 			# Check if Settings is visible or just closed - if so, don't toggle Evidence
 			var settings_ui = get_node_or_null("/root/Settings")
@@ -382,14 +421,27 @@ func _on_evidence_tab_hover(is_hovering: bool):
 
 func _on_settings_tab_hover(is_hovering: bool):
 	"""Handle settings tab hover effects"""
+	print("📋 DEBUG: Settings tab hover called - hovering: ", is_hovering)
+	print("📋 DEBUG: Settings tab reference exists: ", settings_tab != null)
+	
 	if settings_tab:
+		# Get the settings icon for grouped animation
+		var settings_icon = settings_tab.get_node_or_null("SettingsIcon")
+		print("📋 DEBUG: Settings icon found: ", settings_icon != null)
+		
 		if is_hovering:
 			var tween = create_tween()
+			tween.set_parallel(true)  # Animate both elements simultaneously
 			tween.tween_property(settings_tab, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
+			if settings_icon:
+				tween.tween_property(settings_icon, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
 			print("📋 Settings tab hovered")
 		else:
 			var tween = create_tween()
+			tween.set_parallel(true)  # Animate both elements simultaneously
 			tween.tween_property(settings_tab, "modulate", Color.WHITE, 0.1)
+			if settings_icon:
+				tween.tween_property(settings_icon, "modulate", Color.WHITE, 0.1)
 
 # Click functions for tabs
 func _on_evidence_tab_pressed():

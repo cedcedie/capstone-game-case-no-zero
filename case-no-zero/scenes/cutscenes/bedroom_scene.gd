@@ -68,6 +68,7 @@ func load_dialogue() -> void:
 func start_intro() -> void:
 	load_dialogue()
 
+
 	# Disable player movement
 	if player and player.has_method("disable_movement"):
 		player.disable_movement()
@@ -240,10 +241,11 @@ func play_knock_sound():
 	if knock_sfx:
 		knock_sfx.play()
 
-func start_bgm():
-	if bgm and not bgm.playing:
-		bgm.volume_db = -20
-		bgm.play()
+# AudioManager now handles BGM - this function is no longer needed
+# func start_bgm():
+#	if bgm and not bgm.playing:
+#		bgm.volume_db = -20
+#		bgm.play()
 
 
 func hide_celine():
@@ -351,6 +353,7 @@ func fade_all_in(duration: float = fade_duration):
 	await tween.finished
 
 func end_cutscene():
+	
 	# Set checkpoint
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
@@ -562,17 +565,127 @@ func end_intro() -> void:
 # DEBUG: Skip/complete cutscene
 # --------------------------
 func debug_complete_bedroom_cutscene() -> void:
+	print("🚀 DEBUG: Skipping bedroom cutscene and enabling movement")
+	
+	# Stop any running animations
+	if $AnimationPlayer:
+		$AnimationPlayer.stop()
+		print("📋 AnimationPlayer stopped")
+	
+	# Hide dialogue UI
+	if dialogue_ui:
+		dialogue_ui.hide_ui()
+		if dialogue_ui.has_method("set_cutscene_mode"):
+			dialogue_ui.set_cutscene_mode(false)
+		print("📋 Dialogue UI hidden and cutscene mode disabled")
+	
+	
+	# Set checkpoint
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
-	if dialogue_ui and dialogue_ui.has_method("set_cutscene_mode"):
-		dialogue_ui.set_cutscene_mode(false)
 	
-	# Re-enable player movement
+	# Set all completion flags
+	intro_complete = true
+	celine_interactable = false
+	is_cinematic_active = false
+	
+	# Ensure all tilemaps are visible and at full opacity
+	for tilemap in tilemaps:
+		if tilemap:
+			tilemap.visible = true
+			tilemap.modulate.a = 1.0
+	
+	# Position player properly
+	if player:
+		player.visible = true
+		player.modulate.a = 1.0
+		player.anim_sprite.play("idle_down")
+		player.last_facing = "front"
+		print("📋 Player positioned and visible")
+	
+	# Hide Celine and disable her collision
+	if celine:
+		celine.visible = false
+		var cshape := celine.get_node_or_null("CollisionShape2D")
+		if cshape:
+			cshape.disabled = true
+		print("📋 Celine hidden and collision disabled")
+	
+	# Hide door
+	if door:
+		door.visible = true
+		door.modulate.a = 1.0
+	
+	# Hide the fade overlay
+	if fade_overlay:
+		fade_overlay.visible = false
+	
+	# Add the first evidence (bodycam) to the evidence inventory
+	if has_node("/root/EvidenceInventorySettings"):
+		var evidence_ui = get_node("/root/EvidenceInventorySettings")
+		evidence_ui.add_evidence("broken_body_cam")
+		print("📋 Added bodycam evidence to inventory")
+	
+	# Start the first task
+	if task_manager:
+		task_manager.start_next_task()
+		print("📋 First task started")
+	
+	# CRITICAL: Enable player movement immediately
 	if player and player.has_method("enable_movement"):
 		player.enable_movement()
-		print("📋 Player movement enabled after debug cutscene completion")
+		print("✅ Player movement ENABLED - you should be able to move now!")
+	else:
+		print("⚠️ Player movement enable failed - player or method not found")
 	
-	skip_to_post_cutscene_state()
+	print("🚀 DEBUG: Bedroom cutscene skip completed")
+
+func clear_all_checkpoints_and_restart() -> void:
+	"""Clear all checkpoints and restart the bedroom cutscene from the beginning"""
+	print("🔄 CLEARING ALL CHECKPOINTS - Starting fresh game")
+	
+	# Clear all checkpoints
+	var checkpoint_manager = get_node("/root/CheckpointManager")
+	checkpoint_manager.clear_checkpoint_file()
+	print("📋 All checkpoints cleared")
+	
+	# Clear evidence inventory
+	if has_node("/root/EvidenceInventorySettings"):
+		var evidence_ui = get_node("/root/EvidenceInventorySettings")
+		evidence_ui.collected_evidence.clear()
+		print("📋 Evidence inventory cleared")
+	
+	# Reset task manager
+	if task_manager:
+		task_manager.current_task = {}
+		task_manager.task_queue = []
+		task_manager.task_history = []
+		task_manager.initialize_tasks()
+		print("📋 Task manager reset")
+	
+	# Reset scene state
+	intro_complete = false
+	celine_interactable = true
+	is_cinematic_active = false
+	
+	# Show Celine again
+	if celine:
+		celine.visible = true
+		var cshape := celine.get_node_or_null("CollisionShape2D")
+		if cshape:
+			cshape.disabled = false
+	
+	# Hide task display
+	if task_manager and task_manager.task_display:
+		task_manager.task_display.hide_task()
+	
+	# Disable player movement for cutscene
+	if player and player.has_method("disable_movement"):
+		player.disable_movement()
+	
+	# Start the intro cutscene
+	start_intro()
+	print("🚀 Fresh game started - bedroom cutscene will play")
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Handle evidence inventory input (TAB key)
@@ -584,11 +697,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		if checkpoint_manager:
 			bedroom_cutscene_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 		
-		# Only allow evidence inventory access after bedroom cutscene is completed
-		if not bedroom_cutscene_completed:
-			print("⚠️ Evidence inventory access denied - bedroom cutscene not completed")
-		elif is_cinematic_active:
-			print("⚠️ Evidence inventory access blocked during cinematic")
+		# Block TAB key during cutscene or cinematic
+		if not bedroom_cutscene_completed or is_cinematic_active:
+			print("⚠️ Evidence inventory access blocked during cutscene")
+			get_viewport().set_input_as_handled()
+			return
 		else:
 			# Toggle Evidence Inventory
 			if has_node("/root/EvidenceInventorySettings"):
@@ -607,6 +720,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Press F8 to test knock sound
 		elif event.physical_keycode == KEY_F8:
 			play_knock_sound()
+		# Press F7 to clear ALL checkpoints and restart fresh
+		elif event.physical_keycode == KEY_F7:
+			clear_all_checkpoints_and_restart()
 
 # --------------------------
 # STEP 10: Ready
@@ -632,16 +748,19 @@ func _ready() -> void:
 		if not dialogue_ui.is_connected("next_pressed", cb):
 			dialogue_ui.connect("next_pressed", cb)
 	
-	# Start BGM music automatically when scene loads
-	if bgm and not bgm.playing:
-		bgm.volume_db = -20
-		bgm.play()
-		print("🎵 BGM music started on scene load")
+	# Set scene BGM using AudioManager
+	if AudioManager:
+		AudioManager.set_scene_bgm("bedroom")
+		print("🎵 Bedroom: Scene BGM set via AudioManager")
+	
+	# AudioManager now handles BGM - no need for manual BGM playing
+	# if bgm and not bgm.playing:
+	#	bgm.volume_db = -20
+	#	bgm.play()
+	#	print("🎵 BGM music started on scene load")
 	
 	# Check if bedroom cutscene has already been played
 	var checkpoint_manager = get_node("/root/CheckpointManager")
-	# TEMPORARY DEBUG: Clear checkpoint to test cutscene repeatedly
-	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	var cutscene_already_played = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	
 	if cutscene_already_played:

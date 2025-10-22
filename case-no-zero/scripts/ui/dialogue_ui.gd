@@ -26,6 +26,9 @@ func _ready():
 	container.modulate.a = 0.0
 	next_button.hide()
 	next_button.pressed.connect(_on_next_pressed)
+	
+	# Setup autosizing for labels
+	_setup_autosizing()
 
 # Smooth fade-in
 func show_ui():
@@ -76,13 +79,35 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 		return
 	var tex: Texture2D = null
 	match speaker.to_lower():
-		"miguel", "erwin":
+		"miguel":
 			tex = load("res://Main_character_closeup.png")
+		"erwin", "boy trip":
+			tex = load("res://erwin_tambay_closeup.png")
 		"celine":
 			tex = load("res://new_celine_closeup.png")
+		"kapitana palma", "kapitana", "kapitana lourdes":
+			tex = load("res://kapitana_palma_closeup.png")
 		_:
 			tex = null
 	portrait_rect.texture = tex
+
+func _setup_autosizing():
+	"""Setup autosizing for dialogue UI labels"""
+	# Enable autosizing for name label
+	if name_label:
+		name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		name_label.clip_contents = false
+		# Use size_flags_vertical for autosizing in Godot 4.4.1
+		name_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		print("📝 Dialogue UI: Name label autosizing enabled")
+	
+	# Enable autosizing for dialogue label
+	if dialogue_label:
+		dialogue_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		dialogue_label.clip_contents = false
+		# Use size_flags_vertical for autosizing in Godot 4.4.1
+		dialogue_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		print("📝 Dialogue UI: Dialogue label autosizing enabled")
 
 func _on_next_pressed():
 	if cutscene_mode:

@@ -19,19 +19,51 @@
 			},
 			{
 				"speaker": "Celine",
-				"text": "Perfect! Alam mo ba na yung crime scene ay nasa likod ng barangay hall? Pwede tayong magtulungan doon."
+				"text": "Perfect! Alam mo ba na si Leo ay nagtatrabaho sa barangay hall? Baka may alam sila doon."
 			},
 			{
 				"speaker": "Miguel",
-				"text": "Magandang ideya yan!"
+				"text": "Magandang ideya yan! Baka may mga tao doon na nakakakilala kay Leo."
 			},
 			{
 				"speaker": "Celine",
-				"text": "Oo, pero may pupuntahan muna ako. Tapos tayo na magtuloy sa barangay hall."
+				"text": "Sige, tara na sa barangay hall. Pero ako muna, kasi ang bagal mo!"
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Haha, sige lang. Basta magkita tayo doon."
 			},
 			{
 				"speaker": "Celine",
-				"text": "At saka, ang bagal mo kasi! Haha, joke lang. See you later!"
+				"text": "Oo, baka may mga tao doon na nakakakilala kay Leo. Pwede nating tanungin."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Tama! Baka may mga co-workers niya o mga taong nakakakilala sa kanya."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Exactly! At baka may mga records doon na pwede nating tingnan."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Oo! Baka may mga files o documents na related kay Leo. Lalo na yung patrol logbook."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Oo nga! Yung logbook baka may mga entries doon na related sa nangyari kay Leo."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Sige, una na ako. See you sa barangay hall!"
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Sige, ingat ka. Magkita tayo doon."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Oo, pero wag ka masyadong magmadali. Baka ma-late ka pa! Haha!"
 			}
 		]
 	}

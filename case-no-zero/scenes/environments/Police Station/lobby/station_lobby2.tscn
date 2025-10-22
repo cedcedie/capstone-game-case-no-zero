@@ -201,10 +201,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n00so"]
-size = Vector2(26, 16)
+size = Vector2(44, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vjn4b"]
-radius = 40.0
+radius = 30.0832
 
 [node name="StationLobby2" type="CharacterBody2D"]
 script = ExtResource("3_script")
@@ -216,7 +216,7 @@ autoplay = "idle_left"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(-1, -6)
 shape = SubResource("RectangleShape2D_n00so")
 
 [node name="Label" type="Label" parent="."]

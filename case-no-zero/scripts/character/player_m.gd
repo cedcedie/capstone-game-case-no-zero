@@ -63,12 +63,18 @@ func disable_movement():
 	control_enabled = false
 	# Stop animation and set to idle
 	anim_sprite.play("idle_" + last_facing)
-	print("Player movement disabled during dialogue")
+	print("🚫 Player movement DISABLED - control_enabled = false")
+	print_stack()  # Print call stack to see who called this
 
 # Function to enable movement (called by NPCs after dialogue)
 func enable_movement():
 	control_enabled = true
-	print("Player movement enabled after dialogue")
+	print("✅ Player movement ENABLED - control_enabled = true")
+	print_stack()  # Print call stack to see who called this
+
+# Function to get camera reference
+func get_camera() -> Camera2D:
+	return $Camera2D
 
 func _physics_process(_delta: float) -> void:
 	if control_enabled:
@@ -138,6 +144,9 @@ func _handle_input() -> void:
 
 func _update_animation(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
+		# Safety check: ensure last_facing is valid for player animations
+		if last_facing == "front":
+			last_facing = "down"  # Player doesn't have idle_front, use idle_down instead
 		anim_sprite.play("idle_" + last_facing)
 	else:
 		if abs(dir.x) > abs(dir.y):

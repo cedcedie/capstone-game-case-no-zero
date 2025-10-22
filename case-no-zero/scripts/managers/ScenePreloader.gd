@@ -9,22 +9,99 @@ var preloaded_scenes: Dictionary = {}
 
 # List of all scenes to preload
 var scenes_to_preload: Array = [
+	# Police Station Environments
 	"res://scenes/environments/Police Station/police_lobby.tscn",
 	"res://scenes/environments/Police Station/lower_level_station.tscn",
 	"res://scenes/environments/Police Station/head_police_room.tscn",
 	"res://scenes/environments/Police Station/security_server.tscn",
+	"res://scenes/environments/Police Station/lobby/station_lobby.tscn",
+	"res://scenes/environments/Police Station/lobby/station_lobby2.tscn",
+	"res://scenes/environments/Police Station/lobby/station_lobby3.tscn",
+	
+	# Barangay Hall Environments
 	"res://scenes/environments/barangay hall/barangay_hall.tscn",
 	"res://scenes/environments/barangay hall/barangay_hall_second_floor.tscn",
+	
+	# Cutscenes
 	"res://scenes/cutscenes/bedroomScene.tscn",
-	"res://scenes/cutscenes/intro.tscn"
+	"res://scenes/cutscenes/intro.tscn",
+	
+	# Main Characters
+	"res://scenes/characters/main/playerM.tscn",
+	"res://scenes/characters/main/celine_navarro.tscn",
+	"res://scenes/characters/main/erwin.tscn",
+	"res://scenes/characters/main/leo_mendoza.tscn",
+	
+	# NPCs
+	"res://scenes/characters/kapitanaPalma.tscn",
+	"res://scenes/characters/barangay_npc.tscn",
+	"res://scenes/characters/npc/npc_police.tscn",
+	"res://scenes/characters/npc/robles.tscn",
+	"res://scenes/characters/main/station_guard.tscn",
+	"res://scenes/characters/main/station_guard_2.tscn",
+	"res://scenes/characters/main/station_guard_3.tscn",
+	
+	# UI Scenes
+	"res://scenes/ui/dialogueUi.tscn",
+	"res://scenes/ui/DialogChooser.tscn",
+	"res://scenes/ui/TaskDisplay.tscn",
+	"res://scenes/ui/TaskManager.tscn",
+	"res://scenes/ui/settings.tscn",
+	"res://scenes/ui/caseOption.tscn",
+	"res://scenes/ui/Transition.tscn",
+	"res://scenes/ui/Main Menu.tscn",
+	
+	# Environment Scenes
+	"res://scenes/environments/exterior/map.tscn",
+	"res://scenes/environments/exterior/Police Station.tscn",
+	"res://scenes/environments/exterior/Barangay Hall & CityHall Courtroom.tscn",
+	"res://scenes/environments/exterior/camp and court.tscn",
+	"res://scenes/environments/hardware/hardware store.tscn",
+	"res://scenes/environments/hotel/Hotel interior lobby.tscn",
+	"res://scenes/environments/hotel/hotel interior 2nd floor.tscn",
+	"res://scenes/environments/hospital/hospital lobby.tscn",
+	"res://scenes/environments/hospital/hospital 2nd floor.tscn",
+	"res://scenes/environments/market/market interior.tscn",
+	"res://scenes/environments/fire station/fire station 1st floor.tscn",
+	"res://scenes/environments/fire station/fire station 2nd floor.tscn",
+	"res://scenes/environments/funeral home/morgue.tscn",
+	"res://scenes/environments/Courtroom/courtroom.tscn",
+	"res://scenes/environments/abandoned court/abandoned court house.tscn",
+	"res://scenes/environments/abandoned court/court.tscn",
+	
+	# Apartment Scenes
+	"res://scenes/environments/apartments/apartment1.tscn",
+	"res://scenes/environments/apartments/apartment2.tscn",
+	"res://scenes/environments/apartments/apartment3.tscn",
+	"res://scenes/maps/apartments/apartment1.tscn",
+	"res://scenes/maps/apartments/apartment2.tscn",
+	"res://scenes/maps/apartments/apartment3.tscn",
+	"res://scenes/maps/apartments/abandoned court house.tscn",
+	
+	# Sample Interior Scenes
+	"res://scenes/environments/Sample interior/generic/genericInterior.tscn",
+	"res://scenes/environments/Sample interior/gym/gymInterior.tscn",
+	"res://scenes/environments/Sample interior/iceCreamShop/iceCreamShopInterior.tscn",
+	"res://scenes/environments/Sample interior/museum/museumInterior.tscn",
+	"res://scenes/environments/Sample interior/shootingrangeInterior/shootingRange.tscn",
+	
+	# Objects
+	"res://scenes/objects/Door.tscn",
+	
+	# Root Scenes
+	"res://EvidenceInventory.tscn",
+	"res://EvidenceInventorySettings.tscn",
+	"res://Settings.tscn",
+	"res://hardware store.tscn",
+	"res://npc_camp.tscn"
 ]
 
 var is_preloading: bool = false
 var preload_progress: int = 0
 
 func _ready():
-	print("🚀 ScenePreloader: Ready (preloading disabled for debugging)")
-	# Comment out preloading for now - enable after game completion
+	print("🚀 ScenePreloader: Ready (preloading disabled for debugging - will be much faster in exported game)")
+	# Comment out preloading for debugging - enable after game completion
 	# await get_tree().create_timer(0.5).timeout
 	# preload_all_scenes()
 

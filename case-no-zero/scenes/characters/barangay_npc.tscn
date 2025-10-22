@@ -147,27 +147,27 @@ region = Rect2(704, 128, 32, 64)
 atlas = ExtResource("1_t1ha6")
 region = Rect2(736, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5jh5h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1ha6"]
 atlas = ExtResource("1_t1ha6")
 region = Rect2(384, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1w4y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tjeh"]
 atlas = ExtResource("1_t1ha6")
 region = Rect2(416, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_35amy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnghk"]
 atlas = ExtResource("1_t1ha6")
 region = Rect2(448, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kyk53"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xaod"]
 atlas = ExtResource("1_t1ha6")
 region = Rect2(480, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ow0ms"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_whlw8"]
 atlas = ExtResource("1_t1ha6")
 region = Rect2(512, 128, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jv6xl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_40fd2"]
 atlas = ExtResource("1_t1ha6")
 region = Rect2(544, 128, 32, 64)
 
@@ -337,22 +337,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5jh5h")
+"texture": SubResource("AtlasTexture_t1ha6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d1w4y")
+"texture": SubResource("AtlasTexture_7tjeh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_35amy")
+"texture": SubResource("AtlasTexture_wnghk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kyk53")
+"texture": SubResource("AtlasTexture_2xaod")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ow0ms")
+"texture": SubResource("AtlasTexture_whlw8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jv6xl")
+"texture": SubResource("AtlasTexture_40fd2")
 }],
 "loop": true,
 "name": &"walk_left",
@@ -392,7 +392,7 @@ radius = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5dpsp")
-animation = &"walk_back"
+animation = &"walk_left"
 autoplay = "idle_right"
 offset = Vector2(0, -32)
 

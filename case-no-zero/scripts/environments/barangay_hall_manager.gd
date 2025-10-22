@@ -166,7 +166,7 @@ func enable_character_collision(character: Node) -> void:
 		area_collision.disabled = false
 		print("✅ Area collision enabled for:", character.name)
 
-func play_character_animation(character: CharacterBody2D, animation: String, duration: float = transition_pause) -> void:
+func play_character_animation(character: CharacterBody2D, animation: String, _duration: float = transition_pause) -> void:
 	if not character:
 		print("❌ Character not found for animation:", animation)
 		return
@@ -174,19 +174,24 @@ func play_character_animation(character: CharacterBody2D, animation: String, dur
 	var anim_sprite = character.get_node_or_null("AnimatedSprite2D")
 	if anim_sprite:
 		print("🎭 Playing animation:", animation, "on character:", character.name)
+		print("🎭 Current animation before change:", anim_sprite.animation)
 		anim_sprite.play(animation)
+		print("🎭 Animation set to:", anim_sprite.animation, "is_playing:", anim_sprite.is_playing())
 		# Remove await to prevent timing conflicts when multiple characters animate
 		# await get_tree().create_timer(duration).timeout
 	else:
 		print("❌ AnimatedSprite2D not found on character:", character.name)
 
-func move_character_smoothly(character: CharacterBody2D, target_pos: Vector2, walk_animation: String = "walk_down", idle_animation: String = "idle_right") -> void:
+func move_character_smoothly(character: CharacterBody2D, target_pos: Vector2, walk_animation: String = "walk_down", idle_animation: String = "idle_down") -> void:
 	if not character:
 		return
 		
 	var start_pos: Vector2 = character.position
 	var distance: float = start_pos.distance_to(target_pos)
 	var duration: float = distance / walk_speed
+	
+	print("🎭 move_character_smoothly: Moving", character.name, "from", start_pos, "to", target_pos)
+	print("🎭 Using walk_animation:", walk_animation, "idle_animation:", idle_animation)
 	
 	# Play walk animation
 	play_character_animation(character, walk_animation)
@@ -197,6 +202,7 @@ func move_character_smoothly(character: CharacterBody2D, target_pos: Vector2, wa
 	t.tween_property(character, "position", target_pos, duration)
 	await t.finished
 	
+	print("🎭 Movement completed, setting idle animation:", idle_animation)
 	# Play idle animation
 	play_character_animation(character, idle_animation)
 
@@ -219,7 +225,7 @@ func show_dialogue_with_auto_advance(speaker: String, text: String) -> void:
 	
 	# Calculate dynamic wait time based on text length
 	var typing_time = text.length() * 0.01  # Time for typing animation
-	var reading_time = max(1.0, text.length() * 0.02)  # Reading time (20ms per char, min 1s)
+	var reading_time = 1.5  # Fixed 1.5s reading time for all dialogue
 	var total_wait = typing_time + reading_time
 	
 	print("💬 Auto-advancing dialogue: ", text.length(), " chars, waiting ", total_wait, "s")
@@ -241,8 +247,8 @@ func show_evidence_collected() -> void:
 	
 	# Show evidence collection in task display
 	if task_manager and task_manager.task_display:
-		task_manager.task_display.show_task("2 Evidence Items Collected!\nHandwriting Sample\nLogbook")
-		print("📋 Evidence collection shown in task display (2 items)")
+		task_manager.task_display.show_task("Evidences collected!")
+		print("📋 Evidence collection shown in task display")
 	else:
 		print("⚠️ TaskManager or TaskDisplay not available")
 
@@ -285,6 +291,10 @@ func _input(event):
 			
 			# Consume the input so it doesn't trigger the global handler
 			get_viewport().set_input_as_handled()
+			return  # Important: return to prevent further processing
+		
+		# If not in evidence collection phase, let the global handler deal with it
+		# Don't consume the input here
 
 func find_character_references():
 	"""Find character references from the scene root"""
@@ -321,6 +331,11 @@ func find_character_references():
 
 func _ready():
 	print("🏛️ Barangay Hall Manager: _ready() called")
+	
+	# Set scene BGM using AudioManager
+	if AudioManager:
+		AudioManager.set_scene_bgm("barangay_hall")
+		print("🎵 Barangay Hall: Scene BGM set via AudioManager")
 	
 	# Get managers
 	task_manager = get_node("/root/TaskManager")
@@ -510,13 +525,13 @@ func show_next_line() -> void:
 			if dialogue_ui:
 				dialogue_ui.hide()
 			# Start with idle_back
-			await play_character_animation(player, "idle_back", 2.0)
+			play_character_animation(player, "idle_back", 2.0)
 			# Loop: idle_left -> idle_back -> idle_left (getting progressively faster)
-			await play_character_animation(player, "idle_left", 0.8)
-			await play_character_animation(player, "idle_back", 0.6)
-			await play_character_animation(player, "idle_left", 0.4)
-			await play_character_animation(player, "idle_back", 0.3)
-			await play_character_animation(player, "idle_left", 0.2)
+			play_character_animation(player, "idle_left", 0.8)
+			play_character_animation(player, "idle_back", 0.6)
+			play_character_animation(player, "idle_left", 0.4)
+			play_character_animation(player, "idle_back", 0.3)
+			play_character_animation(player, "idle_left", 0.2)
 			# Show dialogue after animation (auto-advance)
 			await show_dialogue_with_auto_advance(speaker, text)
 			current_line += 1
@@ -528,7 +543,7 @@ func show_next_line() -> void:
 			# Hide dialogue during animation
 			if dialogue_ui:
 				dialogue_ui.hide()
-			await play_character_animation(celine, "idle_right", 0.5)
+			play_character_animation(celine, "idle_right", 0.5)
 			# Show dialogue after animation (auto-advance)
 			await show_dialogue_with_auto_advance(speaker, text)
 			current_line += 1
@@ -632,7 +647,7 @@ func show_next_line() -> void:
 				
 				# Step 1: Walk down to 640.0, 472.0 (walk_down) - wait for completion
 				var intermediate_pos = Vector2(640.0, 472.0)
-				move_character_smoothly(barangay_npc, intermediate_pos, "walk_down", "idle_down")
+				move_character_smoothly(barangay_npc, intermediate_pos, "walk_down", "walk_left")
 				# Calculate wait time based on distance
 				var distance1 = barangay_npc.position.distance_to(intermediate_pos)
 				var wait_time1 = distance1 / walk_speed
@@ -852,19 +867,18 @@ func show_next_line() -> void:
 					task_manager.complete_current_task()
 					print("📋 Task marked as completed after evidence collection")
 				
-				# Show "Tab to close inventory" message
-				if task_manager and task_manager.task_display:
-					task_manager.task_display.show_task("Tab to close inventory")
-					print("📋 Task display: Tab to close inventory")
+				# Flash inventory for 3 seconds then auto-close (like a cutscene)
+				print("📋 Flashing evidence inventory for 3 seconds")
+				await get_tree().create_timer(3.0).timeout
 				
-				# Wait for inventory to be closed (evidence_collection_phase will be set to false when closed)
-				while evidence_collection_phase:
-					await get_tree().process_frame
+				# Auto-close inventory after 3 seconds
+				if evidence_ui:
+					await evidence_ui.hide_evidence_inventory()
+					print("📋 Evidence inventory auto-closed after 3 seconds")
 				
-				# Hide task manager display only after inventory is closed
-				if task_manager and task_manager.task_display:
-					task_manager.task_display.hide_task()
-					print("📋 Task display hidden after inventory closed")
+				# End evidence collection phase
+				evidence_collection_phase = false
+				print("📋 Evidence collection phase ended")
 				
 				print("📋 Evidence inventory closed, now showing dialogue")
 			
@@ -929,7 +943,7 @@ func show_next_line() -> void:
 			if kapitana:
 				print("🎭 Kapitana: Starting walk_down to (640, 440)")
 				var kapitana_step1 = Vector2(640.0, 440.0)
-				await move_character_smoothly(kapitana, kapitana_step1, "walk_down", "idle_down")
+				await move_character_smoothly(kapitana, kapitana_step1, "walk_down", "idle_back")
 				print("🎭 Kapitana: Reached (640, 440) - idle_down")
 				
 				# Set Celine and PlayerM to idle_front and idle_down while Kapitana is at this position
@@ -997,7 +1011,7 @@ func show_next_line() -> void:
 				# Kapitana: walk_down to (464, 568)
 				print("🎭 Kapitana: Starting walk_down to (464, 568)")
 				var kapitana_step2 = Vector2(464.0, 568.0)
-				await move_character_smoothly(kapitana, kapitana_step2, "walk_down", "idle_down")
+				await move_character_smoothly(kapitana, kapitana_step2, "walk_down", "idle_front")
 				print("🎭 Kapitana: Reached (464, 568)")
 				
 				# Fade out Kapitana
@@ -1172,8 +1186,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Press F10 to instantly complete the barangay hall cutscene (debug only)
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_F10:
-			var checkpoint_manager = get_node("/root/CheckpointManager")
-			checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
+			var debug_checkpoint_manager = get_node("/root/CheckpointManager")
+			debug_checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
 			if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
 				DialogueUI.set_cutscene_mode(false)
 			end_cutscene()
