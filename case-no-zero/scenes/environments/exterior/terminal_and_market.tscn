@@ -53700,10 +53700,10 @@ tile_map_data = PackedByteArray("AAAoAP7/AAAYACgAAAAoAP//AAAYACkAAAAoAAAAAAAYACo
 tile_set = SubResource("TileSet_jko22")
 
 [node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("7_0315w")]
-position = Vector2(1048, 696)
+position = Vector2(896, 520)
 
 [node name="AnimatedSprite2D" parent="NpcBoyIcecreamHair" index="0"]
-autoplay = "idle_right"
+animation = &"idle_front"
 
 [node name="PlayerM" parent="." instance=ExtResource("8_jpuf4")]
 position = Vector2(936, 696)
