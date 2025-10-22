@@ -41,13 +41,11 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_police_lobby": "police_lobby",
 		"Area2D_barangay_hall": "barangay_hall",
 		"Area2D_barangay_hall_second_floor": "barangay_hall_second_floor",
-		"Area2D_barangay_hall_return": "barangay_hall"
+		"Area2D_barangay_hall_return": "barangay_hall",
+		"Area2D_exterior_police" : "police_lobby"
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
-	
-	# Set the entry point in SpawnManager - use the current scene name as the entry point
-	# This tells the target scene which scene the player came FROM
 	if has_node("/root/SpawnManager"):
 		var spawn_manager = get_node("/root/SpawnManager")
 		spawn_manager.set_entry_point(current_scene_name, current_scene_name)
@@ -73,6 +71,15 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/barangay hall/barangay_hall_second_floor.tscn"
 		"Area2D_barangay_hall_return":
 			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
+		"Area2D_exterior_police":
+			return "res://scenes/environments/Police Station/police_lobby.tscn"
+		# Hotel and Hospital Area2D transitions
+		"Area2D_firestation":
+			return "res://scenes/environments/fire station/fire station 1st floor.tscn"
+		"Area2D_hospital":
+			return "res://scenes/environments/hospital/hospital lobby.tscn"
+		"Area2D_hotel":
+			return "res://scenes/environments/hotel/hotel interior lobby.tscn"
 		_:
 			return ""
 

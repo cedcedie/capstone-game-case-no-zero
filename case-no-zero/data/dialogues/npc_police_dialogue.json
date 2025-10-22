@@ -51,6 +51,20 @@
 		"speaker": "Pulis",
 		"text": "Ingat ka sa paglalakad."
 	  }
+	],
+	"barangay_hall_completed": [
+	  {
+		"speaker": "Pulis",
+		"text": "Pwede makausap po yung head police nyo po."
+	  },
+	  {
+		"speaker": "Pulis",
+		"text": "Ah, si Chief. Nasa taas siya sa kanyang opisina."
+	  },
+	  {
+		"speaker": "Pulis",
+		"text": "Punta ka sa taas, makikita mo ang kanyang opisina."
+	  }
 	]
   }
 }

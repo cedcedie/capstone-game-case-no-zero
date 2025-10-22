@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp7abqdqiick3"
-path="res://.godot/imported/leo_mendoza.png-9cd5b23221c4403abbc63ae2011d84d3.ctex"
+uid="uid://b4dadle76scov"
+path="res://.godot/imported/cutscene_boy.png-182194f3ce6128be7db546318a235838.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/characters/main/leo_mendoza.png"
-dest_files=["res://.godot/imported/leo_mendoza.png-9cd5b23221c4403abbc63ae2011d84d3.ctex"]
+source_file="res://cutscene_boy.png"
+dest_files=["res://.godot/imported/cutscene_boy.png-182194f3ce6128be7db546318a235838.ctex"]
 
 [params]
 

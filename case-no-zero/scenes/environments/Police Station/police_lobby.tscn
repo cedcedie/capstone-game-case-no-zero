@@ -7125,10 +7125,10 @@ sources/1 = SubResource("TileSetAtlasSource_qtg2g")
 size = Vector2(96, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4iqi4"]
-size = Vector2(64.5, 17.25)
+size = Vector2(80.25, 17.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3ecq"]
-size = Vector2(96, 17)
+size = Vector2(64, 17)
 
 [node name="PoliceLobby" type="Node2D"]
 y_sort_enabled = true
@@ -7173,14 +7173,16 @@ shape = SubResource("RectangleShape2D_pdy5u")
 script = ExtResource("7_scene_transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_head_police"]
-position = Vector2(400, 536)
+z_index = 3
+position = Vector2(767.875, 176)
 shape = SubResource("RectangleShape2D_4iqi4")
 
 [node name="Area2D_security_server" type="Area2D" parent="."]
 script = ExtResource("7_scene_transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_security_server"]
-position = Vector2(768, 176.5)
+z_index = 3
+position = Vector2(400, 536)
 shape = SubResource("RectangleShape2D_x3ecq")
 
 [node name="NpcPolice" parent="." instance=ExtResource("4_pdy5u")]

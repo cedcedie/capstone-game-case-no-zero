@@ -51,6 +51,29 @@ func enable_character_collision(character: Node) -> void:
 		area_collision.disabled = false
 		print("✅ Area collision enabled for:", character.name)
 
+func hide_station_lobby_guards() -> void:
+	"""Hide all station lobby guards and disable their collisions"""
+	var parent_scene = get_parent()
+	if not parent_scene:
+		print("⚠️ No parent scene found")
+		return
+	
+	# Find and hide all station lobby guards
+	var guards_to_hide = [
+		"StationLobby2",
+		"station_lobby", 
+		"StationLobby3"
+	]
+	
+	for guard_name in guards_to_hide:
+		var guard = parent_scene.get_node_or_null(guard_name)
+		if guard:
+			guard.visible = false
+			disable_character_collision(guard)
+			print("🚫 Hidden guard:", guard_name)
+		else:
+			print("⚠️ Guard not found:", guard_name)
+
 func _ready():
 	print("🔍 Police Lobby Cutscene: _ready() called")
 	
@@ -68,13 +91,27 @@ func _ready():
 	# Check if we should play the cutscene
 	var lower_level_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
 	var cutscene_already_played = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
+	var barangay_hall_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
 	
 	
 	print("🔍 Police Lobby Cutscene Debug:")
 	print("  - lower_level_completed:", lower_level_completed)
 	print("  - cutscene_already_played:", cutscene_already_played)
+	print("  - barangay_hall_completed:", barangay_hall_completed)
 	print("  - lower_level_checkpoint exists:", checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED))
 	print("  - cutscene_checkpoint exists:", checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED))
+	print("  - barangay_hall_checkpoint exists:", checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED))
+	
+	# Handle guard visibility based on barangay hall completion
+	if barangay_hall_completed:
+		# Hide all station lobby guards when barangay hall is completed
+		hide_station_lobby_guards()
+		print("🚫 Station lobby guards hidden (barangay hall completed)")
+		
+		# Set task to go back to police station for radio logs
+		if task_manager:
+			task_manager.set_current_task("investigate_radio_logs")
+			print("📋 Task set to: Investigate Radio Logs")
 	
 	# Set Celine visibility based on checkpoint (preload her if needed)
 	# Only show Celine if lower level is completed AND cutscene hasn't been played yet

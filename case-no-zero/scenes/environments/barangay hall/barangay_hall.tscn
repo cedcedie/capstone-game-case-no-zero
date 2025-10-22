@@ -24240,7 +24240,7 @@ sources/0 = SubResource("TileSetAtlasSource_cj1yw")
 sources/1 = SubResource("TileSetAtlasSource_lvu5a")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mc44i"]
-size = Vector2(97, 28)
+size = Vector2(68.5, 22)
 
 [node name="baranggay_hall" type="Node2D"]
 y_sort_enabled = true
@@ -24280,11 +24280,20 @@ position = Vector2(488, 528)
 autoplay = "idle_back"
 
 [node name="Area2D_barangay_hall_second_floor" type="Area2D" parent="."]
+position = Vector2(0, 24)
 script = ExtResource("17_scene_transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_barangay_hall_second_floor"]
 z_index = 1
 position = Vector2(639.5, 227)
+shape = SubResource("RectangleShape2D_mc44i")
+
+[node name="Area2D_police_lobby" type="Area2D" parent="."]
+script = ExtResource("17_scene_transition")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_lobby"]
+z_index = 1
+position = Vector2(464, 557)
 shape = SubResource("RectangleShape2D_mc44i")
 
 [node name="BarangayHallManager" type="Node" parent="."]

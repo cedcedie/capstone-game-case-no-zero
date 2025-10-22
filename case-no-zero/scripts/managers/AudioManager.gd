@@ -18,6 +18,7 @@ var scene_bgm_map: Dictionary = {
 	"police_lobby": "res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 19 Scarlet Forest.ogg",
 	"bedroom": "res://assets/audio/deltaruneAud/You Can Always Come Home.ogg",
 	"bedroomScene": "res://assets/audio/deltaruneAud/You Can Always Come Home.ogg",
+	"intro_story": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 28 Premonition.mp3",
 	"barangay_hall": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3",
 	"barangay_hall_second_floor": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3"
 }
@@ -42,7 +43,7 @@ func _ready():
 		_on_scene_changed()
 
 func set_scene_bgm(scene_name: String):
-	"""Set the BGM for a specific scene"""
+	"""Set the BGM for a specific scene with smooth transitions"""
 	print("🎵 AudioManager: set_scene_bgm called for:", scene_name)
 	var bgm_path = scene_bgm_map.get(scene_name, "")
 	print("🎵 AudioManager: BGM path found:", bgm_path)
@@ -58,6 +59,9 @@ func set_scene_bgm(scene_name: String):
 	var is_barangay_scene = scene_name in ["barangay_hall", "barangay_hall_second_floor"]
 	var current_is_barangay = current_bgm.contains("Waterfall")
 	
+	# Check if we're switching from intro story to bedroom
+	var is_intro_to_bedroom = current_bgm.contains("Premonition") and scene_name in ["bedroom", "bedroomScene"]
+	
 	# If switching between station scenes, don't restart the audio
 	if is_station_scene and current_is_station and bgm_player and bgm_player.playing:
 		print("🎵 AudioManager: Continuing Scarlet Forest BGM for", scene_name, "- no restart needed")
@@ -70,10 +74,16 @@ func set_scene_bgm(scene_name: String):
 		scene_bgm = bgm_path
 		return
 	
+	# If switching from intro story to bedroom, use smooth transition
+	if is_intro_to_bedroom:
+		print("🎵 AudioManager: Smooth transition from intro story to bedroom")
+		# Brief pause for smooth transition
+		await get_tree().create_timer(0.3).timeout
+	
 	# If switching between different scene groups, fade out current BGM first
 	if bgm_player and bgm_player.playing:
 		print("🎵 AudioManager: Fading out current BGM before switching to", scene_name)
-		await fade_out_bgm()
+		await fade_out_bgm(1.5)  # 1.5-second fade out for smoother transition
 	
 	scene_bgm = bgm_path
 	play_bgm(bgm_path)
