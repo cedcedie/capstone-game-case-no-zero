@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://shri80h54bqk"]
+[gd_scene load_steps=37 format=4 uid="uid://shri80h54bqk"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_0dxn2"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_gv3jt"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://56ldwej8xfdd" path="res://miravil/characters/npc_backpack_man.tscn" id="9_b1us4"]
 [ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="10_40vog"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_4hipe"]
+[ext_resource type="PackedScene" uid="uid://c4ajw31sko6wi" path="res://miravil/characters/npc_boy_1.tscn" id="12_40vog"]
+[ext_resource type="PackedScene" uid="uid://umei5rc0s03h" path="res://miravil/characters/npc_girl_1.tscn" id="13_4hipe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3ex5"]
 texture = ExtResource("1_0dxn2")
@@ -50303,13 +50305,13 @@ tile_map_data = PackedByteArray("AAA7AAoAAQAUAB8AAAA7AAsAAQAUACAAAAA7AAwAAQAUACE
 tile_set = SubResource("TileSet_7ipk8")
 
 [node name="NpcBackpackMan" parent="." instance=ExtResource("9_b1us4")]
-position = Vector2(735, 349)
+position = Vector2(2056, 984)
 
 [node name="AnimatedSprite2D" parent="NpcBackpackMan" index="0"]
 animation = &"idle_front"
 
 [node name="NpcBeardMan" parent="." instance=ExtResource("10_40vog")]
-position = Vector2(664, 349)
+position = Vector2(496, 760)
 
 [node name="AnimatedSprite2D" parent="NpcBeardMan" index="0"]
 animation = &"idle_right"
@@ -50321,6 +50323,12 @@ position = Vector2(760, 224)
 [node name="Camera2D" parent="PlayerM" index="2"]
 limit_right = 5000
 limit_bottom = 5000
+
+[node name="NpcBoy1" parent="." instance=ExtResource("12_40vog")]
+z_index = 6
+position = Vector2(1408, 939)
+
+[node name="NpcGirl1" parent="." instance=ExtResource("13_4hipe")]
 
 [editable path="NpcBackpackMan"]
 [editable path="NpcBeardMan"]
