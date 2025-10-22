@@ -2664,8 +2664,11 @@ texture_region_size = Vector2i(32, 32)
 13:65/0 = 0
 15:65/0 = 0
 0:66/0 = 0
+0:66/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 6.03287, 16, 16, -16, 16, -16, 6.03287)
 1:66/0 = 0
+1:66/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 6.03287, 16, 16, -16, 16, -16, 6.03287)
 2:66/0 = 0
+2:66/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 6.03287, 16, 16, -16, 16, -16, 6.03287)
 3:66/0 = 0
 4:66/0 = 0
 5:66/0 = 0
@@ -3524,6 +3527,7 @@ texture_region_size = Vector2i(32, 32)
 9:8/0 = 0
 10:8/0 = 0
 11:8/0 = 0
+11:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.991, -16, 13.991, -16, 13.9263, -4.04365, -13.9543, -4.03168)
 12:8/0 = 0
 13:8/0 = 0
 14:8/0 = 0
@@ -3989,6 +3993,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_gnm2g"]
 tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_85xa7")
 
 [node name="Apartment1" type="Node2D"]
@@ -4015,3 +4020,4 @@ collision_visibility_mode = 1
 [node name="TileMapLayer2" type="TileMapLayer" parent="ground wall/TileMapLayer2"]
 tile_map_data = PackedByteArray("AAAOAAEAAAAAAAUAAAAOAAIAAAAAAAYAAAAOAAUAAAACAAkAAAAOAAYAAAACAAoAAAAEAAEAAAAPAAsAAAAEAAIAAAAPAAwAAAAKAAIAAAALACEAAAAKAAMAAAALACIAAAALAAIAAAAMACEAAAALAAMAAAAMACIAAAAQAAIAAAANACEAAAAQAAMAAAANACIAAAARAAIAAAAOACEAAAARAAMAAAAOACIAAAAHAAQAAAAAAAgAAAAFAAIAAAALAAcAAAAFAAMAAAALAAgAAAANAAQAAAABAAkAAAANAAUAAAABAAoAAAA=")
 tile_set = SubResource("TileSet_gnm2g")
+collision_visibility_mode = 1
