@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://shri80h54bqk"]
+[gd_scene load_steps=53 format=4 uid="uid://shri80h54bqk"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_0dxn2"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_gv3jt"]
@@ -13,6 +13,22 @@
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_4hipe"]
 [ext_resource type="PackedScene" uid="uid://c4ajw31sko6wi" path="res://miravil/characters/npc_boy_1.tscn" id="12_40vog"]
 [ext_resource type="PackedScene" uid="uid://umei5rc0s03h" path="res://miravil/characters/npc_girl_1.tscn" id="13_4hipe"]
+[ext_resource type="PackedScene" uid="uid://dlrp0sfyfnvxu" path="res://miravil/characters/npc_boy_kunat.tscn" id="13_k5fqa"]
+[ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="14_ng6w3"]
+[ext_resource type="PackedScene" uid="uid://b74ajxmhj41h7" path="res://miravil/characters/npc_cool_hoodie.tscn" id="15_0s3d8"]
+[ext_resource type="PackedScene" uid="uid://bthvnds1w3orw" path="res://miravil/characters/npc_curly_girly.tscn" id="16_l34aw"]
+[ext_resource type="PackedScene" uid="uid://1js3m63gq78w" path="res://miravil/characters/npc_mustache.tscn" id="17_torol"]
+[ext_resource type="PackedScene" uid="uid://b6qm0vctd5r8j" path="res://miravil/characters/npc_one_eye.tscn" id="18_jplgt"]
+[ext_resource type="PackedScene" uid="uid://ngiiiml5ij1" path="res://miravil/characters/npc_pinkish.tscn" id="19_egjys"]
+[ext_resource type="PackedScene" uid="uid://cqws3ntoa3f31" path="res://miravil/characters/npc_random_guy.tscn" id="20_40ghn"]
+[ext_resource type="PackedScene" uid="uid://8t88hn34ixlf" path="res://miravil/characters/npc_random_girl.tscn" id="21_v3fv6"]
+[ext_resource type="PackedScene" uid="uid://dxuw5gwsudjkb" path="res://miravil/characters/npc_shaolin_boy.tscn" id="22_7jhkl"]
+[ext_resource type="PackedScene" uid="uid://b84ieuct4jt0x" path="res://miravil/characters/npc_yellow_glass_man.tscn" id="23_6wbq2"]
+[ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="25_lbbxl"]
+[ext_resource type="PackedScene" uid="uid://b0k0313qg5upt" path="res://miravil/characters/npc_guy_2.tscn" id="26_bx1br"]
+[ext_resource type="PackedScene" uid="uid://dbt0khsctyvim" path="res://miravil/characters/npc_guy_5.tscn" id="27_dgsfy"]
+[ext_resource type="PackedScene" uid="uid://di11hg7t8dak4" path="res://miravil/characters/npc_guy_6.tscn" id="28_us3eh"]
+[ext_resource type="PackedScene" uid="uid://cbnn8pq1mffxm" path="res://miravil/characters/npc_guy_4.tscn" id="29_tovyy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3ex5"]
 texture = ExtResource("1_0dxn2")
@@ -50310,8 +50326,14 @@ position = Vector2(2056, 984)
 [node name="AnimatedSprite2D" parent="NpcBackpackMan" index="0"]
 animation = &"idle_front"
 
+[node name="Label" parent="NpcBackpackMan" index="3"]
+offset_left = -208.0
+offset_top = -16.0
+offset_right = -80.0
+offset_bottom = 9.0
+
 [node name="NpcBeardMan" parent="." instance=ExtResource("10_40vog")]
-position = Vector2(496, 760)
+position = Vector2(344, 760)
 
 [node name="AnimatedSprite2D" parent="NpcBeardMan" index="0"]
 animation = &"idle_right"
@@ -50326,10 +50348,92 @@ limit_bottom = 5000
 
 [node name="NpcBoy1" parent="." instance=ExtResource("12_40vog")]
 z_index = 6
-position = Vector2(1408, 939)
+position = Vector2(1408, 936)
+
+[node name="NpcBoyKunat" parent="." instance=ExtResource("13_k5fqa")]
+z_index = 20
+position = Vector2(2160, 640)
+
+[node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("14_ng6w3")]
+position = Vector2(1200, 944)
+
+[node name="AnimatedSprite2D" parent="NpcBoyIcecreamHair" index="0"]
+animation = &"idle_front"
+
+[node name="NpcCoolHoodie" parent="." instance=ExtResource("15_0s3d8")]
+z_index = 10
+position = Vector2(2400, 1016)
+
+[node name="NpcCurlyGirly" parent="." instance=ExtResource("16_l34aw")]
+position = Vector2(768, 1032)
+
+[node name="NpcMustache" parent="." instance=ExtResource("17_torol")]
+z_index = 10
+position = Vector2(2456, 1016)
+
+[node name="AnimatedSprite2D" parent="NpcMustache" index="0"]
+animation = &"idle_left"
+autoplay = "idle_left"
+
+[node name="NpcOneEye" parent="." instance=ExtResource("18_jplgt")]
+position = Vector2(400, 760)
+
+[node name="AnimatedSprite2D" parent="NpcOneEye" index="0"]
+animation = &"idle_left"
+
+[node name="NpcPinkish" parent="." instance=ExtResource("19_egjys")]
+z_index = 20
+position = Vector2(1920, 496)
+
+[node name="NpcRandomGuy" parent="." instance=ExtResource("20_40ghn")]
+z_index = 12
+position = Vector2(1160, 504)
+
+[node name="NpcRandomGirl" parent="." instance=ExtResource("21_v3fv6")]
+z_index = 15
+position = Vector2(1424, 760)
+
+[node name="NpcShaolinBoy" parent="." instance=ExtResource("22_7jhkl")]
+position = Vector2(1624, 1016)
+
+[node name="AnimatedSprite2D" parent="NpcShaolinBoy" index="0"]
+animation = &"idle_right"
+autoplay = "idle_right"
+
+[node name="NpcYellowGlassMan" parent="." instance=ExtResource("23_6wbq2")]
+position = Vector2(648, 448)
 
 [node name="NpcGirl1" parent="." instance=ExtResource("13_4hipe")]
+position = Vector2(2440, 880)
+
+[node name="NpcGuy3" parent="." instance=ExtResource("25_lbbxl")]
+position = Vector2(1184, 184)
+
+[node name="NpcGuy2" parent="." instance=ExtResource("26_bx1br")]
+position = Vector2(1088, 184)
+
+[node name="NpcGuy5" parent="." instance=ExtResource("27_dgsfy")]
+position = Vector2(2560, 504)
+
+[node name="NpcGuy6" parent="NpcGuy5" instance=ExtResource("28_us3eh")]
+z_index = 15
+position = Vector2(-1984, 72)
+
+[node name="NpcGuy4" parent="." instance=ExtResource("29_tovyy")]
+position = Vector2(128, 496)
+
+[node name="AnimatedSprite2D" parent="NpcGuy4" index="0"]
+animation = &"idle_front"
 
 [editable path="NpcBackpackMan"]
 [editable path="NpcBeardMan"]
 [editable path="PlayerM"]
+[editable path="NpcBoy1"]
+[editable path="NpcBoyIcecreamHair"]
+[editable path="NpcCoolHoodie"]
+[editable path="NpcMustache"]
+[editable path="NpcOneEye"]
+[editable path="NpcRandomGirl"]
+[editable path="NpcShaolinBoy"]
+[editable path="NpcGuy2"]
+[editable path="NpcGuy4"]
