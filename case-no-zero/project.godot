@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://bkxx1m4vbvfhf"
+run/main_scene="uid://shri80h54bqk"
 config/features=PackedStringArray("4.4")
 
 [audio]
@@ -57,7 +57,7 @@ choices/autofocus_first=true
 choices/delay=0.2
 choices/reveal_delay=0
 choices/reveal_by_input=false
-save/autosave_delay=30.0
+save/autosave_delay=1.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 

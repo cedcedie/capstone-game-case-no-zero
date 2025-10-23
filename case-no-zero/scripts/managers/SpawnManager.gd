@@ -165,6 +165,26 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(143.0, 464.0),
 			"animation": "idle_down"
 		}
+	},
+	"morgue": {
+		"from_apartment_morgue": {
+			"position": Vector2(400.0, 512.0),
+			"animation": "idle_back"
+		},
+		"default": {
+			"position": Vector2(400.0, 512.0),
+			"animation": "idle_back"
+		}
+	},
+	"apartment_morgue": {
+		"from_morgue": {
+			"position": Vector2(368.0, 768.0),
+			"animation": "idle_down"
+		},
+		"default": {
+			"position": Vector2(368.0, 768.0),
+			"animation": "idle_down"
+		}
 	}
 }
 

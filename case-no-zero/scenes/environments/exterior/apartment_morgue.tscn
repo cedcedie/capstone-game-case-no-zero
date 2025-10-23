@@ -1,37 +1,38 @@
-[gd_scene load_steps=53 format=4 uid="uid://shri80h54bqk"]
+[gd_scene load_steps=55 format=4 uid="uid://shri80h54bqk"]
 
-[ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_0dxn2"]
-[ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_gv3jt"]
-[ext_resource type="Texture2D" uid="uid://bbdw6ejhaifk0" path="res://assets/sprites/environments/exterior/4_Generic_Buildings_32x32.png" id="2_nkpmx"]
-[ext_resource type="Texture2D" uid="uid://nde6jt45ypt8" path="res://assets/sprites/environments/exterior/16_Office_32x32.png" id="3_oe0xp"]
-[ext_resource type="Texture2D" uid="uid://ckgkg83dui1ql" path="res://assets/sprites/environments/exterior/15_Police_Station_32x32.png" id="5_c0je7"]
-[ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="6_akeks"]
-[ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="7_c0je7"]
-[ext_resource type="Texture2D" uid="uid://doakv45h8tpuk" path="res://assets/sprites/environments/exterior/20_Subway_and_Train_Station_32x32.png" id="8_akeks"]
-[ext_resource type="PackedScene" uid="uid://56ldwej8xfdd" path="res://miravil/characters/npc_backpack_man.tscn" id="9_b1us4"]
-[ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="10_40vog"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_4hipe"]
-[ext_resource type="PackedScene" uid="uid://c4ajw31sko6wi" path="res://miravil/characters/npc_boy_1.tscn" id="12_40vog"]
-[ext_resource type="PackedScene" uid="uid://umei5rc0s03h" path="res://miravil/characters/npc_girl_1.tscn" id="13_4hipe"]
-[ext_resource type="PackedScene" uid="uid://dlrp0sfyfnvxu" path="res://miravil/characters/npc_boy_kunat.tscn" id="13_k5fqa"]
-[ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="14_ng6w3"]
-[ext_resource type="PackedScene" uid="uid://b74ajxmhj41h7" path="res://miravil/characters/npc_cool_hoodie.tscn" id="15_0s3d8"]
-[ext_resource type="PackedScene" uid="uid://bthvnds1w3orw" path="res://miravil/characters/npc_curly_girly.tscn" id="16_l34aw"]
-[ext_resource type="PackedScene" uid="uid://1js3m63gq78w" path="res://miravil/characters/npc_mustache.tscn" id="17_torol"]
-[ext_resource type="PackedScene" uid="uid://b6qm0vctd5r8j" path="res://miravil/characters/npc_one_eye.tscn" id="18_jplgt"]
-[ext_resource type="PackedScene" uid="uid://ngiiiml5ij1" path="res://miravil/characters/npc_pinkish.tscn" id="19_egjys"]
-[ext_resource type="PackedScene" uid="uid://cqws3ntoa3f31" path="res://miravil/characters/npc_random_guy.tscn" id="20_40ghn"]
-[ext_resource type="PackedScene" uid="uid://8t88hn34ixlf" path="res://miravil/characters/npc_random_girl.tscn" id="21_v3fv6"]
-[ext_resource type="PackedScene" uid="uid://dxuw5gwsudjkb" path="res://miravil/characters/npc_shaolin_boy.tscn" id="22_7jhkl"]
-[ext_resource type="PackedScene" uid="uid://b84ieuct4jt0x" path="res://miravil/characters/npc_yellow_glass_man.tscn" id="23_6wbq2"]
-[ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="25_lbbxl"]
-[ext_resource type="PackedScene" uid="uid://b0k0313qg5upt" path="res://miravil/characters/npc_guy_2.tscn" id="26_bx1br"]
-[ext_resource type="PackedScene" uid="uid://dbt0khsctyvim" path="res://miravil/characters/npc_guy_5.tscn" id="27_dgsfy"]
-[ext_resource type="PackedScene" uid="uid://di11hg7t8dak4" path="res://miravil/characters/npc_guy_6.tscn" id="28_us3eh"]
-[ext_resource type="PackedScene" uid="uid://cbnn8pq1mffxm" path="res://miravil/characters/npc_guy_4.tscn" id="29_tovyy"]
+[ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_65esf"]
+[ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_8eggf"]
+[ext_resource type="Texture2D" uid="uid://bbdw6ejhaifk0" path="res://assets/sprites/environments/exterior/4_Generic_Buildings_32x32.png" id="3_7v4vq"]
+[ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="4_xphjy"]
+[ext_resource type="Texture2D" uid="uid://nde6jt45ypt8" path="res://assets/sprites/environments/exterior/16_Office_32x32.png" id="5_4xrkw"]
+[ext_resource type="Texture2D" uid="uid://ckgkg83dui1ql" path="res://assets/sprites/environments/exterior/15_Police_Station_32x32.png" id="6_dslmj"]
+[ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="7_u251y"]
+[ext_resource type="Texture2D" uid="uid://doakv45h8tpuk" path="res://assets/sprites/environments/exterior/20_Subway_and_Train_Station_32x32.png" id="8_ff7ck"]
+[ext_resource type="PackedScene" uid="uid://56ldwej8xfdd" path="res://miravil/characters/npc_backpack_man.tscn" id="9_1em5d"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_8eggf"]
+[ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="10_61kig"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_qoipj"]
+[ext_resource type="PackedScene" uid="uid://c4ajw31sko6wi" path="res://miravil/characters/npc_boy_1.tscn" id="12_kev02"]
+[ext_resource type="PackedScene" uid="uid://dlrp0sfyfnvxu" path="res://miravil/characters/npc_boy_kunat.tscn" id="13_fl2h6"]
+[ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="14_jtlfh"]
+[ext_resource type="PackedScene" uid="uid://b74ajxmhj41h7" path="res://miravil/characters/npc_cool_hoodie.tscn" id="15_udjt5"]
+[ext_resource type="PackedScene" uid="uid://bthvnds1w3orw" path="res://miravil/characters/npc_curly_girly.tscn" id="16_el8te"]
+[ext_resource type="PackedScene" uid="uid://1js3m63gq78w" path="res://miravil/characters/npc_mustache.tscn" id="17_63oev"]
+[ext_resource type="PackedScene" uid="uid://b6qm0vctd5r8j" path="res://miravil/characters/npc_one_eye.tscn" id="18_2k7xy"]
+[ext_resource type="PackedScene" uid="uid://ngiiiml5ij1" path="res://miravil/characters/npc_pinkish.tscn" id="19_xv305"]
+[ext_resource type="PackedScene" uid="uid://cqws3ntoa3f31" path="res://miravil/characters/npc_random_guy.tscn" id="20_3ll3w"]
+[ext_resource type="PackedScene" uid="uid://8t88hn34ixlf" path="res://miravil/characters/npc_random_girl.tscn" id="21_cexpq"]
+[ext_resource type="PackedScene" uid="uid://dxuw5gwsudjkb" path="res://miravil/characters/npc_shaolin_boy.tscn" id="22_xqyx5"]
+[ext_resource type="PackedScene" uid="uid://b84ieuct4jt0x" path="res://miravil/characters/npc_yellow_glass_man.tscn" id="23_dsbue"]
+[ext_resource type="PackedScene" uid="uid://umei5rc0s03h" path="res://miravil/characters/npc_girl_1.tscn" id="24_1g55f"]
+[ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="25_w58ee"]
+[ext_resource type="PackedScene" uid="uid://b0k0313qg5upt" path="res://miravil/characters/npc_guy_2.tscn" id="26_he11w"]
+[ext_resource type="PackedScene" uid="uid://dbt0khsctyvim" path="res://miravil/characters/npc_guy_5.tscn" id="27_o0l8t"]
+[ext_resource type="PackedScene" uid="uid://di11hg7t8dak4" path="res://miravil/characters/npc_guy_6.tscn" id="28_7btrm"]
+[ext_resource type="PackedScene" uid="uid://cbnn8pq1mffxm" path="res://miravil/characters/npc_guy_4.tscn" id="29_3l2y6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3ex5"]
-texture = ExtResource("1_0dxn2")
+texture = ExtResource("1_65esf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -3879,7 +3880,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_s3ex5")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sy7ei"]
-texture = ExtResource("2_gv3jt")
+texture = ExtResource("2_8eggf")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -5048,7 +5049,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c0je7"]
-texture = ExtResource("2_nkpmx")
+texture = ExtResource("3_7v4vq")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -8928,7 +8929,7 @@ texture_region_size = Vector2i(32, 32)
 15:198/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_as07b"]
-texture = ExtResource("7_c0je7")
+texture = ExtResource("4_xphjy")
 texture_region_size = Vector2i(32, 32)
 4:0/0 = 0
 5:0/0 = 0
@@ -12759,7 +12760,7 @@ sources/1 = SubResource("TileSetAtlasSource_c0je7")
 sources/2 = SubResource("TileSetAtlasSource_as07b")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0evq1"]
-texture = ExtResource("2_nkpmx")
+texture = ExtResource("3_7v4vq")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -16639,7 +16640,7 @@ texture_region_size = Vector2i(32, 32)
 15:198/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gv3jt"]
-texture = ExtResource("3_oe0xp")
+texture = ExtResource("5_4xrkw")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -18226,7 +18227,7 @@ texture_region_size = Vector2i(32, 32)
 10:93/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b1us4"]
-texture = ExtResource("5_c0je7")
+texture = ExtResource("6_dslmj")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -19870,7 +19871,7 @@ sources/1 = SubResource("TileSetAtlasSource_gv3jt")
 sources/2 = SubResource("TileSetAtlasSource_b1us4")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_40vog"]
-texture = ExtResource("6_akeks")
+texture = ExtResource("7_u251y")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -24219,7 +24220,7 @@ texture_region_size = Vector2i(32, 32)
 30:223/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4hipe"]
-texture = ExtResource("2_gv3jt")
+texture = ExtResource("2_8eggf")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -25388,7 +25389,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_akeks"]
-texture = ExtResource("2_nkpmx")
+texture = ExtResource("3_7v4vq")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -29268,7 +29269,7 @@ texture_region_size = Vector2i(32, 32)
 15:198/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4pl2p"]
-texture = ExtResource("3_oe0xp")
+texture = ExtResource("5_4xrkw")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -30855,7 +30856,7 @@ texture_region_size = Vector2i(32, 32)
 10:93/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_seywx"]
-texture = ExtResource("7_c0je7")
+texture = ExtResource("4_xphjy")
 texture_region_size = Vector2i(32, 32)
 4:0/0 = 0
 5:0/0 = 0
@@ -34680,7 +34681,7 @@ texture_region_size = Vector2i(32, 32)
 21:167/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b5eas"]
-texture = ExtResource("8_akeks")
+texture = ExtResource("8_ff7ck")
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
 5:0/0 = 0
@@ -38878,7 +38879,7 @@ sources/4 = SubResource("TileSetAtlasSource_seywx")
 sources/5 = SubResource("TileSetAtlasSource_b5eas")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6k2pq"]
-texture = ExtResource("3_oe0xp")
+texture = ExtResource("5_4xrkw")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -40465,7 +40466,7 @@ texture_region_size = Vector2i(32, 32)
 10:93/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x5pq3"]
-texture = ExtResource("2_nkpmx")
+texture = ExtResource("3_7v4vq")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -44350,7 +44351,7 @@ sources/1 = SubResource("TileSetAtlasSource_x5pq3")
 sources/0 = SubResource("TileSetAtlasSource_6k2pq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8vic"]
-texture = ExtResource("6_akeks")
+texture = ExtResource("7_u251y")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -48699,7 +48700,7 @@ texture_region_size = Vector2i(32, 32)
 30:223/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wsi3l"]
-texture = ExtResource("3_oe0xp")
+texture = ExtResource("5_4xrkw")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -50290,6 +50291,9 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_l8vic")
 sources/1 = SubResource("TileSetAtlasSource_wsi3l")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5fqa"]
+size = Vector2(81.25, 24)
+
 [node name="ApartmentAndMorgue" type="Node2D"]
 
 [node name="ground" type="TileMapLayer" parent="."]
@@ -50320,7 +50324,15 @@ tile_set = SubResource("TileSet_l8vic")
 tile_map_data = PackedByteArray("AAA7AAoAAQAUAB8AAAA7AAsAAQAUACAAAAA7AAwAAQAUACEAAAA7AA0AAQAUACIAAAA8AAoAAQAVAB8AAAA8AAsAAQAVACAAAAA8AAwAAQAVACEAAAA8AA0AAQAVACIAAAAlAAoAAQAUAB8AAAAlAAsAAQAUACAAAAAlAAwAAQAUACEAAAAlAA0AAQAUACIAAAAmAAoAAQAVAB8AAAAmAAsAAQAVACAAAAAmAAwAAQAVACEAAAAmAA0AAQAVACIAAAAqAAsAAQAWAB8AAAAqAAwAAQAWACAAAAArAAsAAQAXAB8AAAArAAwAAQAXACAAAAAqAA4AAQAWAB8AAAAqAA8AAQAWACAAAAArAA4AAQAXAB8AAAArAA8AAQAXACAAAAAsAAsAAQAaACEAAAAsAAwAAQAaACIAAAAsAA4AAQAaACEAAAAsAA8AAQAaACIAAAAlAA4AAQASAB8AAAAlAA8AAQASACAAAAAmAA4AAQATAB8AAAAmAA8AAQATACAAAABJAAsAAQASABsAAABJAAwAAQASABwAAABJAA0AAQASAB0AAABJAA4AAQASAB4AAABKAAsAAQATABsAAABKAAwAAQATABwAAABKAA0AAQATAB0AAABKAA4AAQATAB4AAABLAAsAAQAUABsAAABLAAwAAQAUABwAAABLAA0AAQAUAB0AAABLAA4AAQAUAB4AAABHAAsAAQAbACAAAABHAAwAAQAbACEAAABHAA0AAQAbACIAAABIAAsAAQAcACAAAABIAAwAAQAcACEAAABIAA0AAQAcACIAAABEAAsAAQAbACAAAABEAAwAAQAbACEAAABEAA0AAQAbACIAAABFAAsAAQAcACAAAABFAAwAAQAcACEAAABFAA0AAQAcACIAAABFAA4AAQAYAB8AAABFAA8AAQAYACAAAABGAA4AAQAZAB8AAABGAA8AAQAZACAAAABBAA4AAQAYAB8AAABBAA8AAQAYACAAAABCAA4AAQAZAB8AAABCAA8AAQAZACAAAABBAAsAAQAWAB8AAABBAAwAAQAWACAAAABCAAsAAQAXAB8AAABCAAwAAQAXACAAAAA/ABIAAAAVAAAAAAA/ABMAAAAVAAEAAABAABIAAAAWAAAAAABAABMAAAAWAAEAAAA8ABIAAAAWABoAAAA8ABMAAAAWABsAAAA9ABMAAAAAABIAAAA+ABMAAAABABIAAAA=")
 tile_set = SubResource("TileSet_7ipk8")
 
-[node name="NpcBackpackMan" parent="." instance=ExtResource("9_b1us4")]
+[node name="Area2D_morgue_interior" type="Area2D" parent="."]
+script = ExtResource("9_8eggf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_morgue_interior"]
+z_index = 10
+position = Vector2(368, 692)
+shape = SubResource("RectangleShape2D_k5fqa")
+
+[node name="NpcBackpackMan" parent="." instance=ExtResource("9_1em5d")]
 position = Vector2(2056, 984)
 
 [node name="AnimatedSprite2D" parent="NpcBackpackMan" index="0"]
@@ -50332,42 +50344,42 @@ offset_top = -16.0
 offset_right = -80.0
 offset_bottom = 9.0
 
-[node name="NpcBeardMan" parent="." instance=ExtResource("10_40vog")]
-position = Vector2(344, 760)
+[node name="NpcBeardMan" parent="." instance=ExtResource("10_61kig")]
+position = Vector2(155, 760)
 
 [node name="AnimatedSprite2D" parent="NpcBeardMan" index="0"]
 animation = &"idle_right"
 autoplay = "idle_right"
 
-[node name="PlayerM" parent="." instance=ExtResource("11_4hipe")]
-position = Vector2(760, 224)
+[node name="PlayerM" parent="." instance=ExtResource("11_qoipj")]
+position = Vector2(368, 768)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
 limit_right = 5000
 limit_bottom = 5000
 
-[node name="NpcBoy1" parent="." instance=ExtResource("12_40vog")]
+[node name="NpcBoy1" parent="." instance=ExtResource("12_kev02")]
 z_index = 6
 position = Vector2(1408, 936)
 
-[node name="NpcBoyKunat" parent="." instance=ExtResource("13_k5fqa")]
+[node name="NpcBoyKunat" parent="." instance=ExtResource("13_fl2h6")]
 z_index = 20
 position = Vector2(2160, 640)
 
-[node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("14_ng6w3")]
+[node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("14_jtlfh")]
 position = Vector2(1200, 944)
 
 [node name="AnimatedSprite2D" parent="NpcBoyIcecreamHair" index="0"]
 animation = &"idle_front"
 
-[node name="NpcCoolHoodie" parent="." instance=ExtResource("15_0s3d8")]
+[node name="NpcCoolHoodie" parent="." instance=ExtResource("15_udjt5")]
 z_index = 10
 position = Vector2(2400, 1016)
 
-[node name="NpcCurlyGirly" parent="." instance=ExtResource("16_l34aw")]
+[node name="NpcCurlyGirly" parent="." instance=ExtResource("16_el8te")]
 position = Vector2(768, 1032)
 
-[node name="NpcMustache" parent="." instance=ExtResource("17_torol")]
+[node name="NpcMustache" parent="." instance=ExtResource("17_63oev")]
 z_index = 10
 position = Vector2(2456, 1016)
 
@@ -50375,51 +50387,51 @@ position = Vector2(2456, 1016)
 animation = &"idle_left"
 autoplay = "idle_left"
 
-[node name="NpcOneEye" parent="." instance=ExtResource("18_jplgt")]
-position = Vector2(400, 760)
+[node name="NpcOneEye" parent="." instance=ExtResource("18_2k7xy")]
+position = Vector2(192, 760)
 
 [node name="AnimatedSprite2D" parent="NpcOneEye" index="0"]
 animation = &"idle_left"
 
-[node name="NpcPinkish" parent="." instance=ExtResource("19_egjys")]
+[node name="NpcPinkish" parent="." instance=ExtResource("19_xv305")]
 z_index = 20
 position = Vector2(1920, 496)
 
-[node name="NpcRandomGuy" parent="." instance=ExtResource("20_40ghn")]
+[node name="NpcRandomGuy" parent="." instance=ExtResource("20_3ll3w")]
 z_index = 12
 position = Vector2(1160, 504)
 
-[node name="NpcRandomGirl" parent="." instance=ExtResource("21_v3fv6")]
+[node name="NpcRandomGirl" parent="." instance=ExtResource("21_cexpq")]
 z_index = 15
 position = Vector2(1424, 760)
 
-[node name="NpcShaolinBoy" parent="." instance=ExtResource("22_7jhkl")]
+[node name="NpcShaolinBoy" parent="." instance=ExtResource("22_xqyx5")]
 position = Vector2(1624, 1016)
 
 [node name="AnimatedSprite2D" parent="NpcShaolinBoy" index="0"]
 animation = &"idle_right"
 autoplay = "idle_right"
 
-[node name="NpcYellowGlassMan" parent="." instance=ExtResource("23_6wbq2")]
+[node name="NpcYellowGlassMan" parent="." instance=ExtResource("23_dsbue")]
 position = Vector2(648, 448)
 
-[node name="NpcGirl1" parent="." instance=ExtResource("13_4hipe")]
+[node name="NpcGirl1" parent="." instance=ExtResource("24_1g55f")]
 position = Vector2(2440, 880)
 
-[node name="NpcGuy3" parent="." instance=ExtResource("25_lbbxl")]
+[node name="NpcGuy3" parent="." instance=ExtResource("25_w58ee")]
 position = Vector2(1184, 184)
 
-[node name="NpcGuy2" parent="." instance=ExtResource("26_bx1br")]
+[node name="NpcGuy2" parent="." instance=ExtResource("26_he11w")]
 position = Vector2(1088, 184)
 
-[node name="NpcGuy5" parent="." instance=ExtResource("27_dgsfy")]
+[node name="NpcGuy5" parent="." instance=ExtResource("27_o0l8t")]
 position = Vector2(2560, 504)
 
-[node name="NpcGuy6" parent="NpcGuy5" instance=ExtResource("28_us3eh")]
+[node name="NpcGuy6" parent="NpcGuy5" instance=ExtResource("28_7btrm")]
 z_index = 15
 position = Vector2(-1984, 72)
 
-[node name="NpcGuy4" parent="." instance=ExtResource("29_tovyy")]
+[node name="NpcGuy4" parent="." instance=ExtResource("29_3l2y6")]
 position = Vector2(128, 496)
 
 [node name="AnimatedSprite2D" parent="NpcGuy4" index="0"]

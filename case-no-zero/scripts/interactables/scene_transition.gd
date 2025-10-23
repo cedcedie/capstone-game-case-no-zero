@@ -61,7 +61,9 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_to_market": "terminal_market",
 		"Area2D_terminal_market": "market",
 		"Area2D_barangay_court": "barangay_hall",
-		"Area2D_interior_barangay_hall": "barangay_court"
+		"Area2D_interior_barangay_hall": "barangay_court",
+		"Area2D_morgue_interior": "apartment_morgue",
+		"Area2D_morgue_exterior": "morgue"
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
@@ -131,6 +133,10 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/exterior/baranggay_court.tscn"
 		"Area2D_interior_barangay_hall":
 			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
+		"Area2D_morgue_interior":
+			return "res://scenes/environments/funeral home/morgue.tscn"
+		"Area2D_morgue_exterior":
+			return "res://scenes/environments/exterior/apartment_morgue.tscn"
 		_:
 			return ""
 
