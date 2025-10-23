@@ -31,6 +31,10 @@ var spawn_positions: Dictionary = {
 		}
 	},
 	"hotel_hospital": {
+		"morgue_to_hospital": {
+			"position": Vector2(200.0, 1760.0),
+			"animation": "idle_right"
+		},
 		"from_firestation": {
 			"position": Vector2(432.0, 438.0),
 			"animation": "idle_down"
@@ -107,6 +111,10 @@ var spawn_positions: Dictionary = {
 		}
 	},
 	"police_station": {
+		"morgue_to_police_station": {
+			"position": Vector2(928.0, 240.0),
+			"animation": "idle_down"
+		},
 		"default": {
 			"position": Vector2(337.0, 1056.0),
 			"animation": "idle_down"
@@ -181,8 +189,32 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(368.0, 704.0),
 			"animation": "idle_down"
 		},
+		"from_apartment_exterior": {
+			"position": Vector2(976.0, 912.0),
+			"animation": "idle_down"
+		},
 		"default": {
 			"position": Vector2(368.0, 704.0),
+			"animation": "idle_down"
+		}
+	},
+	"camp": {
+		"morgue_to_camp": {
+			"position": Vector2(1488.0, 280.0),
+			"animation": "idle_left"
+		},
+		"default": {
+			"position": Vector2(1488.0, 280.0),
+			"animation": "idle_left"
+		}
+	},
+	"bedroomScene": {
+		"Area2D_bedroom_interior": {
+			"position": Vector2(377.0, 292.0),
+			"animation": "idle_down"
+		},
+		"default": {
+			"position": Vector2(377.0, 292.0),
 			"animation": "idle_down"
 		}
 	}
@@ -192,29 +224,29 @@ func set_entry_point(scene_name: String, entry: String):
 	"""Set the entry point information for the next scene"""
 	previous_scene = scene_name
 	entry_point = entry
-	print("📍 SpawnManager: Set entry point - Scene: ", scene_name, ", Entry: ", entry)
+	# print("📍 SpawnManager: Set entry point - Scene: ", scene_name, ", Entry: ", entry)
 
 func get_spawn_data(scene_name: String) -> Dictionary:
 	"""Get the appropriate spawn position and animation for the given scene"""
 	var scene_spawns = spawn_positions.get(scene_name, {})
 	
 	# Try to get data based on entry point
-	var spawn_key = "from_" + entry_point
+	var spawn_key = entry_point
 	if scene_spawns.has(spawn_key):
-		print("📍 SpawnManager: Using entry-specific spawn for ", scene_name, " from ", entry_point)
+		# print("📍 SpawnManager: Using entry-specific spawn for ", scene_name, " from ", entry_point)
 		return scene_spawns[spawn_key]
 	
 	# Fall back to default
 	if scene_spawns.has("default"):
-		print("📍 SpawnManager: Using default spawn for ", scene_name)
+		# print("📍 SpawnManager: Using default spawn for ", scene_name)
 		return scene_spawns["default"]
 	
 	# If no spawn data exists, return empty
-	print("⚠️ SpawnManager: No spawn data for ", scene_name, ", using scene default")
+	# print("⚠️ SpawnManager: No spawn data for ", scene_name, ", using scene default")
 	return {}
 
 func clear_entry_point():
 	"""Clear the entry point information"""
 	previous_scene = ""
 	entry_point = ""
-	print("📍 SpawnManager: Cleared entry point")
+	# print("📍 SpawnManager: Cleared entry point")

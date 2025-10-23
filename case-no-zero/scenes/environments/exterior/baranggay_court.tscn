@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bkxx1m4vbvfhf"]
+[gd_scene load_steps=28 format=4 uid="uid://bkxx1m4vbvfhf"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_hk5i3"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_e7r7a"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1qcv8l4s823i" path="res://assets/sprites/environments/exterior/17_Garden_32x32.png" id="6_272kh"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="7_0poe2"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="8_mahun"]
+[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="9_g4ba0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgmrl"]
 texture = ExtResource("1_hk5i3")
@@ -37336,5 +37337,8 @@ script = ExtResource("8_mahun")
 z_index = 10
 position = Vector2(144, 347)
 shape = SubResource("RectangleShape2D_og2jn")
+
+[node name="SceneFadeIn" type="Node2D" parent="."]
+script = ExtResource("9_g4ba0")
 
 [editable path="PlayerM"]

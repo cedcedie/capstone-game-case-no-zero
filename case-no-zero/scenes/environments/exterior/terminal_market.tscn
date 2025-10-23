@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="7_0315w"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_jpuf4"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_2hq86"]
+[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="10_kcm3v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5t6fk"]
 texture = ExtResource("1_6rqqf")
@@ -53672,9 +53673,6 @@ sources/0 = SubResource("TileSetAtlasSource_je41u")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0315w"]
 size = Vector2(67.125, 26)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpuf4"]
-size = Vector2(60.5, 32)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2evj1"]
 size = Vector2(54.5, 20.125)
 
@@ -53730,14 +53728,6 @@ z_index = 10
 position = Vector2(1025.56, 443)
 shape = SubResource("RectangleShape2D_0315w")
 
-[node name="Area2D_to_apartment" type="Area2D" parent="."]
-script = ExtResource("9_2hq86")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_apartment"]
-z_index = 10
-position = Vector2(1584, 464)
-shape = SubResource("RectangleShape2D_jpuf4")
-
 [node name="Area2D_to_market" type="Area2D" parent="."]
 script = ExtResource("9_2hq86")
 
@@ -53745,6 +53735,9 @@ script = ExtResource("9_2hq86")
 z_index = 10
 position = Vector2(2016, 472)
 shape = SubResource("RectangleShape2D_2evj1")
+
+[node name="SceneFadeIn" type="Node2D" parent="."]
+script = ExtResource("10_kcm3v")
 
 [editable path="NpcBoyIcecreamHair"]
 [editable path="PlayerM"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c2ax58feuq8oi"]
+[gd_scene load_steps=28 format=4 uid="uid://c2ax58feuq8oi"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_ni3it"]
 [ext_resource type="Texture2D" uid="uid://cnn1uk4tglay" path="res://assets/sprites/environments/exterior/12_Hotel_and_Hospital_32x32.png" id="2_vkm1s"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="6_1o657"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="7_1o657"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_2vggs"]
+[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="9_bwlvm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1o657"]
 texture = ExtResource("1_ni3it")
@@ -19799,7 +19800,7 @@ position = Vector2(432, 1218.75)
 shape = SubResource("RectangleShape2D_liure")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_2vggs")]
-position = Vector2(640, 2528)
+position = Vector2(200, 1760)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
 limit_right = 100000
@@ -19811,5 +19812,8 @@ script = ExtResource("7_1o657")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_hotel_hospital_to_hotel_lobby"]
 position = Vector2(640, 2460.97)
 shape = SubResource("RectangleShape2D_2vggs")
+
+[node name="SceneFadeIn" type="Node2D" parent="."]
+script = ExtResource("9_bwlvm")
 
 [editable path="PlayerM"]

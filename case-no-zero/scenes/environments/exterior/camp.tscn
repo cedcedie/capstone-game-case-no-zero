@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cuijsg0jfemxe"]
+[gd_scene load_steps=26 format=4 uid="uid://cuijsg0jfemxe"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_bss4d"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_35ybc"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dn3ec2vqfb05q" path="res://assets/sprites/environments/exterior/13_School_32x32.png" id="4_gski1"]
 [ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="5_be3a7"]
 [ext_resource type="PackedScene" uid="uid://u7gdrwiolokf" path="res://miravil/sprites/npc_camp.tscn" id="6_wj6a6"]
+[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="7_xbrck"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_og0j4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_35ybc"]
 texture = ExtResource("2_35ybc")
@@ -30337,6 +30339,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_4wa16")
 
 [node name="CampAndCourt" type="Node2D"]
+position = Vector2(-16, -16)
 metadata/_edit_horizontal_guides_ = [796.0]
 
 [node name="ground 1" type="TileMapLayer" parent="."]
@@ -30373,3 +30376,9 @@ tile_set = SubResource("TileSet_hw4st")
 
 [node name="NpcCamp" parent="." instance=ExtResource("6_wj6a6")]
 position = Vector2(400, 704)
+
+[node name="SceneFadeIn" type="Node2D" parent="."]
+script = ExtResource("7_xbrck")
+
+[node name="PlayerM" parent="SceneFadeIn" instance=ExtResource("8_og0j4")]
+position = Vector2(1488, 280)

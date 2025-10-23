@@ -748,6 +748,8 @@ func _ready() -> void:
 		if not dialogue_ui.is_connected("next_pressed", cb):
 			dialogue_ui.connect("next_pressed", cb)
 	
+	# Audio cleanup will be handled by AudioManager automatically
+	
 	# Set scene BGM using AudioManager
 	if AudioManager:
 		AudioManager.set_scene_bgm("bedroom")
@@ -780,10 +782,12 @@ func skip_to_post_cutscene_state() -> void:
 		player.anim_sprite.play("idle_down")
 		player.last_facing = "front"
 	
+	# Hide Celine and disable collision if cutscene is completed
 	if celine:
-		celine.anim_sprite.play("idle_front")
-		celine.modulate.a = 1.0
-		celine.visible = true
+		celine.visible = false
+		var cshape := celine.get_node_or_null("CollisionShape2D")
+		if cshape:
+			cshape.disabled = true
 	
 	# Hide the fade overlay to prevent black square
 	if fade_overlay:
@@ -799,4 +803,40 @@ func skip_to_post_cutscene_state() -> void:
 	if player and player.has_method("enable_movement"):
 		player.enable_movement()
 		print("📋 Player movement enabled in post-cutscene state")
+
+func cleanup_bedroom_audio() -> void:
+	"""Clean up bedroom audio when leaving the scene"""
+	# Stop bedroom BGM via AudioManager
+	if AudioManager:
+		AudioManager.stop_bgm()
+		print("🎵 Bedroom: BGM stopped via AudioManager")
 	
+	# Stop any local audio players
+	if bgm:
+		bgm.stop()
+		print("🎵 Bedroom: Local BGM stopped")
+	
+	if knock_sfx:
+		knock_sfx.stop()
+		print("🎵 Bedroom: Knock SFX stopped")
+	
+	if shock_sfx:
+		shock_sfx.stop()
+		print("🎵 Bedroom: Shock SFX stopped")
+	
+	# Force stop all audio streams in the scene
+	var audio_players = get_tree().get_nodes_in_group("audio")
+	for player in audio_players:
+		if player.has_method("stop"):
+			player.stop()
+	
+	# Stop any tweens that might be affecting audio
+	var tweens = get_tree().get_nodes_in_group("tween")
+	for tween in tweens:
+		if tween.has_method("kill"):
+			tween.kill()
+
+func _exit_tree() -> void:
+	"""Called when the bedroom scene is being removed from the tree"""
+	cleanup_bedroom_audio()
+	print("🎵 Bedroom: Scene exiting, audio cleaned up")
