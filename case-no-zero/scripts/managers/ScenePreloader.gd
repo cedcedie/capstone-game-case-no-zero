@@ -21,6 +21,7 @@ var scenes_to_preload: Array = [
 	# Barangay Hall Environments
 	"res://scenes/environments/barangay hall/barangay_hall.tscn",
 	"res://scenes/environments/barangay hall/barangay_hall_second_floor.tscn",
+	"res://scenes/environments/exterior/baranggay_court.tscn",
 	
 	# Cutscenes
 	"res://scenes/cutscenes/bedroomScene.tscn",
@@ -52,7 +53,6 @@ var scenes_to_preload: Array = [
 	"res://scenes/ui/Main Menu.tscn",
 	
 	# Environment Scenes
-	"res://scenes/environments/exterior/map.tscn",
 	"res://scenes/environments/exterior/Police Station.tscn",
 	"res://scenes/environments/exterior/Barangay Hall & CityHall Courtroom.tscn",
 	"res://scenes/environments/exterior/camp and court.tscn",

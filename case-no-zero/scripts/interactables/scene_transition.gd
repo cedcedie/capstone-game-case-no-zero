@@ -128,7 +128,7 @@ func _get_target_scene_path_from_area_name() -> String:
 		"Area2D_terminal_market":
 			return "res://scenes/environments/exterior/terminal_market.tscn"
 		"Area2D_barangay_court":
-			return "res://scenes/environments/barangay hall/barangay_court.tscn"
+			return "res://scenes/environments/exterior/baranggay_court.tscn"
 		"Area2D_interior_barangay_hall":
 			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
 		_:

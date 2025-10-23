@@ -24,11 +24,12 @@ var zoom_settings: Dictionary = {
 # Current zoom level
 var current_zoom: float = 2.0
 var player_camera: Camera2D = null
+var last_scene_path: String = ""
 
 func _ready():
 	print("📷 CameraZoomManager: Ready")
-	# Connect to scene change signal - use current_scene_changed for better detection
-	get_tree().current_scene_changed.connect(_on_scene_changed)
+	# Connect to tree_changed signal to detect scene changes
+	get_tree().tree_changed.connect(_on_tree_changed)
 	# Find the player camera when the scene changes
 	call_deferred("find_player_camera")
 
@@ -36,6 +37,11 @@ func find_player_camera():
 	"""Find the player's camera in the current scene"""
 	# Wait a frame to ensure the scene is fully loaded
 	await get_tree().process_frame
+	
+	# Check if current_scene exists
+	if not get_tree().current_scene:
+		print("📷 CameraZoomManager: No current scene in find_player_camera")
+		return
 	
 	var scene_root = get_tree().current_scene
 	if scene_root:
@@ -58,6 +64,11 @@ func find_player_camera():
 
 func set_zoom_for_current_scene():
 	"""Set zoom based on the current scene name"""
+	# Check if current_scene exists
+	if not get_tree().current_scene:
+		print("📷 CameraZoomManager: No current scene in set_zoom_for_current_scene")
+		return
+	
 	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	var target_zoom = get_zoom_for_scene(scene_name)
 	set_camera_zoom(target_zoom)
@@ -136,6 +147,11 @@ func remove_camera_limits_for_hotel_hospital():
 	if not player_camera:
 		return
 	
+	# Check if current_scene exists
+	if not get_tree().current_scene:
+		print("📷 CameraZoomManager: No current scene in remove_camera_limits_for_hotel_hospital")
+		return
+	
 	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	
 	# Check if we're in the hotel_hospital scene
@@ -151,11 +167,21 @@ func remove_camera_limits_for_hotel_hospital():
 		print("📷 CameraZoomManager: Not in hotel_hospital scene, keeping default limits")
 
 # Scene change detection
-func _on_scene_changed():
-	"""Called when scene changes - find new camera and set zoom"""
-	print("📷 CameraZoomManager: Scene changed, updating zoom...")
-	await get_tree().process_frame
-	find_player_camera()
+func _on_tree_changed():
+	"""Called when tree changes - check if scene changed"""
+	# Check if current_scene exists before accessing it
+	if not get_tree().current_scene:
+		print("📷 CameraZoomManager: No current scene, skipping...")
+		return
+	
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	
+	if current_scene_path != last_scene_path and current_scene_path != "":
+		print("📷 CameraZoomManager: Scene changed from ", last_scene_path, " to ", current_scene_path)
+		last_scene_path = current_scene_path
+		# Wait a frame for the scene to fully load
+		await get_tree().process_frame
+		find_player_camera()
 
 # Manual zoom controls for debugging
 func _input(event):
@@ -170,4 +196,3 @@ func _input(event):
 			KEY_F4:
 				# F4 - Reset to scene default
 				reset_to_default_zoom()
-
