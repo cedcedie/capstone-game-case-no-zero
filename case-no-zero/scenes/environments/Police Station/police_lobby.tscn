@@ -7210,11 +7210,11 @@ position = Vector2(912, 368)
 [node name="PoliceLobbyCutscene" type="Node" parent="."]
 script = ExtResource("14_cutscene")
 
-[node name="Area2D_barangay_hall" type="Area2D" parent="."]
+[node name="Area2D_police_lobby_to_police_station" type="Area2D" parent="."]
 position = Vector2(1200, 400)
 script = ExtResource("7_scene_transition")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_barangay_hall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_lobby_to_police_station"]
 position = Vector2(-928, 104)
 shape = SubResource("RectangleShape2D_4iqi4")
 

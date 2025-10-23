@@ -21,6 +21,10 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(992, 488),
 			"animation": "idle_back"
 		},
+		"from_bedroom_scene": {
+			"position": Vector2(185, 184),
+			"animation": "idle_down"
+		},
 		"default": {
 			"position": Vector2(272, 480),
 			"animation": "idle_down"
@@ -99,6 +103,12 @@ var spawn_positions: Dictionary = {
 		},
 		"default": {
 			"position": Vector2(630.0, 304.0),
+			"animation": "idle_down"
+		}
+	},
+	"police_station": {
+		"default": {
+			"position": Vector2(337.0, 1056.0),
 			"animation": "idle_down"
 		}
 	}

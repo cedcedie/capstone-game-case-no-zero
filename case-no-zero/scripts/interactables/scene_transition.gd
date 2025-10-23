@@ -39,10 +39,11 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_head_police": "head_police", 
 		"Area2D_security_server": "security_server",
 		"Area2D_police_lobby": "police_lobby",
-		"Area2D_barangay_hall": "barangay_hall",
+		"Area2D_police_lobby_to_police_station": "police_station",
 		"Area2D_barangay_hall_second_floor": "barangay_hall_second_floor",
 		"Area2D_barangay_hall_return": "barangay_hall",
 		"Area2D_exterior_police": "police_lobby",
+		"Area2D_police_to_lobby": "police_station",
 		"Area2D_firestation": "firestation",
 		"Area2D_firestation_1st_floor": "firestation_1st_floor",
 		"Area2D_hotel_hospital_to_hospital": "hospital_lobby",
@@ -77,13 +78,15 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/Police Station/security_server.tscn"
 		"Area2D_police_lobby":
 			return "res://scenes/environments/Police Station/police_lobby.tscn"
-		"Area2D_barangay_hall":
-			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
+		"Area2D_police_lobby_to_police_station":
+			return "res://scenes/environments/exterior/police_station.tscn"
 		"Area2D_barangay_hall_second_floor":
 			return "res://scenes/environments/barangay hall/barangay_hall_second_floor.tscn"
 		"Area2D_barangay_hall_return":
 			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
 		"Area2D_exterior_police":
+			return "res://scenes/environments/Police Station/police_lobby.tscn"
+		"Area2D_police_to_lobby":
 			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		# Hotel and Hospital Area2D transitions
 		"Area2D_firestation":

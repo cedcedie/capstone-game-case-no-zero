@@ -1,15 +1,18 @@
-[gd_scene load_steps=32 format=4 uid="uid://vhixfm8q3x4u"]
+[gd_scene load_steps=35 format=4 uid="uid://vhixfm8q3x4u"]
 
-[ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_fn7s7"]
-[ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_8kyee"]
-[ext_resource type="Texture2D" uid="uid://dl6i6xmc83wh2" path="res://assets/sprites/environments/exterior/8_Worksite_32x32.png" id="3_y0myl"]
-[ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="4_6mpvh"]
-[ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="5_h34pc"]
-[ext_resource type="Texture2D" uid="uid://ckgkg83dui1ql" path="res://assets/sprites/environments/exterior/15_Police_Station_32x32.png" id="6_k86ww"]
-[ext_resource type="Texture2D" uid="uid://doakv45h8tpuk" path="res://assets/sprites/environments/exterior/20_Subway_and_Train_Station_32x32.png" id="7_bkrhh"]
+[ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_d24fb"]
+[ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_0iiqu"]
+[ext_resource type="Texture2D" uid="uid://dl6i6xmc83wh2" path="res://assets/sprites/environments/exterior/8_Worksite_32x32.png" id="3_ci8hi"]
+[ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="4_mvpf7"]
+[ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="5_t7njk"]
+[ext_resource type="Texture2D" uid="uid://ckgkg83dui1ql" path="res://assets/sprites/environments/exterior/15_Police_Station_32x32.png" id="6_qs6ny"]
+[ext_resource type="Texture2D" uid="uid://doakv45h8tpuk" path="res://assets/sprites/environments/exterior/20_Subway_and_Train_Station_32x32.png" id="7_83wwf"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="8_0iiqu"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_5dt8y"]
+[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="10_ci8hi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cx553"]
-texture = ExtResource("1_fn7s7")
+texture = ExtResource("1_d24fb")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -3853,7 +3856,7 @@ texture_region_size = Vector2i(32, 32)
 38:102/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_julxk"]
-texture = ExtResource("2_8kyee")
+texture = ExtResource("2_0iiqu")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -5027,7 +5030,7 @@ sources/0 = SubResource("TileSetAtlasSource_cx553")
 sources/1 = SubResource("TileSetAtlasSource_julxk")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bduse"]
-texture = ExtResource("3_y0myl")
+texture = ExtResource("3_ci8hi")
 texture_region_size = Vector2i(32, 32)
 7:0/0 = 0
 8:0/0 = 0
@@ -5459,7 +5462,7 @@ texture_region_size = Vector2i(32, 32)
 11:18/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2ot2"]
-texture = ExtResource("2_8kyee")
+texture = ExtResource("2_0iiqu")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -6628,7 +6631,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o6stv"]
-texture = ExtResource("4_6mpvh")
+texture = ExtResource("4_mvpf7")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -10977,7 +10980,7 @@ texture_region_size = Vector2i(32, 32)
 30:223/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ysipa"]
-texture = ExtResource("1_fn7s7")
+texture = ExtResource("1_d24fb")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -14821,7 +14824,7 @@ texture_region_size = Vector2i(32, 32)
 38:102/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l5cyf"]
-texture = ExtResource("5_h34pc")
+texture = ExtResource("5_t7njk")
 texture_region_size = Vector2i(32, 32)
 4:0/0 = 0
 5:0/0 = 0
@@ -18654,7 +18657,7 @@ sources/4 = SubResource("TileSetAtlasSource_ysipa")
 sources/5 = SubResource("TileSetAtlasSource_l5cyf")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pycp7"]
-texture = ExtResource("6_k86ww")
+texture = ExtResource("6_qs6ny")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -20292,7 +20295,7 @@ texture_region_size = Vector2i(32, 32)
 30:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4onwi"]
-texture = ExtResource("7_bkrhh")
+texture = ExtResource("7_83wwf")
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
 5:0/0 = 0
@@ -24481,7 +24484,7 @@ texture_region_size = Vector2i(32, 32)
 22:184/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k2t0i"]
-texture = ExtResource("4_6mpvh")
+texture = ExtResource("4_mvpf7")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -28830,7 +28833,7 @@ texture_region_size = Vector2i(32, 32)
 30:223/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qdggo"]
-texture = ExtResource("3_y0myl")
+texture = ExtResource("3_ci8hi")
 texture_region_size = Vector2i(32, 32)
 7:0/0 = 0
 8:0/0 = 0
@@ -29269,7 +29272,7 @@ sources/3 = SubResource("TileSetAtlasSource_qdggo")
 sources/1 = SubResource("TileSetAtlasSource_4onwi")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wol3n"]
-texture = ExtResource("3_y0myl")
+texture = ExtResource("3_ci8hi")
 texture_region_size = Vector2i(32, 32)
 7:0/0 = 0
 8:0/0 = 0
@@ -29701,7 +29704,7 @@ texture_region_size = Vector2i(32, 32)
 11:18/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85xxh"]
-texture = ExtResource("2_8kyee")
+texture = ExtResource("2_0iiqu")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -30870,7 +30873,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vorpy"]
-texture = ExtResource("6_k86ww")
+texture = ExtResource("6_qs6ny")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -32508,7 +32511,7 @@ texture_region_size = Vector2i(32, 32)
 30:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gtb5d"]
-texture = ExtResource("4_6mpvh")
+texture = ExtResource("4_mvpf7")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -36864,7 +36867,7 @@ sources/2 = SubResource("TileSetAtlasSource_vorpy")
 sources/3 = SubResource("TileSetAtlasSource_gtb5d")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3wiqk"]
-texture = ExtResource("6_k86ww")
+texture = ExtResource("6_qs6ny")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -38502,7 +38505,7 @@ texture_region_size = Vector2i(32, 32)
 30:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dtpdq"]
-texture = ExtResource("4_6mpvh")
+texture = ExtResource("4_mvpf7")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -42851,7 +42854,7 @@ texture_region_size = Vector2i(32, 32)
 30:223/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfbni"]
-texture = ExtResource("5_h34pc")
+texture = ExtResource("5_t7njk")
 texture_region_size = Vector2i(32, 32)
 4:0/0 = 0
 5:0/0 = 0
@@ -46715,9 +46718,23 @@ position = Vector2(-384, -288)
 tile_map_data = PackedByteArray("AAATABgAAAAAABMAAAATABkAAAAAABQAAAATABoAAAAAABUAAAATABsAAAAAABYAAAATABwAAAAAABcAAAATAB0AAAAAABgAAAATAB4AAAAAABkAAAAUABcAAAABABIAAAAUABgAAAABABMAAAAUABkAAAABABQAAAAUABoAAAABABUAAAAUABsAAAABABYAAAAUABwAAAABABcAAAAUAB0AAAABABgAAAAUAB4AAAABABkAAAAVABcAAAACABIAAAAVABgAAAACABMAAAAVABkAAAACABQAAAAVABoAAAACABUAAAAVABsAAAACABYAAAAVABwAAAACABcAAAAVAB0AAAACABgAAAAVAB4AAAACABkAAAAWABcAAAADABIAAAAWABgAAAADABMAAAAWABkAAAADABQAAAAWABoAAAADABUAAAAWABsAAAADABYAAAAWABwAAAADABcAAAAWAB0AAAADABgAAAAWAB4AAAADABkAAAAXABcAAAAEABIAAAAXABgAAAAEABMAAAAXABkAAAAEABQAAAAXABoAAAAEABUAAAAXABsAAAAEABYAAAAXABwAAAAEABcAAAAXAB0AAAAEABgAAAAXAB4AAAAEABkAAAAYABgAAAAFABMAAAAYABkAAAAFABQAAAAYABoAAAAFABUAAAAYABsAAAAFABYAAAAYABwAAAAFABcAAAAYAB0AAAAFABgAAAAYAB4AAAAFABkAAAAZABgAAAAGABMAAAAZABkAAAAGABQAAAAZABoAAAAGABUAAAAZABsAAAAGABYAAAAZABwAAAAGABcAAAAZAB0AAAAGABgAAAAZAB4AAAAGABkAAAAaABgAAAAHABMAAAAaABkAAAAHABQAAAAaABoAAAAHABUAAAAaABsAAAAHABYAAAAaABwAAAAHABcAAAAaAB0AAAAHABgAAAAaAB4AAAAHABkAAAAbABgAAAAIABMAAAAbABkAAAAIABQAAAAbABoAAAAIABUAAAAbABsAAAAIABYAAAAbABwAAAAIABcAAAAbAB0AAAAIABgAAAAbAB4AAAAIABkAAAAcABgAAAAJABMAAAAcABkAAAAJABQAAAAcABoAAAAJABUAAAAcABsAAAAJABYAAAAcABwAAAAJABcAAAAcAB0AAAAJABgAAAAcAB4AAAAJABkAAAAdABsAAAAKABYAAAAdABwAAAAKABcAAAAdAB0AAAAKABgAAAAdAB4AAAAKABkAAAAeABoAAAALABUAAAAeABsAAAALABYAAAAeABwAAAALABcAAAAeAB0AAAALABgAAAAeAB4AAAALABkAAAAfABsAAAAMABYAAAAfABwAAAAMABcAAAAfAB0AAAAMABgAAAAfAB4AAAAMABkAAAAgABsAAAANABYAAAAgABwAAAANABcAAAAgAB0AAAANABgAAAAgAB4AAAANABkAAAAhABsAAAAOABYAAAAhABwAAAAOABcAAAAhAB0AAAAOABgAAAAhAB4AAAAOABkAAAAiABsAAAAPABYAAAAiABwAAAAPABcAAAAiAB0AAAAPABgAAAAiAB4AAAAPABkAAAAjABoAAAAQABUAAAAjABsAAAAQABYAAAAjABwAAAAQABcAAAAjAB0AAAAQABgAAAAjAB4AAAAQABkAAAAkABoAAAARABUAAAAkABsAAAARABYAAAAkABwAAAARABcAAAAkAB0AAAARABgAAAAkAB4AAAARABkAAAAlABsAAAASABYAAAAlABwAAAASABcAAAAlAB0AAAASABgAAAAlAB4AAAASABkAAAAmABwAAAATABcAAAAmAB0AAAATABgAAAAmAB4AAAATABkAAAAnABwAAAAUABcAAAAnAB0AAAAUABgAAAAnAB4AAAAUABkAAABLAB8AAQAKADEAAABLACAAAQAKADIAAABLACEAAQAKADMAAABMAB8AAQALADEAAABMACAAAQALADIAAABMACEAAQALADMAAABNAB8AAQAMADEAAABNACAAAQAMADIAAABNACEAAQAMADMAAABOAB8AAQANADEAAABOACAAAQANADIAAABOACEAAQANADMAAABPAB8AAQAOADEAAABPACAAAQAOADIAAABPACEAAQAOADMAAABQAB8AAQAPADEAAABQACAAAQAPADIAAABQACEAAQAPADMAAABRAB8AAQAQADEAAABRACAAAQAQADIAAABRACEAAQAQADMAAABTACEAAQAIADEAAABTACIAAQAIADIAAABUACEAAQAJADEAAABUACIAAQAJADIAAABLACcAAQAHADUAAABLACgAAQAHADYAAABMACcAAQAIADUAAABMACgAAQAIADYAAABNACcAAQAJADUAAABNACgAAQAJADYAAABSACcAAQAHADUAAABSACgAAQAHADYAAABTACcAAQAIADUAAABTACgAAQAIADYAAABUACcAAQAJADUAAABUACgAAQAJADYAAABSABoAAQAHADUAAABSABsAAQAHADYAAABTABoAAQAIADUAAABTABsAAQAIADYAAABUABoAAQAJADUAAABUABsAAQAJADYAAABLABoAAQAHADUAAABLABsAAQAHADYAAABMABoAAQAIADUAAABMABsAAQAIADYAAABNABoAAQAJADUAAABNABsAAQAJADYAAAAgADMAAgAaABkAAAAhADMAAgAbABkAAAAiADMAAgAcABkAAAAjADMAAgAdABkAAAAkADMAAgAeABkAAAAqAAsAAQAFACIAAAAqAAwAAQAKACQAAAAqAA0AAQAKACUAAAArAAsAAQAGACIAAAArAAwAAQALACQAAAArAA0AAQALACUAAAAsAAsAAQAHACIAAAAsAAwAAQAMACQAAAAsAA0AAQAMACUAAAAtAAsAAQAIACIAAAAtAAwAAQANACQAAAAtAA0AAQANACUAAAAuAAsAAQAJACIAAAAuAAwAAQAOACQAAAAuAA0AAQAOACUAAAAvAA0AAgAaABkAAAAwAA0AAgAbABkAAAAxAA0AAgAcABkAAAAyAA0AAgAdABkAAAAzAA0AAgAeABkAAAA=")
 tile_set = SubResource("TileSet_rfbni")
 
-[node name="Area2D_exterior_police" type="Area2D" parent="."]
+[node name="Area2D_police_to_lobby" type="Area2D" parent="."]
+script = ExtResource("8_0iiqu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_exterior_police"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_to_lobby"]
 z_index = 10
 position = Vector2(336.75, 920)
 shape = SubResource("RectangleShape2D_3wiqk")
+
+[node name="PlayerM" parent="." instance=ExtResource("8_5dt8y")]
+position = Vector2(337, 1056)
+
+[node name="Camera2D" parent="PlayerM" index="2"]
+zoom = Vector2(1, 1)
+limit_right = 10000
+limit_bottom = 10000
+
+[node name="SceneFadeIn" type="Node2D" parent="."]
+script = ExtResource("10_ci8hi")
+
+[editable path="PlayerM"]

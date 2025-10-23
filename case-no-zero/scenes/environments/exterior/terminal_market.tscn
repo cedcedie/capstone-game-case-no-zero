@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cij3qgvd5ycfl"]
+[gd_scene load_steps=36 format=4 uid="uid://cij3qgvd5ycfl"]
 
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="1_6rqqf"]
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="2_ud8h3"]
@@ -53668,6 +53668,18 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_je41u")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0315w"]
+size = Vector2(67.125, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpuf4"]
+size = Vector2(60.5, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2evj1"]
+size = Vector2(54.5, 20.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xumbu"]
+size = Vector2(64, 17)
+
 [node name="Terminalandmarket" type="Node2D"]
 
 [node name="ground" type="TileMapLayer" parent="."]
@@ -53707,5 +53719,31 @@ animation = &"idle_front"
 
 [node name="PlayerM" parent="." instance=ExtResource("8_jpuf4")]
 position = Vector2(936, 696)
+
+[node name="Area2D_to_hardware" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_hardware"]
+z_index = 10
+position = Vector2(1025.56, 443)
+shape = SubResource("RectangleShape2D_0315w")
+
+[node name="Area2D_to_apartment" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_apartment"]
+z_index = 10
+position = Vector2(1584, 464)
+shape = SubResource("RectangleShape2D_jpuf4")
+
+[node name="Area2D_to_mall" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_mall"]
+z_index = 10
+position = Vector2(2208, 469.938)
+shape = SubResource("RectangleShape2D_2evj1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D_to_mall"]
+z_index = 10
+position = Vector2(2016, 471.5)
+shape = SubResource("RectangleShape2D_xumbu")
 
 [editable path="NpcBoyIcecreamHair"]

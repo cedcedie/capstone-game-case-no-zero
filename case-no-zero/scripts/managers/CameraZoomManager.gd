@@ -12,7 +12,10 @@ var zoom_settings: Dictionary = {
 	"bedroom": 2.0,      # Bedroom scene (interior)
 	"police_lobby": 2.0, # Police lobby (interior)
 	"barangay_hall": 2.0, # Barangay hall (interior)
-	"lower_level": 2.0   # Lower level station (interior)
+	"lower_level": 2.0,  # Lower level station (interior)
+	"police_station": 1.0, # Police station exterior (zoom 1.0)
+	"hotel_hospital": 1.0, # Hotel hospital exterior (zoom 1.0)
+	"camp": 1.0            # Camp scene (zoom 1.0)
 }
 
 # Current zoom level
