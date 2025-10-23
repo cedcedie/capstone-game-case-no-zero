@@ -1,0 +1,194 @@
+[gd_scene load_steps=12 format=3 uid="uid://clk6pnobykpdw"]
+
+[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="1_ipiji"]
+[ext_resource type="FontFile" uid="uid://r31pruqk51m3" path="res://scenes/ui/UI by jer/used in UI/Super Maples.ttf" id="3_6vohk"]
+[ext_resource type="Script" uid="uid://dyq85je2d7iv2" path="res://scenes/ui/UI by jer/scripts/audio_control.gd" id="3_epaxe"]
+[ext_resource type="Script" uid="uid://bofb3p2uunbxu" path="res://scenes/ui/UI by jer/scripts/fullscreen_control.gd" id="4_6vohk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v2vy2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34hrd"]
+bg_color = Color(0.804743, 0.804743, 0.804743, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erov6"]
+bg_color = Color(0.43134, 0.43134, 0.43134, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xohax"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_45gmr"]
+color = Color(1, 1, 1, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_58p1p"]
+color = Color(0.225191, 0.494635, 0.896294, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1isiw"]
+color = Color(0.0980886, 0.317864, 0.711954, 1)
+thickness = 4
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.5
+offset_top = -153.0
+offset_right = 213.5
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ipiji")
+region_rect = Rect2(26, 600, 44, 48)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.5
+offset_top = -147.0
+offset_right = 209.5
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.815686, 0.745098, 0.611765, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="NinePatchRect/ColorRect"]
+layout_mode = 0
+offset_right = 419.0
+offset_bottom = 66.0
+color = Color(0.639216, 0.52549, 0.407843, 1)
+
+[node name="Label" type="Label" parent="NinePatchRect/ColorRect/ColorRect2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = 65.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6vohk")
+theme_override_font_sizes/font_size = 40
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="back" type="Button" parent="NinePatchRect/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.659905
+anchor_top = 0.789116
+anchor_right = 0.955847
+anchor_bottom = 0.945578
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6vohk")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v2vy2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_34hrd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_erov6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xohax")
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -55.0
+offset_right = 185.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6vohk")
+theme_override_font_sizes/font_size = 20
+text = " Master volume"
+
+[node name="Audio Control" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_45gmr")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_58p1p")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_1isiw")
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("3_epaxe")
+audio_bus_name = "Master"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Fullscreen Control" type="CheckButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_6vohk")
+theme_override_font_sizes/font_size = 20
+text = "FULLSCREEN"
+script = ExtResource("4_6vohk")
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/Audio Control" to="VBoxContainer/HBoxContainer/Audio Control" method="_on_value_changed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Fullscreen Control" to="VBoxContainer/HBoxContainer2/Fullscreen Control" method="_on_toggled"]

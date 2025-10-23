@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c2ax58feuq8oi"]
+[gd_scene load_steps=28 format=4 uid="uid://kn7kopjg431x"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_ni3it"]
 [ext_resource type="Texture2D" uid="uid://cnn1uk4tglay" path="res://assets/sprites/environments/exterior/12_Hotel_and_Hospital_32x32.png" id="2_vkm1s"]

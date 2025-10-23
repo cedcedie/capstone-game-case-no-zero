@@ -1,0 +1,184 @@
+[gd_scene load_steps=14 format=3 uid="uid://sot27prphlm3"]
+
+[ext_resource type="Script" uid="uid://cdwhedo4dh6tl" path="res://scenes/ui/UI by jer/scripts/chapter_menu.gd" id="1_42srx"]
+[ext_resource type="Texture2D" uid="uid://osehm2q6lrl5" path="res://scenes/ui/UI by jer/used in UI/istockphoto-1333010525-612x612.jpg" id="1_uvvwn"]
+[ext_resource type="FontFile" uid="uid://r31pruqk51m3" path="res://scenes/ui/UI by jer/used in UI/Super Maples.ttf" id="2_673gl"]
+[ext_resource type="AudioStream" uid="uid://f33skqjguur1" path="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 09 Enemy Approaching.mp3" id="4_rte7s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_673gl"]
+texture = ExtResource("1_uvvwn")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_673gl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42srx"]
+bg_color = Color(0.839161, 0.638462, 0.444116, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rte7s"]
+bg_color = Color(0.45374, 0.315069, 0.175205, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74n24"]
+bg_color = Color(0.70466, 0.513108, 0.318648, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42srx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38s6b"]
+bg_color = Color(0.804743, 0.804743, 0.804743, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0ctx"]
+bg_color = Color(0.43134, 0.43134, 0.43134, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ire2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[node name="ChapterMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_42srx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -642.0
+offset_top = -356.0
+offset_right = 643.0
+offset_bottom = 365.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_673gl")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -301.5
+offset_right = 301.5
+offset_bottom = 184.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_673gl")
+theme_override_font_sizes/font_size = 150
+text = "Chapters"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -122.0
+offset_right = 290.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="chapter 1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_673gl")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_673gl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_42srx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rte7s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_74n24")
+text = "CHAPTER  I "
+
+[node name="chapter 2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_673gl")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_673gl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_42srx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rte7s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_74n24")
+text = "CHAPTER  II"
+
+[node name="back to menu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.429297
+anchor_top = 0.843056
+anchor_right = 0.570703
+anchor_bottom = 0.931944
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_673gl")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_42srx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_38s6b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ctx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ire2")
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rte7s")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/chapter 1" to="." method="_on_chapter_1_pressed"]
+[connection signal="pressed" from="back to menu" to="." method="_on_back_to_menu_pressed"]

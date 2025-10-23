@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7w3vk6bm847b"]
 
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="1_cpjuh"]
-[ext_resource type="FontFile" uid="uid://06eojjyt34v5" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_accfc"]
+[ext_resource type="FontFile" uid="uid://r31pruqk51m3" path="res://scenes/ui/UI by jer/used in UI/Super Maples.ttf" id="2_3a2nb"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -58,8 +58,8 @@ columns = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_accfc")
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("2_3a2nb")
+theme_override_font_sizes/font_size = 40
 text = "INVENTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -84,7 +84,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_accfc")
+theme_override_fonts/font = ExtResource("2_3a2nb")
 theme_override_font_sizes/font_size = 20
 text = "Item:"
 vertical_alignment = 1
@@ -93,7 +93,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_accfc")
+theme_override_fonts/font = ExtResource("2_3a2nb")
 theme_override_font_sizes/font_size = 15
 text = "Description:"
 vertical_alignment = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cij3qgvd5ycfl"]
+[gd_scene load_steps=36 format=4 uid="uid://ci8lmybnatvb"]
 
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="1_6rqqf"]
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="2_ud8h3"]
