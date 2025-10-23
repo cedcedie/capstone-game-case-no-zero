@@ -1,26 +1,27 @@
-[gd_scene load_steps=47 format=4 uid="uid://cj02xlhnsbkqp"]
+[gd_scene load_steps=49 format=4 uid="uid://cj02xlhnsbkqp"]
 
-[ext_resource type="Texture2D" uid="uid://q7u1l1cvwbcj" path="res://assets/sprites/environments/interior/Room_Builder_3d_walls_32x32.png" id="1_cbvox"]
-[ext_resource type="Texture2D" uid="uid://yrv68jycvhs5" path="res://assets/sprites/environments/interior/Room_Builder_Arched_Entryways_32x32.png" id="2_cvoll"]
-[ext_resource type="Texture2D" uid="uid://d4mhnqj37ci8j" path="res://assets/sprites/environments/interior/Room_Builder_baseboards_32x32.png" id="3_bftlt"]
-[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="4_0q3ji"]
-[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="5_yjgsi"]
-[ext_resource type="Texture2D" uid="uid://cui0psowwubwj" path="res://assets/sprites/environments/interior/Room_Builder_Floor_Connectors_32x32.png" id="6_dpgu4"]
-[ext_resource type="Texture2D" uid="uid://dqjhlcq1i6tpn" path="res://assets/sprites/environments/interior/Room_Builder_Floor_Paths_32x32.png" id="7_jng30"]
-[ext_resource type="Texture2D" uid="uid://dfcih1unq076i" path="res://assets/sprites/environments/interior/Room_Builder_Floor_Shadows_32x32.png" id="8_3de6j"]
-[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="9_8pa16"]
-[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="10_l6q5n"]
-[ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/sprites/environments/interior/2_LivingRoom_32x32.png" id="11_f01sv"]
-[ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/sprites/environments/interior/4_Bedroom_32x32.png" id="12_1d2e2"]
-[ext_resource type="Texture2D" uid="uid://b7bqhnbtmse4b" path="res://assets/sprites/environments/interior/5_Classroom_and_library_32x32.png" id="13_yv017"]
-[ext_resource type="Texture2D" uid="uid://ikty23evb787" path="res://assets/sprites/environments/interior/8_Gym_32x32.png" id="14_r7tf3"]
-[ext_resource type="Texture2D" uid="uid://dr38kdsh40l27" path="res://assets/sprites/environments/interior/12_Kitchen_32x32.png" id="15_21x3x"]
-[ext_resource type="Texture2D" uid="uid://cqn2g1cxl6v7w" path="res://assets/sprites/environments/interior/14_Basement_32x32.png" id="16_mnl73"]
-[ext_resource type="Texture2D" uid="uid://d25s372ojqspt" path="res://assets/sprites/environments/interior/3_Bathroom_32x32.png" id="17_6opjy"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="18_yv017"]
+[ext_resource type="Texture2D" uid="uid://q7u1l1cvwbcj" path="res://assets/sprites/environments/interior/Room_Builder_3d_walls_32x32.png" id="1_82wmq"]
+[ext_resource type="Texture2D" uid="uid://yrv68jycvhs5" path="res://assets/sprites/environments/interior/Room_Builder_Arched_Entryways_32x32.png" id="2_1hs7i"]
+[ext_resource type="Texture2D" uid="uid://d4mhnqj37ci8j" path="res://assets/sprites/environments/interior/Room_Builder_baseboards_32x32.png" id="3_myprr"]
+[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="4_pg68c"]
+[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="5_u6u2w"]
+[ext_resource type="Texture2D" uid="uid://cui0psowwubwj" path="res://assets/sprites/environments/interior/Room_Builder_Floor_Connectors_32x32.png" id="6_8gapr"]
+[ext_resource type="Texture2D" uid="uid://dqjhlcq1i6tpn" path="res://assets/sprites/environments/interior/Room_Builder_Floor_Paths_32x32.png" id="7_5wasq"]
+[ext_resource type="Texture2D" uid="uid://dfcih1unq076i" path="res://assets/sprites/environments/interior/Room_Builder_Floor_Shadows_32x32.png" id="8_pdk13"]
+[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="9_yjhw1"]
+[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="10_b8o2n"]
+[ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/sprites/environments/interior/2_LivingRoom_32x32.png" id="11_a6vdq"]
+[ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/sprites/environments/interior/4_Bedroom_32x32.png" id="12_n8n02"]
+[ext_resource type="Texture2D" uid="uid://b7bqhnbtmse4b" path="res://assets/sprites/environments/interior/5_Classroom_and_library_32x32.png" id="13_711l2"]
+[ext_resource type="Texture2D" uid="uid://ikty23evb787" path="res://assets/sprites/environments/interior/8_Gym_32x32.png" id="14_jyfrl"]
+[ext_resource type="Texture2D" uid="uid://dr38kdsh40l27" path="res://assets/sprites/environments/interior/12_Kitchen_32x32.png" id="15_ed11l"]
+[ext_resource type="Texture2D" uid="uid://cqn2g1cxl6v7w" path="res://assets/sprites/environments/interior/14_Basement_32x32.png" id="16_dprgm"]
+[ext_resource type="Texture2D" uid="uid://d25s372ojqspt" path="res://assets/sprites/environments/interior/3_Bathroom_32x32.png" id="17_a22q5"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="18_1xb01"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="19_scene_transition"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yymij"]
-texture = ExtResource("1_cbvox")
+texture = ExtResource("1_82wmq")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -1046,7 +1047,7 @@ texture_region_size = Vector2i(32, 32)
 23:58/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d2sit"]
-texture = ExtResource("2_cvoll")
+texture = ExtResource("2_1hs7i")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -1292,7 +1293,7 @@ texture_region_size = Vector2i(32, 32)
 1:31/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvlcc"]
-texture = ExtResource("3_bftlt")
+texture = ExtResource("3_myprr")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 2:0/0 = 0
@@ -1326,7 +1327,7 @@ texture_region_size = Vector2i(32, 32)
 5:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hklkl"]
-texture = ExtResource("4_0q3ji")
+texture = ExtResource("4_pg68c")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -1577,7 +1578,7 @@ texture_region_size = Vector2i(32, 32)
 20:8/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v0mth"]
-texture = ExtResource("5_yjgsi")
+texture = ExtResource("5_u6u2w")
 texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 1:2/0 = 0
@@ -2013,7 +2014,7 @@ texture_region_size = Vector2i(32, 32)
 14:37/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjbs7"]
-texture = ExtResource("6_dpgu4")
+texture = ExtResource("6_8gapr")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -2167,7 +2168,7 @@ texture_region_size = Vector2i(32, 32)
 5:30/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o8fnt"]
-texture = ExtResource("7_jng30")
+texture = ExtResource("7_5wasq")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -2490,7 +2491,7 @@ texture_region_size = Vector2i(32, 32)
 22:11/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_305cb"]
-texture = ExtResource("8_3de6j")
+texture = ExtResource("8_pdk13")
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
 4:0/0 = 0
@@ -2516,7 +2517,7 @@ texture_region_size = Vector2i(32, 32)
 10:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2vjj"]
-texture = ExtResource("9_8pa16")
+texture = ExtResource("9_yjhw1")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -3514,7 +3515,7 @@ sources/7 = SubResource("TileSetAtlasSource_305cb")
 sources/8 = SubResource("TileSetAtlasSource_i2vjj")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f31i"]
-texture = ExtResource("10_l6q5n")
+texture = ExtResource("10_b8o2n")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -4632,7 +4633,7 @@ texture_region_size = Vector2i(32, 32)
 10:75/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c38lp"]
-texture = ExtResource("11_f01sv")
+texture = ExtResource("11_a6vdq")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
@@ -5226,7 +5227,7 @@ texture_region_size = Vector2i(32, 32)
 15:44/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h0nqm"]
-texture = ExtResource("4_0q3ji")
+texture = ExtResource("4_pg68c")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -5489,7 +5490,7 @@ texture_region_size = Vector2i(32, 32)
 20:8/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6i3w7"]
-texture = ExtResource("12_1d2e2")
+texture = ExtResource("12_n8n02")
 texture_region_size = Vector2i(32, 32)
 9:0/0 = 0
 10:0/0 = 0
@@ -6872,7 +6873,7 @@ texture_region_size = Vector2i(32, 32)
 7:106/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8syx6"]
-texture = ExtResource("13_yv017")
+texture = ExtResource("13_711l2")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 8:0/0 = 0
@@ -7390,7 +7391,7 @@ texture_region_size = Vector2i(32, 32)
 15:33/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2n6h"]
-texture = ExtResource("14_r7tf3")
+texture = ExtResource("14_jyfrl")
 texture_region_size = Vector2i(32, 32)
 6:0/0 = 0
 7:0/0 = 0
@@ -7837,7 +7838,7 @@ texture_region_size = Vector2i(32, 32)
 15:32/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fqjls"]
-texture = ExtResource("15_21x3x")
+texture = ExtResource("15_ed11l")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -8586,7 +8587,7 @@ texture_region_size = Vector2i(32, 32)
 15:48/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1d2e2"]
-texture = ExtResource("9_8pa16")
+texture = ExtResource("9_yjhw1")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -9580,7 +9581,7 @@ sources/10 = SubResource("TileSetAtlasSource_h0nqm")
 sources/6 = SubResource("TileSetAtlasSource_1d2e2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vdnhk"]
-texture = ExtResource("16_mnl73")
+texture = ExtResource("16_dprgm")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 3:0/0 = 0
@@ -10315,7 +10316,7 @@ texture_region_size = Vector2i(32, 32)
 10:49/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -6.54032, -16, -6.54032, 1.56076, -16, 1.7094)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fv0ol"]
-texture = ExtResource("13_yv017")
+texture = ExtResource("13_711l2")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 8:0/0 = 0
@@ -10827,7 +10828,7 @@ texture_region_size = Vector2i(32, 32)
 15:33/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_csfhd"]
-texture = ExtResource("12_1d2e2")
+texture = ExtResource("12_n8n02")
 texture_region_size = Vector2i(32, 32)
 9:0/0 = 0
 10:0/0 = 0
@@ -12206,7 +12207,7 @@ texture_region_size = Vector2i(32, 32)
 7:106/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5pn2"]
-texture = ExtResource("17_6opjy")
+texture = ExtResource("17_a22q5")
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
 4:0/0 = 0
@@ -12938,7 +12939,7 @@ texture_region_size = Vector2i(32, 32)
 6:54/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7emm"]
-texture = ExtResource("11_f01sv")
+texture = ExtResource("11_a6vdq")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
@@ -13521,7 +13522,7 @@ texture_region_size = Vector2i(32, 32)
 15:44/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6piku"]
-texture = ExtResource("10_l6q5n")
+texture = ExtResource("10_b8o2n")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -14615,7 +14616,7 @@ texture_region_size = Vector2i(32, 32)
 10:75/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0x2e"]
-texture = ExtResource("15_21x3x")
+texture = ExtResource("15_ed11l")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -15350,7 +15351,7 @@ texture_region_size = Vector2i(32, 32)
 15:48/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewwef"]
-texture = ExtResource("14_r7tf3")
+texture = ExtResource("14_jyfrl")
 texture_region_size = Vector2i(32, 32)
 6:0/0 = 0
 7:0/0 = 0
@@ -15806,10 +15807,14 @@ sources/5 = SubResource("TileSetAtlasSource_6piku")
 sources/6 = SubResource("TileSetAtlasSource_r0x2e")
 sources/7 = SubResource("TileSetAtlasSource_ewwef")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iy00"]
+size = Vector2(63.25, 19)
+
 [node name="HotelInteriror2NdFloor" type="Node2D"]
 position = Vector2(53, 96)
 
 [node name="ground layer" type="TileMapLayer" parent="."]
+position = Vector2(227, 8)
 tile_map_data = PackedByteArray("AAABAAAACAAAACIAAAABAAEACAAEACIAAAABAAIACAAEACIAAAABAAMACAAEACIAAAABAAQACAAAACMAAAABAAUABAAIACQAAAABAAYABAAIACUAAAABAAcABAAIACQAAAABAAgABAAIACUAAAABAAkABAAIACQAAAABAAoABAAIACUAAAABAAsABAAIACQAAAABAAwABAAIACUAAAABAA0ABAAIACQAAAACAAAACAAIACIAAAACAAEACAAFACIAAAACAAIACAAFACIAAAACAAMACAAFACIAAAACAAQACAAIACMAAAACAAUABAAJACQAAAACAAYABAAJACUAAAACAAcABAAJACQAAAACAAgABAAJACUAAAACAAkABAAJACQAAAACAAoABAAJACUAAAACAAsABAAJACQAAAACAAwABAAJACUAAAACAA0ABAAJACQAAAADAAAACAAIACIAAAADAAEACAAFACIAAAADAAIACAAFACIAAAADAAMACAAFACIAAAADAAQACAAIACMAAAADAAUABAAKACQAAAADAAYABAAKACUAAAADAAcABAAKACQAAAADAAgABAAKACUAAAADAAkABAAKACQAAAADAAoABAAKACUAAAADAAsABAAKACQAAAADAAwABAAKACUAAAADAA0ABAAKACQAAAAEAAAACAAIACIAAAAEAAEACAAFACIAAAAEAAIACAAFACIAAAAEAAMACAAFACIAAAAEAAQACAAIACMAAAAEAAUABAAIACQAAAAEAAYABAAIACUAAAAEAAcABAAIACQAAAAEAAgABAAIACUAAAAEAAkABAAIACQAAAAEAAoABAAIACUAAAAEAAsABAAIACQAAAAEAAwABAAIACUAAAAEAA0ABAAIACQAAAAFAAAACAAIACIAAAAFAAEACAAFACIAAAAFAAIACAAFACIAAAAFAAMACAAFACIAAAAFAAQACAAIACMAAAAFAAUABAAJACQAAAAFAAYABAAJACUAAAAFAAcABAAJACQAAAAFAAgABAAJACUAAAAFAAkABAAJACQAAAAFAAoABAAJACUAAAAFAAsABAAJACQAAAAFAAwABAAJACUAAAAFAA0ABAAJACQAAAAGAAAACAAIACIAAAAGAAEACAAFACIAAAAGAAIACAAFACIAAAAGAAMACAAFACIAAAAGAAQACAAIACMAAAAGAAUABAAKACQAAAAGAAYABAAKACUAAAAGAAcABAAKACQAAAAGAAgABAAKACUAAAAGAAkABAAKACQAAAAGAAoABAAKACUAAAAGAAsABAAKACQAAAAGAAwABAAKACUAAAAGAA0ABAAKACQAAAAHAAAACAAIACIAAAAHAAEACAAFACIAAAAHAAIACAAFACIAAAAHAAMACAAFACIAAAAHAAQACAAIACMAAAAHAAUABAAIACQAAAAHAAYABAAIACUAAAAHAAcABAAIACQAAAAHAAgABAAIACUAAAAHAAkABAAIACQAAAAHAAoABAAIACUAAAAHAAsABAAIACQAAAAHAAwABAAIACUAAAAHAA0ABAAIACQAAAAIAAAACAAIACIAAAAIAAEACAAFACIAAAAIAAIACAAFACIAAAAIAAMACAAFACIAAAAIAAQACAAIACMAAAAIAAUABAAJACQAAAAIAAYABAAJACUAAAAIAAcABAAJACQAAAAIAAgABAAJACUAAAAIAAkABAAJACQAAAAIAAoABAAJACUAAAAIAAsABAAJACQAAAAIAAwABAAJACUAAAAIAA0ABAAJACQAAAAJAAAACAAIACIAAAAJAAEACAAFACIAAAAJAAIACAAFACIAAAAJAAMACAAFACIAAAAJAAQACAAIACMAAAAJAAUABAAKACQAAAAJAAYABAAKACUAAAAJAAcABAAKACQAAAAJAAgABAAKACUAAAAJAAkABAAKACQAAAAJAAoABAAKACUAAAAJAAsABAAKACQAAAAJAAwABAAKACUAAAAJAA0ABAAKACQAAAAKAAAACAAIACIAAAAKAAEACAAFACIAAAAKAAIACAAFACIAAAAKAAMACAAFACIAAAAKAAQACAAIACMAAAAKAAUABAAIACQAAAAKAAYABAAIACUAAAAKAAcABAAIACQAAAAKAAgABAAIACUAAAAKAAkABAAIACQAAAAKAAoABAAIACUAAAAKAAsABAAIACQAAAAKAAwABAAIACUAAAAKAA0ABAAIACQAAAALAAAACAAIACIAAAALAAEACAAFACIAAAALAAIACAAFACIAAAALAAMACAAFACIAAAALAAQACAAIACMAAAALAAUABAAJACQAAAALAAYABAAJACUAAAALAAcABAAJACQAAAALAAgABAAJACUAAAALAAkABAAJACQAAAALAAoABAAJACUAAAALAAsABAAJACQAAAALAAwABAAJACUAAAALAA0ABAAJACQAAAAMAAAACAAIACIAAAAMAAEACAAFACIAAAAMAAIACAAFACIAAAAMAAMACAAFACIAAAAMAAQACAAIACMAAAAMAAUABAAKACQAAAAMAAYABAAKACUAAAAMAAcABAAKACQAAAAMAAgABAAKACUAAAAMAAkABAAKACQAAAAMAAoABAAKACUAAAAMAAsABAAKACQAAAAMAAwABAAKACUAAAAMAA0ABAAKACQAAAANAAAACAAIACIAAAANAAEACAAFACIAAAANAAIACAAFACIAAAANAAMACAAFACIAAAANAAQACAAIACMAAAANAAUABAAIACQAAAANAAYABAAIACUAAAANAAcABAAIACQAAAANAAgABAAIACUAAAANAAkABAAIACQAAAANAAoABAAIACUAAAANAAsABAAIACQAAAANAAwABAAIACUAAAANAA0ABAAIACQAAAAOAAAACAAIACIAAAAOAAEACAAFACIAAAAOAAIACAAFACIAAAAOAAMACAAFACIAAAAOAAQACAAIACMAAAAOAAUABAAJACQAAAAOAAYABAAJACUAAAAOAAcABAAJACQAAAAOAAgABAAJACUAAAAOAAkABAAJACQAAAAOAAoABAAJACUAAAAOAAsABAAJACQAAAAOAAwABAAJACUAAAAOAA0ABAAJACQAAAAPAAAACAAIACIAAAAPAAEACAAFACIAAAAPAAIACAAFACIAAAAPAAMACAAFACIAAAAPAAQACAAIACMAAAAPAAUABAAKACQAAAAPAAYABAAKACUAAAAPAAcABAAKACQAAAAPAAgABAAKACUAAAAPAAkABAAKACQAAAAPAAoABAAKACUAAAAPAAsABAAKACQAAAAPAAwABAAKACUAAAAPAA0ABAAKACQAAAAQAAAACAAIACIAAAAQAAEACAAFACIAAAAQAAIACAAFACIAAAAQAAMACAAFACIAAAAQAAQACAAIACMAAAAQAAUABAAIACQAAAAQAAYABAAIACUAAAAQAAcABAAIACQAAAAQAAgABAAIACUAAAAQAAkABAAIACQAAAAQAAoABAAIACUAAAAQAAsABAAIACQAAAAQAAwABAAIACUAAAAQAA0ABAAIACQAAAARAAAACAAIACIAAAARAAEACAAFACIAAAARAAIACAAFACIAAAARAAMACAAFACIAAAARAAQACAAIACMAAAARAAUABAAJACQAAAARAAYABAAJACUAAAARAAcABAAJACQAAAARAAgABAAJACUAAAARAAkABAAJACQAAAARAAoABAAJACUAAAARAAsABAAJACQAAAARAAwABAAJACUAAAARAA0ABAAJACQAAAASAAAACAAIACIAAAASAAEACAAFACIAAAASAAIACAAFACIAAAASAAMACAAFACIAAAASAAQACAAIACMAAAASAAUABAAKACQAAAASAAYABAAKACUAAAASAAcABAAKACQAAAASAAgABAAKACUAAAASAAkABAAKACQAAAASAAoABAAKACUAAAASAAsABAAKACQAAAASAAwABAAKACUAAAASAA0ABAAKACQAAAATAAAACAAIACIAAAATAAEACAAFACIAAAATAAIACAAFACIAAAATAAMACAAFACIAAAATAAQACAAIACMAAAATAAUABAAIACQAAAATAAYABAAIACUAAAATAAcABAAIACQAAAATAAgABAAIACUAAAATAAkABAAIACQAAAATAAoABAAIACUAAAATAAsABAAIACQAAAATAAwABAAIACUAAAATAA0ABAAIACQAAAAUAAAACAAIACIAAAAUAAEACAAFACIAAAAUAAIACAAFACIAAAAUAAMACAAFACIAAAAUAAQACAAIACMAAAAUAAUABAAJACQAAAAUAAYABAAJACUAAAAUAAcABAAJACQAAAAUAAgABAAJACUAAAAUAAkABAAJACQAAAAUAAoABAAJACUAAAAUAAsABAAJACQAAAAUAAwABAAJACUAAAAUAA0ABAAJACQAAAAVAAAACAACACIAAAAVAAEACAAGACIAAAAVAAIACAAGACIAAAAVAAMACAAGACIAAAAVAAQACAACACMAAAAVAAUABAAKACQAAAAVAAYABAAKACUAAAAVAAcABAAKACQAAAAVAAgABAAKACUAAAAVAAkABAAKACQAAAAVAAoABAAKACUAAAAVAAsABAAKACQAAAAVAAwABAAKACUAAAAVAA0ABAAKACQAAAA=")
 tile_set = SubResource("TileSet_6swq4")
 collision_visibility_mode = 1
@@ -15833,5 +15838,12 @@ tile_map_data = PackedByteArray("AAABAAgABgAIAAcAAAABAAoABgAPAB4AAAACAAgABgAJAAc
 tile_set = SubResource("TileSet_u5qif")
 collision_visibility_mode = 1
 
-[node name="PlayerM" parent="." instance=ExtResource("18_yv017")]
-position = Vector2(329, 356)
+[node name="PlayerM" parent="." instance=ExtResource("18_1xb01")]
+position = Vector2(595, 240)
+
+[node name="Area2D_2nd_floor_to_hotel_lobby" type="Area2D" parent="."]
+script = ExtResource("19_scene_transition")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_2nd_floor_to_hotel_lobby"]
+position = Vector2(595.375, 168)
+shape = SubResource("RectangleShape2D_8iy00")

@@ -10,6 +10,21 @@
 font = ExtResource("3_jcydu")
 font_size = 18
 
+[sub_resource type="Animation" id="Animation_0ojno"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("leo_mendoza/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_right"]
+}
+
 [sub_resource type="Animation" id="Animation_hieu1"]
 resource_name = "intro"
 length = 49.0
@@ -120,21 +135,6 @@ tracks/3/keys = {
 "args": [0.0],
 "method": &"play"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_0ojno"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("leo_mendoza/AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walk_right"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ldhe1"]

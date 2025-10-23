@@ -42,14 +42,26 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_barangay_hall": "barangay_hall",
 		"Area2D_barangay_hall_second_floor": "barangay_hall_second_floor",
 		"Area2D_barangay_hall_return": "barangay_hall",
-		"Area2D_exterior_police" : "police_lobby"
+		"Area2D_exterior_police": "police_lobby",
+		"Area2D_firestation": "firestation",
+		"Area2D_firestation_1st_floor": "firestation_1st_floor",
+		"Area2D_hotel_hospital_to_hospital": "hospital_lobby",
+		"Area2D_hospital_2nd_floor": "hospital_2nd_floor",
+		"Area2D_hospital_2nd_to_lobby": "hospital_2nd_floor",
+		"Area2D_hospital_lobby_to_hotel_hospital": "hospital_lobby",
+		"Area2D_hotel_lobby_to_hotel_hospital": "hotel_hospital",
+		"Area2D_hotel_hospital_to_hotel": "hotel_hospital",
+		"Area2D_hotel_hospital_to_hotel_lobby": "hotel_hospital",
+		"Area2D_to_hotel_hospital": "hotel_lobby",
+		"Area2D_to_2nd_floor_hospital": "hotel_lobby",
+		"Area2D_2nd_floor_to_hotel_lobby": "hotel_2nd_floor"
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
 	if has_node("/root/SpawnManager"):
 		var spawn_manager = get_node("/root/SpawnManager")
-		spawn_manager.set_entry_point(current_scene_name, current_scene_name)
-		print("🔄 Scene Transition: Set entry point from ", current_scene_name, " to ", target_scene_name, " via ", current_scene_name)
+		spawn_manager.set_entry_point(current_scene_name, _entry_point)
+		print("🔄 Scene Transition: Set entry point from ", current_scene_name, " to ", target_scene_name, " via ", _entry_point)
 	else:
 		print("⚠️ Scene Transition: SpawnManager not found!")
 
@@ -75,11 +87,29 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		# Hotel and Hospital Area2D transitions
 		"Area2D_firestation":
-			return "res://scenes/environments/fire station/fire station 1st floor.tscn"
-		"Area2D_hospital":
-			return "res://scenes/environments/hospital/hospital lobby.tscn"
-		"Area2D_hotel":
-			return "res://scenes/environments/hotel/hotel interior lobby.tscn"
+			return "res://scenes/environments/fire_station/fire_station_1st_floor.tscn"
+		"Area2D_firestation_1st_floor":
+			return "res://scenes/environments/fire_station/fire_station_1st_floor.tscn"
+		"Area2D_hotel_hospital_to_hospital":
+			return "res://scenes/environments/hospital/hospital_lobby.tscn"
+		"Area2D_hospital_2nd_floor":
+			return "res://scenes/environments/hospital/hospital_2nd_floor.tscn"
+		"Area2D_hospital_2nd_to_lobby":
+			return "res://scenes/environments/hospital/hospital_lobby.tscn"
+		"Area2D_hospital_lobby_to_hotel_hospital":
+			return "res://scenes/environments/exterior/hotel_hospital.tscn"
+		"Area2D_hotel_lobby_to_hotel_hospital":
+			return "res://scenes/environments/exterior/hotel_hospital.tscn"
+		"Area2D_hotel_hospital_to_hotel":
+			return "res://scenes/environments/hotel/hotel_lobby.tscn"
+		"Area2D_hotel_hospital_to_hotel_lobby":
+			return "res://scenes/environments/hotel/hotel_lobby.tscn"
+		"Area2D_to_hotel_hospital":
+			return "res://scenes/environments/exterior/hotel_hospital.tscn"
+		"Area2D_to_2nd_floor_hospital":
+			return "res://scenes/environments/hotel/hotel_2nd_floor.tscn"
+		"Area2D_2nd_floor_to_hotel_lobby":
+			return "res://scenes/environments/hotel/hotel_lobby.tscn"
 		_:
 			return ""
 

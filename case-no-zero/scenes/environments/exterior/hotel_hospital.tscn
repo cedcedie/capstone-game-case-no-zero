@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c2ax58feuq8oi"]
+[gd_scene load_steps=27 format=4 uid="uid://c2ax58feuq8oi"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_ni3it"]
 [ext_resource type="Texture2D" uid="uid://cnn1uk4tglay" path="res://assets/sprites/environments/exterior/12_Hotel_and_Hospital_32x32.png" id="2_vkm1s"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cq3m5ttsb8dtv" path="res://assets/sprites/environments/exterior/18_Fire_Station_32x32.png" id="3_wwei5"]
 [ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="5_wwei5"]
 [ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="6_1o657"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="7_1o657"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_2vggs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1o657"]
 texture = ExtResource("1_ni3it")
@@ -19747,8 +19749,8 @@ size = Vector2(80, 16.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_liure"]
 size = Vector2(77, 58.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lp53t"]
-size = Vector2(52, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vggs"]
+size = Vector2(51.5, 22.0625)
 
 [node name="Hotel&hospital" type="Node2D"]
 
@@ -19782,22 +19784,32 @@ tile_map_data = PackedByteArray("AAAJAP//AQAAAAEAAAAJAAAAAQAAAAIAAAAJAAEAAQAAAAM
 tile_set = SubResource("TileSet_3swcl")
 
 [node name="Area2D_firestation" type="Area2D" parent="."]
+script = ExtResource("7_1o657")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_firestation"]
 z_index = 10
 position = Vector2(432, 335.875)
 shape = SubResource("RectangleShape2D_1o657")
 
-[node name="Area2D_hospital" type="Area2D" parent="."]
+[node name="Area2D_hotel_hospital_to_hospital" type="Area2D" parent="."]
+script = ExtResource("7_1o657")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_hospital"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_hotel_hospital_to_hospital"]
 position = Vector2(432, 1218.75)
 shape = SubResource("RectangleShape2D_liure")
 
-[node name="Area2D_hotel" type="Area2D" parent="."]
-position = Vector2(32, 40)
+[node name="PlayerM" parent="." instance=ExtResource("8_2vggs")]
+position = Vector2(640, 2528)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_hotel"]
-z_index = 10
-position = Vector2(606, 2408)
-shape = SubResource("RectangleShape2D_lp53t")
+[node name="Camera2D" parent="PlayerM" index="2"]
+limit_right = 100000
+limit_bottom = 100000
+
+[node name="Area2D_hotel_hospital_to_hotel_lobby" type="Area2D" parent="."]
+script = ExtResource("7_1o657")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_hotel_hospital_to_hotel_lobby"]
+position = Vector2(640, 2460.97)
+shape = SubResource("RectangleShape2D_2vggs")
+
+[editable path="PlayerM"]

@@ -38,6 +38,8 @@ func find_player_camera():
 				print("📷 CameraZoomManager: Player camera found")
 				# Set initial zoom based on current scene
 				set_zoom_for_current_scene()
+				# Remove camera limits for hotel_hospital scene
+				remove_camera_limits_for_hotel_hospital()
 			else:
 				print("⚠️ CameraZoomManager: Player camera not found")
 		else:
@@ -98,6 +100,25 @@ func get_current_zoom() -> float:
 func reset_to_default_zoom():
 	"""Reset zoom to default for current scene"""
 	set_zoom_for_current_scene()
+
+func remove_camera_limits_for_hotel_hospital():
+	"""Remove camera limits specifically for hotel_hospital scene"""
+	if not player_camera:
+		return
+	
+	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
+	
+	# Check if we're in the hotel_hospital scene
+	if scene_name == "hotel_hospital":
+		print("📷 CameraZoomManager: Removing camera limits for hotel_hospital scene")
+		# Remove all camera limits by setting them to their default values
+		player_camera.limit_left = -10000000
+		player_camera.limit_top = -10000000
+		player_camera.limit_right = 10000000
+		player_camera.limit_bottom = 10000000
+		print("📷 CameraZoomManager: Camera limits removed for hotel_hospital")
+	else:
+		print("📷 CameraZoomManager: Not in hotel_hospital scene, keeping default limits")
 
 # Scene change detection
 func _on_scene_changed():

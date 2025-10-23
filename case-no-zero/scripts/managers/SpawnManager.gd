@@ -25,6 +25,82 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(272, 480),
 			"animation": "idle_down"
 		}
+	},
+	"hotel_hospital": {
+		"from_firestation": {
+			"position": Vector2(432.0, 438.0),
+			"animation": "idle_down"
+		},
+		"from_hotel_lobby": {
+			"position": Vector2(640.0, 2528.0),
+			"animation": "idle_down"
+		},
+		"from_hospital_lobby": {
+			"position": Vector2(432.0, 1376.0),
+			"animation": "idle_down"
+		},
+		"default": {
+			"position": Vector2(432.0, 438.0),
+			"animation": "idle_down"
+		}
+	},
+	"fire_station_1st_floor": {
+		"from_firestation_1st_floor": {
+			"position": Vector2(400, 500),
+			"animation": "idle_down"
+		},
+		"default": {
+			"position": Vector2(400, 500),
+			"animation": "idle_down"
+		}
+	},
+	"hospital_lobby": {
+		"from_hotel_hospital": {
+			"position": Vector2(304.0, 248.0),
+			"animation": "idle_down"
+		},
+		"from_hospital_2nd_floor": {
+			"position": Vector2(704.0, 248.0),
+			"animation": "idle_down"
+		},
+		"default": {
+			"position": Vector2(304.0, 248.0),
+			"animation": "idle_down"
+		}
+	},
+	"hospital_2nd_floor": {
+		"from_hospital_lobby": {
+			"position": Vector2(528.0, 448.0),
+			"animation": "idle_back"
+		},
+		"default": {
+			"position": Vector2(528.0, 448.0),
+			"animation": "idle_back"
+		}
+	},
+	"hotel_lobby": {
+		"from_hotel_hospital": {
+			"position": Vector2(456, 368),
+			"animation": "idle_down"
+		},
+		"from_hotel_2nd_floor": {
+			"position": Vector2(792.0, 432.0),
+			"animation": "idle_left"
+		},
+		"default": {
+			"position": Vector2(456, 368),
+			"animation": "idle_down"
+		}
+	},
+	"hotel_2nd_floor": {
+		"from_hotel_lobby": {
+			"position": Vector2(630.0, 304),
+			"animation": "idle_down"
+		},
+		"default": {
+			"position": Vector2(630.0, 304.0),
+			"animation": "idle_down"
+		}
 	}
 }
 
