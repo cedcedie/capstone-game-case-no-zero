@@ -51168,7 +51168,7 @@ autoplay = "idle_right"
 
 [node name="PlayerM" parent="." instance=ExtResource("11_qoipj")]
 z_index = 4
-position = Vector2(976, 912)
+position = Vector2(1776, 1016)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
 limit_right = 5000
@@ -51177,10 +51177,6 @@ limit_bottom = 5000
 [node name="NpcBoy1" parent="." instance=ExtResource("12_kev02")]
 z_index = 6
 position = Vector2(1408, 936)
-
-[node name="NpcBoyKunat" parent="." instance=ExtResource("13_fl2h6")]
-z_index = 20
-position = Vector2(2160, 640)
 
 [node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("14_jtlfh")]
 position = Vector2(1200, 944)
@@ -51191,9 +51187,6 @@ animation = &"idle_front"
 [node name="NpcCoolHoodie" parent="." instance=ExtResource("15_udjt5")]
 z_index = 10
 position = Vector2(2400, 1016)
-
-[node name="NpcCurlyGirly" parent="." instance=ExtResource("16_el8te")]
-position = Vector2(768, 1032)
 
 [node name="NpcMustache" parent="." instance=ExtResource("17_63oev")]
 z_index = 10
@@ -51209,14 +51202,6 @@ position = Vector2(192, 760)
 [node name="AnimatedSprite2D" parent="NpcOneEye" index="0"]
 animation = &"idle_left"
 
-[node name="NpcPinkish" parent="." instance=ExtResource("19_xv305")]
-z_index = 20
-position = Vector2(1920, 496)
-
-[node name="NpcRandomGuy" parent="." instance=ExtResource("20_3ll3w")]
-z_index = 12
-position = Vector2(1160, 504)
-
 [node name="NpcRandomGirl" parent="." instance=ExtResource("21_cexpq")]
 z_index = 15
 position = Vector2(1424, 760)
@@ -51227,15 +51212,6 @@ position = Vector2(1624, 1016)
 [node name="AnimatedSprite2D" parent="NpcShaolinBoy" index="0"]
 animation = &"idle_right"
 autoplay = "idle_right"
-
-[node name="NpcYellowGlassMan" parent="." instance=ExtResource("23_dsbue")]
-position = Vector2(648, 448)
-
-[node name="NpcGirl1" parent="." instance=ExtResource("24_1g55f")]
-position = Vector2(2440, 880)
-
-[node name="NpcGuy3" parent="." instance=ExtResource("25_w58ee")]
-position = Vector2(1184, 184)
 
 [node name="NpcGuy2" parent="." instance=ExtResource("26_he11w")]
 position = Vector2(1088, 184)
@@ -51287,6 +51263,30 @@ shape = SubResource("RectangleShape2D_4xrkw")
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = ExtResource("31_7v4vq")
 
+[node name="NpcBoyKunat" parent="." instance=ExtResource("13_fl2h6")]
+z_index = 20
+position = Vector2(2160, 640)
+
+[node name="NpcCurlyGirly" parent="." instance=ExtResource("16_el8te")]
+position = Vector2(768, 1032)
+
+[node name="NpcRandomGuy" parent="." instance=ExtResource("20_3ll3w")]
+z_index = 12
+position = Vector2(1160, 504)
+
+[node name="NpcYellowGlassMan" parent="." instance=ExtResource("23_dsbue")]
+position = Vector2(648, 448)
+
+[node name="NpcGirl1" parent="." instance=ExtResource("24_1g55f")]
+position = Vector2(2440, 880)
+
+[node name="NpcGuy3" parent="." instance=ExtResource("25_w58ee")]
+position = Vector2(1184, 184)
+
+[node name="NpcPinkish" parent="." instance=ExtResource("19_xv305")]
+z_index = 20
+position = Vector2(1920, 496)
+
 [editable path="NpcBackpackMan"]
 [editable path="NpcBeardMan"]
 [editable path="PlayerM"]
@@ -51299,3 +51299,10 @@ script = ExtResource("31_7v4vq")
 [editable path="NpcShaolinBoy"]
 [editable path="NpcGuy2"]
 [editable path="NpcGuy4"]
+[editable path="NpcBoyKunat"]
+[editable path="NpcCurlyGirly"]
+[editable path="NpcRandomGuy"]
+[editable path="NpcYellowGlassMan"]
+[editable path="NpcGirl1"]
+[editable path="NpcGuy3"]
+[editable path="NpcPinkish"]

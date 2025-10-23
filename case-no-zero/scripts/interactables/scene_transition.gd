@@ -74,7 +74,22 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"from_morgue_to_police_station": "morgue_to_police_station", 
 		"from_morgue_to_hospital": "morgue_to_hospital",
 		"Area2D_bedroom_interior": "Area2D_bedroom_interior",
-		"Area2D_apartment_exterior": "apartment_exterior"
+		"Area2D_apartment_exterior": "apartment_exterior",
+		"from_barangay_to_camp": "barangay_to_camp",
+		"from_barangay_to_market": "barangay_to_market",
+		"from_barangay_to_police_station": "baranggay_to_police_station",
+		"from_camp_to_barangay": "camp_to_baranggay",
+		"from_camp_to_morgue": "camp_to_morgue",
+		"from_hospital_to_morgue": "hospital_to_morgue",
+		"from_hospital_to_police_station": "hospital_to_police_station",
+		"from_hospital_to_market": "hospital_to_market",
+		"from_police_to_hospital": "police_to_hospital",
+		"from_police_to_market": "police_to_market",
+		"from_police_to_baranggay": "police_to_baranggay",
+		"from_police_to_morgue": "police_to_morgue",
+		"from_market_to_baranggay": "market_to_baranggay",
+		"from_market_to_hospital": "market_to_hospital",
+		"from_market_to_police": "market_to_police"
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
@@ -159,6 +174,37 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/cutscenes/bedroomScene.tscn"
 		"Area2D_apartment_exterior":
 			return "res://scenes/environments/exterior/apartment_morgue.tscn"
+		# New Area2D transitions from barangay_court
+		"from_barangay_to_camp":
+			return "res://scenes/environments/exterior/camp.tscn"
+		"from_barangay_to_market":
+			return "res://scenes/environments/exterior/terminal_market.tscn"
+		"from_barangay_to_police_station":
+			return "res://scenes/environments/exterior/police_station.tscn"
+		"from_camp_to_barangay":
+			return "res://scenes/environments/barangay hall/baranggay_court.tscn"
+		"from_camp_to_morgue":
+			return "res://scenes/environments/exterior/apartment_morgue.tscn"
+		"from_hospital_to_morgue":
+			return "res://scenes/environments/exterior/apartment_morgue.tscn"
+		"from_hospital_to_police_station":
+			return "res://scenes/environments/exterior/police_station.tscn"
+		"from_hospital_to_market":
+			return "res://scenes/environments/exterior/terminal_market.tscn"
+		"from_police_to_hospital":
+			return "res://scenes/environments/exterior/hotel_hospital.tscn"
+		"from_police_to_market":
+			return "res://scenes/environments/exterior/terminal_market.tscn"
+		"from_police_to_baranggay":
+			return "res://scenes/environments/barangay hall/baranggay_court.tscn"
+		"from_police_to_morgue":
+			return "res://scenes/environments/exterior/apartment_morgue.tscn"
+		"from_market_to_baranggay":
+			return "res://scenes/environments/barangay hall/baranggay_court.tscn"
+		"from_market_to_hospital":
+			return "res://scenes/environments/exterior/hotel_hospital.tscn"
+		"from_market_to_police":
+			return "res://scenes/environments/exterior/police_station.tscn"
 		_:
 			return ""
 

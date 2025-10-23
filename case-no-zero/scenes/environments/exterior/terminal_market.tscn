@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://ci8lmybnatvb"]
+[gd_scene load_steps=39 format=4 uid="uid://cij3qgvd5ycfl"]
 
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="1_6rqqf"]
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="2_ud8h3"]
@@ -53676,6 +53676,15 @@ size = Vector2(67.125, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2evj1"]
 size = Vector2(54.5, 20.125)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcm3v"]
+size = Vector2(18.5, 1048)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ag0d"]
+size = Vector2(18, 1050)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o33mq"]
+size = Vector2(2784, 16)
+
 [node name="Terminalandmarket" type="Node2D"]
 
 [node name="ground" type="TileMapLayer" parent="."]
@@ -53714,7 +53723,7 @@ position = Vector2(896, 520)
 animation = &"idle_front"
 
 [node name="PlayerM" parent="." instance=ExtResource("8_jpuf4")]
-position = Vector2(2016, 528)
+position = Vector2(768, 152)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
 limit_right = 10000
@@ -53738,6 +53747,28 @@ shape = SubResource("RectangleShape2D_2evj1")
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = ExtResource("10_kcm3v")
+
+[node name="from_market_to_baranggay" type="Area2D" parent="."]
+script = ExtResource("9_2hq86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_market_to_baranggay"]
+position = Vector2(6.75, 564)
+shape = SubResource("RectangleShape2D_kcm3v")
+
+[node name="from_market_to_hospital" type="Area2D" parent="."]
+position = Vector2(2808, 48)
+script = ExtResource("9_2hq86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_market_to_hospital"]
+position = Vector2(-1, 515)
+shape = SubResource("RectangleShape2D_1ag0d")
+
+[node name="from_market_to_police" type="Area2D" parent="."]
+script = ExtResource("9_2hq86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_market_to_police"]
+position = Vector2(1392, 8)
+shape = SubResource("RectangleShape2D_o33mq")
 
 [editable path="NpcBoyIcecreamHair"]
 [editable path="PlayerM"]

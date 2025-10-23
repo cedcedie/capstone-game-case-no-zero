@@ -32,6 +32,7 @@ Settings="*res://Settings.tscn"
 VoiceBlipManager="*res://scripts/managers/voice_blip_manager.gd"
 CameraZoomManager="*res://scripts/managers/CameraZoomManager.gd"
 AudioManager="*res://scripts/managers/AudioManager.gd"
+AmbientAudioManager="*res://scripts/managers/AmbientAudioManager.gd"
 
 [dialogic]
 

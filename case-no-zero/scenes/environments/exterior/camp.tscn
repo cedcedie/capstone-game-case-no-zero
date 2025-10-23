@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cuijsg0jfemxe"]
+[gd_scene load_steps=29 format=4 uid="uid://cuijsg0jfemxe"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_bss4d"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_35ybc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://u7gdrwiolokf" path="res://miravil/sprites/npc_camp.tscn" id="6_wj6a6"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="7_xbrck"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_og0j4"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_og0j4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_35ybc"]
 texture = ExtResource("2_35ybc")
@@ -30338,6 +30339,12 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_4wa16")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elpuu"]
+size = Vector2(1569, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fms38"]
+size = Vector2(10, 1041)
+
 [node name="CampAndCourt" type="Node2D"]
 position = Vector2(-16, -16)
 metadata/_edit_horizontal_guides_ = [796.0]
@@ -30380,5 +30387,22 @@ position = Vector2(400, 704)
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = ExtResource("7_xbrck")
 
-[node name="PlayerM" parent="SceneFadeIn" instance=ExtResource("8_og0j4")]
-position = Vector2(1488, 280)
+[node name="PlayerM" parent="." instance=ExtResource("8_og0j4")]
+position = Vector2(816, 1016)
+
+[node name="from_camp_to_barangay" type="Area2D" parent="."]
+script = ExtResource("9_og0j4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_camp_to_barangay"]
+position = Vector2(799.5, 1062.5)
+shape = SubResource("RectangleShape2D_elpuu")
+
+[node name="from_camp_to_morgue" type="Area2D" parent="."]
+script = ExtResource("9_og0j4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_camp_to_morgue"]
+position = Vector2(1581, 536.5)
+shape = SubResource("RectangleShape2D_fms38")
+
+[editable path="NpcCamp"]
+[editable path="PlayerM"]

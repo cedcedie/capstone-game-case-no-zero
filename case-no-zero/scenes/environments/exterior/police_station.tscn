@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://vhixfm8q3x4u"]
+[gd_scene load_steps=39 format=4 uid="uid://vhixfm8q3x4u"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_d24fb"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_0iiqu"]
@@ -46687,6 +46687,18 @@ sources/2 = SubResource("TileSetAtlasSource_rfbni")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wiqk"]
 size = Vector2(62.5, 19.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ci8hi"]
+size = Vector2(16, 1432)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvpf7"]
+size = Vector2(2576, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7njk"]
+size = Vector2(16, 1456)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs6ny"]
+size = Vector2(2560, 18)
+
 [node name="PoliceStation" type="Node2D"]
 
 [node name="ground" type="TileMapLayer" parent="."]
@@ -46727,7 +46739,7 @@ position = Vector2(336.75, 920)
 shape = SubResource("RectangleShape2D_3wiqk")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_5dt8y")]
-position = Vector2(928, 240)
+position = Vector2(1504, 1424)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
 zoom = Vector2(1, 1)
@@ -46736,5 +46748,33 @@ limit_bottom = 10000
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = ExtResource("10_ci8hi")
+
+[node name="from_police_to_hospital" type="Area2D" parent="."]
+script = ExtResource("8_0iiqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_police_to_hospital"]
+position = Vector2(2616, 772)
+shape = SubResource("RectangleShape2D_ci8hi")
+
+[node name="from_police_to market" type="Area2D" parent="."]
+script = ExtResource("8_0iiqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_police_to market"]
+position = Vector2(1312, 1529)
+shape = SubResource("RectangleShape2D_mvpf7")
+
+[node name="from_police_to_baranggay" type="Area2D" parent="."]
+script = ExtResource("8_0iiqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_police_to_baranggay"]
+position = Vector2(8, 768)
+shape = SubResource("RectangleShape2D_t7njk")
+
+[node name="from_police_to_morgue" type="Area2D" parent="."]
+script = ExtResource("8_0iiqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_police_to_morgue"]
+position = Vector2(1312, 8)
+shape = SubResource("RectangleShape2D_qs6ny")
 
 [editable path="PlayerM"]

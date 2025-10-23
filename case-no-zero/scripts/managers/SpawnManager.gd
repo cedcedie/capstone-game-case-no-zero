@@ -47,6 +47,14 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(432.0, 1376.0),
 			"animation": "idle_down"
 		},
+		"police_to_hospital": {
+			"position": Vector2(208.0, 1760.0),
+			"animation": "idle_right"
+		},
+		"market_to_hospital": {
+			"position": Vector2(160.0, 2088.0),
+			"animation": "idle_right"
+		},
 		"default": {
 			"position": Vector2(432.0, 438.0),
 			"animation": "idle_down"
@@ -115,6 +123,18 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(928.0, 240.0),
 			"animation": "idle_down"
 		},
+		"baranggay_to_police_station": {
+			"position": Vector2(120.0, 464.0),
+			"animation": "idle_down"
+		},
+		"hospital_to_police_station": {
+			"position": Vector2(2480.0, 800.0),
+			"animation": "idle_down"
+		},
+		"market_to_police": {
+			"position": Vector2(1504.0, 1424.0),
+			"animation": "idle_back"
+		},
 		"default": {
 			"position": Vector2(337.0, 1056.0),
 			"animation": "idle_down"
@@ -127,6 +147,18 @@ var spawn_positions: Dictionary = {
 		},
 		"from_market": {
 			"position": Vector2(2016.0, 528.0),
+			"animation": "idle_down"
+		},
+		"barangay_to_market": {
+			"position": Vector2(120.0, 464.0),
+			"animation": "idle_down"
+		},
+		"hospital_to_market": {
+			"position": Vector2(2704.0, 463.0),
+			"animation": "idle_down"
+		},
+		"police_to_market": {
+			"position": Vector2(768.0, 152.0),
 			"animation": "idle_down"
 		},
 		"default": {
@@ -169,6 +201,18 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(143.0, 464.0),
 			"animation": "idle_down"
 		},
+		"camp_to_baranggay": {
+			"position": Vector2(688.0, 128.0),
+			"animation": "idle_down"
+		},
+		"police_to_baranggay": {
+			"position": Vector2(1640.0, 720.0),
+			"animation": "idle_left"
+		},
+		"market_to_baranggay": {
+			"position": Vector2(1632.0, 1264.0),
+			"animation": "idle_left"
+		},
 		"default": {
 			"position": Vector2(143.0, 464.0),
 			"animation": "idle_down"
@@ -193,6 +237,18 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(976.0, 912.0),
 			"animation": "idle_down"
 		},
+		"camp_to_morgue": {
+			"position": Vector2(171.0, 168.0),
+			"animation": "idle_down"
+		},
+		"hospital_to_morgue": {
+			"position": Vector2(2560.0, 216.0),
+			"animation": "idle_down"
+		},
+		"police_to_morgue": {
+			"position": Vector2(1776.0, 1016.0),
+			"animation": "idle_down"
+		},
 		"default": {
 			"position": Vector2(368.0, 704.0),
 			"animation": "idle_down"
@@ -202,6 +258,10 @@ var spawn_positions: Dictionary = {
 		"morgue_to_camp": {
 			"position": Vector2(1488.0, 280.0),
 			"animation": "idle_left"
+		},
+		"barangay_to_camp": {
+			"position": Vector2(816.0, 1016.0),
+			"animation": "idle_back"
 		},
 		"default": {
 			"position": Vector2(1488.0, 280.0),
