@@ -24288,10 +24288,10 @@ z_index = 1
 position = Vector2(639.5, 227)
 shape = SubResource("RectangleShape2D_mc44i")
 
-[node name="Area2D_police_lobby" type="Area2D" parent="."]
+[node name="Area2D_barangay_court" type="Area2D" parent="."]
 script = ExtResource("17_scene_transition")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_lobby"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_barangay_court"]
 z_index = 1
 position = Vector2(464, 557)
 shape = SubResource("RectangleShape2D_mc44i")

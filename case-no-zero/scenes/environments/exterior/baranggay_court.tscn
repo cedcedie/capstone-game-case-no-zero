@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bkxx1m4vbvfhf"]
+[gd_scene load_steps=27 format=4 uid="uid://bkxx1m4vbvfhf"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_hk5i3"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_e7r7a"]
@@ -37290,6 +37290,12 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_og2jn")
 sources/1 = SubResource("TileSetAtlasSource_mahun")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og2jn"]
+size = Vector2(41, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mahun"]
+size = Vector2(54.25, 14)
+
 [node name="BarangayHall&CityHallCourtroom" type="Node2D"]
 y_sort_enabled = true
 
@@ -37320,5 +37326,19 @@ tile_set = SubResource("TileSet_g4ba0")
 [node name="PlayerM" parent="." instance=ExtResource("7_0poe2")]
 z_index = 1
 position = Vector2(720, 1112)
+
+[node name="Area2D_interior_barangay_hall" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_interior_barangay_hall"]
+z_index = 10
+position = Vector2(144, 347)
+shape = SubResource("RectangleShape2D_og2jn")
+
+[node name="Area2D_courtroom" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_courtroom"]
+z_index = 10
+position = Vector2(1200, 879)
+shape = SubResource("RectangleShape2D_mahun")
 
 [editable path="PlayerM"]

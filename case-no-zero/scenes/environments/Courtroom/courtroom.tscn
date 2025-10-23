@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://dfyuuvfmltt7m"]
+[gd_scene load_steps=65 format=4 uid="uid://dfyuuvfmltt7m"]
 
 [ext_resource type="Texture2D" uid="uid://ca2o3d64xiq0x" path="res://assets/sprites/environments/interior/17_Visibile_Upstairs_System_32x32.png" id="1_gks7r"]
 [ext_resource type="Texture2D" uid="uid://yrv68jycvhs5" path="res://assets/sprites/environments/interior/Room_Builder_Arched_Entryways_32x32.png" id="2_188tt"]
@@ -23239,6 +23239,9 @@ sources/1 = SubResource("TileSetAtlasSource_23el0")
 sources/2 = SubResource("TileSetAtlasSource_f0iey")
 sources/3 = SubResource("TileSetAtlasSource_csyt1")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12flf"]
+size = Vector2(30, 66)
+
 [node name="Courtroom" type="Node2D"]
 y_sort_enabled = true
 metadata/_edit_use_anchors_ = true
@@ -23265,3 +23268,9 @@ tile_set = SubResource("TileSet_r1rnh")
 
 [node name="PlayerM" parent="." instance=ExtResource("21_0sx17")]
 position = Vector2(53, 753)
+
+[node name="Area2D_to_barangay_court" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_barangay_court"]
+position = Vector2(15, 735)
+shape = SubResource("RectangleShape2D_12flf")
