@@ -37662,10 +37662,10 @@ size = Vector2(41, 20)
 size = Vector2(1745.89, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo475"]
-size = Vector2(16, 1049.5)
+size = Vector2(16, 716.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2suv4"]
-size = Vector2(16, 720)
+size = Vector2(16, 1024)
 
 [node name="BarangayHall&CityHallCourtroom" type="Node2D"]
 y_sort_enabled = true
@@ -37729,14 +37729,14 @@ shape = SubResource("RectangleShape2D_g4ba0")
 script = ExtResource("8_mahun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_barangay_to_market"]
-position = Vector2(1720, 1396.75)
+position = Vector2(1720, 385.625)
 shape = SubResource("RectangleShape2D_xo475")
 
 [node name="from_barangay_to_police_station" type="Area2D" parent="."]
 script = ExtResource("8_mahun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_barangay_to_police_station"]
-position = Vector2(1720, 376)
+position = Vector2(1720, 1408)
 shape = SubResource("RectangleShape2D_2suv4")
 
 [editable path="PlayerM"]

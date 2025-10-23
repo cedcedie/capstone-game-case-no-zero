@@ -46690,14 +46690,14 @@ size = Vector2(62.5, 19.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ci8hi"]
 size = Vector2(16, 1432)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvpf7"]
-size = Vector2(2576, 18)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7njk"]
-size = Vector2(16, 1456)
+size = Vector2(16, 1448)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvpf7"]
+size = Vector2(2556, 13.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qs6ny"]
-size = Vector2(2560, 18)
+size = Vector2(2547, 17)
 
 [node name="PoliceStation" type="Node2D"]
 
@@ -46747,6 +46747,7 @@ limit_right = 10000
 limit_bottom = 10000
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
+position = Vector2(-2392, -672)
 script = ExtResource("10_ci8hi")
 
 [node name="from_police_to_hospital" type="Area2D" parent="."]
@@ -46756,25 +46757,26 @@ script = ExtResource("8_0iiqu")
 position = Vector2(2616, 772)
 shape = SubResource("RectangleShape2D_ci8hi")
 
-[node name="from_police_to market" type="Area2D" parent="."]
-script = ExtResource("8_0iiqu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="from_police_to market"]
-position = Vector2(1312, 1529)
-shape = SubResource("RectangleShape2D_mvpf7")
-
 [node name="from_police_to_baranggay" type="Area2D" parent="."]
 script = ExtResource("8_0iiqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_police_to_baranggay"]
-position = Vector2(8, 768)
+position = Vector2(8, 772)
 shape = SubResource("RectangleShape2D_t7njk")
 
 [node name="from_police_to_morgue" type="Area2D" parent="."]
+position = Vector2(16, -1520)
 script = ExtResource("8_0iiqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_police_to_morgue"]
-position = Vector2(1312, 8)
+position = Vector2(1298, 1528)
+shape = SubResource("RectangleShape2D_mvpf7")
+
+[node name="from_police_to_market" type="Area2D" parent="."]
+script = ExtResource("8_0iiqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_police_to_market"]
+position = Vector2(1310.5, 1528.5)
 shape = SubResource("RectangleShape2D_qs6ny")
 
 [editable path="PlayerM"]
