@@ -178,11 +178,11 @@ var spawn_positions: Dictionary = {
 	},
 	"apartment_morgue": {
 		"from_morgue": {
-			"position": Vector2(368.0, 768.0),
+			"position": Vector2(368.0, 704.0),
 			"animation": "idle_down"
 		},
 		"default": {
-			"position": Vector2(368.0, 768.0),
+			"position": Vector2(368.0, 704.0),
 			"animation": "idle_down"
 		}
 	}

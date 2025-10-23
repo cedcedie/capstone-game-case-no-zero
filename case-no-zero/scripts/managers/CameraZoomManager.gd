@@ -109,6 +109,9 @@ func get_zoom_for_scene(scene_name: String) -> float:
 	elif scene_name.contains("hardware"):
 		print("📷 CameraZoomManager: Hardware scene detected -> zoom: ", zoom_settings["hardware_store"])
 		return zoom_settings["hardware_store"]
+	elif scene_name.contains("exterior") or scene_name.contains("apartment_morgue") or scene_name.contains("baranggay_court"):
+		print("📷 CameraZoomManager: Exterior scene detected -> zoom: 1.0")
+		return 1.0
 	
 	# Default to interior zoom (2.0) for most scenes
 	print("📷 CameraZoomManager: Using default interior zoom: ", zoom_settings["interior"])
@@ -123,16 +126,21 @@ func set_camera_zoom(zoom_level: float, animate: bool = true):
 	current_zoom = zoom_level
 	
 	if animate:
-		# Smooth zoom transition
+		# Smooth zoom transition with faster duration for scene changes
 		var tween = create_tween()
-		tween.tween_property(player_camera, "zoom", Vector2(zoom_level, zoom_level), 0.5)
-		await tween.finished
+		tween.tween_property(player_camera, "zoom", Vector2(zoom_level, zoom_level), 0.3)
+		# Don't await - let it run in background for better performance
+		tween.finished.connect(_on_zoom_finished.bind(zoom_level))
 	else:
 		# Instant zoom
 		player_camera.zoom = Vector2(zoom_level, zoom_level)
+		zoom_changed.emit(zoom_level)
 	
-	zoom_changed.emit(zoom_level)
 	print("📷 CameraZoomManager: Zoom set to ", zoom_level)
+
+func _on_zoom_finished(zoom_level: float):
+	"""Called when zoom tween finishes"""
+	zoom_changed.emit(zoom_level)
 
 func get_current_zoom() -> float:
 	"""Get the current zoom level"""
