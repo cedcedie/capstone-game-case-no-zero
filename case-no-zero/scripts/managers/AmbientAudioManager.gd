@@ -28,11 +28,12 @@ var playlist_tracker: Dictionary = {
 
 # Playlist system - cycles through multiple ambient tracks
 var ambient_playlist: Array[String] = [
+	"res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 37 A Town Called Hometown.ogg",
+	"res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 12 Home.mp3",
 	"res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 13 Field Of Hopes and Dreams.ogg",
-	"res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 37 A Town Called Hometown.ogg", 
+	"res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 3 School.ogg",
 	"res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 51 Another Medium.mp3",
-	"res://assets/audio/16-Bit Starter Pack/Towns/Returning Home.ogg",
-	"res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 12 Home.mp3"
+	"res://assets/audio/16-Bit Starter Pack/Towns/Returning Home.ogg"
 ]
 
 # Exterior scene ambient mapping - All use playlist system
@@ -54,11 +55,14 @@ func _ready():
 	# Create main ambient player
 	ambient_player = AudioStreamPlayer.new()
 	ambient_player.name = "AmbientAudioPlayer"
-	ambient_player.volume_db = -20  # Lower volume for ambient
+	ambient_player.volume_db = -10  # Set to -10 dB
 	add_child(ambient_player)
 	
 	# Connect to track finished signal for playlist progression
 	ambient_player.finished.connect(_on_ambient_finished)
+	
+	# Connect to scene change signal
+	get_tree().current_scene_changed.connect(_on_scene_changed)
 	
 	# Create additional layer players for complex ambient
 	for i in range(max_layers):

@@ -39,7 +39,7 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(432.0, 438.0),
 			"animation": "idle_down"
 		},
-		"from_hotel_lobby": {
+		"hotel_lobby": {
 			"position": Vector2(640.0, 2528.0),
 			"animation": "idle_down"
 		},
@@ -111,7 +111,7 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(456, 368),
 			"animation": "idle_down"
 		},
-		"from_hotel_2nd_floor": {
+		"hotel_2nd_floor": {
 			"position": Vector2(792.0, 432.0),
 			"animation": "idle_left"
 		},
@@ -225,8 +225,8 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(143.0, 464.0),
 			"animation": "idle_down"
 		},
-		"camp_to_baranggay": {
-			"position": Vector2(688.0, 128.0),
+		"camp_to_barangay": {
+			"position": Vector2(688.0, 127.0),
 			"animation": "idle_down"
 		},
 		"police_to_baranggay": {

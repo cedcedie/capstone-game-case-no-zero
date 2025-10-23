@@ -53723,7 +53723,7 @@ position = Vector2(896, 520)
 animation = &"idle_front"
 
 [node name="PlayerM" parent="." instance=ExtResource("8_jpuf4")]
-position = Vector2(768, 152)
+position = Vector2(128, 199)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
 limit_right = 10000

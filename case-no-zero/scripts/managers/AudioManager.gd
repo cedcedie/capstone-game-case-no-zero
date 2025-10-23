@@ -113,11 +113,11 @@ func play_bgm(bgm_path: String):
 	if bgm_stream:
 		print("🎵 AudioManager: BGM loaded successfully")
 		bgm_player.stream = bgm_stream
-		bgm_player.volume_db = -15  # Set to -15 dB as requested
+		bgm_player.volume_db = -10  # Set to -10 dB as requested
 		bgm_player.play()
 		current_bgm = bgm_path
 		bgm_changed.emit(bgm_path)
-		print("🎵 AudioManager: Playing BGM:", bgm_path, "at -15 dB")
+		print("🎵 AudioManager: Playing BGM:", bgm_path, "at -10 dB")
 		print("🎵 AudioManager: BGM playing:", bgm_player.playing)
 		
 		# Fade in the new BGM

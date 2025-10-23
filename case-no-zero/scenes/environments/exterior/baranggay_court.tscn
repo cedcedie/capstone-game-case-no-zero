@@ -37662,10 +37662,10 @@ size = Vector2(41, 20)
 size = Vector2(1745.89, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo475"]
-size = Vector2(16, 716.75)
+size = Vector2(24, 1046.38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2suv4"]
-size = Vector2(16, 1024)
+size = Vector2(16, 688)
 
 [node name="BarangayHall&CityHallCourtroom" type="Node2D"]
 y_sort_enabled = true
@@ -37700,7 +37700,7 @@ tile_set = SubResource("TileSet_g4ba0")
 
 [node name="PlayerM" parent="." instance=ExtResource("7_0poe2")]
 z_index = 4
-position = Vector2(1632, 1264)
+position = Vector2(688, 120)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
 limit_right = 1500
@@ -37729,14 +37729,14 @@ shape = SubResource("RectangleShape2D_g4ba0")
 script = ExtResource("8_mahun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_barangay_to_market"]
-position = Vector2(1720, 385.625)
+position = Vector2(1716, 1395.19)
 shape = SubResource("RectangleShape2D_xo475")
 
 [node name="from_barangay_to_police_station" type="Area2D" parent="."]
 script = ExtResource("8_mahun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_barangay_to_police_station"]
-position = Vector2(1720, 1408)
+position = Vector2(1720, 384)
 shape = SubResource("RectangleShape2D_2suv4")
 
 [editable path="PlayerM"]

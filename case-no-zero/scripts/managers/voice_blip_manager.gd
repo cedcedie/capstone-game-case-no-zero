@@ -40,7 +40,7 @@ func play_voice_blip(speaker: String):
 
 	if stream:
 		voice_blip_player.stream = stream
-		voice_blip_player.volume_db = -5
+		voice_blip_player.volume_db = -10
 		voice_blip_player.pitch_scale = get_pitch_for_speaker(speaker)
 		voice_blip_player.play()
 	else:

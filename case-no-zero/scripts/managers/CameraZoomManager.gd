@@ -55,8 +55,8 @@ func find_player_camera():
 				print("📷 CameraZoomManager: Player camera found")
 				# Set initial zoom based on current scene
 				set_zoom_for_current_scene()
-				# Remove camera limits for hotel_hospital scene
-				remove_camera_limits_for_hotel_hospital()
+				# Set camera limits for current scene
+				set_camera_limits_for_scene()
 			else:
 				print("⚠️ CameraZoomManager: Player camera not found")
 		else:
@@ -150,29 +150,63 @@ func reset_to_default_zoom():
 	"""Reset zoom to default for current scene"""
 	set_zoom_for_current_scene()
 
-func remove_camera_limits_for_hotel_hospital():
-	"""Remove camera limits specifically for hotel_hospital scene"""
+func set_camera_limits_for_scene():
+	"""Set camera limits based on the current scene"""
 	if not player_camera:
 		return
 	
 	# Check if current_scene exists
 	if not get_tree().current_scene:
-		print("📷 CameraZoomManager: No current scene in remove_camera_limits_for_hotel_hospital")
+		print("📷 CameraZoomManager: No current scene in set_camera_limits_for_scene")
 		return
 	
 	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	
-	# Check if we're in the hotel_hospital scene
-	if scene_name == "hotel_hospital":
-		print("📷 CameraZoomManager: Removing camera limits for hotel_hospital scene")
-		# Remove all camera limits by setting them to their default values
-		player_camera.limit_left = -10000000
-		player_camera.limit_top = -10000000
-		player_camera.limit_right = 10000000
-		player_camera.limit_bottom = 10000000
-		print("📷 CameraZoomManager: Camera limits removed for hotel_hospital")
-	else:
-		print("📷 CameraZoomManager: Not in hotel_hospital scene, keeping default limits")
+	# Set camera limits based on scene
+	match scene_name:
+		"baranggay_court":
+			player_camera.limit_left = 0
+			player_camera.limit_top = 0
+			player_camera.limit_right = 1728.0
+			player_camera.limit_bottom = 1920.0
+			print("📷 CameraZoomManager: Set limits for baranggay_court: 1728x1920")
+		"apartment_morgue":
+			player_camera.limit_left = 0
+			player_camera.limit_top = 0
+			player_camera.limit_right = 2736.0
+			player_camera.limit_bottom = 1021.0
+			print("📷 CameraZoomManager: Set limits for apartment_morgue: 2736x1021")
+		"camp":
+			player_camera.limit_left = 0
+			player_camera.limit_top = 0
+			player_camera.limit_right = 1568.0
+			player_camera.limit_bottom = 1064.0
+			print("📷 CameraZoomManager: Set limits for camp: 1568x1064")
+		"hotel_hospital":
+			player_camera.limit_left = 0
+			player_camera.limit_top = 0
+			player_camera.limit_right = 1280.0
+			player_camera.limit_bottom = 2700.0
+			print("📷 CameraZoomManager: Set limits for hotel_hospital: 1280x2700")
+		"police_station":
+			player_camera.limit_left = 0
+			player_camera.limit_top = 0
+			player_camera.limit_right = 2624.0
+			player_camera.limit_bottom = 1544.0
+			print("📷 CameraZoomManager: Set limits for police_station: 2624x1544")
+		"terminal_market":
+			player_camera.limit_left = 0
+			player_camera.limit_top = 0
+			player_camera.limit_right = 2816.0
+			player_camera.limit_bottom = 1080.0
+			print("📷 CameraZoomManager: Set limits for terminal_market: 2816x1080")
+		_:
+			# For interior scenes, use 1280x720 limits
+			player_camera.limit_left = 0
+			player_camera.limit_top = 0
+			player_camera.limit_right = 1280.0
+			player_camera.limit_bottom = 720.0
+			print("📷 CameraZoomManager: Set limits for interior scene: 1280x720")
 
 # Scene change detection
 func _on_tree_changed():

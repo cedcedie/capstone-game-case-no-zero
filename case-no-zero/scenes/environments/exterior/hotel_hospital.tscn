@@ -19809,7 +19809,7 @@ position = Vector2(432, 1218.75)
 shape = SubResource("RectangleShape2D_liure")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_2vggs")]
-position = Vector2(160, 2088)
+position = Vector2(176, 2088)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
 limit_right = 100000
