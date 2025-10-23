@@ -55,7 +55,11 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_hotel_hospital_to_hotel_lobby": "hotel_hospital",
 		"Area2D_to_hotel_hospital": "hotel_lobby",
 		"Area2D_to_2nd_floor_hospital": "hotel_lobby",
-		"Area2D_2nd_floor_to_hotel_lobby": "hotel_2nd_floor"
+		"Area2D_2nd_floor_to_hotel_lobby": "hotel_2nd_floor",
+		"Area2D_to_terminal_market": "hardware_store",
+		"Area2D_to_hardware": "terminal_market",
+		"Area2D_to_market": "terminal_market",
+		"Area2D_terminal_market": "market"
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
@@ -113,6 +117,14 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/hotel/hotel_2nd_floor.tscn"
 		"Area2D_2nd_floor_to_hotel_lobby":
 			return "res://scenes/environments/hotel/hotel_lobby.tscn"
+		"Area2D_to_terminal_market":
+			return "res://scenes/environments/exterior/terminal_market.tscn"
+		"Area2D_to_hardware":
+			return "res://scenes/environments/hardware/hardware_store.tscn"
+		"Area2D_to_market":
+			return "res://scenes/environments/market/market.tscn"
+		"Area2D_terminal_market":
+			return "res://scenes/environments/exterior/terminal_market.tscn"
 		_:
 			return ""
 

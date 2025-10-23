@@ -1,16 +1,18 @@
-[gd_scene load_steps=21 format=4 uid="uid://cuv06qjm0j31o"]
+[gd_scene load_steps=24 format=4 uid="uid://cuv06qjm0j31o"]
 
-[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_2evoa"]
-[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_w6bf1"]
-[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="3_841q3"]
-[ext_resource type="Texture2D" uid="uid://bsb7m531e4avd" path="res://assets/sprites/environments/interior/16_Grocery_store_32x32.png" id="4_w6bf1"]
-[ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/sprites/environments/interior/4_Bedroom_32x32.png" id="5_2byut"]
-[ext_resource type="Texture2D" uid="uid://b23pcdad3vamb" path="res://assets/sprites/environments/interior/21_Clothing_Store_32x32.png" id="6_82bxp"]
-[ext_resource type="Texture2D" uid="uid://wuxotlnhnu3t" path="res://assets/sprites/environments/interior/25_Shooting_Range_32x32.png" id="7_et5oy"]
-[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="8_bx56d"]
+[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_lbwxx"]
+[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_j3mju"]
+[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="3_vbk3h"]
+[ext_resource type="Texture2D" uid="uid://bsb7m531e4avd" path="res://assets/sprites/environments/interior/16_Grocery_store_32x32.png" id="4_yo84l"]
+[ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/sprites/environments/interior/4_Bedroom_32x32.png" id="5_7hfi1"]
+[ext_resource type="Texture2D" uid="uid://b23pcdad3vamb" path="res://assets/sprites/environments/interior/21_Clothing_Store_32x32.png" id="6_ue555"]
+[ext_resource type="Texture2D" uid="uid://wuxotlnhnu3t" path="res://assets/sprites/environments/interior/25_Shooting_Range_32x32.png" id="7_cd6hh"]
+[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="8_qteib"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="9_ej2s3"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_j3mju"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ckhu5"]
-texture = ExtResource("1_2evoa")
+texture = ExtResource("1_lbwxx")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -261,7 +263,7 @@ texture_region_size = Vector2i(32, 32)
 20:8/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trju4"]
-texture = ExtResource("2_w6bf1")
+texture = ExtResource("2_j3mju")
 texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 1:2/0 = 0
@@ -697,7 +699,7 @@ texture_region_size = Vector2i(32, 32)
 14:37/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2byut"]
-texture = ExtResource("3_841q3")
+texture = ExtResource("3_vbk3h")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -1679,7 +1681,7 @@ sources/1 = SubResource("TileSetAtlasSource_trju4")
 sources/2 = SubResource("TileSetAtlasSource_2byut")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_841q3"]
-texture = ExtResource("4_w6bf1")
+texture = ExtResource("4_yo84l")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -2781,7 +2783,7 @@ texture_region_size = Vector2i(32, 32)
 10:77/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xjex5"]
-texture = ExtResource("5_2byut")
+texture = ExtResource("5_7hfi1")
 texture_region_size = Vector2i(32, 32)
 9:0/0 = 0
 10:0/0 = 0
@@ -4165,7 +4167,7 @@ sources/0 = SubResource("TileSetAtlasSource_841q3")
 sources/1 = SubResource("TileSetAtlasSource_xjex5")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_82bxp"]
-texture = ExtResource("4_w6bf1")
+texture = ExtResource("4_yo84l")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -5267,7 +5269,7 @@ texture_region_size = Vector2i(32, 32)
 10:77/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wu3bw"]
-texture = ExtResource("6_82bxp")
+texture = ExtResource("6_ue555")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -6223,7 +6225,7 @@ texture_region_size = Vector2i(32, 32)
 10:66/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7n45s"]
-texture = ExtResource("7_et5oy")
+texture = ExtResource("7_cd6hh")
 texture_region_size = Vector2i(32, 32)
 7:0/0 = 0
 8:0/0 = 0
@@ -6272,7 +6274,7 @@ texture_region_size = Vector2i(32, 32)
 1:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xn8xm"]
-texture = ExtResource("8_bx56d")
+texture = ExtResource("8_qteib")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -7372,6 +7374,9 @@ sources/1 = SubResource("TileSetAtlasSource_wu3bw")
 sources/2 = SubResource("TileSetAtlasSource_7n45s")
 sources/3 = SubResource("TileSetAtlasSource_xn8xm")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qq3c"]
+size = Vector2(97.5, 18)
+
 [node name="HardwareStore" type="Node2D"]
 
 [node name="ground wall" type="TileMapLayer" parent="."]
@@ -7385,3 +7390,15 @@ tile_set = SubResource("TileSet_ckhu5")
 [node name="TileMapLayer2" type="TileMapLayer" parent="ground wall/TileMapLayer"]
 tile_map_data = PackedByteArray("AAANAAoAAAAIABYAAAANAAsAAAAIABcAAAAEAAYAAAAAABIAAAAEAAcAAAAAABMAAAAEAAgAAAAAABQAAAAFAAYAAAABABIAAAAFAAcAAAABABMAAAAFAAgAAAABABQAAAAEAAMAAAAAAA8AAAAEAAQAAAAAABAAAAAEAAUAAAAAABEAAAAFAAMAAAABAA8AAAAFAAQAAAABABAAAAAFAAUAAAABABEAAAAHAAMAAAANAEMAAAANAAMAAAAAABIAAAANAAQAAAAAABMAAAANAAUAAAAAABQAAAAOAAMAAAABABIAAAAOAAQAAAABABMAAAAOAAUAAAABABQAAAARAAMAAAAAAA8AAAARAAQAAAAAABAAAAARAAUAAAAAABEAAAASAAMAAAABAA8AAAASAAQAAAABABAAAAASAAUAAAABABEAAAARAAYAAAAAABIAAAARAAcAAAAAABMAAAARAAgAAAAAABQAAAASAAYAAAABABIAAAASAAcAAAABABMAAAASAAgAAAABABQAAAAPAAIAAwAGACMAAAAPAAMAAAAMAEMAAAAQAAIAAwAHACMAAAAQAAMAAAANAEMAAAAGAAIAAwAGACMAAAAGAAMAAAAMAEMAAAAHAAIAAwAHACMAAAAIAAMAAAAAABIAAAAIAAQAAAAAABMAAAAIAAUAAAAAABQAAAAJAAMAAAABABIAAAAJAAQAAAABABMAAAAJAAUAAAABABQAAAAIAAYAAAAAAA8AAAAIAAcAAAAAABAAAAAIAAgAAAAAABEAAAAJAAYAAAABAA8AAAAJAAcAAAABABAAAAAJAAgAAAABABEAAAADAAkAAwACADYAAAADAAoAAwACADcAAAAEAAkAAwADADYAAAAEAAoAAwADADcAAAAPAAkAAwACADYAAAAPAAoAAwACADcAAAAQAAkAAwADADYAAAAQAAoAAwADADcAAAAGAAkAAwAAADYAAAAGAAoAAwAAADcAAAAHAAkAAwABADYAAAAHAAoAAwABADcAAAASAAkAAwAAADYAAAASAAoAAwAAADcAAAATAAkAAwABADYAAAATAAoAAwABADcAAAAFAAIAAwAFACMAAAAIAAIAAwAIACMAAAAOAAIAAwAFACMAAAARAAIAAwAIACMAAAAEAAIAAwADACYAAAASAAIAAwAAACYAAAANAAEAAwAAADAAAAANAAIAAwAAADEAAAAJAAEAAwACADAAAAAJAAIAAwACADEAAAAPAAAAAwACADYAAAAPAAEAAwACADcAAAAQAAAAAwADADYAAAAQAAEAAwADADcAAAAGAAAAAwAAADYAAAAGAAEAAwAAADcAAAAHAAAAAwABADYAAAAHAAEAAwABADcAAAATAAAAAwAAADYAAAATAAEAAwAAADcAAAAUAAAAAwABADYAAAAUAAEAAwABADcAAAACAAAAAwACADYAAAACAAEAAwACADcAAAADAAAAAwADADYAAAADAAEAAwADADcAAAACAAIAAwABACYAAAADAAIAAwACACYAAAATAAIAAwABACYAAAAUAAIAAwACACYAAAA=")
 tile_set = SubResource("TileSet_et5oy")
+
+[node name="Area2D_to_terminal_market" type="Area2D" parent="."]
+script = ExtResource("9_j3mju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_terminal_market"]
+position = Vector2(368.25, 408)
+shape = SubResource("RectangleShape2D_1qq3c")
+
+[node name="PlayerM" parent="." instance=ExtResource("9_ej2s3")]
+position = Vector2(365, 367)
+
+[editable path="PlayerM"]

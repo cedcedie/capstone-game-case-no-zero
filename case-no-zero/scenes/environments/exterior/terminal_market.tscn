@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="6_ud8h3"]
 [ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="7_0315w"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_jpuf4"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_2hq86"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5t6fk"]
 texture = ExtResource("1_6rqqf")
@@ -53677,9 +53678,6 @@ size = Vector2(60.5, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2evj1"]
 size = Vector2(54.5, 20.125)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xumbu"]
-size = Vector2(64, 17)
-
 [node name="Terminalandmarket" type="Node2D"]
 
 [node name="ground" type="TileMapLayer" parent="."]
@@ -53718,9 +53716,14 @@ position = Vector2(896, 520)
 animation = &"idle_front"
 
 [node name="PlayerM" parent="." instance=ExtResource("8_jpuf4")]
-position = Vector2(936, 696)
+position = Vector2(2016, 528)
+
+[node name="Camera2D" parent="PlayerM" index="2"]
+limit_right = 10000
+limit_bottom = 10000
 
 [node name="Area2D_to_hardware" type="Area2D" parent="."]
+script = ExtResource("9_2hq86")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_hardware"]
 z_index = 10
@@ -53728,22 +53731,20 @@ position = Vector2(1025.56, 443)
 shape = SubResource("RectangleShape2D_0315w")
 
 [node name="Area2D_to_apartment" type="Area2D" parent="."]
+script = ExtResource("9_2hq86")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_apartment"]
 z_index = 10
 position = Vector2(1584, 464)
 shape = SubResource("RectangleShape2D_jpuf4")
 
-[node name="Area2D_to_mall" type="Area2D" parent="."]
+[node name="Area2D_to_market" type="Area2D" parent="."]
+script = ExtResource("9_2hq86")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_mall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_market"]
 z_index = 10
-position = Vector2(2208, 469.938)
+position = Vector2(2016, 472)
 shape = SubResource("RectangleShape2D_2evj1")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D_to_mall"]
-z_index = 10
-position = Vector2(2016, 471.5)
-shape = SubResource("RectangleShape2D_xumbu")
-
 [editable path="NpcBoyIcecreamHair"]
+[editable path="PlayerM"]

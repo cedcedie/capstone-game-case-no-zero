@@ -111,6 +111,40 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(337.0, 1056.0),
 			"animation": "idle_down"
 		}
+	},
+	"terminal_market": {
+		"from_hardware_store": {
+			"position": Vector2(1024.0, 512.0),
+			"animation": "idle_down"
+		},
+		"from_market": {
+			"position": Vector2(2016.0, 528.0),
+			"animation": "idle_down"
+		},
+		"default": {
+			"position": Vector2(1024.0, 512.0),
+			"animation": "idle_down"
+		}
+	},
+	"hardware_store": {
+		"from_terminal_market": {
+			"position": Vector2(365.0, 367.0),
+			"animation": "idle_down"
+		},
+		"default": {
+			"position": Vector2(365.0, 367.0),
+			"animation": "idle_down"
+		}
+	},
+	"market": {
+		"from_terminal_market": {
+			"position": Vector2(160.0, 360.0),
+			"animation": "idle_back"
+		},
+		"default": {
+			"position": Vector2(160.0, 360.0),
+			"animation": "idle_back"
+		}
 	}
 }
 
