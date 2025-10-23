@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bck6rr1fc4m86"]
 
-[ext_resource type="PackedScene" uid="uid://dq0f42ltdgskk" path="res://scenes/ui/Transition.tscn" id="1_foi2v"]
+[ext_resource type="PackedScene" uid="uid://dq0f42ltdgskk" path="res://scenes/ui/UI not used/Transition.tscn" id="1_foi2v"]
 
 [node name="CaseOption" type="Node2D"]
 

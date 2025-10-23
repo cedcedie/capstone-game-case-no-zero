@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://djvp7ha4yqxdm"]
 
-[ext_resource type="PackedScene" uid="uid://dq0f42ltdgskk" path="res://scenes/ui/Transition.tscn" id="2_6wm04"]
+[ext_resource type="PackedScene" uid="uid://dq0f42ltdgskk" path="res://scenes/ui/UI not used/Transition.tscn" id="1_5cfs1"]
 
 [sub_resource type="GDScript" id="GDScript_5p8wc"]
 script/source = "extends Node2D
@@ -25,4 +25,4 @@ offset_bottom = 306.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "SETTINGS"
 
-[node name="Transition" parent="." instance=ExtResource("2_6wm04")]
+[node name="Transition" parent="." instance=ExtResource("1_5cfs1")]
