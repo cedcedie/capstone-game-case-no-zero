@@ -30,7 +30,12 @@ func _on_body_entered(body):
 
 func _set_entry_point_for_target(target_scene_path: String):
 	"""Set the entry point information in SpawnManager"""
-	var current_scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
+	var current_scene = get_tree().current_scene
+	if not current_scene:
+		print("⚠️ Scene Transition: current_scene is null, cannot set entry point")
+		return
+	
+	var current_scene_name = current_scene.scene_file_path.get_file().get_basename()
 	var target_scene_name = target_scene_path.get_file().get_basename()
 	
 	# Map area names to entry point names
@@ -63,7 +68,13 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_barangay_court": "barangay_hall",
 		"Area2D_interior_barangay_hall": "barangay_court",
 		"Area2D_morgue_interior": "apartment_morgue",
-		"Area2D_morgue_exterior": "morgue"
+		"Area2D_morgue_exterior": "morgue",
+		# New Area2D transitions from apartment_morgue
+		"from_morgue_to_camp": "morgue_to_camp",
+		"from_morgue_to_police_station": "morgue_to_police_station", 
+		"from_morgue_to_hospital": "morgue_to_hospital",
+		"Area2D_bedroom_interior": "Area2D_bedroom_interior",
+		"Area2D_apartment_exterior": "apartment_exterior"
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
@@ -137,6 +148,17 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/funeral home/morgue.tscn"
 		"Area2D_morgue_exterior":
 			return "res://scenes/environments/exterior/apartment_morgue.tscn"
+		# New Area2D transitions from apartment_morgue
+		"from_morgue_to_camp":
+			return "res://scenes/environments/exterior/camp.tscn"
+		"from_morgue_to_police_station":
+			return "res://scenes/environments/exterior/police_station.tscn"
+		"from_morgue_to_hospital":
+			return "res://scenes/environments/exterior/hotel_hospital.tscn"
+		"Area2D_bedroom_interior":
+			return "res://scenes/cutscenes/bedroomScene.tscn"
+		"Area2D_apartment_exterior":
+			return "res://scenes/environments/exterior/apartment_morgue.tscn"
 		_:
 			return ""
 
@@ -162,7 +184,13 @@ func _start_transition(target_scene_path: String):
 	fade_rect.color.a = 0.0
 	fade_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	canvas_layer.add_child(fade_rect)
-	get_tree().current_scene.add_child(canvas_layer)
+	
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		current_scene.add_child(canvas_layer)
+	else:
+		print("⚠️ Scene Transition: current_scene is null, cannot add canvas layer")
+		return
 	
 	# Move canvas layer to be on top of everything
 	canvas_layer.layer = 100
