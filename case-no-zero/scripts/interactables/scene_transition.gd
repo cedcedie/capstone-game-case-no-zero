@@ -81,7 +81,7 @@ func _set_entry_point_for_target(target_scene_path: String):
 	if has_node("/root/SpawnManager"):
 		var spawn_manager = get_node("/root/SpawnManager")
 		spawn_manager.set_entry_point(current_scene_name, _entry_point)
-		print("🔄 Scene Transition: Set entry point from ", current_scene_name, " to ", target_scene_name, " via ", _entry_point)
+		# print("🔄 Scene Transition: Set entry point from ", current_scene_name, " to ", target_scene_name, " via ", _entry_point)
 	else:
 		print("⚠️ Scene Transition: SpawnManager not found!")
 
@@ -212,7 +212,7 @@ func _start_transition(target_scene_path: String):
 	# 	var preloaded_scene = ScenePreloader.get_preloaded_scene(target_scene_path)
 	# 	result = get_tree().change_scene_to_packed(preloaded_scene)
 	# else:
-	print("📁 Loading scene from file: ", target_scene_path.get_file())
+	# print("📁 Loading scene from file: ", target_scene_path.get_file())
 	result = get_tree().change_scene_to_file(target_scene_path)
 	
 	if result != OK:

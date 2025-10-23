@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_8eggf"]
 [ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="10_61kig"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_qoipj"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_boy_1.tscn" id="12_kev02"]
+[ext_resource type="PackedScene" uid="uid://c4ajw31sko6wi" path="res://miravil/characters/npc_boy_1.tscn" id="12_kev02"]
 [ext_resource type="PackedScene" uid="uid://dlrp0sfyfnvxu" path="res://miravil/characters/npc_boy_kunat.tscn" id="13_fl2h6"]
 [ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="14_jtlfh"]
 [ext_resource type="PackedScene" uid="uid://b74ajxmhj41h7" path="res://miravil/characters/npc_cool_hoodie.tscn" id="15_udjt5"]

@@ -64,13 +64,13 @@ func disable_movement():
 	control_enabled = false
 	# Stop animation and set to idle
 	anim_sprite.play("idle_" + last_facing)
-	print("🚫 Player movement DISABLED - control_enabled = false")
+	# print("🚫 Player movement DISABLED - control_enabled = false")
 	print_stack()  # Print call stack to see who called this
 
 # Function to enable movement (called by NPCs after dialogue)
 func enable_movement():
 	control_enabled = true
-	print("✅ Player movement ENABLED - control_enabled = true")
+	# print("✅ Player movement ENABLED - control_enabled = true")
 	print_stack()  # Print call stack to see who called this
 
 # Function to get camera reference
