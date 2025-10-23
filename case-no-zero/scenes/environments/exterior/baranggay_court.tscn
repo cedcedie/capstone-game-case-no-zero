@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bkxx1m4vbvfhf"]
+[gd_scene load_steps=30 format=4 uid="uid://bkxx1m4vbvfhf"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_hk5i3"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_e7r7a"]
@@ -37658,6 +37658,12 @@ sources/1 = SubResource("TileSetAtlasSource_mahun")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_og2jn"]
 size = Vector2(41, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4ba0"]
+size = Vector2(1745.89, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo475"]
+size = Vector2(16.5, 1907)
+
 [node name="BarangayHall&CityHallCourtroom" type="Node2D"]
 y_sort_enabled = true
 
@@ -37707,5 +37713,18 @@ shape = SubResource("RectangleShape2D_og2jn")
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = ExtResource("9_g4ba0")
+
+[node name="from_barangay_to_camp" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_barangay_to_camp"]
+position = Vector2(863.864, 8)
+scale = Vector2(0.989911, -0.634885)
+shape = SubResource("RectangleShape2D_g4ba0")
+
+[node name="from_barangay_to_market" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_barangay_to_market"]
+position = Vector2(1719.75, 966.5)
+shape = SubResource("RectangleShape2D_xo475")
 
 [editable path="PlayerM"]

@@ -51103,6 +51103,7 @@ size = Vector2(7, 978)
 size = Vector2(49, 20)
 
 [node name="ApartmentAndMorgue" type="Node2D"]
+y_sort_enabled = true
 position = Vector2(0, -64)
 
 [node name="ground" type="TileMapLayer" parent="."]
@@ -51166,6 +51167,7 @@ animation = &"idle_right"
 autoplay = "idle_right"
 
 [node name="PlayerM" parent="." instance=ExtResource("11_qoipj")]
+z_index = 4
 position = Vector2(976, 912)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
@@ -51251,11 +51253,12 @@ position = Vector2(128, 496)
 [node name="AnimatedSprite2D" parent="NpcGuy4" index="0"]
 animation = &"idle_front"
 
-[node name="from_morgue_to_police_station2" type="Area2D" parent="."]
+[node name="from_morgue_to_camp" type="Area2D" parent="."]
 position = Vector2(48, -168)
 script = ExtResource("9_8eggf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="from_morgue_to_police_station2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_morgue_to_camp"]
+z_index = 4
 position = Vector2(-44, 724)
 shape = SubResource("RectangleShape2D_8eggf")
 
