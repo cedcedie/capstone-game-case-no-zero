@@ -7151,6 +7151,7 @@ tile_map_data = PackedByteArray("AAAUAAMAAQADADsAAAASAAMAAQACADsAAAAUAAIAAQADAD0
 tile_set = SubResource("TileSet_n0jpq")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="walls below layer/ground wall/TileMapLayer"]
+z_index = 3
 tile_map_data = PackedByteArray("AAACAAQAAAABABkAACAHAAQAAAABABYAAAAEAAMAAAAAAA4AAAADAAMAAAABAA0AAAAIAAIAAAAOAAQAAAAIAAMAAAAOAAUAAAADAAIAAAABAA4AAAA=")
 tile_set = SubResource("TileSet_qtg2g")
 
