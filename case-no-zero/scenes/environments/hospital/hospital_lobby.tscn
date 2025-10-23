@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://o6wtaj3ldwhe"]
+[gd_scene load_steps=31 format=4 uid="uid://dc1jxq0syo6pk"]
 
 [ext_resource type="Texture2D" uid="uid://q7u1l1cvwbcj" path="res://assets/sprites/environments/interior/Room_Builder_3d_walls_32x32.png" id="1_dv4f1"]
 [ext_resource type="Texture2D" uid="uid://yrv68jycvhs5" path="res://assets/sprites/environments/interior/Room_Builder_Arched_Entryways_32x32.png" id="2_bfxbt"]
@@ -1502,6 +1502,7 @@ texture_region_size = Vector2i(32, 32)
 9:5/0 = 0
 9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 10:5/0 = 0
+10:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 11:5/0 = 0
 11:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 12:5/0 = 0
@@ -3356,11 +3357,17 @@ texture_region_size = Vector2i(32, 32)
 14:30/0 = 0
 14:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 15:30/0 = 0
+15:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 16:30/0 = 0
+16:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 17:30/0 = 0
+17:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 18:30/0 = 0
+18:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 19:30/0 = 0
+19:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 20:30/0 = 0
+20:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 22:30/0 = 0
 23:30/0 = 0
 24:30/0 = 0
@@ -3388,9 +3395,13 @@ texture_region_size = Vector2i(32, 32)
 14:31/0 = 0
 14:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 16:31/0 = 0
+16:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 18:31/0 = 0
+18:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 19:31/0 = 0
+19:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 20:31/0 = 0
+20:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 22:31/0 = 0
 23:31/0 = 0
 24:31/0 = 0
