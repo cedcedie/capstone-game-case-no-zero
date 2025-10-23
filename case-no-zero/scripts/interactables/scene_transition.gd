@@ -59,7 +59,9 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_to_terminal_market": "hardware_store",
 		"Area2D_to_hardware": "terminal_market",
 		"Area2D_to_market": "terminal_market",
-		"Area2D_terminal_market": "market"
+		"Area2D_terminal_market": "market",
+		"Area2D_barangay_court": "barangay_hall",
+		"Area2D_interior_barangay_hall": "barangay_court"
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
@@ -125,6 +127,10 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/market/market.tscn"
 		"Area2D_terminal_market":
 			return "res://scenes/environments/exterior/terminal_market.tscn"
+		"Area2D_barangay_court":
+			return "res://scenes/environments/barangay hall/barangay_court.tscn"
+		"Area2D_interior_barangay_hall":
+			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
 		_:
 			return ""
 

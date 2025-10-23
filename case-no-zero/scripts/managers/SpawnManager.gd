@@ -145,6 +145,26 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(160.0, 360.0),
 			"animation": "idle_back"
 		}
+	},
+	"barangay_hall": {
+		"from_barangay_court": {
+			"position": Vector2(465.0, 526.0),
+			"animation": "idle_down"
+		},
+		"default": {
+			"position": Vector2(465.0, 526.0),
+			"animation": "idle_down"
+		}
+	},
+	"barangay_court": {
+		"from_barangay_hall": {
+			"position": Vector2(143.0, 464.0),
+			"animation": "idle_down"
+		},
+		"default": {
+			"position": Vector2(143.0, 464.0),
+			"animation": "idle_down"
+		}
 	}
 }
 
