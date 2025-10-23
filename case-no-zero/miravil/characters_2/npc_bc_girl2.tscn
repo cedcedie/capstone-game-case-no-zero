@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://jgddn8tu8id4"]
 
-[ext_resource type="Texture2D" uid="uid://d2sjjjknereac" path="res://miravil/sprites_2/npc_bc_girl4.png" id="1_hvifj"]
+[ext_resource type="Texture2D" uid="uid://c81d17m1yurcx" path="res://miravil/sprites_2/npc_bc_girl2.png" id="1_hvifj"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_5g6oq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5g6oq"]
