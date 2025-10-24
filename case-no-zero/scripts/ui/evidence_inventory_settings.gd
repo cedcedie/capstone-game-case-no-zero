@@ -433,3 +433,7 @@ func _on_evidence_slot_hover(evidence_index: int, is_hovering: bool):
 # Tab hover functions removed - icons are no longer interactive
 
 # Tab click functions removed - icons are no longer clickable
+
+
+func _on_evidence_description_gui_input(event: InputEvent) -> void:
+	pass # Replace with function body.
