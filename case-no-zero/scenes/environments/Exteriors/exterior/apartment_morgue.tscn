@@ -12,24 +12,24 @@
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_8eggf"]
 [ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="10_61kig"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_qoipj"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_boy_1.tscn" id="12_kev02"]
+[ext_resource type="PackedScene" uid="uid://c4ajw31sko6wi" path="res://miravil/characters/npc_boy_1.tscn" id="12_kev02"]
 [ext_resource type="PackedScene" uid="uid://dlrp0sfyfnvxu" path="res://miravil/characters/npc_boy_kunat.tscn" id="13_fl2h6"]
 [ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="14_jtlfh"]
 [ext_resource type="PackedScene" uid="uid://b74ajxmhj41h7" path="res://miravil/characters/npc_cool_hoodie.tscn" id="15_udjt5"]
 [ext_resource type="PackedScene" uid="uid://bthvnds1w3orw" path="res://miravil/characters/npc_curly_girly.tscn" id="16_el8te"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_mustache.tscn" id="17_63oev"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_one_eye.tscn" id="18_2k7xy"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_pinkish.tscn" id="19_xv305"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_random_guy.tscn" id="20_3ll3w"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_random_girl.tscn" id="21_cexpq"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_shaolin_boy.tscn" id="22_xqyx5"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_yellow_glass_man.tscn" id="23_dsbue"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_girl_1.tscn" id="24_1g55f"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_guy_3.tscn" id="25_w58ee"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_guy_2.tscn" id="26_he11w"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_guy_5.tscn" id="27_o0l8t"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_guy_6.tscn" id="28_7btrm"]
-[ext_resource type="PackedScene" path="res://miravil/characters/npc_guy_4.tscn" id="29_3l2y6"]
+[ext_resource type="PackedScene" uid="uid://1js3m63gq78w" path="res://miravil/characters/npc_mustache.tscn" id="17_63oev"]
+[ext_resource type="PackedScene" uid="uid://b6qm0vctd5r8j" path="res://miravil/characters/npc_one_eye.tscn" id="18_2k7xy"]
+[ext_resource type="PackedScene" uid="uid://ngiiiml5ij1" path="res://miravil/characters/npc_pinkish.tscn" id="19_xv305"]
+[ext_resource type="PackedScene" uid="uid://cqws3ntoa3f31" path="res://miravil/characters/npc_random_guy.tscn" id="20_3ll3w"]
+[ext_resource type="PackedScene" uid="uid://8t88hn34ixlf" path="res://miravil/characters/npc_random_girl.tscn" id="21_cexpq"]
+[ext_resource type="PackedScene" uid="uid://dxuw5gwsudjkb" path="res://miravil/characters/npc_shaolin_boy.tscn" id="22_xqyx5"]
+[ext_resource type="PackedScene" uid="uid://b84ieuct4jt0x" path="res://miravil/characters/npc_yellow_glass_man.tscn" id="23_dsbue"]
+[ext_resource type="PackedScene" uid="uid://umei5rc0s03h" path="res://miravil/characters/npc_girl_1.tscn" id="24_1g55f"]
+[ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="25_w58ee"]
+[ext_resource type="PackedScene" uid="uid://b0k0313qg5upt" path="res://miravil/characters/npc_guy_2.tscn" id="26_he11w"]
+[ext_resource type="PackedScene" uid="uid://dbt0khsctyvim" path="res://miravil/characters/npc_guy_5.tscn" id="27_o0l8t"]
+[ext_resource type="PackedScene" uid="uid://di11hg7t8dak4" path="res://miravil/characters/npc_guy_6.tscn" id="28_7btrm"]
+[ext_resource type="PackedScene" uid="uid://cbnn8pq1mffxm" path="res://miravil/characters/npc_guy_4.tscn" id="29_3l2y6"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="31_7v4vq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3ex5"]
@@ -51160,6 +51160,7 @@ offset_right = -80.0
 offset_bottom = 9.0
 
 [node name="NpcBeardMan" parent="." instance=ExtResource("10_61kig")]
+z_index = 4
 position = Vector2(155, 760)
 
 [node name="AnimatedSprite2D" parent="NpcBeardMan" index="0"]
@@ -51175,10 +51176,11 @@ limit_right = 5000
 limit_bottom = 5000
 
 [node name="NpcBoy1" parent="." instance=ExtResource("12_kev02")]
-z_index = 6
+z_index = 4
 position = Vector2(1408, 936)
 
 [node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("14_jtlfh")]
+z_index = 4
 position = Vector2(1200, 944)
 
 [node name="AnimatedSprite2D" parent="NpcBoyIcecreamHair" index="0"]

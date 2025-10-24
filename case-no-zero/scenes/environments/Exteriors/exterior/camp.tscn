@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cuijsg0jfemxe"]
+[gd_scene load_steps=33 format=4 uid="uid://cuijsg0jfemxe"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_bss4d"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_35ybc"]
@@ -9,6 +9,10 @@
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="7_xbrck"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_og0j4"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_og0j4"]
+[ext_resource type="PackedScene" uid="uid://si8swdlw81pj" path="res://miravil/characters_camp/npc_cmp_b1.tscn" id="10_f8q2a"]
+[ext_resource type="PackedScene" uid="uid://bwd6dr15r2w0d" path="res://miravil/characters_camp/npc_cmp_b2.tscn" id="11_o6e71"]
+[ext_resource type="PackedScene" uid="uid://du2yvi818n20y" path="res://miravil/characters_camp/npc_cmp_b3.tscn" id="12_ghjax"]
+[ext_resource type="PackedScene" uid="uid://skylwncxo40f" path="res://miravil/characters_camp/npc_cmp_b4.tscn" id="13_6lafh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_35ybc"]
 texture = ExtResource("2_35ybc")
@@ -30677,5 +30681,27 @@ script = ExtResource("9_og0j4")
 position = Vector2(1581, 536.5)
 shape = SubResource("RectangleShape2D_fms38")
 
+[node name="NpcCmpB1" parent="." instance=ExtResource("10_f8q2a")]
+position = Vector2(1112, 802)
+
+[node name="NpcCmpB2" parent="." instance=ExtResource("11_o6e71")]
+z_index = 3
+position = Vector2(1152, 223)
+
+[node name="NpcCmpB3" parent="." instance=ExtResource("12_ghjax")]
+z_index = 3
+position = Vector2(433, 173)
+
+[node name="NpcCmpB4" parent="." instance=ExtResource("13_6lafh")]
+position = Vector2(1032, 552)
+
+[node name="AnimatedSprite2D" parent="NpcCmpB4" index="0"]
+animation = &"idle_front"
+autoplay = "idle_front"
+
 [editable path="NpcCamp"]
 [editable path="PlayerM"]
+[editable path="NpcCmpB1"]
+[editable path="NpcCmpB2"]
+[editable path="NpcCmpB3"]
+[editable path="NpcCmpB4"]
