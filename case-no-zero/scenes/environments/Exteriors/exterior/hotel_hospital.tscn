@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://c2ax58feuq8oi"]
+[gd_scene load_steps=46 format=4 uid="uid://c2ax58feuq8oi"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_ni3it"]
 [ext_resource type="Texture2D" uid="uid://cnn1uk4tglay" path="res://assets/sprites/environments/exterior/12_Hotel_and_Hospital_32x32.png" id="2_vkm1s"]
@@ -9,6 +9,22 @@
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="7_1o657"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_2vggs"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="9_bwlvm"]
+[ext_resource type="PackedScene" uid="uid://dqn1bg31gbdd0" path="res://miravil/characters_hotel_hospital/npc_htl_f1.tscn" id="10_3hwu2"]
+[ext_resource type="PackedScene" uid="uid://cvt4gyhllyowi" path="res://miravil/characters_hotel_hospital/npc_htl_f2.tscn" id="11_quvms"]
+[ext_resource type="PackedScene" uid="uid://5samkkac0ifo" path="res://miravil/characters_hotel_hospital/npc_htl_f3.tscn" id="12_gs130"]
+[ext_resource type="PackedScene" uid="uid://dmeoxisqrvvtx" path="res://miravil/characters_hotel_hospital/npc_htl_f4.tscn" id="13_yfvvq"]
+[ext_resource type="PackedScene" uid="uid://do5ssgvy0t4b1" path="res://miravil/characters_hotel_hospital/npc_htl_em1.tscn" id="14_6nhqy"]
+[ext_resource type="PackedScene" uid="uid://lx64ipbklfys" path="res://miravil/characters_hotel_hospital/npc_htl_em2.tscn" id="15_j68ja"]
+[ext_resource type="PackedScene" uid="uid://clfdupmgqueei" path="res://miravil/characters_hotel_hospital/npc_htl_em3.tscn" id="16_l2ykj"]
+[ext_resource type="PackedScene" uid="uid://bnssy1s4cb2s3" path="res://miravil/characters_hotel_hospital/npc_htl_em4.tscn" id="17_fkgri"]
+[ext_resource type="PackedScene" uid="uid://ba2cd0kbggbar" path="res://miravil/characters_hotel_hospital/npc_htl_em5.tscn" id="18_01pqq"]
+[ext_resource type="PackedScene" uid="uid://dmt5isggf1df7" path="res://miravil/characters_hotel_hospital/npc_htl_em6.tscn" id="19_0hu3s"]
+[ext_resource type="PackedScene" uid="uid://bignrof4lcay4" path="res://miravil/characters_hotel_hospital/npc_htl_em7.tscn" id="20_aml3o"]
+[ext_resource type="PackedScene" uid="uid://d23gs4povwcy7" path="res://miravil/characters_hotel_hospital/npc_htl_em8.tscn" id="21_j46hr"]
+[ext_resource type="PackedScene" uid="uid://c22g37notn4lu" path="res://miravil/characters_hotel_hospital/npc_htl_guy1.tscn" id="22_tek3e"]
+[ext_resource type="PackedScene" uid="uid://clyj57704webl" path="res://miravil/characters_hotel_hospital/npc_htl_guy2.tscn" id="23_qvy27"]
+[ext_resource type="PackedScene" uid="uid://bnw6liaaqujv6" path="res://miravil/characters_hotel_hospital/npc_htl_girl2.tscn" id="24_vwtp4"]
+[ext_resource type="PackedScene" uid="uid://dxpkalqq3osyf" path="res://miravil/characters_hotel_hospital/npc_htl_girl1.tscn" id="25_3jp7t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1o657"]
 texture = ExtResource("1_ni3it")
@@ -20724,4 +20740,129 @@ script = ExtResource("7_1o657")
 position = Vector2(92, 2336)
 shape = SubResource("RectangleShape2D_cdb26")
 
+[node name="NpcHtlF1" parent="." instance=ExtResource("10_3hwu2")]
+position = Vector2(671, 394)
+
+[node name="AnimatedSprite2D" parent="NpcHtlF1" index="0"]
+animation = &"idle_front"
+
+[node name="CollisionShape2D" parent="NpcHtlF1/Area2D" index="0"]
+z_index = 4
+
+[node name="NpcHtlF2" parent="." instance=ExtResource("11_quvms")]
+position = Vector2(522, 396)
+
+[node name="AnimatedSprite2D" parent="NpcHtlF2" index="0"]
+animation = &"idle_front"
+
+[node name="CollisionShape2D" parent="NpcHtlF2/Area2D" index="0"]
+z_index = 4
+
+[node name="NpcHtlF3" parent="." instance=ExtResource("12_gs130")]
+z_index = 10
+position = Vector2(804, 155)
+
+[node name="NpcHtlF4" parent="." instance=ExtResource("13_yfvvq")]
+z_index = 4
+position = Vector2(273, 175)
+
+[node name="AnimatedSprite2D" parent="NpcHtlF4" index="0"]
+animation = &"idle_front"
+
+[node name="NpcHtlEm1" parent="." instance=ExtResource("14_6nhqy")]
+z_index = 4
+position = Vector2(530, 1294)
+
+[node name="AnimatedSprite2D" parent="NpcHtlEm1" index="0"]
+animation = &"idle_right"
+autoplay = "idle_right"
+
+[node name="NpcHtlEm2" parent="." instance=ExtResource("15_j68ja")]
+z_index = 4
+position = Vector2(270, 1382)
+
+[node name="AnimatedSprite2D" parent="NpcHtlEm2" index="0"]
+animation = &"idle_front"
+
+[node name="NpcHtlEm3" parent="." instance=ExtResource("16_l2ykj")]
+position = Vector2(592, 1294)
+
+[node name="AnimatedSprite2D" parent="NpcHtlEm3" index="0"]
+animation = &"idle_left"
+autoplay = "idle_left"
+
+[node name="NpcHtlEm4" parent="." instance=ExtResource("17_fkgri")]
+z_index = 4
+position = Vector2(445, 1646)
+
+[node name="AnimatedSprite2D" parent="NpcHtlEm4" index="0"]
+animation = &"idle_left"
+autoplay = "idle_left"
+
+[node name="NpcHtlEm5" parent="." instance=ExtResource("18_01pqq")]
+z_index = 10
+position = Vector2(366, 862)
+
+[node name="AnimatedSprite2D" parent="NpcHtlEm5" index="0"]
+animation = &"idle_right"
+
+[node name="NpcHtlEm6" parent="." instance=ExtResource("19_0hu3s")]
+z_index = 4
+position = Vector2(272, 976)
+
+[node name="NpcHtlEm7" parent="." instance=ExtResource("20_aml3o")]
+z_index = 10
+position = Vector2(411, 862)
+
+[node name="AnimatedSprite2D" parent="NpcHtlEm7" index="0"]
+animation = &"idle_left"
+autoplay = ""
+
+[node name="NpcHtl" parent="." instance=ExtResource("21_j46hr")]
+z_index = 4
+position = Vector2(850, 1294)
+
+[node name="NpcHtlGuy1" parent="." instance=ExtResource("22_tek3e")]
+z_index = 4
+position = Vector2(338, 2457)
+
+[node name="AnimatedSprite2D" parent="NpcHtlGuy1" index="0"]
+animation = &"idle_back"
+autoplay = "idle_back"
+
+[node name="CollisionShape2D" parent="NpcHtlGuy1/Area2D" index="0"]
+z_index = 4
+
+[node name="NpcHtlGuy2" parent="." instance=ExtResource("23_qvy27")]
+z_index = 4
+position = Vector2(720, 2542)
+
+[node name="AnimatedSprite2D" parent="NpcHtlGuy2" index="0"]
+animation = &"idle_front"
+
+[node name="NpcHtlGirl2" parent="." instance=ExtResource("24_vwtp4")]
+z_index = 4
+position = Vector2(459, 2542)
+
+[node name="AnimatedSprite2D" parent="NpcHtlGirl2" index="0"]
+animation = &"idle_left"
+autoplay = "idle_left"
+
+[node name="NpcHtlGirl1" parent="." instance=ExtResource("25_3jp7t")]
+z_index = 4
+position = Vector2(402, 2542)
+
 [editable path="PlayerM"]
+[editable path="NpcHtlF1"]
+[editable path="NpcHtlF2"]
+[editable path="NpcHtlF4"]
+[editable path="NpcHtlEm1"]
+[editable path="NpcHtlEm2"]
+[editable path="NpcHtlEm3"]
+[editable path="NpcHtlEm4"]
+[editable path="NpcHtlEm5"]
+[editable path="NpcHtlEm7"]
+[editable path="NpcHtlGuy1"]
+[editable path="NpcHtlGuy2"]
+[editable path="NpcHtlGirl2"]
+[editable path="NpcHtlGirl1"]
