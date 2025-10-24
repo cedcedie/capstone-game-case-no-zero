@@ -47075,7 +47075,7 @@ sources/1 = SubResource("TileSetAtlasSource_dtpdq")
 sources/2 = SubResource("TileSetAtlasSource_rfbni")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wiqk"]
-size = Vector2(62.5, 19.5)
+size = Vector2(63.25, 19.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ci8hi"]
 size = Vector2(16, 1432)
@@ -47128,7 +47128,7 @@ script = ExtResource("8_0iiqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_to_lobby"]
 z_index = 10
-position = Vector2(336.75, 920)
+position = Vector2(336.375, 928)
 shape = SubResource("RectangleShape2D_3wiqk")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_5dt8y")]

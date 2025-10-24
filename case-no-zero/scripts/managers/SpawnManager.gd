@@ -190,6 +190,10 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(1496.0, 1424.0),
 			"animation": "idle_back"
 		},
+		"Area2D_lobby_to_exterior_apartment": {
+			"position": Vector2(1584.00, 592.0),
+			"animation": "idle_down"
+		},
 		"default": {
 			"position": Vector2(1024.0, 512.0),
 			"animation": "idle_down"
@@ -278,10 +282,6 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(368.0, 704.0),
 			"animation": "idle_down"
 		},
-		"apartment_exterior": {
-			"position": Vector2(976.0, 912.0),
-			"animation": "idle_down"
-		},
 		"police_to_morgue": {
 			"position": Vector2(1776.0, 1016.0),
 			"animation": "idle_back"
@@ -322,6 +322,12 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(377.0, 292.0),
 			"animation": "idle_down"
 		}
+	},
+	"apartment_lobby": {
+		"apartment_lobby_from_bedroom": {
+			"position": Vector2(864.0, 344.0),
+			"animation": "idle_down"
+		},
 	}
 }
 

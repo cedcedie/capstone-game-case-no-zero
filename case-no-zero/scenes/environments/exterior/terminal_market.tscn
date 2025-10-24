@@ -1,18 +1,18 @@
-[gd_scene load_steps=39 format=4 uid="uid://cij3qgvd5ycfl"]
+[gd_scene load_steps=40 format=4 uid="uid://cij3qgvd5ycfl"]
 
-[ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="1_6rqqf"]
-[ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="2_ud8h3"]
-[ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="3_4431g"]
-[ext_resource type="Texture2D" uid="uid://bbdw6ejhaifk0" path="res://assets/sprites/environments/exterior/4_Generic_Buildings_32x32.png" id="4_ktjg5"]
-[ext_resource type="Texture2D" uid="uid://cbwr76w0kuqa0" path="res://assets/sprites/environments/exterior/9_Shopping_Center_and_Markets_32x32.png" id="5_pocjb"]
-[ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="6_ud8h3"]
-[ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="7_0315w"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_jpuf4"]
-[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_2hq86"]
-[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="10_kcm3v"]
+[ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="1_kcm3v"]
+[ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="2_1ag0d"]
+[ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="3_o33mq"]
+[ext_resource type="Texture2D" uid="uid://bbdw6ejhaifk0" path="res://assets/sprites/environments/exterior/4_Generic_Buildings_32x32.png" id="4_wd176"]
+[ext_resource type="Texture2D" uid="uid://cbwr76w0kuqa0" path="res://assets/sprites/environments/exterior/9_Shopping_Center_and_Markets_32x32.png" id="5_avv8f"]
+[ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="6_follw"]
+[ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="7_g6t3t"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_174m3"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_jtyer"]
+[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="10_emxvd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5t6fk"]
-texture = ExtResource("1_6rqqf")
+texture = ExtResource("1_kcm3v")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -1181,7 +1181,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gal7p"]
-texture = ExtResource("2_ud8h3")
+texture = ExtResource("2_1ag0d")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -5025,7 +5025,7 @@ texture_region_size = Vector2i(32, 32)
 38:102/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_02o7p"]
-texture = ExtResource("3_4431g")
+texture = ExtResource("3_o33mq")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -9380,7 +9380,7 @@ sources/1 = SubResource("TileSetAtlasSource_gal7p")
 sources/2 = SubResource("TileSetAtlasSource_02o7p")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pocjb"]
-texture = ExtResource("1_6rqqf")
+texture = ExtResource("1_kcm3v")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -10549,7 +10549,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efl26"]
-texture = ExtResource("3_4431g")
+texture = ExtResource("3_o33mq")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -14903,7 +14903,7 @@ sources/0 = SubResource("TileSetAtlasSource_pocjb")
 sources/1 = SubResource("TileSetAtlasSource_efl26")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxf4l"]
-texture = ExtResource("4_ktjg5")
+texture = ExtResource("4_wd176")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -18783,7 +18783,7 @@ texture_region_size = Vector2i(32, 32)
 15:198/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u1etv"]
-texture = ExtResource("5_pocjb")
+texture = ExtResource("5_avv8f")
 texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 1:2/0 = 0
@@ -20375,7 +20375,7 @@ texture_region_size = Vector2i(32, 32)
 28:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6rqqf"]
-texture = ExtResource("3_4431g")
+texture = ExtResource("3_o33mq")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -24724,7 +24724,7 @@ texture_region_size = Vector2i(32, 32)
 30:223/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4431g"]
-texture = ExtResource("6_ud8h3")
+texture = ExtResource("6_follw")
 texture_region_size = Vector2i(32, 32)
 4:0/0 = 0
 5:0/0 = 0
@@ -28556,7 +28556,7 @@ sources/2 = SubResource("TileSetAtlasSource_6rqqf")
 sources/3 = SubResource("TileSetAtlasSource_4431g")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ud8h3"]
-texture = ExtResource("1_6rqqf")
+texture = ExtResource("1_kcm3v")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -29725,7 +29725,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ktjg5"]
-texture = ExtResource("3_4431g")
+texture = ExtResource("3_o33mq")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -34074,7 +34074,7 @@ texture_region_size = Vector2i(32, 32)
 30:223/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ixt1"]
-texture = ExtResource("5_pocjb")
+texture = ExtResource("5_avv8f")
 texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 1:2/0 = 0
@@ -35672,7 +35672,7 @@ sources/2 = SubResource("TileSetAtlasSource_ktjg5")
 sources/3 = SubResource("TileSetAtlasSource_1ixt1")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gdmj4"]
-texture = ExtResource("4_ktjg5")
+texture = ExtResource("4_wd176")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -39552,7 +39552,7 @@ texture_region_size = Vector2i(32, 32)
 15:198/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jko22"]
-texture = ExtResource("5_pocjb")
+texture = ExtResource("5_avv8f")
 texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 1:2/0 = 0
@@ -41144,7 +41144,7 @@ texture_region_size = Vector2i(32, 32)
 28:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4x0c"]
-texture = ExtResource("3_4431g")
+texture = ExtResource("3_o33mq")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -45493,7 +45493,7 @@ texture_region_size = Vector2i(32, 32)
 30:223/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qxrvg"]
-texture = ExtResource("6_ud8h3")
+texture = ExtResource("6_follw")
 texture_region_size = Vector2i(32, 32)
 4:0/0 = 0
 5:0/0 = 0
@@ -49325,7 +49325,7 @@ sources/2 = SubResource("TileSetAtlasSource_e4x0c")
 sources/3 = SubResource("TileSetAtlasSource_qxrvg")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_je41u"]
-texture = ExtResource("3_4431g")
+texture = ExtResource("3_o33mq")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -53685,6 +53685,9 @@ size = Vector2(18, 1050)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o33mq"]
 size = Vector2(2784, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj2vy"]
+size = Vector2(64, 26)
+
 [node name="Terminalandmarket" type="Node2D"]
 
 [node name="ground" type="TileMapLayer" parent="."]
@@ -53716,21 +53719,21 @@ z_index = 5
 tile_map_data = PackedByteArray("AAAoAP7/AAAYACgAAAAoAP//AAAYACkAAAAoAAAAAAAYACoAAAApAP//AAAZACkAAAApAAAAAAAZACoAAAAqAP//AAAaACkAAAAqAAAAAAAaACoAAAArAP7/AAAbACgAAAArAP//AAAbACkAAAArAAAAAAAbACoAAAAnAAEAAAAcACgAAAAnAAIAAAAcACkAAAAnAAMAAAAcACoAAAAoAAIAAAAdACkAAAAoAAMAAAAdACoAAAApAAIAAAAeACkAAAApAAMAAAAeACoAAAAqAAEAAAAfACgAAAAqAAIAAAAfACkAAAAqAAMAAAAfACoAAAAwAAEAAAAYACsAAAAwAAIAAAAYACwAAAAwAAMAAAAYAC0AAAAxAAIAAAAZACwAAAAxAAMAAAAZAC0AAAAyAAIAAAAaACwAAAAyAAMAAAAaAC0AAAAzAAEAAAAbACsAAAAzAAIAAAAbACwAAAAzAAMAAAAbAC0AAAAtAP7/AAAYAB8AAAAtAP//AAAYACAAAAAtAAAAAAAYACEAAAAuAP//AAAZACAAAAAuAAAAAAAZACEAAAAvAP//AAAaACAAAAAvAAAAAAAaACEAAAAtAPz/AAAYAB0AAAAtAP3/AAAYAB4AAAAuAPz/AAAZAB0AAAAuAP3/AAAZAB4AAAAuAP7/AAAZAB8AAAAvAPz/AAAaAB0AAAAvAP3/AAAaAB4AAAAvAP7/AAAaAB8AAAAsAAMAAAACABIAAAAtAAMAAAADABIAAAAuAAMAAAAEABIAAAA=")
 tile_set = SubResource("TileSet_jko22")
 
-[node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("7_0315w")]
+[node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("7_g6t3t")]
 position = Vector2(896, 520)
 
 [node name="AnimatedSprite2D" parent="NpcBoyIcecreamHair" index="0"]
 animation = &"idle_front"
 
-[node name="PlayerM" parent="." instance=ExtResource("8_jpuf4")]
-position = Vector2(128, 199)
+[node name="PlayerM" parent="." instance=ExtResource("8_174m3")]
+position = Vector2(1584, 592)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
 limit_right = 10000
 limit_bottom = 10000
 
 [node name="Area2D_to_hardware" type="Area2D" parent="."]
-script = ExtResource("9_2hq86")
+script = ExtResource("9_jtyer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_hardware"]
 z_index = 10
@@ -53738,7 +53741,7 @@ position = Vector2(1025.56, 443)
 shape = SubResource("RectangleShape2D_0315w")
 
 [node name="Area2D_to_market" type="Area2D" parent="."]
-script = ExtResource("9_2hq86")
+script = ExtResource("9_jtyer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_market"]
 z_index = 10
@@ -53746,10 +53749,10 @@ position = Vector2(2016, 472)
 shape = SubResource("RectangleShape2D_2evj1")
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
-script = ExtResource("10_kcm3v")
+script = ExtResource("10_emxvd")
 
 [node name="from_market_to_baranggay" type="Area2D" parent="."]
-script = ExtResource("9_2hq86")
+script = ExtResource("9_jtyer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_market_to_baranggay"]
 position = Vector2(6.75, 564)
@@ -53757,18 +53760,27 @@ shape = SubResource("RectangleShape2D_kcm3v")
 
 [node name="from_market_to_hospital" type="Area2D" parent="."]
 position = Vector2(2808, 48)
-script = ExtResource("9_2hq86")
+script = ExtResource("9_jtyer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_market_to_hospital"]
 position = Vector2(-1, 515)
 shape = SubResource("RectangleShape2D_1ag0d")
 
 [node name="from_market_to_police" type="Area2D" parent="."]
-script = ExtResource("9_2hq86")
+script = ExtResource("9_jtyer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_market_to_police"]
 position = Vector2(1392, 8)
 shape = SubResource("RectangleShape2D_o33mq")
+
+[node name="Area2D_bedroom_interior" type="Area2D" parent="."]
+z_index = 6
+script = ExtResource("9_jtyer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_bedroom_interior"]
+z_index = 10
+position = Vector2(1584, 464)
+shape = SubResource("RectangleShape2D_rj2vy")
 
 [editable path="NpcBoyIcecreamHair"]
 [editable path="PlayerM"]

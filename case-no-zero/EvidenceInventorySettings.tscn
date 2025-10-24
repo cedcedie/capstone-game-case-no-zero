@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://f41bx4kq48y2"]
+[gd_scene load_steps=13 format=3 uid="uid://f41bx4kq48y2"]
 
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="1_1075l"]
 [ext_resource type="Script" uid="uid://bnwo4ujfjlg4u" path="res://scripts/ui/evidence_inventory_settings.gd" id="1_evidence_script"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dry7sdk247u16" path="res://assets/sprites/evidence/logbook_evidence.png" id="5_umk2s"]
 [ext_resource type="Texture2D" uid="uid://j2jxgty7i0ov" path="res://assets/sprites/evidence/handwriting_sample_evidence.png" id="6_ph1hf"]
 [ext_resource type="Texture2D" uid="uid://c6cm5onic2j2i" path="res://assets/sprites/evidence/broken_body_cam_evidence.png" id="7_pa4yr"]
-[ext_resource type="Texture2D" uid="uid://cp8xtilfx2ndr" path="res://assets/sprites/evidence/cctv_evidence.png" id="8_cgtgs"]
 [ext_resource type="Texture2D" uid="uid://db3e4htmfrqb5" path="res://assets/sprites/evidence/radio_log_evidence.png" id="9_qy8d8"]
 [ext_resource type="Texture2D" uid="uid://7eyqc8ci3vkk" path="res://assets/sprites/evidence/autopsy_evidence.png" id="10_b6idw"]
 [ext_resource type="Texture2D" uid="uid://bhy7qjtrwwacl" path="res://assets/sprites/evidence/leos_notebook_evidence.png" id="11_nob0d"]
@@ -184,29 +183,11 @@ position = Vector2(24.1851, 25)
 scale = Vector2(1.05153, 1)
 texture = ExtResource("7_pa4yr")
 
-[node name="Evidence4" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
-layout_mode = 0
-offset_left = 210.306
-offset_top = 32.0
-offset_right = 258.306
-offset_bottom = 80.0
-texture = ExtResource("1_1075l")
-region_rect = Rect2(120, 502, 48, 50)
-patch_margin_left = 24
-patch_margin_top = 24
-patch_margin_right = 24
-patch_margin_bottom = 24
-
-[node name="CctvEvidence" type="Sprite2D" parent="UIContainer/EvidenceBoxListBG/Evidence4"]
-position = Vector2(24.1848, 25)
-scale = Vector2(1.05153, 1)
-texture = ExtResource("8_cgtgs")
-
 [node name="Evidence5" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
-offset_left = 269.191
+offset_left = 220.821
 offset_top = 32.0
-offset_right = 317.191
+offset_right = 268.821
 offset_bottom = 80.0
 texture = ExtResource("1_1075l")
 region_rect = Rect2(120, 502, 48, 50)
