@@ -1,4 +1,19 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=0 format=3 uid="uid://cgypkb14aq6fh"]
+=======
+[gd_scene load_steps=7 format=3 uid="uid://cgypkb14aq6fh"]
+
+[ext_resource type="Texture2D" uid="uid://osehm2q6lrl5" path="res://scenes/ui/UI by jer/used in UI/istockphoto-1333010525-612x612.jpg" id="1_fa5hd"]
+[ext_resource type="FontFile" uid="uid://r31pruqk51m3" path="res://scenes/ui/UI by jer/used in UI/Super Maples.ttf" id="2_3plx6"]
+[ext_resource type="Texture2D" uid="uid://i4bs1w7psg6j" path="res://scenes/ui/UI by jer/used in UI/Untitled design (1).jpg" id="3_3plx6"]
+[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="3_mre7o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mre7o"]
+texture = ExtResource("1_fa5hd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_503p4"]
+texture = ExtResource("3_3plx6")
+>>>>>>> Stashed changes
 
 [node name="ControlGuide" type="Control"]
 layout_mode = 3
@@ -10,5 +25,88 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 1278.0
-offset_bottom = 726.0
+offset_left = 81.0
+offset_top = 7.0
+offset_right = 1359.0
+offset_bottom = 733.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mre7o")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -531.0
+offset_top = -266.0
+offset_right = 532.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0917215
+anchor_top = 0.0548885
+anchor_right = 0.908278
+anchor_bottom = 0.960549
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_3plx6")
+theme_override_font_sizes/font_size = 45
+text = "W - To walk up 
+A - To walk left 
+S - To walk down
+D - To walk right
+TAB - To open inventory
+Q -  for \"OBJECTION!!!!!!\"
+R -  Press
+E -  To interact with characters  
+Esc - To open settings "
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 288.5
+offset_top = -69.0
+offset_right = 1180.5
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(1, 0.82949, 0.286531, 1)
+theme_override_colors/font_shadow_color = Color(0.381703, 0.381703, 0.381703, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_3plx6")
+theme_override_font_sizes/font_size = 80
+text = "Game Control Guides"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 169.0
+offset_right = 1176.0
+offset_bottom = 445.0
+texture = ExtResource("3_mre7o")
+region_rect = Rect2(16, 16, 64, 62)
+
+[node name="Panel2" type="Panel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -85.0
+offset_right = 103.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_503p4")
