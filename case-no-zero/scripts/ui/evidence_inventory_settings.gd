@@ -30,7 +30,6 @@ var autopsy_report_texture = preload("res://assets/sprites/evidence/autopsy_evid
 var leos_notebook_texture = preload("res://assets/sprites/evidence/leos_notebook_evidence.png")
 
 func _ready():
-	print("🚀 EvidenceInventorySettings: _ready() called")
 	# Start hidden
 	hide()
 	ui_container = $UIContainer
@@ -40,20 +39,12 @@ func _ready():
 	
 	# Get UI references
 	_get_ui_references()
-	print("🔍 DEBUG: After _get_ui_references()")
 	
 	# Setup evidence slots
 	_setup_evidence_slots()
-	print("🔍 DEBUG: After _setup_evidence_slots()")
 	
 	# Initially hide all evidence except the first one
 	_initialize_evidence_visibility()
-	
-	# Debug: Check if textures are loaded
-	print("📋 EvidenceInventorySettings: Ready")
-	print("📋 Handwriting sample texture loaded: ", handwriting_sample_texture != null)
-	print("📋 Logbook texture loaded: ", logbook_texture != null)
-	print("📋 Evidence display reference (EvidenceCloseUp/TextureRect): ", evidence_display != null)
 
 func show_evidence_inventory():
 	"""Show the evidence inventory UI with smooth fade animation from center"""
@@ -89,8 +80,6 @@ func show_evidence_inventory():
 			tween.set_ease(Tween.EASE_OUT)
 			tween.set_trans(Tween.TRANS_BACK)
 		
-		print("📋 EvidenceInventorySettings: Shown with smooth center scale animation")
-		
 		# Check if we're in evidence collection phase and disable Settings tab
 		_update_settings_tab_state()
 		
@@ -123,7 +112,6 @@ func hide_evidence_inventory():
 			await tween.finished
 		
 		hide()
-		print("📋 EvidenceInventorySettings: Hidden with smooth center scale animation")
 
 func toggle_evidence_inventory():
 	"""Toggle the evidence inventory UI"""
@@ -164,9 +152,6 @@ func _get_ui_references():
 	evidence_tab = ui_container.get_node("EvidenceTab")
 	settings_tab = ui_container.get_node("SettingsTab")
 	
-	# Debug: Check if references are working
-	print("📋 DEBUG: Evidence tab reference: ", evidence_tab != null)
-	print("📋 DEBUG: Settings tab reference: ", settings_tab != null)
 
 func _setup_evidence_slots():
 	"""Setup evidence slots with click detection and hover effects"""
@@ -184,10 +169,6 @@ func _setup_evidence_slots():
 				button.pressed.connect(_on_evidence_slot_pressed.bind(i - 1))  # Use 0-based index
 				button.mouse_entered.connect(_on_evidence_slot_hover.bind(i - 1, true))
 				button.mouse_exited.connect(_on_evidence_slot_hover.bind(i - 1, false))
-				print("📋 Evidence slot " + str(i) + " button connected")
-	
-	# Tab buttons are no longer interactive - icons are visual only
-	print("📋 Tab buttons are now non-interactive (visual only)")
 
 func _initialize_evidence_visibility():
 	"""Initialize evidence visibility - hide all evidence initially"""
@@ -197,7 +178,6 @@ func _initialize_evidence_visibility():
 func _on_evidence_slot_pressed(evidence_index: int):
 	"""Handle evidence slot button press"""
 	_select_evidence(evidence_index)
-	print("📋 Evidence slot " + str(evidence_index + 1) + " clicked")
 
 func _select_evidence(evidence_index: int):
 	"""Select and display evidence"""
@@ -209,7 +189,6 @@ func _select_evidence(evidence_index: int):
 	if evidence_id in evidence_data.evidence:
 		current_evidence = evidence_id
 		_display_evidence(evidence_id)
-		print("📋 Selected evidence: " + evidence_id)
 
 func _display_evidence(evidence_id: String):
 	"""Display evidence information in the description panel"""
@@ -225,10 +204,8 @@ func _display_evidence(evidence_id: String):
 	if texture:
 		evidence_display.texture = texture
 		evidence_display.visible = true
-		print("📋 Evidence display updated with texture for: " + evidence_id)
 	else:
 		evidence_display.visible = false
-		print("⚠️ No texture found for evidence: " + evidence_id)
 
 func _get_evidence_texture(evidence_id: String) -> Texture2D:
 	"""Get the texture for evidence based on its ID"""
@@ -259,7 +236,6 @@ func add_evidence(evidence_id: String):
 		var slot_index = collected_evidence.size() - 1
 		if slot_index < evidence_slots.size():
 			evidence_slots[slot_index].visible = true
-			print("📋 Evidence added: " + evidence_id)
 			
 			# If this is the first evidence, automatically select it
 			if collected_evidence.size() == 1:
@@ -279,13 +255,11 @@ func _update_settings_tab_state():
 			settings_tab.modulate = Color(0.5, 0.5, 0.5, 1.0)
 			if settings_icon:
 				settings_icon.modulate = Color(0.5, 0.5, 0.5, 1.0)
-			print("📋 Settings tab disabled during evidence collection phase")
 		else:
 			# Normal color when not in evidence collection
 			settings_tab.modulate = Color.WHITE
 			if settings_icon:
 				settings_icon.modulate = Color.WHITE
-			print("📋 Settings tab enabled")
 
 func _find_player_camera():
 	"""Find the player's camera for positioning"""
@@ -297,26 +271,16 @@ func _find_player_camera():
 		
 		if player:
 			player_camera = player.get_node_or_null("Camera2D")
-			if player_camera:
-				print("📋 EvidenceInventorySettings: Player camera found")
-			else:
-				print("⚠️ EvidenceInventorySettings: Player camera not found")
-		else:
-			print("⚠️ EvidenceInventorySettings: Player not found")
 
 func _input(event):
 	"""Handle input for evidence inventory"""
-	print("🔍 DEBUG Evidence: _input called with event: ", event)
-	
 	# Check if we're in blocked scenes (main_menu, chapter_menu, intro_story)
 	var in_blocked_scene = false
 	var current_scene = get_tree().current_scene
 	if current_scene:
 		var scene_name = current_scene.name.to_lower()
-		print("🔍 DEBUG Evidence: Current scene name: ", scene_name)
 		if "introstory" in scene_name or "mainmenu" in scene_name or "chaptermenu" in scene_name:
 			in_blocked_scene = true
-			print("🔍 DEBUG Evidence: In blocked scene: ", scene_name)
 	
 	# Check if we're in a cutscene - comprehensive detection for all scenes
 	var in_cutscene = false
@@ -330,34 +294,28 @@ func _input(event):
 			# Check if this scene has cutscene_played property and it's false
 			if "cutscene_played" in current_scene and not current_scene.cutscene_played:
 				in_cutscene = true
-				print("📋 Cutscene detected: cutscene_played = false")
 		
 		# Check for specific scene cutscene states
 		if "bedroom" in current_scene_name or "police_lobby" in current_scene_name or "lower_level" in current_scene_name or "barangay" in current_scene_name:
 			# Check for cutscene flags in these specific scenes
 			if "in_cutscene" in current_scene and current_scene.in_cutscene:
 				in_cutscene = true
-				print("📋 Cutscene detected: in_cutscene = true")
 			elif "cutscene_active" in current_scene and current_scene.cutscene_active:
 				in_cutscene = true
-				print("📋 Cutscene detected: cutscene_active = true")
 			elif "dialogue_active" in current_scene and current_scene.dialogue_active:
 				in_cutscene = true
-				print("📋 Cutscene detected: dialogue_active = true")
 		
 		# Check for Tween and AnimationPlayer cutscenes
 		var tweens = get_tree().get_nodes_in_group("tween")
 		for tween in tweens:
 			if tween.is_valid() and tween.is_running():
 				in_cutscene = true
-				print("📋 Cutscene detected: Tween is running")
 				break
 		
 		var animation_players = get_tree().get_nodes_in_group("animation_player")
 		for anim_player in animation_players:
 			if anim_player.is_playing():
 				in_cutscene = true
-				print("📋 Cutscene detected: AnimationPlayer is playing")
 				break
 		
 		# Check for any running animations in the current scene
@@ -365,13 +323,11 @@ func _input(event):
 		for anim in scene_animations:
 			if anim.is_playing():
 				in_cutscene = true
-				print("📋 Cutscene detected: Animation is playing")
 				break
 		
 		# Special case: check if we're in evidence collection phase (line 12 exception)
 		if "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
 			in_cutscene = false  # Allow during evidence collection phase
-			print("📋 Evidence collection phase - TAB allowed")
 	
 	# Check if we're in a menu scene (TAB not allowed) - separate from blocked scenes
 	var in_menu_scene = false
@@ -379,28 +335,23 @@ func _input(event):
 		var scene_name = current_scene.name.to_lower()
 		if "main_menu" in scene_name or "chapter_menu" in scene_name:
 			in_menu_scene = true
-			print("📋 Menu scene detected - TAB blocked:", scene_name)
 	
 	# Only allow evidence inventory access (not in blocked scenes)
 	if event.is_action_pressed("evidence_inventory"):
-		print("🔍 DEBUG Evidence: TAB pressed!")
 		if in_blocked_scene:
-			print("⚠️ Evidence inventory access denied - in blocked scene")
+			pass  # Blocked
 		elif in_cutscene:
-			print("⚠️ Evidence inventory access blocked during cutscene in scene: " + current_scene_name)
+			pass  # Blocked during cutscene
 		else:
-			print("🔍 DEBUG Evidence: TAB allowed, is_visible = ", is_visible)
 			# Check if Settings is visible or just closed - if so, don't toggle Evidence
 			var settings_ui = get_node_or_null("/root/Settings")
 			if settings_ui and (settings_ui.is_visible or settings_ui.just_closed):
 				# Settings will handle its own hiding via its _input, or just closed
-				print("📋 Settings is visible or just closed, not toggling Evidence Inventory")
 				get_viewport().set_input_as_handled()
 			else:
 				# Toggle Evidence Inventory normally
 				toggle_evidence_inventory()
 				get_viewport().set_input_as_handled()
-				print("📋 Evidence inventory toggled via TAB (not in blocked scenes)")
 	
 	# Handle closing the evidence inventory with ESC
 	if is_visible and event.is_action_pressed("ui_cancel"):
@@ -422,7 +373,6 @@ func _on_evidence_slot_hover(evidence_index: int, is_hovering: bool):
 			tween.set_parallel(true)
 			tween.tween_property(evidence_slot, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
 			tween.tween_property(evidence_slot, "scale", Vector2(1.1, 1.1), 0.1)
-			print("📋 Evidence slot " + str(evidence_index + 1) + " hovered")
 		else:
 			# Normal state
 			var tween = create_tween()

@@ -772,7 +772,6 @@ func check_checkpoint_and_start() -> void:
 	var bedroom_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	var lower_level_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
 	
-	
 	if lower_level_completed:
 		print("🎯 Lower level already completed - skipping cutscene")
 		# Skip cutscene and go directly to post-cutscene state

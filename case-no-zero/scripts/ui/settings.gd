@@ -75,17 +75,14 @@ func hide_settings():
 
 func _input(event):
 	"""Handle input for opening/closing settings"""
-	print("🔍 DEBUG Settings: _input called with event: ", event)
 	
 	# Check if we're in blocked scenes (main_menu, chapter_menu, intro_story)
 	var in_blocked_scene = false
 	var current_scene = get_tree().current_scene
 	if current_scene:
 		var scene_name = current_scene.name.to_lower()
-		print("🔍 DEBUG Settings: Current scene name: ", scene_name)
 		if "introstory" in scene_name or "mainmenu" in scene_name or "chaptermenu" in scene_name:
 			in_blocked_scene = true
-			print("🔍 DEBUG Settings: In blocked scene: ", scene_name)
 	
 	# Check if we're in a cutscene (any scene with cutscene_played = false)
 	var in_cutscene = false
@@ -99,14 +96,12 @@ func _input(event):
 		for tween in tweens:
 			if tween.is_valid() and tween.is_running():
 				in_cutscene = true
-				print("📋 Settings: Cutscene detected - Tween is running")
 				break
 		
 		var animation_players = get_tree().get_nodes_in_group("animation_player")
 		for anim_player in animation_players:
 			if anim_player.is_playing():
 				in_cutscene = true
-				print("📋 Settings: Cutscene detected - AnimationPlayer is playing")
 				break
 		
 		# Check for any running animations in the current scene
@@ -114,7 +109,6 @@ func _input(event):
 		for anim in scene_animations:
 			if anim.is_playing():
 				in_cutscene = true
-				print("📋 Settings: Cutscene detected - Animation is playing")
 				break
 		
 		# Special case: check if we're in evidence collection phase (line 12 exception)
@@ -127,34 +121,27 @@ func _input(event):
 		var scene_name = current_scene.name.to_lower()
 		if "main_menu" in scene_name or "chapter_menu" in scene_name:
 			in_menu_scene = true
-			print("📋 Menu scene detected - ESC blocked:", scene_name)
 	
 	# TAB is handled by EvidenceInventorySettings, not here
 	
 	# Handle opening/closing the settings with ESC
 	if event.is_action_pressed("ui_cancel"):
-		print("🔍 DEBUG Settings: ESC pressed!")
 		if in_blocked_scene:
-			print("⚠️ Settings ESC blocked - in blocked scene")
 			# Don't consume input - let it be handled by other systems
 			return
 		elif in_cutscene:
-			print("⚠️ Settings ESC blocked - in cutscene")
 			# Don't consume input - let it be handled by other systems
 			return
 		
-		print("🔍 DEBUG Settings: ESC allowed, is_visible = ", is_visible)
 		if is_visible:
 			# If settings is visible, close it
 			hide_settings()
 			settings.emit()  # Emit settings signal
 			settings_press.emit()  # Emit settings_press signal
-			print("📋 Settings closed via ESC and signals emitted")
 		else:
 			# If settings is not visible, show it
 			show_settings()
 			settings_press.emit()  # Emit settings_press signal
-			print("📋 Settings shown via ESC and signal emitted")
 		
 		get_viewport().set_input_as_handled()
 

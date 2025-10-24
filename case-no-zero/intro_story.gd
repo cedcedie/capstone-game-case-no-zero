@@ -342,10 +342,8 @@ func skip_to_bedroom():
 	"""Skip intro story and go directly to bedroom scene"""
 	print("🚀 DEBUG: Skipping intro story, going to bedroom")
 	
-	# Set checkpoint to mark intro as completed
-	var checkpoint_manager = get_node("/root/CheckpointManager")
-	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
-	print("📋 Intro story checkpoint set (skipped)")
+	# DON'T set bedroom cutscene as completed - let the bedroom scene handle it
+	print("📋 Going to bedroom scene - cutscene will play")
 	
 	# Transition to bedroom scene
 	await get_tree().create_timer(0.5).timeout
@@ -377,10 +375,8 @@ func debug_complete_intro():
 		$AnimationPlayer.stop()
 		print("📋 AnimationPlayer stopped")
 	
-	# Set checkpoint
-	var checkpoint_manager = get_node("/root/CheckpointManager")
-	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
-	print("📋 Intro story checkpoint set")
+	# DON'T set bedroom cutscene as completed - let the bedroom scene handle it
+	print("📋 Going to bedroom scene - cutscene will play")
 	
 	# Transition to bedroom scene
 	await get_tree().create_timer(0.5).timeout
@@ -389,11 +385,6 @@ func debug_complete_intro():
 func debug_restart_intro():
 	"""Debug function to restart intro story from beginning"""
 	print("🔄 DEBUG: Restarting intro story from beginning")
-	
-	# Clear intro story checkpoint
-	var checkpoint_manager = get_node("/root/CheckpointManager")
-	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
-	print("📋 Intro story checkpoint cleared")
 	
 	# Restart the intro sequence
 	start_intro()
@@ -446,15 +437,11 @@ func _ready() -> void:
 		AudioManager.set_scene_bgm("intro_story")
 		print("🎵 Intro Story: Scene BGM set via AudioManager")
 	
-	# Always start intro story (reset checkpoints for testing)
-	reset_intro_checkpoints()
+	# Clear bedroom cutscene checkpoint to ensure it plays
+	var checkpoint_manager = get_node("/root/CheckpointManager")
+	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
+	print("📋 Cleared bedroom cutscene checkpoint - cutscene will play")
+	
 	print("📋 Starting intro story sequence")
 	# Start the intro sequence
 	start_intro()
-
-func reset_intro_checkpoints():
-	"""Reset intro story checkpoints to always play intro"""
-	var checkpoint_manager = get_node("/root/CheckpointManager")
-	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BEDROOM_COMPLETED)
-	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
-	print("🔄 Intro story checkpoints reset - will always play intro")

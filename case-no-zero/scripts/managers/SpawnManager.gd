@@ -87,6 +87,20 @@ var spawn_positions: Dictionary = {
 			"animation": "idle_down"
 		}
 	},
+	"lower_level_station": {
+		"from_bedroom_scene": {
+			"position": Vector2(1056.0, 352.0),
+			"animation": "idle_right"
+		},
+		"from_police_lobby": {
+			"position": Vector2(1056.0, 352.0),
+			"animation": "idle_right"
+		},
+		"default": {
+			"position": Vector2(1056.0, 352.0),
+			"animation": "idle_right"
+		}
+	},
 	"hospital_lobby": {
 		"from_exterior_hospital_lobby": {
 			"position": Vector2(304.0, 248.0),
@@ -190,7 +204,7 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(1496.0, 1424.0),
 			"animation": "idle_back"
 		},
-		"Area2D_lobby_to_exterior_apartment": {
+		"lobby_to_exterior": {
 			"position": Vector2(1584.00, 592.0),
 			"animation": "idle_down"
 		},
@@ -324,9 +338,11 @@ var spawn_positions: Dictionary = {
 		}
 	},
 	"apartment_lobby": {
-		"apartment_lobby_from_bedroom": {
+		"apartment_exterior": {
 			"position": Vector2(864.0, 344.0),
 			"animation": "idle_down"
+			
+			
 		},
 	}
 }

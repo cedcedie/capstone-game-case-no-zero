@@ -36,6 +36,14 @@ func open_door():
 	print("📍 Target scene:", target_scene)
 
 	if target_scene != "":
+		# Set entry point for SpawnManager
+		var current_scene = get_tree().current_scene
+		if current_scene and has_node("/root/SpawnManager"):
+			var current_scene_name = current_scene.scene_file_path.get_file().get_basename()
+			var spawn_manager = get_node("/root/SpawnManager")
+			spawn_manager.set_entry_point(current_scene_name, "from_bedroom_scene")
+			print("📍 Door: Set entry point from", current_scene_name, "to bedroom scene")
+		
 		# Check if we're completing a task before changing scenes
 		if TaskManager:
 			print("🔍 DEBUG: TaskManager found")

@@ -73,6 +73,7 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_morgue_exterior": "morgue",
 		"Area2D_bedroom_interior": "Area2D_bedroom_interior",
 		"Area2D_apartment_exterior": "apartment_exterior",
+		"Area2D_lobby_to_exterior_apartment" :"lobby_to_exterior",
 		# Exterior area transitions
 		"from_barangay_to_camp": "barangay_to_camp",
 		"from_barangay_to_market": "barangay_to_market",
@@ -179,7 +180,7 @@ func _get_target_scene_path_from_area_name() -> String:
 		"Area2D_bedroom_interior":
 			return "res://scenes/cutscenes/bedroomScene.tscn"
 		"Area2D_apartment_exterior":
-			return "res://scenes/environments/exterior/apartment_morgue.tscn"
+			return "res://scenes/environments/apartments/apartment_lobby.tscn"
 		# Exterior area transitions
 		"from_barangay_to_camp":
 			return "res://scenes/environments/exterior/camp.tscn"
@@ -221,6 +222,8 @@ func _get_target_scene_path_from_area_name() -> String:
 		"from_barangay_to_camp":
 			return "res://scenes/environments/exterior/camp.tscn"
 		"from_barangay_to_market":
+			return "res://scenes/environments/exterior/terminal_market.tscn"
+		"Area2D_lobby_to_exterior_apartment" :
 			return "res://scenes/environments/exterior/terminal_market.tscn"
 		"from_barangay_to_police_station":
 			return "res://scenes/environments/exterior/police_station.tscn"
