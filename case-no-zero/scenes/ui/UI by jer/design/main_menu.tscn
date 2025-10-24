@@ -245,7 +245,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_adqss")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_y3fev")
 max_value = 1.0
 step = 0.05
-value = 0.5
+value = 1.0
 script = ExtResource("5_adqss")
 audio_bus_name = "Master"
 
