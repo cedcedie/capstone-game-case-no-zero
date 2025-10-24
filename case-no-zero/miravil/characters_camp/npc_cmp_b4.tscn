@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://skylwncxo40f"]
+
+[node name="NpcCmpB4" type="CharacterBody2D"]
