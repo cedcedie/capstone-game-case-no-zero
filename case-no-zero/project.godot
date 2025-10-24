@@ -21,10 +21,10 @@ buses/default_bus_layout=""
 [autoload]
 
 TaskManager="*res://scripts/managers/TaskManager.gd"
-TaskDisplay="*res://scenes/ui/TaskDisplay.tscn"
-DialogueUI="*res://scenes/ui/dialogueUi.tscn"
+TaskDisplay="*res://scenes/ui/UI by jer/design/TaskDisplay.tscn"
+DialogueUI="*res://scenes/ui/UI by jer/design/dialogueUi.tscn"
 SpawnManager="*res://scripts/managers/SpawnManager.gd"
-DialogChooser="*res://scenes/ui/DialogChooser.tscn"
+DialogChooser="*res://scenes/ui/UI by jer/design/DialogChooser.tscn"
 CheckpointManager="*res://scripts/managers/CheckpointManager.gd"
 ScenePreloader="*res://scripts/managers/ScenePreloader.gd"
 VoiceBlipManager="*res://scripts/managers/voice_blip_manager.gd"
