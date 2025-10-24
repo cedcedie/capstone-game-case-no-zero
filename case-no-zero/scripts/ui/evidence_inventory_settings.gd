@@ -341,6 +341,29 @@ func _input(event):
 				in_cutscene = true
 				print("📋 Cutscene detected: dialogue_active = true")
 		
+		# Check for Tween and AnimationPlayer cutscenes
+		var tweens = get_tree().get_nodes_in_group("tween")
+		for tween in tweens:
+			if tween.is_valid() and tween.is_running():
+				in_cutscene = true
+				print("📋 Cutscene detected: Tween is running")
+				break
+		
+		var animation_players = get_tree().get_nodes_in_group("animation_player")
+		for anim_player in animation_players:
+			if anim_player.is_playing():
+				in_cutscene = true
+				print("📋 Cutscene detected: AnimationPlayer is playing")
+				break
+		
+		# Check for any running animations in the current scene
+		var scene_animations = current_scene.get_tree().get_nodes_in_group("animation")
+		for anim in scene_animations:
+			if anim.is_playing():
+				in_cutscene = true
+				print("📋 Cutscene detected: Animation is playing")
+				break
+		
 		# Special case: check if we're in evidence collection phase (line 12 exception)
 		if "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
 			in_cutscene = false  # Allow during evidence collection phase

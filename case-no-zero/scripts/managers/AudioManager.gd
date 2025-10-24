@@ -287,12 +287,12 @@ func _on_scene_changed():
 	"""Called when scene changes - set appropriate BGM and ambient"""
 	await get_tree().process_frame
 	if get_tree().current_scene:
-	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
-	print("🎵 AudioManager: Auto-detecting scene:", scene_name)
-	print("🎵 AudioManager: Scene file path:", get_tree().current_scene.scene_file_path)
+		var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
+		print("🎵 AudioManager: Auto-detecting scene:", scene_name)
+		print("🎵 AudioManager: Scene file path:", get_tree().current_scene.scene_file_path)
 		
 		# Set BGM for the scene
-	set_scene_bgm(scene_name)
+		set_scene_bgm(scene_name)
 
 		# Set ambient for exterior scenes
 		set_exterior_ambient(scene_name)

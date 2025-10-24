@@ -2,6 +2,7 @@ extends CanvasLayer
 
 # Signal for settings access
 signal settings
+signal settings_press
 
 # References
 @onready var ui_container = $UIContainer
@@ -91,8 +92,32 @@ func _input(event):
 		# Check if this scene has cutscene_played property and it's false
 		if "cutscene_played" in current_scene and not current_scene.cutscene_played:
 			in_cutscene = true
+		
+		# Check for Tween and AnimationPlayer cutscenes
+		var tweens = get_tree().get_nodes_in_group("tween")
+		for tween in tweens:
+			if tween.is_valid() and tween.is_running():
+				in_cutscene = true
+				print("📋 Settings: Cutscene detected - Tween is running")
+				break
+		
+		var animation_players = get_tree().get_nodes_in_group("animation_player")
+		for anim_player in animation_players:
+			if anim_player.is_playing():
+				in_cutscene = true
+				print("📋 Settings: Cutscene detected - AnimationPlayer is playing")
+				break
+		
+		# Check for any running animations in the current scene
+		var scene_animations = current_scene.get_tree().get_nodes_in_group("animation")
+		for anim in scene_animations:
+			if anim.is_playing():
+				in_cutscene = true
+				print("📋 Settings: Cutscene detected - Animation is playing")
+				break
+		
 		# Special case: check if we're in evidence collection phase (line 12 exception)
-		elif "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
+		if "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
 			in_cutscene = false  # Allow during evidence collection phase
 	
 	# Check if we're in a menu scene (ESC not allowed)
@@ -129,16 +154,25 @@ func _input(event):
 		await get_tree().create_timer(0.1).timeout
 		just_closed = false
 	
-	# Handle closing the settings with ESC and emit settings signal
+	# Handle opening/closing the settings with ESC
 	if event.is_action_pressed("ui_cancel"):
 		if in_menu_scene:
 			print("⚠️ Settings ESC blocked - in menu scene")
 			# Don't consume input - let it be handled by other systems
 			return
 		
-		hide_settings()
-		settings.emit()  # Emit settings signal
+		if is_visible:
+			# If settings is visible, close it
+			hide_settings()
+			settings.emit()  # Emit settings signal
+			settings_press.emit()  # Emit settings_press signal
+			print("📋 Settings closed via ESC and signals emitted")
+		else:
+			# If settings is not visible, show it
+			show_settings()
+			settings_press.emit()  # Emit settings_press signal
+			print("📋 Settings shown via ESC and signal emitted")
+		
 		get_viewport().set_input_as_handled()
-		print("📋 Settings closed via ESC and signal emitted")
 
 # Hover functions removed - icons are no longer interactive
