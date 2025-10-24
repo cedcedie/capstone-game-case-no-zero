@@ -47189,9 +47189,6 @@ script = ExtResource("8_0iiqu")
 position = Vector2(1310.5, 1528.5)
 shape = SubResource("RectangleShape2D_qs6ny")
 
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-2, 46, -2, 1536, 2623, 1536, 2623, -2, 44, -2, 44, -62, 2677, -48, 2666, 1570, -82, 1593, -68, 55, 37, -61, 37, -5)
 [node name="NpcPlPo1Darwin" parent="." instance=ExtResource("11_1r7a4")]
 z_index = 10
 position = Vector2(672, 784)

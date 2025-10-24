@@ -37860,9 +37860,6 @@ position = Vector2(1202, 1216)
 animation = &"idle_left"
 autoplay = "idle_left"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-1, 1658, -1, 1918, 1731, 1918, 1731, -5, -1, 1, 2, 1613, -83, 1599, -59, -120, 1917, -92, 1848, 2076, -142, 2049, -114, 1649)
-
 [editable path="PlayerM"]
 [editable path="NpcBcBoy1"]
 [editable path="NpcBcBoy2"]

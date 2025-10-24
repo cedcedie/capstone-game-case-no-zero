@@ -20874,13 +20874,6 @@ z_index = 4
 z_index = 4
 position = Vector2(402, 2542)
 
-
-[node name="CollisionShape2D" parent="NpcHtlGirl1/Area2D" index="0"]
-z_index = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(77, -4, 1204, 2, 1204, 2692, 71, 2692, 78, 6, 68, 25, 29, 2762, 1293, 2749, 1298, -119, 17, -129)
-
 [node name="CollisionShape2D" parent="NpcHtlGirl1/Area2D" index="0"]
 z_index = 4
 
