@@ -37760,14 +37760,23 @@ position = Vector2(221, 365)
 animation = &"idle_front"
 autoplay = "idle_front"
 
+[node name="CollisionShape2D" parent="NpcBcBoy1/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcBcBoy2" parent="." instance=ExtResource("11_7gojn")]
 position = Vector2(430, 811)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy2" index="0"]
 autoplay = "idle_right"
 
+[node name="CollisionShape2D" parent="NpcBcBoy2/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcBcBoy3" parent="." instance=ExtResource("12_u5mui")]
 position = Vector2(271, 1270)
+
+[node name="CollisionShape2D" parent="NpcBcBoy3/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcBcBoy4" parent="." instance=ExtResource("13_toh4f")]
 z_index = 3
@@ -37775,6 +37784,9 @@ position = Vector2(1255, 939)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy4" index="0"]
 autoplay = "idle_cellphone_front"
+
+[node name="CollisionShape2D" parent="NpcBcBoy4/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcBcBoy5" parent="." instance=ExtResource("14_5n7k7")]
 z_index = 2
@@ -37784,11 +37796,17 @@ position = Vector2(189, 607)
 animation = &"idle_front"
 autoplay = "idle_front"
 
+[node name="CollisionShape2D" parent="NpcBcBoy5/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcBcBoy6" parent="." instance=ExtResource("15_sqww3")]
 position = Vector2(348, 205)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy6" index="0"]
 autoplay = "idle_right"
+
+[node name="CollisionShape2D" parent="NpcBcBoy6/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcBcBoy7" parent="." instance=ExtResource("16_xtd5d")]
 z_index = 3
@@ -37797,6 +37815,9 @@ position = Vector2(84, 495)
 [node name="AnimatedSprite2D" parent="NpcBcBoy7" index="0"]
 autoplay = "idle_right"
 
+[node name="CollisionShape2D" parent="NpcBcBoy7/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcBcBoy8" parent="." instance=ExtResource("17_xvpuf")]
 position = Vector2(591, 810)
 
@@ -37804,11 +37825,17 @@ position = Vector2(591, 810)
 animation = &"idle_left"
 autoplay = "idle_left"
 
+[node name="CollisionShape2D" parent="NpcBcBoy8/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcBcGirl1" parent="." instance=ExtResource("18_osgxi")]
 position = Vector2(53, 1405)
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl1" index="0"]
 autoplay = "idle_right"
+
+[node name="CollisionShape2D" parent="NpcBcGirl1/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcBcGirl2" parent="." instance=ExtResource("19_g8c46")]
 position = Vector2(1074, 1370)
@@ -37817,11 +37844,17 @@ position = Vector2(1074, 1370)
 position = Vector2(0, 1)
 animation = &"idle_back"
 
+[node name="CollisionShape2D" parent="NpcBcGirl2/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcBcGirl3" parent="." instance=ExtResource("20_pupqa")]
 position = Vector2(1038, 1147)
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl3" index="0"]
 autoplay = "idle_right"
+
+[node name="CollisionShape2D" parent="NpcBcGirl3/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcBcGirl4" parent="." instance=ExtResource("21_gbbmp")]
 position = Vector2(644, 1298)
@@ -37830,12 +37863,18 @@ position = Vector2(644, 1298)
 animation = &"idle_front"
 autoplay = "idle_front"
 
+[node name="CollisionShape2D" parent="NpcBcGirl4/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcBcGirl5" parent="." instance=ExtResource("22_uk4ld")]
 position = Vector2(1072, 1115)
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl5" index="0"]
 animation = &"idle_front"
 autoplay = "idle_front"
+
+[node name="CollisionShape2D" parent="NpcBcGirl5/Area2D" index="0"]
+z_index = 4
 
 [editable path="PlayerM"]
 [editable path="NpcBcBoy1"]

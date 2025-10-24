@@ -51153,6 +51153,9 @@ position = Vector2(2056, 984)
 [node name="AnimatedSprite2D" parent="NpcBackpackMan" index="0"]
 animation = &"idle_front"
 
+[node name="CollisionShape2D" parent="NpcBackpackMan/Area2D" index="0"]
+z_index = 4
+
 [node name="Label" parent="NpcBackpackMan" index="3"]
 offset_left = -208.0
 offset_top = -16.0
@@ -51167,6 +51170,9 @@ position = Vector2(155, 760)
 animation = &"idle_right"
 autoplay = "idle_right"
 
+[node name="CollisionShape2D" parent="NpcBeardMan/Area2D" index="0"]
+z_index = 4
+
 [node name="PlayerM" parent="." instance=ExtResource("11_qoipj")]
 z_index = 4
 position = Vector2(168, 176)
@@ -51179,12 +51185,18 @@ limit_bottom = 5000
 z_index = 4
 position = Vector2(1408, 936)
 
+[node name="CollisionShape2D" parent="NpcBoy1/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("14_jtlfh")]
 z_index = 4
 position = Vector2(1200, 944)
 
 [node name="AnimatedSprite2D" parent="NpcBoyIcecreamHair" index="0"]
 animation = &"idle_front"
+
+[node name="CollisionShape2D" parent="NpcBoyIcecreamHair/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcCoolHoodie" parent="." instance=ExtResource("15_udjt5")]
 z_index = 10
@@ -51198,41 +51210,55 @@ position = Vector2(2456, 1016)
 animation = &"idle_left"
 autoplay = "idle_left"
 
+[node name="CollisionShape2D" parent="NpcMustache/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcOneEye" parent="." instance=ExtResource("18_2k7xy")]
+z_index = 4
 position = Vector2(192, 760)
 
 [node name="AnimatedSprite2D" parent="NpcOneEye" index="0"]
 animation = &"idle_left"
+
+[node name="CollisionShape2D" parent="NpcOneEye/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcRandomGirl" parent="." instance=ExtResource("21_cexpq")]
 z_index = 15
 position = Vector2(1424, 760)
 
 [node name="NpcShaolinBoy" parent="." instance=ExtResource("22_xqyx5")]
+z_index = 4
 position = Vector2(1624, 1016)
 
 [node name="AnimatedSprite2D" parent="NpcShaolinBoy" index="0"]
 animation = &"idle_right"
 autoplay = "idle_right"
 
-[node name="NpcGuy2" parent="." instance=ExtResource("26_he11w")]
+[node name="CollisionShape2D" parent="NpcShaolinBoy/Area2D" index="0"]
+z_index = 4
+
+[node name="NpcGuy4" parent="." instance=ExtResource("29_3l2y6")]
+z_index = 4
 position = Vector2(1088, 184)
 
+[node name="AnimatedSprite2D" parent="NpcGuy4" index="0"]
+animation = &"idle_front"
+
+[node name="NpcGuy2" parent="." instance=ExtResource("26_he11w")]
+z_index = 4
+position = Vector2(1088, 184)
+
+[node name="CollisionShape2D" parent="NpcGuy2/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcGuy5" parent="." instance=ExtResource("27_o0l8t")]
+z_index = 4
 position = Vector2(2560, 504)
 
 [node name="NpcGuy6" parent="NpcGuy5" instance=ExtResource("28_7btrm")]
 z_index = 15
 position = Vector2(-1984, 72)
-
-[node name="NpcGuy4" parent="." instance=ExtResource("29_3l2y6")]
-position = Vector2(128, 496)
-
-[node name="AnimatedSprite2D" parent="NpcGuy4" index="0"]
-animation = &"idle_front"
-
-[node name="Area2D" parent="NpcGuy4" index="2"]
-visible = false
 
 [node name="from_morgue_to_camp" type="Area2D" parent="."]
 position = Vector2(48, -168)
@@ -51273,20 +51299,33 @@ z_index = 20
 position = Vector2(2160, 640)
 
 [node name="NpcCurlyGirly" parent="." instance=ExtResource("16_el8te")]
+z_index = 4
 position = Vector2(768, 1032)
+
+[node name="CollisionShape2D" parent="NpcCurlyGirly/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcRandomGuy" parent="." instance=ExtResource("20_3ll3w")]
 z_index = 12
 position = Vector2(1160, 504)
 
 [node name="NpcYellowGlassMan" parent="." instance=ExtResource("23_dsbue")]
+z_index = 4
 position = Vector2(648, 448)
 
 [node name="NpcGirl1" parent="." instance=ExtResource("24_1g55f")]
+z_index = 4
 position = Vector2(2440, 880)
 
+[node name="CollisionShape2D" parent="NpcGirl1/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcGuy3" parent="." instance=ExtResource("25_w58ee")]
+z_index = 4
 position = Vector2(1184, 184)
+
+[node name="CollisionShape2D" parent="NpcGuy3/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcPinkish" parent="." instance=ExtResource("19_xv305")]
 z_index = 20
@@ -51302,8 +51341,8 @@ position = Vector2(1920, 496)
 [editable path="NpcOneEye"]
 [editable path="NpcRandomGirl"]
 [editable path="NpcShaolinBoy"]
-[editable path="NpcGuy2"]
 [editable path="NpcGuy4"]
+[editable path="NpcGuy2"]
 [editable path="NpcBoyKunat"]
 [editable path="NpcCurlyGirly"]
 [editable path="NpcRandomGuy"]
