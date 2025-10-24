@@ -395,6 +395,10 @@ func _ready():
 	print("  - barangay_access_granted:", checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED))
 	print("🔍 All available checkpoints:", checkpoint_manager.checkpoints.keys())
 	
+	# Set barangay hall access granted when player arrives
+	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
+	print("🎯 Global checkpoint set: BARANGAY_HALL_ACCESS_GRANTED")
+	
 	# Complete the "Go to Barangay Hall" task if it's active and fade task display
 	if task_manager and task_manager.is_task_active():
 		var current_task = task_manager.get_current_task()

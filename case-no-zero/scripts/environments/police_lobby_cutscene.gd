@@ -107,8 +107,9 @@ func _ready():
 		# Hide all station lobby guards when barangay hall is completed
 		hide_station_lobby_guards()
 		print("🚫 Station lobby guards hidden (barangay hall completed)")
-		
-		# Set task to go back to police station for radio logs
+	
+	# Set task to go back to police station for radio logs when barangay hall is completed
+	if barangay_hall_completed:
 		if task_manager:
 			task_manager.set_current_task("investigate_radio_logs")
 			print("📋 Task set to: Investigate Radio Logs")
@@ -330,19 +331,17 @@ func enable_player_and_update_task():
 	if player and player.has_method("enable_movement"):
 		player.enable_movement()
 	
-	# Set task to go to barangay hall
+	# Set task to go to barangay hall after police lobby cutscene (with UI display)
 	if task_manager:
 		task_manager.set_current_task("go_to_barangay_hall")
-		print("📋 Task set to: Go to Barangay Hall")
+		print("📋 Task set to: Go to Barangay Hall (with UI display)")
 	
 	is_in_cutscene = false
 	
-	# Set global checkpoints to prevent cutscene from replaying and grant barangay hall access
+	# Set global checkpoints to prevent cutscene from replaying
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
-	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
 	print("🎯 Global checkpoint set: POLICE_LOBBY_CUTSCENE_COMPLETED")
-	print("🎯 Global checkpoint set: BARANGAY_HALL_ACCESS_GRANTED")
 	print("🔍 All checkpoints after police lobby completion:", checkpoint_manager.checkpoints.keys())
 	print("🎬 Police lobby cutscene completed")
 

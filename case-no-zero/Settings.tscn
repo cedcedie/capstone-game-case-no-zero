@@ -66,40 +66,9 @@ text = "Settings UI coming soon..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EvidenceTab" type="NinePatchRect" parent="UIContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_1075l")
-region_rect = Rect2(928, 384, 32, 32)
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="EvidenceIcon" type="NinePatchRect" parent="UIContainer/EvidenceTab"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 7.0
-offset_right = 33.0
-offset_bottom = 34.0
-scale = Vector2(1.04651, 0.987863)
-texture = ExtResource("1_1075l")
-region_rect = Rect2(256, 366, 32, 36)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="Button" type="Button" parent="UIContainer/EvidenceTab"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-flat = true
-
 [node name="SettingsTab" type="NinePatchRect" parent="UIContainer"]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 80.0
+offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_1075l")
 region_rect = Rect2(928, 384, 32, 32)

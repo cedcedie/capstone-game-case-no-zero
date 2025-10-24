@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+# Signal for settings access
+signal settings
+
 # References
 @onready var ui_container = $UIContainer
 @onready var evidence_tab: Node = null
@@ -28,16 +31,9 @@ func _get_ui_references():
 	settings_tab = ui_container.get_node("SettingsTab/Button")
 
 func _setup_buttons():
-	"""Setup button connections"""
-	if evidence_tab:
-		evidence_tab.pressed.connect(_on_evidence_tab_pressed)
-		evidence_tab.mouse_entered.connect(_on_evidence_tab_hover.bind(true))
-		evidence_tab.mouse_exited.connect(_on_evidence_tab_hover.bind(false))
-	
-	if settings_tab:
-		settings_tab.pressed.connect(_on_settings_tab_pressed)
-		settings_tab.mouse_entered.connect(_on_settings_tab_hover.bind(true))
-		settings_tab.mouse_exited.connect(_on_settings_tab_hover.bind(false))
+	"""Setup button connections - icons are no longer clickable"""
+	# Icons are now non-interactive - only for visual indication
+	pass
 
 func show_settings():
 	"""Show settings with smooth animation"""
@@ -74,20 +70,7 @@ func hide_settings():
 		hide()
 		print("📋 Settings: Hidden with smooth center scale animation")
 
-func _on_evidence_tab_pressed():
-	"""Switch to Evidence Inventory"""
-	print("📋 Switching from Settings to Evidence Inventory")
-	await hide_settings()
-	# Access the EvidenceInventory autoload
-	if has_node("/root/EvidenceInventorySettings"):
-		var evidence_ui = get_node("/root/EvidenceInventorySettings")
-		evidence_ui.show_evidence_inventory()
-	else:
-		print("⚠️ EvidenceInventorySettings autoload not found!")
-
-func _on_settings_tab_pressed():
-	"""Settings tab pressed (already on settings)"""
-	print("📋 Already on Settings tab")
+# Tab press functions removed - icons are no longer clickable
 
 func _input(event):
 	"""Handle input for closing settings"""
@@ -112,11 +95,23 @@ func _input(event):
 		elif "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
 			in_cutscene = false  # Allow during evidence collection phase
 	
+	# Check if we're in a menu scene (ESC not allowed)
+	var in_menu_scene = false
+	if current_scene:
+		var scene_name = current_scene.name.to_lower()
+		if "intro_story" in scene_name or "main_menu" in scene_name or "chapter_menu" in scene_name:
+			in_menu_scene = true
+			print("📋 Menu scene detected - ESC blocked:", scene_name)
+	
 	# Handle closing the settings with TAB (evidence_inventory action)
 	if event.is_action_pressed("evidence_inventory"):
 		# Check if TAB action is allowed
 		if not bedroom_cutscene_completed:
 			print("⚠️ Settings TAB blocked - bedroom cutscene not completed")
+			# Don't consume input - let it be handled by other systems
+			return
+		elif in_menu_scene:
+			print("⚠️ Settings TAB blocked - in menu scene")
 			# Don't consume input - let it be handled by other systems
 			return
 		elif in_cutscene:
@@ -134,30 +129,16 @@ func _input(event):
 		await get_tree().create_timer(0.1).timeout
 		just_closed = false
 	
-	# Handle closing the settings with ESC
+	# Handle closing the settings with ESC and emit settings signal
 	if event.is_action_pressed("ui_cancel"):
+		if in_menu_scene:
+			print("⚠️ Settings ESC blocked - in menu scene")
+			# Don't consume input - let it be handled by other systems
+			return
+		
 		hide_settings()
+		settings.emit()  # Emit settings signal
 		get_viewport().set_input_as_handled()
-		print("📋 Settings closed via ESC")
+		print("📋 Settings closed via ESC and signal emitted")
 
-func _on_evidence_tab_hover(is_hovering: bool):
-	"""Handle evidence tab hover effects"""
-	var tab = ui_container.get_node("EvidenceTab")
-	if tab:
-		if is_hovering:
-			var tween = create_tween()
-			tween.tween_property(tab, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
-		else:
-			var tween = create_tween()
-			tween.tween_property(tab, "modulate", Color.WHITE, 0.1)
-
-func _on_settings_tab_hover(is_hovering: bool):
-	"""Handle settings tab hover effects"""
-	var tab = ui_container.get_node("SettingsTab")
-	if tab:
-		if is_hovering:
-			var tween = create_tween()
-			tween.tween_property(tab, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
-		else:
-			var tween = create_tween()
-			tween.tween_property(tab, "modulate", Color.WHITE, 0.1)
+# Hover functions removed - icons are no longer interactive

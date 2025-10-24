@@ -18,6 +18,9 @@ func _on_body_entered(body):
 				# Access denied - no debug spam
 				return
 			
+			# Check if we're completing a task before changing scenes
+			_check_and_complete_task(target_scene_path)
+			
 			# Store player reference and disable movement during transition
 			player_reference = body
 			if body.has_method("disable_movement"):
@@ -43,21 +46,20 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_lower_level": "lower_level",
 		"Area2D_head_police": "head_police", 
 		"Area2D_security_server": "security_server",
-		"Area2D_police_lobby": "police_lobby",
+		"Area2D_police_lobby": "from_lower_level_station",
 		"Area2D_police_lobby_to_police_station": "police_station",
+		"Area2D_police_lobby_from_security_server": "security_server",
 		"Area2D_barangay_hall_second_floor": "barangay_hall_second_floor",
-		"Area2D_barangay_hall_return": "barangay_hall",
+		"Area2D_barangay_hall_return": "from_barangay_hall2nd",
 		"Area2D_exterior_police": "police_lobby",
 		"Area2D_police_to_lobby": "police_station",
 		"Area2D_firestation": "firestation",
 		"Area2D_firestation_1st_floor": "firestation_1st_floor",
-		"Area2D_hotel_hospital_to_hospital": "hospital_lobby",
+		"Area2D_hotel_hospital_to_hospital": "from_exterior_hospital_lobby",
 		"Area2D_hospital_2nd_floor": "hospital_2nd_floor",
 		"Area2D_hospital_2nd_to_lobby": "hospital_2nd_floor",
 		"Area2D_hospital_lobby_to_hotel_hospital": "hospital_lobby",
-		"Area2D_hotel_lobby_to_hotel_hospital": "hotel_hospital",
-		"Area2D_hotel_hospital_to_hotel": "hotel_hospital",
-		"Area2D_hotel_hospital_to_hotel_lobby": "hotel_hospital",
+		"Area2D_hotel_hospital_to_hotel_lobby": "from_hotel_hospital",
 		"Area2D_to_hotel_hospital": "hotel_lobby",
 		"Area2D_to_2nd_floor_hospital": "hotel_lobby",
 		"Area2D_2nd_floor_to_hotel_lobby": "hotel_2nd_floor",
@@ -120,6 +122,8 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
 		"Area2D_exterior_police":
 			return "res://scenes/environments/Police Station/police_lobby.tscn"
+		"Area2D_police_lobby_from_security_server":
+			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
 		"Area2D_police_to_lobby":
 			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		# Hotel and Hospital Area2D transitions
@@ -245,6 +249,26 @@ func _get_target_scene_path_from_area_name() -> String:
 		_:
 			return ""
 
+func _check_and_complete_task(target_scene_path: String):
+	"""Check if we're completing a task before changing scenes"""
+	if TaskManager:
+		print("🔍 DEBUG: TaskManager found in scene transition")
+		if TaskManager.is_task_active():
+			var current_target = TaskManager.get_current_task_scene_target()
+			var target_scene_name = target_scene_path.get_file().get_basename()
+			print("🔍 DEBUG: Active task target:", current_target)
+			print("🔍 DEBUG: Scene transition target:", target_scene_name)
+			
+			if target_scene_name.to_lower().contains(current_target.to_lower()):
+				print("✅ DEBUG: Target matches! Completing task before scene change")
+				TaskManager.complete_current_task()
+			else:
+				print("⚠️ DEBUG: Target doesn't match - not completing task")
+		else:
+			print("⚠️ DEBUG: No active task")
+	else:
+		print("⚠️ DEBUG: TaskManager not found")
+
 func _check_barangay_hall_access(target_scene_path: String) -> bool:
 	"""Check if player has access to barangay hall"""
 	var scene_name = target_scene_path.get_file().get_basename()
@@ -314,8 +338,7 @@ func _fade_out_and_cleanup(canvas_layer: CanvasLayer):
 	tween.tween_property(fade_rect, "color:a", 0.0, fade_duration)
 	await tween.finished
 	canvas_layer.queue_free()
-	is_transitioning = false
-	
+	is_transitioning = false	
 	# Re-enable player movement if scene change failed
 	if player_reference and player_reference.has_method("enable_movement"):
 		player_reference.enable_movement()

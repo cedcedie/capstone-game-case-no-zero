@@ -23,8 +23,13 @@ var spawn_positions: Dictionary = {
 		},
 		"from_bedroom_scene": {
 			"position": Vector2(185, 184),
+			"animation": "idle_back"
+		},
+		"security_server": {
+			"position": Vector2(400, 480),
 			"animation": "idle_down"
 		},
+		
 		"default": {
 			"position": Vector2(272, 480),
 			"animation": "idle_down"
@@ -83,7 +88,7 @@ var spawn_positions: Dictionary = {
 		}
 	},
 	"hospital_lobby": {
-		"from_hotel_hospital": {
+		"from_exterior_hospital_lobby": {
 			"position": Vector2(304.0, 248.0),
 			"animation": "idle_down"
 		},
@@ -108,12 +113,12 @@ var spawn_positions: Dictionary = {
 	},
 	"hotel_lobby": {
 		"from_hotel_hospital": {
-			"position": Vector2(456, 368),
-			"animation": "idle_down"
-		},
-		"hotel_2nd_floor": {
 			"position": Vector2(792.0, 432.0),
 			"animation": "idle_left"
+		},
+		"hotel_2nd_floor": {
+			"position": Vector2(456, 368),
+			"animation": "idle_down"
 		},
 		"default": {
 			"position": Vector2(456, 368),
@@ -157,7 +162,7 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(1024.0, 512.0),
 			"animation": "idle_down"
 		},
-		"from_market": {
+		"market": {
 			"position": Vector2(2016.0, 528.0),
 			"animation": "idle_down"
 		},
@@ -215,6 +220,10 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(465.0, 526.0),
 			"animation": "idle_down"
 		},
+		"from_barangay_hall2nd": {
+			"position": Vector2(640.0, 416.0),
+			"animation": "idle_down"
+		},
 		"default": {
 			"position": Vector2(465.0, 526.0),
 			"animation": "idle_down"
@@ -269,7 +278,7 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(368.0, 704.0),
 			"animation": "idle_down"
 		},
-		"from_apartment_exterior": {
+		"apartment_exterior": {
 			"position": Vector2(976.0, 912.0),
 			"animation": "idle_down"
 		},

@@ -24278,13 +24278,14 @@ tile_map_data = PackedByteArray("AAAOAAUAAAACAAsAAAAQAAcAAAAEABQAAAAQAAMAAAAEABM
 tile_set = SubResource("TileSet_ut8hw")
 
 [node name="PlayerM" parent="." instance=ExtResource("16_ev27n")]
-z_index = 4
-position = Vector2(488, 528)
+z_index = 2
+position = Vector2(640, 416)
 
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]
 autoplay = "idle_back"
 
 [node name="Area2D_barangay_hall_second_floor" type="Area2D" parent="."]
+z_index = 1
 position = Vector2(0, 24)
 script = ExtResource("17_scene_transition")
 
@@ -24305,13 +24306,15 @@ shape = SubResource("RectangleShape2D_mc44i")
 script = ExtResource("18_barangay_manager")
 
 [node name="KapitanaPalma" parent="." instance=ExtResource("19_dit16")]
+z_index = 2
 position = Vector2(1096, -48)
 
 [node name="AnimatedSprite2D" parent="KapitanaPalma" index="0"]
 autoplay = "idle_back"
 
 [node name="barangay_npc" parent="." instance=ExtResource("20_7a2pv")]
-position = Vector2(640, 112)
+z_index = 2
+position = Vector2(640, -8)
 
 [node name="AnimatedSprite2D" parent="barangay_npc" index="0"]
 autoplay = "idle_front"
@@ -24320,6 +24323,7 @@ autoplay = "idle_front"
 metadata/_edit_use_anchors_ = true
 
 [node name="celine" parent="." instance=ExtResource("20_mc44i")]
+z_index = 2
 position = Vector2(1024, -56)
 
 [editable path="PlayerM"]

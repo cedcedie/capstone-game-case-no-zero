@@ -12,18 +12,6 @@ font_size = 18
 
 [sub_resource type="Animation" id="Animation_0ojno"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("leo_mendoza/AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walk_right"]
-}
 
 [sub_resource type="Animation" id="Animation_hieu1"]
 resource_name = "intro"
@@ -150,7 +138,7 @@ script = ExtResource("1_q3ba4")
 position = Vector2(640, 360)
 
 [node name="AnimatedSprite2D" parent="leo_mendoza" index="0"]
-animation = &"walk_right"
+animation = &"idle_front"
 
 [node name="Camera2D" type="Camera2D" parent="leo_mendoza"]
 zoom = Vector2(1.3, 1.3)

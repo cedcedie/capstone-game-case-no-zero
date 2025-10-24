@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgn7dn0hxqa60"]
+[gd_scene load_steps=14 format=3 uid="uid://bgn7dn0hxqa60"]
 
 [ext_resource type="Script" uid="uid://6aqfoyeiifwg" path="res://scenes/ui/UI by jer/scripts/main_menu.gd" id="1_ey8fa"]
 [ext_resource type="Texture2D" uid="uid://htl1xhda2x6v" path="res://scenes/ui/UI by jer/used in UI/84bb17a4-db7a-4f17-b1fa-f860766f7163.jpeg" id="2_o08tu"]
 [ext_resource type="FontFile" uid="uid://r31pruqk51m3" path="res://scenes/ui/UI by jer/used in UI/Super Maples.ttf" id="3_adqss"]
-[ext_resource type="AudioStream" uid="uid://f33skqjguur1" path="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 09 Enemy Approaching.mp3" id="4_o08tu"]
 [ext_resource type="Script" uid="uid://dyq85je2d7iv2" path="res://scenes/ui/UI by jer/scripts/audio_control.gd" id="5_adqss"]
 [ext_resource type="Script" uid="uid://bofb3p2uunbxu" path="res://scenes/ui/UI by jer/scripts/fullscreen_control.gd" id="6_y3fev"]
 
@@ -158,10 +157,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_d5agq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_igplx")
 text = "Exit
 "
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_o08tu")
-autoplay = true
 
 [node name="Options" type="Panel" parent="."]
 layout_mode = 1

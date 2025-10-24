@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://sot27prphlm3"]
+[gd_scene load_steps=13 format=3 uid="uid://sot27prphlm3"]
 
 [ext_resource type="Script" uid="uid://cdwhedo4dh6tl" path="res://scenes/ui/UI by jer/scripts/chapter_menu.gd" id="1_42srx"]
 [ext_resource type="Texture2D" uid="uid://osehm2q6lrl5" path="res://scenes/ui/UI by jer/used in UI/istockphoto-1333010525-612x612.jpg" id="1_uvvwn"]
 [ext_resource type="FontFile" uid="uid://r31pruqk51m3" path="res://scenes/ui/UI by jer/used in UI/Super Maples.ttf" id="2_673gl"]
-[ext_resource type="AudioStream" uid="uid://f33skqjguur1" path="res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 09 Enemy Approaching.mp3" id="4_rte7s"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_673gl"]
 texture = ExtResource("1_uvvwn")
@@ -175,10 +174,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ctx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5ire2")
 text = "Back"
 metadata/_edit_use_anchors_ = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_rte7s")
-autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/chapter 1" to="." method="_on_chapter_1_pressed"]
 [connection signal="pressed" from="back to menu" to="." method="_on_back_to_menu_pressed"]

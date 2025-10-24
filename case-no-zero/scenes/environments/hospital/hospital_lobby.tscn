@@ -8297,6 +8297,7 @@ size = Vector2(64, 15)
 size = Vector2(160, 16)
 
 [node name="2NdFloor" type="Node2D"]
+y_sort_enabled = true
 
 [node name="ground" type="TileMapLayer" parent="."]
 position = Vector2(176, 104)
@@ -8319,6 +8320,7 @@ tile_map_data = PackedByteArray("AAAVAAwAAAAOADQAAAAVAA0AAAAOADUAAAAVAA4AAAAOADY
 tile_set = SubResource("TileSet_bfxbt")
 
 [node name="PlayerM" parent="." instance=ExtResource("11_bfxbt")]
+z_index = 3
 position = Vector2(304, 248)
 
 [node name="Area2D_hospital_lobby_to_hotel_hospital" type="Area2D" parent="."]

@@ -6023,10 +6023,10 @@ tile_map_data = PackedByteArray("AAAOAAMAAAAOABQAAAAOAAIAAAACABEAAAAQAAIAAAABABU
 tile_set = SubResource("TileSet_swsfr")
 collision_visibility_mode = 1
 
-[node name="Area2D_police_lobby" type="Area2D" parent="."]
+[node name="Area2D_police_lobby_from_security_server" type="Area2D" parent="."]
 script = ExtResource("8_scene_transition")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_lobby"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_lobby_from_security_server"]
 position = Vector2(456, 168)
 shape = SubResource("RectangleShape2D_cl1ug")
 

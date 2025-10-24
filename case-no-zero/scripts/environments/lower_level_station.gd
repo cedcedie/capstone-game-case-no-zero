@@ -691,6 +691,9 @@ func end_scene():
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
 	print("🎯 Lower level checkpoint set")
 	
+	# Don't set any task here - task will be set after police lobby cutscene
+	print("📋 Lower level completed - no task set yet")
+	
 	
 	# Transition to next scene or enable player control
 	if player and "control_enabled" in player:
@@ -745,6 +748,13 @@ func _ready() -> void:
 	if AudioManager:
 		AudioManager.set_scene_bgm("lower_level_station")
 		print("🎵 Lower Level Station: Scene BGM set via AudioManager")
+	
+	# Complete the "Investigate Lower Level" task if it's active (silently, no UI display)
+	if task_manager and task_manager.is_task_active():
+		var current_task = task_manager.get_current_task()
+		if current_task.get("id") == "go_to_lower_level":
+			task_manager.complete_current_task()
+			print("✅ Task completed: Investigate Lower Level")
 	
 	print("🟢 Scene ready — checking checkpoints...")
 	check_checkpoint_and_start()

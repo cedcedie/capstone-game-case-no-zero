@@ -35,8 +35,7 @@
 	{"speaker": "Miguel", "text": "Boy Trip? Hindi siya mamamatay-tao."},
 	{"speaker": "Miguel", "text": "Alam ko siya. May pamilya siya."},
 
-	{"speaker": "Celine", "text": "Nandiyan na ang ebidensya."},
-	{"speaker": "Celine", "text": "Nakulong na siya."},
+	{"speaker": "Celine", "text": "Nandiyan na ang ebidensya. Nakulong na siya."},
 
 	{"speaker": "Miguel", "text": "Saan nangyari?"},
 
@@ -68,11 +67,7 @@
 	{"speaker": "Celine", "text": "Alam ko."},
 	{"speaker": "Celine", "text": "Pero kailangan natin gawin."},
 
-	{"speaker": "Miguel", "text": "Sige. Mag-ingat tayo."},
-
-	{"speaker": "Celine", "text": "Tara na."},
-
 	{"speaker": "Miguel", "text": "Sige, Erwin."},
-	{"speaker": "Miguel", "text": "Tingnan natin kung paano tayo makakalabas."}
+	{"speaker": "Miguel", "text": "Papatunayan kita na hindi ka ang may kasalanan."}
   ]
 }

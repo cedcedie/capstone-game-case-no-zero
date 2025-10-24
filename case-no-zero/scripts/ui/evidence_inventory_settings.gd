@@ -186,23 +186,8 @@ func _setup_evidence_slots():
 				button.mouse_exited.connect(_on_evidence_slot_hover.bind(i - 1, false))
 				print("📋 Evidence slot " + str(i) + " button connected")
 	
-	# Setup hover effects for tabs using their buttons
-	var evidence_tab_button = ui_container.get_node_or_null("EvidenceTab/Button")
-	if evidence_tab_button:
-		evidence_tab_button.pressed.connect(_on_evidence_tab_pressed)
-		evidence_tab_button.mouse_entered.connect(_on_evidence_tab_hover.bind(true))
-		evidence_tab_button.mouse_exited.connect(_on_evidence_tab_hover.bind(false))
-		print("📋 Evidence tab button connected")
-	
-	var settings_tab_button = ui_container.get_node_or_null("SettingsTab/Button")
-	print("📋 DEBUG: Settings tab button found: ", settings_tab_button != null)
-	if settings_tab_button:
-		settings_tab_button.pressed.connect(_on_settings_tab_pressed)
-		settings_tab_button.mouse_entered.connect(_on_settings_tab_hover.bind(true))
-		settings_tab_button.mouse_exited.connect(_on_settings_tab_hover.bind(false))
-		print("📋 Settings tab button connected")
-	else:
-		print("⚠️ Settings tab button NOT FOUND - check node path!")
+	# Tab buttons are no longer interactive - icons are visual only
+	print("📋 Tab buttons are now non-interactive (visual only)")
 
 func _initialize_evidence_visibility():
 	"""Initialize evidence visibility - hide all evidence initially"""
@@ -361,10 +346,20 @@ func _input(event):
 			in_cutscene = false  # Allow during evidence collection phase
 			print("📋 Evidence collection phase - TAB allowed")
 	
+	# Check if we're in a menu scene (TAB not allowed)
+	var in_menu_scene = false
+	if current_scene:
+		var scene_name = current_scene.name.to_lower()
+		if "intro_story" in scene_name or "main_menu" in scene_name or "chapter_menu" in scene_name:
+			in_menu_scene = true
+			print("📋 Menu scene detected - TAB blocked:", scene_name)
+	
 	# Only allow evidence inventory access after bedroom cutscene is completed
 	if event.is_action_pressed("evidence_inventory"):
 		if not bedroom_cutscene_completed:
 			print("⚠️ Evidence inventory access denied - bedroom cutscene not completed")
+		elif in_menu_scene:
+			print("⚠️ Evidence inventory access blocked in menu scene: " + current_scene_name)
 		elif in_cutscene:
 			print("⚠️ Evidence inventory access blocked during cutscene in scene: " + current_scene_name)
 		else:
@@ -408,59 +403,6 @@ func _on_evidence_slot_hover(evidence_index: int, is_hovering: bool):
 			tween.tween_property(evidence_slot, "modulate", Color.WHITE, 0.1)
 			tween.tween_property(evidence_slot, "scale", Vector2.ONE, 0.1)
 
-func _on_evidence_tab_hover(is_hovering: bool):
-	"""Handle evidence tab hover effects"""
-	if evidence_tab:
-		if is_hovering:
-			var tween = create_tween()
-			tween.tween_property(evidence_tab, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
-			print("📋 Evidence tab hovered")
-		else:
-			var tween = create_tween()
-			tween.tween_property(evidence_tab, "modulate", Color.WHITE, 0.1)
+# Tab hover functions removed - icons are no longer interactive
 
-func _on_settings_tab_hover(is_hovering: bool):
-	"""Handle settings tab hover effects"""
-	print("📋 DEBUG: Settings tab hover called - hovering: ", is_hovering)
-	print("📋 DEBUG: Settings tab reference exists: ", settings_tab != null)
-	
-	if settings_tab:
-		# Get the settings icon for grouped animation
-		var settings_icon = settings_tab.get_node_or_null("SettingsIcon")
-		print("📋 DEBUG: Settings icon found: ", settings_icon != null)
-		
-		if is_hovering:
-			var tween = create_tween()
-			tween.set_parallel(true)  # Animate both elements simultaneously
-			tween.tween_property(settings_tab, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
-			if settings_icon:
-				tween.tween_property(settings_icon, "modulate", Color(1.3, 1.3, 1.3, 1.0), 0.1)
-			print("📋 Settings tab hovered")
-		else:
-			var tween = create_tween()
-			tween.set_parallel(true)  # Animate both elements simultaneously
-			tween.tween_property(settings_tab, "modulate", Color.WHITE, 0.1)
-			if settings_icon:
-				tween.tween_property(settings_icon, "modulate", Color.WHITE, 0.1)
-
-# Click functions for tabs
-func _on_evidence_tab_pressed():
-	"""Evidence tab pressed (already on evidence)"""
-	print("📋 Already on Evidence tab")
-
-func _on_settings_tab_pressed():
-	"""Switch to Settings"""
-	# Check if we're in evidence collection phase (cutscene) - block Settings access
-	var current_scene = get_tree().current_scene
-	if current_scene and "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
-		print("⚠️ Settings access blocked during evidence collection phase")
-		return
-	
-	print("📋 Switching from Evidence Inventory to Settings")
-	await hide_evidence_inventory()
-	# Access Settings autoload
-	if has_node("/root/Settings"):
-		var settings_ui = get_node("/root/Settings")
-		settings_ui.show_settings()
-	else:
-		print("⚠️ Settings autoload not found! Make sure Settings.tscn is in autoload.")
+# Tab click functions removed - icons are no longer clickable
