@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="6_kpen6"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="7_scene_transition"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="8_scene_fade_in"]
-[ext_resource type="PackedScene" uid="uid://ca3g2ar4tvnir" path="res://scenes/environments/Interiors/Police Station/lobby/station_lobby2.tscn" id="10_3ddup"]
-[ext_resource type="PackedScene" uid="uid://c7f3wqwh3y5tj" path="res://scenes/environments/Interiors/Police Station/lobby/station_lobby.tscn" id="11_07ohx"]
-[ext_resource type="PackedScene" uid="uid://d2qgmximf6ysb" path="res://scenes/environments/Interiors/Police Station/lobby/station_lobby3.tscn" id="12_ejbl2"]
+[ext_resource type="PackedScene" uid="uid://ca3g2ar4tvnir" path="res://scenes/environments/Police Station/lobby/station_lobby2.tscn" id="10_3ddup"]
+[ext_resource type="PackedScene" uid="uid://c7f3wqwh3y5tj" path="res://scenes/environments/Police Station/lobby/station_lobby.tscn" id="11_07ohx"]
+[ext_resource type="PackedScene" uid="uid://d2qgmximf6ysb" path="res://scenes/environments/Police Station/lobby/station_lobby3.tscn" id="12_ejbl2"]
 [ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main/celine_navarro.tscn" id="13_celine"]
 [ext_resource type="Script" uid="uid://r4s5s1bg206q" path="res://scripts/environments/police_lobby_cutscene.gd" id="14_cutscene"]
 

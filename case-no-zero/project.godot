@@ -27,19 +27,13 @@ SpawnManager="*res://scripts/managers/SpawnManager.gd"
 DialogChooser="*res://scenes/ui/DialogChooser.tscn"
 CheckpointManager="*res://scripts/managers/CheckpointManager.gd"
 ScenePreloader="*res://scripts/managers/ScenePreloader.gd"
-EvidenceInventorySettings="*res://EvidenceInventorySettings.tscn"
-Settings="*res://Settings.tscn"
 VoiceBlipManager="*res://scripts/managers/voice_blip_manager.gd"
 CameraZoomManager="*res://scripts/managers/CameraZoomManager.gd"
 AudioManager="*res://scripts/managers/AudioManager.gd"
-<<<<<<< HEAD
-AmbientAudioManager="*res://scripts/managers/AmbientAudioManager.gd"
-=======
-SceneFadeIn="*res://scripts/interactables/scene_fade_in.gd"
 EvidenceInventorySettings="*res://EvidenceInventorySettings.tscn"
 Settings="*res://Settings.tscn"
->>>>>>> 5a00b4bf84ae6afa7ef3ac137b9703652bf80592
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
+<<<<<<<HEADAmbientAudioManager="*res://scripts/managers/AmbientAudioManager.gd"
 
 [dialogic]
 
