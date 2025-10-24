@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bkxx1m4vbvfhf"]
+[gd_scene load_steps=45 format=4 uid="uid://bkxx1m4vbvfhf"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_hk5i3"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_e7r7a"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://ddi78wtnxtop5" path="res://miravil/characters_2/npc_bc_girl3.tscn" id="20_pupqa"]
 [ext_resource type="PackedScene" uid="uid://b2wpxg54ruupw" path="res://miravil/characters_2/npc_bc_girl4.tscn" id="21_gbbmp"]
 [ext_resource type="PackedScene" uid="uid://8b0jc1i5qgvc" path="res://miravil/characters_2/npc_bc_girl5.tscn" id="22_uk4ld"]
+[ext_resource type="PackedScene" uid="uid://c5mweveda1y56" path="res://miravil/characters_2/npc_bc_furry.tscn" id="23_bpkmu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgmrl"]
 texture = ExtResource("1_hk5i3")
@@ -37761,23 +37762,25 @@ animation = &"idle_front"
 autoplay = "idle_front"
 
 [node name="NpcBcBoy2" parent="." instance=ExtResource("11_7gojn")]
+z_index = 4
 position = Vector2(430, 811)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy2" index="0"]
 autoplay = "idle_right"
 
 [node name="NpcBcBoy3" parent="." instance=ExtResource("12_u5mui")]
+z_index = 4
 position = Vector2(271, 1270)
 
 [node name="NpcBcBoy4" parent="." instance=ExtResource("13_toh4f")]
-z_index = 3
+z_index = 4
 position = Vector2(1255, 939)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy4" index="0"]
 autoplay = "idle_cellphone_front"
 
 [node name="NpcBcBoy5" parent="." instance=ExtResource("14_5n7k7")]
-z_index = 2
+z_index = 4
 position = Vector2(189, 607)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy5" index="0"]
@@ -37785,19 +37788,21 @@ animation = &"idle_front"
 autoplay = "idle_front"
 
 [node name="NpcBcBoy6" parent="." instance=ExtResource("15_sqww3")]
+z_index = 4
 position = Vector2(348, 205)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy6" index="0"]
 autoplay = "idle_right"
 
 [node name="NpcBcBoy7" parent="." instance=ExtResource("16_xtd5d")]
-z_index = 3
+z_index = 4
 position = Vector2(84, 495)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy7" index="0"]
 autoplay = "idle_right"
 
 [node name="NpcBcBoy8" parent="." instance=ExtResource("17_xvpuf")]
+z_index = 4
 position = Vector2(591, 810)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy8" index="0"]
@@ -37805,12 +37810,14 @@ animation = &"idle_left"
 autoplay = "idle_left"
 
 [node name="NpcBcGirl1" parent="." instance=ExtResource("18_osgxi")]
+z_index = 4
 position = Vector2(53, 1405)
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl1" index="0"]
 autoplay = "idle_right"
 
 [node name="NpcBcGirl2" parent="." instance=ExtResource("19_g8c46")]
+z_index = 4
 position = Vector2(1074, 1370)
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl2" index="0"]
@@ -37818,12 +37825,17 @@ position = Vector2(0, 1)
 animation = &"idle_back"
 
 [node name="NpcBcGirl3" parent="." instance=ExtResource("20_pupqa")]
+z_index = 4
 position = Vector2(1038, 1147)
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl3" index="0"]
 autoplay = "idle_right"
 
+[node name="CollisionShape2D" parent="NpcBcGirl3/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcBcGirl4" parent="." instance=ExtResource("21_gbbmp")]
+z_index = 4
 position = Vector2(644, 1298)
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl4" index="0"]
@@ -37831,11 +37843,22 @@ animation = &"idle_front"
 autoplay = "idle_front"
 
 [node name="NpcBcGirl5" parent="." instance=ExtResource("22_uk4ld")]
-position = Vector2(1072, 1115)
+z_index = 4
+position = Vector2(1072, 1120)
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl5" index="0"]
 animation = &"idle_front"
 autoplay = "idle_front"
+
+[node name="CollisionShape2D" parent="NpcBcGirl5/Area2D" index="0"]
+z_index = 4
+
+[node name="NpcBcFurry" parent="." instance=ExtResource("23_bpkmu")]
+position = Vector2(1202, 1216)
+
+[node name="AnimatedSprite2D" parent="NpcBcFurry" index="0"]
+animation = &"idle_left"
+autoplay = "idle_left"
 
 [editable path="PlayerM"]
 [editable path="NpcBcBoy1"]
@@ -37851,3 +37874,4 @@ autoplay = "idle_front"
 [editable path="NpcBcGirl3"]
 [editable path="NpcBcGirl4"]
 [editable path="NpcBcGirl5"]
+[editable path="NpcBcFurry"]
