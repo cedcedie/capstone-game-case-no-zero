@@ -74,9 +74,7 @@ func hide_settings():
 # Tab press functions removed - icons are no longer clickable
 
 func _input(event):
-	"""Handle input for closing settings"""
-	if not is_visible:
-		return
+	"""Handle input for opening/closing settings"""
 	
 	# Check cutscene conditions (same as Evidence Inventory)
 	var checkpoint_manager = get_node_or_null("/root/CheckpointManager")
@@ -158,6 +156,16 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if in_menu_scene:
 			print("⚠️ Settings ESC blocked - in menu scene")
+			# Don't consume input - let it be handled by other systems
+			return
+		
+		# Check if bedroom cutscene is completed (same as TAB)
+		if not bedroom_cutscene_completed:
+			print("⚠️ Settings ESC blocked - bedroom cutscene not completed")
+			# Don't consume input - let it be handled by other systems
+			return
+		elif in_cutscene:
+			print("⚠️ Settings ESC blocked - in cutscene")
 			# Don't consume input - let it be handled by other systems
 			return
 		
