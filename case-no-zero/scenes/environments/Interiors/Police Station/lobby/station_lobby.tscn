@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://c7f3wqwh3y5tj"]
 
-[ext_resource type="Texture2D" uid="uid://dccte8s548ayr" path="res://scenes/environments/Police Station/lobby/station_lobby.png" id="1_sgutt"]
+[ext_resource type="Texture2D" uid="uid://dccte8s548ayr" path="res://scenes/environments/Interiors/Police Station/lobby/station_lobby.png" id="1_sgutt"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_88qyx"]
 [ext_resource type="Script" uid="uid://dv16nov0avqe7" path="res://scripts/character/station_lobby_1.gd" id="3_script"]
 

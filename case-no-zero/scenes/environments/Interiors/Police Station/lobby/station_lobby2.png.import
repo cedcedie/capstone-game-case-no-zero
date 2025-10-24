@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clm4d3fngqpe5"
-path="res://.godot/imported/station_lobby2.png-d951b4b66b4e0d678a4d0abe3bf74388.ctex"
+path="res://.godot/imported/station_lobby2.png-b40ad40245d972f7b2d4583d681f637d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/environments/Police Station/lobby/station_lobby2.png"
-dest_files=["res://.godot/imported/station_lobby2.png-d951b4b66b4e0d678a4d0abe3bf74388.ctex"]
+source_file="res://scenes/environments/Interiors/Police Station/lobby/station_lobby2.png"
+dest_files=["res://.godot/imported/station_lobby2.png-b40ad40245d972f7b2d4583d681f637d.ctex"]
 
 [params]
 
