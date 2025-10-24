@@ -30755,6 +30755,9 @@ position = Vector2(365, 174)
 z_index = 4
 position = Vector2(853, 836)
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(626, 10, 630, 167, 1439, 163, 1439, 11, 1588, 11, 1588, 1069, 12, 1072, 18, 1053, 18, 41, 18, 11, 608, 11, 609, -51, -32, 2, -19, 1116, 1654, 1113, 1644, 17, 1581, -66, 641, -53)
+
 [editable path="NpcCamp"]
 [editable path="PlayerM"]
 [editable path="NpcCmpB1"]
