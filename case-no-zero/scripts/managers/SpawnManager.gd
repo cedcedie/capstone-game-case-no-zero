@@ -32,7 +32,7 @@ var spawn_positions: Dictionary = {
 		
 		"default": {
 			"position": Vector2(272, 480),
-			"animation": "idle_down"
+			"animation": "idle_front"
 		}
 	},
 	"hotel_hospital": {
