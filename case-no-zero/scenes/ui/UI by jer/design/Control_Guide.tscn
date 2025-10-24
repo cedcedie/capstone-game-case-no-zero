@@ -1,9 +1,6 @@
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 [gd_scene load_steps=0 format=3 uid="uid://cgypkb14aq6fh"]
 =======
-=======
->>>>>>> Stashed changes
 [gd_scene load_steps=7 format=3 uid="uid://cgypkb14aq6fh"]
 
 [ext_resource type="Texture2D" uid="uid://osehm2q6lrl5" path="res://scenes/ui/UI by jer/used in UI/istockphoto-1333010525-612x612.jpg" id="1_fa5hd"]
@@ -16,9 +13,6 @@ texture = ExtResource("1_fa5hd")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_503p4"]
 texture = ExtResource("3_3plx6")
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
 
 [node name="ControlGuide" type="Control"]
