@@ -38536,10 +38536,10 @@ sources/26 = SubResource("TileSetAtlasSource_p8yp1")
 sources/27 = SubResource("TileSetAtlasSource_fdp8p")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ku1wn"]
-size = Vector2(63.5, 13.5)
+size = Vector2(29.75, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0yw3"]
-size = Vector2(26.5, 64)
+size = Vector2(70, 24)
 
 [node name="HotelInterior" type="Node2D"]
 
@@ -38568,12 +38568,12 @@ position = Vector2(792, 432)
 script = ExtResource("37_scene_transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_hotel_hospital"]
-position = Vector2(456, 328)
+position = Vector2(855, 417)
 shape = SubResource("RectangleShape2D_ku1wn")
 
 [node name="Area2D_to_2nd_floor_hospital" type="Area2D" parent="."]
 script = ExtResource("37_scene_transition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_2nd_floor_hospital"]
-position = Vector2(850.75, 416)
+position = Vector2(455, 322)
 shape = SubResource("RectangleShape2D_m0yw3")

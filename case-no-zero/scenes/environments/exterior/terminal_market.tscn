@@ -54243,7 +54243,7 @@ size = Vector2(18, 1050)
 size = Vector2(2784, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj2vy"]
-size = Vector2(64, 26)
+size = Vector2(64, 56)
 
 [node name="Terminalandmarket" type="Node2D"]
 
@@ -54338,13 +54338,13 @@ script = ExtResource("9_jtyer")
 position = Vector2(1392, 8)
 shape = SubResource("RectangleShape2D_o33mq")
 
-[node name="Area2D_bedroom_interior" type="Area2D" parent="."]
+[node name="Area2D_exterior_to_lobby" type="Area2D" parent="."]
 z_index = 6
 script = ExtResource("9_jtyer")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_bedroom_interior"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_exterior_to_lobby"]
 z_index = 10
-position = Vector2(1584, 464)
+position = Vector2(1584, 479)
 shape = SubResource("RectangleShape2D_rj2vy")
 
 [editable path="NpcBoyIcecreamHair"]

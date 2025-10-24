@@ -27,7 +27,7 @@ var spawn_positions: Dictionary = {
 		},
 		"security_server": {
 			"position": Vector2(400, 480),
-			"animation": "idle_down"
+			"animation": "idle_back"
 		},
 		
 		"default": {
@@ -103,8 +103,8 @@ var spawn_positions: Dictionary = {
 	},
 	"hospital_lobby": {
 		"from_exterior_hospital_lobby": {
-			"position": Vector2(304.0, 248.0),
-			"animation": "idle_down"
+			"position": Vector2(462.0, 568.0),
+			"animation": "idle_back"
 		},
 		"from_hospital_2nd_floor": {
 			"position": Vector2(704.0, 248.0),
@@ -338,12 +338,19 @@ var spawn_positions: Dictionary = {
 		}
 	},
 	"apartment_lobby": {
+		"hatdog": {
+			"position": Vector2(1034.0, 360.0),
+			"animation": "idle_left"
+			
+			
+		},
+	
 		"apartment_exterior": {
 			"position": Vector2(864.0, 344.0),
 			"animation": "idle_down"
 			
 			
-		},
+		}
 	}
 }
 

@@ -92,7 +92,8 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"from_police_to_market": "police_to_market",
 		"from_market_to_baranggay": "market_to_baranggay",
 		"from_market_to_hospital": "market_to_hospital",
-		"from_market_to_police": "market_to_police"
+		"from_market_to_police": "market_to_police",
+		"Area2D_exterior_to_lobby":"hatdog"
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
@@ -124,7 +125,7 @@ func _get_target_scene_path_from_area_name() -> String:
 		"Area2D_exterior_police":
 			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		"Area2D_police_lobby_from_security_server":
-			return "res://scenes/environments/barangay hall/barangay_hall.tscn"
+			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		"Area2D_police_to_lobby":
 			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		# Hotel and Hospital Area2D transitions
@@ -179,6 +180,8 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/exterior/terminal_market.tscn"
 		"Area2D_bedroom_interior":
 			return "res://scenes/cutscenes/bedroomScene.tscn"
+		"Area2D_exterior_to_lobby":
+			return "res://scenes/environments/apartments/apartment_lobby.tscn"
 		"Area2D_apartment_exterior":
 			return "res://scenes/environments/apartments/apartment_lobby.tscn"
 		# Exterior area transitions

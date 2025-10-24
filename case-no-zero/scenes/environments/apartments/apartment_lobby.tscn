@@ -6623,7 +6623,7 @@ sources/3 = SubResource("TileSetAtlasSource_agxxj")
 size = Vector2(32, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qni5b"]
-size = Vector2(24, 34)
+size = Vector2(40, 48)
 
 [node name="ApartmentLobby" type="Node2D"]
 
@@ -6657,11 +6657,11 @@ position = Vector2(576, 488)
 shape = SubResource("RectangleShape2D_wflm8")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_ix6sl")]
-position = Vector2(864, 344)
+position = Vector2(1034, 360)
 
 [node name="Area2D_lobby_to_exterior_apartment" type="Area2D" parent="."]
 script = ExtResource("7_0q54g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_lobby_to_exterior_apartment"]
-position = Vector2(1092, 336)
+position = Vector2(1084, 336)
 shape = SubResource("RectangleShape2D_qni5b")
