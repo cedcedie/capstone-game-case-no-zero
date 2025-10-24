@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cij3qgvd5ycfl"]
+[gd_scene load_steps=55 format=4 uid="uid://cij3qgvd5ycfl"]
 
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="1_kcm3v"]
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="2_1ag0d"]
@@ -10,6 +10,21 @@
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_174m3"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_jtyer"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="10_emxvd"]
+[ext_resource type="PackedScene" uid="uid://dh1bxf14yssub" path="res://miravil/characters_terminal_market/npc_tm_guy1.tscn" id="11_r7kbu"]
+[ext_resource type="PackedScene" uid="uid://bldwg3jhj71u1" path="res://miravil/characters_terminal_market/npc_tm_guy2.tscn" id="12_un5o6"]
+[ext_resource type="PackedScene" uid="uid://6gn2llabxvjc" path="res://miravil/characters_terminal_market/npc_tm_guy3.tscn" id="13_vl1w1"]
+[ext_resource type="PackedScene" uid="uid://be4aukxv1s2tc" path="res://miravil/characters_terminal_market/npc_tm_guy4.tscn" id="14_ax3sf"]
+[ext_resource type="PackedScene" uid="uid://dqcv7yvqbsrxc" path="res://miravil/characters_terminal_market/npc_tm_guy5.tscn" id="15_ji8px"]
+[ext_resource type="PackedScene" uid="uid://cb54f8f5ls27k" path="res://miravil/characters_terminal_market/npc_tm_guy6.tscn" id="16_qrisb"]
+[ext_resource type="PackedScene" uid="uid://cbktl3h5bat7w" path="res://miravil/characters_terminal_market/npc_tm_guy7.tscn" id="17_yvvub"]
+[ext_resource type="PackedScene" uid="uid://w6pq2a5xkmyd" path="res://miravil/characters_terminal_market/npc_tm_guy8.tscn" id="18_qo5s0"]
+[ext_resource type="PackedScene" uid="uid://spuatnvucbgm" path="res://miravil/characters_terminal_market/npc_tm_guy9.tscn" id="19_th2xw"]
+[ext_resource type="PackedScene" uid="uid://bwrqnynm11jtt" path="res://miravil/characters_terminal_market/npc_tm_girl2.tscn" id="20_pw44w"]
+[ext_resource type="PackedScene" uid="uid://bwtapyl7fhsli" path="res://miravil/characters_terminal_market/npc_tm_girl6.tscn" id="21_s6vqj"]
+[ext_resource type="PackedScene" uid="uid://dwwe66xha3jf3" path="res://miravil/characters_terminal_market/npc_tm_girl5.tscn" id="22_gwk7j"]
+[ext_resource type="PackedScene" uid="uid://b5wrhgeyyih06" path="res://miravil/characters_terminal_market/npc_tm_girl4.tscn" id="23_dww58"]
+[ext_resource type="PackedScene" uid="uid://cy0eknl0lekhc" path="res://miravil/characters_terminal_market/npc_tm_girl3.tscn" id="24_gfxba"]
+[ext_resource type="PackedScene" uid="uid://cm0jruxbtorh8" path="res://miravil/characters_terminal_market/npc_tm_girl1.tscn" id="25_a1p1s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5t6fk"]
 texture = ExtResource("1_kcm3v")
@@ -54291,6 +54306,7 @@ animation = &"idle_front"
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerM" parent="." instance=ExtResource("8_174m3")]
+z_index = 4
 position = Vector2(1584, 592)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
@@ -54347,5 +54363,114 @@ z_index = 10
 position = Vector2(1584, 479)
 shape = SubResource("RectangleShape2D_rj2vy")
 
+[node name="NpcTmGuy1" parent="." instance=ExtResource("11_r7kbu")]
+z_index = 4
+position = Vector2(304, 216)
+
+[node name="AnimatedSprite2D" parent="NpcTmGuy1" index="0"]
+animation = &"idle_front"
+
+[node name="NpcTmGuy2" parent="." instance=ExtResource("12_un5o6")]
+z_index = 4
+position = Vector2(2720, 210)
+
+[node name="AnimatedSprite2D" parent="NpcTmGuy2" index="0"]
+animation = &"idle_left"
+autoplay = "idle_left"
+
+[node name="NpcTmGuy3" parent="." instance=ExtResource("13_vl1w1")]
+position = Vector2(1224, 744)
+
+[node name="AnimatedSprite2D" parent="NpcTmGuy3" index="0"]
+animation = &"idle_left"
+autoplay = "idle_left"
+
+[node name="CollisionShape2D" parent="NpcTmGuy3/Area2D" index="0"]
+z_index = 4
+
+[node name="NpcTmGuy4" parent="." instance=ExtResource("14_ax3sf")]
+z_index = 4
+position = Vector2(1928, 528)
+
+[node name="AnimatedSprite2D" parent="NpcTmGuy4" index="0"]
+animation = &"idle_front"
+
+[node name="NpcTmGuy5" parent="." instance=ExtResource("15_ji8px")]
+z_index = 4
+position = Vector2(288, 624)
+
+[node name="NpcTmGuy6" parent="." instance=ExtResource("16_qrisb")]
+z_index = 4
+position = Vector2(1160, 744)
+
+[node name="AnimatedSprite2D" parent="NpcTmGuy6" index="0"]
+animation = &"idle_right"
+
+[node name="NpcTmGuy7" parent="." instance=ExtResource("17_yvvub")]
+z_index = 4
+position = Vector2(976, 488)
+
+[node name="AnimatedSprite2D" parent="NpcTmGuy7" index="0"]
+animation = &"idle_front"
+
+[node name="NpcTmGuy8" parent="." instance=ExtResource("18_qo5s0")]
+z_index = 4
+position = Vector2(768, 688)
+
+[node name="NpcTmGuy9" parent="." instance=ExtResource("19_th2xw")]
+z_index = 4
+position = Vector2(568, 643)
+
+[node name="NpcTmGirl2" parent="." instance=ExtResource("20_pw44w")]
+z_index = 4
+position = Vector2(2168, 546)
+
+[node name="AnimatedSprite2D" parent="NpcTmGirl2" index="0"]
+animation = &"idle_front"
+
+[node name="NpcTmGirl6" parent="." instance=ExtResource("21_s6vqj")]
+z_index = 20
+position = Vector2(1440, 24)
+
+[node name="AnimatedSprite2D" parent="NpcTmGirl6" index="0"]
+animation = &"idle_front"
+
+[node name="NpcTmGirl5" parent="." instance=ExtResource("22_gwk7j")]
+z_index = 4
+position = Vector2(2288, 720)
+
+[node name="NpcTmGirl4" parent="." instance=ExtResource("23_dww58")]
+z_index = 4
+position = Vector2(832, 208)
+
+[node name="AnimatedSprite2D" parent="NpcTmGirl4" index="0"]
+animation = &"idle_left"
+
+[node name="NpcTmGirl3" parent="." instance=ExtResource("24_gfxba")]
+z_index = 4
+position = Vector2(1936, 768)
+
+[node name="AnimatedSprite2D" parent="NpcTmGirl3" index="0"]
+animation = &"idle_back"
+
+[node name="NpcTmGirl1" parent="." instance=ExtResource("25_a1p1s")]
+z_index = 4
+position = Vector2(456, 216)
+
+[node name="AnimatedSprite2D" parent="NpcTmGirl1" index="0"]
+animation = &"idle_front"
+
 [editable path="NpcBoyIcecreamHair"]
 [editable path="PlayerM"]
+[editable path="NpcTmGuy1"]
+[editable path="NpcTmGuy2"]
+[editable path="NpcTmGuy3"]
+[editable path="NpcTmGuy4"]
+[editable path="NpcTmGuy6"]
+[editable path="NpcTmGuy7"]
+[editable path="NpcTmGuy8"]
+[editable path="NpcTmGirl2"]
+[editable path="NpcTmGirl6"]
+[editable path="NpcTmGirl4"]
+[editable path="NpcTmGirl3"]
+[editable path="NpcTmGirl1"]

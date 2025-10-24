@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://vhixfm8q3x4u"]
+[gd_scene load_steps=55 format=4 uid="uid://vhixfm8q3x4u"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_d24fb"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_0iiqu"]
@@ -10,6 +10,22 @@
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="8_0iiqu"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_5dt8y"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="10_ci8hi"]
+[ext_resource type="PackedScene" uid="uid://bqr0txu1h7bch" path="res://miravil/character_police_station/npc_pl_po1_darwin.tscn" id="11_1r7a4"]
+[ext_resource type="PackedScene" uid="uid://cq1mt7kj1x50o" path="res://miravil/character_police_station/npc_pl_po2.tscn" id="12_1n6kl"]
+[ext_resource type="PackedScene" uid="uid://vbvbclwuvwti" path="res://miravil/character_police_station/npc_pl_po3.tscn" id="13_2f5sx"]
+[ext_resource type="PackedScene" uid="uid://drchewhntvv5f" path="res://miravil/character_police_station/npc_pl_po4.tscn" id="14_6s882"]
+[ext_resource type="PackedScene" uid="uid://cgif0hfwgj8h2" path="res://miravil/character_police_station/npc_pl_po5.tscn" id="15_0ayku"]
+[ext_resource type="PackedScene" uid="uid://dgxwoufisyog2" path="res://miravil/character_police_station/npc_pl_guy.tscn" id="16_5rsh6"]
+[ext_resource type="PackedScene" uid="uid://1n4nyc7f32i0" path="res://miravil/character_police_station/npc_pl_guy2.tscn" id="17_8h7wh"]
+[ext_resource type="PackedScene" uid="uid://bu3a2yx2tnmay" path="res://miravil/character_police_station/npc_pl_po6.tscn" id="18_yq1yh"]
+[ext_resource type="PackedScene" uid="uid://ba031fn7pbkrm" path="res://miravil/character_police_station/npc_pl_guy7.tscn" id="19_vbhek"]
+[ext_resource type="PackedScene" uid="uid://buyv1423lgb41" path="res://miravil/character_police_station/npc_pl_guy6.tscn" id="20_i42in"]
+[ext_resource type="PackedScene" uid="uid://m2lpajhjgibi" path="res://miravil/character_police_station/npc_pl_po7.tscn" id="21_x7dm7"]
+[ext_resource type="PackedScene" uid="uid://cm7e8tdl8gnj6" path="res://miravil/character_police_station/npc_pl_guy4.tscn" id="22_0i7l5"]
+[ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="23_0ubfl"]
+[ext_resource type="PackedScene" uid="uid://dq472mj2tndm4" path="res://miravil/character_police_station/npc_pl_guy9.tscn" id="24_plssp"]
+[ext_resource type="PackedScene" uid="uid://by4777i4kf22v" path="res://miravil/character_police_station/npc_pl_guy8.tscn" id="25_rhcut"]
+[ext_resource type="PackedScene" uid="uid://0mxtp5hy0ny6" path="res://miravil/character_police_station/npc_pl_guy5.tscn" id="26_tmrfp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cx553"]
 texture = ExtResource("1_d24fb")
@@ -47132,6 +47148,7 @@ position = Vector2(336.375, 928)
 shape = SubResource("RectangleShape2D_3wiqk")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_5dt8y")]
+z_index = 4
 position = Vector2(128, 1424)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
@@ -47172,4 +47189,118 @@ script = ExtResource("8_0iiqu")
 position = Vector2(1310.5, 1528.5)
 shape = SubResource("RectangleShape2D_qs6ny")
 
+[node name="NpcPlPo1Darwin" parent="." instance=ExtResource("11_1r7a4")]
+z_index = 10
+position = Vector2(672, 784)
+
+[node name="AnimatedSprite2D" parent="NpcPlPo1Darwin" index="0"]
+animation = &"idle_front"
+
+[node name="NpcPlPo2" parent="." instance=ExtResource("12_1n6kl")]
+z_index = 4
+position = Vector2(1784, 1208)
+
+[node name="AnimatedSprite2D" parent="NpcPlPo2" index="0"]
+animation = &"idle_left"
+autoplay = "idle_left"
+
+[node name="NpcPlPo3" parent="." instance=ExtResource("13_2f5sx")]
+z_index = 4
+position = Vector2(400, 1091)
+
+[node name="AnimatedSprite2D" parent="NpcPlPo3" index="0"]
+animation = &"idle_front"
+
+[node name="NpcPlPo4" parent="." instance=ExtResource("14_6s882")]
+z_index = 4
+position = Vector2(1231, 1216)
+
+[node name="NpcPlPo5" parent="." instance=ExtResource("15_0ayku")]
+z_index = 4
+position = Vector2(272, 1091)
+
+[node name="AnimatedSprite2D" parent="NpcPlPo5" index="0"]
+animation = &"idle_front"
+
+[node name="NpcPlGuy" parent="." instance=ExtResource("16_5rsh6")]
+z_index = 4
+position = Vector2(608, 1432)
+
+[node name="AnimatedSprite2D" parent="NpcPlGuy" index="0"]
+animation = &"idle_front"
+
+[node name="NpcPlGuy2" parent="." instance=ExtResource("17_8h7wh")]
+z_index = 4
+position = Vector2(2360, 1240)
+
+[node name="AnimatedSprite2D" parent="NpcPlGuy2" index="0"]
+animation = &"idle_left"
+
+[node name="NpcPlPo6" parent="." instance=ExtResource("18_yq1yh")]
+z_index = 4
+position = Vector2(2192, 1376)
+
+[node name="AnimatedSprite2D" parent="NpcPlPo6" index="0"]
+animation = &"idle_front"
+
+[node name="NpcPlGuy7" parent="." instance=ExtResource("19_vbhek")]
+z_index = 4
+position = Vector2(136, 976)
+
+[node name="AnimatedSprite2D" parent="NpcPlGuy7" index="0"]
+animation = &"idle_back"
+
+[node name="NpcPlGuy6" parent="." instance=ExtResource("20_i42in")]
+z_index = 4
+position = Vector2(1664, 64)
+
+[node name="NpcPlPo7" parent="." instance=ExtResource("21_x7dm7")]
+z_index = 4
+position = Vector2(2320, 1376)
+
+[node name="AnimatedSprite2D" parent="NpcPlPo7" index="0"]
+animation = &"idle_front"
+
+[node name="NpcPlGuy4" parent="." instance=ExtResource("22_0i7l5")]
+z_index = 4
+position = Vector2(2208, 120)
+
+[node name="NpcGuy3" parent="." instance=ExtResource("23_0ubfl")]
+z_index = 4
+position = Vector2(1104, 248)
+
+[node name="AnimatedSprite2D" parent="NpcGuy3" index="0"]
+animation = &"idle_front"
+autoplay = ""
+
+[node name="NpcPlGuy9" parent="." instance=ExtResource("24_plssp")]
+z_index = 4
+position = Vector2(2144, 1067)
+
+[node name="AnimatedSprite2D" parent="NpcPlGuy9" index="0"]
+animation = &"idle_front"
+
+[node name="NpcPlGuy8" parent="." instance=ExtResource("25_rhcut")]
+z_index = 4
+position = Vector2(1152, 520)
+
+[node name="NpcPlGuy5" parent="." instance=ExtResource("26_tmrfp")]
+z_index = 4
+position = Vector2(1960, 56)
+
+[node name="AnimatedSprite2D" parent="NpcPlGuy5" index="0"]
+animation = &"idle_front"
+
 [editable path="PlayerM"]
+[editable path="NpcPlPo1Darwin"]
+[editable path="NpcPlPo2"]
+[editable path="NpcPlPo3"]
+[editable path="NpcPlPo5"]
+[editable path="NpcPlGuy"]
+[editable path="NpcPlGuy2"]
+[editable path="NpcPlPo6"]
+[editable path="NpcPlGuy7"]
+[editable path="NpcPlPo7"]
+[editable path="NpcGuy3"]
+[editable path="NpcPlGuy9"]
+[editable path="NpcPlGuy5"]

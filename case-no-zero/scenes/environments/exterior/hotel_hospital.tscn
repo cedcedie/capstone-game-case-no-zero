@@ -20703,6 +20703,7 @@ position = Vector2(432, 1218.75)
 shape = SubResource("RectangleShape2D_liure")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_2vggs")]
+z_index = 4
 position = Vector2(176, 2088)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
@@ -20769,6 +20770,9 @@ position = Vector2(273, 175)
 [node name="AnimatedSprite2D" parent="NpcHtlF4" index="0"]
 animation = &"idle_front"
 
+[node name="CollisionShape2D" parent="NpcHtlF4/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcHtlEm1" parent="." instance=ExtResource("14_6nhqy")]
 z_index = 4
 position = Vector2(530, 1294)
@@ -20777,12 +20781,18 @@ position = Vector2(530, 1294)
 animation = &"idle_right"
 autoplay = "idle_right"
 
+[node name="CollisionShape2D" parent="NpcHtlEm1/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcHtlEm2" parent="." instance=ExtResource("15_j68ja")]
 z_index = 4
 position = Vector2(270, 1382)
 
 [node name="AnimatedSprite2D" parent="NpcHtlEm2" index="0"]
 animation = &"idle_front"
+
+[node name="CollisionShape2D" parent="NpcHtlEm2/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcHtlEm3" parent="." instance=ExtResource("16_l2ykj")]
 position = Vector2(592, 1294)
@@ -20791,6 +20801,9 @@ position = Vector2(592, 1294)
 animation = &"idle_left"
 autoplay = "idle_left"
 
+[node name="CollisionShape2D" parent="NpcHtlEm3/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcHtlEm4" parent="." instance=ExtResource("17_fkgri")]
 z_index = 4
 position = Vector2(445, 1646)
@@ -20798,6 +20811,9 @@ position = Vector2(445, 1646)
 [node name="AnimatedSprite2D" parent="NpcHtlEm4" index="0"]
 animation = &"idle_left"
 autoplay = "idle_left"
+
+[node name="CollisionShape2D" parent="NpcHtlEm4/Area2D" index="0"]
+z_index = 4
 
 [node name="NpcHtlEm5" parent="." instance=ExtResource("18_01pqq")]
 z_index = 10
@@ -20840,6 +20856,9 @@ position = Vector2(720, 2542)
 [node name="AnimatedSprite2D" parent="NpcHtlGuy2" index="0"]
 animation = &"idle_front"
 
+[node name="CollisionShape2D" parent="NpcHtlGuy2/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcHtlGirl2" parent="." instance=ExtResource("24_vwtp4")]
 z_index = 4
 position = Vector2(459, 2542)
@@ -20848,9 +20867,15 @@ position = Vector2(459, 2542)
 animation = &"idle_left"
 autoplay = "idle_left"
 
+[node name="CollisionShape2D" parent="NpcHtlGirl2/Area2D" index="0"]
+z_index = 4
+
 [node name="NpcHtlGirl1" parent="." instance=ExtResource("25_3jp7t")]
 z_index = 4
 position = Vector2(402, 2542)
+
+[node name="CollisionShape2D" parent="NpcHtlGirl1/Area2D" index="0"]
+z_index = 4
 
 [editable path="PlayerM"]
 [editable path="NpcHtlF1"]

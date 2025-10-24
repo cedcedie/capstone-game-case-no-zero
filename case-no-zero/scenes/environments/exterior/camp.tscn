@@ -30673,6 +30673,7 @@ position = Vector2(400, 704)
 script = ExtResource("7_xbrck")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_og0j4")]
+z_index = 4
 position = Vector2(1475, 272)
 
 [node name="from_camp_to_barangay" type="Area2D" parent="."]
