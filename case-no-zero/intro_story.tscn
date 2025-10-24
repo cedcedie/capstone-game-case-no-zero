@@ -79,7 +79,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 7, 14, 21, 28, 40, 45, 47, 49),
+"times": PackedFloat32Array(0.1, 7, 14, 21, 28, 40, 45, 47, 49),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -158,7 +158,6 @@ metadata/_edit_use_anchors_ = true
 libraries = {
 &"": SubResource("AnimationLibrary_ldhe1")
 }
-autoplay = "intro"
 
 [node name="mysteryBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hdxvy")

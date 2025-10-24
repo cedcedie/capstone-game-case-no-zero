@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://0xg0m5dd5h0o"]
+
+[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="1_1075l"]
+[ext_resource type="Script" uid="uid://b23g0g8pmtxuh" path="res://scripts/ui/settings.gd" id="1_settings_script"]
+[ext_resource type="FontFile" uid="uid://cosmobyr7yxle" path="res://assets/fonts/PixelOperatorMono-Bold.ttf" id="3_kplyb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kplyb"]
+line_spacing = 2.0
+font = ExtResource("3_kplyb")
+font_size = 19
+font_color = Color(0, 0, 0, 1)
+
+[node name="Settings" type="CanvasLayer"]
+script = ExtResource("1_settings_script")
+
+[node name="UIContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -152.0
+offset_right = 236.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsContentBG" type="NinePatchRect" parent="UIContainer"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -252.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.950997, 1)
+texture = ExtResource("1_1075l")
+region_rect = Rect2(24, 502, 48, 50)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="SettingsLabel" type="Label" parent="UIContainer/SettingsContentBG"]
+layout_mode = 0
+offset_left = 109.359
+offset_top = 28.0
+offset_right = 250.359
+offset_bottom = 47.0
+text = "Settings"
+label_settings = SubResource("LabelSettings_kplyb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsPlaceholder" type="Label" parent="UIContainer/SettingsContentBG"]
+layout_mode = 0
+offset_left = 109.359
+offset_top = 52.0
+offset_right = 437.359
+offset_bottom = 108.0
+text = "Settings UI coming soon..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsTab" type="NinePatchRect" parent="UIContainer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1075l")
+region_rect = Rect2(928, 384, 32, 32)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="SettingsIcon" type="NinePatchRect" parent="UIContainer/SettingsTab"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_1075l")
+region_rect = Rect2(320, 370, 30, 30)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Button" type="Button" parent="UIContainer/SettingsTab"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+flat = true

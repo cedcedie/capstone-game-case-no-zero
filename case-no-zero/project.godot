@@ -27,12 +27,11 @@ SpawnManager="*res://scripts/managers/SpawnManager.gd"
 DialogChooser="*res://scenes/ui/DialogChooser.tscn"
 CheckpointManager="*res://scripts/managers/CheckpointManager.gd"
 ScenePreloader="*res://scripts/managers/ScenePreloader.gd"
-EvidenceInventorySettings="*res://EvidenceInventory.tscn"
-Settings="*res://Settings.tscn"
 VoiceBlipManager="*res://scripts/managers/voice_blip_manager.gd"
 CameraZoomManager="*res://scripts/managers/CameraZoomManager.gd"
 AudioManager="*res://scripts/managers/AudioManager.gd"
-AmbientAudioManager="*res://scripts/managers/AmbientAudioManager.gd"
+EvidenceInventorySettings="*res://EvidenceInventorySettings.tscn"
+Settings="*res://Settings.tscn"
 
 [dialogic]
 
@@ -92,7 +91,8 @@ ui_select={
 }
 ui_cancel={
 "deadzone": 0.5,
-"events": []
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 ui_left={
 "deadzone": 0.5,

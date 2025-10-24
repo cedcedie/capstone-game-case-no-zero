@@ -306,16 +306,20 @@ func _find_player_camera():
 
 func _input(event):
 	"""Handle input for evidence inventory"""
-	# Check if bedroom cutscene is completed
-	var checkpoint_manager = get_node_or_null("/root/CheckpointManager")
-	var bedroom_cutscene_completed = false
+	print("🔍 DEBUG Evidence: _input called with event: ", event)
 	
-	if checkpoint_manager:
-		bedroom_cutscene_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
+	# Check if we're in blocked scenes (main_menu, chapter_menu, intro_story)
+	var in_blocked_scene = false
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		var scene_name = current_scene.name.to_lower()
+		print("🔍 DEBUG Evidence: Current scene name: ", scene_name)
+		if "introstory" in scene_name or "mainmenu" in scene_name or "chaptermenu" in scene_name:
+			in_blocked_scene = true
+			print("🔍 DEBUG Evidence: In blocked scene: ", scene_name)
 	
 	# Check if we're in a cutscene - comprehensive detection for all scenes
 	var in_cutscene = false
-	var current_scene = get_tree().current_scene
 	var current_scene_name = ""
 	
 	if current_scene:
@@ -369,23 +373,23 @@ func _input(event):
 			in_cutscene = false  # Allow during evidence collection phase
 			print("📋 Evidence collection phase - TAB allowed")
 	
-	# Check if we're in a menu scene (TAB not allowed)
+	# Check if we're in a menu scene (TAB not allowed) - separate from blocked scenes
 	var in_menu_scene = false
 	if current_scene:
 		var scene_name = current_scene.name.to_lower()
-		if "intro_story" in scene_name or "main_menu" in scene_name or "chapter_menu" in scene_name:
+		if "main_menu" in scene_name or "chapter_menu" in scene_name:
 			in_menu_scene = true
 			print("📋 Menu scene detected - TAB blocked:", scene_name)
 	
-	# Only allow evidence inventory access after bedroom cutscene is completed
+	# Only allow evidence inventory access (not in blocked scenes)
 	if event.is_action_pressed("evidence_inventory"):
-		if not bedroom_cutscene_completed:
-			print("⚠️ Evidence inventory access denied - bedroom cutscene not completed")
-		elif in_menu_scene:
-			print("⚠️ Evidence inventory access blocked in menu scene: " + current_scene_name)
+		print("🔍 DEBUG Evidence: TAB pressed!")
+		if in_blocked_scene:
+			print("⚠️ Evidence inventory access denied - in blocked scene")
 		elif in_cutscene:
 			print("⚠️ Evidence inventory access blocked during cutscene in scene: " + current_scene_name)
 		else:
+			print("🔍 DEBUG Evidence: TAB allowed, is_visible = ", is_visible)
 			# Check if Settings is visible or just closed - if so, don't toggle Evidence
 			var settings_ui = get_node_or_null("/root/Settings")
 			if settings_ui and (settings_ui.is_visible or settings_ui.just_closed):
@@ -396,7 +400,7 @@ func _input(event):
 				# Toggle Evidence Inventory normally
 				toggle_evidence_inventory()
 				get_viewport().set_input_as_handled()
-				print("📋 Evidence inventory toggled via TAB (bedroom cutscene completed)")
+				print("📋 Evidence inventory toggled via TAB (not in blocked scenes)")
 	
 	# Handle closing the evidence inventory with ESC
 	if is_visible and event.is_action_pressed("ui_cancel"):

@@ -75,17 +75,20 @@ func hide_settings():
 
 func _input(event):
 	"""Handle input for opening/closing settings"""
+	print("🔍 DEBUG Settings: _input called with event: ", event)
 	
-	# Check cutscene conditions (same as Evidence Inventory)
-	var checkpoint_manager = get_node_or_null("/root/CheckpointManager")
-	var bedroom_cutscene_completed = false
-	
-	if checkpoint_manager:
-		bedroom_cutscene_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
+	# Check if we're in blocked scenes (main_menu, chapter_menu, intro_story)
+	var in_blocked_scene = false
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		var scene_name = current_scene.name.to_lower()
+		print("🔍 DEBUG Settings: Current scene name: ", scene_name)
+		if "introstory" in scene_name or "mainmenu" in scene_name or "chaptermenu" in scene_name:
+			in_blocked_scene = true
+			print("🔍 DEBUG Settings: In blocked scene: ", scene_name)
 	
 	# Check if we're in a cutscene (any scene with cutscene_played = false)
 	var in_cutscene = false
-	var current_scene = get_tree().current_scene
 	if current_scene and current_scene.has_method("_input"):
 		# Check if this scene has cutscene_played property and it's false
 		if "cutscene_played" in current_scene and not current_scene.cutscene_played:
@@ -118,50 +121,21 @@ func _input(event):
 		if "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
 			in_cutscene = false  # Allow during evidence collection phase
 	
-	# Check if we're in a menu scene (ESC not allowed)
+	# Check if we're in a menu scene (ESC not allowed) - separate from blocked scenes
 	var in_menu_scene = false
 	if current_scene:
 		var scene_name = current_scene.name.to_lower()
-		if "intro_story" in scene_name or "main_menu" in scene_name or "chapter_menu" in scene_name:
+		if "main_menu" in scene_name or "chapter_menu" in scene_name:
 			in_menu_scene = true
 			print("📋 Menu scene detected - ESC blocked:", scene_name)
 	
-	# Handle closing the settings with TAB (evidence_inventory action)
-	if event.is_action_pressed("evidence_inventory"):
-		# Check if TAB action is allowed
-		if not bedroom_cutscene_completed:
-			print("⚠️ Settings TAB blocked - bedroom cutscene not completed")
-			# Don't consume input - let it be handled by other systems
-			return
-		elif in_menu_scene:
-			print("⚠️ Settings TAB blocked - in menu scene")
-			# Don't consume input - let it be handled by other systems
-			return
-		elif in_cutscene:
-			print("⚠️ Settings TAB blocked - in cutscene (except line 12)")
-			# Don't consume input - let it be handled by other systems
-			return
-		
-		# All checks passed - just close Settings (don't show Evidence Inventory)
-		just_closed = true
-		hide_settings()
-		get_viewport().set_input_as_handled()
-		print("📋 Settings closed via TAB (unified hide)")
-		
-		# Reset flag after a short delay to allow Evidence Inventory to check it
-		await get_tree().create_timer(0.1).timeout
-		just_closed = false
+	# TAB is handled by EvidenceInventorySettings, not here
 	
 	# Handle opening/closing the settings with ESC
 	if event.is_action_pressed("ui_cancel"):
-		if in_menu_scene:
-			print("⚠️ Settings ESC blocked - in menu scene")
-			# Don't consume input - let it be handled by other systems
-			return
-		
-		# Check if bedroom cutscene is completed (same as TAB)
-		if not bedroom_cutscene_completed:
-			print("⚠️ Settings ESC blocked - bedroom cutscene not completed")
+		print("🔍 DEBUG Settings: ESC pressed!")
+		if in_blocked_scene:
+			print("⚠️ Settings ESC blocked - in blocked scene")
 			# Don't consume input - let it be handled by other systems
 			return
 		elif in_cutscene:
@@ -169,6 +143,7 @@ func _input(event):
 			# Don't consume input - let it be handled by other systems
 			return
 		
+		print("🔍 DEBUG Settings: ESC allowed, is_visible = ", is_visible)
 		if is_visible:
 			# If settings is visible, close it
 			hide_settings()
