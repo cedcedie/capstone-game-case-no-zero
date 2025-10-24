@@ -51229,6 +51229,9 @@ position = Vector2(128, 496)
 [node name="AnimatedSprite2D" parent="NpcGuy4" index="0"]
 animation = &"idle_front"
 
+[node name="Area2D" parent="NpcGuy4" index="2"]
+visible = false
+
 [node name="from_morgue_to_camp" type="Area2D" parent="."]
 position = Vector2(48, -168)
 script = ExtResource("9_8eggf")
