@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://sot27prphlm3"]
+[gd_scene load_steps=14 format=3 uid="uid://sot27prphlm3"]
 
 [ext_resource type="Script" uid="uid://cdwhedo4dh6tl" path="res://scenes/ui/UI by jer/scripts/chapter_menu.gd" id="1_42srx"]
 [ext_resource type="Texture2D" uid="uid://osehm2q6lrl5" path="res://scenes/ui/UI by jer/used in UI/istockphoto-1333010525-612x612.jpg" id="1_uvvwn"]
-[ext_resource type="FontFile" uid="uid://r31pruqk51m3" path="res://scenes/ui/UI by jer/used in UI/Super Maples.ttf" id="2_673gl"]
+[ext_resource type="FontFile" uid="uid://da1sanbtdceii" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_rte7s"]
+[ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="4_74n24"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_673gl"]
 texture = ExtResource("1_uvvwn")
@@ -94,15 +95,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -301.5
-offset_right = 301.5
-offset_bottom = 184.0
+offset_left = -591.0
+offset_top = 37.0
+offset_right = 591.0
+offset_bottom = 221.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_673gl")
-theme_override_font_sizes/font_size = 150
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_rte7s")
+theme_override_font_sizes/font_size = 100
 text = "Chapters"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -130,7 +132,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_673gl")
+theme_override_fonts/font = ExtResource("4_74n24")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_673gl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_42srx")
@@ -146,7 +148,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_673gl")
+theme_override_fonts/font = ExtResource("4_74n24")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_673gl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_42srx")
@@ -169,8 +171,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_673gl")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("4_74n24")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_42srx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_38s6b")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a0ctx")

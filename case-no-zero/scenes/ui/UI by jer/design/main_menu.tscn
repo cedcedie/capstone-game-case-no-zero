@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgn7dn0hxqa60"]
+[gd_scene load_steps=15 format=3 uid="uid://bgn7dn0hxqa60"]
 
 [ext_resource type="Script" uid="uid://6aqfoyeiifwg" path="res://scenes/ui/UI by jer/scripts/main_menu.gd" id="1_ey8fa"]
 [ext_resource type="Texture2D" uid="uid://htl1xhda2x6v" path="res://scenes/ui/UI by jer/used in UI/84bb17a4-db7a-4f17-b1fa-f860766f7163.jpeg" id="2_o08tu"]
-[ext_resource type="FontFile" uid="uid://r31pruqk51m3" path="res://scenes/ui/UI by jer/used in UI/Super Maples.ttf" id="3_adqss"]
+[ext_resource type="FontFile" uid="uid://da1sanbtdceii" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_y3fev"]
+[ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="4_t8b3b"]
 [ext_resource type="Script" uid="uid://dyq85je2d7iv2" path="res://scenes/ui/UI by jer/scripts/audio_control.gd" id="5_adqss"]
 [ext_resource type="Script" uid="uid://bofb3p2uunbxu" path="res://scenes/ui/UI by jer/scripts/fullscreen_control.gd" id="6_y3fev"]
 
@@ -88,8 +89,8 @@ offset_bottom = 214.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/font = ExtResource("3_adqss")
-theme_override_font_sizes/font_size = 120
+theme_override_fonts/font = ExtResource("3_y3fev")
+theme_override_font_sizes/font_size = 100
 text = "Case No Zero"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -117,8 +118,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_adqss")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("4_t8b3b")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mmh7l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mmh7l")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d5agq")
@@ -133,8 +134,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_adqss")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("4_t8b3b")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mmh7l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mmh7l")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d5agq")
@@ -149,8 +150,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_adqss")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("4_t8b3b")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mmh7l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mmh7l")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d5agq")
@@ -178,8 +179,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_adqss")
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("3_y3fev")
+theme_override_font_sizes/font_size = 30
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -203,8 +204,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_adqss")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("4_t8b3b")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mmh7l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mmh7l")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d5agq")
@@ -232,7 +233,10 @@ theme_override_constants/separation = 15
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_adqss")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("4_t8b3b")
 theme_override_font_sizes/font_size = 20
 text = " Master volume"
 
@@ -256,8 +260,10 @@ theme_override_constants/separation = 0
 [node name="Fullscreen Control" type="CheckButton" parent="Options/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_adqss")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_t8b3b")
 theme_override_font_sizes/font_size = 20
 text = "FULLSCREEN"
 script = ExtResource("6_y3fev")
