@@ -1,0 +1,137 @@
+[gd_scene load_steps=12 format=3 uid="uid://du8l2c37512qq"]
+
+[ext_resource type="Texture2D" uid="uid://dnb645u75y3na" path="res://miravil/sprites_camp_3/npc_cmp_b8.png" id="1_btq8p"]
+[ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_6lyup"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5wa0"]
+atlas = ExtResource("1_btq8p")
+region = Rect2(192, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh6mj"]
+atlas = ExtResource("1_btq8p")
+region = Rect2(224, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usnjs"]
+atlas = ExtResource("1_btq8p")
+region = Rect2(256, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y30g"]
+atlas = ExtResource("1_btq8p")
+region = Rect2(288, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxufw"]
+atlas = ExtResource("1_btq8p")
+region = Rect2(320, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as5h6"]
+atlas = ExtResource("1_btq8p")
+region = Rect2(352, 256, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cyw6"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle_back",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_front",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"read_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5wa0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh6mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usnjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y30g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxufw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as5h6")
+}],
+"loop": true,
+"name": &"sit_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_back",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuepn"]
+size = Vector2(20, 17)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i766m"]
+radius = 26.0192
+
+[node name="NpcCmpB8" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7cyw6")
+animation = &"sit_left"
+autoplay = "sit_left"
+offset = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_xuepn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_i766m")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -64.0
+offset_top = -70.0
+offset_right = 64.0
+offset_bottom = -45.0
+theme_override_fonts/font = ExtResource("2_6lyup")
+theme_override_font_sizes/font_size = 14
+text = "Press E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_group_ = true

@@ -229,8 +229,8 @@ radius = 26.0192
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gm5db")
-animation = &"idle_right"
-autoplay = "read_front"
+animation = &"idle_front"
+autoplay = "idle_front"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
