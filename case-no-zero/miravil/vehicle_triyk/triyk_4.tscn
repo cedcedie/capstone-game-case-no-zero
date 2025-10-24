@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://0hfqkpj2i2t4"]
+
+[ext_resource type="Texture2D" uid="uid://dgfky3avdm6u7" path="res://miravil/vehicle/vehicle_1.png" id="1_jw0ve"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqigv"]
+atlas = ExtResource("1_jw0ve")
+region = Rect2(0, 75, 60, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7rtu"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle_back",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_front",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"read_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqigv")
+}],
+"loop": true,
+"name": &"triyk",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_back",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_moocw"]
+size = Vector2(44, 28)
+
+[node name="Triyk4" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h7rtu")
+animation = &"triyk"
+autoplay = "triyk"
+offset = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -18)
+shape = SubResource("RectangleShape2D_moocw")

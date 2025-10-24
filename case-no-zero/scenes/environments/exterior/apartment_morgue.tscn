@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://dvgkhr0qxnpx0"]
+[gd_scene load_steps=65 format=4 uid="uid://dvgkhr0qxnpx0"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_7v4vq"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_xphjy"]
@@ -30,7 +30,13 @@
 [ext_resource type="PackedScene" uid="uid://b84ieuct4jt0x" path="res://miravil/characters/npc_yellow_glass_man.tscn" id="28_xrcoi"]
 [ext_resource type="PackedScene" uid="uid://umei5rc0s03h" path="res://miravil/characters/npc_girl_1.tscn" id="29_0gp1r"]
 [ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="30_mhdqn"]
+[ext_resource type="PackedScene" uid="uid://0hfqkpj2i2t4" path="res://miravil/vehicle_triyk/triyk_4.tscn" id="31_1em5d"]
 [ext_resource type="PackedScene" uid="uid://ngiiiml5ij1" path="res://miravil/characters/npc_pinkish.tscn" id="31_mnau3"]
+[ext_resource type="PackedScene" uid="uid://bk8koyshpdemf" path="res://miravil/vehicle_triyk/triyk_3.tscn" id="32_61kig"]
+[ext_resource type="PackedScene" uid="uid://cdn7j00wvtqbo" path="res://miravil/vehicle_triyk/triyk_2.tscn" id="33_qoipj"]
+[ext_resource type="PackedScene" uid="uid://blts6sose5f61" path="res://miravil/vehicle_triyk/triyk_6.tscn" id="34_kev02"]
+[ext_resource type="PackedScene" uid="uid://dko0ulikt57nb" path="res://miravil/vehicle_triyk/triyk_5.tscn" id="35_fl2h6"]
+[ext_resource type="PackedScene" uid="uid://c7nwhqwwg708t" path="res://miravil/vehicle_triyk/triyk_1.tscn" id="36_jtlfh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3ex5"]
 texture = ExtResource("1_7v4vq")
@@ -51252,6 +51258,30 @@ position = Vector2(2440, 880)
 
 [node name="NpcGuy3" parent="." instance=ExtResource("30_mhdqn")]
 position = Vector2(1184, 184)
+
+[node name="Triyk4" parent="." instance=ExtResource("31_1em5d")]
+position = Vector2(2488, 184)
+scale = Vector2(1.70253, 1.67094)
+
+[node name="Triyk3" parent="." instance=ExtResource("32_61kig")]
+position = Vector2(440, 1024)
+scale = Vector2(1.70253, 1.67094)
+
+[node name="Triyk2" parent="." instance=ExtResource("33_qoipj")]
+position = Vector2(342, 1024)
+scale = Vector2(1.70253, 1.67094)
+
+[node name="Triyk6" parent="." instance=ExtResource("34_kev02")]
+position = Vector2(2288, 184)
+scale = Vector2(1.70253, 1.67094)
+
+[node name="Triyk5" parent="." instance=ExtResource("35_fl2h6")]
+position = Vector2(2392, 184)
+scale = Vector2(1.70253, 1.67094)
+
+[node name="Triyk1" parent="." instance=ExtResource("36_jtlfh")]
+position = Vector2(243, 1024)
+scale = Vector2(1.70253, 1.67094)
 
 [node name="NpcPinkish" parent="." instance=ExtResource("31_mnau3")]
 z_index = 20
