@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhfehxiq0s4g7"]
+
+[ext_resource type="Texture2D" uid="uid://dgfky3avdm6u7" path="res://miravil/vehicle/vehicle_1.png" id="1_lbkj7"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_lbkj7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
