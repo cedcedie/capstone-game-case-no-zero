@@ -206,6 +206,9 @@ func _display_evidence(evidence_id: String):
 		evidence_display.visible = true
 	else:
 		evidence_display.visible = false
+	
+	# Add click detection for detailed examination
+	_setup_evidence_click_detection(evidence_id)
 
 func _get_evidence_texture(evidence_id: String) -> Texture2D:
 	"""Get the texture for evidence based on its ID"""
@@ -382,6 +385,43 @@ func _on_evidence_slot_hover(evidence_index: int, is_hovering: bool):
 
 # Tab click functions removed - icons are no longer clickable
 
+
+func _setup_evidence_click_detection(evidence_id: String):
+	"""Setup click detection for detailed evidence examination"""
+	# Connect the evidence display to click detection
+	if evidence_display:
+		# Disconnect any existing connections first
+		if evidence_display.gui_input.is_connected(_on_evidence_display_clicked):
+			evidence_display.gui_input.disconnect(_on_evidence_display_clicked)
+		
+		# Connect the new signal
+		evidence_display.gui_input.connect(_on_evidence_display_clicked.bind(evidence_id))
+
+func _on_evidence_display_clicked(event: InputEvent, evidence_id: String):
+	"""Handle clicks on evidence display for detailed examination"""
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_show_evidence_details(evidence_id)
+
+func _show_evidence_details(evidence_id: String):
+	"""Show detailed evidence information in a popup or expanded view"""
+	var evidence_info = evidence_data.evidence[evidence_id]
+	
+	if "details" in evidence_info:
+		var details = evidence_info.details
+		var detail_text = ""
+		
+		# Build detailed information text
+		for key in details:
+			detail_text += key + ": " + details[key] + "\n\n"
+		
+		# Show detailed information (you can modify this to show in a popup or expand the description)
+		evidence_description.text = evidence_info.description + "\n\n" + "=== DETALYADONG IMPORMASYON ===\n\n" + detail_text
+		
+		print("🔍 Detailed examination of " + evidence_info.name + ":")
+		for key in details:
+			print("  " + key + ": " + details[key])
+	else:
+		print("⚠️ No detailed information available for " + evidence_info.name)
 
 func _on_evidence_description_gui_input(event: InputEvent) -> void:
 	pass # Replace with function body.

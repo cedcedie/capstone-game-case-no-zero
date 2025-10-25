@@ -59,6 +59,8 @@ func get_beep_for_speaker(speaker: String) -> String:
 			return "res://assets/audio/sfx/bleep006.ogg"  # Kapitana gets bleep006
 		"po1 darwin", "po1_darwin":
 			return "res://assets/audio/sfx/bleep007.ogg"  # PO1 Darwin gets bleep007
+		"dr. leticia salvador", "dr leticia salvador", "leticia salvador", "dr_leticia_salvador":
+			return "res://assets/audio/sfx/bleep008.ogg"  # Dr. Leticia Salvador gets bleep008
 		"narrator", "system":
 			return "res://assets/audio/sfx/bleep004.ogg"  # Narrator gets bleep004
 		_:
@@ -77,6 +79,8 @@ func get_pitch_for_speaker(speaker: String) -> float:
 			return 0.7  # Lower pitch for authority figure
 		"po1 darwin", "po1_darwin":
 			return 0.9  # Medium pitch for police officer
+		"dr. leticia salvador", "dr leticia salvador", "leticia salvador", "dr_leticia_salvador":
+			return 0.8  # Lower pitch for medical professional
 		"narrator", "system":
 			return 1.0  # Normal pitch
 		_:
