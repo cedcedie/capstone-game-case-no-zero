@@ -11,11 +11,11 @@ var is_reverse: bool = false  # Track if walking in reverse
 
 # Rectangle path points
 var path_points: Array[Vector2] = [
-	Vector2(160.0, 1387.0),    # Start point
-	Vector2(160.0, 480.0),     # Go up
-	Vector2(2464.0, 480.0),   # Go right
-	Vector2(2464.0, 1422.0),  # Go down
-	Vector2(160.0, 1387.0)    # Return to start
+	Vector2(0.0, -24.0),    # Start point
+	Vector2(0.0, -24.0),     # Go up
+	Vector2(0.0, -24.0),   # Go right
+	Vector2(0.0, -24.0),  # Go down
+	Vector2(0.0, -24.0)    # Return to start
 ]
 
 func _ready():

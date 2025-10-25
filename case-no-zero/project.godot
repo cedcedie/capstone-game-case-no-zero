@@ -11,7 +11,9 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://c303d5mygsrlc"
+
+run/main_scene="uid://vhixfm8q3x4u"
+
 config/features=PackedStringArray("4.4")
 
 [audio]

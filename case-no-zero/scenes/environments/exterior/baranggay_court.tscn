@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://ddi78wtnxtop5" path="res://miravil/characters_2/npc_bc_girl3.tscn" id="20_pupqa"]
 [ext_resource type="PackedScene" uid="uid://b2wpxg54ruupw" path="res://miravil/characters_2/npc_bc_girl4.tscn" id="21_gbbmp"]
 [ext_resource type="PackedScene" uid="uid://8b0jc1i5qgvc" path="res://miravil/characters_2/npc_bc_girl5.tscn" id="22_uk4ld"]
+[ext_resource type="Script" uid="uid://cu3hk0cpgwlho" path="res://miravil/characters_2/npc_bc_girl_5.gd" id="23_4rsub"]
 [ext_resource type="PackedScene" uid="uid://c5mweveda1y56" path="res://miravil/characters_2/npc_bc_furry.tscn" id="23_bpkmu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgmrl"]
@@ -42193,7 +42194,8 @@ autoplay = "idle_front"
 
 [node name="NpcBcGirl5" parent="." instance=ExtResource("22_uk4ld")]
 z_index = 4
-position = Vector2(1072, 1120)
+position = Vector2(240, 1115)
+script = ExtResource("23_4rsub")
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl5" index="0"]
 animation = &"idle_front"

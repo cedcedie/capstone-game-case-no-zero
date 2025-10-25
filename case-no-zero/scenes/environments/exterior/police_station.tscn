@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="8_0iiqu"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_5dt8y"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="10_ci8hi"]
-[ext_resource type="PackedScene" uid="uid://bqr0txu1h7bch" path="res://miravil/character_police_station/po1Darwin.tscn" id="11_1r7a4"]
+[ext_resource type="PackedScene" path="res://miravil/character_police_station/po1Darwin.tscn" id="11_1r7a4"]
 [ext_resource type="PackedScene" uid="uid://cq1mt7kj1x50o" path="res://miravil/character_police_station/npc_pl_po2.tscn" id="12_1n6kl"]
 [ext_resource type="PackedScene" uid="uid://vbvbclwuvwti" path="res://miravil/character_police_station/npc_pl_po3.tscn" id="13_2f5sx"]
 [ext_resource type="PackedScene" uid="uid://drchewhntvv5f" path="res://miravil/character_police_station/npc_pl_po4.tscn" id="14_6s882"]
@@ -47224,7 +47224,7 @@ animation = &"idle_front"
 
 [node name="NpcPlGuy" parent="." instance=ExtResource("16_5rsh6")]
 z_index = 4
-position = Vector2(608, 1432)
+position = Vector2(603, 1426)
 
 [node name="AnimatedSprite2D" parent="NpcPlGuy" index="0"]
 animation = &"idle_front"

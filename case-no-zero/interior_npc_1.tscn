@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://d8sempmqek50"]
+
+[node name="InteriorNpc1" type="CharacterBody2D"]
