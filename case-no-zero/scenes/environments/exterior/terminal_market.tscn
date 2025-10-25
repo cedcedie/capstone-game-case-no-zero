@@ -54461,7 +54461,7 @@ position = Vector2(456, 216)
 animation = &"idle_front"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(2486, 832, 2487, 1087, 2816, 1087, 2816, 0, 0, 0, 0, 1088, 2368, 1088, 2371, 1204, -115, 1232, -78, -156, 2982, -96, 2895, 1186, 2449, 1200, 2480, 1088, 2375, 1088)
+polygon = PackedVector2Array(2486, 832, 2481, 1087, 2816, 1088, 2816, 0, 0, 0, 0, 1088, 2375, 1088, 2371, 1204, -115, 1232, -78, -156, 2982, -96, 2895, 1186, 2449, 1200, 2487, 1088, 2375, 1088)
 
 [editable path="NpcBoyIcecreamHair"]
 [editable path="PlayerM"]
