@@ -10,7 +10,7 @@ extends CanvasLayer
 signal next_pressed
 var waiting_for_next: bool = false
 var is_typing: bool = false
-var typing_speed := 0.01
+var typing_speed := 0.03
 var cutscene_mode: bool = false
 var blip_interval: int = 3  # play a voice blip every N characters
 

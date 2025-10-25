@@ -40,7 +40,7 @@ func play_voice_blip(speaker: String):
 
 	if stream:
 		voice_blip_player.stream = stream
-		voice_blip_player.volume_db = -10
+		voice_blip_player.volume_db = 0
 		voice_blip_player.pitch_scale = get_pitch_for_speaker(speaker)
 		voice_blip_player.play()
 	else:
@@ -82,7 +82,7 @@ func play_simple_tone(speaker: String):
 	"""Play a simple tone using the system beep"""
 	print("🎵 Playing simple tone for: " + speaker)
 	# Just play a short beep with character-specific pitch
-	voice_blip_player.volume_db = -5
+	voice_blip_player.volume_db = 0
 	voice_blip_player.pitch_scale = get_pitch_for_speaker(speaker)
 	voice_blip_player.play()
 
@@ -98,7 +98,7 @@ func play_synthesized_voice(freq: float, duration: float, volume: float):
 	gen.mix_rate = 22050  # Lower sample rate for voice blips
 	gen.buffer_length = 0.1  # Small buffer for immediate playback
 	voice_blip_player.stream = gen
-	voice_blip_player.volume_db = -5  # Set to -5 dB
+	voice_blip_player.volume_db = 0  # Set to -5 dB
 	
 	# Start playing first
 	voice_blip_player.play()

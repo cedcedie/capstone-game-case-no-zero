@@ -7,11 +7,11 @@
 	  },
 	  {
 		"speaker": "Manlalaro",
-		"text": "Saan banda ang kulungan?"
+		"text": "Saan banda ang detention cell? May client kaming nakakulong."
 	  },
 	  {
 		"speaker": "Pulis",
-		"text": "Ang kulungan ay nasa ibabang lobby. Bumaba ka lang sa hagdan, makikita mo agad."
+		"text": "Ang detention cell ay nasa ibabang lobby. Bumaba ka lang sa hagdan, makikita mo agad."
 	  },
 	  {
 		"speaker": "Pulis",
@@ -21,7 +21,7 @@
 	"story_repeated_interaction": [
 	  {
 		"speaker": "Pulis",
-		"text": "Ang kulungan ay nasa ibabang lobby."
+		"text": "Ang detention cell ay nasa ibabang lobby."
 	  },
 	  {
 		"speaker": "Pulis",

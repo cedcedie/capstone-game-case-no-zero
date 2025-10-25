@@ -12,10 +12,6 @@
 			"name": "Broken Body Camera",
 			"description": "Nasirang police body camera na may potensyal na ma-recover na footage at audio."
 		},
-		"cctv_footage": {
-			"name": "CCTV Footage",
-			"description": "Security footage na nagpapakita ng kahina-hinalang aktibidad bago ang insidente."
-		},
 		"radio_log": {
 			"name": "Radio Communication Log",
 			"description": "Police radio communications na nagpapakita ng mga gaps sa komunikasyon at coordination issues."
