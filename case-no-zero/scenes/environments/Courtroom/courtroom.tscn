@@ -23270,4 +23270,5 @@ tile_set = SubResource("TileSet_r1rnh")
 collision_visibility_mode = 2
 
 [node name="PlayerM" parent="." instance=ExtResource("21_0sx17")]
+z_index = 4
 position = Vector2(53, 753)
