@@ -10,6 +10,7 @@ enum CheckpointType {
 	BEDROOM_CUTSCENE_COMPLETED,
 	LOWER_LEVEL_COMPLETED,
 	POLICE_LOBBY_CUTSCENE_COMPLETED,
+	HEAD_POLICE_COMPLETED,
 	BARANGAY_HALL_ACCESS_GRANTED,
 	BARANGAY_HALL_CUTSCENE_COMPLETED
 }
@@ -102,6 +103,7 @@ func get_game_flow_status() -> String:
 	var bedroom_completed = has_checkpoint(CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	var lower_level_completed = has_checkpoint(CheckpointType.LOWER_LEVEL_COMPLETED)
 	var police_lobby_completed = has_checkpoint(CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
+	var head_police_completed = has_checkpoint(CheckpointType.HEAD_POLICE_COMPLETED)
 	var barangay_access = has_checkpoint(CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
 	var barangay_completed = has_checkpoint(CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
 	
@@ -113,6 +115,8 @@ func get_game_flow_status() -> String:
 		current_phase = "LOWER_LEVEL_COMPLETED"
 	if police_lobby_completed:
 		current_phase = "POLICE_LOBBY_COMPLETED"
+	if head_police_completed:
+		current_phase = "HEAD_POLICE_COMPLETED"
 	if barangay_completed:
 		current_phase = "BARANGAY_HALL_COMPLETED"
 	
@@ -124,6 +128,7 @@ func get_game_flow_status() -> String:
 	status += "  - Bedroom Cutscene: " + ("✅" if bedroom_completed else "❌") + "\n"
 	status += "  - Lower Level: " + ("✅" if lower_level_completed else "❌") + "\n"
 	status += "  - Police Lobby: " + ("✅" if police_lobby_completed else "❌") + "\n"
+	status += "  - Head Police: " + ("✅" if head_police_completed else "❌") + "\n"
 	status += "  - Barangay Access: " + ("✅" if barangay_access else "❌") + "\n"
 	status += "  - Barangay Cutscene: " + ("✅" if barangay_completed else "❌") + "\n"
 	
@@ -162,6 +167,14 @@ func get_game_flow_status() -> String:
 	else:
 		status += "  - Barangay Hall Cutscene: BLOCKED (prerequisites not met)\n"
 	
+	# Head police cutscene
+	if barangay_completed and not head_police_completed:
+		status += "  - Head Police Cutscene: SHOULD PLAY\n"
+	elif head_police_completed:
+		status += "  - Head Police Cutscene: COMPLETED\n"
+	else:
+		status += "  - Head Police Cutscene: BLOCKED (barangay hall not completed)\n"
+	
 	status += "==========================================\n"
 	
 	# Show next steps
@@ -176,6 +189,8 @@ func get_game_flow_status() -> String:
 		status += "  → Go to barangay hall\n"
 	elif not barangay_completed:
 		status += "  → Complete barangay hall cutscene\n"
+	elif not head_police_completed:
+		status += "  → Go to head police room for cutscene\n"
 	else:
 		status += "  → All main story completed!\n"
 	
@@ -214,11 +229,19 @@ func debug_set_phase(phase: String) -> void:
 			set_checkpoint(CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
 			set_checkpoint(CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
 			print("🔄 DEBUG: Set to barangay hall completed")
+		"head_police":
+			set_checkpoint(CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
+			set_checkpoint(CheckpointType.LOWER_LEVEL_COMPLETED)
+			set_checkpoint(CheckpointType.POLICE_LOBBY_CUTSCENE_COMPLETED)
+			set_checkpoint(CheckpointType.BARANGAY_HALL_ACCESS_GRANTED)
+			set_checkpoint(CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
+			set_checkpoint(CheckpointType.HEAD_POLICE_COMPLETED)
+			print("🔄 DEBUG: Set to head police completed")
 		"apartment_morgue":
 			set_checkpoint(CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 			print("🔄 DEBUG: Set to bedroom completed - ready for apartment_morgue")
 		_:
-			print("⚠️ DEBUG: Unknown phase. Use: start, bedroom, lower_level, police_lobby, barangay_hall, barangay_completed, apartment_morgue")
+			print("⚠️ DEBUG: Unknown phase. Use: start, bedroom, lower_level, police_lobby, barangay_hall, barangay_completed, head_police, apartment_morgue")
 	
 	# Show the new status
 	print("📋 DEBUG: Current checkpoints after setting phase:")

@@ -33,7 +33,6 @@ AudioManager="*res://scripts/managers/AudioManager.gd"
 EvidenceInventorySettings="*res://EvidenceInventorySettings.tscn"
 Settings="*res://Settings.tscn"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
-<<<<<<<HEADAmbientAudioManager="*res://scripts/managers/AmbientAudioManager.gd"
 
 [dialogic]
 

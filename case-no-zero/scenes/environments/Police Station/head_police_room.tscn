@@ -1,5 +1,6 @@
-[gd_scene load_steps=35 format=4 uid="uid://ci31atmmys44c"]
+[gd_scene load_steps=42 format=4 uid="uid://ci31atmmys44c"]
 
+[ext_resource type="Script" uid="uid://bk18yjo6h5a2o" path="res://scripts/cutscenes/head_police_cutscene.gd" id="1_8onnl"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="1_e5ift"]
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="2_ugl1s"]
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="3_6inlr"]
@@ -13,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_pqm10"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="12_scene_transition"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="13_scene_fade_in"]
+[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main/celine_navarro.tscn" id="13_uu8bb"]
+[ext_resource type="PackedScene" uid="uid://bqr0txu1h7bch" path="res://miravil/character_police_station/po1Darwin.tscn" id="14_8onnl"]
+[ext_resource type="PackedScene" uid="uid://vbvbclwuvwti" path="res://miravil/character_police_station/npc_pl_po3.tscn" id="15_y6gnq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cxmj2"]
 texture = ExtResource("1_e5ift")
@@ -11012,8 +11016,316 @@ sources/1 = SubResource("TileSetAtlasSource_b5hmf")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xebd"]
 size = Vector2(96, 18)
 
+[sub_resource type="Animation" id="Animation_m2gj1"]
+resource_name = "head_police"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerM:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 14, 14.3, 14.6, 31.5, 31.8, 32.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(808, 480), Vector2(808, 480), Vector2(808, 416), Vector2(752, 416), Vector2(752, 416), Vector2(752, 376), Vector2(568, 376)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 14, 14.3333, 14.6, 31.3667, 31.5, 31.8, 32.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"idle_back", &"walk_back", &"walk_left", &"idle_back", &"idle_back", &"walk_back", &"walk_left", &"idle_left"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("celine:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 14.5, 14.8, 15.3, 15.5, 31.7, 32.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(856, 480), Vector2(856, 480), Vector2(856, 440), Vector2(720, 440), Vector2(720, 416), Vector2(720, 416), Vector2(528, 416)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("celine/AnimatedSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 14.5, 14.8, 15.3, 15.5, 31.4333, 31.7, 32.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"idle_back", &"walk_back", &"walk_left", &"walk_back", &"idle_back", &"idle_back", &"walk_left", &"idle_back"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NpcPlPo1Darwin:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 31, 31.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(736, 376), Vector2(736, 376), Vector2(528, 376)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("NpcPlPo1Darwin/AnimatedSprite2D:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 15.5, 16, 21.9333, 31, 31.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"idle_back", &"idle_back", &"idle_front", &"idle_back", &"idle_left", &"idle_right"]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 33, 34.8667, 36.2667, 38.0667, 40.7333, 42.8, 44.2667, 46.1333, 47.9333, 49.4, 51.0667, 52.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"play_head_police_animation"
+}, {
+"args": [],
+"method": &"show_line_5"
+}, {
+"args": [],
+"method": &"show_line_6"
+}, {
+"args": [],
+"method": &"show_line_7"
+}, {
+"args": [],
+"method": &"show_line_8"
+}, {
+"args": [],
+"method": &"show_line_9"
+}, {
+"args": [],
+"method": &"show_line_10"
+}, {
+"args": [],
+"method": &"show_line_11"
+}, {
+"args": [],
+"method": &"show_line_12"
+}, {
+"args": [],
+"method": &"show_line_13"
+}, {
+"args": [],
+"method": &"show_line_14"
+}, {
+"args": [],
+"method": &"show_line_15"
+}, {
+"args": [],
+"method": &"show_line_16"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2, 5, 8, 11, 13.0667, 16, 19, 22, 25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"show_line_0"
+}, {
+"args": [],
+"method": &"show_line_1"
+}, {
+"args": [],
+"method": &"show_line_2"
+}, {
+"args": [],
+"method": &"show_line_3"
+}, {
+"args": [],
+"method": &"show_line_4"
+}, {
+"args": [],
+"method": &"show_line_4"
+}, {
+"args": [],
+"method": &"show_line_5"
+}, {
+"args": [],
+"method": &"show_line_6"
+}, {
+"args": [],
+"method": &"show_line_7"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(30.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_out_random_police"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("NpcPlPo3:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 28, 28.3, 28.9, 29.6, 30.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(736, 331), Vector2(736, 331), Vector2(664, 331), Vector2(664, 456), Vector2(832, 456), Vector2(832, 536)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("NpcPlPo3/AnimatedSprite2D:animation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 28, 28.3, 28.9, 29.6, 30.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"idle_front", &"walk_left", &"walk_down", &"walk_right", &"walk_down", &"idle_front"]
+}
+
+[sub_resource type="Animation" id="Animation_y6gnq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_left"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("celine/AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_left"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NpcPlPo1Darwin/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_right"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NpcPlPo3/AnimatedSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_left"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NpcPlPo1Darwin:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(528, 376)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("NpcPlPo3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(584, 376)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("celine:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(856, 480)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerM:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(808, 480)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5onq"]
+_data = {
+&"RESET": SubResource("Animation_y6gnq"),
+&"head_police": SubResource("Animation_m2gj1")
+}
+
 [node name="HeadPoliceRoom" type="Node2D"]
-script = ExtResource("13_scene_fade_in")
+y_sort_enabled = true
+script = ExtResource("1_8onnl")
 
 [node name="ground" type="TileMapLayer" parent="."]
 position = Vector2(272, 160)
@@ -11040,11 +11352,12 @@ tile_map_data = PackedByteArray("AAAGAAYAAAABABYAAFAGAAUAAAAAABEAAAARAAUAAQADAAQ
 tile_set = SubResource("TileSet_2ov7g")
 
 [node name="PlayerM" parent="." instance=ExtResource("11_pqm10")]
-position = Vector2(832, 480)
+z_index = 4
+position = Vector2(808, 480)
 
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]
-animation = &"idle_back"
-autoplay = "idle_back"
+animation = &"idle_left"
+autoplay = "idle_left"
 
 [node name="Area2D_police_lobby" type="Area2D" parent="."]
 script = ExtResource("12_scene_transition")
@@ -11053,4 +11366,39 @@ script = ExtResource("12_scene_transition")
 position = Vector2(832, 536)
 shape = SubResource("RectangleShape2D_1xebd")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n5onq")
+}
+
+[node name="celine" parent="." instance=ExtResource("13_uu8bb")]
+z_index = 4
+position = Vector2(856, 480)
+
+[node name="AnimatedSprite2D" parent="celine" index="0"]
+animation = &"idle_left"
+autoplay = "idle_left"
+
+[node name="NpcPlPo1Darwin" parent="." instance=ExtResource("14_8onnl")]
+z_index = 4
+position = Vector2(528, 376)
+
+[node name="AnimatedSprite2D" parent="NpcPlPo1Darwin" index="0"]
+animation = &"idle_right"
+autoplay = "idle_right"
+
+[node name="NpcPlPo3" parent="." instance=ExtResource("15_y6gnq")]
+z_index = 4
+position = Vector2(584, 376)
+
+[node name="AnimatedSprite2D" parent="NpcPlPo3" index="0"]
+animation = &"idle_left"
+autoplay = "idle_left"
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("13_scene_fade_in")
+
 [editable path="PlayerM"]
+[editable path="celine"]
+[editable path="NpcPlPo1Darwin"]
+[editable path="NpcPlPo3"]

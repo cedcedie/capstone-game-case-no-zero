@@ -10,7 +10,7 @@ extends CanvasLayer
 signal next_pressed
 var waiting_for_next: bool = false
 var is_typing: bool = false
-var typing_speed := 0.03
+var typing_speed := 0.02
 var cutscene_mode: bool = false
 var blip_interval: int = 3  # play a voice blip every N characters
 
@@ -87,6 +87,8 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 			tex = load("res://new_celine_closeup.png")
 		"kapitana palma", "kapitana", "kapitana lourdes":
 			tex = load("res://kapitana_palma_closeup.png")
+		"po1 darwin", "po1_darwin":
+			tex = load("res://po1_closeup.png")
 		_:
 			tex = null
 	portrait_rect.texture = tex
