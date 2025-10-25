@@ -47291,6 +47291,10 @@ position = Vector2(1960, 56)
 [node name="AnimatedSprite2D" parent="NpcPlGuy5" index="0"]
 animation = &"idle_front"
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NpcPlGuy5"]
+position = Vector2(-1960, -56)
+polygon = PackedVector2Array(1631, -1, 2626, -2, 2626, 1537, -2, 1537, 0, 0, 1612, 1, 1612, -29, -153, -127, -104, 1721, 2745, 1688, 2769, -306, 1687, -111, 1612, 0, 1631, 0)
+
 [editable path="PlayerM"]
 [editable path="NpcPlPo1Darwin"]
 [editable path="NpcPlPo2"]
