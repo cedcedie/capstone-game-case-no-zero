@@ -46,14 +46,15 @@ func hide_ui():
 	hide()
 
 # Typing animation with sound
-func show_dialogue_line(speaker: String, text: String) -> void:
+func show_dialogue_line(speaker: String, text: String, auto_advance: bool = false) -> void:
 	show_ui()
 	name_label.text = speaker
 	_apply_portrait_for_speaker(speaker)
-	next_button.hide()
+	next_button.hide()  # Hide next button during typing
 	dialogue_label.text = ""
 	waiting_for_next = false
 	is_typing = true
+	print("⌨️ Starting typing animation for:", speaker)
 
 	# Blips are triggered rhythmically during typing; no initial blip
 
@@ -69,10 +70,15 @@ func show_dialogue_line(speaker: String, text: String) -> void:
 		await get_tree().create_timer(typing_speed).timeout
 
 	is_typing = false
-	# Always show the next button after typing finishes, regardless of cutscene mode
-	waiting_for_next = true
-	next_button.show() # Show the next button only after typing finishes
-	print("🎬 Next button shown after typing finished")
+	print("⌨️ Typing animation completed")
+	
+	# Only show next button if not in auto-advance mode
+	if not auto_advance:
+		waiting_for_next = true
+		next_button.show() # Show the next button only after typing finishes
+		print("🎬 Next button shown after typing finished")
+	else:
+		print("🎬 Auto-advance mode: Next button hidden")
 
 func _apply_portrait_for_speaker(speaker: String) -> void:
 	if portrait_rect == null:
@@ -112,11 +118,24 @@ func _setup_autosizing():
 		print("📝 Dialogue UI: Dialogue label scrolling enabled")
 
 func _on_next_pressed():
-	if cutscene_mode:
-		# In cutscene mode, emit signal immediately when input is received
-		emit_signal("next_pressed")
+	print("🔘 Next button pressed - is_typing:", is_typing, "cutscene_mode:", cutscene_mode, "waiting_for_next:", waiting_for_next)
+	
+	# Always check if typing is finished before allowing next
+	if is_typing:
+		print("⏳ Typing in progress, ignoring next button press")
 		return
+	
+	if cutscene_mode:
+		# In cutscene mode, emit signal only when typing is finished
+		if waiting_for_next:
+			print("🎬 Cutscene mode: Emitting next_pressed signal")
+			emit_signal("next_pressed")
+		else:
+			print("🎬 Cutscene mode: Not waiting for next, ignoring")
+		return
+		
 	if waiting_for_next and not is_typing:
 		waiting_for_next = false
 		next_button.hide()
+		print("📝 Normal mode: Emitting next_pressed signal")
 		emit_signal("next_pressed")

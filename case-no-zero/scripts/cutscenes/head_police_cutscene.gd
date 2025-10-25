@@ -428,8 +428,10 @@ func end_cutscene_simple():
 		CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED)
 		print("📋 Head police cutscene marked as completed")
 	
-	# Set task to go to morgue
+	# Complete current barangay hall task and set new task to go to morgue
 	if TaskManager:
+		TaskManager.complete_current_task()
+		print("📋 Barangay hall task completed")
 		TaskManager.set_current_task("go_to_morgue")
 		print("📋 Task set to: go_to_morgue")
 	else:

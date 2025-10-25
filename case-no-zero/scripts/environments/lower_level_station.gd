@@ -142,6 +142,7 @@ func _on_choice_selected(choice_index: int):
 	await get_tree().create_timer(2.0).timeout
 	
 	# Advance to next line after choice
+	line_in_progress = false
 	current_line += 1
 	call_deferred("show_next_line")
 	
@@ -168,7 +169,7 @@ func start_detention_scene() -> void:
 	# Start dialogue sequence
 	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
 		DialogueUI.set_cutscene_mode(true)
-	call_deferred("show_next_line")
+	await play_dialogue()
 
 func setup_initial_positions() -> void:
 	print("🎭 Setting up initial character positions...")
@@ -230,11 +231,14 @@ func play_character_animation(character: CharacterBody2D, animation: String, dur
 
 func move_character_smoothly(character: CharacterBody2D, target_pos: Vector2, walk_animation: String = "walk_down", idle_animation: String = "idle_right") -> void:
 	if not character:
+		print("⚠️ Character not found for movement")
 		return
 		
 	var start_pos: Vector2 = character.position
 	var distance: float = start_pos.distance_to(target_pos)
 	var duration: float = distance / walk_speed
+	
+	print("🎬 Moving character from", start_pos, "to", target_pos, "duration:", duration)
 	
 	# Play walk animation
 	play_character_animation(character, walk_animation)
@@ -245,17 +249,15 @@ func move_character_smoothly(character: CharacterBody2D, target_pos: Vector2, wa
 	t.tween_property(character, "position", target_pos, duration)
 	await t.finished
 	
+	print("🎬 Character movement completed")
+	
 	# Play idle animation
 	play_character_animation(character, idle_animation)
 
-func show_dialogue_with_transition(speaker: String, text: String, hide_first: bool = false) -> void:
-	if hide_first:
-		await dialogue_ui.hide_ui()
-		await get_tree().create_timer(transition_pause).timeout
-	
-	if dialogue_ui:
-		dialogue_ui.show_dialogue_line(speaker, text)
-		waiting_for_next = true
+# Removed show_dialogue_with_transition - using only next-button system now
+
+var dialogue_in_progress = false
+var line_in_progress = false
 
 func show_dialogue_with_auto_advance(speaker: String, text: String) -> void:
 	"""Show dialogue with next button for cutscenes"""
@@ -265,23 +267,97 @@ func show_dialogue_with_auto_advance(speaker: String, text: String) -> void:
 		await get_tree().process_frame
 		return
 	
+	# Prevent multiple dialogue calls
+	if dialogue_in_progress:
+		print("⚠️ Dialogue already in progress, skipping duplicate call")
+		return
+	
+	dialogue_in_progress = true
+	print("💬 Showing dialogue for:", speaker, "-", text.substr(0, 50) + "...")
+	# Small delay to ensure any camera animations are fully complete
+	await get_tree().create_timer(0.1).timeout
 	dialogue_ui.show_dialogue_line(speaker, text)
 	
 	# Wait for user to click next button
 	print("💬 Waiting for user input to continue...")
 	await dialogue_ui.next_pressed
 	print("▶️ User input received, continuing...")
+	
+	# Small delay to ensure dialogue UI is properly hidden
+	await get_tree().create_timer(0.1).timeout
+	print("💬 Dialogue sequence completed for:", speaker)
+	dialogue_in_progress = false
+
+func play_dialogue():
+	"""Simple dialogue system like police lobby - no complex line handling"""
+	print("💬 Starting lower level dialogue")
+	
+	if not DialogueUI:
+		print("⚠️ DialogueUI autoload not found")
+		return
+	
+	# Load dialogue from JSON file
+	var dialogue_lines = load_dialogue_from_json()
+	if dialogue_lines.is_empty():
+		print("⚠️ Failed to load dialogue from JSON")
+		return
+	
+	# Show each dialogue line with next button (user-controlled)
+	for line in dialogue_lines:
+		var speaker = line.get("speaker", "")
+		var text = line.get("text", "")
+		DialogueUI.show_dialogue_line(speaker, text)
+		
+		# Wait for user to click next button
+		print("💬 Waiting for user input to continue...")
+		await DialogueUI.next_pressed
+		print("▶️ User input received, continuing...")
+	
+	# Hide dialogue after all lines shown
+	DialogueUI.hide_ui()
+	print("💬 Lower level dialogue completed")
+	
+	# Complete the task and end cutscene
+	complete_task_and_end_cutscene()
+
+func complete_task_and_end_cutscene():
+	"""Complete the task and end the cutscene"""
+	print("🎬 Completing task and ending cutscene")
+	
+	# Complete the "Investigate Lower Level" task if it's active
+	if task_manager and task_manager.is_task_active():
+		var current_task = task_manager.get_current_task()
+		if current_task.get("id") == "go_to_police_jail":
+			task_manager.complete_current_task()
+			print("✅ Task completed: Go to Police Jail")
+	
+	# Re-enable player control
+	if player and "control_enabled" in player:
+		player.control_enabled = true
+		print("✅ Player control re-enabled")
+	
+	# Set checkpoint as completed
+	if CheckpointManager:
+		CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
+		print("📋 Lower level cutscene marked as completed")
+	
+	print("🎬 Cutscene ended - player can now move")
 
 func camera_shake() -> void:
 	"""Add camera shake effect for emotional emphasis"""
+	print("📸 Starting camera shake...")
 	# Get camera from player
 	var player_camera = player.get_node_or_null("Camera2D")
 	if not player_camera:
+		print("⚠️ Camera not found for shake")
 		return
 	
 	var original_offset = player_camera.offset
+	print("📸 Original camera offset:", original_offset)
+	print("📸 Shake intensity:", shake_intensity, "duration:", shake_duration)
+	
 	var shake_tween = create_tween()
-	shake_tween.set_loops()
+	shake_tween.set_parallel(false)  # Sequential tweening
 	
 	# Create more intense random shake pattern with more frames
 	for i in range(10):
@@ -290,11 +366,12 @@ func camera_shake() -> void:
 			randf_range(-shake_intensity, shake_intensity)
 		)
 		shake_tween.tween_property(player_camera, "offset", original_offset + random_offset, shake_duration / 10.0)
+		print("📸 Shake frame", i, "offset:", random_offset)
 	
 	# Return to original position
-	await get_tree().create_timer(shake_duration).timeout
-	shake_tween.kill()
-	player_camera.offset = original_offset
+	shake_tween.tween_property(player_camera, "offset", original_offset, shake_duration / 10.0)
+	await shake_tween.finished
+	print("📸 Camera shake completed, final offset:", player_camera.offset)
 
 func focus_camera_on_erwin() -> void:
 	"""Focus camera on Erwin - just moves camera, doesn't return automatically"""
@@ -321,6 +398,8 @@ func focus_camera_on_erwin() -> void:
 	focus_tween.parallel().tween_property(player_camera, "zoom", Vector2(2.0, 2.0), 1.0)
 	
 	print("📸 Camera focused on Erwin")
+	await focus_tween.finished
+	print("📸 Camera focus animation completed")
 
 func return_camera_to_original() -> void:
 	"""Return camera to original position and zoom"""
@@ -339,6 +418,8 @@ func return_camera_to_original() -> void:
 	return_tween.parallel().tween_property(player_camera, "zoom", Vector2(2.0, 2.0), 1.0)
 	
 	print("📸 Camera returned to original position")
+	await return_tween.finished
+	print("📸 Camera return animation completed")
 
 # Camera zoom is now managed by CameraZoomManager autoload
 # This function is no longer needed
@@ -437,16 +518,270 @@ func reposition_characters_after_fade() -> void:
 # --------------------------
 # DIALOGUE SEQUENCE
 # --------------------------
-func show_next_line() -> void:
+# OLD COMPLEX SYSTEM - COMMENTED OUT TO USE SIMPLE POLICE LOBBY PATTERN
+# func show_next_line() -> void:
+# 	if current_line >= dialogue_lines.size():
+# 		end_scene()
+# 		return
+# 	
+# 	# Prevent multiple line calls
+# 	if line_in_progress:
+# 		print("⚠️ Line already in progress, skipping duplicate call")
+# 		return
+# 	
+# 	line_in_progress = true
+# 	var line: Dictionary = dialogue_lines[current_line]
+# 	var speaker: String = String(line.get("speaker", ""))
+# 	var text: String = String(line.get("text", ""))
+# 
+# 	print("🗨️ Showing line", current_line, "Speaker:", speaker)
+# 	print("🗨️ Current line index:", current_line, "Total lines:", dialogue_lines.size())
+# 
+# 	# Check if this line has a choice for Miguel (except lines 7 and 15 which are handled separately)
+# 	var choice_data = get_choice_for_line(current_line)
+# 	if choice_data and not waiting_for_choice and not choice_completed:
+# 		show_miguel_choice(choice_data)
+# 		return
+# 
+# 	# Handle specific lines with animations and special logic
+# 	match current_line:
+# 		0:
+# 			# Line 0: Miguel walks to center, camera focuses on Erwin, then dialogue
+# 			print("🎬 Line 0: Miguel walks to center")
+# 			await move_character_smoothly(player, Vector2(640, 400), "walk_down", "idle_down")
+# 			await get_tree().create_timer(0.5).timeout
+# 			await focus_camera_on_erwin()
+# 			await get_tree().create_timer(0.5).timeout
+# 			await return_camera_to_original()
+# 			await get_tree().create_timer(0.2).timeout
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		1:
+# 			# Line 1: Boy Trip responds, camera focuses on him
+# 			print("🎬 Line 1: Boy Trip responds")
+# 			await focus_camera_on_erwin()
+# 			await get_tree().create_timer(0.5).timeout
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		2:
+# 			# Line 2: Miguel responds, camera returns to original
+# 			print("🎬 Line 2: Miguel responds")
+# 			await return_camera_to_original()
+# 			await get_tree().create_timer(0.3).timeout
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		3:
+# 			# Line 3: Celine walks to center
+# 			print("🎬 Line 3: Celine walks to center")
+# 			await move_character_smoothly(celine, Vector2(640, 350), "walk_down", "idle_down")
+# 			await get_tree().create_timer(0.3).timeout
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		4:
+# 			# Line 4: Boy Trip responds with camera shake
+# 			print("🎬 Line 4: Boy Trip responds with camera shake")
+# 			await camera_shake()
+# 			await get_tree().create_timer(0.3).timeout
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		5:
+# 			# Line 5: Miguel responds
+# 			print("🎬 Line 5: Miguel responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		6:
+# 			# Line 6: Boy Trip responds
+# 			print("🎬 Line 6: Boy Trip responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		7:
+# 			# Line 7: Miguel choice - handled by choice system
+# 			print("🎬 Line 7: Miguel choice")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		8:
+# 			# Line 8: Boy Trip responds to choice
+# 			print("🎬 Line 8: Boy Trip responds to choice")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		9:
+# 			# Line 9: Miguel responds
+# 			print("🎬 Line 9: Miguel responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		10:
+# 			# Line 10: Boy Trip responds
+# 			print("🎬 Line 10: Boy Trip responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		11:
+# 			# Line 11: Miguel responds
+# 			print("🎬 Line 11: Miguel responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		12:
+# 			# Line 12: Boy Trip responds
+# 			print("🎬 Line 12: Boy Trip responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		13:
+# 			# Line 13: Miguel responds
+# 			print("🎬 Line 13: Miguel responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		14:
+# 			# Line 14: Boy Trip responds
+# 			print("🎬 Line 14: Boy Trip responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		15:
+# 			# Line 15: Miguel choice - handled by choice system
+# 			print("🎬 Line 15: Miguel choice")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		16:
+# 			# Line 16: Boy Trip responds to choice
+# 			print("🎬 Line 16: Boy Trip responds to choice")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		17:
+# 			# Line 17: Miguel responds
+# 			print("🎬 Line 17: Miguel responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		18:
+# 			# Line 18: Boy Trip responds
+# 			print("🎬 Line 18: Boy Trip responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		19:
+# 			# Line 19: Miguel responds
+# 			print("🎬 Line 19: Miguel responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		20:
+# 			# Line 20: Boy Trip responds
+# 			print("🎬 Line 20: Boy Trip responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		21:
+# 			# Line 21: Miguel responds
+# 			print("🎬 Line 21: Miguel responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		22:
+# 			# Line 22: Boy Trip responds
+# 			print("🎬 Line 22: Boy Trip responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		23:
+# 			# Line 23: Miguel responds
+# 			print("🎬 Line 23: Miguel responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		24:
+# 			# Line 24: Boy Trip responds
+# 			print("🎬 Line 24: Boy Trip responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		25:
+# 			# Line 25: Miguel responds
+# 			print("🎬 Line 25: Miguel responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		26:
+# 			# Line 26: Boy Trip responds
+# 			print("🎬 Line 26: Boy Trip responds")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 		
+# 		27:
+# 			# Line 27: End scene
+# 			print("🎬 Line 27: End scene")
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			# Don't call show_next_line() for the last line
+# 			# End scene will be called by the dialogue completion
+# 		
+# 		# Default: Regular dialogue for other lines
+# 		_:
+# 			await show_dialogue_with_auto_advance(speaker, text)
+# 			line_in_progress = false
+# 			call_deferred("show_next_line")
+# 	
+# 	# Increment line counter at the end of each line (except for special cases)
+# 	if current_line != 27:  # Don't increment after end scene
+# 		current_line += 1
+# 		print("📝 Line completed, moving to line", current_line)
 	if current_line >= dialogue_lines.size():
 		end_scene()
 		return
-
+	
+	# Prevent multiple line calls
+	if line_in_progress:
+		print("⚠️ Line already in progress, skipping duplicate call")
+		return
+	
+	line_in_progress = true
 	var line: Dictionary = dialogue_lines[current_line]
 	var speaker: String = String(line.get("speaker", ""))
 	var text: String = String(line.get("text", ""))
 
 	print("🗨️ Showing line", current_line, "Speaker:", speaker)
+	print("🗨️ Current line index:", current_line, "Total lines:", dialogue_lines.size())
 
 	# Check if this line has a choice for Miguel (except lines 7 and 15 which are handled separately)
 	var choice_data = get_choice_for_line(current_line)
@@ -461,23 +796,35 @@ func show_next_line() -> void:
 		0:
 			await play_character_animation(player, "idle_left", transition_pause)
 			await show_dialogue_with_auto_advance(speaker, text)
-			current_line += 1
+			line_in_progress = false
 			call_deferred("show_next_line")
 		
 		# Boy Trip's emotional response with camera shake
 		1:
+			print("🎬 Line 1: Starting camera shake and focus sequence")
 			# Build-up: shake + zoom before the dialogue for stronger emphasis
 			await camera_shake()
+			print("🎬 Camera shake completed")
 			# Focus camera on Erwin to show both characters
 			await focus_camera_on_erwin()
+			print("🎬 Camera focused on Erwin")
 			if dialogue_ui:
 				dialogue_ui.hide()
 			await play_character_animation(boy_trip, "idle_right", transition_pause)
+			print("🎬 Boy Trip animation completed")
+			# Longer delay to ensure camera is fully positioned and stable
+			await get_tree().create_timer(0.5).timeout
 			# Show dialogue while camera is focused on Erwin
+			print("🎬 Starting dialogue for line 1")
 			await show_dialogue_with_auto_advance(speaker, text)
+			print("🎬 Dialogue completed for line 1")
 			# Return camera to original position after dialogue
 			await return_camera_to_original()
-			current_line += 1
+			print("🎬 Camera returned to original position")
+			# Longer delay to ensure all animations are complete
+			await get_tree().create_timer(0.5).timeout
+			print("🎬 All animations completed, moving to next line")
+			line_in_progress = false
 			call_deferred("show_next_line")
 
 		# Miguel walks before line 2
@@ -496,38 +843,57 @@ func show_next_line() -> void:
 			# Miguel: walk_left to 464.0, 480.0
 			await move_character_smoothly(player, Vector2(464.0, 480.0), "walk_left", "idle_back")
 			
+			# Small delay to ensure movement is fully complete
+			await get_tree().create_timer(0.3).timeout
+			
 			# Show dialogue UI and dialogue after Miguel walks
 			if dialogue_ui:
 				dialogue_ui.show()
-			show_dialogue_with_transition(speaker, text)
-			await get_tree().create_timer(2.5).timeout
-			current_line += 1
+			await show_dialogue_with_auto_advance(speaker, text)
+			line_in_progress = false
 			call_deferred("show_next_line")
 		
 		# Celine walks before line 3
 		3:
+			print("🎬 Line 3: Starting Celine movement sequence")
 			# Hide dialogue during movement
 			if dialogue_ui:
 				dialogue_ui.hide()
 			
+			# Check if Celine exists
+			if not celine:
+				print("⚠️ Celine not found! Cannot perform movement")
+				await show_dialogue_with_auto_advance(speaker, text)
+				line_in_progress = false
+				current_line += 1
+				call_deferred("show_next_line")
+				return
+			
+			print("🎬 Celine found, starting movement sequence")
+			print("🎬 Celine current position:", celine.global_position)
 			# Celine's movement sequence
 			# Celine: walk_down to 1056.0, 480.0
 			await move_character_smoothly(celine, Vector2(1056.0, 480.0), "walk_down", "idle_back")
 			# Celine: walk_left to 504.0, 480.0
 			await move_character_smoothly(celine, Vector2(504.0, 480.0), "walk_left", "idle_back")
+			print("🎬 Celine movement sequence completed")
+			
+			# Small delay to ensure movement is fully complete
+			await get_tree().create_timer(0.3).timeout
 			
 			# Show dialogue UI and dialogue after Celine walks
 			if dialogue_ui:
 				dialogue_ui.show()
-			show_dialogue_with_transition(speaker, text)
-			await get_tree().create_timer(2.5).timeout
-			current_line += 1
+			await show_dialogue_with_auto_advance(speaker, text)
+			line_in_progress = false
 			call_deferred("show_next_line")
 
 		# Boy Trip's frustration after Celine's line
 		4:
 			# Add camera shake for Boy Trip's frustration
 			await camera_shake()
+			# Small delay to ensure camera shake is fully complete
+			await get_tree().create_timer(0.3).timeout
 			# Hide dialogue during movement
 			if dialogue_ui:
 				dialogue_ui.hide()
@@ -535,18 +901,20 @@ func show_next_line() -> void:
 			# Boy Trip moves to 480.0, 424.0 with walk_down animation
 			await move_character_smoothly(boy_trip, Vector2(480.0, 424.0), "walk_down", "idle_front")
 			
+			# Small delay to ensure movement is fully complete
+			await get_tree().create_timer(0.3).timeout
+			
 			# Show dialogue UI and dialogue after Boy Trip moves
 			if dialogue_ui:
 				dialogue_ui.show()
-			show_dialogue_with_transition(speaker, text)
-			await get_tree().create_timer(2.5).timeout
-			current_line += 1
+			await show_dialogue_with_auto_advance(speaker, text)
+			line_in_progress = false
 			call_deferred("show_next_line")
 		
 		# Normal dialogue lines
 		5, 6:
 			await show_dialogue_with_auto_advance(speaker, text)
-			current_line += 1
+			line_in_progress = false
 			call_deferred("show_next_line")
 		
 		# Line 7: Show dialogue first, then show choices
@@ -554,18 +922,18 @@ func show_next_line() -> void:
 			# Reset choice completed flag for this new choice
 			choice_completed = false
 			# Show Miguel's dialogue first
-			show_dialogue_with_transition(speaker, text)
-			await get_tree().create_timer(2.5).timeout
+			await show_dialogue_with_auto_advance(speaker, text)
 			# Automatically show choices after dialogue
 			var choice_data_7 = get_choice_for_line(current_line)
 			if choice_data_7:
 				show_miguel_choice(choice_data_7)
+			# Don't increment here - choice will handle it
 			return
 		
 		# Normal dialogue lines 8-14
 		8, 9, 10, 11, 12, 13, 14:
 			await show_dialogue_with_auto_advance(speaker, text)
-			current_line += 1
+			line_in_progress = false
 			call_deferred("show_next_line")
 		
 		# Line 15: Show dialogue first, then show choices (notebook question)
@@ -573,24 +941,24 @@ func show_next_line() -> void:
 			# Reset choice completed flag for this new choice
 			choice_completed = false
 			# Show Boy Trip's dialogue first
-			show_dialogue_with_transition(speaker, text)
-			await get_tree().create_timer(2.5).timeout
+			await show_dialogue_with_auto_advance(speaker, text)
 			# Automatically show choices after dialogue
 			var choice_data_15 = get_choice_for_line(current_line)
 			if choice_data_15:
 				show_miguel_choice(choice_data_15)
+			# Don't increment here - choice will handle it
 			return
 		
 		# Normal dialogue lines 16-21
 		16, 17, 18, 19, 20, 21:
 			await show_dialogue_with_auto_advance(speaker, text)
-			current_line += 1
+			line_in_progress = false
 			call_deferred("show_next_line")
 		
 		# Line 22: Station guard 2 movement first, then dialogue
 		22:
-			show_dialogue_with_transition(speaker, text)
-			current_line += 1
+			await show_dialogue_with_auto_advance(speaker, text)
+			line_in_progress = false
 			call_deferred("show_next_line")
 		# Line 23: Normal dialogue
 		23:
@@ -610,11 +978,14 @@ func show_next_line() -> void:
 			if player and player.get_node_or_null("AnimatedSprite2D"):
 				player.get_node("AnimatedSprite2D").play("idle_right")
 			
+			# Small delay to ensure movement is fully complete
+			await get_tree().create_timer(0.3).timeout
+			
 			# Show dialogue UI and dialogue after guard movement
 			if dialogue_ui:
 				dialogue_ui.show()
 			await show_dialogue_with_auto_advance(speaker, text)
-			current_line += 1
+			line_in_progress = false
 			call_deferred("show_next_line")
 		
 		
@@ -629,20 +1000,19 @@ func show_next_line() -> void:
 			
 			# Show dialogue after guard movement is completely finished
 			await show_dialogue_with_auto_advance(speaker, text)
-			current_line += 1
+			line_in_progress = false
 			call_deferred("show_next_line")
 		
 		# Normal dialogue lines 25-26
 		25, 26:
 			await show_dialogue_with_auto_advance(speaker, text)
-			current_line += 1
+			line_in_progress = false
 			call_deferred("show_next_line")
 		
 		# Fade transition and reposition after line 27
 		27:
 			# Show final dialogue
-			show_dialogue_with_transition(speaker, text)
-			await get_tree().create_timer(0.2).timeout
+			await show_dialogue_with_auto_advance(speaker, text)
 			
 			# Hide dialogue UI then fade out, reposition, fade in, end
 			if dialogue_ui:
@@ -655,19 +1025,30 @@ func show_next_line() -> void:
 		
 		# Default: Regular dialogue for other lines
 		_:
-			show_dialogue_with_transition(speaker, text)
+			await show_dialogue_with_auto_advance(speaker, text)
+			line_in_progress = false
+			call_deferred("show_next_line")
+	
+	# Increment line counter at the end of each line (except for special cases)
+	if current_line != 27:  # Don't increment after end scene
+		current_line += 1
+		print("📝 Line completed, moving to line", current_line)
 
 # --------------------------
 # INPUT HANDLING
 # --------------------------
 func _on_next_pressed() -> void:
-	# Only used to reveal choices on specific lines (e.g., 7 and 15)
+	# Handle choices on specific lines (e.g., 7 and 15)
 	var choice_data = get_choice_for_line(current_line)
 	if choice_data and not waiting_for_choice and not choice_completed:
 		show_miguel_choice(choice_data)
 		return
+	
+	# For normal dialogue progression, this is handled by show_dialogue_with_auto_advance
+	# which waits for dialogue_ui.next_pressed signal
+	print("📝 Lower Level: Next pressed signal received")
 	# If no choice or choice already completed, advance normally
-	current_line += 1
+	# Note: current_line is incremented in show_next_line() function
 	call_deferred("show_next_line")
 
 # --------------------------
@@ -749,9 +1130,9 @@ func _ready() -> void:
 	# Complete the "Investigate Lower Level" task if it's active (silently, no UI display)
 	if task_manager and task_manager.is_task_active():
 		var current_task = task_manager.get_current_task()
-		if current_task.get("id") == "go_to_lower_level":
+		if current_task.get("id") == "go_to_police_jail":
 			task_manager.complete_current_task()
-			print("✅ Task completed: Investigate Lower Level")
+			print("✅ Task completed: Go to Police Jail")
 	
 	print("🟢 Scene ready — checking checkpoints...")
 	check_checkpoint_and_start()

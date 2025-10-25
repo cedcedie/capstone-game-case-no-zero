@@ -17,14 +17,14 @@ func _ready():
 	_setup_autosizing()
 
 func _setup_autosizing():
-	"""Setup autosizing for TaskDisplay label"""
-	# Enable autosizing for task label
+	"""Setup scrolling for TaskDisplay label"""
+	# Enable scrolling for task label
 	if label:
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		label.clip_contents = false
+		label.clip_contents = true
 		# Use size_flags_vertical for autosizing in Godot 4.4.1
 		label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		print("📝 TaskDisplay: Task label autosizing enabled")
+		print("📝 TaskDisplay: Task label scrolling enabled")
 
 func show_task(task_name: String):
 	print("🎯 TaskDisplay: Showing task -", task_name)

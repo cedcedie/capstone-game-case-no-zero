@@ -332,10 +332,14 @@ func _start_transition(target_scene_path: String):
 	result = get_tree().change_scene_to_file(target_scene_path)
 	
 	if result != OK:
-		print("Failed to change scene to: ", target_scene_path)
+		print("❌ Failed to change scene to: ", target_scene_path)
+		print("❌ Scene transition error - possible file path issue or scene corruption")
 		is_transitioning = false
-		# If scene change failed, fade out
+		# If scene change failed, fade out and reset state
 		_fade_out_and_cleanup(canvas_layer)
+		# Reset player reference to prevent memory leaks
+		if player_reference:
+			player_reference = null
 	else:
 		# Scene change successful, canvas layer will be destroyed with old scene
 		pass

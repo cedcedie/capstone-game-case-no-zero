@@ -327,8 +327,10 @@ func enable_player_and_update_task():
 	if player and player.has_method("enable_movement"):
 		player.enable_movement()
 	
-	# Set task to go to barangay hall after police lobby cutscene (with UI display)
+	# Complete current police jail task and set new task to go to barangay hall
 	if task_manager:
+		task_manager.complete_current_task()
+		print("📋 Police jail task completed")
 		task_manager.set_current_task("go_to_barangay_hall")
 		print("📋 Task set to: Go to Barangay Hall (with UI display)")
 	

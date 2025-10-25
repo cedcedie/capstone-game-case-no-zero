@@ -29,16 +29,22 @@ func initialize_tasks():
 	# Define the task sequence for the game
 	task_queue = [
 		{
-			"id": "go_to_police_station",
-			"name": "Pumunta sa Police Station",
-			"description": "Pumunta sa police station lobby para sa unang araw mo.",
-			"scene_target": "police_lobby"
+			"id": "go_to_police_jail",
+			"name": "Pumunta sa Police Jail",
+			"description": "Pumunta sa police jail para makausap si Boy Trip.",
+			"scene_target": "lower_level_station"
 		},
 		{
 			"id": "go_to_barangay_hall",
 			"name": "Pumunta sa Barangay Hall",
 			"description": "Imbestigahan ang crime scene sa likod ng barangay hall.",
 			"scene_target": "barangay_hall"
+		},
+		{
+			"id": "go_to_head_police",
+			"name": "Pumunta sa Head Police",
+			"description": "Kausapin ang head police para sa karagdagang impormasyon tungkol kay Leo.",
+			"scene_target": "head_police_room"
 		},
 		{
 			"id": "go_to_morgue",

@@ -66,3 +66,7 @@ func open_door():
 		var result = get_tree().change_scene_to_file(target_scene)
 		if result != OK:
 			print("❌ Scene load failed! Check the file path.")
+			print("❌ Possible causes: File doesn't exist, scene is corrupted, or memory issue")
+			# Reset any state that might cause issues
+			is_open = false
+			player_in_range = null

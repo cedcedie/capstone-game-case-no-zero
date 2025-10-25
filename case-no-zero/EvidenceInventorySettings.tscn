@@ -176,9 +176,10 @@ scale = Vector2(1.05153, 1)
 texture = ExtResource("7_pa4yr")
 
 [node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence1"]
+z_index = -1
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
 
 [node name="Evidence2" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
@@ -199,9 +200,10 @@ scale = Vector2(1.05153, 1)
 texture = ExtResource("5_umk2s")
 
 [node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence2"]
+z_index = -1
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
 
 [node name="Evidence3" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
@@ -222,9 +224,10 @@ scale = Vector2(1.05153, 1)
 texture = ExtResource("6_ph1hf")
 
 [node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence3"]
+z_index = -1
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
 
 [node name="Evidence4" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
@@ -245,9 +248,10 @@ scale = Vector2(1.05153, 1)
 texture = ExtResource("9_qy8d8")
 
 [node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence4"]
+z_index = -1
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
 
 [node name="Evidence5" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
@@ -268,9 +272,10 @@ scale = Vector2(1.05153, 1)
 texture = ExtResource("10_b6idw")
 
 [node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence5"]
+z_index = -1
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 47.0
+offset_bottom = 48.0
 
 [node name="Evidence6" type="NinePatchRect" parent="UIContainer/EvidenceBoxListBG"]
 layout_mode = 0
@@ -291,6 +296,7 @@ scale = Vector2(1.05153, 1)
 texture = ExtResource("11_nob0d")
 
 [node name="Button" type="Button" parent="UIContainer/EvidenceBoxListBG/Evidence6"]
+z_index = -1
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 48.0
+offset_bottom = 48.0

@@ -51082,7 +51082,6 @@ size = Vector2(2750, 5)
 size = Vector2(7, 978)
 
 [node name="ApartmentAndMorgue" type="Node2D"]
-y_sort_enabled = true
 position = Vector2(0, -64)
 
 [node name="ground" type="TileMapLayer" parent="."]

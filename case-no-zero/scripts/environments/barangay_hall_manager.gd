@@ -863,10 +863,13 @@ func show_next_line() -> void:
 				evidence_ui.add_evidence("logbook")
 				print("📋 Added 2 evidence items: handwriting_sample and logbook")
 				
-				# Mark task as completed
+				# Mark task as completed and set next task
 				if task_manager:
 					task_manager.complete_current_task()
 					print("📋 Task marked as completed after evidence collection")
+					# Set next task to go to head police
+					task_manager.set_current_task("go_to_head_police")
+					print("📋 Next task set: Go to Head Police")
 				
 				# Flash inventory for 3 seconds then auto-close (like a cutscene)
 				print("📋 Flashing evidence inventory for 3 seconds")

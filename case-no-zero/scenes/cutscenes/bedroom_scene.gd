@@ -152,13 +152,8 @@ func show_dialogue_line(line_index: int):
 		var reading_time = max(0.5, text.length() * 0.01)  # Faster reading: 10ms per char, min 0.5s
 		var total_wait = typing_time + reading_time
 		
-		# Show dialogue (voice blip is handled automatically in DialogueUI)
-		dialogue_ui.show_dialogue_line(speaker, text)
-		
-		# Hide the next button for bedroom scene auto-advance
-		if dialogue_ui and dialogue_ui.has_node("Container/Button"):
-			dialogue_ui.get_node("Container/Button").hide()
-			print("🎬 Bedroom scene: Next button hidden for auto-advance")
+		# Show dialogue with auto-advance mode (no next button)
+		dialogue_ui.show_dialogue_line(speaker, text, true)
 		
 		# Play voice blip for bedroom scene (since AnimationPlayer bypasses DialogueUI typing)
 		if VoiceBlipManager:
