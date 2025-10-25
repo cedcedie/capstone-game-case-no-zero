@@ -20877,6 +20877,10 @@ position = Vector2(402, 2542)
 [node name="CollisionShape2D" parent="NpcHtlGirl1/Area2D" index="0"]
 z_index = 4
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NpcHtlGirl1/Area2D" index="1"]
+position = Vector2(-402, -2542)
+polygon = PackedVector2Array(1041, 0, 1200, 0, 1200, 2688, 80, 2688, 80, 0, 1019, 0, 1020, -50, -18, -48, 3, 2764, 1395, 2748, 1338, -166, 1110, -68, 1019, -26, 1019, 0)
+
 [editable path="PlayerM"]
 [editable path="NpcHtlF1"]
 [editable path="NpcHtlF2"]

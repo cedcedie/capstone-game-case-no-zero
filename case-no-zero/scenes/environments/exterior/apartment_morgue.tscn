@@ -51289,7 +51289,7 @@ position = Vector2(1920, 496)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NpcPinkish"]
 position = Vector2(-1920, -496)
-polygon = PackedVector2Array(0, 60, 2754, 60, 2754, 1091, -5, 1091, 0, 1063, 2, 86, -76, 218, -55, 1178, 2824, 1140, 2798, -65, 61, 18)
+polygon = PackedVector2Array(0, 64, 2752, 64, 2752, 1088, 0, 1088, 0, 1063, 2, 86, -76, 218, -55, 1178, 2824, 1140, 2798, -65, 61, 18)
 
 [editable path="NpcBackpackMan"]
 [editable path="NpcBeardMan"]

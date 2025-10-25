@@ -30747,6 +30747,10 @@ position = Vector2(94, 917)
 animation = &"idle_right"
 autoplay = "idle_right"
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NpcCmpG1"]
+position = Vector2(-94, -917)
+polygon = PackedVector2Array(627, 12, 627, 167, 1440, 160, 1440, 12, 1586, 12, 1586, 1068, 18, 1068, 18, 12, 18, 12, 608, 12, 607, -35, -136, -11, -81, 1055, 116, 1141, 1683, 1121, 1835, 706, 1688, -168, 677, -107, 626, 12)
+
 [node name="NpcCmpG2" parent="." instance=ExtResource("20_8waes")]
 z_index = 4
 position = Vector2(365, 174)
