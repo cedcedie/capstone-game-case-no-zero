@@ -457,9 +457,9 @@ func show_next_line() -> void:
 
 	# Organized by scene beats for better readability
 	match current_line:
-		# Opening line - Miguel's initial dialogue
+		# Opening line - Guard's initial dialogue
 		0:
-			await play_character_animation(player, "idle_left", transition_pause)
+			# Guard speaks first - no special animations needed
 			await show_dialogue_with_auto_advance(speaker, text)
 			current_line += 1
 			call_deferred("show_next_line")
@@ -499,8 +499,7 @@ func show_next_line() -> void:
 			# Show dialogue UI and dialogue after Miguel walks
 			if dialogue_ui:
 				dialogue_ui.show()
-			show_dialogue_with_transition(speaker, text)
-			await get_tree().create_timer(2.5).timeout
+			await show_dialogue_with_auto_advance(speaker, text)
 			current_line += 1
 			call_deferred("show_next_line")
 
@@ -666,9 +665,8 @@ func _on_next_pressed() -> void:
 	if choice_data and not waiting_for_choice and not choice_completed:
 		show_miguel_choice(choice_data)
 		return
-	# If no choice or choice already completed, advance normally
-	current_line += 1
-	call_deferred("show_next_line")
+	# For regular dialogue, do nothing - let show_dialogue_with_auto_advance handle it
+	print("⚠️ _on_next_pressed called but no choice available - ignoring")
 
 # --------------------------
 # SCENE END
@@ -793,14 +791,20 @@ func _unhandled_input(event: InputEvent) -> void:
 			# Don't call set_input_as_handled() to allow global handler to work
 			return
 
-	# Press F10 to instantly complete the lower level cutscene (debug only)
+	# DEBUG: F10 skip - Only works if debug mode is enabled
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_F10:
-			var checkpoint_manager = get_node("/root/CheckpointManager")
-			checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
-			if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
-				DialogueUI.set_cutscene_mode(false)
-			skip_to_post_cutscene_state()
+			# Check if debug mode is enabled (you can add a debug flag here)
+			var debug_mode = false  # Set to true only for development
+			if debug_mode:
+				var checkpoint_manager = get_node("/root/CheckpointManager")
+				checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
+				if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+					DialogueUI.set_cutscene_mode(false)
+				skip_to_post_cutscene_state()
+				print("🚀 DEBUG: Lower level cutscene skipped")
+			else:
+				print("⚠️ Debug skip disabled - complete cutscene normally")
 
 func skip_to_post_cutscene_state() -> void:
 	"""Skip to the state after cutscene completion"""

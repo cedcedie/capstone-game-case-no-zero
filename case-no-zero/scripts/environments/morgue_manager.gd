@@ -13,19 +13,19 @@ func _ready():
 	await get_tree().process_frame
 	
 	# Load dialogue data
-	dialogue_lines = load_morgue_dialogue()
+	var dialogue_data = load_morgue_dialogue()
+	dialogue_lines = dialogue_data.get("dialogue_lines", [])
 	print("📝 Morgue cutscene dialogue loaded:", dialogue_lines.size(), "lines")
 	
 	# Audio will be handled by the scene's AudioManager automatically
 	print("🎵 Audio will be handled by scene's AudioManager")
 	
-	# TESTING MODE: Bypass checkpoint requirement for testing
-	print("🧪 TESTING MODE: Bypassing checkpoint requirement")
-	
-	# Clear morgue cutscene checkpoint to ensure it plays
-	if CheckpointManager and CheckpointManager.has_method("clear_checkpoint"):
-		CheckpointManager.clear_checkpoint(CheckpointManager.CheckpointType.MORGUE_COMPLETED)
-		print("📋 Cleared morgue cutscene checkpoint - cutscene will play")
+	# Check if morgue cutscene should play (only if HEAD_POLICE_COMPLETED)
+	if CheckpointManager and CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
+		print("📋 Head police completed - morgue cutscene will play")
+	else:
+		print("⚠️ Head police not completed - morgue cutscene blocked")
+		return
 	
 	print("📋 Starting morgue cutscene sequence")
 	
@@ -232,12 +232,12 @@ func resume_morgue_animation():
 # DIALOGUE LOADING AND DISPLAY
 # --------------------------
 
-func load_morgue_dialogue() -> Array:
+func load_morgue_dialogue() -> Dictionary:
 	"""Load morgue cutscene dialogue from JSON"""
 	var file: FileAccess = FileAccess.open("res://data/dialogues/morgue_autopsy_dialogue.json", FileAccess.READ)
 	if file == null:
 		push_error("Cannot open morgue_autopsy_dialogue.json")
-		return []
+		return {}
 
 	var text: String = file.get_as_text()
 	file.close()
@@ -245,11 +245,11 @@ func load_morgue_dialogue() -> Array:
 	var parsed: Variant = JSON.parse_string(text)
 	if typeof(parsed) != TYPE_DICTIONARY or not parsed.has("morgue_autopsy"):
 		push_error("Failed to parse morgue_autopsy_dialogue.json correctly")
-		return []
+		return {}
 
 	dialogue_lines = parsed["morgue_autopsy"]["dialogue_lines"]
 	print("📝 Morgue cutscene dialogue loaded:", dialogue_lines.size(), "lines")
-	return dialogue_lines
+	return parsed["morgue_autopsy"]
 
 # Individual character line functions for AnimationPlayer Method Call tracks
 func show_line_0(): 
@@ -350,15 +350,20 @@ func show_cinematic_text_from_json(line_index: int):
 	
 	# Load dialogue from JSON
 	var dialogue_data = load_morgue_dialogue()
-	if not dialogue_data:
+	if not dialogue_data or dialogue_data.is_empty():
 		print("❌ Failed to load morgue dialogue")
 		return
 	
+	print("🎬 DEBUG: dialogue_data keys:", dialogue_data.keys())
+	
 	# Find the recollection line
 	var recollection_lines = dialogue_data.get("recollection_lines", [])
+	print("🎬 DEBUG: recollection_lines size:", recollection_lines.size())
+	
 	var target_line = null
 	
 	for line in recollection_lines:
+		print("🎬 DEBUG: Checking line with index:", line.get("line_index"), "against target:", line_index)
 		if line.get("line_index") == line_index:
 			target_line = line
 			break
@@ -366,9 +371,12 @@ func show_cinematic_text_from_json(line_index: int):
 	if target_line:
 		var text = target_line.get("text", "")
 		print("🎬 Found recollection text:", text)
-		show_cinematic_text(text, 1.0, 6.0)
+		await show_cinematic_text(text, 1.0, 5.9)
 	else:
 		print("❌ Recollection line not found for index:", line_index)
+		print("🎬 DEBUG: Available line indices:")
+		for line in recollection_lines:
+			print("  - Index:", line.get("line_index"), "Text:", line.get("text", "").substr(0, 50) + "...")
 
 func show_cinematic_text(text: String, fade_in_duration: float, hold_duration: float):
 	"""Show cinematic text with fade effects (like bedroom scene)"""
@@ -376,6 +384,15 @@ func show_cinematic_text(text: String, fade_in_duration: float, hold_duration: f
 	
 	# Find cinematic text label
 	var cinematic_text = get_node_or_null("CinematicText")
+	print("🎬 DEBUG: CinematicText node found:", cinematic_text != null)
+	if cinematic_text:
+		print("🎬 DEBUG: CinematicText node name:", cinematic_text.name)
+		print("🎬 DEBUG: CinematicText node path:", cinematic_text.get_path())
+	else:
+		print("🎬 DEBUG: CinematicText node not found - checking scene structure")
+		print("🎬 DEBUG: Scene root:", get_tree().current_scene.name)
+		print("🎬 DEBUG: Available nodes in scene:")
+		_print_node_tree(get_tree().current_scene, 0)
 	
 	if cinematic_text:
 		print("🎬 Cinematic text found:", cinematic_text.name)
@@ -1027,8 +1044,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.physical_keycode:
 			KEY_F10:
-				# F10 - Complete morgue cutscene instantly
-				debug_complete_morgue()
+				# F10 - Complete morgue cutscene instantly (DEBUG ONLY)
+				var debug_mode = false  # Set to true only for development
+				if debug_mode:
+					debug_complete_morgue()
+					print("🚀 DEBUG: Morgue cutscene skipped")
+				else:
+					print("⚠️ Debug skip disabled - complete cutscene normally")
 			KEY_F7:
 				# F7 - Restart morgue cutscene from beginning
 				debug_restart_morgue()
@@ -1069,6 +1091,13 @@ func play_morgue_animation_manually():
 	
 	# Start the animation
 	play_morgue_animation()
+
+func _print_node_tree(node: Node, depth: int):
+	"""Helper function to print node tree structure"""
+	var indent = "  ".repeat(depth)
+	print(indent + "- " + node.name + " (" + node.get_class() + ")")
+	for child in node.get_children():
+		_print_node_tree(child, depth + 1)
 
 func debug_restart_morgue():
 	"""Debug function to restart morgue cutscene from beginning"""

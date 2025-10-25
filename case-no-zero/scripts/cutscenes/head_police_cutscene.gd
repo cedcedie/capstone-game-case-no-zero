@@ -19,12 +19,12 @@ func _ready():
 	# Audio will be handled by the scene's AudioManager automatically
 	print("🎵 Audio will be handled by scene's AudioManager")
 	
-	# Clear head police cutscene checkpoint to ensure it plays
-	if CheckpointManager and CheckpointManager.has_method("clear_checkpoint"):
-		CheckpointManager.clear_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED)
-		print("📋 Cleared head police cutscene checkpoint - cutscene will play")
+	# Check if head police cutscene should play (only if BARANGAY_HALL_CUTSCENE_COMPLETED)
+	if CheckpointManager and CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED):
+		print("📋 Barangay hall completed - head police cutscene will play")
 	else:
-		print("⚠️ CheckpointManager not available or missing clear_checkpoint method")
+		print("⚠️ Barangay hall not completed - head police cutscene blocked")
+		return
 	
 	print("📋 Starting head police cutscene sequence")
 	
@@ -908,8 +908,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.physical_keycode:
 			KEY_F10:
-				# F10 - Complete head police cutscene instantly and go to next scene
-				debug_complete_head_police()
+				# F10 - Complete head police cutscene instantly and go to next scene (DEBUG ONLY)
+				var debug_mode = false  # Set to true only for development
+				if debug_mode:
+					debug_complete_head_police()
+					print("🚀 DEBUG: Head police cutscene skipped")
+				else:
+					print("⚠️ Debug skip disabled - complete cutscene normally")
 			KEY_F7:
 				# F7 - Restart head police cutscene from beginning
 				debug_restart_head_police()
