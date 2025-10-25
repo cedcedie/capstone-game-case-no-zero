@@ -14,7 +14,7 @@ func _ready():
 	hide()
 	
 	# Setup autosizing for task label
-	_setup_autosizing()
+	
 
 func _setup_autosizing():
 	"""Setup auto-sizing for TaskDisplay label"""
@@ -26,7 +26,7 @@ func _setup_autosizing():
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		# Enable auto-sizing
-		label.fit_content = true
+	
 		print("📝 TaskDisplay: Task label auto-sizing enabled")
 
 func show_task(task_name: String):
