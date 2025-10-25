@@ -19,19 +19,19 @@ func _ready():
 
 func _check_and_reposition_based_on_entry():
 	"""Check if we need to reposition based on entry point"""
-	# print("🔍 Player: Checking for repositioning...")
+	print("🔍 Player: Checking for repositioning...")
 	
 	if not has_node("/root/SpawnManager"):
-		# print("⚠️ Player: SpawnManager not found!")
+		print("⚠️ Player: SpawnManager not found!")
 		return
 	
 	var spawn_manager = get_node("/root/SpawnManager")
 	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
-	# print("🔍 Player: Current scene name: ", scene_name)
-	# print("🔍 Player: SpawnManager entry_point: ", spawn_manager.entry_point)
+	print("🔍 Player: Current scene name: ", scene_name)
+	print("🔍 Player: SpawnManager entry_point: ", spawn_manager.entry_point)
 	
 	var spawn_data = spawn_manager.get_spawn_data(scene_name)
-	# print("🔍 Player: Spawn data: ", spawn_data)
+	print("🔍 Player: Spawn data: ", spawn_data)
 	
 	if not spawn_data.is_empty():
 		# Set position
@@ -51,9 +51,9 @@ func _check_and_reposition_based_on_entry():
 		elif animation.contains("right"):
 			last_facing = "right"
 		
-		# print("📍 Player: Repositioned to ", spawn_data.position, " with animation ", animation, " for scene ", scene_name)
+		print("📍 Player: Repositioned to ", spawn_data.position, " with animation ", animation, " for scene ", scene_name)
 	else:
-		# print("⚠️ Player: No spawn data found, using default position")
+		print("⚠️ Player: No spawn data found, using default position")
 		pass
 	
 	# Clear the entry point after use

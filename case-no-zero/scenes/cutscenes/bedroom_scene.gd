@@ -155,6 +155,11 @@ func show_dialogue_line(line_index: int):
 		# Show dialogue (voice blip is handled automatically in DialogueUI)
 		dialogue_ui.show_dialogue_line(speaker, text)
 		
+		# Hide the next button for bedroom scene auto-advance
+		if dialogue_ui and dialogue_ui.has_node("Container/Button"):
+			dialogue_ui.get_node("Container/Button").hide()
+			print("🎬 Bedroom scene: Next button hidden for auto-advance")
+		
 		# Play voice blip for bedroom scene (since AnimationPlayer bypasses DialogueUI typing)
 		if VoiceBlipManager:
 			VoiceBlipManager.play_voice_blip(speaker)

@@ -30,20 +30,26 @@ func initialize_tasks():
 	task_queue = [
 		{
 			"id": "go_to_police_station",
-			"name": "Go to the Police Station",
-			"description": "Head to the police station lobby to start your first day.",
+			"name": "Pumunta sa Police Station",
+			"description": "Pumunta sa police station lobby para sa unang araw mo.",
 			"scene_target": "police_lobby"
 		},
 		{
 			"id": "go_to_barangay_hall",
-			"name": "Go to Barangay Hall",
-			"description": "Investigate the crime scene behind the barangay hall.",
+			"name": "Pumunta sa Barangay Hall",
+			"description": "Imbestigahan ang crime scene sa likod ng barangay hall.",
 			"scene_target": "barangay_hall"
 		},
 		{
+			"id": "go_to_morgue",
+			"name": "Pumunta sa morgue para sa autopsy report",
+			"description": "Tingnan ang autopsy report sa morgue para sa karagdagang ebidensya.",
+			"scene_target": "morgue"
+		},
+		{
 			"id": "next_task_placeholder",
-			"name": "Continue Investigation",
-			"description": "Placeholder for the next task.",
+			"name": "Ipagpatuloy ang Imbestigasyon",
+			"description": "Placeholder para sa susunod na task.",
 			"scene_target": ""
 		}
 	]

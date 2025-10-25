@@ -19,7 +19,7 @@
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",
-		"text": "Ah, kayo pala yung mga nag-iinvestigate. Si Leo ay mabuting pulis. Ano ba ang gusto ninyong malaman?"
+		"text": "Ah, kayo pala yung mga nag-iinvestigate. Si Leo ay mabuting pulis. Mabait na bata yun, laging tumutulong sa community. Ano ba ang gusto ninyong malaman tungkol sa kanya?"
 	  },
 	  {
 		"speaker": "Miguel",
@@ -27,7 +27,7 @@
 	  },
 	  {
 		"speaker": "Celine",
-		"text": "Salamat po, Kapitana. Pwede po ba naming i-examine yung logbook?"
+		"text": "Salamat po, Kapitana. Pwede po ba naming i-examine yung patrol logbook? Baka may makita kami doon na related sa nangyari kay Leo. Para sa legal documentation lang po."
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",
@@ -71,7 +71,7 @@
 	  },
 	  {
 		"speaker": "Miguel",
-		"text": "Kapitana, may nakita kaming handwriting sample ni Leo. Hindi match sa entry sa logbook."
+		"text": "Kapitana, may nakita kaming handwriting sample ni Leo. Hindi match sa entry sa logbook. Parang may nag-tamper sa records. Baka may nag-cover up ng mga nangyari."
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",
@@ -79,7 +79,7 @@
 	  },
 	  {
 		"speaker": "Miguel",
-		"text": "Kapitana, bakit po kayo defensive? May tinatago po ba kayo?"
+		"text": "Kapitana, bakit po kayo defensive? May tinatago po ba kayo? Bakit parang ayaw ninyong mag-cooperate sa investigation? Para sa ikabubuti ng lahat ito."
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",

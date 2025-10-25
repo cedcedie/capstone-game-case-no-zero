@@ -13,6 +13,7 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(400, 488),
 			"animation": "idle_back"
 		},
+		
 		"from_head_police_room": {
 			"position": Vector2(768, 288), 
 			"animation": "idle_down"

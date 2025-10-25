@@ -216,20 +216,17 @@ func show_dialogue_with_transition(speaker: String, text: String, hide_first: bo
 		waiting_for_next = true
 
 func show_dialogue_with_auto_advance(speaker: String, text: String) -> void:
-	"""Show dialogue with auto-advance for cutscenes"""
+	"""Show dialogue with next button for cutscenes"""
 	if not dialogue_ui:
 		print("⚠️ Barangay Hall: DialogueUI not available")
 		return
 	
 	dialogue_ui.show_dialogue_line(speaker, text)
 	
-	# Calculate dynamic wait time based on text length
-	var typing_time = text.length() * 0.01  # Time for typing animation
-	var reading_time = 1.5  # Fixed 1.5s reading time for all dialogue
-	var total_wait = typing_time + reading_time
-	
-	print("💬 Auto-advancing dialogue: ", text.length(), " chars, waiting ", total_wait, "s")
-	await get_tree().create_timer(total_wait).timeout
+	# Wait for user to click next button
+	print("💬 Waiting for user input to continue...")
+	await dialogue_ui.next_pressed
+	print("▶️ User input received, continuing...")
 
 func tween_camera_zoom(target_zoom: float) -> void:
 	"""Tween camera zoom to target value"""

@@ -47,6 +47,7 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"Area2D_head_police": "head_police", 
 		"Area2D_security_server": "security_server",
 		"Area2D_police_lobby": "from_lower_level_station",
+		"Area2D_police_lobby_from_head": "from_head_police_room",
 		"Area2D_police_lobby_to_police_station": "police_station",
 		"Area2D_police_lobby_from_security_server": "security_server",
 		"Area2D_barangay_hall_second_floor": "barangay_hall_second_floor",
@@ -108,6 +109,8 @@ func _get_target_scene_path_from_area_name() -> String:
 	# Get the scene path based on the Area2D's name
 	var area_name = name
 	match area_name:
+		"Area2D_police_lobby_from_head":
+			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		"Area2D_lower_level":
 			return "res://scenes/environments/Police Station/lower_level_station.tscn"
 		"Area2D_head_police":

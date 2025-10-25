@@ -11018,7 +11018,7 @@ size = Vector2(96, 18)
 
 [sub_resource type="Animation" id="Animation_m2gj1"]
 resource_name = "head_police"
-length = 60.0
+length = 17.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -11026,10 +11026,10 @@ tracks/0/path = NodePath("PlayerM:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 14, 14.3, 14.6, 31.5, 31.8, 32.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.33333, 2.63333, 2.93333, 8.26667, 8.56667, 9.36666, 14.9667, 15.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(808, 480), Vector2(808, 480), Vector2(808, 416), Vector2(752, 416), Vector2(752, 416), Vector2(752, 376), Vector2(568, 376)]
+"values": [Vector2(808, 480), Vector2(808, 480), Vector2(808, 416), Vector2(752, 416), Vector2(752, 416), Vector2(752, 376), Vector2(568, 376), Vector2(568, 376), Vector2(768, 376)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -11038,10 +11038,10 @@ tracks/1/path = NodePath("PlayerM/AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 14, 14.3333, 14.6, 31.3667, 31.5, 31.8, 32.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.33333, 2.66663, 2.93333, 8.13333, 8.26667, 8.56667, 9.36666, 14.5333, 14.9667, 15.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [&"idle_back", &"walk_back", &"walk_left", &"idle_back", &"idle_back", &"walk_back", &"walk_left", &"idle_left"]
+"values": [&"idle_back", &"walk_back", &"walk_left", &"idle_back", &"idle_back", &"walk_back", &"walk_left", &"idle_left", &"idle_left", &"walk_right", &"idle_left"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -11050,10 +11050,10 @@ tracks/2/path = NodePath("celine:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 14.5, 14.8, 15.3, 15.5, 31.7, 32.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.83333, 3.13333, 3.63333, 3.83333, 8.46667, 9.36666, 14.9667, 15.9667, 16.2667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(856, 480), Vector2(856, 480), Vector2(856, 440), Vector2(720, 440), Vector2(720, 416), Vector2(720, 416), Vector2(528, 416)]
+"values": [Vector2(856, 480), Vector2(856, 480), Vector2(856, 440), Vector2(720, 440), Vector2(720, 416), Vector2(720, 416), Vector2(528, 416), Vector2(528, 416), Vector2(736, 416), Vector2(736, 376)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -11062,10 +11062,10 @@ tracks/3/path = NodePath("celine/AnimatedSprite2D:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 14.5, 14.8, 15.3, 15.5, 31.4333, 31.7, 32.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.83333, 3.13333, 3.63333, 3.83333, 8.2, 8.46667, 9.36666, 14.5333, 14.9667, 15.9667, 16.2667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [&"idle_back", &"walk_back", &"walk_left", &"walk_back", &"idle_back", &"idle_back", &"walk_left", &"idle_back"]
+"values": [&"idle_back", &"walk_back", &"walk_left", &"walk_back", &"idle_back", &"idle_back", &"walk_left", &"idle_back", &"idle_back", &"walk_right", &"walk_back", &"idle_right"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -11074,7 +11074,7 @@ tracks/4/path = NodePath("NpcPlPo1Darwin:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 31, 31.8),
+"times": PackedFloat32Array(0, 7.76667, 8.56667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(736, 376), Vector2(736, 376), Vector2(528, 376)]
@@ -11086,7 +11086,7 @@ tracks/5/path = NodePath("NpcPlPo1Darwin/AnimatedSprite2D:animation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 15.5, 16, 21.9333, 31, 31.8),
+"times": PackedFloat32Array(0, 3.83333, 4.33333, 4.6, 7.76667, 8.56667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [&"idle_back", &"idle_back", &"idle_front", &"idle_back", &"idle_left", &"idle_right"]
@@ -11098,11 +11098,23 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 33, 34.8667, 36.2667, 38.0667, 40.7333, 42.8, 44.2667, 46.1333, 47.9333, 49.4, 51.0667, 52.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(2, 2.1, 2.2, 2.3, 4.4, 4.5, 4.6, 4.7, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2, 10.3, 10.4, 14, 14.1, 14.2, 14.3, 14.4, 14.5, 17, 17.1, 17.2, 17.3, 17.4, 17.5, 17.6, 17.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
-"method": &"play_head_police_animation"
+"method": &"show_line_0"
+}, {
+"args": [],
+"method": &"show_line_1"
+}, {
+"args": [],
+"method": &"show_line_2"
+}, {
+"args": [],
+"method": &"show_line_3"
+}, {
+"args": [],
+"method": &"show_line_4"
 }, {
 "args": [],
 "method": &"show_line_5"
@@ -11139,83 +11151,76 @@ tracks/6/keys = {
 }, {
 "args": [],
 "method": &"show_line_16"
+}, {
+"args": [],
+"method": &"show_evidence_inventory"
+}, {
+"args": [],
+"method": &"show_line_17"
+}, {
+"args": [],
+"method": &"show_line_18"
+}, {
+"args": [],
+"method": &"show_line_19"
+}, {
+"args": [],
+"method": &"show_line_20"
+}, {
+"args": [],
+"method": &"show_line_21"
+}, {
+"args": [],
+"method": &"show_line_22"
+}, {
+"args": [],
+"method": &"show_line_23"
+}, {
+"args": [],
+"method": &"show_line_24"
+}, {
+"args": [],
+"method": &"show_line_25"
+}, {
+"args": [],
+"method": &"show_line_26"
+}, {
+"args": [],
+"method": &"show_line_27"
+}, {
+"args": [],
+"method": &"show_line_28"
+}, {
+"args": [],
+"method": &"show_line_29"
+}, {
+"args": [],
+"method": &"show_line_30"
 }]
 }
-tracks/7/type = "method"
+tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath(".")
+tracks/7/path = NodePath("NpcPlPo3:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(2, 5, 8, 11, 13.0667, 16, 19, 22, 25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"show_line_0"
-}, {
-"args": [],
-"method": &"show_line_1"
-}, {
-"args": [],
-"method": &"show_line_2"
-}, {
-"args": [],
-"method": &"show_line_3"
-}, {
-"args": [],
-"method": &"show_line_4"
-}, {
-"args": [],
-"method": &"show_line_4"
-}, {
-"args": [],
-"method": &"show_line_5"
-}, {
-"args": [],
-"method": &"show_line_6"
-}, {
-"args": [],
-"method": &"show_line_7"
-}]
+"times": PackedFloat32Array(0, 4.8, 5.1, 5.7, 6.4, 7.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(736, 331), Vector2(736, 331), Vector2(664, 331), Vector2(664, 456), Vector2(832, 456), Vector2(832, 824)]
 }
-tracks/8/type = "method"
+tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath(".")
+tracks/8/path = NodePath("NpcPlPo3/AnimatedSprite2D:animation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(30.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"fade_out_random_police"
-}]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("NpcPlPo3:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 28, 28.3, 28.9, 29.6, 30.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(736, 331), Vector2(736, 331), Vector2(664, 331), Vector2(664, 456), Vector2(832, 456), Vector2(832, 536)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("NpcPlPo3/AnimatedSprite2D:animation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 28, 28.3, 28.9, 29.6, 30.1),
+"times": PackedFloat32Array(0, 4.8, 5.1, 5.7, 6.4, 7.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [&"idle_front", &"walk_left", &"walk_down", &"walk_right", &"walk_down", &"idle_front"]
+"values": [&"idle_front", &"idle_left", &"idle_front", &"idle_right", &"idle_front", &"idle_front"]
 }
 
 [sub_resource type="Animation" id="Animation_y6gnq"]
@@ -11359,10 +11364,10 @@ position = Vector2(808, 480)
 animation = &"idle_left"
 autoplay = "idle_left"
 
-[node name="Area2D_police_lobby" type="Area2D" parent="."]
+[node name="Area2D_police_lobby_from_head" type="Area2D" parent="."]
 script = ExtResource("12_scene_transition")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_lobby"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_lobby_from_head"]
 position = Vector2(832, 536)
 shape = SubResource("RectangleShape2D_1xebd")
 

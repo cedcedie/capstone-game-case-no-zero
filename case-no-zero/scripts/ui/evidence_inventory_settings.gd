@@ -21,10 +21,10 @@ var evidence_tab: NinePatchRect
 var settings_tab: NinePatchRect
 
 # Evidence textures - preload them for better performance
-var handwriting_sample_texture = preload("res://assets/sprites/evidence/handwriting_sample_evidence.png")
-var logbook_texture = preload("res://assets/sprites/evidence/logbook_evidence.png")
+# New evidence order: BrokenBodyCamEvidence, LogbookEvidence, HandwritingSampleEvidence, RadioLogEvidence, AutopsyEvidence, LeosNotebookEvidence
 var broken_body_cam_texture = preload("res://assets/sprites/evidence/broken_body_cam_evidence.png")
-var cctv_footage_texture = preload("res://assets/sprites/evidence/cctv_evidence.png")
+var logbook_texture = preload("res://assets/sprites/evidence/logbook_evidence.png")
+var handwriting_sample_texture = preload("res://assets/sprites/evidence/handwriting_sample_evidence.png")
 var radio_log_texture = preload("res://assets/sprites/evidence/radio_log_evidence.png")
 var autopsy_report_texture = preload("res://assets/sprites/evidence/autopsy_evidence.png")
 var leos_notebook_texture = preload("res://assets/sprites/evidence/leos_notebook_evidence.png")
@@ -210,14 +210,12 @@ func _display_evidence(evidence_id: String):
 func _get_evidence_texture(evidence_id: String) -> Texture2D:
 	"""Get the texture for evidence based on its ID"""
 	match evidence_id:
-		"handwriting_sample":
-			return handwriting_sample_texture
-		"logbook":
-			return logbook_texture
 		"broken_body_cam":
 			return broken_body_cam_texture
-		"cctv_footage":
-			return cctv_footage_texture
+		"logbook":
+			return logbook_texture
+		"handwriting_sample":
+			return handwriting_sample_texture
 		"radio_log":
 			return radio_log_texture
 		"autopsy_report":

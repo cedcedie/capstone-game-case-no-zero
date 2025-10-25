@@ -10,16 +10,14 @@ extends CanvasLayer
 signal next_pressed
 var waiting_for_next: bool = false
 var is_typing: bool = false
-var typing_speed := 0.02
+var typing_speed := 0.01
 var cutscene_mode: bool = false
 var blip_interval: int = 3  # play a voice blip every N characters
 
 func set_cutscene_mode(enabled: bool) -> void:
 	cutscene_mode = enabled
-	if cutscene_mode:
-		next_button.hide()
-		waiting_for_next = false
-	# when disabling, button will be shown after next line finishes typing
+	print("🎬 DialogueUI cutscene mode set to:", enabled)
+	# No special handling for cutscene mode - next button works normally
 
 func _ready():
 	hide()
@@ -29,6 +27,10 @@ func _ready():
 	
 	# Setup autosizing for labels
 	_setup_autosizing()
+
+func _input(event):
+	# No special input handling - let the next button handle everything
+	pass
 
 # Smooth fade-in
 func show_ui():
@@ -67,12 +69,10 @@ func show_dialogue_line(speaker: String, text: String) -> void:
 		await get_tree().create_timer(typing_speed).timeout
 
 	is_typing = false
-	if cutscene_mode:
-		waiting_for_next = false
-		next_button.hide()
-	else:
-		waiting_for_next = true
-		next_button.show() # Show the next button only after typing finishes
+	# Always show the next button after typing finishes, regardless of cutscene mode
+	waiting_for_next = true
+	next_button.show() # Show the next button only after typing finishes
+	print("🎬 Next button shown after typing finished")
 
 func _apply_portrait_for_speaker(speaker: String) -> void:
 	if portrait_rect == null:
@@ -94,25 +94,27 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 	portrait_rect.texture = tex
 
 func _setup_autosizing():
-	"""Setup autosizing for dialogue UI labels"""
-	# Enable autosizing for name label
+	"""Setup scrolling for dialogue UI labels"""
+	# Enable scrolling for name label
 	if name_label:
 		name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		name_label.clip_contents = false
+		name_label.clip_contents = true
 		# Use size_flags_vertical for autosizing in Godot 4.4.1
 		name_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		print("📝 Dialogue UI: Name label autosizing enabled")
+		print("📝 Dialogue UI: Name label scrolling enabled")
 	
-	# Enable autosizing for dialogue label
+	# Enable scrolling for dialogue label
 	if dialogue_label:
 		dialogue_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		dialogue_label.clip_contents = false
+		dialogue_label.clip_contents = true
 		# Use size_flags_vertical for autosizing in Godot 4.4.1
 		dialogue_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		print("📝 Dialogue UI: Dialogue label autosizing enabled")
+		print("📝 Dialogue UI: Dialogue label scrolling enabled")
 
 func _on_next_pressed():
 	if cutscene_mode:
+		# In cutscene mode, emit signal immediately when input is received
+		emit_signal("next_pressed")
 		return
 	if waiting_for_next and not is_typing:
 		waiting_for_next = false

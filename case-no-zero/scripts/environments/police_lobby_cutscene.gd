@@ -272,20 +272,16 @@ func play_dialogue():
 		print("⚠️ Failed to load dialogue from JSON")
 		return
 	
-	# Show each dialogue line (auto-advance for cutscene)
+	# Show each dialogue line with next button (user-controlled)
 	for line in dialogue_lines:
 		var speaker = line.get("speaker", "")
 		var text = line.get("text", "")
 		DialogueUI.show_dialogue_line(speaker, text)
 		
-		# Calculate dynamic wait time based on text length
-		# Typing speed is 0.01s per character, plus extra reading time
-		var typing_time = text.length() * 0.01  # Time for typing animation
-		var reading_time = 1.5  # Fixed 1.5s reading time for all dialogue
-		var total_wait = typing_time + reading_time
-		
-		print("💬 Auto-advancing dialogue: ", text.length(), " chars, waiting ", total_wait, "s")
-		await get_tree().create_timer(total_wait).timeout
+		# Wait for user to click next button
+		print("💬 Waiting for user input to continue...")
+		await DialogueUI.next_pressed
+		print("▶️ User input received, continuing...")
 	
 	# Hide dialogue after all lines shown
 	DialogueUI.hide_ui()

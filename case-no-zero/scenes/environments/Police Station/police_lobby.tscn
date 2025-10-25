@@ -7157,7 +7157,7 @@ tile_set = SubResource("TileSet_qtg2g")
 
 [node name="PlayerM" parent="." instance=ExtResource("6_kpen6")]
 z_index = 2
-position = Vector2(400, 480)
+position = Vector2(768, 312)
 
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]
 animation = &"walk_down"
@@ -7218,6 +7218,8 @@ script = ExtResource("7_scene_transition")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_police_lobby_to_police_station"]
 position = Vector2(-928, 104)
 shape = SubResource("RectangleShape2D_4iqi4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [editable path="PlayerM"]
 [editable path="NpcPolice"]
