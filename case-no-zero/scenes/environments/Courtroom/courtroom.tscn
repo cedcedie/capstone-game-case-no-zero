@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://dfyuuvfmltt7m"]
+[gd_scene load_steps=65 format=4 uid="uid://dfyuuvfmltt7m"]
 
 [ext_resource type="Texture2D" uid="uid://ca2o3d64xiq0x" path="res://assets/sprites/environments/interior/17_Visibile_Upstairs_System_32x32.png" id="1_gks7r"]
 [ext_resource type="Script" uid="uid://s1ybtnbc02p6" path="res://scripts/environments/courtroom_manager.gd" id="1_qfslm"]
@@ -22,13 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://b7bqhnbtmse4b" path="res://assets/sprites/environments/interior/5_Classroom_and_library_32x32.png" id="19_6brge"]
 [ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/sprites/environments/interior/4_Bedroom_32x32.png" id="20_o61oj"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="21_0sx17"]
-[ext_resource type="PackedScene" uid="uid://c51hdm5vg2hjd" path="res://scenes/characters/main/erwin.tscn" id="22_ux7jt"]
-[ext_resource type="PackedScene" uid="uid://bqgrx7frrb7wi" path="res://judge.tscn" id="23_qfslm"]
-[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main/celine_navarro.tscn" id="24_f46ra"]
-[ext_resource type="PackedScene" uid="uid://de8tmkmgpect4" path="res://prosecutor.tscn" id="25_t6bvv"]
-[ext_resource type="PackedScene" uid="uid://blneit8blyobn" path="res://scenes/characters/kapitanaPalma.tscn" id="26_ifbmr"]
-[ext_resource type="PackedScene" uid="uid://bqr0txu1h7bch" path="res://miravil/character_police_station/po1Darwin.tscn" id="27_skxa1"]
-[ext_resource type="PackedScene" uid="uid://bh64a5111xa0" path="res://leticia_salvador.tscn" id="28_v0728"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_phr0s"]
 texture = ExtResource("1_gks7r")

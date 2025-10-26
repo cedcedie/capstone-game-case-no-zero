@@ -20,10 +20,10 @@ func _on_chapter_1_pressed() -> void:
 	
 	# Wait additional 1 second for dramatic effect
 	await get_tree().create_timer(1.0).timeout
-	print("🎬 Chapter Menu: Transitioning to intro story")
+	print("🎮 Chapter Menu: Transitioning to control guide")
 	
-	# Transition to intro story
-	get_tree().change_scene_to_file("res://intro_story.tscn")
+	# Transition to control guide (which will then go to intro after 10 seconds)
+	get_tree().change_scene_to_file("res://scenes/ui/UI by jer/design/Control_Guide.tscn")
 
 func fade_out_menu(duration: float):
 	"""Fade out the entire chapter menu visually"""
