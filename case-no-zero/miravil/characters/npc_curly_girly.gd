@@ -7,9 +7,10 @@ var last_direction: String = "down"  # Track the last direction faced
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var path_points := [
-	Vector2(1072.0, 1120.0),
-	Vector2(200.0, 1115.0),
+var path_points: Array[Vector2] = [
+	Vector2(0.0, 0.0),    # Start point
+	Vector2(1.0, -35.0),     # Go up
+	Vector2(245.0, -38.0),   # Go right
 ]
 
 func _ready():

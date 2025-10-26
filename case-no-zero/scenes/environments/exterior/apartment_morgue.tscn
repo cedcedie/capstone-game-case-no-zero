@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://dvgkhr0qxnpx0"]
+[gd_scene load_steps=86 format=4 uid="uid://dvgkhr0qxnpx0"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_7v4vq"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_xphjy"]
@@ -11,32 +11,50 @@
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_qoipj"]
 [ext_resource type="PackedScene" uid="uid://56ldwej8xfdd" path="res://miravil/characters/npc_backpack_man.tscn" id="10_kev02"]
 [ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="11_fl2h6"]
+[ext_resource type="Script" uid="uid://d0hee1ciupk7p" path="res://miravil/characters/npc_backpack_man.gd" id="11_o0l8t"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="12_jtlfh"]
+[ext_resource type="Script" uid="uid://cgi80m2jwgq2e" path="res://miravil/characters/npc_beard_man.gd" id="13_7btrm"]
 [ext_resource type="PackedScene" uid="uid://c4ajw31sko6wi" path="res://miravil/characters/npc_boy_1.tscn" id="13_udjt5"]
 [ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="14_el8te"]
 [ext_resource type="PackedScene" uid="uid://b74ajxmhj41h7" path="res://miravil/characters/npc_cool_hoodie.tscn" id="15_63oev"]
 [ext_resource type="PackedScene" uid="uid://1js3m63gq78w" path="res://miravil/characters/npc_mustache.tscn" id="16_2k7xy"]
+[ext_resource type="Script" uid="uid://cuop4jbijdnp8" path="res://miravil/characters/npc_boy_1.gd" id="16_3l2y6"]
 [ext_resource type="PackedScene" uid="uid://b6qm0vctd5r8j" path="res://miravil/characters/npc_one_eye.tscn" id="17_xv305"]
 [ext_resource type="PackedScene" uid="uid://8t88hn34ixlf" path="res://miravil/characters/npc_random_girl.tscn" id="18_3ll3w"]
+[ext_resource type="Script" uid="uid://c84kb0nklr4hi" path="res://miravil/characters/npc_boy_icecream_hair.gd" id="18_xrcoi"]
 [ext_resource type="PackedScene" uid="uid://dxuw5gwsudjkb" path="res://miravil/characters/npc_shaolin_boy.tscn" id="19_cexpq"]
+[ext_resource type="Script" uid="uid://bidnyrf17oee2" path="res://miravil/characters/npc_cool_hoodie.gd" id="20_0gp1r"]
 [ext_resource type="PackedScene" uid="uid://b0k0313qg5upt" path="res://miravil/characters/npc_guy_2.tscn" id="20_xqyx5"]
 [ext_resource type="PackedScene" uid="uid://dbt0khsctyvim" path="res://miravil/characters/npc_guy_5.tscn" id="21_dsbue"]
 [ext_resource type="PackedScene" uid="uid://di11hg7t8dak4" path="res://miravil/characters/npc_guy_6.tscn" id="22_1g55f"]
+[ext_resource type="Script" uid="uid://psk45wtqy2h2" path="res://miravil/characters/npc_mustache.gd" id="22_mhdqn"]
 [ext_resource type="PackedScene" uid="uid://cbnn8pq1mffxm" path="res://miravil/characters/npc_guy_4.tscn" id="23_w58ee"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="24_he11w"]
+[ext_resource type="Script" uid="uid://bm78g1r4lv64g" path="res://miravil/characters/npc_one_eye.gd" id="24_mnau3"]
 [ext_resource type="PackedScene" uid="uid://dlrp0sfyfnvxu" path="res://miravil/characters/npc_boy_kunat.tscn" id="25_o0l8t"]
 [ext_resource type="PackedScene" uid="uid://bthvnds1w3orw" path="res://miravil/characters/npc_curly_girly.tscn" id="26_7btrm"]
+[ext_resource type="Script" uid="uid://dhgxe3ul30qwc" path="res://miravil/characters/npc_random_girl.gd" id="26_pevcj"]
 [ext_resource type="PackedScene" uid="uid://cqws3ntoa3f31" path="res://miravil/characters/npc_random_guy.tscn" id="27_3l2y6"]
+[ext_resource type="Script" uid="uid://b6qitur857dun" path="res://miravil/characters/npc_shaolin_boy.gd" id="28_p34yk"]
 [ext_resource type="PackedScene" uid="uid://b84ieuct4jt0x" path="res://miravil/characters/npc_yellow_glass_man.tscn" id="28_xrcoi"]
 [ext_resource type="PackedScene" uid="uid://umei5rc0s03h" path="res://miravil/characters/npc_girl_1.tscn" id="29_0gp1r"]
+[ext_resource type="Script" uid="uid://yje2qpbbwtwt" path="res://miravil/characters/npc_guy_2.gd" id="30_ax1g1"]
 [ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="30_mhdqn"]
 [ext_resource type="PackedScene" uid="uid://0hfqkpj2i2t4" path="res://miravil/vehicle_triyk/triyk_4.tscn" id="31_1em5d"]
 [ext_resource type="PackedScene" uid="uid://ngiiiml5ij1" path="res://miravil/characters/npc_pinkish.tscn" id="31_mnau3"]
 [ext_resource type="PackedScene" uid="uid://bk8koyshpdemf" path="res://miravil/vehicle_triyk/triyk_3.tscn" id="32_61kig"]
+[ext_resource type="Script" uid="uid://ddq1phqgf5jhl" path="res://miravil/characters/npc_guy_5.gd" id="32_ieexf"]
 [ext_resource type="PackedScene" uid="uid://cdn7j00wvtqbo" path="res://miravil/vehicle_triyk/triyk_2.tscn" id="33_qoipj"]
 [ext_resource type="PackedScene" uid="uid://blts6sose5f61" path="res://miravil/vehicle_triyk/triyk_6.tscn" id="34_kev02"]
+[ext_resource type="Script" uid="uid://bwutt3q7a6bel" path="res://miravil/characters/npc_guy_4.gd" id="35_7iaue"]
 [ext_resource type="PackedScene" uid="uid://dko0ulikt57nb" path="res://miravil/vehicle_triyk/triyk_5.tscn" id="35_fl2h6"]
 [ext_resource type="PackedScene" uid="uid://c7nwhqwwg708t" path="res://miravil/vehicle_triyk/triyk_1.tscn" id="36_jtlfh"]
+[ext_resource type="Script" uid="uid://cgixo4tmxff80" path="res://miravil/characters/npc_boy_kunat.gd" id="38_evhef"]
+[ext_resource type="Script" uid="uid://dokttmqf2s46c" path="res://miravil/characters/npc_random_guy.gd" id="41_h58kl"]
+[ext_resource type="Script" uid="uid://csdw01yuraoxh" path="res://miravil/characters/npc_yellow_glass_man.gd" id="43_sav1c"]
+[ext_resource type="Script" uid="uid://bos60h1ifhjtt" path="res://miravil/characters/npc_girl_1.gd" id="45_xd6iu"]
+[ext_resource type="Script" path="res://miravil/characters/npc_guy_3.gd" id="47_ddaur"]
+[ext_resource type="Script" uid="uid://b47fp0xtays0x" path="res://miravil/characters/npc_pinkish.gd" id="55_4jt8t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3ex5"]
 texture = ExtResource("1_7v4vq")
@@ -56597,6 +56615,7 @@ shape = SubResource("RectangleShape2D_k5fqa")
 
 [node name="NpcBackpackMan" parent="." instance=ExtResource("10_kev02")]
 position = Vector2(2056, 984)
+script = ExtResource("11_o0l8t")
 
 [node name="AnimatedSprite2D" parent="NpcBackpackMan" index="0"]
 animation = &"idle_front"
@@ -56610,6 +56629,7 @@ offset_bottom = 9.0
 [node name="NpcBeardMan" parent="." instance=ExtResource("11_fl2h6")]
 z_index = 4
 position = Vector2(155, 760)
+script = ExtResource("13_7btrm")
 
 [node name="AnimatedSprite2D" parent="NpcBeardMan" index="0"]
 animation = &"idle_right"
@@ -56626,10 +56646,12 @@ limit_bottom = 5000
 [node name="NpcBoy1" parent="." instance=ExtResource("13_udjt5")]
 z_index = 4
 position = Vector2(1408, 936)
+script = ExtResource("16_3l2y6")
 
 [node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("14_el8te")]
 z_index = 4
 position = Vector2(1200, 944)
+script = ExtResource("18_xrcoi")
 
 [node name="AnimatedSprite2D" parent="NpcBoyIcecreamHair" index="0"]
 animation = &"idle_front"
@@ -56637,10 +56659,12 @@ animation = &"idle_front"
 [node name="NpcCoolHoodie" parent="." instance=ExtResource("15_63oev")]
 z_index = 10
 position = Vector2(2400, 1016)
+script = ExtResource("20_0gp1r")
 
 [node name="NpcMustache" parent="." instance=ExtResource("16_2k7xy")]
 z_index = 10
 position = Vector2(2456, 1016)
+script = ExtResource("22_mhdqn")
 
 [node name="AnimatedSprite2D" parent="NpcMustache" index="0"]
 animation = &"idle_left"
@@ -56648,6 +56672,7 @@ autoplay = "idle_left"
 
 [node name="NpcOneEye" parent="." instance=ExtResource("17_xv305")]
 position = Vector2(192, 760)
+script = ExtResource("24_mnau3")
 
 [node name="AnimatedSprite2D" parent="NpcOneEye" index="0"]
 animation = &"idle_left"
@@ -56655,9 +56680,11 @@ animation = &"idle_left"
 [node name="NpcRandomGirl" parent="." instance=ExtResource("18_3ll3w")]
 z_index = 15
 position = Vector2(1424, 760)
+script = ExtResource("26_pevcj")
 
 [node name="NpcShaolinBoy" parent="." instance=ExtResource("19_cexpq")]
 position = Vector2(1624, 1016)
+script = ExtResource("28_p34yk")
 
 [node name="AnimatedSprite2D" parent="NpcShaolinBoy" index="0"]
 animation = &"idle_right"
@@ -56665,9 +56692,11 @@ autoplay = "idle_right"
 
 [node name="NpcGuy2" parent="." instance=ExtResource("20_xqyx5")]
 position = Vector2(1088, 184)
+script = ExtResource("30_ax1g1")
 
 [node name="NpcGuy5" parent="." instance=ExtResource("21_dsbue")]
 position = Vector2(2560, 504)
+script = ExtResource("32_ieexf")
 
 [node name="NpcGuy6" parent="NpcGuy5" instance=ExtResource("22_1g55f")]
 z_index = 15
@@ -56675,6 +56704,7 @@ position = Vector2(-1984, 72)
 
 [node name="NpcGuy4" parent="." instance=ExtResource("23_w58ee")]
 position = Vector2(128, 496)
+script = ExtResource("35_7iaue")
 
 [node name="AnimatedSprite2D" parent="NpcGuy4" index="0"]
 animation = &"idle_front"
@@ -56711,22 +56741,39 @@ script = ExtResource("24_he11w")
 [node name="NpcBoyKunat" parent="." instance=ExtResource("25_o0l8t")]
 z_index = 20
 position = Vector2(2160, 640)
+script = ExtResource("38_evhef")
 
 [node name="NpcCurlyGirly" parent="." instance=ExtResource("26_7btrm")]
 position = Vector2(768, 1032)
 
+[node name="AnimatedSprite2D" parent="NpcCurlyGirly" index="0"]
+position = Vector2(-13, 0)
+
+[node name="CollisionShape2D" parent="NpcCurlyGirly" index="1"]
+position = Vector2(-13, -8.5)
+
+[node name="Area2D" parent="NpcCurlyGirly" index="2"]
+position = Vector2(-13, 0)
+
+[node name="Label" parent="NpcCurlyGirly" index="3"]
+metadata/_edit_use_anchors_ = true
+
 [node name="NpcRandomGuy" parent="." instance=ExtResource("27_3l2y6")]
 z_index = 12
 position = Vector2(1160, 504)
+script = ExtResource("41_h58kl")
 
 [node name="NpcYellowGlassMan" parent="." instance=ExtResource("28_xrcoi")]
 position = Vector2(648, 448)
+script = ExtResource("43_sav1c")
 
 [node name="NpcGirl1" parent="." instance=ExtResource("29_0gp1r")]
 position = Vector2(2440, 880)
+script = ExtResource("45_xd6iu")
 
 [node name="NpcGuy3" parent="." instance=ExtResource("30_mhdqn")]
 position = Vector2(1184, 184)
+script = ExtResource("47_ddaur")
 
 [node name="Triyk4" parent="." instance=ExtResource("31_1em5d")]
 position = Vector2(2488, 184)
@@ -56755,10 +56802,19 @@ scale = Vector2(1.70253, 1.67094)
 [node name="NpcPinkish" parent="." instance=ExtResource("31_mnau3")]
 z_index = 20
 position = Vector2(1920, 496)
+script = ExtResource("55_4jt8t")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NpcPinkish"]
-position = Vector2(-1920, -496)
-polygon = PackedVector2Array(0, 64, 2752, 64, 2752, 1088, 0, 1088, 0, 1063, 2, 86, -76, 218, -55, 1178, 2824, 1140, 2798, -65, 61, 18)
+[node name="AnimatedSprite2D" parent="NpcPinkish" index="0"]
+position = Vector2(1, 0)
+
+[node name="CollisionShape2D" parent="NpcPinkish" index="1"]
+position = Vector2(1, -8.5)
+
+[node name="Area2D" parent="NpcPinkish" index="2"]
+position = Vector2(1, 0)
+
+[node name="Label" parent="NpcPinkish" index="3"]
+metadata/_edit_use_anchors_ = true
 
 [editable path="NpcBackpackMan"]
 [editable path="NpcBeardMan"]
