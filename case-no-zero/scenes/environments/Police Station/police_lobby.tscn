@@ -7156,7 +7156,7 @@ tile_map_data = PackedByteArray("AAACAAQAAAABABkAACAHAAQAAAABABYAAAAEAAMAAAAAAA4
 tile_set = SubResource("TileSet_qtg2g")
 
 [node name="PlayerM" parent="." instance=ExtResource("6_kpen6")]
-z_index = 2
+z_index = 4
 position = Vector2(768, 312)
 
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]

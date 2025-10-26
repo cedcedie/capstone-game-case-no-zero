@@ -1187,11 +1187,17 @@ func fade_in_scene() -> void:
 # DEBUG: F10 skip
 # --------------------------
 func _unhandled_input(event: InputEvent) -> void:
-	# Press F10 to instantly complete the barangay hall cutscene (debug only)
+	# DEBUG: F10 skip - Only works if debug mode is enabled
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_F10:
-			var debug_checkpoint_manager = get_node("/root/CheckpointManager")
-			debug_checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
-			if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
-				DialogueUI.set_cutscene_mode(false)
-			end_cutscene()
+			# Check if debug mode is enabled (you can add a debug flag here)
+			var debug_mode = false  # Set to true only for development
+			if debug_mode:
+				var debug_checkpoint_manager = get_node("/root/CheckpointManager")
+				debug_checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
+				if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+					DialogueUI.set_cutscene_mode(false)
+				end_cutscene()
+				print("🚀 DEBUG: Barangay hall cutscene skipped")
+			else:
+				print("⚠️ Debug skip disabled - complete cutscene normally")

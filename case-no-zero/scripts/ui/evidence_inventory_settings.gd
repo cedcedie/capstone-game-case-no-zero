@@ -20,14 +20,31 @@ var evidence_description: Label
 var evidence_tab: NinePatchRect
 var settings_tab: NinePatchRect
 
+# Evidence system with 6 evidence types and proper signals
+signal evidence_collected(evidence_id: String)
+signal evidence_displayed(evidence_id: String)
+signal evidence_inventory_opened()
+signal evidence_inventory_closed()
+
+# Evidence mapping: Evidence1-6 to evidence IDs
+var evidence_mapping: Array = [
+	"broken_body_cam",    # Evidence1
+	"logbook",            # Evidence2  
+	"handwriting_sample", # Evidence3
+	"radio_log",          # Evidence4
+	"autopsy_report",     # Evidence5
+	"leos_notebook"       # Evidence6
+]
+
 # Evidence textures - preload them for better performance
-# New evidence order: BrokenBodyCamEvidence, LogbookEvidence, HandwritingSampleEvidence, RadioLogEvidence, AutopsyEvidence, LeosNotebookEvidence
-var broken_body_cam_texture = preload("res://assets/sprites/evidence/broken_body_cam_evidence.png")
-var logbook_texture = preload("res://assets/sprites/evidence/logbook_evidence.png")
-var handwriting_sample_texture = preload("res://assets/sprites/evidence/handwriting_sample_evidence.png")
-var radio_log_texture = preload("res://assets/sprites/evidence/radio_log_evidence.png")
-var autopsy_report_texture = preload("res://assets/sprites/evidence/autopsy_evidence.png")
-var leos_notebook_texture = preload("res://assets/sprites/evidence/leos_notebook_evidence.png")
+var evidence_textures: Dictionary = {
+	"broken_body_cam": preload("res://assets/sprites/evidence/broken_body_cam_evidence.png"),
+	"logbook": preload("res://assets/sprites/evidence/logbook_evidence.png"),
+	"handwriting_sample": preload("res://assets/sprites/evidence/handwriting_sample_evidence.png"),
+	"radio_log": preload("res://assets/sprites/evidence/radio_log_evidence.png"),
+	"autopsy_report": preload("res://assets/sprites/evidence/autopsy_evidence.png"),
+	"leos_notebook": preload("res://assets/sprites/evidence/leos_notebook_evidence.png")
+}
 
 func _ready():
 	# Start hidden
@@ -57,6 +74,10 @@ func show_evidence_inventory():
 		
 		is_visible = true
 		show()
+		
+		# Emit signal
+		evidence_inventory_opened.emit()
+		print("📋 Evidence inventory opened")
 		
 		# Start with transparent and slightly scaled down
 		if ui_container:
@@ -95,23 +116,27 @@ func hide_evidence_inventory():
 			# Ensure pivot is set to center for scaling to center
 			ui_container.pivot_offset = ui_container.size / 2
 			
-			# Create smooth fade and scale animation
-			var tween = create_tween()
-			tween.set_parallel(true)  # Allow multiple properties to animate simultaneously
-			
-			# Fade out
-			tween.tween_property(ui_container, "modulate", Color.TRANSPARENT, 0.4)
-			tween.set_ease(Tween.EASE_IN)
-			tween.set_trans(Tween.TRANS_QUART)
-			
-			# Scale down to center
-			tween.tween_property(ui_container, "scale", Vector2(0.1, 0.1), 0.4)
-			tween.set_ease(Tween.EASE_IN)
-			tween.set_trans(Tween.TRANS_BACK)
-			
-			await tween.finished
+		# Create smooth fade and scale animation
+		var fade_tween = create_tween()
+		fade_tween.set_parallel(true)  # Allow multiple properties to animate simultaneously
 		
-		hide()
+		# Fade out
+		fade_tween.tween_property(ui_container, "modulate", Color.TRANSPARENT, 0.4)
+		fade_tween.set_ease(Tween.EASE_IN)
+		fade_tween.set_trans(Tween.TRANS_QUART)
+		
+		# Scale down to center
+		fade_tween.tween_property(ui_container, "scale", Vector2(0.1, 0.1), 0.4)
+		fade_tween.set_ease(Tween.EASE_IN)
+		fade_tween.set_trans(Tween.TRANS_BACK)
+		
+		await fade_tween.finished
+	
+	# Emit signal
+	evidence_inventory_closed.emit()
+	print("📋 Evidence inventory closed")
+	
+	hide()
 
 func toggle_evidence_inventory():
 	"""Toggle the evidence inventory UI"""
@@ -157,8 +182,8 @@ func _setup_evidence_slots():
 	"""Setup evidence slots with click detection and hover effects"""
 	var evidence_list_bg = ui_container.get_node("EvidenceBoxListBG")
 	
-	# Get all evidence slots (Evidence1 through Evidence7)
-	for i in range(1, 8):
+	# Get evidence slots (Evidence1 through Evidence6 only)
+	for i in range(1, 7):  # Only 6 evidence slots
 		var evidence_slot = evidence_list_bg.get_node_or_null("Evidence" + str(i))
 		if evidence_slot:
 			evidence_slots.append(evidence_slot)
@@ -169,6 +194,7 @@ func _setup_evidence_slots():
 				button.pressed.connect(_on_evidence_slot_pressed.bind(i - 1))  # Use 0-based index
 				button.mouse_entered.connect(_on_evidence_slot_hover.bind(i - 1, true))
 				button.mouse_exited.connect(_on_evidence_slot_hover.bind(i - 1, false))
+				print("📋 Evidence slot", i, "connected to evidence ID:", evidence_mapping[i-1])
 
 func _initialize_evidence_visibility():
 	"""Initialize evidence visibility - hide all evidence initially"""
@@ -185,10 +211,14 @@ func _select_evidence(evidence_index: int):
 	if evidence_index >= collected_evidence.size():
 		return
 	
-	var evidence_id = collected_evidence[evidence_index]
+	# Get the evidence ID from the mapping
+	var evidence_id = evidence_mapping[evidence_index]
 	if evidence_id in evidence_data.evidence:
 		current_evidence = evidence_id
 		_display_evidence(evidence_id)
+		print("📋 Evidence selected:", evidence_id, "from slot", evidence_index + 1)
+	else:
+		print("⚠️ Evidence not found in data:", evidence_id)
 
 func _display_evidence(evidence_id: String):
 	"""Display evidence information in the description panel"""
@@ -206,27 +236,24 @@ func _display_evidence(evidence_id: String):
 		evidence_display.visible = true
 	else:
 		evidence_display.visible = false
+	
+	# Emit signal for evidence display
+	evidence_displayed.emit(evidence_id)
+	print("📋 Evidence displayed:", evidence_id)
+	
+	# Add click detection for detailed examination
+	_setup_evidence_click_detection(evidence_id)
 
 func _get_evidence_texture(evidence_id: String) -> Texture2D:
 	"""Get the texture for evidence based on its ID"""
-	match evidence_id:
-		"broken_body_cam":
-			return broken_body_cam_texture
-		"logbook":
-			return logbook_texture
-		"handwriting_sample":
-			return handwriting_sample_texture
-		"radio_log":
-			return radio_log_texture
-		"autopsy_report":
-			return autopsy_report_texture
-		"leos_notebook":
-			return leos_notebook_texture
-		_:
-			return null
+	if evidence_textures.has(evidence_id):
+		return evidence_textures[evidence_id]
+	else:
+		print("⚠️ Evidence texture not found for:", evidence_id)
+		return null
 
 func add_evidence(evidence_id: String):
-	"""Add new evidence to the collection"""
+	"""Add new evidence to the collection and emit signal"""
 	if evidence_id not in collected_evidence:
 		collected_evidence.append(evidence_id)
 		
@@ -238,6 +265,10 @@ func add_evidence(evidence_id: String):
 			# If this is the first evidence, automatically select it
 			if collected_evidence.size() == 1:
 				_select_evidence(0)
+		
+		# Emit signal for evidence collection
+		evidence_collected.emit(evidence_id)
+		print("📋 Evidence collected:", evidence_id, "Total evidence:", collected_evidence.size())
 
 func _update_settings_tab_state():
 	"""Update Settings tab state based on evidence collection phase"""
@@ -382,6 +413,43 @@ func _on_evidence_slot_hover(evidence_index: int, is_hovering: bool):
 
 # Tab click functions removed - icons are no longer clickable
 
+
+func _setup_evidence_click_detection(evidence_id: String):
+	"""Setup click detection for detailed evidence examination"""
+	# Connect the evidence display to click detection
+	if evidence_display:
+		# Disconnect any existing connections first
+		if evidence_display.gui_input.is_connected(_on_evidence_display_clicked):
+			evidence_display.gui_input.disconnect(_on_evidence_display_clicked)
+		
+		# Connect the new signal
+		evidence_display.gui_input.connect(_on_evidence_display_clicked.bind(evidence_id))
+
+func _on_evidence_display_clicked(event: InputEvent, evidence_id: String):
+	"""Handle clicks on evidence display for detailed examination"""
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_show_evidence_details(evidence_id)
+
+func _show_evidence_details(evidence_id: String):
+	"""Show detailed evidence information in a popup or expanded view"""
+	var evidence_info = evidence_data.evidence[evidence_id]
+	
+	if "details" in evidence_info:
+		var details = evidence_info.details
+		var detail_text = ""
+		
+		# Build detailed information text
+		for key in details:
+			detail_text += key + ": " + details[key] + "\n\n"
+		
+		# Show detailed information (you can modify this to show in a popup or expand the description)
+		evidence_description.text = evidence_info.description + "\n\n" + "=== DETALYADONG IMPORMASYON ===\n\n" + detail_text
+		
+		print("🔍 Detailed examination of " + evidence_info.name + ":")
+		for key in details:
+			print("  " + key + ": " + details[key])
+	else:
+		print("⚠️ No detailed information available for " + evidence_info.name)
 
 func _on_evidence_description_gui_input(event: InputEvent) -> void:
 	pass # Replace with function body.

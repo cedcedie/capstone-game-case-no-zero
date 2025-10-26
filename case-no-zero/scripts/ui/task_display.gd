@@ -14,17 +14,20 @@ func _ready():
 	hide()
 	
 	# Setup autosizing for task label
-	_setup_autosizing()
+	
 
 func _setup_autosizing():
-	"""Setup scrolling for TaskDisplay label"""
-	# Enable scrolling for task label
+	"""Setup auto-sizing for TaskDisplay label"""
+	# Enable auto-sizing for task label
 	if label:
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		label.clip_contents = true
-		# Use size_flags_vertical for autosizing in Godot 4.4.1
+		label.clip_contents = false
+		# Use size_flags for auto-sizing in Godot 4.4.1
+		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		print("📝 TaskDisplay: Task label scrolling enabled")
+		# Enable auto-sizing
+	
+		print("📝 TaskDisplay: Task label auto-sizing enabled")
 
 func show_task(task_name: String):
 	print("🎯 TaskDisplay: Showing task -", task_name)
@@ -42,9 +45,8 @@ func show_task(task_name: String):
 	tween.tween_property(container, "position:x", visible_position.x, slide_duration)
 
 func _adjust_font_size_for_text(text: String):
-	"""Dynamically adjust font size based on text length to prevent overflow"""
+	"""Dynamically adjust font size based on text length for better readability"""
 	var base_font_size = 16  # Default font size
-	var _max_width = 250.0    # Maximum width for the label (unused for now)
 	
 	# Count lines in text (including \n characters)
 	var line_count = text.count("\n") + 1
@@ -53,18 +55,18 @@ func _adjust_font_size_for_text(text: String):
 	# Calculate font size based on text complexity
 	var font_size = base_font_size
 	
-	# Reduce font size for longer text
+	# Reduce font size for longer text to maintain readability
 	if char_count > 50:
-		font_size = base_font_size - 2
+		font_size = base_font_size - 1
 	if char_count > 100:
-		font_size = base_font_size - 4
-	if line_count > 2:
 		font_size = base_font_size - 2
+	if line_count > 2:
+		font_size = base_font_size - 1
 	if line_count > 3:
-		font_size = base_font_size - 4
+		font_size = base_font_size - 2
 	
 	# Ensure minimum font size
-	font_size = max(font_size, 10)
+	font_size = max(font_size, 12)
 	
 	# Apply font size to label
 	if label and label.label_settings:

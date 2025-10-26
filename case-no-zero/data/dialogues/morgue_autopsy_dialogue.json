@@ -1,0 +1,223 @@
+{
+  "morgue_autopsy": {
+    "dialogue_lines": [
+      {
+        "speaker": "Miguel",
+        "text": "Good morning. Ako si Atty. Miguel Ramos. Kailangan po namin ng autopsy report ni Leo Mendoza para sa legal case namin."
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Ah, Atty. Ramos. Para sa autopsy report, kailangan ninyo ng proper authorization. May court order ba kayo?"
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Wala pa po kaming court order, Dr. Leticia Salvador. Pero under Republic Act No. 6713, may karapatan kaming mag-access ng public records para sa legal proceedings."
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Bakit kayo interesado sa autopsy report? May kinalaman ba kayo sa kaso?"
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Ako po ang defense counsel ni Erwin Tambay. Kailangan ko po yung medical findings para sa defense."
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Ah, yung suspect. Sige, pero may warning ako. Yung report na ito ay confidential. Hindi mo pwedeng i-share sa media o sa public."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Understood po. Para lang sa legal proceedings. May nakita po ba kayong unusual sa autopsy?"
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Oo, actually. May mga inconsistencies sa official police report versus yung actual findings ko."
+      },
+      {
+        "speaker": "Celine",
+        "text": "Ano po yung mga inconsistencies, Dr. Santos?"
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Una, yung time of death. Police report says 11 PM, pero based sa body temperature at rigor mortis, mas likely na 9 PM."
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Pangalawa, yung cause of death. Police report says single gunshot wound, pero may evidence ng struggle. May defensive wounds sa kamay ni Leo."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Defensive wounds? Meaning nag-fight back si Leo?"
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Oo. May bruising sa knuckles, parang nakipag-suntukan. At may ligature marks sa wrists - parang na-restrain siya."
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Pangatlo, yung gunshot wound. Hindi siya clean kill. May evidence na multiple attempts, parang hindi sanay yung shooter."
+      },
+      {
+        "speaker": "Celine",
+        "text": "Hindi sanay? Meaning hindi pulis yung pumatay?"
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Hindi ko pwedeng i-conclude yun based sa autopsy lang. Pero yung pattern ng wound, hindi consistent sa police training."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "May iba pa po bang findings na hindi nasama sa official report?"
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Oo. May foreign DNA sa fingernails ni Leo. Hindi niya yung DNA. At may evidence ng struggle sa crime scene na hindi documented sa police report."
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Actually, may nakita akong notebook sa pocket ni Leo. May mga notes about police operations, pero hindi ko alam kung related sa kaso."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Notebook? Nasaan na po yun?"
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Kinuha ng police evidence team. Pero may photos ako ng ilang pages bago nila kinuha. Pwede ko kayong bigyan, pero under strict confidentiality."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Salamat po, Dr. Leticia Salvador. Kailangan ko po yung autopsy report at yung photos ng notebook pages."
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Sige, pero may condition. Kapag ginamit mo yan sa court, dapat ako yung mag-testify. Hindi ko pwedeng i-allow na i-misrepresent yung findings ko."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Of course po. Kailangan namin yung medical expert testimony para sa defense."
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Good. Eto yung complete autopsy report at yung photos ng notebook pages. Pero remember, confidential yan. Hindi pwedeng i-leak sa media."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Understood po. Salamat sa cooperation, Dr. Leticia Salvador."
+      },
+      {
+        "speaker": "Dr. Leticia Salvador",
+        "text": "Welcome. Sana makatulong yan sa pag-establish ng truth. Si Leo ay mabuting pulis. Deserve niya ng justice."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Salamat po, Dr. Leticia Salvador. May sapat na ebidensya na kami para sa korte."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Kumpleto na ang evidence natin. Autopsy report, Leo's notebook, radio logs, handwriting samples..."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Mayroon na tayong lahat ng kailangan para patunayan ang inosente ni Erwin."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Ang time of death discrepancy, defensive wounds, foreign DNA, at ang corruption evidence sa notebook ni Leo..."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Lahat ng ito ay nagpapatunay na hindi si Erwin ang pumatay kay Leo. May ibang tao."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "At ang police cover-up sa radio logs at patrol records... malinaw na may tinatago sila."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Ang katotohanan ay laging lumalabas. Ngayon, handa na tayo para sa korte."
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Erwin, hindi ka nag-iisa. May ebidensya na tayo para sa katarungan mo."
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Sa bawat ebidensya, lumalabas ang katotohanan. Ang kaso ni Leo Mendoza ay hindi lang tungkol sa isang pagpatay, kundi sa isang sistema na kailangan ng katarungan."
+      }
+    ],
+    "MiguelChoices": [
+      {
+        "choice_id": "authorization_approach",
+        "line_index": 4,
+        "choices": [
+          "Under Republic Act No. 6713, may karapatan kaming mag-access ng public records.",
+          "Kailangan ko lang ng medical findings para sa defense."
+        ],
+        "responses": [
+          "Sige, pero may mga conditions yung access sa medical records.",
+          "Hindi pwedeng basta-basta lang yan. May protocol tayo."
+        ]
+      },
+      {
+        "choice_id": "evidence_priority",
+        "line_index": 12,
+        "choices": [
+          "Focus tayo sa time of death discrepancy.",
+          "Mas importante yung defensive wounds."
+        ],
+        "responses": [
+          "Oo, yung time discrepancy ay crucial sa alibi ng suspect.",
+          "Yung defensive wounds ay nagpapatunay na may struggle talaga."
+        ]
+      }
+    ],
+    "recollection_lines": [
+      {
+        "speaker": "Miguel",
+        "text": "May sapat na akong ebidensya para patunayan ang innocence ni Leo.",
+        "line_index": 27
+      },
+      {
+        "speaker": "Miguel", 
+        "text": "Autopsy report ni Dr. Salvador - may mga pagkakaiba sa police narrative.",
+        "line_index": 28
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Time of death: 9:00 PM, hindi 11:00 PM tulad ng sinabi ng pulis.",
+        "line_index": 29
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Defensive wounds sa kamay - nag-fight back si Leo, hindi suicide.",
+        "line_index": 30
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Foreign DNA sa fingernails - may ibang tao na kasama ni Leo.",
+        "line_index": 31
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Leo's notebook photos - may mga inconsistencies sa handwriting.",
+        "line_index": 32
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Radio log discrepancies - may mga time gaps sa police reports.",
+        "line_index": 33
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Handwriting inconsistencies sa barangay logbook - may mga discrepancies.",
+        "line_index": 34
+      },
+      {
+        "speaker": "Miguel",
+        "text": "Handa na ako para sa korte. May sapat na ebidensya para sa defense.",
+        "line_index": 35
+      }
+    ]
+  }
+}

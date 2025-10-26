@@ -1,14 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://0xg0m5dd5h0o"]
+[gd_scene load_steps=11 format=3 uid="uid://0xg0m5dd5h0o"]
 
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="1_1075l"]
 [ext_resource type="Script" uid="uid://b23g0g8pmtxuh" path="res://scripts/ui/settings.gd" id="1_settings_script"]
 [ext_resource type="FontFile" uid="uid://cosmobyr7yxle" path="res://assets/fonts/PixelOperatorMono-Bold.ttf" id="3_kplyb"]
+[ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="4_blqn1"]
+[ext_resource type="Script" uid="uid://dyq85je2d7iv2" path="res://scenes/ui/UI by jer/scripts/audio_control.gd" id="5_j7x76"]
+[ext_resource type="Script" uid="uid://bofb3p2uunbxu" path="res://scenes/ui/UI by jer/scripts/fullscreen_control.gd" id="6_71mvm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kplyb"]
 line_spacing = 2.0
 font = ExtResource("3_kplyb")
 font_size = 19
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8uskx"]
+color = Color(1, 1, 1, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xffxv"]
+color = Color(0.225191, 0.494635, 0.896294, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6ilhj"]
+color = Color(0.0980886, 0.317864, 0.711954, 1)
+thickness = 4
 
 [node name="Settings" type="CanvasLayer"]
 script = ExtResource("1_settings_script")
@@ -34,7 +49,8 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -252.0
-offset_bottom = -132.0
+offset_right = -118.0
+offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.950997, 1)
@@ -46,25 +62,76 @@ patch_margin_right = 32
 patch_margin_bottom = 32
 
 [node name="SettingsLabel" type="Label" parent="UIContainer/SettingsContentBG"]
-layout_mode = 0
-offset_left = 109.359
-offset_top = 28.0
-offset_right = 250.359
-offset_bottom = 47.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.104
+offset_left = -70.5
+offset_top = 8.0
+offset_right = 70.5
+offset_bottom = 7.968
+grow_horizontal = 2
 text = "Settings"
 label_settings = SubResource("LabelSettings_kplyb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsPlaceholder" type="Label" parent="UIContainer/SettingsContentBG"]
-layout_mode = 0
-offset_left = 109.359
-offset_top = 52.0
-offset_right = 437.359
-offset_bottom = 108.0
-text = "Settings UI coming soon..."
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/SettingsContentBG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -49.0
+offset_right = 159.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/SettingsContentBG/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("4_blqn1")
+theme_override_font_sizes/font_size = 10
+text = " Master volume"
+
+[node name="Audio Control" type="HSlider" parent="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_8uskx")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_xffxv")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_6ilhj")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_j7x76")
+audio_bus_name = "Master"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/SettingsContentBG/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Fullscreen Control" type="CheckButton" parent="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_blqn1")
+theme_override_font_sizes/font_size = 10
+text = "FULLSCREEN"
+script = ExtResource("6_71mvm")
 
 [node name="SettingsTab" type="NinePatchRect" parent="UIContainer"]
 layout_mode = 0
@@ -95,3 +162,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 flat = true
+
+[connection signal="value_changed" from="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer/Audio Control" to="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer/Audio Control" method="_on_value_changed"]
+[connection signal="toggled" from="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer2/Fullscreen Control" to="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer2/Fullscreen Control" method="_on_toggled"]

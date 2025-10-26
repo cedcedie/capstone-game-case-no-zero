@@ -26,37 +26,42 @@ func _ready():
 		print("⚠️ TaskDisplay autoload not found")
 
 func initialize_tasks():
-	# Define the task sequence for the game
+	# Define the task sequence for the game with proper checkpoint validation
 	task_queue = [
 		{
 			"id": "go_to_police_jail",
 			"name": "Pumunta sa Police Jail",
 			"description": "Pumunta sa police jail para makausap si Boy Trip.",
-			"scene_target": "lower_level_station"
+			"scene_target": "lower_level_station",
+			"required_checkpoint": "BEDROOM_CUTSCENE_COMPLETED"
+		},
+		{
+			"id": "go_to_police_lobby",
+			"name": "Pumunta sa Police Lobby",
+			"description": "Pumunta sa police lobby para sa karagdagang impormasyon.",
+			"scene_target": "police_lobby",
+			"required_checkpoint": "LOWER_LEVEL_COMPLETED"
 		},
 		{
 			"id": "go_to_barangay_hall",
 			"name": "Pumunta sa Barangay Hall",
 			"description": "Imbestigahan ang crime scene sa likod ng barangay hall.",
-			"scene_target": "barangay_hall"
+			"scene_target": "barangay_hall",
+			"required_checkpoint": "POLICE_LOBBY_CUTSCENE_COMPLETED"
 		},
 		{
 			"id": "go_to_head_police",
 			"name": "Pumunta sa Head Police",
 			"description": "Kausapin ang head police para sa karagdagang impormasyon tungkol kay Leo.",
-			"scene_target": "head_police_room"
+			"scene_target": "head_police_room",
+			"required_checkpoint": "BARANGAY_HALL_CUTSCENE_COMPLETED"
 		},
 		{
 			"id": "go_to_morgue",
 			"name": "Pumunta sa morgue para sa autopsy report",
 			"description": "Tingnan ang autopsy report sa morgue para sa karagdagang ebidensya.",
-			"scene_target": "morgue"
-		},
-		{
-			"id": "next_task_placeholder",
-			"name": "Ipagpatuloy ang Imbestigasyon",
-			"description": "Placeholder para sa susunod na task.",
-			"scene_target": ""
+			"scene_target": "morgue",
+			"required_checkpoint": "HEAD_POLICE_COMPLETED"
 		}
 	]
 
@@ -70,11 +75,20 @@ func start_next_task():
 		return
 	
 	current_task = task_queue.pop_front()
+	
+	# Validate checkpoint requirements
+	if not _validate_task_requirements(current_task):
+		print("⚠️ TaskManager: Task requirements not met, skipping task:", current_task.name)
+		# Try next task
+		call_deferred("start_next_task")
+		return
+	
 	print("==================================================")
 	print("📋 TaskManager: STARTING NEW TASK")
 	print("✨ Task Name:", current_task.name)
 	print("📝 Description:", current_task.description)
 	print("🎯 Target Scene:", current_task.scene_target)
+	print("✅ Checkpoint validation passed")
 	print("==================================================")
 	
 	# Show task in UI
@@ -123,16 +137,46 @@ func get_current_task_scene_target() -> String:
 		return ""
 	return current_task.get("scene_target", "")
 
+func _validate_task_requirements(task: Dictionary) -> bool:
+	"""Validate if task requirements (checkpoints) are met"""
+	if not task.has("required_checkpoint"):
+		return true  # No requirements, task can proceed
+	
+	var required_checkpoint = task["required_checkpoint"]
+	
+	# Get CheckpointManager
+	var checkpoint_manager = get_node_or_null("/root/CheckpointManager")
+	if not checkpoint_manager:
+		print("⚠️ TaskManager: CheckpointManager not found")
+		return false
+	
+	# Check if the required checkpoint exists
+	var checkpoint_type = CheckpointManager.CheckpointType.get(required_checkpoint)
+	if checkpoint_type == null:
+		print("⚠️ TaskManager: Invalid checkpoint type:", required_checkpoint)
+		return false
+	
+	var has_required_checkpoint = checkpoint_manager.has_checkpoint(checkpoint_type)
+	print("🔍 TaskManager: Checking checkpoint", required_checkpoint, ":", has_required_checkpoint)
+	
+	return has_required_checkpoint
+
 func set_current_task(task_id: String) -> void:
 	"""Set the current task by ID (for development/testing)"""
 	for task in task_queue:
 		if task.id == task_id:
+			# Validate requirements before setting
+			if not _validate_task_requirements(task):
+				print("⚠️ TaskManager: Cannot set task", task_id, "- requirements not met")
+				return
+			
 			current_task = task
 			print("==================================================")
 			print("📋 TaskManager: SET CURRENT TASK")
 			print("✨ Task Name:", current_task.name)
 			print("📝 Description:", current_task.description)
 			print("🎯 Target Scene:", current_task.scene_target)
+			print("✅ Checkpoint validation passed")
 			print("==================================================")
 			
 			# Show task in UI

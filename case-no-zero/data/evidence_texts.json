@@ -2,27 +2,69 @@
 	"evidence": {
 		"handwriting_sample": {
 			"name": "Handwriting Sample",
-			"description": "Isang sulat-kamay na natagpuan sa crime scene na may mga kahina-hinalang pagkakaiba."
+			"description": "Isang sulat-kamay na natagpuan sa crime scene na may mga kahina-hinalang pagkakaiba.",
+			"details": {
+				"date": "Nakasulat: Disyembre 15, 2024",
+				"location": "Natagpuan sa: Patrol Logbook ng Barangay Hall",
+				"analysis": "Ang stroke pattern at letter formation ay HINDI match sa handwriting ni Leo Mendoza",
+				"significance": "Patunay na may nag-tamper sa official police records"
+			}
 		},
 		"logbook": {
-			"name": "Logbook Evidence",
-			"description": "Opisyal na police logbook na nagpapakita ng mga pagkakaiba sa timeline ng incident report."
+			"name": "Patrol Logbook",
+			"description": "Opisyal na police logbook na nagpapakita ng mga pagkakaiba sa timeline ng incident report.",
+			"details": {
+				"date": "Entry Date: Disyembre 15, 2024",
+				"time": "Nakasulat: 8:00 PM - 10:00 PM",
+				"officer": "Nakalagay: Leo Mendoza",
+				"discrepancy": "Ang handwriting ay HINDI kay Leo - may nag-fake ng entry",
+				"significance": "Patunay ng cover-up sa police records"
+			}
 		},
 		"broken_body_cam": {
-			"name": "Broken Body Camera",
-			"description": "Nasirang police body camera na may potensyal na ma-recover na footage at audio."
+			"name": "Nasirang Body Camera",
+			"description": "Nasirang police body camera na may potensyal na ma-recover na footage at audio.",
+			"details": {
+				"model": "Model: Axon Body 3",
+				"damage": "Status: Critically damaged, pero may recoverable data",
+				"last_recording": "Huling recording: Disyembre 15, 2024 - 9:30 PM",
+				"significance": "Maaaring may footage ng actual incident"
+			}
 		},
 		"radio_log": {
 			"name": "Radio Communication Log",
-			"description": "Police radio communications na nagpapakita ng mga gaps sa komunikasyon at coordination issues."
+			"description": "Police radio communications na nagpapakita ng mga gaps sa komunikasyon at coordination issues.",
+			"details": {
+				"date": "Petsa: Disyembre 15, 2024",
+				"time_gaps": "Missing entries: 8:45 PM - 9:15 PM",
+				"officer": "Radio calls: PO1 Darwin, pero may gaps",
+				"significance": "May tinatago sa radio communications",
+				"missing_calls": "Walang radio activity sa critical time period"
+			}
 		},
 		"autopsy_report": {
 			"name": "Autopsy Report",
-			"description": "Medical report na may mga pagkakaiba na sumasalungat sa opisyal na police narrative."
+			"description": "Medical report na may mga pagkakaiba na sumasalungat sa opisyal na police narrative.",
+			"details": {
+				"examiner": "Dr. Leticia Salvador, MD",
+				"date": "Autopsy Date: Disyembre 16, 2024",
+				"time_of_death": "Actual Time of Death: 9:00 PM (vs Police Report: 11:00 PM)",
+				"wounds": "Defensive wounds sa kamay - nag-fight back si Leo",
+				"dna": "Foreign DNA sa fingernails - hindi kay Leo",
+				"significance": "Patunay na hindi suicide - may struggle at ibang tao"
+			}
 		},
 		"leos_notebook": {
-			"name": "Leo's Notebook",
-			"description": "Personal na mga tala na nagtataas ng mga seryosong tanong tungkol sa police conduct sa panahon ng insidente."
+			"name": "Leo's Notebook Photos",
+			"description": "Mga photos ng notebook pages na kinuha ni Dr. Leticia Salvador bago kunin ng police evidence team.",
+			"details": {
+				"date": "Last Entry: Disyembre 15, 2024",
+				"contents": "Mga pangalan, petsa, at code words tungkol sa corruption",
+				"key_entries": "Shady deals, kakaibang patrol logs, mga taong pumupunta sa barangay",
+				"significance": "Leo's 'treasure chest' - evidence ng police corruption",
+				"threat": "Leo: 'Kung mawala ako, ang katotohanan ay nasa mga pahina na yun'",
+				"source": "Photos taken by Dr. Leticia Salvador before police confiscation"
+			}
 		}
 	}
 }

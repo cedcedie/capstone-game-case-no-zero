@@ -71,7 +71,8 @@ var scene_bgm_map: Dictionary = {
 	"bedroomScene": "res://assets/audio/deltaruneAud/You Can Always Come Home.ogg",
 	"intro_story": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 28 Premonition.mp3",
 	"barangay_hall": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3",
-	"barangay_hall_second_floor": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3"
+	"barangay_hall_second_floor": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3",
+	"morgue": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 65 CORE.mp3"
 }
 
 # Cutscene BGM mapping removed - scenes handle their own cutscene audio
