@@ -20,6 +20,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ControlGuideScript" type="Node2D" parent="."]
 script = ExtResource("1_control_guide")
 
 [node name="Panel" type="Panel" parent="."]
@@ -61,7 +63,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 10
 theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("2_503p4")
+theme_override_fonts/font = ExtResource("3_503p4")
 theme_override_font_sizes/font_size = 39
 text = "W - To walk up 
 A - To walk left 
@@ -85,7 +87,7 @@ theme_override_colors/font_shadow_color = Color(0.381703, 0.381703, 0.381703, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_constants/outline_size = 16
-theme_override_fonts/font = ExtResource("3_mtlkw")
+theme_override_fonts/font = ExtResource("6_mtlkw")
 theme_override_font_sizes/font_size = 70
 text = "Control Guides"
 horizontal_alignment = 1
@@ -97,7 +99,7 @@ offset_left = 993.0
 offset_top = 157.0
 offset_right = 1224.0
 offset_bottom = 367.0
-texture = ExtResource("3_mre7o")
+texture = ExtResource("5_mre7o")
 region_rect = Rect2(16, 16, 64, 62)
 
 [node name="Panel2" type="Panel" parent="NinePatchRect"]
