@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://b1qvf3enoo2yr"]
+[gd_scene load_steps=65 format=4 uid="uid://b1qvf3enoo2yr"]
 
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="1_t0wts"]
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="2_ev27n"]
@@ -21,6 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://blneit8blyobn" path="res://scenes/characters/kapitanaPalma.tscn" id="19_dit16"]
 [ext_resource type="PackedScene" uid="uid://ds78xmibbqylq" path="res://scenes/characters/barangay_npc.tscn" id="20_7a2pv"]
 [ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main/celine_navarro.tscn" id="20_mc44i"]
+[ext_resource type="PackedScene" uid="uid://56ldwej8xfdd" path="res://miravil/characters/npc_backpack_man.tscn" id="22_lt0o1"]
+[ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="23_d63v8"]
+[ext_resource type="PackedScene" uid="uid://cqws3ntoa3f31" path="res://miravil/characters/npc_random_guy.tscn" id="24_w6lk3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k0sqd"]
 texture = ExtResource("2_ev27n")
@@ -24325,6 +24328,15 @@ metadata/_edit_use_anchors_ = true
 [node name="celine" parent="." instance=ExtResource("20_mc44i")]
 z_index = 2
 position = Vector2(1024, -56)
+
+[node name="NpcBackpackMan" parent="." instance=ExtResource("22_lt0o1")]
+position = Vector2(575, 432)
+
+[node name="NpcBeardMan" parent="." instance=ExtResource("23_d63v8")]
+position = Vector2(464, 316)
+
+[node name="NpcRandomGuy" parent="." instance=ExtResource("24_w6lk3")]
+position = Vector2(865, 323)
 
 [editable path="PlayerM"]
 [editable path="KapitanaPalma"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://dsa8iyd5awqd8"]
+[gd_scene load_steps=38 format=4 uid="uid://dsa8iyd5awqd8"]
 
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_2e1te"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_f8r81"]
@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_f8r81"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="12_scene_transition"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="13_0fr7j"]
+[ext_resource type="PackedScene" uid="uid://dlrp0sfyfnvxu" path="res://miravil/characters/npc_boy_kunat.tscn" id="14_67qse"]
+[ext_resource type="PackedScene" uid="uid://bthvnds1w3orw" path="res://miravil/characters/npc_curly_girly.tscn" id="15_ii55t"]
+[ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="16_l6pmk"]
+[ext_resource type="PackedScene" uid="uid://dbt0khsctyvim" path="res://miravil/characters/npc_guy_5.tscn" id="17_n3qri"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5lkh"]
 texture = ExtResource("1_2e1te")
@@ -13149,3 +13153,15 @@ shape = SubResource("RectangleShape2D_barangay_hall_return")
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = ExtResource("13_0fr7j")
+
+[node name="NpcBoyKunat" parent="." instance=ExtResource("14_67qse")]
+position = Vector2(489, 213)
+
+[node name="NpcCurlyGirly" parent="." instance=ExtResource("15_ii55t")]
+position = Vector2(543, 162)
+
+[node name="NpcGuy3" parent="." instance=ExtResource("16_l6pmk")]
+position = Vector2(598, 309)
+
+[node name="NpcGuy5" parent="." instance=ExtResource("17_n3qri")]
+position = Vector2(64, 192)
