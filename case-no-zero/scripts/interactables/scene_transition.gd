@@ -327,15 +327,15 @@ func _start_transition(target_scene_path: String):
 	# Small delay to ensure fade is complete before scene change
 	await get_tree().create_timer(0.05).timeout
 	
-	# Comment out preloading logic for debugging - use file loading only
+	# Use preloaded scenes for optimal performance in exported game
 	var result = OK
-	# if ScenePreloader and ScenePreloader.is_scene_preloaded(target_scene_path):
-	# 	print("🚀 Using preloaded scene: ", target_scene_path.get_file())
-	# 	var preloaded_scene = ScenePreloader.get_preloaded_scene(target_scene_path)
-	# 	result = get_tree().change_scene_to_packed(preloaded_scene)
-	# else:
-	# print("📁 Loading scene from file: ", target_scene_path.get_file())
-	result = get_tree().change_scene_to_file(target_scene_path)
+	if ScenePreloader and ScenePreloader.is_scene_preloaded(target_scene_path):
+		print("🚀 Using preloaded scene: ", target_scene_path.get_file())
+		var preloaded_scene = ScenePreloader.get_preloaded_scene(target_scene_path)
+		result = get_tree().change_scene_to_packed(preloaded_scene)
+	else:
+		print("📁 Loading scene from file: ", target_scene_path.get_file())
+		result = get_tree().change_scene_to_file(target_scene_path)
 	
 	if result != OK:
 		print("❌ Failed to change scene to: ", target_scene_path)
