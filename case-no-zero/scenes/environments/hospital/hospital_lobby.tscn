@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dc1jxq0syo6pk"]
+[gd_scene load_steps=35 format=4 uid="uid://dc1jxq0syo6pk"]
 
 [ext_resource type="Texture2D" uid="uid://q7u1l1cvwbcj" path="res://assets/sprites/environments/interior/Room_Builder_3d_walls_32x32.png" id="1_dv4f1"]
 [ext_resource type="Texture2D" uid="uid://yrv68jycvhs5" path="res://assets/sprites/environments/interior/Room_Builder_Arched_Entryways_32x32.png" id="2_bfxbt"]
@@ -10,9 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://dfcih1unq076i" path="res://assets/sprites/environments/interior/Room_Builder_Floor_Shadows_32x32.png" id="8_j072t"]
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="9_7c46w"]
 [ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/sprites/environments/interior/19_Hospital_32x32.png" id="10_liyx3"]
+[ext_resource type="PackedScene" uid="uid://ehbu2a7n1jj1" path="res://miravil/characters/npc_girl_pinkish.tscn" id="11_4gasq"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_bfxbt"]
+[ext_resource type="PackedScene" uid="uid://dql8u6o7h5vvt" path="res://miravil/characters/npc_green_girl.tscn" id="12_2qvan"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="12_bfxbt"]
+[ext_resource type="PackedScene" uid="uid://b0k0313qg5upt" path="res://miravil/characters/npc_guy_2.tscn" id="13_275t4"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="13_edega"]
+[ext_resource type="PackedScene" uid="uid://cbnn8pq1mffxm" path="res://miravil/characters/npc_guy_4.tscn" id="14_rjo58"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kltwr"]
 texture = ExtResource("1_dv4f1")
@@ -8316,6 +8320,18 @@ tile_set = SubResource("TileSet_uwmaa")
 z_index = 2
 tile_map_data = PackedByteArray("AAAVAAwAAAAOADQAAAAVAA0AAAAOADUAAAAVAA4AAAAOADYAAAAWAAwAAAAPADQAAAAWAA0AAAAPADUAAAAWAA4AAAAPADYAAAASAAsAAAALAB8AAAATAAoAAAAMAB4AAAATAAsAAAAMAB8AAAASAAwAAAALACkAAAARAAsAAAALAB4AAAAGAA4AAAALACkAAAABAAkAAAAJAB8AAAABAAoAAAAJACEAAAACAAkAAAAKAB8AAAACAAoAAAAKACEAAAAGAAkAAAACABUAAAAGAAoAAAACABYAAAAFAAkAAAABACAAAAAFAAoAAAABACEAAAABAA0AAAALAB8AAAACAAwAAAAMAB4AAAACAA0AAAAMAB8AAAASAAgAAAAAACIAAAASAAkAAAAAACMAAAASAAoAAAAAACQAAAATAAgAAAAAAA4AAAATAAkAAAAAAA8AAAASAAcAAAAFAC8AAAARAAcAAAAEAC8AAAAQAAcAAAAMABMAAAAPAAcAAAAMABQAAAAOAAcAAAAMABMAAAANAAcAAAAMABQAAAAMAAcAAAAMABMAAAAFAAcAAAAMABQAAAAEAAcAAAAMABMAAAADAAcAAAAMABQAAAACAAcAAAAFAC8AAAABAAcAAAAEAC8AAAAGAAcAAAAMABMAAAALAAcAAAAMABQAAAAbAAgAAAADAAIAAAAbAAkAAAADAAMAAAASAAAAAAAHAC4AAAASAAEAAAAHAC8AAAASAAIAAAAHADAAAAAOAAAAAAAGAC4AAAAOAAEAAAAGAC8AAAAOAAIAAAAGADAAAAAPAAAAAAAJAC4AAAAPAAEAAAAJAC8AAAAPAAIAAAAJADAAAAAQAAAAAAAJAC4AAAAQAAEAAAAJAC8AAAAQAAIAAAAJADAAAAARAAAAAAAJAC4AAAARAAEAAAAJAC8AAAARAAIAAAAJADAAAAA=")
 tile_set = SubResource("TileSet_bfxbt")
+
+[node name="NpcGirlPinkish" parent="ground/walls" instance=ExtResource("11_4gasq")]
+position = Vector2(569, 363)
+
+[node name="NpcGreenGirl" parent="ground/walls" instance=ExtResource("12_2qvan")]
+position = Vector2(75, 415)
+
+[node name="NpcGuy2" parent="ground/walls" instance=ExtResource("13_275t4")]
+position = Vector2(693, 397)
+
+[node name="NpcGuy4" parent="ground/walls" instance=ExtResource("14_rjo58")]
+position = Vector2(820, 396)
 
 [node name="PlayerM" parent="." instance=ExtResource("11_bfxbt")]
 z_index = 3
