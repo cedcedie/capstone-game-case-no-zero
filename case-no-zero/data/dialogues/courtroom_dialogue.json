@@ -1,0 +1,650 @@
+{
+  "courtroom": {
+	"dialogue_lines": [
+	  {
+		"speaker": "Hukom",
+		"text": "Ang hukuman ay nasa sesyon na. Ang kaso ng People vs. Erwin ay magsisimula na.",
+		"action": "camera_focus_judge",
+		"emotion": "serious"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Ang akusado ay dapat tumayo para sa pagbasa ng akusasyon.",
+		"action": "camera_focus_defendant",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Erwin, ikaw ay inakusahan ng murder sa ilalim ng Article 248 ng Revised Penal Code. Paano mo ipinahahayag ang iyong sarili?",
+		"action": "camera_focus_defendant",
+		"emotion": "serious"
+	  },
+	  {
+		"speaker": "Erwin",
+		"text": "Hindi ako nagkasala, Your Honor. Inosente ako sa akusasyon na ito.",
+		"action": "camera_return",
+		"emotion": "determined"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Mabuti. Ang akusado ay nagpahayag ng hindi nagkasala. Ang prosecution ay magsisimula sa kanilang paglalahad ng kaso.",
+		"action": "camera_focus_prosecutor",
+		"emotion": "neutral"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Fiscal, maaari mo nang ipresenta ang inyong opening statement.",
+		"action": "camera_focus_prosecutor",
+		"emotion": "neutral"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Salamat po, Your Honor. Patunayan ng prosecution na ang akusado na si Erwin ay nagkasala ng murder sa ilalim ng Article 248 ng Revised Penal Code!",
+		"action": "camera_focus_defendant",
+		"emotion": "confident"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Ang prosecution ay magpapakita na ang akusado ay may motibo, pagkakataon, at kakayahan na gumawa ng krimen!",
+		"action": "camera_return",
+		"emotion": "aggressive"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Mayroon kaming sapat na ebidensya at testimonya ng mga saksi na magpapatunay sa pagkakasala ng akusado beyond reasonable doubt!",
+		"action": "camera_return",
+		"emotion": "aggressive"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Ang prosecution ay magpapakita na ang akusado ay may confession at may mga ebidensya na nagpapatunay sa kanyang pagkakasala!",
+		"action": "camera_return",
+		"emotion": "confident"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Abogado ng depensa, maaari mo nang ipresenta ang inyong opening statement.",
+		"action": "camera_focus_defendant",
+		"emotion": "neutral"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, patunayan ng depensa na inosente si Erwin! Ang ebidensya ay magpapakita na siya ay napagbintangan lamang!",
+		"action": "camera_return",
+		"emotion": "determined"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Ang depensa ay magpapakita na ang prosecution ay may mga inconsistencies sa kanilang ebidensya at timeline!",
+		"action": "camera_return",
+		"emotion": "confident"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Magpapakita kami ng ebidensya na sumasalungat sa kaso ng prosecution at nagpapakita ng reasonable doubt!",
+		"action": "enable_evidence",
+		"emotion": "confident"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Ang depensa ay magpapakita na ang akusado ay may solid alibi at ang confession ay peke!",
+		"action": "camera_return",
+		"emotion": "determined"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Mabuti. Abogado ng depensa, maaari mo nang ipresenta ang inyong ebidensya.",
+		"action": "show_evidence_inventory",
+		"emotion": "neutral"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Salamat po, Your Honor. Gusto kong ipresenta ang ebidensya!",
+		"action": "camera_focus_judge",
+		"emotion": "excited"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Anong ebidensya ang gusto mong ipresenta?",
+		"action": "camera_focus_judge",
+		"emotion": "neutral"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, mayroon akong 6 na ebidensya na maaaring ipresenta. Alin ang gusto ninyong makita?",
+		"action": "play_evidence_bgm",
+		"emotion": "confident"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Maaari kang pumili ng ebidensya na gusto mong ipresenta.",
+		"action": "start_evidence_presentation",
+		"emotion": "neutral"
+	  },
+	  
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, gusto kong ipresenta ang sirang body camera!",
+		"action": "camera_focus_judge",
+		"emotion": "excited"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Ang body camera na ito ay nasira sa panahon ng insidente, ngunit naglalaman ito ng mahalagang footage!",
+		"action": "camera_focus_judge",
+		"emotion": "dramatic"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Objection! Ang ebidensyang ito ay hindi maaaring tanggapin dahil nasira ito!",
+		"action": "play_objection_bgm",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Objection! Your Honor, ang ebidensyang ito ay nagpapakita na wala si Erwin sa crime scene!",
+		"action": "objection_shake",
+		"emotion": "defiant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sustained. Ang ebidensya ay maaaring tanggapin. Magpatuloy, Abogado.",
+		"action": "camera_focus_judge",
+		"emotion": "authoritative"
+	  },
+	
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, gusto kong ipresenta ang police logbook!",
+		"action": "camera_focus_judge",
+		"emotion": "excited"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Ang logbook na ito ay nagpapakita ng mga inconsistencies sa opisyal na ulat!",
+		"action": "camera_focus_judge",
+		"emotion": "dramatic"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Objection! Ang logbook ay opisyal na dokumento ng pulisya!",
+		"action": "objection_shake",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Objection! Your Honor, ang inconsistencies ay nagpapakita ng posibleng evidence tampering!",
+		"action": "objection_shake",
+		"emotion": "defiant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sustained. Ang ebidensya ay maaaring tanggapin. Magpatuloy, Abogado.",
+		"action": "camera_focus_judge",
+		"emotion": "authoritative"
+	  },
+	  
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, gusto kong ipresenta ang handwriting sample!",
+		"action": "camera_focus_judge",
+		"emotion": "excited"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Ang handwriting analysis ay nagpapatunay na ang confession ay peke at hindi sinulat ni Erwin!",
+		"action": "camera_focus_judge",
+		"emotion": "dramatic"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Objection! Ang confession ay may pirma ni Erwin!",
+		"action": "objection_shake",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Objection! Your Honor, ang handwriting analysis ay nagpapatunay na peke ang confession!",
+		"action": "objection_shake",
+		"emotion": "defiant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sustained. Ang ebidensya ay maaaring tanggapin. Magpatuloy, Abogado.",
+		"action": "camera_focus_judge",
+		"emotion": "authoritative"
+	  },
+	
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, gusto kong ipresenta ang radio communications log!",
+		"action": "camera_focus_judge",
+		"emotion": "excited"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Ang radio log ay nagpapakita na ang mga responding officers ay hindi sumusunod sa tamang procedure!",
+		"action": "camera_focus_judge",
+		"emotion": "dramatic"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Objection! Ang mga officers ay sumusunod sa protocol!",
+		"action": "objection_shake",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Objection! Your Honor, ang radio log ay nagpapakita ng mga violations sa procedure!",
+		"action": "objection_shake",
+		"emotion": "defiant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sustained. Ang ebidensya ay maaaring tanggapin. Magpatuloy, Abogado.",
+		"action": "camera_focus_judge",
+		"emotion": "authoritative"
+	  },
+	  
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, gusto kong ipresenta ang autopsy report!",
+		"action": "camera_focus_judge",
+		"emotion": "excited"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Ang autopsy report ay nagpapakita na ang sanhi ng kamatayan ay hindi tumugma sa teorya ng prosecution!",
+		"action": "camera_focus_judge",
+		"emotion": "dramatic"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Objection! Ang autopsy report ay sumusuporta sa prosecution!",
+		"action": "objection_shake",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Objection! Your Honor, ang autopsy report ay nagpapakita ng mga inconsistencies sa teorya ng prosecution!",
+		"action": "objection_shake",
+		"emotion": "defiant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sustained. Ang ebidensya ay maaaring tanggapin. Magpatuloy, Abogado.",
+		"action": "camera_focus_judge",
+		"emotion": "authoritative"
+	  },
+	  
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, gusto kong ipresenta ang personal na notebook ni Erwin!",
+		"action": "camera_focus_judge",
+		"emotion": "excited"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Ang notebook na ito ay naglalaman ng kanyang alibi at nagpapatunay na siya ay nasa ibang lugar sa panahon ng insidente!",
+		"action": "camera_focus_judge",
+		"emotion": "dramatic"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Objection! Ang notebook ay maaaring ginawa lamang para sa alibi!",
+		"action": "objection_shake",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Objection! Your Honor, ang notebook ay naglalaman ng detalyadong impormasyon na nagpapatunay sa alibi!",
+		"action": "objection_shake",
+		"emotion": "defiant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sustained. Ang ebidensya ay maaaring tanggapin. Magpatuloy, Abogado.",
+		"action": "camera_focus_judge",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Salamat po, Your Honor! Gusto kong tawagin ang aming unang saksi sa witness stand!",
+		"action": "camera_focus_witness",
+		"emotion": "triumphant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Maaari kang magpatuloy sa testimonya ng inyong saksi. Ang saksi ay dapat sumumpa sa katotohanan ng kanyang testimonya.",
+		"action": "camera_return",
+		"emotion": "neutral"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Saksi, sumumpa ka ba na ang lahat ng iyong sasabihin ay totoo, buong katotohanan, at walang iba?",
+		"action": "camera_focus_witness",
+		"emotion": "serious"
+	  },
+	  {
+		"speaker": "Kapitana",
+		"text": "Ako si Kapitana, at ako ay magbibigay ng aking testimonya tungkol sa insidente.",
+		"action": "camera_focus_witness",
+		"emotion": "serious"
+	  },
+	  {
+		"speaker": "Kapitana",
+		"text": "Sa aking pagkakaalam, si Erwin ay isang mabuting tao at hindi niya kayang gumawa ng krimen na iyon!",
+		"action": "camera_return",
+		"emotion": "determined",
+		"highlightable": true,
+		"discrepancy": "Ang testimonya na ito ay sumasalungat sa mga ebidensya ng police report na nagpapakita ng mga inconsistencies sa character ni Erwin!"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Objection! Ang testimonya ng Kapitana ay hindi maaaring tanggapin dahil siya ay may personal na relasyon sa akusado!",
+		"action": "camera_focus_prosecutor",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Objection! Your Honor, ang testimonya ng Kapitana ay may mahalagang impormasyon tungkol sa karakter ni Erwin!",
+		"action": "camera_focus_judge",
+		"emotion": "defiant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sustained. Ang testimonya ay maaaring tanggapin. Magpatuloy, Kapitana.",
+		"action": "camera_return",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "PO1",
+		"text": "Ako si PO1, at ako ay magbibigay ng aking testimonya tungkol sa imbestigasyon.",
+		"action": "camera_focus_witness",
+		"emotion": "nervous"
+	  },
+	  {
+		"speaker": "PO1",
+		"text": "Sa aking pagkakaalam, may mga inconsistencies sa imbestigasyon at hindi lahat ng ebidensya ay na-proseso nang maayos.",
+		"action": "camera_return",
+		"emotion": "hesitant",
+		"highlightable": true,
+		"discrepancy": "Ang testimonya na ito ay nagpapakita na ang imbestigasyon ay may mga problema, ngunit ang prosecution ay nagtatago ng mga impormasyon!"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Objection! Ang testimonya ng PO1 ay hindi maaaring tanggapin dahil siya ay may conflict of interest!",
+		"action": "camera_focus_prosecutor",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Objection! Your Honor, ang testimonya ng PO1 ay nagpapakita ng mga problema sa imbestigasyon!",
+		"action": "camera_focus_judge",
+		"emotion": "defiant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sustained. Ang testimonya ay maaaring tanggapin. Magpatuloy, PO1.",
+		"action": "camera_return",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Leticia",
+		"text": "Ako si Leticia, at ako ay magbibigay ng aking testimonya tungkol sa insidente.",
+		"action": "camera_focus_witness",
+		"emotion": "emotional"
+	  },
+	  {
+		"speaker": "Leticia",
+		"text": "Sa aking pagkakaalam, si Erwin ay nasa ibang lugar sa panahon ng insidente at hindi niya kayang gumawa ng krimen na iyon!",
+		"action": "camera_return",
+		"emotion": "determined",
+		"highlightable": true,
+		"discrepancy": "Ang testimonya na ito ay sumasalungat sa timeline ng prosecution at nagpapakita ng mga inconsistencies sa alibi!"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Objection! Ang testimonya ni Leticia ay hindi maaaring tanggapin dahil siya ay may personal na relasyon sa akusado!",
+		"action": "camera_focus_prosecutor",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Objection! Your Honor, ang testimonya ni Leticia ay nagbibigay ng mahalagang impormasyon tungkol sa alibi ni Erwin!",
+		"action": "camera_focus_judge",
+		"emotion": "defiant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sustained. Ang testimonya ay maaaring tanggapin. Magpatuloy, Leticia.",
+		"action": "camera_return",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Salamat po, Your Honor. Ang depensa ay nagpapahinga na sa kanilang kaso!",
+		"action": "camera_focus_judge",
+		"emotion": "confident"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Ang prosecution ay may karapatan na mag-cross-examine sa mga saksi ng depensa.",
+		"action": "camera_focus_prosecutor",
+		"emotion": "neutral"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Your Honor, ang prosecution ay mag-cross-examine sa mga saksi ng depensa upang patunayan ang kanilang credibility!",
+		"action": "camera_focus_witness",
+		"emotion": "aggressive"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Mabuti. Ang prosecution ay maaaring mag-cross-examine sa mga saksi. Pagkatapos nito, magkakaroon tayo ng closing arguments.",
+		"action": "camera_return",
+		"emotion": "neutral"
+	  },
+	  {
+		"speaker": "Fiscal",
+		"text": "Your Honor, ang prosecution ay nagpapatunay na ang akusado ay nagkasala beyond reasonable doubt!",
+		"action": "camera_focus_judge",
+		"emotion": "confident"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, ang depensa ay nagpapatunay na ang akusado ay inosente at ang prosecution ay hindi nakapagpatunay ng kaso!",
+		"action": "camera_focus_judge",
+		"emotion": "determined"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Ang hukuman ay magdedeliberate na. Ang kaso ay tapos na at ang hatol ay ibibigay ngayon.",
+		"action": "camera_return",
+		"emotion": "serious"
+	  },
+	
+	  {
+		"speaker": "Hukom",
+		"text": "Matapos ang masusing pag-aaral ng lahat ng ebidensya, ang hukuman ay nagpapatunay na...",
+		"action": "play_verdict_bgm",
+		"emotion": "serious"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Si Erwin ay INOSENTE!",
+		"action": "dramatic_shake",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Ang lahat ng ebidensya ay nagpapatunay na si Erwin ay hindi nagkasala!",
+		"action": "camera_focus_judge",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Ang confession ay peke, ang alibi ay totoo, at ang prosecution ay may mga inconsistencies!",
+		"action": "camera_focus_judge",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Si Erwin ay MALAYA na!",
+		"action": "dramatic_shake",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "SALAMAT PO, YOUR HONOR! Ang katotohanan ay nanalo!",
+		"action": "play_victory_bgm",
+		"emotion": "triumphant"
+	  },
+	  {
+		"speaker": "Erwin",
+		"text": "Salamat po, Your Honor! Salamat sa inyo, Miguel!",
+		"action": "camera_focus_defendant",
+		"emotion": "emotional"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Ang kaso ay tapos na. Ang hukuman ay adjourned.",
+		"action": "camera_return",
+		"emotion": "serious"
+	  }
+	],
+	"evidence_testimony": [
+	  {
+		"evidence_id": "broken_body_cam",
+		"testimony": "OBJECTION! Ang footage ng body camera ay nagpapakita na wala si Erwin sa crime scene sa panahon ng insidente!",
+		"significance": "Ang ebidensyang ito ay direktang sumasalungat sa timeline ng prosecution! Ang body camera ay naglalaman ng mahalagang impormasyon na nagpapatunay na si Erwin ay hindi nasa lugar ng krimen sa oras na naganap ang insidente!",
+		"objection": "Objection! Ang ebidensyang ito ay hindi maaaring tanggapin dahil nasira ito!",
+		"counter_objection": "Objection! Your Honor, ang ebidensyang ito ay may mahalagang impormasyon na maaaring makatulong sa kaso!",
+		"damning_evidence": "Your Honor, ang body camera footage ay nagpapakita ng malinaw na ebidensya na si Erwin ay hindi nasa crime scene! Ang ebidensyang ito ay nagpapatunay na ang prosecution ay may maling timeline at ang akusado ay inosente!"
+	  },
+	  {
+		"evidence_id": "logbook",
+		"testimony": "OBJECTION! Ang police logbook ay nagpapakita ng mga inconsistencies sa opisyal na ulat, na nagmumungkahi ng evidence tampering!",
+		"significance": "Ito ay nagtataas ng mga tanong tungkol sa integridad ng imbestigasyon! Ang logbook ay nagpapakita ng mga discrepancies na nagpapatunay na may mga problema sa opisyal na ulat!",
+		"objection": "Objection! Ang logbook ay opisyal na dokumento ng pulisya!",
+		"counter_objection": "Objection! Your Honor, ang inconsistencies ay nagpapakita ng posibleng evidence tampering!",
+		"damning_evidence": "Your Honor, ang police logbook ay nagpapakita ng malinaw na inconsistencies na nagpapatunay na may evidence tampering! Ang ebidensyang ito ay nagpapatunay na ang imbestigasyon ay may mga problema at hindi maaaring pagkatiwalaan!"
+	  },
+	  {
+		"evidence_id": "handwriting_sample",
+		"testimony": "OBJECTION! Ang handwriting analysis ay nagpapatunay na ang confession ay peke at hindi sinulat ni Erwin!",
+		"significance": "Ang ebidensyang ito ay nagpapahina sa pangunahing ebidensya ng prosecution!",
+		"objection": "Objection! Ang confession ay may pirma ni Erwin!",
+		"counter_objection": "Objection! Your Honor, ang handwriting analysis ay nagpapatunay na peke ang confession!"
+	  },
+	  {
+		"evidence_id": "radio_log",
+		"testimony": "OBJECTION! Ang radio communications ay nagpapakita na ang mga responding officers ay hindi sumusunod sa tamang procedure!",
+		"significance": "Ito ay nagmumungkahi ng misconduct sa proseso ng imbestigasyon!",
+		"objection": "Objection! Ang mga officers ay sumusunod sa protocol!",
+		"counter_objection": "Objection! Your Honor, ang radio log ay nagpapakita ng mga violations sa procedure!"
+	  },
+	  {
+		"evidence_id": "autopsy_report",
+		"testimony": "OBJECTION! Ang autopsy report ay nagpapakita na ang sanhi ng kamatayan ay hindi tumugma sa teorya ng prosecution!",
+		"significance": "Ang ebidensyang ito ay nagbibigay ng alternatibong paliwanag para sa kamatayan ng biktima!",
+		"objection": "Objection! Ang autopsy report ay sumusuporta sa prosecution!",
+		"counter_objection": "Objection! Your Honor, ang autopsy report ay nagpapakita ng mga inconsistencies sa teorya ng prosecution!"
+	  },
+	  {
+		"evidence_id": "leos_notebook",
+		"testimony": "OBJECTION! Ang personal na notebook ni Erwin ay naglalaman ng kanyang alibi at nagpapatunay na siya ay nasa ibang lugar sa panahon ng insidente!",
+		"significance": "Ito ay nagbibigay ng matibay na alibi para sa akusado!",
+		"objection": "Objection! Ang notebook ay maaaring ginawa lamang para sa alibi!",
+		"counter_objection": "Objection! Your Honor, ang notebook ay naglalaman ng detalyadong impormasyon na nagpapatunay sa alibi!"
+	  }
+	],
+	"character_testimonies": [
+	  {
+		"character": "Kapitana",
+		"testimony": "Ako si Kapitana, at ako ay magbibigay ng aking testimonya tungkol sa insidente. Sa aking pagkakaalam, si Erwin ay isang mabuting tao at hindi niya kayang gumawa ng krimen na iyon!",
+		"significance": "Ang testimonya ng Kapitana ay nagpapakita ng mabuting karakter ni Erwin at nagpapatunay na siya ay hindi kayang gumawa ng krimen.",
+		"objection": "Objection! Ang testimonya ng Kapitana ay hindi maaaring tanggapin dahil siya ay may personal na relasyon sa akusado!",
+		"counter_objection": "Objection! Your Honor, ang testimonya ng Kapitana ay may mahalagang impormasyon tungkol sa karakter ni Erwin!",
+		"emotion": "determined"
+	  },
+	  {
+		"character": "PO1",
+		"testimony": "Ako si PO1, at ako ay magbibigay ng aking testimonya tungkol sa imbestigasyon. Sa aking pagkakaalam, may mga inconsistencies sa imbestigasyon at hindi lahat ng ebidensya ay na-proseso nang maayos.",
+		"significance": "Ang testimonya ng PO1 ay nagpapakita ng mga problema sa imbestigasyon at nagpapatunay na may mga inconsistencies sa proseso.",
+		"objection": "Objection! Ang testimonya ng PO1 ay hindi maaaring tanggapin dahil siya ay may conflict of interest!",
+		"counter_objection": "Objection! Your Honor, ang testimonya ng PO1 ay nagpapakita ng mga problema sa imbestigasyon!",
+		"emotion": "nervous"
+	  },
+	  {
+		"character": "Leticia",
+		"testimony": "Ako si Leticia, at ako ay magbibigay ng aking testimonya tungkol sa insidente. Sa aking pagkakaalam, si Erwin ay nasa ibang lugar sa panahon ng insidente at hindi niya kayang gumawa ng krimen na iyon!",
+		"significance": "Ang testimonya ni Leticia ay nagbibigay ng mahalagang impormasyon tungkol sa alibi ni Erwin at nagpapatunay na siya ay nasa ibang lugar sa panahon ng insidente.",
+		"objection": "Objection! Ang testimonya ni Leticia ay hindi maaaring tanggapin dahil siya ay may personal na relasyon sa akusado!",
+		"counter_objection": "Objection! Your Honor, ang testimonya ni Leticia ay nagbibigay ng mahalagang impormasyon tungkol sa alibi ni Erwin!",
+		"emotion": "emotional"
+	  }
+	],
+	"story_flow": {
+	  "intro": "Ang courtroom scene ay nagsisimula sa pagtawag ng hukom sa sesyon.",
+	  "prosecution": "Ang fiscal ay nagpresenta ng kanilang kaso laban kay Erwin.",
+	  "defense": "Si Miguel ay nagpresenta ng depensa kasama ang ebidensya at testimonya.",
+	  "evidence_presentation": "Ang bawat ebidensya ay ipinresenta kasama ang pagpapaliwanag ng kahalagahan nito.",
+	  "testimony": "Ang testimonya ng saksi ay ibinibigay para suportahan ang kaso ng depensa.",
+	  "closing": "Ang depensa ay nagpapahinga at ang hukuman ay naghahanda para sa deliberation."
+	},
+	"branching_dialogues": {
+	  "wrong_evidence_2_lives": {
+		"judge": "Abogado, ang ebidensyang ito ay walang kaugnayan sa kaso. Mag-ingat ka sa susunod na pagpresenta.",
+		"prosecutor": "Objection! Ang ebidensyang ito ay hindi maaaring tanggapin dahil walang kaugnayan sa kaso!",
+		"miguel": "Patawad po, Your Honor. Magpapakita ako ng mas angkop na ebidensya."
+	  },
+	  "wrong_evidence_1_life": {
+		"judge": "Abogado, ito na ang huling babala. Ang ebidensyang ito ay hindi naaangkop sa kaso.",
+		"prosecutor": "Objection! Ang depensa ay nagpapakita ng kawalan ng paghahanda!",
+		"miguel": "Your Honor, humihingi ako ng paumanhin. Magiging mas maingat ako sa susunod."
+	  },
+	  "game_over": {
+		"judge": "Abogado, ikaw ay napatunayang hindi handa. Ang kaso ay magpapatuloy nang walang karagdagang ebidensya mula sa depensa.",
+		"prosecutor": "Your Honor, ang depensa ay nagpapakita ng kawalan ng paghahanda at hindi karapat-dapat sa karagdagang pagkakataon.",
+		"miguel": "Your Honor, humihingi ako ng paumanhin. Nais kong magpatuloy sa kaso."
+	  },
+	  "limited_evidence_continuation": {
+		"miguel": "Your Honor, kahit na may limitasyon, patuloy kong ipinaglalaban ang inosensya ni Erwin.",
+		"judge": "Mabuti. Magpatuloy sa inyong depensa.",
+		"fiscal": "Your Honor, ang depensa ay nagpapakita ng kawalan ng paghahanda."
+	  }
+	},
+	"evidence_correctness": {
+	  "opening_statements_phase": {
+		"correct": ["broken_body_cam", "logbook"],
+		"wrong": ["handwriting_sample", "radio_log", "autopsy_report", "leos_notebook"]
+	  },
+	  "prosecution_case_phase": {
+		"correct": ["handwriting_sample", "radio_log"],
+		"wrong": ["broken_body_cam", "logbook", "autopsy_report", "leos_notebook"]
+	  },
+	  "defense_case_phase": {
+		"correct": ["autopsy_report", "leos_notebook"],
+		"wrong": ["broken_body_cam", "logbook", "handwriting_sample", "radio_log"]
+	  },
+	  "cross_examination_phase": {
+		"correct": ["broken_body_cam", "handwriting_sample"],
+		"wrong": ["logbook", "radio_log", "autopsy_report", "leos_notebook"]
+	  },
+	  "closing_arguments_phase": {
+		"correct": ["leos_notebook", "autopsy_report"],
+		"wrong": ["broken_body_cam", "logbook", "handwriting_sample", "radio_log"]
+	  }
+	},
+	"legal_procedures": {
+	  "arraignment": "Ang akusado ay binabasa ng akusasyon at nagpahayag ng hindi nagkasala",
+	  "opening_statements": "Ang prosecution at depensa ay naglalahad ng kanilang mga argumento",
+	  "prosecution_case": "Ang prosecution ay naglalahad ng kanilang ebidensya at saksi",
+	  "defense_case": "Ang depensa ay naglalahad ng kanilang ebidensya at saksi",
+	  "cross_examination": "Ang prosecution ay nag-cross-examine sa mga saksi ng depensa",
+	  "closing_arguments": "Ang prosecution at depensa ay naglalahad ng kanilang final arguments",
+	  "deliberation": "Ang hukuman ay magdedeliberate at magbibigay ng hatol"
+	}
+  }
+}

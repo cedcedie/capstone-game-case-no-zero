@@ -229,8 +229,8 @@ radius = 26.0192
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r81o3")
-animation = &"idle_back"
-autoplay = "idle_front"
+animation = &"walk_down"
+autoplay = "walk_down"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
