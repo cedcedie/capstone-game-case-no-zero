@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cybycrgdql65l"]
+[gd_scene load_steps=26 format=4 uid="uid://cybycrgdql65l"]
 
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_74m4i"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_oi8pj"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="7_0q54g"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_ix6sl"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="9_cg46j"]
+[ext_resource type="PackedScene" uid="uid://dgij3n4jn4dna" path="res://miravil/characters_camp/npc_cmp_b6.tscn" id="10_agxxj"]
+[ext_resource type="PackedScene" uid="uid://bbjntxhg5ng7k" path="res://miravil/characters_camp/npc_cmp_b7.tscn" id="11_m2yrk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv8hp"]
 texture = ExtResource("1_74m4i")
@@ -6666,3 +6668,9 @@ shape = SubResource("RectangleShape2D_qni5b")
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = ExtResource("9_cg46j")
+
+[node name="NpcCmpB6" parent="." instance=ExtResource("10_agxxj")]
+position = Vector2(408, 331)
+
+[node name="NpcCmpB7" parent="." instance=ExtResource("11_m2yrk")]
+position = Vector2(605, 329)

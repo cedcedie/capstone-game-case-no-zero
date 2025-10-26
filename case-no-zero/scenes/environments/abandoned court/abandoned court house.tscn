@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://d3licrfxjprt0"]
+[gd_scene load_steps=30 format=4 uid="uid://d3licrfxjprt0"]
 
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="1_6rsvy"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_o0o8n"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://ikty23evb787" path="res://assets/sprites/environments/interior/8_Gym_32x32.png" id="7_5ghb4"]
 [ext_resource type="Texture2D" uid="uid://bjwpfqjaw43q1" path="res://assets/sprites/environments/interior/9_Fishing_32x32.png" id="8_sxkiu"]
 [ext_resource type="Texture2D" uid="uid://dr38kdsh40l27" path="res://assets/sprites/environments/interior/12_Kitchen_32x32.png" id="9_ap80a"]
+[ext_resource type="PackedScene" uid="uid://spuatnvucbgm" path="res://miravil/characters_terminal_market/npc_tm_guy9.tscn" id="10_ebk2w"]
+[ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="11_k4khv"]
+[ext_resource type="PackedScene" uid="uid://c4ajw31sko6wi" path="res://miravil/characters/npc_boy_1.tscn" id="12_02jbd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c1k5"]
 texture = ExtResource("1_6rsvy")
@@ -8767,3 +8770,12 @@ z_index = 2
 tile_map_data = PackedByteArray("AAAFAAEAAwAOAB0AAAAFAAIAAwAOAB8AAAAFAAMAAwAOACAAAAABAAQAAwAKAB4AAAABAAUAAwAKAB8AAAABAAYAAwAKACAAAAACAAQAAwALAB4AAAACAAUAAwALAB8AAAACAAYAAwALACAAAAACAAgAAwAMAB4AAAAEAAgAAwAMAB4AAAABAAcAAwAPABgAAAABAAkAAwAMABcAAAACAAkAAwANABcAAAACAAAAAwAGABcAAAACAAEAAwAGABgAAAANAAUAAQALACEAAAANAAYAAQALACIAAAAOAAUAAQAMACEAAAAOAAYAAQAMACIAAAADAAUAAwAJAAUAAAAEAAUAAwAKAAUAAAADAAQAAwAJAAQAAAAEAAQAAwAKAAQAAAAMAAEABQAJABcAAAAMAAIABQAJABgAAAAMAAMABQAJABkAAAAHAAQABQAGACgAAAAHAAUABQAGACkAAAAIAAQABQAHACYAAAAIAAUABQAHACcAAAA=")
 tile_set = SubResource("TileSet_0ttc5")
 collision_visibility_mode = 2
+
+[node name="NpcTmGuy9" parent="." instance=ExtResource("10_ebk2w")]
+position = Vector2(318, 165)
+
+[node name="NpcBeardMan" parent="." instance=ExtResource("11_k4khv")]
+position = Vector2(349, 300)
+
+[node name="NpcBoy1" parent="." instance=ExtResource("12_02jbd")]
+position = Vector2(463, 269)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=4 uid="uid://cdmcjdiukxqyx"]
+[gd_scene load_steps=17 format=4 uid="uid://cdmcjdiukxqyx"]
 
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_iajnb"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_mj10g"]
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="3_88gq5"]
 [ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="4_mj10g"]
 [ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/sprites/environments/interior/2_LivingRoom_32x32.png" id="5_88gq5"]
+[ext_resource type="PackedScene" uid="uid://1n4nyc7f32i0" path="res://miravil/character_police_station/npc_pl_guy2.tscn" id="6_26cdv"]
+[ext_resource type="PackedScene" uid="uid://cm0jruxbtorh8" path="res://miravil/characters_terminal_market/npc_tm_girl1.tscn" id="7_fbfvr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8cgiv"]
 texture = ExtResource("1_iajnb")
@@ -4011,3 +4013,9 @@ tile_set = SubResource("TileSet_85xa7")
 z_index = 2
 tile_map_data = PackedByteArray("AAAOAAEAAAAAAAUAAAAOAAIAAAAAAAYAAAAOAAUAAAACAAkAAAAOAAYAAAACAAoAAAAEAAEAAAAPAAsAAAAEAAIAAAAPAAwAAAAKAAIAAAALACEAAAAKAAMAAAALACIAAAALAAIAAAAMACEAAAALAAMAAAAMACIAAAAQAAIAAAANACEAAAAQAAMAAAANACIAAAARAAIAAAAOACEAAAARAAMAAAAOACIAAAAHAAQAAAAAAAgAAAAFAAIAAAALAAcAAAAFAAMAAAALAAgAAAANAAQAAAABAAkAAAANAAUAAAABAAoAAAA=")
 tile_set = SubResource("TileSet_gnm2g")
+
+[node name="NpcPlGuy2" parent="." instance=ExtResource("6_26cdv")]
+position = Vector2(447, 159)
+
+[node name="NpcTmGirl1" parent="." instance=ExtResource("7_fbfvr")]
+position = Vector2(209, 184)
