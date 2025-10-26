@@ -1,32 +1,32 @@
 [gd_scene load_steps=48 format=4 uid="uid://bkxx1m4vbvfhf"]
 
-[ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_nq1wr"]
-[ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_sfxf0"]
-[ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="3_f0bfo"]
-[ext_resource type="Texture2D" uid="uid://dbhv2u8uyh4i5" path="res://assets/sprites/environments/exterior/11_Camping_32x32.png" id="4_k2ofi"]
-[ext_resource type="Texture2D" uid="uid://c4dc4eui4vkjj" path="res://assets/sprites/environments/exterior/7_Villas_32x32.png" id="5_lmmca"]
-[ext_resource type="Texture2D" uid="uid://d1qcv8l4s823i" path="res://assets/sprites/environments/exterior/17_Garden_32x32.png" id="6_l73rr"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="7_sm4w4"]
-[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="8_nlmck"]
-[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="9_6snas"]
-[ext_resource type="PackedScene" uid="uid://ctvo3c0ae47lh" path="res://miravil/characters_2/npc_bc_boy1.tscn" id="10_pdcfp"]
-[ext_resource type="PackedScene" uid="uid://juttmy3vqu4h" path="res://miravil/characters_2/npc_bc_boy2.tscn" id="11_yjasj"]
-[ext_resource type="PackedScene" uid="uid://88p2xsk3a0jc" path="res://miravil/characters_2/npc_bc_boy3.tscn" id="12_mffl1"]
-[ext_resource type="PackedScene" uid="uid://dfw7sn1pdhrgb" path="res://miravil/characters_2/npc_bc_boy4.tscn" id="13_t74vs"]
-[ext_resource type="PackedScene" uid="uid://baeoojjgi4jy4" path="res://miravil/characters_2/npc_bc_boy5.tscn" id="14_acrjd"]
-[ext_resource type="PackedScene" uid="uid://cpb2erm6gya8v" path="res://miravil/characters_2/npc_bc_boy6.tscn" id="15_84pm2"]
-[ext_resource type="PackedScene" uid="uid://2in04en0a2yb" path="res://miravil/characters_2/npc_bc_boy7.tscn" id="16_bn7dj"]
-[ext_resource type="PackedScene" uid="uid://hxoafuiea1jq" path="res://miravil/characters_2/npc_bc_boy8.tscn" id="17_ia6me"]
-[ext_resource type="PackedScene" uid="uid://88gk8dwdeef5" path="res://miravil/characters_2/npc_bc_girl1.tscn" id="18_jqd3b"]
-[ext_resource type="PackedScene" uid="uid://jgddn8tu8id4" path="res://miravil/characters_2/npc_bc_girl2.tscn" id="19_8g7b0"]
-[ext_resource type="PackedScene" uid="uid://ddi78wtnxtop5" path="res://miravil/characters_2/npc_bc_girl3.tscn" id="20_mq4c7"]
-[ext_resource type="PackedScene" uid="uid://b2wpxg54ruupw" path="res://miravil/characters_2/npc_bc_girl4.tscn" id="21_3m2e4"]
-[ext_resource type="PackedScene" uid="uid://8b0jc1i5qgvc" path="res://miravil/characters_2/npc_bc_girl5.tscn" id="22_1ca1w"]
-[ext_resource type="Script" uid="uid://cu3hk0cpgwlho" path="res://miravil/characters_2/npc_bc_girl_5.gd" id="23_mi4ci"]
-[ext_resource type="PackedScene" uid="uid://c5mweveda1y56" path="res://miravil/characters_2/npc_bc_furry.tscn" id="24_5andd"]
+[ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_4rsub"]
+[ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_teyyt"]
+[ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="3_7yeh2"]
+[ext_resource type="Texture2D" uid="uid://dbhv2u8uyh4i5" path="res://assets/sprites/environments/exterior/11_Camping_32x32.png" id="4_41mb8"]
+[ext_resource type="Texture2D" uid="uid://c4dc4eui4vkjj" path="res://assets/sprites/environments/exterior/7_Villas_32x32.png" id="5_yp8xo"]
+[ext_resource type="Texture2D" uid="uid://d1qcv8l4s823i" path="res://assets/sprites/environments/exterior/17_Garden_32x32.png" id="6_xhnt2"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="7_jfn0t"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="8_x3ecy"]
+[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="9_sqqbg"]
+[ext_resource type="PackedScene" uid="uid://ctvo3c0ae47lh" path="res://miravil/characters_2/npc_bc_boy1.tscn" id="10_pa2sg"]
+[ext_resource type="PackedScene" uid="uid://juttmy3vqu4h" path="res://miravil/characters_2/npc_bc_boy2.tscn" id="11_uxeo2"]
+[ext_resource type="PackedScene" uid="uid://88p2xsk3a0jc" path="res://miravil/characters_2/npc_bc_boy3.tscn" id="12_lyl74"]
+[ext_resource type="PackedScene" uid="uid://dfw7sn1pdhrgb" path="res://miravil/characters_2/npc_bc_boy4.tscn" id="13_bn4bk"]
+[ext_resource type="PackedScene" uid="uid://baeoojjgi4jy4" path="res://miravil/characters_2/npc_bc_boy5.tscn" id="14_optue"]
+[ext_resource type="PackedScene" uid="uid://cpb2erm6gya8v" path="res://miravil/characters_2/npc_bc_boy6.tscn" id="15_xctx0"]
+[ext_resource type="PackedScene" uid="uid://2in04en0a2yb" path="res://miravil/characters_2/npc_bc_boy7.tscn" id="16_lvxgr"]
+[ext_resource type="PackedScene" uid="uid://hxoafuiea1jq" path="res://miravil/characters_2/npc_bc_boy8.tscn" id="17_r8rte"]
+[ext_resource type="PackedScene" uid="uid://88gk8dwdeef5" path="res://miravil/characters_2/npc_bc_girl1.tscn" id="18_0dgdf"]
+[ext_resource type="PackedScene" uid="uid://jgddn8tu8id4" path="res://miravil/characters_2/npc_bc_girl2.tscn" id="19_6ot21"]
+[ext_resource type="PackedScene" uid="uid://ddi78wtnxtop5" path="res://miravil/characters_2/npc_bc_girl3.tscn" id="20_v2ldm"]
+[ext_resource type="PackedScene" uid="uid://b2wpxg54ruupw" path="res://miravil/characters_2/npc_bc_girl4.tscn" id="21_w63we"]
+[ext_resource type="PackedScene" uid="uid://8b0jc1i5qgvc" path="res://miravil/characters_2/npc_bc_girl5.tscn" id="22_2unk4"]
+[ext_resource type="Script" uid="uid://cu3hk0cpgwlho" path="res://miravil/characters_2/npc_bc_girl_5.gd" id="23_iv42v"]
+[ext_resource type="PackedScene" uid="uid://c5mweveda1y56" path="res://miravil/characters_2/npc_bc_furry.tscn" id="24_r1uj8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgmrl"]
-texture = ExtResource("1_nq1wr")
+texture = ExtResource("1_4rsub")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -3870,7 +3870,7 @@ texture_region_size = Vector2i(32, 32)
 38:102/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8y0ko"]
-texture = ExtResource("2_sfxf0")
+texture = ExtResource("2_teyyt")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -5048,7 +5048,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gph8c"]
-texture = ExtResource("3_f0bfo")
+texture = ExtResource("3_7yeh2")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -9404,7 +9404,7 @@ sources/1 = SubResource("TileSetAtlasSource_8y0ko")
 sources/2 = SubResource("TileSetAtlasSource_gph8c")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5aon"]
-texture = ExtResource("2_sfxf0")
+texture = ExtResource("2_teyyt")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -10580,7 +10580,7 @@ texture_region_size = Vector2i(32, 32)
 9:67/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ubhsf"]
-texture = ExtResource("3_f0bfo")
+texture = ExtResource("3_7yeh2")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -14941,7 +14941,7 @@ texture_region_size = Vector2i(32, 32)
 30:223/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eo8mp"]
-texture = ExtResource("4_k2ofi")
+texture = ExtResource("4_41mb8")
 texture_region_size = Vector2i(32, 32)
 22:0/0 = 0
 23:0/0 = 0
@@ -18952,7 +18952,7 @@ texture_region_size = Vector2i(32, 32)
 16:180/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nq1wr"]
-texture = ExtResource("1_nq1wr")
+texture = ExtResource("1_4rsub")
 texture_region_size = Vector2i(32, 32)
 23:68/0 = 0
 24:68/0 = 0
@@ -18968,7 +18968,7 @@ sources/2 = SubResource("TileSetAtlasSource_eo8mp")
 sources/4 = SubResource("TileSetAtlasSource_nq1wr")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lg3ff"]
-texture = ExtResource("5_lmmca")
+texture = ExtResource("5_yp8xo")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
@@ -20340,7 +20340,7 @@ texture_region_size = Vector2i(32, 32)
 21:56/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cooq5"]
-texture = ExtResource("6_l73rr")
+texture = ExtResource("6_xhnt2")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -24486,7 +24486,7 @@ texture_region_size = Vector2i(32, 32)
 26:195/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qjx8r"]
-texture = ExtResource("4_k2ofi")
+texture = ExtResource("4_41mb8")
 texture_region_size = Vector2i(32, 32)
 22:0/0 = 0
 23:0/0 = 0
@@ -28498,7 +28498,7 @@ sources/1 = SubResource("TileSetAtlasSource_cooq5")
 sources/2 = SubResource("TileSetAtlasSource_qjx8r")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t63rl"]
-texture = ExtResource("6_l73rr")
+texture = ExtResource("6_xhnt2")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -32446,7 +32446,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_t63rl")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_og2jn"]
-texture = ExtResource("5_lmmca")
+texture = ExtResource("5_yp8xo")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
@@ -33764,7 +33764,7 @@ texture_region_size = Vector2i(32, 32)
 21:56/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mahun"]
-texture = ExtResource("6_l73rr")
+texture = ExtResource("6_xhnt2")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -37675,7 +37675,7 @@ texture_region_size = Vector2i(32, 32)
 26:195/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpkmu"]
-texture = ExtResource("3_f0bfo")
+texture = ExtResource("3_7yeh2")
 texture_region_size = Vector2i(32, 32)
 16:0/0 = 0
 17:0/0 = 0
@@ -42067,7 +42067,7 @@ z_index = 5
 tile_map_data = PackedByteArray("AAAZAAAAAQAAAJ0AAAAZAAEAAQAAAJ4AAAAZAAIAAQAAAJ8AAAAZAAMAAQAAAKAAAAAaAAAAAQABAJ0AAAAaAAEAAQABAJ4AAAAaAAIAAQABAJ8AAAAaAAMAAQABAKAAAAAbAAAAAQACAJ0AAAAbAAEAAQACAJ4AAAAbAAIAAQACAJ8AAAAbAAMAAQACAKAAAAAcAAAAAQADAJ0AAAAcAAEAAQADAJ4AAAAcAAIAAQADAJ8AAAAcAAMAAQADAKAAAAAdAAAAAQAEAJ0AAAAdAAEAAQAEAJ4AAAAdAAIAAQAEAJ8AAAAdAAMAAQAEAKAAAAAeAAAAAQAFAJ0AAAAeAAEAAQAFAJ4AAAAeAAIAAQAFAJ8AAAAeAAMAAQAFAKAAAAAfAAEAAQAGAJ4AAAAfAAIAAQAGAJ8AAAAfAAMAAQAGAKAAAAAgAAAAAQAHAJ0AAAAgAAEAAQAHAJ4AAAAgAAIAAQAHAJ8AAAAgAAMAAQAHAKAAAAAhAAEAAQAIAJ4AAAAhAAIAAQAIAJ8AAAAhAAMAAQAIAKAAAAAiAAAAAQAJAJ0AAAAiAAEAAQAJAJ4AAAAiAAIAAQAJAJ8AAAAiAAMAAQAJAKAAAAAjAAAAAQAKAJ0AAAAjAAEAAQAKAJ4AAAAjAAIAAQAKAJ8AAAAjAAMAAQAKAKAAAAAkAAAAAQALAJ0AAAAkAAEAAQALAJ4AAAAkAAIAAQALAJ8AAAAkAAMAAQALAKAAAAAlAAAAAQAMAJ0AAAAlAAEAAQAMAJ4AAAAlAAIAAQAMAJ8AAAAlAAMAAQAMAKAAAAAmAAAAAQANAJ0AAAAmAAEAAQANAJ4AAAAmAAIAAQANAJ8AAAAmAAMAAQANAKAAAAAnAAAAAQAOAJ0AAAAnAAEAAQAOAJ4AAAAnAAIAAQAOAJ8AAAAnAAMAAQAOAKAAAAAoAAAAAQAPAJ0AAAAoAAEAAQAPAJ4AAAAoAAIAAQAPAJ8AAAAoAAMAAQAPAKAAAAApAAEAAQAQAJ4AAAApAAIAAQAQAJ8AAAApAAMAAQAQAKAAAAAqAAAAAQARAJ0AAAAqAAEAAQARAJ4AAAAqAAIAAQARAJ8AAAAqAAMAAQARAKAAAAArAAEAAQASAJ4AAAArAAIAAQASAJ8AAAArAAMAAQASAKAAAAAsAAAAAQATAJ0AAAAsAAEAAQATAJ4AAAAsAAIAAQATAJ8AAAAsAAMAAQATAKAAAAAtAAAAAQAUAJ0AAAAtAAEAAQAUAJ4AAAAtAAIAAQAUAJ8AAAAtAAMAAQAUAKAAAAAuAAAAAQAVAJ0AAAAuAAEAAQAVAJ4AAAAuAAIAAQAVAJ8AAAAuAAMAAQAVAKAAAAAvAAAAAQAWAJ0AAAAvAAEAAQAWAJ4AAAAvAAIAAQAWAJ8AAAAvAAMAAQAWAKAAAAAwAAAAAQAXAJ0AAAAwAAEAAQAXAJ4AAAAwAAIAAQAXAJ8AAAAwAAMAAQAXAKAAAAAxAAAAAQAYAJ0AAAAxAAEAAQAYAJ4AAAAxAAIAAQAYAJ8AAAAxAAMAAQAYAKAAAAACAAEAAAAKAAEAAAACAAIAAAAKAAIAAAACAAMAAAAKAAMAAAADAAEAAAALAAEAAAADAAIAAAALAAIAAAADAAMAAAALAAMAAAAEAAAAAAAMAAAAAAAEAAEAAAAMAAEAAAAEAAIAAAAMAAIAAAAEAAMAAAAMAAMAAAAFAAAAAAANAAAAAAAFAAEAAAANAAEAAAAFAAIAAAANAAIAAAAFAAMAAAANAAMAAAAGAAAAAAAOAAAAAAAGAAEAAAAOAAEAAAAGAAIAAAAOAAIAAAAGAAMAAAAOAAMAAAAHAAAAAAAPAAAAAAAHAAEAAAAPAAEAAAAHAAIAAAANACEAAAAHAAMAAAANACIAAAAIAAEAAAAQAAEAAAAIAAIAAAAOACEAAAAIAAMAAAAOACIAAAAJAAEAAAARAAEAAAAJAAIAAAAPACEAAAAJAAMAAAAPACIAAAAHAAQAAAANACMAAAAIAAQAAAAOACMAAAAJAAQAAAAPACMAAAAMACwAAQAYAAgAAAAMAC0AAQAYAAkAAAANACwAAQAZAAgAAAANAC0AAQAZAAkAAAAOACwAAQAaAAgAAAAOAC0AAQAaAAkAAAAAACMAAQAHAAIAAAABACMAAQAIAAIAAAACACMAAQAIAAIAAAADACMAAQAIAAIAAAAEACMAAQAIAAIAAAAFACMAAQAIAAIAAAAGACMAAQAIAAIAAAAHACMAAQAIAAIAAAAIACMAAQAIAAIAAAAJACMAAQAIAAIAAAAKACMAAQAIAAIAAAALACMAAQAIAAIAAAAMACMAAQAIAAIAAAANACMAAQAIAAIAAAAOACMAAQAIAAIAAAAPACMAAQAIAAIAAAAQACMAAQAIAAIAAAARACMAAQAIAAIAAAASACMAAQAIAAIAAAATACMAAQAIAAIAAAAUACMAAQAIAAIAAAAVACMAAQAIAAIAAAAWACMAAQAJAAIAAAAaACAAAgAYAB0AAAAaACEAAgAYAB4AAAAaACIAAgAYAB8AAAAbACAAAgAZAB0AAAAbACEAAgAZAB4AAAAbACIAAgAZAB8AAAAcACAAAgAaAB0AAAAcACEAAgAaAB4AAAAcACIAAgAaAB8AAAAgACUAAgAYAB0AAAAgACYAAgAYAB4AAAAgACcAAgAYAB8AAAAhACUAAgAZAB0AAAAhACYAAgAZAB4AAAAhACcAAgAZAB8AAAAiACUAAgAaAB0AAAAiACYAAgAaAB4AAAAiACcAAgAaAB8AAAAnACUAAgAYAB0AAAAnACYAAgAYAB4AAAAnACcAAgAYAB8AAAAoACUAAgAZAB0AAAAoACYAAgAZAB4AAAAoACcAAgAZAB8AAAApACUAAgAaAB0AAAApACYAAgAaAB4AAAApACcAAgAaAB8AAAAvAB4AAgAYAB0AAAAvAB8AAgAYAB4AAAAvACAAAgAYAB8AAAAwAB4AAgAZAB0AAAAwAB8AAgAZAB4AAAAwACAAAgAZAB8AAAAxAB4AAgAaAB0AAAAxAB8AAgAaAB4AAAAxACAAAgAaAB8AAAABACcAAQAZADQAAAASACsAAQAcAAoAAAATACsAAQAdAAoAAAAUACsAAQAeAAoAAAAVACsAAQAfAAoAAAA=")
 tile_set = SubResource("TileSet_g4ba0")
 
-[node name="PlayerM" parent="." instance=ExtResource("7_sm4w4")]
+[node name="PlayerM" parent="." instance=ExtResource("7_jfn0t")]
 z_index = 4
 position = Vector2(688, 120)
 
@@ -42076,7 +42076,7 @@ limit_right = 1500
 limit_bottom = 1500
 
 [node name="Area2D_interior_barangay_hall" type="Area2D" parent="."]
-script = ExtResource("8_nlmck")
+script = ExtResource("8_x3ecy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_interior_barangay_hall"]
 z_index = 10
@@ -42084,10 +42084,10 @@ position = Vector2(144, 347)
 shape = SubResource("RectangleShape2D_og2jn")
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
-script = ExtResource("9_6snas")
+script = ExtResource("9_sqqbg")
 
 [node name="from_barangay_to_camp" type="Area2D" parent="."]
-script = ExtResource("8_nlmck")
+script = ExtResource("8_x3ecy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_barangay_to_camp"]
 position = Vector2(863.864, 8)
@@ -42095,20 +42095,20 @@ scale = Vector2(0.989911, -0.634885)
 shape = SubResource("RectangleShape2D_g4ba0")
 
 [node name="from_barangay_to_market" type="Area2D" parent="."]
-script = ExtResource("8_nlmck")
+script = ExtResource("8_x3ecy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_barangay_to_market"]
 position = Vector2(1716, 1395.19)
 shape = SubResource("RectangleShape2D_xo475")
 
 [node name="from_barangay_to_police_station" type="Area2D" parent="."]
-script = ExtResource("8_nlmck")
+script = ExtResource("8_x3ecy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_barangay_to_police_station"]
 position = Vector2(1720, 384)
 shape = SubResource("RectangleShape2D_2suv4")
 
-[node name="NpcBcBoy1" parent="." instance=ExtResource("10_pdcfp")]
+[node name="NpcBcBoy1" parent="." instance=ExtResource("10_pa2sg")]
 z_index = 5
 position = Vector2(221, 365)
 
@@ -42116,25 +42116,25 @@ position = Vector2(221, 365)
 animation = &"idle_front"
 autoplay = "idle_front"
 
-[node name="NpcBcBoy2" parent="." instance=ExtResource("11_yjasj")]
+[node name="NpcBcBoy2" parent="." instance=ExtResource("11_uxeo2")]
 z_index = 4
 position = Vector2(430, 811)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy2" index="0"]
 autoplay = "idle_right"
 
-[node name="NpcBcBoy3" parent="." instance=ExtResource("12_mffl1")]
+[node name="NpcBcBoy3" parent="." instance=ExtResource("12_lyl74")]
 z_index = 4
 position = Vector2(271, 1270)
 
-[node name="NpcBcBoy4" parent="." instance=ExtResource("13_t74vs")]
+[node name="NpcBcBoy4" parent="." instance=ExtResource("13_bn4bk")]
 z_index = 4
 position = Vector2(1255, 939)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy4" index="0"]
 autoplay = "idle_cellphone_front"
 
-[node name="NpcBcBoy5" parent="." instance=ExtResource("14_acrjd")]
+[node name="NpcBcBoy5" parent="." instance=ExtResource("14_optue")]
 z_index = 4
 position = Vector2(189, 607)
 
@@ -42142,21 +42142,21 @@ position = Vector2(189, 607)
 animation = &"idle_front"
 autoplay = "idle_front"
 
-[node name="NpcBcBoy6" parent="." instance=ExtResource("15_84pm2")]
+[node name="NpcBcBoy6" parent="." instance=ExtResource("15_xctx0")]
 z_index = 4
 position = Vector2(348, 205)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy6" index="0"]
 autoplay = "idle_right"
 
-[node name="NpcBcBoy7" parent="." instance=ExtResource("16_bn7dj")]
+[node name="NpcBcBoy7" parent="." instance=ExtResource("16_lvxgr")]
 z_index = 4
 position = Vector2(84, 495)
 
 [node name="AnimatedSprite2D" parent="NpcBcBoy7" index="0"]
 autoplay = "idle_right"
 
-[node name="NpcBcBoy8" parent="." instance=ExtResource("17_ia6me")]
+[node name="NpcBcBoy8" parent="." instance=ExtResource("17_r8rte")]
 z_index = 4
 position = Vector2(591, 810)
 
@@ -42164,14 +42164,14 @@ position = Vector2(591, 810)
 animation = &"idle_left"
 autoplay = "idle_left"
 
-[node name="NpcBcGirl1" parent="." instance=ExtResource("18_jqd3b")]
+[node name="NpcBcGirl1" parent="." instance=ExtResource("18_0dgdf")]
 z_index = 4
 position = Vector2(53, 1405)
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl1" index="0"]
 autoplay = "idle_right"
 
-[node name="NpcBcGirl2" parent="." instance=ExtResource("19_8g7b0")]
+[node name="NpcBcGirl2" parent="." instance=ExtResource("19_6ot21")]
 z_index = 4
 position = Vector2(1074, 1370)
 
@@ -42179,7 +42179,7 @@ position = Vector2(1074, 1370)
 position = Vector2(0, 1)
 animation = &"idle_back"
 
-[node name="NpcBcGirl3" parent="." instance=ExtResource("20_mq4c7")]
+[node name="NpcBcGirl3" parent="." instance=ExtResource("20_v2ldm")]
 z_index = 4
 position = Vector2(1038, 1147)
 
@@ -42189,7 +42189,7 @@ autoplay = "idle_right"
 [node name="CollisionShape2D" parent="NpcBcGirl3/Area2D" index="0"]
 z_index = 4
 
-[node name="NpcBcGirl4" parent="." instance=ExtResource("21_3m2e4")]
+[node name="NpcBcGirl4" parent="." instance=ExtResource("21_w63we")]
 z_index = 4
 position = Vector2(644, 1298)
 
@@ -42197,10 +42197,10 @@ position = Vector2(644, 1298)
 animation = &"idle_front"
 autoplay = "idle_front"
 
-[node name="NpcBcGirl5" parent="." instance=ExtResource("22_1ca1w")]
+[node name="NpcBcGirl5" parent="." instance=ExtResource("22_2unk4")]
 z_index = 4
 position = Vector2(240, 1115)
-script = ExtResource("23_mi4ci")
+script = ExtResource("23_iv42v")
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl5" index="0"]
 animation = &"idle_front"
@@ -42209,7 +42209,7 @@ autoplay = "idle_front"
 [node name="CollisionShape2D" parent="NpcBcGirl5/Area2D" index="0"]
 z_index = 4
 
-[node name="NpcBcFurry" parent="." instance=ExtResource("24_5andd")]
+[node name="NpcBcFurry" parent="." instance=ExtResource("24_r1uj8")]
 position = Vector2(1202, 1216)
 
 [node name="AnimatedSprite2D" parent="NpcBcFurry" index="0"]
