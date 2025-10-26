@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://0xg0m5dd5h0o"]
+[gd_scene load_steps=16 format=3 uid="uid://0xg0m5dd5h0o"]
 
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="1_1075l"]
 [ext_resource type="Script" uid="uid://b23g0g8pmtxuh" path="res://scripts/ui/settings.gd" id="1_settings_script"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="4_blqn1"]
 [ext_resource type="Script" uid="uid://dyq85je2d7iv2" path="res://scenes/ui/UI by jer/scripts/audio_control.gd" id="5_j7x76"]
 [ext_resource type="Script" uid="uid://bofb3p2uunbxu" path="res://scenes/ui/UI by jer/scripts/fullscreen_control.gd" id="6_71mvm"]
+[ext_resource type="Script" uid="uid://dq65dpw6vly5a" path="res://mainmenu.gd" id="7_j7x76"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kplyb"]
 line_spacing = 2.0
@@ -24,6 +25,35 @@ thickness = 4
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_6ilhj"]
 color = Color(0.0980886, 0.317864, 0.711954, 1)
 thickness = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_blqn1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7x76"]
+bg_color = Color(0.804743, 0.804743, 0.804743, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71mvm"]
+bg_color = Color(0.43134, 0.43134, 0.43134, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uskx"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
 
 [node name="Settings" type="CanvasLayer"]
 script = ExtResource("1_settings_script")
@@ -133,6 +163,34 @@ theme_override_font_sizes/font_size = 10
 text = "FULLSCREEN"
 script = ExtResource("6_71mvm")
 
+[node name="back" type="Button" parent="UIContainer/SettingsContentBG"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.221
+offset_top = -47.0
+offset_right = -28.221
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_blqn1")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_blqn1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j7x76")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71mvm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8uskx")
+text = "Menu"
+script = ExtResource("7_j7x76")
+
 [node name="SettingsTab" type="NinePatchRect" parent="UIContainer"]
 layout_mode = 0
 offset_right = 40.0
@@ -165,3 +223,4 @@ flat = true
 
 [connection signal="value_changed" from="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer/Audio Control" to="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer/Audio Control" method="_on_value_changed"]
 [connection signal="toggled" from="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer2/Fullscreen Control" to="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer2/Fullscreen Control" method="_on_toggled"]
+[connection signal="pressed" from="UIContainer/SettingsContentBG/back" to="UIContainer/SettingsContentBG/back" method="_on_pressed"]
