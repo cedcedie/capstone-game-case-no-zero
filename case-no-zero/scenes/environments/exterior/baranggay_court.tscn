@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://bkxx1m4vbvfhf"]
+[gd_scene load_steps=47 format=4 uid="uid://bkxx1m4vbvfhf"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_4rsub"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_teyyt"]
@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://ddi78wtnxtop5" path="res://miravil/characters_2/npc_bc_girl3.tscn" id="20_v2ldm"]
 [ext_resource type="PackedScene" uid="uid://b2wpxg54ruupw" path="res://miravil/characters_2/npc_bc_girl4.tscn" id="21_w63we"]
 [ext_resource type="PackedScene" uid="uid://8b0jc1i5qgvc" path="res://miravil/characters_2/npc_bc_girl5.tscn" id="22_2unk4"]
-[ext_resource type="Script" uid="uid://cu3hk0cpgwlho" path="res://miravil/characters_2/npc_bc_girl_5.gd" id="23_iv42v"]
 [ext_resource type="PackedScene" uid="uid://c5mweveda1y56" path="res://miravil/characters_2/npc_bc_furry.tscn" id="24_r1uj8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgmrl"]
@@ -42200,7 +42199,6 @@ autoplay = "idle_front"
 [node name="NpcBcGirl5" parent="." instance=ExtResource("22_2unk4")]
 z_index = 4
 position = Vector2(240, 1115)
-script = ExtResource("23_iv42v")
 
 [node name="AnimatedSprite2D" parent="NpcBcGirl5" index="0"]
 animation = &"idle_front"
@@ -42210,6 +42208,7 @@ autoplay = "idle_front"
 z_index = 4
 
 [node name="NpcBcFurry" parent="." instance=ExtResource("24_r1uj8")]
+z_index = 5
 position = Vector2(1202, 1216)
 
 [node name="AnimatedSprite2D" parent="NpcBcFurry" index="0"]

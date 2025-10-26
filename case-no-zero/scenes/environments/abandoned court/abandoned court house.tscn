@@ -8772,10 +8772,13 @@ tile_set = SubResource("TileSet_0ttc5")
 collision_visibility_mode = 2
 
 [node name="NpcTmGuy9" parent="." instance=ExtResource("10_ebk2w")]
+z_index = 4
 position = Vector2(318, 165)
 
 [node name="NpcBeardMan" parent="." instance=ExtResource("11_k4khv")]
+z_index = 4
 position = Vector2(349, 300)
 
 [node name="NpcBoy1" parent="." instance=ExtResource("12_02jbd")]
+z_index = 4
 position = Vector2(463, 269)

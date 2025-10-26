@@ -6816,7 +6816,9 @@ tile_map_data = PackedByteArray("AAAKAAIAAAACAAkAAAAKAAMAAAACAAoAAAALAAIAAAABAAk
 tile_set = SubResource("TileSet_6ftdb")
 
 [node name="NpcCmpB3" parent="." instance=ExtResource("6_prk57")]
+z_index = 4
 position = Vector2(643, 169)
 
 [node name="NpcCmpB6" parent="." instance=ExtResource("7_m04xh")]
+z_index = 4
 position = Vector2(178, 175)

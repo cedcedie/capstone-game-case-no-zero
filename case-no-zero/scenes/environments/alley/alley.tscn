@@ -18082,6 +18082,7 @@ position = Vector2(368, 416)
 animation = &"idle_left"
 
 [node name="PlayerM" parent="." instance=ExtResource("11_cixgr")]
+z_index = 4
 position = Vector2(312, 416)
 
 [editable path="celine"]

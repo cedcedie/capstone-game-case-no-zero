@@ -6657,6 +6657,7 @@ position = Vector2(576, 488)
 shape = SubResource("RectangleShape2D_wflm8")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_ix6sl")]
+z_index = 4
 position = Vector2(1034, 360)
 
 [node name="Area2D_lobby_to_exterior_apartment" type="Area2D" parent="."]
@@ -6670,7 +6671,9 @@ shape = SubResource("RectangleShape2D_qni5b")
 script = ExtResource("9_cg46j")
 
 [node name="NpcCmpB6" parent="." instance=ExtResource("10_agxxj")]
+z_index = 4
 position = Vector2(408, 331)
 
 [node name="NpcCmpB7" parent="." instance=ExtResource("11_m2yrk")]
+z_index = 4
 position = Vector2(605, 329)
