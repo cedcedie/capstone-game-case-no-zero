@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=4 uid="uid://c7owt88sw1fnw"]
+[gd_scene load_steps=111 format=4 uid="uid://c7owt88sw1fnw"]
 
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="1_b5not"]
 [ext_resource type="Texture2D" uid="uid://cui0psowwubwj" path="res://assets/sprites/environments/interior/Room_Builder_Floor_Connectors_32x32.png" id="2_sjxtr"]
@@ -37,6 +37,9 @@
 [ext_resource type="Texture2D" uid="uid://cqj48sh5buudm" path="res://assets/sprites/environments/interior/10_Birthday_party_32x32.png" id="35_qgrjj"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="36_eaie2"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="37_scene_transition"]
+[ext_resource type="PackedScene" uid="uid://1js3m63gq78w" path="res://miravil/characters/npc_mustache.tscn" id="38_jcfgk"]
+[ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="39_svm3g"]
+[ext_resource type="PackedScene" uid="uid://c4ajw31sko6wi" path="res://miravil/characters/npc_boy_1.tscn" id="40_u4mnx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_roq57"]
 texture = ExtResource("1_b5not")
@@ -38574,3 +38577,12 @@ script = ExtResource("37_scene_transition")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_to_2nd_floor_hospital"]
 position = Vector2(455, 322)
 shape = SubResource("RectangleShape2D_m0yw3")
+
+[node name="NpcMustache" parent="." instance=ExtResource("38_jcfgk")]
+position = Vector2(513, 348)
+
+[node name="NpcGuy3" parent="." instance=ExtResource("39_svm3g")]
+position = Vector2(526, 449)
+
+[node name="NpcBoy1" parent="." instance=ExtResource("40_u4mnx")]
+position = Vector2(453, 460)

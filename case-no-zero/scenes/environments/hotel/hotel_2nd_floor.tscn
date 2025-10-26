@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://d33hx8nwoxn0s"]
+[gd_scene load_steps=52 format=4 uid="uid://d33hx8nwoxn0s"]
 
 [ext_resource type="Texture2D" uid="uid://q7u1l1cvwbcj" path="res://assets/sprites/environments/interior/Room_Builder_3d_walls_32x32.png" id="1_82wmq"]
 [ext_resource type="Texture2D" uid="uid://yrv68jycvhs5" path="res://assets/sprites/environments/interior/Room_Builder_Arched_Entryways_32x32.png" id="2_1hs7i"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://d25s372ojqspt" path="res://assets/sprites/environments/interior/3_Bathroom_32x32.png" id="17_a22q5"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="18_1xb01"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="19_scene_transition"]
+[ext_resource type="PackedScene" uid="uid://88p2xsk3a0jc" path="res://miravil/characters_2/npc_bc_boy3.tscn" id="20_u6u2w"]
+[ext_resource type="PackedScene" uid="uid://c5mweveda1y56" path="res://miravil/characters_2/npc_bc_furry.tscn" id="21_8gapr"]
+[ext_resource type="PackedScene" uid="uid://dq8rl51pethrr" path="res://miravil/characters_2/npc_pl_guy3.tscn" id="22_5wasq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yymij"]
 texture = ExtResource("1_82wmq")
@@ -15844,3 +15847,12 @@ script = ExtResource("19_scene_transition")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_2nd_floor_to_hotel_lobby"]
 position = Vector2(595.375, 168)
 shape = SubResource("RectangleShape2D_8iy00")
+
+[node name="NpcBcBoy3" parent="." instance=ExtResource("20_u6u2w")]
+position = Vector2(906, 387)
+
+[node name="NpcBcFurry" parent="." instance=ExtResource("21_8gapr")]
+position = Vector2(546, 198)
+
+[node name="NpcPlGuy3" parent="." instance=ExtResource("22_5wasq")]
+position = Vector2(899, 232)
