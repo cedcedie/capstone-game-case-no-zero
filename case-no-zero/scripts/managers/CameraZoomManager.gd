@@ -164,6 +164,12 @@ func set_camera_limits_for_scene():
 	
 	# Set camera limits based on scene
 	match scene_name:
+		"courtroom":
+			player_camera.limit_left = 0
+			player_camera.limit_top = 0
+			player_camera.limit_right = 1407.0
+			player_camera.limit_bottom = 774.0
+			print("📷 CameraZoomManager: Set limits for courtroom: 1407x774")
 		"baranggay_court":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0

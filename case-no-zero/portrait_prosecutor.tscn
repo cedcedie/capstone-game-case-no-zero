@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://d2br0r8hgtnea"]
+
+[ext_resource type="Texture2D" uid="uid://dn0ke3hee7m50" path="res://prosecutor_face.png" id="1_utwxe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do44u"]
+atlas = ExtResource("1_utwxe")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vhe4"]
+atlas = ExtResource("1_utwxe")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k02wh"]
+atlas = ExtResource("1_utwxe")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxnim"]
+atlas = ExtResource("1_utwxe")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30ha2"]
+atlas = ExtResource("1_utwxe")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odftk"]
+atlas = ExtResource("1_utwxe")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mulc1"]
+atlas = ExtResource("1_utwxe")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elsqe"]
+atlas = ExtResource("1_utwxe")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1yhr"]
+atlas = ExtResource("1_utwxe")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04dw7"]
+atlas = ExtResource("1_utwxe")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pp7vk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do44u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vhe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k02wh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxnim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30ha2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odftk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mulc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elsqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1yhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04dw7")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pp7vk")
+animation = &"talk"

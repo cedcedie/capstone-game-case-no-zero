@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5xtnb513acgx"]
+
+[ext_resource type="Script" uid="uid://cw8tju2v6rd0" path="res://scripts/environments/simple_courtroom_manager.gd" id="1_0h8j9"]
+
+[node name="SimpleCourtroom" type="Node2D"]
+script = ExtResource("1_0h8j9")
+
+[node name="PlayerM" type="CharacterBody2D" parent="."]
+position = Vector2(640, 500)
+
+[node name="Camera2D" type="Camera2D" parent="PlayerM"]
+
+[node name="Judge" type="CharacterBody2D" parent="."]
+position = Vector2(640, 200)
+
+[node name="Prosecutor" type="CharacterBody2D" parent="."]
+position = Vector2(400, 300)
+
+[node name="Defendant" type="CharacterBody2D" parent="."]
+position = Vector2(640, 400)
+
+[node name="Witness" type="CharacterBody2D" parent="."]
+position = Vector2(880, 300)

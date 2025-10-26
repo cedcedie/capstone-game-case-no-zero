@@ -62,6 +62,13 @@ func initialize_tasks():
 			"description": "Tingnan ang autopsy report sa morgue para sa karagdagang ebidensya.",
 			"scene_target": "morgue",
 			"required_checkpoint": "HEAD_POLICE_COMPLETED"
+		},
+		{
+			"id": "go_to_courtroom",
+			"name": "Pumunta sa courtroom para sa trial",
+			"description": "Pumunta sa courtroom para sa trial ni Leo at ipresenta ang ebidensya.",
+			"scene_target": "courtroom",
+			"required_checkpoint": "MORGUE_COMPLETED"
 		}
 	]
 

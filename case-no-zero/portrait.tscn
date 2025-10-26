@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://hecda0nx7312"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvl8a"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="Portrait" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lvl8a")
+animation = &"talk"

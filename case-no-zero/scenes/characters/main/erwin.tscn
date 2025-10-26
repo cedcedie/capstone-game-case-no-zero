@@ -388,8 +388,8 @@ size = Vector2(20, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8d7p2")
-animation = &"walk_down"
-autoplay = "idle_front"
+animation = &"idle_back"
+autoplay = "idle_back"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
