@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/sprites/environments/interior/2_LivingRoom_32x32.png" id="5_kdtey"]
 [ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/sprites/environments/interior/19_Hospital_32x32.png" id="6_jv8hp"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="7_0q54g"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_ix6sl"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="8_ix6sl"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="9_cg46j"]
 [ext_resource type="PackedScene" uid="uid://dgij3n4jn4dna" path="res://miravil/characters_camp/npc_cmp_b6.tscn" id="10_agxxj"]
 [ext_resource type="PackedScene" uid="uid://bbjntxhg5ng7k" path="res://miravil/characters_camp/npc_cmp_b7.tscn" id="11_m2yrk"]

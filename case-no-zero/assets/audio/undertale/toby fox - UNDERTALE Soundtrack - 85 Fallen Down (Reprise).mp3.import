@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qlxy8ni52jt6"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 85 Fallen Down (Reprise).mp3-678198afb5ebc895e4a894376e321f7e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 85 Fallen Down (Reprise).mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 85 Fallen Down (Reprise).mp3-678198afb5ebc895e4a894376e321f7e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

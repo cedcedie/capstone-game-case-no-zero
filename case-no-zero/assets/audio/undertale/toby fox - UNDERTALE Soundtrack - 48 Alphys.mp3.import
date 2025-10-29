@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dd64nxlxdruw8"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 48 Alphys.mp3-9377f0517724f06c9e7c81b78fe0d9a7.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 48 Alphys.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 48 Alphys.mp3-9377f0517724f06c9e7c81b78fe0d9a7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

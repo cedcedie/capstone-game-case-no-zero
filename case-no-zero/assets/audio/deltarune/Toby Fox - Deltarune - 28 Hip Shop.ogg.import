@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://csgrxagdua2s2"
+path="res://.godot/imported/Toby Fox - Deltarune - 28 Hip Shop.ogg-73fd920aff41e65bbf5b867247c0c33f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Toby Fox - Deltarune - 28 Hip Shop.ogg"
+dest_files=["res://.godot/imported/Toby Fox - Deltarune - 28 Hip Shop.ogg-73fd920aff41e65bbf5b867247c0c33f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

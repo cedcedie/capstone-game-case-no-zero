@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://ikty23evb787" path="res://assets/sprites/environments/interior/8_Gym_32x32.png" id="33_r4x0q"]
 [ext_resource type="Texture2D" uid="uid://bjwpfqjaw43q1" path="res://assets/sprites/environments/interior/9_Fishing_32x32.png" id="34_1ilky"]
 [ext_resource type="Texture2D" uid="uid://cqj48sh5buudm" path="res://assets/sprites/environments/interior/10_Birthday_party_32x32.png" id="35_qgrjj"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="36_eaie2"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="36_eaie2"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="37_scene_transition"]
 [ext_resource type="PackedScene" uid="uid://1js3m63gq78w" path="res://miravil/characters/npc_mustache.tscn" id="38_jcfgk"]
 [ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="39_svm3g"]

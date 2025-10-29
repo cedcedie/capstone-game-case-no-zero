@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8gwp1j2jw2bj"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 18 Uwa!! So Holiday♫.mp3-89c794b3ecd7fd959c46add4a03b3b61.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 18 Uwa!! So Holiday♫.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 18 Uwa!! So Holiday♫.mp3-89c794b3ecd7fd959c46add4a03b3b61.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

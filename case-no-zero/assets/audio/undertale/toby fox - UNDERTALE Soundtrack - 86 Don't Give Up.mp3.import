@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8hl33tjg2qqe"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 86 Don't Give Up.mp3-0cd81cd7f1c38071ba47712aa2357a5f.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 86 Don't Give Up.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 86 Don't Give Up.mp3-0cd81cd7f1c38071ba47712aa2357a5f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

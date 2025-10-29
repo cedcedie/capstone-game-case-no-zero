@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bpl42sq4lrx4j"
+path="res://.godot/imported/Toby Fox - Deltarune - 1 ANOTHER HIM.ogg-59cd73c3b1f166f5cc7730e12d287e1c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Toby Fox - Deltarune - 1 ANOTHER HIM.ogg"
+dest_files=["res://.godot/imported/Toby Fox - Deltarune - 1 ANOTHER HIM.ogg-59cd73c3b1f166f5cc7730e12d287e1c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yjiqsfw51bat"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 72 Song That Might Play When You Fight Sans.mp3-15951b95f8e6a22e86cb14914206dbc1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 72 Song That Might Play When You Fight Sans.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 72 Song That Might Play When You Fight Sans.mp3-15951b95f8e6a22e86cb14914206dbc1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

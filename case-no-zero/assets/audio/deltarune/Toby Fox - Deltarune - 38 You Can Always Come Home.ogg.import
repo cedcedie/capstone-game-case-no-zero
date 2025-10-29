@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://djmrfds5g72oo"
+path="res://.godot/imported/Toby Fox - Deltarune - 38 You Can Always Come Home.ogg-ab1d049c7fcf5b66a6b7ed8882c38d46.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Toby Fox - Deltarune - 38 You Can Always Come Home.ogg"
+dest_files=["res://.godot/imported/Toby Fox - Deltarune - 38 You Can Always Come Home.ogg-ab1d049c7fcf5b66a6b7ed8882c38d46.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

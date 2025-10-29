@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://4iil6k8uvhga"
+path="res://.godot/imported/Ruder Buster.ogg-43834e02e1b5bc7446cdd092105ed10d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Ruder Buster.ogg"
+dest_files=["res://.godot/imported/Ruder Buster.ogg-43834e02e1b5bc7446cdd092105ed10d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

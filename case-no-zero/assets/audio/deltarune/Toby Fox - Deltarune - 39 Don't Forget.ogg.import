@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dsfwwnglgqv57"
+path="res://.godot/imported/Toby Fox - Deltarune - 39 Don't Forget.ogg-5dc13150e8ef29de0119f5ed9cc411ed.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Toby Fox - Deltarune - 39 Don't Forget.ogg"
+dest_files=["res://.godot/imported/Toby Fox - Deltarune - 39 Don't Forget.ogg-5dc13150e8ef29de0119f5ed9cc411ed.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bcu16e5f0kxyk"
+path="res://.godot/imported/From Now On (Battle 2).ogg-1b92a08043c88b71b067d4c6752de41e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/From Now On (Battle 2).ogg"
+dest_files=["res://.godot/imported/From Now On (Battle 2).ogg-1b92a08043c88b71b067d4c6752de41e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

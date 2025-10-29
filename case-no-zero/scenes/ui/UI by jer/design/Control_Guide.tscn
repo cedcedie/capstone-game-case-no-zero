@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://cgypkb14aq6fh"]
 
-[ext_resource type="Script" path="res://scenes/ui/UI by jer/scripts/control_guide.gd" id="1_control_guide"]
+[ext_resource type="Script" uid="uid://bo3tn1sareqde" path="res://scenes/ui/UI by jer/scripts/control_guide.gd" id="1_control_guide"]
 [ext_resource type="Texture2D" uid="uid://osehm2q6lrl5" path="res://scenes/ui/UI by jer/used in UI/istockphoto-1333010525-612x612.jpg" id="2_fa5hd"]
 [ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="3_503p4"]
 [ext_resource type="Texture2D" uid="uid://i4bs1w7psg6j" path="res://scenes/ui/UI by jer/used in UI/Untitled design (1).jpg" id="4_3plx6"]
-[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="5_mre7o"]
+[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/limezuUI/Modern_UI_Style_1_32x32.png" id="5_mre7o"]
 [ext_resource type="FontFile" uid="uid://da1sanbtdceii" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="6_mtlkw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mre7o"]

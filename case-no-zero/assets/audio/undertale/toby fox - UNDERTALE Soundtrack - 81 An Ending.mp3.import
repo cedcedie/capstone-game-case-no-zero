@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctl38qqybx1fm"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 81 An Ending.mp3-7e1e794804a01b780c23f7ca149f2a74.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 81 An Ending.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 81 An Ending.mp3-7e1e794804a01b780c23f7ca149f2a74.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

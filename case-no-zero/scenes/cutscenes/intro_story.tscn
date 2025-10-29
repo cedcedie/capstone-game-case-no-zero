@@ -1,0 +1,168 @@
+[gd_scene load_steps=10 format=3 uid="uid://bopnpklhux7xe"]
+
+[ext_resource type="Script" uid="uid://dkhrwikah1aoa" path="res://scripts/cutscene/intro_story.gd" id="1_spkmx"]
+[ext_resource type="PackedScene" uid="uid://c1mw2t7y4ddem" path="res://scenes/characters/main_characters/leo_mendoza.tscn" id="2_wxpch"]
+[ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperator-Bold.ttf" id="3_nitr6"]
+[ext_resource type="AudioStream" uid="uid://dd1yre2iyqp76" path="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 28 Premonition.mp3" id="4_5oq4b"]
+[ext_resource type="AudioStream" uid="uid://gxqqx14naevo" path="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 29 Danger Mystery.mp3" id="5_fiiln"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nq17e"]
+font = ExtResource("3_nitr6")
+font_size = 18
+
+[sub_resource type="Animation" id="Animation_0ojno"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_hieu1"]
+resource_name = "intro"
+length = 49.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("leo_mendoza/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.43333, 17.2333, 37),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"idle_front", &"fight_idle", &"walk_right", &"dead"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 2.3, 14, 21, 28, 31, 33.7667, 34, 38.5, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hide_leo"
+}, {
+"args": [],
+"method": &"start_mystery_bgm"
+}, {
+"args": [],
+"method": &"fade_in_leo"
+}, {
+"args": [],
+"method": &"fade_out_leo"
+}, {
+"args": [],
+"method": &"fade_in_leo"
+}, {
+"args": [],
+"method": &"fade_out_leo"
+}, {
+"args": [2.0],
+"method": &"fade_out_mystery_bgm"
+}, {
+"args": [],
+"method": &"make_cutscene_boy_fully_white"
+}, {
+"args": [],
+"method": &"fade_in_leo"
+}, {
+"args": [],
+"method": &"fade_out_cutscene_boy"
+}, {
+"args": [],
+"method": &"fade_out_leo"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 7, 14, 21, 28, 40, 45, 47, 49),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"show_narrator_0"
+}, {
+"args": [],
+"method": &"show_narrator_1"
+}, {
+"args": [],
+"method": &"show_narrator_2"
+}, {
+"args": [],
+"method": &"show_narrator_3"
+}, {
+"args": [],
+"method": &"show_narrator_4"
+}, {
+"args": [],
+"method": &"show_narrator_5"
+}, {
+"args": [2.0],
+"method": &"fade_out_mystery_bgm"
+}, {
+"args": [],
+"method": &"stop_mystery_bgm"
+}, {
+"args": [],
+"method": &"end_intro_cutscene"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DangerBGM")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(34),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ldhe1"]
+_data = {
+&"RESET": SubResource("Animation_0ojno"),
+&"intro": SubResource("Animation_hieu1")
+}
+
+[node name="IntroStory" type="Node2D"]
+script = ExtResource("1_spkmx")
+
+[node name="leo_mendoza" parent="." instance=ExtResource("2_wxpch")]
+position = Vector2(640, 360)
+
+[node name="AnimatedSprite2D" parent="leo_mendoza" index="0"]
+animation = &"idle_front"
+
+[node name="Camera2D" type="Camera2D" parent="leo_mendoza"]
+zoom = Vector2(1.3, 1.3)
+
+[node name="CinematicText" type="Label" parent="."]
+offset_left = 332.0
+offset_top = 294.0
+offset_right = 596.0
+offset_bottom = 390.0
+label_settings = SubResource("LabelSettings_nq17e")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ldhe1")
+}
+
+[node name="mysteryBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5oq4b")
+
+[node name="DangerBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fiiln")
+
+[editable path="leo_mendoza"]

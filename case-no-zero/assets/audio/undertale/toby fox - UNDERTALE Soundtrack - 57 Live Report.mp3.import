@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcnvn7l6s7vw"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 57 Live Report.mp3-6989c62bb7d87dfe35bceceacc1095fa.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 57 Live Report.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 57 Live Report.mp3-6989c62bb7d87dfe35bceceacc1095fa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

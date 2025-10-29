@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="9_7c46w"]
 [ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/sprites/environments/interior/19_Hospital_32x32.png" id="10_liyx3"]
 [ext_resource type="PackedScene" uid="uid://ehbu2a7n1jj1" path="res://miravil/characters/npc_girl_pinkish.tscn" id="11_4gasq"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_bfxbt"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="11_bfxbt"]
 [ext_resource type="PackedScene" uid="uid://dql8u6o7h5vvt" path="res://miravil/characters/npc_green_girl.tscn" id="12_2qvan"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="12_bfxbt"]
 [ext_resource type="PackedScene" uid="uid://b0k0313qg5upt" path="res://miravil/characters/npc_guy_2.tscn" id="13_275t4"]

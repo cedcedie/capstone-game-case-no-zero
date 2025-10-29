@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://doslqaqlxic7i"]
 
-[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/ui/Modern_UI_Style_1_32x32.png" id="1_407ec"]
+[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/limezuUI/Modern_UI_Style_1_32x32.png" id="1_407ec"]
 [ext_resource type="FontFile" uid="uid://r31pruqk51m3" path="res://scenes/ui/UI by jer/used in UI/Super Maples.ttf" id="2_0ott8"]
 
 [node name="DialogueBox" type="Control"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4uwaok6v4tn1"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 14 Heartache.mp3-58f8e81b397ae6c22a18b1af960bc8b6.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 14 Heartache.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 14 Heartache.mp3-58f8e81b397ae6c22a18b1af960bc8b6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

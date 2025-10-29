@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bf4bw1cq1700l"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 94 Respite.mp3-4aef256decb827d9d55ce51b84f0d348.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 94 Respite.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 94 Respite.mp3-4aef256decb827d9d55ce51b84f0d348.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

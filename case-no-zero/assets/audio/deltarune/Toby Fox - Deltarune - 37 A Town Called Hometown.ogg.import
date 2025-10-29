@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://2vne2l6jjfj7"
+path="res://.godot/imported/Toby Fox - Deltarune - 37 A Town Called Hometown.ogg-b985aec24d6c8183ac078238a356f86d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Toby Fox - Deltarune - 37 A Town Called Hometown.ogg"
+dest_files=["res://.godot/imported/Toby Fox - Deltarune - 37 A Town Called Hometown.ogg-b985aec24d6c8183ac078238a356f86d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -30,9 +30,8 @@ ScenePreloader="*res://scripts/managers/ScenePreloader.gd"
 VoiceBlipManager="*res://scripts/managers/voice_blip_manager.gd"
 CameraZoomManager="*res://scripts/managers/CameraZoomManager.gd"
 AudioManager="*res://scripts/managers/AudioManager.gd"
-EvidenceInventorySettings="*res://EvidenceInventorySettings.tscn"
-Settings="*res://Settings.tscn"
-Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
+EvidenceInventorySettings="*res://scenes/ui/EvidenceInventorySettings.tscn"
+Settings="*res://scenes/ui/Settings.tscn"
 
 [dialogic]
 
@@ -71,10 +70,6 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="casenozero"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg")
 
 [input]
 

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b23pcdad3vamb" path="res://assets/sprites/environments/interior/21_Clothing_Store_32x32.png" id="4_5ieqh"]
 [ext_resource type="Texture2D" uid="uid://b8416w25ogjcm" path="res://assets/sprites/environments/interior/24_Ice_Cream_Shop_32x32.png" id="5_bkalv"]
 [ext_resource type="Texture2D" uid="uid://bsb7m531e4avd" path="res://assets/sprites/environments/interior/16_Grocery_store_32x32.png" id="6_f6ma8"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="7_bkalv"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="7_bkalv"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="8_p2qgi"]
 [ext_resource type="PackedScene" uid="uid://bwd6dr15r2w0d" path="res://miravil/characters_camp/npc_cmp_b2.tscn" id="9_x4vjg"]
 [ext_resource type="PackedScene" uid="uid://bfgitratsswyw" path="res://miravil/characters_camp/npc_cmp_g2.tscn" id="10_skhv0"]

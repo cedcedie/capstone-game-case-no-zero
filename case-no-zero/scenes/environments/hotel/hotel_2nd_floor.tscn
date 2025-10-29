@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dr38kdsh40l27" path="res://assets/sprites/environments/interior/12_Kitchen_32x32.png" id="15_ed11l"]
 [ext_resource type="Texture2D" uid="uid://cqn2g1cxl6v7w" path="res://assets/sprites/environments/interior/14_Basement_32x32.png" id="16_dprgm"]
 [ext_resource type="Texture2D" uid="uid://d25s372ojqspt" path="res://assets/sprites/environments/interior/3_Bathroom_32x32.png" id="17_a22q5"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="18_1xb01"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="18_1xb01"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="19_scene_transition"]
 [ext_resource type="PackedScene" uid="uid://88p2xsk3a0jc" path="res://miravil/characters_2/npc_bc_boy3.tscn" id="20_u6u2w"]
 [ext_resource type="PackedScene" uid="uid://c5mweveda1y56" path="res://miravil/characters_2/npc_bc_furry.tscn" id="21_8gapr"]

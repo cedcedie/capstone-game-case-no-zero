@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6owcwu5a0i44"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 75 Barrier.mp3-028bcad693706be96ae3efb59e749ebb.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 75 Barrier.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 75 Barrier.mp3-028bcad693706be96ae3efb59e749ebb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

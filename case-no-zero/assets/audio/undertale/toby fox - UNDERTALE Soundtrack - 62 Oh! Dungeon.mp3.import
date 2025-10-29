@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4gv4k4vijht"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 62 Oh! Dungeon.mp3-28eb7591f097392544a2e8d1a5056e03.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 62 Oh! Dungeon.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 62 Oh! Dungeon.mp3-28eb7591f097392544a2e8d1a5056e03.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

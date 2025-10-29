@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b23pcdad3vamb" path="res://assets/sprites/environments/interior/21_Clothing_Store_32x32.png" id="6_ue555"]
 [ext_resource type="Texture2D" uid="uid://wuxotlnhnu3t" path="res://assets/sprites/environments/interior/25_Shooting_Range_32x32.png" id="7_cd6hh"]
 [ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="8_qteib"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="9_ej2s3"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="9_ej2s3"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_j3mju"]
 [ext_resource type="PackedScene" uid="uid://dfw7sn1pdhrgb" path="res://miravil/characters_2/npc_bc_boy4.tscn" id="11_7hfi1"]
 [ext_resource type="PackedScene" uid="uid://baeoojjgi4jy4" path="res://miravil/characters_2/npc_bc_boy5.tscn" id="12_ue555"]

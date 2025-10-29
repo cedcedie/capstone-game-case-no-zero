@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcv4dupqdeugh"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 96 Last Goodbye.mp3-bb052b15958d607c149c07cf8ff2a772.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 96 Last Goodbye.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 96 Last Goodbye.mp3-bb052b15958d607c149c07cf8ff2a772.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

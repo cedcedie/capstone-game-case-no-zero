@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://shnu7bws7h6a"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 30 Undyne.mp3-483890f6de2cb42fc3fc303f9e366257.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 30 Undyne.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 30 Undyne.mp3-483890f6de2cb42fc3fc303f9e366257.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

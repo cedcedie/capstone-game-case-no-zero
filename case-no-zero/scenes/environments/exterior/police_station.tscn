@@ -8,8 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ckgkg83dui1ql" path="res://assets/sprites/environments/exterior/15_Police_Station_32x32.png" id="6_qs6ny"]
 [ext_resource type="Texture2D" uid="uid://doakv45h8tpuk" path="res://assets/sprites/environments/exterior/20_Subway_and_Train_Station_32x32.png" id="7_83wwf"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="8_0iiqu"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_5dt8y"]
-[ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="10_ci8hi"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="8_5dt8y"]
 [ext_resource type="PackedScene" uid="uid://bqr0txu1h7bch" path="res://miravil/character_police_station/po1Darwin.tscn" id="11_1r7a4"]
 [ext_resource type="PackedScene" uid="uid://cq1mt7kj1x50o" path="res://miravil/character_police_station/npc_pl_po2.tscn" id="12_1n6kl"]
 [ext_resource type="PackedScene" uid="uid://vbvbclwuvwti" path="res://miravil/character_police_station/npc_pl_po3.tscn" id="13_2f5sx"]
@@ -47093,6 +47092,98 @@ sources/2 = SubResource("TileSetAtlasSource_rfbni")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wiqk"]
 size = Vector2(63.25, 19.5)
 
+[sub_resource type="GDScript" id="GDScript_a5y2y"]
+script/source = "extends Node
+
+# Global Scene Fade In Manager
+# Automatically handles fade-in effects for all scene transitions
+# No need to reference fade nodes in individual scenes
+
+@export var fade_duration: float = 0.25  # Faster fade since we check scene readiness
+@export var fade_color: Color = Color.BLACK
+
+var current_fade_overlay: CanvasLayer
+var is_fading: bool = false
+
+func _ready():
+	# Connect to scene change signals
+	get_tree().node_added.connect(_on_node_added)
+	
+	# Start with a fade-in for the initial scene
+	call_deferred(\"_fade_in_initial_scene\")
+
+func _on_node_added(node: Node):
+	\"\"\"Called when a node is added to the scene tree\"\"\"
+	# Only respond to scene root nodes
+	if node == get_tree().current_scene:
+		call_deferred(\"_on_scene_changed\")
+
+func _on_scene_changed():
+	\"\"\"Called when scene changes - automatically fade in the new scene\"\"\"
+	await get_tree().process_frame
+	if get_tree().current_scene and not is_fading:
+		print(\"🎬 SceneFadeIn: Auto-fading in scene:\", get_tree().current_scene.scene_file_path.get_file())
+		await _fade_in_scene()
+
+func _fade_in_initial_scene():
+	\"\"\"Fade in the very first scene when the game starts\"\"\"
+	if get_tree().current_scene:
+		await _fade_in_scene()
+
+func _fade_in_scene():
+	\"\"\"Create and execute fade-in effect for current scene\"\"\"
+	if is_fading:
+		return
+	
+	is_fading = true
+	
+	# Create a CanvasLayer to be above everything
+	var canvas_layer = CanvasLayer.new()
+	canvas_layer.layer = 100  # High layer to be on top
+	
+	# Create a ColorRect for the fade effect
+	var fade_rect = ColorRect.new()
+	fade_rect.color = fade_color
+	fade_rect.color.a = 1.0  # Start fully opaque (scene was faded out)
+	fade_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	canvas_layer.add_child(fade_rect)
+	
+	# Add to current scene
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		current_scene.add_child(canvas_layer)
+		current_fade_overlay = canvas_layer
+	else:
+		print(\"⚠️ SceneFadeIn: current_scene is null, cannot add fade overlay\")
+		is_fading = false
+		return
+	
+	# Smart loading detection - check if scene is ready
+	await _wait_for_scene_ready()
+	
+	# Fade out to reveal the scene
+	var tween = create_tween()
+	tween.tween_property(fade_rect, \"color:a\", 0.0, fade_duration)
+	
+	# Clean up after fade
+	await tween.finished
+	if canvas_layer and is_instance_valid(canvas_layer):
+		canvas_layer.queue_free()
+	
+	is_fading = false
+	print(\"🎬 SceneFadeIn: Scene fade-in completed\")
+
+func _wait_for_scene_ready():
+	\"\"\"Universal approach - wait for scene to be processed and settled\"\"\"
+	# Wait for scene to be processed by the engine
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	
+	# Small delay to ensure everything is settled
+	await get_tree().create_timer(0.08).timeout
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ci8hi"]
 size = Vector2(16, 1432)
 
@@ -47155,7 +47246,7 @@ limit_bottom = 10000
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
 position = Vector2(-2392, -672)
-script = ExtResource("10_ci8hi")
+script = SubResource("GDScript_a5y2y")
 
 [node name="from_police_to_hospital" type="Area2D" parent="."]
 script = ExtResource("8_0iiqu")
@@ -47284,9 +47375,6 @@ position = Vector2(1152, 520)
 [node name="NpcPlGuy5" parent="." instance=ExtResource("26_tmrfp")]
 z_index = 4
 position = Vector2(1960, 56)
-
-[node name="AnimatedSprite2D" parent="NpcPlGuy5" index="0"]
-animation = &"idle_front"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NpcPlGuy5"]
 position = Vector2(-1960, -56)

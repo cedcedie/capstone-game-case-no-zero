@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0vlyorvl1e0g"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 45 NGAHHH!!.mp3-ad3a393f374fc1b007c8d7b453f8f5b5.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 45 NGAHHH!!.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 45 NGAHHH!!.mp3-ad3a393f374fc1b007c8d7b453f8f5b5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bbd11kderkp25"
+path="res://.godot/imported/Before the Story.ogg-c01dc00b922433b8a348965a1858c166.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Before the Story.ogg"
+dest_files=["res://.godot/imported/Before the Story.ogg-c01dc00b922433b8a348965a1858c166.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

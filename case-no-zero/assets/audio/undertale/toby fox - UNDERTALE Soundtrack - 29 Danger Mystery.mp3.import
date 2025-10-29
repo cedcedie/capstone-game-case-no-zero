@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://gxqqx14naevo"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 29 Danger Mystery.mp3-5de61b6ed409a0f956d5fc0af647c01e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 29 Danger Mystery.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 29 Danger Mystery.mp3-5de61b6ed409a0f956d5fc0af647c01e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

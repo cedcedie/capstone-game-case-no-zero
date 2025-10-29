@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dbhv2u8uyh4i5" path="res://assets/sprites/environments/exterior/11_Camping_32x32.png" id="4_41mb8"]
 [ext_resource type="Texture2D" uid="uid://c4dc4eui4vkjj" path="res://assets/sprites/environments/exterior/7_Villas_32x32.png" id="5_yp8xo"]
 [ext_resource type="Texture2D" uid="uid://d1qcv8l4s823i" path="res://assets/sprites/environments/exterior/17_Garden_32x32.png" id="6_xhnt2"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="7_jfn0t"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="7_jfn0t"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="8_x3ecy"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="9_sqqbg"]
 [ext_resource type="PackedScene" uid="uid://ctvo3c0ae47lh" path="res://miravil/characters_2/npc_bc_boy1.tscn" id="10_pa2sg"]

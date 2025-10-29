@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bwyvkfptif2cp" path="res://assets/sprites/environments/exterior/19_Graveyard_32x32.png" id="6_c5khy"]
 [ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="7_3lj2i"]
 [ext_resource type="Texture2D" uid="uid://bko828tu8yow7" path="res://assets/sprites/environments/interior/18_Jail_32x32.png" id="7_4cn24"]
-[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main/celine_navarro.tscn" id="10_ykkix"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="11_cixgr"]
+[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main_characters/celine_navarro.tscn" id="10_ykkix"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="11_cixgr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4cn24"]
 texture = ExtResource("1_6iycu")

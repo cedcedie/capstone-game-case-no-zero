@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dnx5k1j11yi7q"
+path="res://.godot/imported/Toby Fox - Deltarune - 4 Susie.ogg-c2d7da86e9fc374b86075ca1ac86591c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Toby Fox - Deltarune - 4 Susie.ogg"
+dest_files=["res://.godot/imported/Toby Fox - Deltarune - 4 Susie.ogg-c2d7da86e9fc374b86075ca1ac86591c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

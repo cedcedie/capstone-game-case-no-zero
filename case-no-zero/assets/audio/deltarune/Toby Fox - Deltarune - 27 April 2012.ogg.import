@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c2g7giuxtrj6u"
+path="res://.godot/imported/Toby Fox - Deltarune - 27 April 2012.ogg-4292cf54f6ef2b3d4019d5dd20c4122e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Toby Fox - Deltarune - 27 April 2012.ogg"
+dest_files=["res://.godot/imported/Toby Fox - Deltarune - 27 April 2012.ogg-4292cf54f6ef2b3d4019d5dd20c4122e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

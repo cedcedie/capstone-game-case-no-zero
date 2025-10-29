@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="5_be3a7"]
 [ext_resource type="PackedScene" uid="uid://u7gdrwiolokf" path="res://miravil/sprites/npc_camp.tscn" id="6_wj6a6"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="7_xbrck"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_og0j4"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="8_og0j4"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_og0j4"]
 [ext_resource type="PackedScene" uid="uid://si8swdlw81pj" path="res://miravil/characters_camp/npc_cmp_b1.tscn" id="10_f8q2a"]
 [ext_resource type="PackedScene" uid="uid://bwd6dr15r2w0d" path="res://miravil/characters_camp/npc_cmp_b2.tscn" id="11_o6e71"]

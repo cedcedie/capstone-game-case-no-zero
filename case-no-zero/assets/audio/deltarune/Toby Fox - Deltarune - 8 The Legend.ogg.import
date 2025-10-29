@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxfyrxrrird6m"
+path="res://.godot/imported/Toby Fox - Deltarune - 8 The Legend.ogg-7cd9f214628e3603dbe69182d33ba5fa.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Toby Fox - Deltarune - 8 The Legend.ogg"
+dest_files=["res://.godot/imported/Toby Fox - Deltarune - 8 The Legend.ogg-7cd9f214628e3603dbe69182d33ba5fa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

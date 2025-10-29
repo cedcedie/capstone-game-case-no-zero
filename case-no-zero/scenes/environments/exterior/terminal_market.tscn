@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b1chckkjjb2b7" path="res://assets/sprites/environments/exterior/10_Vehicles_32x32.png" id="6_follw"]
 [ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="7_g6t3t"]
 [ext_resource type="PackedScene" uid="uid://c7nwhqwwg708t" path="res://miravil/vehicle_triyk/triyk_1.tscn" id="7_ji8px"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main/playerM.tscn" id="8_174m3"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="8_174m3"]
 [ext_resource type="PackedScene" uid="uid://cdn7j00wvtqbo" path="res://miravil/vehicle_triyk/triyk_2.tscn" id="8_qrisb"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_jtyer"]
 [ext_resource type="PackedScene" uid="uid://0hfqkpj2i2t4" path="res://miravil/vehicle_triyk/triyk_4.tscn" id="9_yvvub"]

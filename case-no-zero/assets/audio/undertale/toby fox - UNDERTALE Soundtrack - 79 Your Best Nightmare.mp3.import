@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cotppnutw0kk4"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 79 Your Best Nightmare.mp3-f3913af56fa32dd2c6438935d7b5d058.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 79 Your Best Nightmare.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 79 Your Best Nightmare.mp3-f3913af56fa32dd2c6438935d7b5d058.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

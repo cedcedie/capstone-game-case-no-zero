@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btwtdinnyj7oh"
+path="res://.godot/imported/toby fox - UNDERTALE Soundtrack - 54 Hotel.mp3-4941990560dd408a7b4e6b48538e6fd9.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 54 Hotel.mp3"
+dest_files=["res://.godot/imported/toby fox - UNDERTALE Soundtrack - 54 Hotel.mp3-4941990560dd408a7b4e6b48538e6fd9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

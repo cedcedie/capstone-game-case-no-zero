@@ -1,0 +1,226 @@
+[gd_scene load_steps=16 format=3 uid="uid://0xg0m5dd5h0o"]
+
+[ext_resource type="Script" uid="uid://b23g0g8pmtxuh" path="res://scripts/ui/settings.gd" id="1_goavx"]
+[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/limezuUI/Modern_UI_Style_1_32x32.png" id="2_y33ve"]
+[ext_resource type="FontFile" uid="uid://cosmobyr7yxle" path="res://assets/fonts/PixelOperatorMono-Bold.ttf" id="3_558kw"]
+[ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="4_e0ywh"]
+[ext_resource type="Script" uid="uid://dyq85je2d7iv2" path="res://scenes/ui/UI by jer/scripts/audio_control.gd" id="5_c3nhx"]
+[ext_resource type="Script" uid="uid://bofb3p2uunbxu" path="res://scenes/ui/UI by jer/scripts/fullscreen_control.gd" id="6_db413"]
+[ext_resource type="Script" uid="uid://dq65dpw6vly5a" path="res://scripts/ui/mainmenu.gd" id="7_pagh7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kplyb"]
+line_spacing = 2.0
+font = ExtResource("3_558kw")
+font_size = 19
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8uskx"]
+color = Color(1, 1, 1, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xffxv"]
+color = Color(0.225191, 0.494635, 0.896294, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6ilhj"]
+color = Color(0.0980886, 0.317864, 0.711954, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_blqn1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7x76"]
+bg_color = Color(0.804743, 0.804743, 0.804743, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71mvm"]
+bg_color = Color(0.43134, 0.43134, 0.43134, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uskx"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[node name="Settings" type="CanvasLayer"]
+script = ExtResource("1_goavx")
+
+[node name="UIContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -152.0
+offset_right = 236.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsContentBG" type="NinePatchRect" parent="UIContainer"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -252.0
+offset_right = -118.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.950997, 1)
+texture = ExtResource("2_y33ve")
+region_rect = Rect2(24, 502, 48, 50)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="SettingsLabel" type="Label" parent="UIContainer/SettingsContentBG"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.104
+offset_left = -70.5
+offset_top = 8.0
+offset_right = 70.5
+offset_bottom = 7.968
+grow_horizontal = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_kplyb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/SettingsContentBG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -49.0
+offset_right = 159.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/SettingsContentBG/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("4_e0ywh")
+theme_override_font_sizes/font_size = 10
+text = " Master volume"
+
+[node name="Audio Control" type="HSlider" parent="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_8uskx")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_xffxv")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_6ilhj")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_c3nhx")
+audio_bus_name = "Master"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/SettingsContentBG/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Fullscreen Control" type="CheckButton" parent="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_e0ywh")
+theme_override_font_sizes/font_size = 10
+text = "FULLSCREEN"
+script = ExtResource("6_db413")
+
+[node name="back" type="Button" parent="UIContainer/SettingsContentBG"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.221
+offset_top = -47.0
+offset_right = -28.221
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_e0ywh")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_blqn1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j7x76")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71mvm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8uskx")
+text = "Menu"
+script = ExtResource("7_pagh7")
+
+[node name="SettingsTab" type="NinePatchRect" parent="UIContainer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_y33ve")
+region_rect = Rect2(928, 384, 32, 32)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="SettingsIcon" type="NinePatchRect" parent="UIContainer/SettingsTab"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_y33ve")
+region_rect = Rect2(320, 370, 30, 30)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Button" type="Button" parent="UIContainer/SettingsTab"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+flat = true
+
+[connection signal="value_changed" from="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer/Audio Control" to="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer/Audio Control" method="_on_value_changed"]
+[connection signal="toggled" from="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer2/Fullscreen Control" to="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer2/Fullscreen Control" method="_on_toggled"]
+[connection signal="pressed" from="UIContainer/SettingsContentBG/back" to="UIContainer/SettingsContentBG/back" method="_on_pressed"]

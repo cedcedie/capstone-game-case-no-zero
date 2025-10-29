@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d2fpqcqqj4kxp"
+path="res://.godot/imported/Toby Fox - Deltarune - 3 School.ogg-8eac0c24dab959322b71b44621b50689.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/deltarune/Toby Fox - Deltarune - 3 School.ogg"
+dest_files=["res://.godot/imported/Toby Fox - Deltarune - 3 School.ogg-8eac0c24dab959322b71b44621b50689.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
