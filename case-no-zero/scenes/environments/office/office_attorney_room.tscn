@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/sprites/environments/interior/19_Hospital_32x32.png" id="6_lm357"]
 [ext_resource type="Texture2D" uid="uid://bko828tu8yow7" path="res://assets/sprites/environments/interior/18_Jail_32x32.png" id="7_s44kn"]
 [ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="8_rxskd"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="10_rxskd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nk1u4"]
 texture = ExtResource("1_j0dh6")
