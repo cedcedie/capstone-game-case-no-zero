@@ -350,10 +350,57 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(864.0, 344.0),
 			"animation": "idle_down"
 			
-			
 		}
-	}
+		},
+	"office_main": {
+		"office_balcony_to_office_main": {
+			"position": Vector2(200.0, 576.0),
+			"animation": "idle_up"
+		},
+		"office_rooftop_to_office_main": {
+			"position": Vector2(168.0, 288.0),
+			"animation": "idle_up"
+		},
+		"office_attorney_room_to_office_main": {
+			"position": Vector2(1047.0, 240.0),
+			"animation": "idle_up"
+		},
+		
+	},
+
+	"office_balcony": {
+		"from_office_main_to_office_balcony": {
+			"position": Vector2(528, 208),
+			"animation": "idle_down"
+		}
+		
+	},
+
+	"office rooftop": {
+		"from_office_main_to_office_rooftop": {
+			"position": Vector2(390, 363),
+			"animation": "idle_down"
+		}
+		
+	},
+
+	"office_attorney_room": {
+		"from_office_main_to_office_attorney_room": {
+			"position": Vector2(200, 576),
+			"animation": "idle_up"
+		}
+	},
+	"office_lobby": {
+		"from_office_main_to_office_lobby": {
+			"position": Vector2(200, 576),
+			"animation": "idle_up"
+		}
+	},
+	
 }
+
+
+
 
 func set_entry_point(scene_name: String, entry: String):
 	"""Set the entry point information for the next scene"""

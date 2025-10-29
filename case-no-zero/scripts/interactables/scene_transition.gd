@@ -96,7 +96,17 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"from_market_to_baranggay": "market_to_baranggay",
 		"from_market_to_hospital": "market_to_hospital",
 		"from_market_to_police": "market_to_police",
-		"Area2D_exterior_to_lobby":"hatdog"
+		"Area2D_exterior_to_lobby":"hatdog",
+		"from_office_main_to_office_balcony": "from_office_main_to_office_balcony",
+		"from_office_main_to_office_rooftop" : "from_office_main_to_office_rooftop",
+		"from_office_main_to_office_attorney_room" : "from_office_main_to_office_attorney_room",
+		"from_office_main_to_office_lobby" : "from_office_main_to_office_lobby",
+		"office_balcony_to_office_main": "office_balcony_to_office_main",
+		"office_rooftop_to_office_main" : "office_rooftop_to_office_main",
+		"office_attorney_room_to_office_main": "office_attorney_room_to_office_main",
+		"from_office_lobby_to_office_main" : "from_office_lobby_to_office_main"
+		
+		
 	}
 	
 	var _entry_point = entry_point_map.get(name, "unknown")
@@ -261,6 +271,22 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/exterior/hotel_hospital.tscn"
 		"from_market_to_police":
 			return "res://scenes/environments/exterior/police_station.tscn"
+		"office_balcony_to_office_main":
+			return "res://scenes/environments/office/office_main.tscn"
+		"from_office_main_to_office_balcony":
+			return "res://scenes/environments/office/office_balcony.tscn"
+		"from_office_main_to_office_rooftop":
+			return "res://scenes/environments/office/office rooftop.tscn"
+		"office_rooftop_to_office_main":
+			return "res://scenes/environments/office/office_main.tscn"
+		"from_office_main_to_office_attorney_room":
+			return "res://scenes/environments/office/office_attorney_room.tscn"
+		"office_attorney_room_to_office_main":
+			return "res://scenes/environments/office/office_main.tscn"
+		"from_office_main_to_office_lobby":
+			return "res://scenes/environments/office/office_lobby.tscn"
+		"from_office_lobby_to_office_main":
+			return "res://scenes/environments/office/office_main.tscn"
 		_:
 			return ""
 
