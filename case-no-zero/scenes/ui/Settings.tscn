@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="4_e0ywh"]
 [ext_resource type="Script" uid="uid://dyq85je2d7iv2" path="res://scenes/ui/UI by jer/scripts/audio_control.gd" id="5_c3nhx"]
 [ext_resource type="Script" uid="uid://bofb3p2uunbxu" path="res://scenes/ui/UI by jer/scripts/fullscreen_control.gd" id="6_db413"]
-[ext_resource type="Script" uid="uid://dq65dpw6vly5a" path="res://scripts/ui/mainmenu.gd" id="7_pagh7"]
+[ext_resource type="Script" uid="uid://dq65dpw6vly5a" path="res://scripts/ui/main_menu.gd" id="7_pagh7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kplyb"]
 line_spacing = 2.0

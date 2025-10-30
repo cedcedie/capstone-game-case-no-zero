@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bx4am62ne3lb5"]
 
-[ext_resource type="Script" uid="uid://b7r1ei6yqlbui" path="res://scripts/ui/task_display.gd" id="1_rqeix"]
+[ext_resource type="Script" uid="uid://b7r1ei6yqlbui" path="res://scripts/ui/task_display.gd" id="1_1g6i6"]
 
 [node name="TaskManager" type="CanvasLayer"]
-script = ExtResource("1_rqeix")
+script = ExtResource("1_1g6i6")

@@ -1,15 +1,15 @@
 [gd_scene load_steps=17 format=4 uid="uid://cdmcjdiukxqyx"]
 
-[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_iajnb"]
-[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_mj10g"]
-[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="3_88gq5"]
-[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="4_mj10g"]
-[ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/sprites/environments/interior/2_LivingRoom_32x32.png" id="5_88gq5"]
-[ext_resource type="PackedScene" uid="uid://1n4nyc7f32i0" path="res://miravil/character_police_station/npc_pl_guy2.tscn" id="6_26cdv"]
-[ext_resource type="PackedScene" uid="uid://cm0jruxbtorh8" path="res://miravil/characters_terminal_market/npc_tm_girl1.tscn" id="7_fbfvr"]
+[ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_yycuc"]
+[ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_yb7v1"]
+[ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="3_to13k"]
+[ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="4_tq2q2"]
+[ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/sprites/environments/interior/2_LivingRoom_32x32.png" id="5_rx5bk"]
+[ext_resource type="PackedScene" uid="uid://1n4nyc7f32i0" path="res://miravil/character_police_station/npc_pl_guy2.tscn" id="6_wxmdx"]
+[ext_resource type="PackedScene" uid="uid://cm0jruxbtorh8" path="res://miravil/characters_terminal_market/npc_tm_girl1.tscn" id="7_fa8lw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8cgiv"]
-texture = ExtResource("1_iajnb")
+texture = ExtResource("1_yycuc")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -271,7 +271,7 @@ texture_region_size = Vector2i(32, 32)
 20:8/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3w7ss"]
-texture = ExtResource("2_mj10g")
+texture = ExtResource("2_yb7v1")
 texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 1:2/0 = 0
@@ -707,7 +707,7 @@ texture_region_size = Vector2i(32, 32)
 14:37/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_22s8p"]
-texture = ExtResource("3_88gq5")
+texture = ExtResource("3_to13k")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -1697,7 +1697,7 @@ sources/1 = SubResource("TileSetAtlasSource_3w7ss")
 sources/2 = SubResource("TileSetAtlasSource_22s8p")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_88gq5"]
-texture = ExtResource("4_mj10g")
+texture = ExtResource("4_tq2q2")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -2804,7 +2804,7 @@ texture_region_size = Vector2i(32, 32)
 10:75/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pmp2w"]
-texture = ExtResource("5_88gq5")
+texture = ExtResource("5_rx5bk")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
@@ -3410,7 +3410,7 @@ sources/0 = SubResource("TileSetAtlasSource_88gq5")
 sources/1 = SubResource("TileSetAtlasSource_pmp2w")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85xa7"]
-texture = ExtResource("5_88gq5")
+texture = ExtResource("5_rx5bk")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
@@ -4014,8 +4014,8 @@ z_index = 2
 tile_map_data = PackedByteArray("AAAOAAEAAAAAAAUAAAAOAAIAAAAAAAYAAAAOAAUAAAACAAkAAAAOAAYAAAACAAoAAAAEAAEAAAAPAAsAAAAEAAIAAAAPAAwAAAAKAAIAAAALACEAAAAKAAMAAAALACIAAAALAAIAAAAMACEAAAALAAMAAAAMACIAAAAQAAIAAAANACEAAAAQAAMAAAANACIAAAARAAIAAAAOACEAAAARAAMAAAAOACIAAAAHAAQAAAAAAAgAAAAFAAIAAAALAAcAAAAFAAMAAAALAAgAAAANAAQAAAABAAkAAAANAAUAAAABAAoAAAA=")
 tile_set = SubResource("TileSet_gnm2g")
 
-[node name="NpcPlGuy2" parent="." instance=ExtResource("6_26cdv")]
+[node name="NpcPlGuy2" parent="." instance=ExtResource("6_wxmdx")]
 position = Vector2(447, 159)
 
-[node name="NpcTmGirl1" parent="." instance=ExtResource("7_fbfvr")]
+[node name="NpcTmGirl1" parent="." instance=ExtResource("7_fa8lw")]
 position = Vector2(209, 184)

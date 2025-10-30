@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://didrp010uy4y4"
+run/main_scene="uid://dmbosf7n5esaq"
 config/features=PackedStringArray("4.4")
 
 [audio]
@@ -32,6 +32,7 @@ CameraZoomManager="*res://scripts/managers/CameraZoomManager.gd"
 AudioManager="*res://scripts/managers/AudioManager.gd"
 EvidenceInventorySettings="*res://scenes/ui/EvidenceInventorySettings.tscn"
 Settings="*res://scenes/ui/Settings.tscn"
+DebugKeys="*res://scripts/managers/DebugKeys.gd"
 
 [dialogic]
 
@@ -70,6 +71,10 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="casenozero"
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 

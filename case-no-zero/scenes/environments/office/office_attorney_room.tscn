@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dmbosf7n5esaq"]
+[gd_scene load_steps=29 format=4 uid="uid://dmbosf7n5esaq"]
 
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_j0dh6"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_weul5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bko828tu8yow7" path="res://assets/sprites/environments/interior/18_Jail_32x32.png" id="7_s44kn"]
 [ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="8_rxskd"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="10_rxskd"]
+[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main_characters/celine_navarro.tscn" id="11_rxskd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nk1u4"]
 texture = ExtResource("1_j0dh6")
@@ -5889,6 +5890,14 @@ sources/2 = SubResource("TileSetAtlasSource_hjgra")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wofhl"]
 size = Vector2(72, 28)
 
+[sub_resource type="Animation" id="Animation_rxskd"]
+resource_name = "office_cutscene"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wofhl"]
+_data = {
+&"office_cutscene": SubResource("Animation_rxskd")
+}
+
 [node name="OfficeAttorneyRoom" type="Node2D"]
 
 [node name="ground" type="TileMapLayer" parent="."]
@@ -5917,4 +5926,15 @@ position = Vector2(732, 522)
 shape = SubResource("RectangleShape2D_wofhl")
 
 [node name="PlayerM" parent="." instance=ExtResource("4_s44kn")]
-position = Vector2(732, 488)
+position = Vector2(440, 320)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wofhl")
+}
+
+[node name="celine" parent="." instance=ExtResource("11_rxskd")]
+position = Vector2(728, 768)
+
+[editable path="PlayerM"]
+[editable path="celine"]

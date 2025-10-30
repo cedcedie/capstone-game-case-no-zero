@@ -35,13 +35,13 @@ var playlist_tracker: Dictionary = {
 
 # Playlist system - cycles through multiple ambient tracks
 var ambient_playlist: Array[String] = [
-	"res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 37 A Town Called Hometown.ogg",  # Peaceful town start
-	"res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 12 Home.mp3",  # Cozy home feeling
-	"res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 13 Field Of Hopes and Dreams.ogg",  # Open field exploration
-	"res://assets/audio/deltaruneAud/A CYBER'S WORLD？.ogg",  # Modern/electronic atmosphere
-	"res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 3 School.ogg",  # Urban/structured areas
-	"res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 9 Lancer.ogg",  # Quirky and fun
-	"res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 51 Another Medium.mp3",  # Mysterious atmosphere
+	"res://assets/audio/deltarune/Toby Fox - Deltarune - 37 A Town Called Hometown.ogg",  # Peaceful town start
+	"res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 12 Home.mp3",  # Cozy home feeling
+	"res://assets/audio/deltarune/Toby Fox - Deltarune - 13 Field Of Hopes and Dreams.ogg",  # Open field exploration
+	"res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",  # Modern/electronic atmosphere
+	"res://assets/audio/deltarune/Toby Fox - Deltarune - 3 School.ogg",  # Urban/structured areas
+	"res://assets/audio/deltarune/Toby Fox - Deltarune - 9 Lancer.ogg",  # Quirky and fun
+	"res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 51 Another Medium.mp3",  # Mysterious atmosphere
 	"res://assets/audio/16-Bit Starter Pack/Towns/Returning Home.ogg"  # Nostalgic ending
 ]
 
@@ -61,18 +61,23 @@ var max_layers: int = 3
 
 # Scene BGM mapping
 var scene_bgm_map: Dictionary = {
-	"main_menu": "res://assets/audio/deltaruneAud/From Now On (Battle 2).ogg",
-	"chapter_menu": "res://assets/audio/deltaruneAud/From Now On (Battle 2).ogg",  # Same as main menu for continuity
-	"lower_level_station": "res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 19 Scarlet Forest.ogg",
-	"head_police_room": "res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 19 Scarlet Forest.ogg", 
-	"security_server": "res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 19 Scarlet Forest.ogg",
-	"police_lobby": "res://assets/audio/deltaruneAud/Toby Fox - Deltarune - 19 Scarlet Forest.ogg",
-	"bedroom": "res://assets/audio/deltaruneAud/You Can Always Come Home.ogg",
-	"bedroomScene": "res://assets/audio/deltaruneAud/You Can Always Come Home.ogg",
-	"intro_story": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 28 Premonition.mp3",
-	"barangay_hall": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3",
-	"barangay_hall_second_floor": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3",
-	"morgue": "res://assets/audio/music/toby fox - UNDERTALE Soundtrack - 65 CORE.mp3"
+	"main_menu": "res://assets/audio/deltarune/From Now On (Battle 2).ogg",
+	"chapter_menu": "res://assets/audio/deltarune/From Now On (Battle 2).ogg",  # Same as main menu for continuity
+	"Control_Guide": "res://assets/audio/deltarune/From Now On (Battle 2).ogg",
+	"lower_level_station": "res://assets/audio/deltarune/Toby Fox - Deltarune - 19 Scarlet Forest.ogg",
+	"head_police_room": "res://assets/audio/deltarune/Toby Fox - Deltarune - 19 Scarlet Forest.ogg", 
+	"security_server": "res://assets/audio/deltarune/Toby Fox - Deltarune - 19 Scarlet Forest.ogg",
+	"police_lobby": "res://assets/audio/deltarune/Toby Fox - Deltarune - 19 Scarlet Forest.ogg",
+	"intro_story": "res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 28 Premonition.mp3",
+	"barangay_hall": "res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3",
+	"barangay_hall_second_floor": "res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 31 Waterfall.mp3",
+	"morgue": "res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 65 CORE.mp3",
+	# Office set
+	"office_main": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
+	"office_balcony": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
+	"office_rooftop": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
+	"office_attorney_room": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
+	"office_lobby": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg"
 }
 
 # Cutscene BGM mapping removed - scenes handle their own cutscene audio
@@ -149,6 +154,16 @@ func set_scene_bgm(scene_name: String):
 	# Check if we're switching between main menu and chapter menu (same audio)
 	var is_menu_scene = scene_name in ["main_menu", "chapter_menu"]
 	var current_is_menu = current_bgm.contains("From Now On")
+
+	# Check if we're switching between office scenes (same audio)
+	var is_office_scene = scene_name in [
+		"office_main",
+		"office_balcony",
+		"office_rooftop",
+		"office_attorney_room",
+		"office_lobby"
+	]
+	var current_is_office = current_bgm.contains("A CYBER'S WORLD")
 	
 	# Check if we're switching from intro story to bedroom
 	var is_intro_to_bedroom = current_bgm.contains("Premonition") and scene_name in ["bedroom", "bedroomScene"]
@@ -168,6 +183,12 @@ func set_scene_bgm(scene_name: String):
 	# If switching between menu scenes, don't restart the audio
 	if is_menu_scene and current_is_menu and bgm_player and bgm_player.playing:
 		print("🎵 AudioManager: Continuing menu BGM for", scene_name, "- no restart needed")
+		scene_bgm = bgm_path
+		return
+
+	# If switching between office scenes, don't restart the audio
+	if is_office_scene and current_is_office and bgm_player and bgm_player.playing:
+		print("🎵 AudioManager: Continuing office BGM for", scene_name, "- no restart needed")
 		scene_bgm = bgm_path
 		return
 	

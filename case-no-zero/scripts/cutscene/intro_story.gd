@@ -287,7 +287,7 @@ func make_leo_normal():
 # --------------------------
 
 func end_intro_cutscene():
-	"""End the intro cutscene and transition to bedroom scene for bedroom cutscene"""
+	"""End the intro cutscene and transition to office attorney room"""
 	print("🎬 Ending intro cutscene...")
 	
 	# Hide all characters
@@ -305,29 +305,12 @@ func end_intro_cutscene():
 	# Brief pause for smooth transition
 	await get_tree().create_timer(0.5).timeout
 	
-	print("🏠 Transitioning to bedroom scene for bedroom cutscene...")
-	
-	# Try multiple possible scene paths
-	var bedroom_scene_paths = [
-		"res://scenes/cutscenes/bedroomScene.tscn",
-		"res://scenes/cutscenes/bedroom_scene.tscn", 
-		"res://scenes/cutscenes/bedroom.tscn",
-		"res://bedroomScene.tscn",
-		"res://scenes/bedroomScene.tscn"
-	]
-	
-	for scene_path in bedroom_scene_paths:
-		if ResourceLoader.exists(scene_path):
-			print("🏠 Found bedroom scene at:", scene_path)
-			get_tree().change_scene_to_file(scene_path)
-			return
-	
-	print("❌ No bedroom scene found! Available scenes:")
-	print("   - res://scenes/cutscenes/bedroomScene.tscn")
-	print("   - res://scenes/cutscenes/bedroom_scene.tscn")
-	print("   - res://scenes/cutscenes/bedroom.tscn")
-	print("   - res://bedroomScene.tscn")
-	print("   - res://scenes/bedroomScene.tscn")
+	print("🏢 Transitioning to office attorney room...")
+	var office_scene_path = "res://scenes/environments/office/office_attorney_room.tscn"
+	if ResourceLoader.exists(office_scene_path):
+		get_tree().change_scene_to_file(office_scene_path)
+		return
+	print("❌ Office attorney room scene not found:", office_scene_path)
 
 func hide_all_characters():
 	"""Hide all characters in the scene"""
@@ -339,32 +322,20 @@ func hide_all_characters():
 # --------------------------
 
 func skip_to_bedroom():
-	"""Skip intro story and go directly to bedroom scene"""
-	print("🚀 DEBUG: Skipping intro story, going to bedroom")
+	"""Skip intro story and go directly to office attorney room"""
+	print("🚀 DEBUG: Skipping intro story, going to office attorney room")
 	
 	# DON'T set bedroom cutscene as completed - let the bedroom scene handle it
-	print("📋 Going to bedroom scene - cutscene will play")
+	print("📋 Going to office attorney room")
 	
 	# Transition to bedroom scene
 	await get_tree().create_timer(0.5).timeout
-	print("🏠 Transitioning to bedroom scene...")
-	
-	# Try multiple possible scene paths
-	var bedroom_scene_paths = [
-		"res://scenes/cutscenes/bedroomScene.tscn",
-		"res://scenes/cutscenes/bedroom_scene.tscn", 
-		"res://scenes/cutscenes/bedroom.tscn",
-		"res://bedroomScene.tscn",
-		"res://scenes/bedroomScene.tscn"
-	]
-	
-	for scene_path in bedroom_scene_paths:
-		if ResourceLoader.exists(scene_path):
-			print("🏠 Found bedroom scene at:", scene_path)
-			get_tree().change_scene_to_file(scene_path)
-			return
-	
-	print("❌ No bedroom scene found!")
+	print("🏢 Transitioning to office attorney room...")
+	var office_scene_path = "res://scenes/environments/office/office_attorney_room.tscn"
+	if ResourceLoader.exists(office_scene_path):
+		get_tree().change_scene_to_file(office_scene_path)
+		return
+	print("❌ Office attorney room scene not found:", office_scene_path)
 
 func debug_complete_intro():
 	"""Debug function to complete intro story instantly"""
@@ -394,7 +365,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.physical_keycode:
 			KEY_F10:
-				# F10 - Complete intro story instantly and go to bedroom
+				# F10 - Complete intro story instantly and go to office
 				debug_complete_intro()
 			KEY_F7:
 				# F7 - Restart intro story from beginning

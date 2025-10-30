@@ -75,4 +75,4 @@ func _input(event: InputEvent) -> void:
 		# Small delay to ensure fade is completely finished
 		await get_tree().create_timer(0.1).timeout
 		
-		get_tree().change_scene_to_file("res://intro_story.tscn")
+		get_tree().change_scene_to_file("res://scenes/cutscenes/intro_story.tscn")

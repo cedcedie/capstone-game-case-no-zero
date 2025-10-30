@@ -1,0 +1,33 @@
+{
+  "office_attorney_intro": {
+    "dialogue_lines": [
+      { "speaker": "Miguel", "text": "Miguel Reyes, Attorney-at-Law. Kakakuha ko lang ng **promotion**." },
+      { "speaker": "Miguel", "text": "Ang **batas ay para sa mga tao**. Yan ang paniniwala ko." },
+      { "speaker": "Celine", "text": "Ayun ka na! Fresh promotion, ha?" },
+      { "speaker": "Miguel", "text": "Nakaka-adjust pa sa mas malaking desk. Pero excited ako." },
+      { "speaker": "Celine", "text": "Eto na ang pagkakataon mo. May **unang malaking kaso** ako." },
+      { "speaker": "Miguel", "text": "Talaga? Anong klaseng kaso?" },
+      { "speaker": "Celine", "text": "**Murder case**. High profile." },
+      { "speaker": "Miguel", "text": "Murder? Grabe... seryoso yan." },
+      
+      { "speaker": "Miguel", "text": "Kilala ko ang mga taong to. Si **Leo** - kasama ko yan lumaki." },
+      { "speaker": "Miguel", "text": "Si **Erwin** naman, tumulong sa akin nung nagsisimula pa lang ako." },
+      { "speaker": "Celine", "text": "Maliit na mundo nga, ano?" },
+      
+      { "speaker": "Miguel", "text": "Celine, siguro... dapat ko na lang i-turn down to." },
+      { "speaker": "Miguel", "text": "**Walang witnesses** at **walang murder weapon**." },
+      { "speaker": "Celine", "text": "Yan nga ang dahilan kung bakit dapat mo itong tanggapin." },
+      { "speaker": "Celine", "text": "Hanapin mo ang **katotohanan**, Miguel." },
+      
+      { "speaker": "Miguel", "text": "Tama ka. Tatanggapin ko ang kaso." },
+      { "speaker": "Miguel", "text": "Hindi para depensahan ang accused, kundi para malaman ang **nangyari**." },
+      { "speaker": "Celine", "text": "Yan ang spirit! Ang katotohanan ang magpapalaya sa lahat." },
+      
+      { "speaker": "Celine", "text": "Nandito lahat sa case file. Basahin mo nang mabuti." },
+      { "speaker": "Miguel", "text": "Gagawin ko. At hahanapin ko ang katotohanan." },
+      { "speaker": "Celine", "text": "At huwag mong kalimutan - mag-coffee ka muna." },
+      { "speaker": "Miguel", "text": "\"Oo nga, kailangan ko ng kape.\" *laughs*" }
+    ]
+  }
+}
+

@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var container = $Container
 @onready var name_label = $Container/Name
-@onready var dialogue_label = $Container/Dialogue
+@onready var dialogue_label: RichTextLabel = $Container/Dialogue
 @onready var next_button = $Container/Button
 @onready var typing_sound = $Container/TypingSound 
 @onready var portrait_rect: TextureRect = $Container/Face/TextureRect if has_node("Container/Face/TextureRect") else null
@@ -51,6 +51,28 @@ func show_dialogue_line(speaker: String, text: String, auto_advance: bool = fals
 	name_label.text = speaker
 	_apply_portrait_for_speaker(speaker)
 	next_button.hide()  # Hide next button during typing
+
+	# If this is an internal thought, do not display and auto-advance
+	var trimmed := text.strip_edges()
+	var is_internal_thought := trimmed.begins_with("*thinking*") or trimmed.begins_with("[thought]")
+	if is_internal_thought:
+		# Skip showing UI for internal thoughts
+		hide_ui()
+		waiting_for_next = false
+		is_typing = false
+		# Immediately advance to next line
+		emit_signal("next_pressed")
+		return
+	
+	# Convert **text** to [b]text[/b] for BBCode
+	var bbcode_text = text.replace("**", "[b]").replace("**", "[/b]")
+	# Fix the conversion by doing it properly
+	bbcode_text = text.replace("**", "[b]").replace("**", "[/b]")
+	# Better approach: replace **text** with [b]text[/b]
+	var regex = RegEx.new()
+	regex.compile("\\*\\*(.*?)\\*\\*")
+	bbcode_text = regex.sub(bbcode_text, "[b]$1[/b]")
+	
 	dialogue_label.text = ""
 	waiting_for_next = false
 	is_typing = true
@@ -58,8 +80,8 @@ func show_dialogue_line(speaker: String, text: String, auto_advance: bool = fals
 
 	# Blips are triggered rhythmically during typing; no initial blip
 
-	for i in text.length():
-		dialogue_label.text = text.substr(0, i + 1)
+	for i in bbcode_text.length():
+		dialogue_label.text = bbcode_text.substr(0, i + 1)
 		if not typing_sound.playing:
 			typing_sound.play() # Play the typing sound each step (short "tick" or "blip" sound works best)
 		
@@ -86,11 +108,11 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 	var tex: Texture2D = null
 	match speaker.to_lower():
 		"miguel":
-			tex = load("res://Main_character_closeup.png")
+			tex = load("res://assets/sprites/characters/closeup_face/Main_character_closeup.png")
 		"erwin", "boy trip":
 			tex = load("res://erwin_tambay_closeup.png")
 		"celine":
-			tex = load("res://new_celine_closeup.png")
+			tex = load("res://assets/sprites/characters/closeup_face/celine_closeup.png")
 		"kapitana palma", "kapitana", "kapitana lourdes":
 			tex = load("res://kapitana_palma_closeup.png")
 		"po1 darwin", "po1_darwin":
