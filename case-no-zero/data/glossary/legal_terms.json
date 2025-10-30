@@ -69,6 +69,21 @@
 	  "description": "Public officers must at all times be accountable to the people.",
 	  "citation": "1987 Constitution, Article XI",
 	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "bjmp_visitation_rules",
+	  "label": "BJMP Visitation Rules",
+	  "description": "Visitor log and valid ID required; recording devices prohibited; follow jail visitation procedures.",
+	  "citation": "BJMP Visitation Guidelines / Facility Rules",
+	  "unlocks_after": "LOWER_LEVEL_CUTSCENE_COMPLETED"
+	}
+	,
+	{
+	  "key": "chain_of_custody",
+	  "label": "Chain of Custody",
+	  "description": "Documentation and handling of evidence from collection to presentation to ensure integrity and admissibility.",
+	  "citation": "Rules of Court (Rule 130) and jurisprudence; specific statutes (e.g., Sec. 21, R.A. 9165).",
+	  "unlocks_after": "RECOLLECTION_COMPLETED"
 	}
   ]
 }

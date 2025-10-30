@@ -125,7 +125,7 @@ func _get_target_scene_path_from_area_name() -> String:
 		"Area2D_police_lobby_from_head":
 			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		"Area2D_lower_level":
-			return "res://scenes/environments/Police Station/lower_level_station.tscn"
+			return "res://scenes/environments/police_station/lower_level_station.tscn"
 		"Area2D_head_police":
 			return "res://scenes/environments/Police Station/head_police_room.tscn"
 		"Area2D_security_server":
@@ -143,7 +143,7 @@ func _get_target_scene_path_from_area_name() -> String:
 		"Area2D_police_lobby_from_security_server":
 			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		"Area2D_police_to_lobby":
-			return "res://scenes/environments/Police Station/police_lobby.tscn"
+			return "res://scenes/environments/police_station/police_lobby.tscn"
 		# Hotel and Hospital Area2D transitions
 		"Area2D_firestation":
 			return "res://scenes/environments/fire_station/fire_station_1st_floor.tscn"

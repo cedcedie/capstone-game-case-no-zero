@@ -295,7 +295,7 @@ func end_intro_cutscene():
 	
 	# Set checkpoint to mark intro story as completed (but not bedroom cutscene)
 	var checkpoint_manager = get_node("/root/CheckpointManager")
-	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.INTRO_COMPLETED)
+	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_COMPLETED)
 	print("📋 Intro story checkpoint set")
 	
 	# Smooth audio transition - fade out intro BGM
@@ -410,7 +410,7 @@ func _ready() -> void:
 	
 	# Clear bedroom cutscene checkpoint to ensure it plays
 	var checkpoint_manager = get_node("/root/CheckpointManager")
-	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.INTRO_COMPLETED)
+	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
 	print("📋 Cleared bedroom cutscene checkpoint - cutscene will play")
 	
 	print("📋 Starting intro story sequence")

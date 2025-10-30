@@ -37,8 +37,7 @@ var playlist_tracker: Dictionary = {
 var ambient_playlist: Array[String] = [
 	"res://assets/audio/deltarune/Toby Fox - Deltarune - 37 A Town Called Hometown.ogg",  # Peaceful town start
 	"res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 12 Home.mp3",  # Cozy home feeling
-	"res://assets/audio/deltarune/Toby Fox - Deltarune - 13 Field Of Hopes and Dreams.ogg",  # Open field exploration
-	"res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",  # Modern/electronic atmosphere
+	"res://assets/audio/deltarune/Toby Fox - Deltarune - 13 Field Of Hopes and Dreams.ogg",  # Open field exploration  # Modern/electronic atmosphere
 	"res://assets/audio/deltarune/Toby Fox - Deltarune - 3 School.ogg",  # Urban/structured areas
 	"res://assets/audio/deltarune/Toby Fox - Deltarune - 9 Lancer.ogg",  # Quirky and fun
 	"res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 51 Another Medium.mp3",  # Mysterious atmosphere

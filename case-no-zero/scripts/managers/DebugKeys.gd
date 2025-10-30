@@ -23,4 +23,3 @@ func _unhandled_input(event: InputEvent) -> void:
 				pass
 			KEY_F10:
 				pass
-

@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://dgdxadjady47t"]
+[gd_scene load_steps=13 format=3 uid="uid://dgdxadjady47t"]
 
 [ext_resource type="Script" uid="uid://c1ckuscmccobv" path="res://scripts/character/npc_police.gd" id="1_3j8qv"]
-[ext_resource type="Texture2D" path="res://assets/sprites/characters/leo_idle.png" id="1_xf7kk"]
 [ext_resource type="Texture2D" uid="uid://cv2syuw53mxax" path="res://assets/sprites/characters/npc_sprite_sheet/police.png" id="2_q8dvw"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="3_ggs4y"]
 
@@ -10,30 +9,6 @@ size = Vector2(20, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hl0to"]
 radius = 64.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0274k"]
-atlas = ExtResource("1_xf7kk")
-region = Rect2(192, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4otfb"]
-atlas = ExtResource("1_xf7kk")
-region = Rect2(224, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f5mo3"]
-atlas = ExtResource("1_xf7kk")
-region = Rect2(256, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trx3k"]
-atlas = ExtResource("1_xf7kk")
-region = Rect2(288, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_navmk"]
-atlas = ExtResource("1_xf7kk")
-region = Rect2(320, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ne4ii"]
-atlas = ExtResource("1_xf7kk")
-region = Rect2(352, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdc2k"]
 atlas = ExtResource("2_q8dvw")
@@ -66,25 +41,7 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0274k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4otfb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f5mo3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_trx3k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_navmk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ne4ii")
-}],
+"frames": [],
 "loop": true,
 "name": &"idle_back",
 "speed": 5.0

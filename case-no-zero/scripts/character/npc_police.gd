@@ -132,26 +132,7 @@ func interact():
 		player_reference.disable_movement()
 	
 	# Choose dialogue based on checkpoint state and interaction history
-	var checkpoint_manager = get_node("/root/CheckpointManager")
-	var lower_level_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
-	var barangay_hall_completed = checkpoint_manager.has_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
-	
-	if not has_interacted:
-		if barangay_hall_completed:
-			dialogue_lines = dialogue_data.get("barangay_hall_completed", [])
-		elif lower_level_completed:
-			dialogue_lines = dialogue_data.get("modern_first_interaction", [])
-		else:
-			dialogue_lines = dialogue_data.get("story_first_interaction", [])
-		has_interacted = true
-	else:
-		if barangay_hall_completed:
-			dialogue_lines = dialogue_data.get("barangay_hall_completed", [])
-		elif lower_level_completed:
-			dialogue_lines = dialogue_data.get("modern_repeated_interaction", [])
-		else:
-			dialogue_lines = dialogue_data.get("story_repeated_interaction", [])
-	
+
 	# Start showing dialogue
 	if dialogue_lines.size() > 0:
 		show_dialogue()

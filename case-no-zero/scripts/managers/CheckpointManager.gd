@@ -7,7 +7,9 @@ signal checkpoint_cleared(checkpoint_name: String)
 # Available checkpoints
 enum CheckpointType {
 	INTRO_COMPLETED,
-	OFFICE_CUTSCENE_COMPLETED
+	OFFICE_CUTSCENE_COMPLETED,
+	LOWER_LEVEL_CUTSCENE_COMPLETED,
+	RECOLLECTION_COMPLETED
 }
 
 # Current checkpoint states
@@ -61,8 +63,10 @@ func get_debug_info() -> String:
 
 func get_game_flow_status() -> String:
 	"""Get current game flow status and what cutscenes should play"""
-	var played := has_checkpoint(CheckpointType.OFFICE_CUTSCENE_COMPLETED)
-	return "🎮 GAME FLOW: office_cutscene_completed=" + str(played)
+	var office_played := has_checkpoint(CheckpointType.OFFICE_CUTSCENE_COMPLETED)
+	var lower_played := has_checkpoint(CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED)
+	var recollection_played := has_checkpoint(CheckpointType.RECOLLECTION_COMPLETED)
+	return "🎮 GAME FLOW: office_cutscene_completed=" + str(office_played) + ", lower_level_cutscene_completed=" + str(lower_played) + ", recollection_completed=" + str(recollection_played)
 
 func debug_set_phase(phase: String) -> void:
 	"""Debug: limited fresh-start phases (start, office)"""

@@ -22,15 +22,14 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(992, 488),
 			"animation": "idle_back"
 		},
-		"from_bedroom_scene": {
-			"position": Vector2(185, 184),
-			"animation": "idle_back"
-		},
 		"security_server": {
 			"position": Vector2(400, 480),
 			"animation": "idle_back"
 		},
-		
+		"police_station": {
+			"position": Vector2(272.0, 480),
+			"animation": "idle_back"
+		},
 		"default": {
 			"position": Vector2(272, 480),
 			"animation": "idle_front"
@@ -89,14 +88,11 @@ var spawn_positions: Dictionary = {
 		}
 	},
 	"lower_level_station": {
-		"from_bedroom_scene": {
+		"lower_level": {
 			"position": Vector2(1056.0, 352.0),
-			"animation": "idle_right"
+			"animation": "idle_down"
 		},
-		"from_police_lobby": {
-			"position": Vector2(1056.0, 352.0),
-			"animation": "idle_right"
-		},
+		
 		"default": {
 			"position": Vector2(1056.0, 352.0),
 			"animation": "idle_right"
