@@ -298,7 +298,7 @@ var spawn_positions: Dictionary = {
 			"animation": "idle_down"
 		},
 		"police_to_morgue": {
-			"position": Vector2(1776.0, 1016.0),
+			"position": Vector2(1136.0, 1016.0),
 			"animation": "idle_back"
 		},
 		"camp_to_morgue": {
@@ -310,7 +310,7 @@ var spawn_positions: Dictionary = {
 			"animation": "idle_down"
 		},
 		"from_office_lobby_to_apartment_morgue":{
-			"position": Vector2(1328.0, 905.0),
+			"position": Vector2(2072.0,891.0),
 			"animation": "idle_down"
 	},
 		"default": {
