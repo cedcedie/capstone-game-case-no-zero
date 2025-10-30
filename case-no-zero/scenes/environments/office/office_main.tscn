@@ -9455,7 +9455,7 @@ position = Vector2(312, 248)
 script = ExtResource("8_euh44")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_office_main_to_office_rooftop"]
-position = Vector2(168, 132)
+position = Vector2(168, 200)
 shape = SubResource("RectangleShape2D_euh44")
 
 [node name="from_office_main_to_office_attorney_room" type="Area2D" parent="."]
