@@ -1,0 +1,74 @@
+{
+  "terms": [
+	{
+	  "key": "rpc_art_248_murder",
+	  "label": "RPC Art. 248 (Murder)",
+	  "description": "Punishes murder under the Revised Penal Code (Philippines).",
+	  "citation": "Revised Penal Code, Article 248",
+	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "rule_of_law",
+	  "label": "Rule of Law",
+	  "description": "Principle that all persons and institutions are subject to and accountable to law.",
+	  "citation": "1987 Constitution, general principle",
+	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "due_process",
+	  "label": "Due Process",
+	  "description": "No person shall be deprived of life, liberty or property without due process of law.",
+	  "citation": "1987 Constitution, Article III, Section 1",
+	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "presumption_of_innocence",
+	  "label": "Presumption of Innocence",
+	  "description": "The accused shall be presumed innocent until the contrary is proved.",
+	  "citation": "1987 Constitution, Article III, Section 14(2)",
+	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "rule_133_proof_standard",
+	  "label": "Rule 133 — Proof Beyond Reasonable Doubt",
+	  "description": "Defines the quantum of proof required for conviction in criminal cases.",
+	  "citation": "Rules of Court, Rule 133",
+	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "rule_130_evidence",
+	  "label": "Rule 130 — Rules on Evidence",
+	  "description": "Governs admissibility and weight of testimonial and documentary evidence.",
+	  "citation": "Rules of Court, Rule 130",
+	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "rule_112_prelim_investigation",
+	  "label": "Rule 112 — Preliminary Investigation",
+	  "description": "Outlines procedures for preliminary investigation of criminal complaints.",
+	  "citation": "Rules of Court, Rule 112",
+	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "rule_110_information",
+	  "label": "Rule 110 — Prosecution by Information",
+	  "description": "Covers the filing and contents of criminal informations.",
+	  "citation": "Rules of Court, Rule 110",
+	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "cpra_impartiality_ethics",
+	  "label": "CPRA (2023) — Impartiality and Ethics",
+	  "description": "Canon of Professional Responsibility and Accountability provisions on lawyer ethics and impartiality.",
+	  "citation": "CPRA (2023)",
+	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "public_accountability",
+	  "label": "Public Accountability",
+	  "description": "Public officers must at all times be accountable to the people.",
+	  "citation": "1987 Constitution, Article XI",
+	  "unlocks_after": "OFFICE_CUTSCENE_COMPLETED"
+	}
+  ]
+}

@@ -64,14 +64,10 @@ func show_dialogue_line(speaker: String, text: String, auto_advance: bool = fals
 		emit_signal("next_pressed")
 		return
 	
-	# Convert **text** to [b]text[/b] for BBCode
-	var bbcode_text = text.replace("**", "[b]").replace("**", "[/b]")
-	# Fix the conversion by doing it properly
-	bbcode_text = text.replace("**", "[b]").replace("**", "[/b]")
-	# Better approach: replace **text** with [b]text[/b]
-	var regex = RegEx.new()
-	regex.compile("\\*\\*(.*?)\\*\\*")
-	bbcode_text = regex.sub(bbcode_text, "[b]$1[/b]")
+	# Bold only selected keywords/phrases (case-insensitive), no ALL-CAPS auto-bold
+	var bbcode_text = _bold_keywords(text)
+
+	# Do not auto-bold ALL-CAPS; rely on explicit **...** only
 	
 	dialogue_label.text = ""
 	waiting_for_next = false
@@ -122,6 +118,35 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 		_:
 			tex = null
 	portrait_rect.texture = tex
+
+# -----------------------------
+# Keyword bolding (BBCode)
+# -----------------------------
+func _bold_keywords(input_text: String) -> String:
+	var result := input_text
+	# Curated keywords/phrases to emphasize; adjust freely
+	var keywords := [
+		"BATAS AY PARA SA MGA TAO",
+		"UNANG MALAKING KASO",
+		"LEO",
+		"ERWIN",
+		"KATOTOHANAN",
+	]
+	for kw in keywords:
+		# (?i) = case-insensitive, capture original for preservation
+		var rx := RegEx.new()
+		# Word-boundary-ish: allow spaces in phrases; avoid partial matches inside words
+		rx.compile("(?i)(?<!\\w)" + _regex_escape(kw) + "(?!\\w)")
+		result = rx.sub(result, "[b]$0[/b]", true)
+	return result
+
+func _regex_escape(text: String) -> String:
+	# Escape common regex metacharacters
+	var escaped := text
+	var metas := ["\\", ".", "+", "*", "?", "^", "$", "{", "}", "(", ")", "|", "[", "]"]
+	for m in metas:
+		escaped = escaped.replace(m, "\\" + m)
+	return escaped
 
 func _setup_autosizing():
 	"""Setup scrolling for dialogue UI labels"""

@@ -1,23 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://4ow32s47c3o"]
+[gd_scene load_steps=6 format=3 uid="uid://4ow32s47c3o"]
 
-[ext_resource type="FontFile" uid="uid://4thqnqltwp3x" path="res://assets/fonts/PixelOperatorMono.ttf" id="1_4ubpf"]
+[ext_resource type="FontFile" uid="uid://4thqnqltwp3x" path="res://assets/fonts/PixelOperatorSC.ttf" id="1_4ubpf"]
 [ext_resource type="Script" uid="uid://dyx4vg5kqme13" path="res://scripts/ui/dialogue_ui.gd" id="1_mlr52"]
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/limezuUI/Modern_UI_Style_1_32x32.png" id="2_i8ph7"]
-[ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperatorMono-Bold.ttf" id="4_nyru1"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_mlr52"]
-font = ExtResource("1_4ubpf")
-font_size = 18
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperator-Bold.ttf" id="4_nyru1"]
 
 [sub_resource type="Theme" id="Theme_owpfv"]
 default_font = ExtResource("1_4ubpf")
-
-[sub_resource type="RichTextLabelSettings" id="RichTextLabelSettings_1"]
-default_font = ExtResource("1_4ubpf")
-default_font_size = 18
-default_color = Color(0, 0, 0, 1)
-bold_font = ExtResource("4_nyru1")
 
 [node name="DialogueUi" type="CanvasLayer"]
 script = ExtResource("1_mlr52")
@@ -100,9 +89,10 @@ offset_right = -259.0
 offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_4ubpf")
+theme_override_fonts/bold_font = ExtResource("4_nyru1")
 bbcode_enabled = true
-text_settings = SubResource("RichTextLabelSettings_1")
-autowrap_mode = 3
 
 [node name="Name" type="Label" parent="Container"]
 layout_mode = 1

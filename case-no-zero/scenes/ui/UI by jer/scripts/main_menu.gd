@@ -56,17 +56,8 @@ func _input(event: InputEvent) -> void:
 				print("🐛 Debug: Going to lower level station")
 				get_tree().change_scene_to_file("res://scenes/environments/Police Station/lower_level_station.tscn")
 			KEY_F12:
-				# Debug: Set checkpoints for lower level cutscene and go there
-				print("🐛 Debug: Setting checkpoints for lower level cutscene")
-				if CheckpointManager:
-					# Make sure LOWER_LEVEL_COMPLETED is NOT set (cutscene plays when this is false)
-					CheckpointManager.clear_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_COMPLETED)
-					# Set the required checkpoints for lower level cutscene to play
-					CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_COMPLETED)
-					CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.BEDROOM_CUTSCENE_COMPLETED)
-					print("✅ Checkpoints set for lower level cutscene")
-					print("🎬 Lower level cutscene should play when you arrive (LOWER_LEVEL_COMPLETED is false)")
-				get_tree().change_scene_to_file("res://scenes/environments/Police Station/lower_level_station.tscn")
+				# Debug: Reserved (no-op under fresh checkpoint system)
+				print("🐛 Debug: F12 reserved - no action in fresh start")
 
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/ui/UI by jer/design/chapter_menu.tscn")
