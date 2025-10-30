@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://dvgkhr0qxnpx0"]
+[gd_scene load_steps=87 format=4 uid="uid://dvgkhr0qxnpx0"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_7v4vq"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_xphjy"]
@@ -56573,6 +56573,9 @@ size = Vector2(2750, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xphjy"]
 size = Vector2(7, 978)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0l8t"]
+size = Vector2(80, 56)
+
 [node name="ApartmentAndMorgue" type="Node2D"]
 position = Vector2(0, -64)
 
@@ -56637,9 +56640,16 @@ autoplay = "idle_right"
 
 [node name="PlayerM" parent="." instance=ExtResource("12_jtlfh")]
 z_index = 4
-position = Vector2(168, 176)
+position = Vector2(1328, 905)
+
+[node name="AnimatedSprite2D" parent="PlayerM" index="0"]
+position = Vector2(0, 48)
+
+[node name="CollisionShape2D" parent="PlayerM" index="1"]
+position = Vector2(0, 38)
 
 [node name="Camera2D" parent="PlayerM" index="2"]
+position = Vector2(0, 47)
 limit_right = 5000
 limit_bottom = 5000
 
@@ -56815,6 +56825,13 @@ position = Vector2(1, 0)
 
 [node name="Label" parent="NpcPinkish" index="3"]
 metadata/_edit_use_anchors_ = true
+
+[node name="from_apartment_morgue_to_office_lobby" type="Area2D" parent="."]
+script = ExtResource("9_qoipj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_apartment_morgue_to_office_lobby"]
+position = Vector2(1328, 860)
+shape = SubResource("RectangleShape2D_o0l8t")
 
 [editable path="NpcBackpackMan"]
 [editable path="NpcBeardMan"]

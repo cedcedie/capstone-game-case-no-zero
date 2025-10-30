@@ -309,10 +309,15 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(2584.0, 240.0),
 			"animation": "idle_down"
 		},
+		"from_office_lobby_to_apartment_morgue":{
+			"position": Vector2(1328.0, 905.0),
+			"animation": "idle_down"
+	},
 		"default": {
 			"position": Vector2(368.0, 704.0),
 			"animation": "idle_down"
 		}
+		
 	},
 	"camp": {
 		"morgue_to_camp": {
@@ -365,6 +370,10 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(1047.0, 240.0),
 			"animation": "idle_back"
 		},
+		"from_office_lobby_to_office_main": {
+			"position": Vector2(312.0, 248.0),
+			"animation": "idle_down"
+		}
 		
 	},
 
@@ -392,10 +401,17 @@ var spawn_positions: Dictionary = {
 	},
 	"office_lobby": {
 		"from_office_main_to_office_lobby": {
-			"position": Vector2(200, 576),
-			"animation": "idle_up"
+			"position": Vector2(465.0, 208.0),
+			"animation": "idle_down"
+		},
+			"from_apartment_morgue_to_office_lobby": {
+			"position": Vector2(672.0, 464.0),
+			"animation": "idle_back"
 		}
+		
 	},
+	
+	
 	
 }
 

@@ -104,8 +104,9 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"office_balcony_to_office_main": "office_balcony_to_office_main",
 		"office_rooftop_to_office_main" : "office_rooftop_to_office_main",
 		"office_attorney_room_to_office_main": "office_attorney_room_to_office_main",
-		"from_office_lobby_to_office_main" : "from_office_lobby_to_office_main"
-		
+		"from_office_lobby_to_office_main" : "from_office_lobby_to_office_main",
+		"from_office_lobby_to_apartment_morgue":"from_office_lobby_to_apartment_morgue",
+		"from_apartment_morgue_to_office_lobby":"from_apartment_morgue_to_office_lobby"
 		
 	}
 	
@@ -287,6 +288,10 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/office/office_lobby.tscn"
 		"from_office_lobby_to_office_main":
 			return "res://scenes/environments/office/office_main.tscn"
+		"from_office_lobby_to_apartment_morgue":
+			return "res://scenes/environments/exterior/apartment_morgue.tscn"
+		"from_apartment_morgue_to_office_lobby":
+			return "res://scenes/environments/office/office_lobby.tscn"
 		_:
 			return ""
 
