@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://r31pruqk51m3"
-path="res://.godot/imported/Super Maples.ttf-da2525c01e48d0c4d5ba80a3383ff046.fontdata"
+path="res://.godot/imported/Super Maples.ttf-662e787fb4bcb4e9e6e9baf3ffc14e64.fontdata"
 
 [deps]
 
-source_file="res://scenes/ui/UI by jer/used in UI/Super Maples.ttf"
-dest_files=["res://.godot/imported/Super Maples.ttf-da2525c01e48d0c4d5ba80a3383ff046.fontdata"]
+source_file="res://scenes/ui/UI by jer/used in UI/items/Super Maples.ttf"
+dest_files=["res://.godot/imported/Super Maples.ttf-662e787fb4bcb4e9e6e9baf3ffc14e64.fontdata"]
 
 [params]
 

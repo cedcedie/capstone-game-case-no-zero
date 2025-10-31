@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://brv7mvtwmaybj"]
+
+[ext_resource type="Script" uid="uid://dxurujr8ij4j5" path="res://scenes/ui/UI by jer/used in UI/minimap items/Minimap.gd" id="1_udyhh"]
+[ext_resource type="Texture2D" uid="uid://mutsqf5vg4e" path="res://scenes/ui/UI by jer/used in UI/minimap items/icon_8_8.png" id="2_icontex"]
+
+[sub_resource type="TileSet" id="TileSet_udyhh"]
+tile_size = Vector2i(32, 32)
+
+[node name="Minimap" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_udyhh")
+
+[node name="Border" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_bottom = 260.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 256.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="MinimapCamera" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(-1168, -331.5)
+zoom = Vector2(0.1, 0.1)
+
+[node name="MinimapTileMap" type="TileMap" parent="SubViewportContainer/SubViewport"]
+tile_set = SubResource("TileSet_udyhh")
+format = 2
+
+[node name="MinimapRoot" type="Node2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="PlayerMarker" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+z_index = 999
+texture = ExtResource("2_icontex")

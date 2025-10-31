@@ -329,6 +329,16 @@ func _check_barangay_hall_access(target_scene_path: String) -> bool:
 
 func _start_transition(target_scene_path: String):
 	is_transitioning = true
+	var tree := get_tree()
+	if tree == null or tree.root == null:
+		print("⚠️ Scene Transition: tree/root is null; aborting transition hooks")
+		return
+
+	# Notify minimap to clear immediately to avoid showing old map during fade
+	if tree.root != null:
+		var minimap := tree.root.get_node_or_null("Minimap")
+		if minimap != null and minimap.has_method("_on_transition_start"):
+			minimap.call_deferred("_on_transition_start")
 	
 	# Create full-screen fade overlay on the CanvasLayer to be above everything
 	var canvas_layer = CanvasLayer.new()
@@ -338,7 +348,7 @@ func _start_transition(target_scene_path: String):
 	fade_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	canvas_layer.add_child(fade_rect)
 	
-	var current_scene = get_tree().current_scene
+	var current_scene = tree.current_scene
 	if current_scene:
 		current_scene.add_child(canvas_layer)
 	else:
@@ -356,17 +366,17 @@ func _start_transition(target_scene_path: String):
 	await tween.finished
 	
 	# Small delay to ensure fade is complete before scene change
-	await get_tree().create_timer(0.05).timeout
+	await tree.create_timer(0.05).timeout
 	
 	# Use preloaded scenes for optimal performance in exported game
 	var result = OK
 	if ScenePreloader and ScenePreloader.is_scene_preloaded(target_scene_path):
 		print("🚀 Using preloaded scene: ", target_scene_path.get_file())
 		var preloaded_scene = ScenePreloader.get_preloaded_scene(target_scene_path)
-		result = get_tree().change_scene_to_packed(preloaded_scene)
+		result = tree.change_scene_to_packed(preloaded_scene)
 	else:
 		print("📁 Loading scene from file: ", target_scene_path.get_file())
-		result = get_tree().change_scene_to_file(target_scene_path)
+		result = tree.change_scene_to_file(target_scene_path)
 	
 	if result != OK:
 		print("❌ Failed to change scene to: ", target_scene_path)
@@ -379,7 +389,41 @@ func _start_transition(target_scene_path: String):
 			player_reference = null
 	else:
 		# Scene change successful, canvas layer will be destroyed with old scene
-		pass
+		# Notify minimap to rebuild for the new scene (works for all exteriors, including from_market_* cases)
+		if tree.root != null:
+			var minimap := tree.root.get_node_or_null("Minimap")
+			if minimap != null and minimap.has_method("_on_transition_complete"):
+				minimap.call_deferred("_on_transition_complete", target_scene_path)
+
+		# Add a temporary fade overlay in the NEW scene and wait until minimap is ready or timeout
+		var new_scene = tree.current_scene
+		if new_scene:
+			var overlay2 = CanvasLayer.new()
+			var rect2 = ColorRect.new()
+			rect2.color = Color.BLACK
+			rect2.color.a = 1.0
+			rect2.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			overlay2.add_child(rect2)
+			new_scene.add_child(overlay2)
+			overlay2.layer = 100
+
+			# Wait briefly for minimap readiness (up to ~1s)
+			var waited := 0
+			var ready := false
+			if tree.root != null:
+				var mm := tree.root.get_node_or_null("Minimap")
+				if mm != null:
+					for i in 20:
+						if mm.has_method("is_ready") and mm.is_ready():
+							ready = true
+							break
+						await tree.create_timer(0.05).timeout
+
+			# Fade out the overlay now that minimap should be present (or timeout)
+			var tween2 = create_tween()
+			tween2.tween_property(rect2, "color:a", 0.0, fade_duration)
+			await tween2.finished
+			overlay2.queue_free()
 
 func _fade_out_and_cleanup(canvas_layer: CanvasLayer):
 	# Fade out and clean up if scene change failed

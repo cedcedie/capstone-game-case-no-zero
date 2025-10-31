@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://dvgkhr0qxnpx0"
+run/main_scene="uid://cij3qgvd5ycfl"
 config/features=PackedStringArray("4.4")
 
 [audio]
@@ -33,6 +33,7 @@ AudioManager="*res://scripts/managers/AudioManager.gd"
 EvidenceInventorySettings="*res://scenes/ui/EvidenceInventorySettings.tscn"
 Settings="*res://scenes/ui/Settings.tscn"
 DebugKeys="*res://scripts/managers/DebugKeys.gd"
+Minimap="*res://scenes/ui/UI by jer/used in UI/minimap items/Minimap.tscn"
 
 [dialogic]
 

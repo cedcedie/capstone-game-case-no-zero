@@ -6,17 +6,17 @@ signal zoom_changed(new_zoom: float)
 
 # Zoom settings for different scene types
 var zoom_settings: Dictionary = {
-	"interior": 2.0,      # Default zoom for interior scenes
-	"exterior": 1.5,     # Default zoom for exterior scenes  
-	"map": 1.5,          # Specific zoom for map scenes
-	"bedroom": 2.0,      # Bedroom scene (interior)
-	"police_lobby": 2.0, # Police lobby (interior)
-	"barangay_hall": 2.0, # Barangay hall (interior)
-	"lower_level": 2.0,  # Lower level station (interior)
+	"interior": 2.0,       # Default zoom for interior scenes
+	"exterior": 1.5,       # Default zoom for exterior scenes  
+	"map": 1.5,            # Specific zoom for map scenes
+	"bedroom": 2.0,        # Bedroom scene (interior)
+	"police_lobby": 2.0,   # Police lobby (interior)
+	"barangay_hall": 2.0,  # Barangay hall (interior)
+	"lower_level": 2.0,    # Lower level station (interior)
 	"police_station": 1.0, # Police station exterior (zoom 1.0)
 	"hotel_hospital": 1.0, # Hotel hospital exterior (zoom 1.0)
 	"camp": 1.0,           # Camp scene (zoom 1.0)
-	"terminal_market": 1.0, # Terminal market (zoom 1.0)
+	"terminal_market": 1.0,# Terminal market (zoom 1.0)
 	"market": 2.0,         # Market scene (zoom 2.0)
 	"hardware_store": 2.0  # Hardware store (zoom 2.0)
 }
@@ -28,17 +28,13 @@ var last_scene_path: String = ""
 
 func _ready():
 	print("📷 CameraZoomManager: Ready")
-	# Connect to tree_changed signal to detect scene changes
 	get_tree().tree_changed.connect(_on_tree_changed)
-	# Find the player camera when the scene changes
 	call_deferred("find_player_camera")
 
 func find_player_camera():
 	"""Find the player's camera in the current scene"""
-	# Wait a frame to ensure the scene is fully loaded
 	await get_tree().process_frame
 	
-	# Check if current_scene exists
 	if not get_tree().current_scene:
 		print("📷 CameraZoomManager: No current scene in find_player_camera")
 		return
@@ -53,9 +49,7 @@ func find_player_camera():
 			player_camera = player.get_node_or_null("Camera2D")
 			if player_camera:
 				print("📷 CameraZoomManager: Player camera found")
-				# Set initial zoom based on current scene
 				set_zoom_for_current_scene()
-				# Set camera limits for current scene
 				set_camera_limits_for_scene()
 			else:
 				print("⚠️ CameraZoomManager: Player camera not found")
@@ -63,8 +57,6 @@ func find_player_camera():
 			print("⚠️ CameraZoomManager: Player not found")
 
 func set_zoom_for_current_scene():
-	"""Set zoom based on the current scene name"""
-	# Check if current_scene exists
 	if not get_tree().current_scene:
 		print("📷 CameraZoomManager: No current scene in set_zoom_for_current_scene")
 		return
@@ -73,52 +65,32 @@ func set_zoom_for_current_scene():
 	var target_zoom = get_zoom_for_scene(scene_name)
 	set_camera_zoom(target_zoom)
 	print("📷 CameraZoomManager: Set zoom to ", target_zoom, " for scene: ", scene_name)
-	print("📷 CameraZoomManager: Current zoom level: ", current_zoom)
 
 func get_zoom_for_scene(scene_name: String) -> float:
-	"""Get the appropriate zoom level for a scene"""
-	print("📷 CameraZoomManager: Getting zoom for scene: ", scene_name)
-	
-	# Check for exact scene name match first
 	if zoom_settings.has(scene_name):
-		print("📷 CameraZoomManager: Found exact match for ", scene_name, " -> zoom: ", zoom_settings[scene_name])
 		return zoom_settings[scene_name]
-	
-	# Check for partial matches
-	if scene_name.contains("bedroom"):
-		print("📷 CameraZoomManager: Bedroom scene detected -> zoom: ", zoom_settings["bedroom"])
+	elif scene_name.contains("bedroom"):
 		return zoom_settings["bedroom"]
 	elif scene_name.contains("police") or scene_name.contains("lobby"):
-		print("📷 CameraZoomManager: Police/lobby scene detected -> zoom: ", zoom_settings["police_lobby"])
 		return zoom_settings["police_lobby"]
 	elif scene_name.contains("barangay"):
-		print("📷 CameraZoomManager: Barangay scene detected -> zoom: ", zoom_settings["barangay_hall"])
 		return zoom_settings["barangay_hall"]
 	elif scene_name.contains("lower_level") or scene_name.contains("station"):
-		print("📷 CameraZoomManager: Station scene detected -> zoom: ", zoom_settings["lower_level"])
 		return zoom_settings["lower_level"]
 	elif scene_name.contains("map"):
-		print("📷 CameraZoomManager: Map scene detected -> zoom: ", zoom_settings["map"])
 		return zoom_settings["map"]
 	elif scene_name.contains("terminal_market"):
-		print("📷 CameraZoomManager: Terminal market scene detected -> zoom: ", zoom_settings["terminal_market"])
 		return zoom_settings["terminal_market"]
 	elif scene_name.contains("market"):
-		print("📷 CameraZoomManager: Market scene detected -> zoom: ", zoom_settings["market"])
 		return zoom_settings["market"]
 	elif scene_name.contains("hardware"):
-		print("📷 CameraZoomManager: Hardware scene detected -> zoom: ", zoom_settings["hardware_store"])
 		return zoom_settings["hardware_store"]
 	elif scene_name.contains("exterior") or scene_name.contains("apartment_morgue") or scene_name.contains("baranggay_court"):
-		print("📷 CameraZoomManager: Exterior scene detected -> zoom: 1.0")
 		return 1.0
 	
-	# Default to interior zoom (2.0) for most scenes
-	print("📷 CameraZoomManager: Using default interior zoom: ", zoom_settings["interior"])
 	return zoom_settings["interior"]
 
 func set_camera_zoom(zoom_level: float, animate: bool = true):
-	"""Set the camera zoom level"""
 	if not player_camera:
 		print("⚠️ CameraZoomManager: No camera found, cannot set zoom")
 		return
@@ -126,98 +98,76 @@ func set_camera_zoom(zoom_level: float, animate: bool = true):
 	current_zoom = zoom_level
 	
 	if animate:
-		# Smooth zoom transition with faster duration for scene changes
 		var tween = create_tween()
 		tween.tween_property(player_camera, "zoom", Vector2(zoom_level, zoom_level), 0.3)
-		# Don't await - let it run in background for better performance
 		tween.finished.connect(_on_zoom_finished.bind(zoom_level))
 	else:
-		# Instant zoom
 		player_camera.zoom = Vector2(zoom_level, zoom_level)
 		zoom_changed.emit(zoom_level)
-	
-	print("📷 CameraZoomManager: Zoom set to ", zoom_level)
 
 func _on_zoom_finished(zoom_level: float):
-	"""Called when zoom tween finishes"""
 	zoom_changed.emit(zoom_level)
 
 func get_current_zoom() -> float:
-	"""Get the current zoom level"""
 	return current_zoom
 
 func reset_to_default_zoom():
-	"""Reset zoom to default for current scene"""
 	set_zoom_for_current_scene()
 
 func set_camera_limits_for_scene():
-	"""Set camera limits based on the current scene"""
 	if not player_camera:
 		return
 	
-	# Check if current_scene exists
 	if not get_tree().current_scene:
 		print("📷 CameraZoomManager: No current scene in set_camera_limits_for_scene")
 		return
 	
 	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	
-	# Set camera limits based on scene
 	match scene_name:
 		"courtroom":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
 			player_camera.limit_right = 1407.0
 			player_camera.limit_bottom = 774.0
-			print("📷 CameraZoomManager: Set limits for courtroom: 1407x774")
 		"baranggay_court":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
 			player_camera.limit_right = 1728.0
 			player_camera.limit_bottom = 1920.0
-			print("📷 CameraZoomManager: Set limits for baranggay_court: 1728x1920")
 		"apartment_morgue":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
 			player_camera.limit_right = 2736.0
 			player_camera.limit_bottom = 1021.0
-			print("📷 CameraZoomManager: Set limits for apartment_morgue: 2736x1021")
 		"camp":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
 			player_camera.limit_right = 1568.0
 			player_camera.limit_bottom = 1064.0
-			print("📷 CameraZoomManager: Set limits for camp: 1568x1064")
 		"hotel_hospital":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
 			player_camera.limit_right = 1280.0
 			player_camera.limit_bottom = 2700.0
-			print("📷 CameraZoomManager: Set limits for hotel_hospital: 1280x2700")
 		"police_station":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
 			player_camera.limit_right = 2624.0
 			player_camera.limit_bottom = 1544.0
-			print("📷 CameraZoomManager: Set limits for police_station: 2624x1544")
 		"terminal_market":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
 			player_camera.limit_right = 2816.0
 			player_camera.limit_bottom = 1080.0
-			print("📷 CameraZoomManager: Set limits for terminal_market: 2816x1080")
 		_:
-			# For interior scenes, use 1280x720 limits
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
 			player_camera.limit_right = 1280.0
 			player_camera.limit_bottom = 720.0
-			print("📷 CameraZoomManager: Set limits for interior scene: 1280x720")
 
-# Scene change detection
 func _on_tree_changed():
 	"""Called when tree changes - check if scene changed"""
-	# Check if current_scene exists before accessing it
 	if not get_tree().current_scene:
 		print("📷 CameraZoomManager: No current scene, skipping...")
 		return
@@ -227,20 +177,15 @@ func _on_tree_changed():
 	if current_scene_path != last_scene_path and current_scene_path != "":
 		print("📷 CameraZoomManager: Scene changed from ", last_scene_path, " to ", current_scene_path)
 		last_scene_path = current_scene_path
-		# Wait a frame for the scene to fully load
 		await get_tree().process_frame
 		find_player_camera()
 
-# Manual zoom controls for debugging
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		match event.physical_keycode:
 			KEY_F6:
-				# F6 - Set zoom to 2.0 (interior)
 				set_camera_zoom(2.0)
 			KEY_F5:
-				# F5 - Set zoom to 1.5 (exterior)
 				set_camera_zoom(1.5)
 			KEY_F4:
-				# F4 - Reset to scene default
 				reset_to_default_zoom()
