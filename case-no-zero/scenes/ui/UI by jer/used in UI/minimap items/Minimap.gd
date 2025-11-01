@@ -53,7 +53,7 @@ func _ready() -> void:
 	elif "enabled" in minimap_camera:
 		minimap_camera.enabled = true
 
-	minimap_camera.zoom = Vector2(0.7, 0.7)
+	minimap_camera.zoom = Vector2(0.3, 0.3)
 	visible = true
 
 	# Offline prebake: prebuild cached minimaps for exterior scenes at startup
@@ -95,7 +95,8 @@ func _ready() -> void:
 	if not tilemap_layers.is_empty():
 		_copy_tilemap_layers()
 	if player != null:
-		minimap_camera.global_position = player.global_position
+		var clamped_pos := _clamp_camera_to_bounds(player.global_position)
+		minimap_camera.global_position = clamped_pos
 
 	# React to scene changes so minimap updates when entering new scenes
 	var tree := get_tree()
@@ -253,9 +254,11 @@ func _scan_and_build() -> void:
 		if player == null:
 			var bounds := _compute_map_bounds()
 			if bounds.has_area():
-				minimap_camera.global_position = bounds.get_center()
+				var center := bounds.get_center()
+				minimap_camera.global_position = _clamp_camera_to_bounds(center)
 	if player != null:
-		minimap_camera.global_position = player.global_position
+		var clamped_pos := _clamp_camera_to_bounds(player.global_position)
+		minimap_camera.global_position = clamped_pos
 	if minimap_root.get_child_count() > 0:
 		emit_signal("minimap_ready")
 
@@ -363,13 +366,15 @@ func _use_cached_minimap(scene_path: String) -> void:
 
 	# Position camera: follow player if available, else center on bounds (from cached layers)
 	if player != null:
-		minimap_camera.global_position = player.global_position
+		var clamped_pos := _clamp_camera_to_bounds(player.global_position)
+		minimap_camera.global_position = clamped_pos
 		if player_marker != null:
 			player_marker.global_position = player.global_position
 	else:
 		var bounds := _compute_cached_minimap_bounds()
 		if bounds.has_area():
-			minimap_camera.global_position = bounds.get_center()
+			var center := bounds.get_center()
+			minimap_camera.global_position = _clamp_camera_to_bounds(center)
 		else:
 			print("[Minimap] use_cache: empty bounds after instancing for:", scene_path)
 	# Signal readiness
@@ -605,9 +610,43 @@ func _copy_tilemap_layers() -> void:
 	print("✅ Minimap: copied", tilemap_layers.size(), "layers, total cells:", total_cells)
 
 
+func _clamp_camera_to_bounds(target_pos: Vector2) -> Vector2:
+	if minimap_camera == null or viewport == null:
+		return target_pos
+	
+	# Get map bounds from cached layers or source layers
+	var bounds := _compute_cached_minimap_bounds()
+	if not bounds.has_area():
+		bounds = _compute_map_bounds()
+	
+	if not bounds.has_area():
+		# No bounds available, return target position unchanged
+		return target_pos
+	
+	# Calculate viewport size in world coordinates
+	var viewport_size := Vector2(viewport.size)
+	var world_viewport_size := viewport_size / minimap_camera.zoom
+	
+	# Calculate the camera limits (bounds minus half viewport on each side)
+	var half_viewport := world_viewport_size / 2.0
+	var min_x := bounds.position.x + half_viewport.x
+	var max_x := bounds.position.x + bounds.size.x - half_viewport.x
+	var min_y := bounds.position.y + half_viewport.y
+	var max_y := bounds.position.y + bounds.size.y - half_viewport.y
+	
+	# Clamp position
+	var clamped_x: float = clamp(target_pos.x, min_x, max_x)
+	var clamped_y: float = clamp(target_pos.y, min_y, max_y)
+	
+	return Vector2(clamped_x, clamped_y)
+
+
 func _process(_delta: float) -> void:
 	if player != null and minimap_camera != null:
-		minimap_camera.global_position = player.global_position
+		var target_pos := player.global_position
+		# Clamp camera position to map bounds to avoid showing blank space
+		var clamped_pos := _clamp_camera_to_bounds(target_pos)
+		minimap_camera.global_position = clamped_pos
 		if player_marker != null:
 			player_marker.global_position = player.global_position
 
@@ -626,6 +665,7 @@ func update_minimap() -> void:
 	_copy_tilemap_layers()
 
 	if player != null:
-		minimap_camera.global_position = player.global_position
+		var clamped_pos := _clamp_camera_to_bounds(player.global_position)
+		minimap_camera.global_position = clamped_pos
 
 	print("✅ Minimap: update complete.")

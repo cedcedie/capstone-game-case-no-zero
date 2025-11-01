@@ -49,4 +49,5 @@ format = 2
 
 [node name="PlayerMarker" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
 z_index = 999
+scale = Vector2(4, 4)
 texture = ExtResource("2_icontex")
