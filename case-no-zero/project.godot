@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="casenozero"
-run/main_scene="uid://bkxx1m4vbvfhf"
+run/main_scene="uid://bgn7dn0hxqa60"
 config/features=PackedStringArray("4.4")
 
 [audio]
@@ -32,6 +32,7 @@ CameraZoomManager="*res://scripts/managers/CameraZoomManager.gd"
 AudioManager="*res://scripts/managers/AudioManager.gd"
 EvidenceInventorySettings="*res://scenes/ui/EvidenceInventorySettings.tscn"
 Settings="*res://scenes/ui/Settings.tscn"
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 DebugKeys="*res://scripts/managers/DebugKeys.gd"
 Minimap="*res://scenes/ui/UI by jer/used in UI/minimap items/Minimap.tscn"
 
@@ -72,6 +73,10 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="casenozero"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg")
 
 [gui]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bgn7dn0hxqa60"]
 
 [ext_resource type="Script" uid="uid://6aqfoyeiifwg" path="res://scenes/ui/UI by jer/scripts/main_menu.gd" id="1_ey8fa"]
-[ext_resource type="Texture2D" uid="uid://htl1xhda2x6v" path="res://scenes/ui/UI by jer/used in UI/84bb17a4-db7a-4f17-b1fa-f860766f7163.jpeg" id="2_o08tu"]
+[ext_resource type="Texture2D" path="res://scenes/ui/UI by jer/used in UI/84bb17a4-db7a-4f17-b1fa-f860766f7163.jpeg" id="2_o08tu"]
 [ext_resource type="FontFile" uid="uid://da1sanbtdceii" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_y3fev"]
 [ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="4_t8b3b"]
 [ext_resource type="Script" uid="uid://dyq85je2d7iv2" path="res://scenes/ui/UI by jer/scripts/audio_control.gd" id="5_adqss"]
