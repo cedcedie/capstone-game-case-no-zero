@@ -37295,19 +37295,20 @@ sources/2 = SubResource("TileSetAtlasSource_1em5d")
 size = Vector2(81.25, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8eggf"]
-size = Vector2(6, 979)
+size = Vector2(44, 1017)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v4vq"]
 size = Vector2(5561.62, 1.92424)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xphjy"]
-size = Vector2(7, 978)
+size = Vector2(19, 1017)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0l8t"]
 size = Vector2(88, 33)
 
 [node name="ApartmentAndMorgue" type="Node2D"]
 position = Vector2(0, -64)
+metadata/_edit_vertical_guides_ = [972.0]
 
 [node name="ground" type="TileMapLayer" parent="."]
 position = Vector2(-3, 43)
@@ -37459,7 +37460,7 @@ script = ExtResource("9_qoipj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_morgue_to_camp"]
 z_index = 4
-position = Vector2(-44, 724)
+position = Vector2(-63, 782.5)
 shape = SubResource("RectangleShape2D_8eggf")
 
 [node name="from_morgue_to_police_station" type="Area2D" parent="."]
@@ -37475,7 +37476,7 @@ shape = SubResource("RectangleShape2D_7v4vq")
 script = ExtResource("9_qoipj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_morgue_to_hospital"]
-position = Vector2(2748.5, 557)
+position = Vector2(2754.5, 614.5)
 shape = SubResource("RectangleShape2D_xphjy")
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
