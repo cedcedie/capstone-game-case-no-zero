@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dko0ulikt57nb"]
+[gd_scene load_steps=5 format=3 uid="uid://lfsfbbqjs56h"]
 
-[ext_resource type="Texture2D" uid="uid://bjgi60uvmuss1" path="res://miravil/tricycle_vehicle/vehicle_1.png" id="1_jh848"]
+[ext_resource type="Texture2D" uid="uid://1lrh0pg1yxb1" path="res://miravil/tricycle_vehicle/vehicle_2.png" id="1_e5ci1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y1jxu"]
-atlas = ExtResource("1_jh848")
-region = Rect2(60, 75, 60, 75)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lchm6"]
+atlas = ExtResource("1_e5ci1")
+region = Rect2(0, 0, 66, 100)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_pbj4m"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1xyjo"]
 animations = [{
 "frames": [],
 "loop": true,
@@ -35,7 +35,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y1jxu")
+"texture": SubResource("AtlasTexture_lchm6")
 }],
 "loop": true,
 "name": &"triyk",
@@ -62,17 +62,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jx82"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_joa63"]
 size = Vector2(44, 28)
 
-[node name="Triyk5" type="CharacterBody2D"]
+[node name="Tricycle1" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_pbj4m")
+sprite_frames = SubResource("SpriteFrames_1xyjo")
 animation = &"triyk"
 autoplay = "triyk"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, -18)
-shape = SubResource("RectangleShape2D_7jx82")
+shape = SubResource("RectangleShape2D_joa63")
