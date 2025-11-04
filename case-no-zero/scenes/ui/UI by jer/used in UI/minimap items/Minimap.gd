@@ -37,7 +37,22 @@ func _ready() -> void:
 		push_error("⚠️ Minimap: Could not find one or more child nodes! Check node paths.")
 		return
 
-	print("🗺️ Minimap ready (autoload expected).")
+	# Check if current scene is exterior - if not, disable minimap completely
+	var tree := get_tree()
+	var root := tree.current_scene if tree != null else null
+	if not _is_exterior_scene(root):
+		print("[Minimap] Current scene is not exterior - disabling minimap")
+		visible = false
+		_clear_minimap()
+		# Still connect to scene changes to re-check when scene changes
+		if tree != null:
+			if tree.has_signal("current_scene_changed"):
+				tree.connect("current_scene_changed", Callable(self, "_on_current_scene_changed"))
+			elif tree.has_signal("scene_changed"):
+				tree.connect("scene_changed", Callable(self, "_on_current_scene_changed"))
+		return
+
+	print("🗺️ Minimap ready (autoload expected) - exterior scene detected.")
 
 	if viewport.size == Vector2i.ZERO:
 		viewport.size = Vector2i(256, 256)
@@ -56,19 +71,17 @@ func _ready() -> void:
 	minimap_camera.zoom = Vector2(0.3, 0.3)
 	visible = true
 
-	# Offline prebake: prebuild cached minimaps for exterior scenes at startup
-	_prebake_minimaps()
+	# DO NOT prebake - causes crashes. Only build when actually needed.
 
 	# Fallbacks: try to auto-bind player and tilemap layers if not set externally
 	if player == null:
-		var found_players := get_tree().get_nodes_in_group("player")
+		var found_players := tree.get_nodes_in_group("player")
 		if not found_players.is_empty():
 			var candidate: Node = found_players[0]
 			if candidate is Node2D:
 				set_player(candidate)
 		else:
 			# Try common node names
-			var root := get_tree().current_scene
 			if root != null:
 				var maybe_player := root.find_child("Player", true, false)
 				if maybe_player != null and maybe_player is Node2D:
@@ -81,12 +94,10 @@ func _ready() -> void:
 							break
 
 	if tilemap_layers.is_empty():
-		var root2 := get_tree().current_scene
-		if root2 != null:
-			var found_layers := root2.get_children()
+		if root != null:
 			var collected: Array = []
 			# Deep search for TileMapLayer nodes
-			for node in root2.find_children("*", "TileMapLayer", true, false):
+			for node in root.find_children("*", "TileMapLayer", true, false):
 				collected.append(node)
 			if not collected.is_empty():
 				set_tilemap_layers(collected)
@@ -99,7 +110,6 @@ func _ready() -> void:
 		minimap_camera.global_position = clamped_pos
 
 	# React to scene changes so minimap updates when entering new scenes
-	var tree := get_tree()
 	if tree != null:
 		if tree.has_signal("current_scene_changed"):
 			tree.connect("current_scene_changed", Callable(self, "_on_current_scene_changed"))
@@ -110,7 +120,20 @@ func _ready() -> void:
 func _on_current_scene_changed(_new_scene: Node) -> void:
 	# Clear immediately so old map is not shown during transitions
 	_clear_minimap()
-	print("[Minimap] current_scene_changed: cleared minimap")
+	
+	var tree := get_tree()
+	if tree == null:
+		return
+	var root := tree.current_scene
+	
+	# Check if new scene is exterior - if not, disable minimap
+	if not _is_exterior_scene(root):
+		print("[Minimap] New scene is not exterior - disabling minimap")
+		visible = false
+		_clear_minimap()
+		return
+	
+	print("[Minimap] current_scene_changed: exterior scene detected, building minimap")
 
 	# Re-apply viewport/camera settings to avoid stale state across scenes
 	if viewport != null:
@@ -127,10 +150,6 @@ func _on_current_scene_changed(_new_scene: Node) -> void:
 
 	# Try to scan and build immediately for instant visual update
 	# First, try to use cache for the newly current scene
-	var tree := get_tree()
-	if tree == null:
-		return
-	var root := tree.current_scene
 	if root != null:
 		var key := _find_cached_scene_key(root)
 		if key != "" and scene_minimap_cache.has(key):
@@ -206,7 +225,36 @@ func _scan_and_build() -> void:
 	if root == null:
 		_clear_minimap()
 		return
+	
+	# Check if current scene is an exterior scene - only build minimap for exterior scenes
+	var scene_path := ""
+	if "scene_file_path" in root:
+		scene_path = String(root.scene_file_path)
+	if not scene_path.is_empty():
+		var normalized := _normalize_exterior_path(scene_path)
+		if normalized.is_empty():
+			# Not an exterior scene - clear minimap and return
+			print("[Minimap] Scene is not an exterior scene, clearing minimap:", scene_path)
+			_clear_minimap()
+			visible = false
+			return
+	else:
+		# No scene path - try to match by name
+		var scene_name := String(root.name)
+		var is_exterior := false
+		for p in EXTERIOR_PATHS:
+			if String(p).get_file().get_basename() == scene_name:
+				is_exterior = true
+				break
+		if not is_exterior:
+			print("[Minimap] Scene name not in exterior paths, clearing minimap:", scene_name)
+			_clear_minimap()
+			visible = false
+			return
+	
 	if root != null:
+		# Make sure minimap is visible for exterior scenes
+		visible = true
 		# If we have a cached minimap for this scene, use it immediately
 		var key := _find_cached_scene_key(root)
 		if key != "" and scene_minimap_cache.has(key):
@@ -484,14 +532,37 @@ func _normalize_exterior_path(path: String) -> String:
 			return p
 	return ""
 
+func _is_exterior_scene(root_scene: Node) -> bool:
+	# Check if the current scene is one of the exterior scenes
+	if root_scene == null:
+		return false
+	var scene_path := ""
+	if "scene_file_path" in root_scene:
+		scene_path = String(root_scene.scene_file_path)
+	if not scene_path.is_empty():
+		var normalized := _normalize_exterior_path(scene_path)
+		return not normalized.is_empty()
+	# Try matching by name
+	var scene_name := String(root_scene.name)
+	for p in EXTERIOR_PATHS:
+		if String(p).get_file().get_basename() == scene_name:
+			return true
+	return false
+
 
 # ----------------------
 # Offline Prebake Helpers
 # ----------------------
-func _prebake_minimaps() -> void:
-	for p in EXTERIOR_PATHS:
-		if not scene_minimap_cache.has(p):
-			_prebuild_minimap_for_scene_path(p)
+# DISABLED: Prebaking causes crashes - only build minimaps on-demand when entering exterior scenes
+# func _prebake_minimaps_deferred() -> void:
+# 	# Deferred version that runs after a delay to avoid blocking startup
+# 	await get_tree().create_timer(1.0).timeout  # Wait 1 second after startup
+# 	_prebake_minimaps()
+
+# func _prebake_minimaps() -> void:
+# 	for p in EXTERIOR_PATHS:
+# 		if not scene_minimap_cache.has(p):
+# 			_prebuild_minimap_for_scene_path(p)
 
 
 func _prebuild_minimap_for_scene_path(scene_path: String) -> void:
@@ -642,6 +713,9 @@ func _clamp_camera_to_bounds(target_pos: Vector2) -> Vector2:
 
 
 func _process(_delta: float) -> void:
+	# Only process if minimap is visible (exterior scene)
+	if not visible:
+		return
 	if player != null and minimap_camera != null:
 		var target_pos := player.global_position
 		# Clamp camera position to map bounds to avoid showing blank space
