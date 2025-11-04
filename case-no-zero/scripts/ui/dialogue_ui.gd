@@ -105,8 +105,8 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 	match speaker.to_lower():
 		"miguel":
 			tex = load("res://assets/sprites/characters/closeup_face/Main_character_closeup.png")
-		"erwin", "boy trip":
-			tex = load("res://erwin_tambay_closeup.png")
+		"erwin", "boy trip", "Erwin Boy Trip":
+			tex = load("res://assets/sprites/characters/closeup_face/erwin_tambay_closeup.png")
 		"celine":
 			tex = load("res://assets/sprites/characters/closeup_face/celine_closeup.png")
 		"kapitana palma", "kapitana", "kapitana lourdes":

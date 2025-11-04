@@ -9,6 +9,8 @@ extends CharacterBody2D
 var dialogue_lines: Array = []
 var dialogue_data: Dictionary = {}
 var has_interacted: bool = false
+var story_has_interacted: bool = false  # Track if story dialogue was used
+var recollection_has_interacted: bool = false  # Track if recollection dialogue was used
 var is_player_nearby: bool = false
 var player_reference: Node2D = null
 var is_in_dialogue: bool = false  # Prevent E key spam during dialogue
@@ -132,6 +134,36 @@ func interact():
 		player_reference.disable_movement()
 	
 	# Choose dialogue based on checkpoint state and interaction history
+	var has_recollection: bool = CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED)
+	var has_office: bool = CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.OFFICE_CUTSCENE_COMPLETED)
+	
+	if has_recollection:
+		# Recollection completed - use recollection dialogue
+		if not recollection_has_interacted:
+			dialogue_lines = dialogue_data.get("recollection_completed", [])
+			recollection_has_interacted = true
+			print("💬 Using recollection_completed dialogue (first time)")
+		else:
+			dialogue_lines = dialogue_data.get("recollection_repeated", [])
+			print("💬 Using recollection_repeated dialogue")
+	elif has_office and not has_recollection:
+		# Only office completed - use story dialogue
+		if not story_has_interacted:
+			dialogue_lines = dialogue_data.get("story_first_interaction", [])
+			story_has_interacted = true
+			print("💬 Using story_first_interaction dialogue (first time)")
+		else:
+			dialogue_lines = dialogue_data.get("story_repeated_interaction", [])
+			print("💬 Using story_repeated_interaction dialogue")
+	else:
+		# Default/modern dialogue
+		if not has_interacted:
+			dialogue_lines = dialogue_data.get("modern_first_interaction", [])
+			has_interacted = true
+			print("💬 Using modern_first_interaction dialogue")
+		else:
+			dialogue_lines = dialogue_data.get("modern_repeated_interaction", [])
+			print("💬 Using modern_repeated_interaction dialogue")
 
 	# Start showing dialogue
 	if dialogue_lines.size() > 0:

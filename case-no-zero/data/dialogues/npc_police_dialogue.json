@@ -6,7 +6,7 @@
 		"text": "Maligayang pagdating sa istasyon ng pulis. Ano ang maitutulong ko sa iyo?"
 	  },
 	  {
-		"speaker": "Manlalaro",
+		"speaker": "Miguel",
 		"text": "Saan banda ang detention cell? May client kaming nakakulong."
 	  },
 	  {
@@ -52,9 +52,9 @@
 		"text": "Ingat ka sa paglalakad."
 	  }
 	],
-	"barangay_hall_completed": [
+	"recollection_completed": [
 	  {
-		"speaker": "Pulis",
+		"speaker": "Miguel",
 		"text": "Pwede makausap po yung head police nyo po."
 	  },
 	  {
@@ -64,6 +64,16 @@
 	  {
 		"speaker": "Pulis",
 		"text": "Punta ka sa taas, makikita mo ang kanyang opisina."
+	  }
+	],
+	"recollection_repeated": [
+	  {
+		"speaker": "Pulis",
+		"text": "Si Chief ay nasa taas sa kanyang opisina."
+	  },
+	  {
+		"speaker": "Pulis",
+		"text": "May iba ka pa bang kailangan?"
 	  }
 	]
   }

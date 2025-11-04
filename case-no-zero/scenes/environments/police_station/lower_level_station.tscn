@@ -8237,10 +8237,10 @@ tracks/13/path = NodePath("station_guard_2/AnimatedSprite2D:animation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 8.6, 9.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [&"idle_right"]
+"values": [&"idle_right", &"walk_right", &"idle_right"]
 }
 tracks/14/type = "value"
 tracks/14/imported = false

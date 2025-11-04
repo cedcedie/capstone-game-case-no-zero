@@ -70,8 +70,15 @@ func end_cutscene() -> void:
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED)
 	print("🎬 Lower level station cutscene completed, checkpoint set.")
 	
-	# Set characters to post-cutscene positions
+	# Set characters to post-cutscene positions (including player - only after cutscene ends)
 	_set_post_cutscene_positions()
+	
+	# Position player after cutscene completes (not on scene load)
+	if player_node == null:
+		player_node = _find_player()
+	if player_node != null and player_node is Node2D:
+		(player_node as Node2D).global_position = Vector2(880.0, 464.0)
+		print("🎬 PlayerM positioned at (880.0, 464.0) after cutscene")
 	
 	# Set everything visible first (with new positions)
 	var root_scene := get_tree().current_scene
@@ -405,12 +412,7 @@ func _set_post_cutscene_positions() -> void:
 		print("⚠️ Cannot set post-cutscene positions - no root scene")
 		return
 	
-	# Find PlayerM
-	if player_node == null:
-		player_node = _find_player()
-	if player_node != null and player_node is Node2D:
-		(player_node as Node2D).global_position = Vector2(880.0, 464.0)
-		print("🎬 PlayerM positioned at (880.0, 464.0)")
+	# PlayerM position is handled by SpawnManager - don't override it here
 	
 	# Find and hide Celine
 	var celine := _find_character_by_name("celine")
