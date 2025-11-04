@@ -1,4 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://daswju5tf8rxn"]
+[gd_scene load_steps=5 format=3 uid="uid://daswju5tf8rxn"]
+
+[ext_resource type="Texture2D" uid="uid://df2caje0qgrfa" path="res://miravil/vendor_sprites/vendors_sprites.png" id="1_ombcn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bj4q"]
+atlas = ExtResource("1_ombcn")
+region = Rect2(0, 0, 66, 77)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlyg4"]
 animations = [{
@@ -32,6 +38,14 @@ animations = [{
 "name": &"triyk",
 "speed": 5.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bj4q")
+}],
+"loop": true,
+"name": &"vendor",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"walk_back",
@@ -60,7 +74,7 @@ size = Vector2(44, 28)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tlyg4")
-animation = &"triyk"
+animation = &"vendor"
 autoplay = "triyk"
 offset = Vector2(0, -32)
 
