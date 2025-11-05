@@ -1,0 +1,62 @@
+{
+	"head_police_room_cutscene": {
+		"dialogue_lines": [
+			{
+				"speaker": "Miguel",
+				"text": "Good morning po, PO1 Darwin. May tanong po kami tungkol sa broken body cam."
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Ah, kayo pala. Ano ba ang kailangan ninyo?"
+			},
+			{
+				"speaker": "Miguel",
+				"text": "May nakita po kaming broken body camera na related sa kaso ng aming client."
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Body camera? Normal lang na nasira ang mga equipment minsan."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Pero po, ito ay nasira sa panahon ng insidente. May footage pa ba ito?"
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Hindi ko alam kung may footage pa. Kailangan ninyong mag-request sa proper channels."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Sir, under Rule 130 ng Rules of Court, kailangan nating i-preserve ang chain of custody ng evidence."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Kailangan nating siguraduhin na ang ebidensya ay properly documented at handled."
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Alam ko ang chain of custody. Pero kung nasira ang body cam, wala na tayong magagawa."
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Kung gusto ninyong makita ang CCTV footage, pumunta kayo sa security server."
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Ako muna, pupunta ako doon. Sundin ninyo ako."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Salamat po, PO1 Darwin. Susundin ko kayo."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "\"Sige, makikita natin ang CCTV footage sa security server.\""
+			},
+			{
+				"speaker": "Miguel",
+				"text": "\"Baka may makita tayo doon na makakatulong sa kaso.\""
+			}
+		]
+	}
+}

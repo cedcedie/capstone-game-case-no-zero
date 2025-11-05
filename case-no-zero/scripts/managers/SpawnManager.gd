@@ -35,6 +35,14 @@ var spawn_positions: Dictionary = {
 			"animation": "idle_front"
 		}
 	},
+	
+	"head_police_room": {
+		"head_police": {
+		"position": Vector2(824.0, 476),
+		"animation": "idle_back"
+		}
+	},
+	
 	"hotel_hospital": {
 		"morgue_to_hospital": {
 			"position": Vector2(256.0, 360.0),

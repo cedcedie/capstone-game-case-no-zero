@@ -49,16 +49,57 @@ func _ready() -> void:
 		_set_player_active(true)
 		return
 	
-	# Check if recollection already played (only trigger once)
-	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED):
-		print("🎬 Recollection already completed - skipping")
-		# Hide the nodes if already completed (Celine already hidden above)
-		_hide_station_lobby_nodes()
+	# Check if follow_darwin already played (only trigger once)
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED):
+		print("🎬 Follow Darwin already completed - skipping")
+		# Celine already hidden above
 		_set_player_active(true)
 		return
 	
-	# Hide station_lobby and StationLobby2
-	_hide_station_lobby_nodes()
+	# Check if head police completed - play follow_darwin animation
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
+		print("🎬 Head police completed - playing follow_darwin animation")
+		# Start cutscene
+		cutscene_active = true
+		
+		# Wait for scene fade-in to complete
+		await get_tree().process_frame
+		await get_tree().process_frame
+		await get_tree().process_frame
+		
+		var scene_root := get_tree().current_scene
+		var scene_fade_in := scene_root.get_node_or_null("SceneFadeIn") if scene_root != null else null
+		if scene_fade_in != null:
+			await get_tree().create_timer(0.3).timeout
+		else:
+			await get_tree().create_timer(0.2).timeout
+		
+		# Play follow_darwin animation
+		if anim_player != null:
+			if anim_player.has_animation("follow_darwin"):
+				print("🎬 Playing follow_darwin animation")
+				anim_player.play("follow_darwin")
+				# Wait for animation to finish
+				await anim_player.animation_finished
+				# Set checkpoint when animation completes
+				CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED)
+				print("🎬 Follow Darwin completed, checkpoint set.")
+				cutscene_active = false
+				_set_player_active(true)
+			else:
+				print("⚠️ No 'follow_darwin' animation found. Available animations: ", anim_player.get_animation_list())
+				_set_player_active(true)
+		else:
+			print("⚠️ AnimationPlayer not found!")
+			_set_player_active(true)
+		return
+	
+	# Check if recollection already played (only trigger once)
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED):
+		print("🎬 Recollection already completed - skipping")
+		# Celine already hidden above
+		_set_player_active(true)
+		return
 	
 	# Show Celine now - she will be visible during cutscene (AnimationPlayer controls her)
 	_show_celine()
@@ -359,6 +400,16 @@ func shake_camera(intensity: float = 6.0, duration: float = 0.3) -> void:
 	await tween.finished
 	
 func _get_camera_2d() -> Camera2D:
+	# Try to get camera from PlayerM first
+	if player_node == null:
+		player_node = _find_player()
+	
+	if player_node != null:
+		var cam := player_node.get_node_or_null("Camera2D")
+		if cam is Camera2D:
+			return cam
+	
+	# Fallback to viewport camera
 	var cam := get_viewport().get_camera_2d()
 	if cam:
 		return cam
@@ -371,6 +422,35 @@ func _get_camera_2d() -> Camera2D:
 			return child
 	return null
 
+func camera_zoom_in_out(target_zoom: float = 1.5, duration: float = 0.5, hold_duration: float = 1.0) -> void:
+	"""Zoom camera to target_zoom, hold for hold_duration, then smoothly zoom back to original zoom level"""
+	var cam: Camera2D = _get_camera_2d()
+	if cam == null:
+		print("⚠️ No Camera2D found for zoom")
+		return
+	
+	# Store original zoom level before zooming
+	var original_zoom: Vector2 = cam.zoom
+	print("🎬 Camera zoom: Starting zoom. Original zoom = ", original_zoom)
+	
+	# Zoom in to target_zoom smoothly
+	var target_zoom_vec := Vector2(target_zoom, target_zoom)
+	var tween_in := create_tween()
+	tween_in.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)  # Smooth cubic easing
+	tween_in.tween_property(cam, "zoom", target_zoom_vec, duration)
+	await tween_in.finished
+	print("🎬 Camera zoom: Zoomed in to ", target_zoom_vec)
+	
+	# Hold at zoomed in level for specified duration
+	await get_tree().create_timer(hold_duration).timeout
+	
+	# Smoothly zoom back to original zoom level
+	var tween_out := create_tween()
+	tween_out.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)  # Smooth cubic easing for return
+	tween_out.tween_property(cam, "zoom", original_zoom, duration)
+	await tween_out.finished
+	print("🎬 Camera zoom: Smoothly zoomed back to original zoom = ", original_zoom)
+
 # ---- Fade helpers ----
 func _setup_fade() -> void:
 	if fade_layer:
@@ -381,7 +461,7 @@ func _setup_fade() -> void:
 	var root_scene := get_tree().current_scene
 	if root_scene:
 		root_scene.add_child(fade_layer)
-	else:
+			else:
 		add_child(fade_layer)
 	fade_rect = ColorRect.new()
 	fade_rect.color = Color.BLACK

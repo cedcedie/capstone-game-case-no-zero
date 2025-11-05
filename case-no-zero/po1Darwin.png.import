@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qn8how0mfttn"
-path="res://.godot/imported/po1_idle.png-50adf1a901cee74c2b69aca1697651fe.ctex"
+uid="uid://bk3ryysoo8owk"
+path="res://.godot/imported/po1Darwin.png-13bf784e6e62d54dde976fc7d48f6354.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/side_characters/po1_idle.png"
-dest_files=["res://.godot/imported/po1_idle.png-50adf1a901cee74c2b69aca1697651fe.ctex"]
+source_file="res://po1Darwin.png"
+dest_files=["res://.godot/imported/po1Darwin.png-13bf784e6e62d54dde976fc7d48f6354.ctex"]
 
 [params]
 

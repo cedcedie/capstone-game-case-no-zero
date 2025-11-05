@@ -48,7 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://blts6sose5f61" path="res://miravil/vehicle_triyk/triyk_6.tscn" id="34_kev02"]
 [ext_resource type="Script" uid="uid://bwutt3q7a6bel" path="res://miravil/characters/npc_guy_4.gd" id="35_7iaue"]
 [ext_resource type="PackedScene" uid="uid://dko0ulikt57nb" path="res://miravil/vehicle_triyk/triyk_5.tscn" id="35_fl2h6"]
-[ext_resource type="PackedScene" uid="uid://bvnwiv0tyg8mu" path="res://miravil/vehicle_triyk/triyk_1.tscn" id="36_jtlfh"]
+[ext_resource type="PackedScene" uid="uid://c7nwhqwwg708t" path="res://miravil/vehicle_triyk/triyk_1.tscn" id="36_jtlfh"]
 [ext_resource type="Script" uid="uid://cgixo4tmxff80" path="res://miravil/characters/npc_boy_kunat.gd" id="38_evhef"]
 [ext_resource type="Script" uid="uid://dokttmqf2s46c" path="res://miravil/characters/npc_random_guy.gd" id="41_h58kl"]
 [ext_resource type="Script" uid="uid://csdw01yuraoxh" path="res://miravil/characters/npc_yellow_glass_man.gd" id="43_sav1c"]

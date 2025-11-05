@@ -123,11 +123,11 @@ func _get_target_scene_path_from_area_name() -> String:
 	var area_name = name
 	match area_name:
 		"Area2D_police_lobby_from_head":
-			return "res://scenes/environments/Police Station/police_lobby.tscn"
+			return "res://scenes/environments/police_station/police_lobby.tscn"
 		"Area2D_lower_level":
 			return "res://scenes/environments/police_station/lower_level_station.tscn"
 		"Area2D_head_police":
-			return "res://scenes/environments/Police Station/head_police_room.tscn"
+			return "res://scenes/environments/police_station/head_police_room.tscn"
 		"Area2D_security_server":
 			return "res://scenes/environments/Police Station/security_server.tscn"
 		"Area2D_police_lobby":

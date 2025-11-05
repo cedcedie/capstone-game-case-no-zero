@@ -2,68 +2,80 @@
 	"police_lobby_cutscene": {
 		"dialogue_lines": [
 			{
+				"speaker": "Miguel",
+				"text": "Celine, naalala mo ba yung sinabi ni Erwin kanina?"
+			},
+			{
 				"speaker": "Celine",
-				"text": "Miguel, ang weird nga ng mga sinasabi ni Erwin kanina, diba?"
+				"text": "Oo. Sinabi niya na may sigaw at parang may nagtulakan."
 			},
 			{
 				"speaker": "Miguel",
-				"text": "Oo, parang may tinatago siya. Yung mga details niya, hindi nagma-match."
-			},
-			{
-				"speaker": "Celine",
-				"text": "Totoo! Tapos may mga moments na parang nag-iisip siya ng sasabihin. Obvious na may hindi niya sinasabi."
+				"text": "Tapos may narinig siyang yabag na mabilis palayo."
 			},
 			{
 				"speaker": "Miguel",
-				"text": "Ganun din ang pakiramdam ko. Kaya nga gusto kong mag-investigate pa."
+				"text": "Madilim, walang klarong sandata."
 			},
 			{
 				"speaker": "Celine",
-				"text": "Perfect! Alam mo ba na si Leo ay nagtatrabaho sa barangay hall? Baka may alam sila doon."
+				"text": "At yung pinaka-suspicious — yung CCTV sa koridor daw ay sira. Sabi ng pulis."
 			},
 			{
 				"speaker": "Miguel",
-				"text": "Magandang ideya yan! Baka may mga tao doon na nakakakilala kay Leo. At baka may mga records doon na pwede nating tingnan. Lalo na yung patrol logbook na sinabi ni Erwin."
+				"text": "Oo nga. Napaka-convenient na sira ang CCTV sa tamang panahon."
 			},
 			{
 				"speaker": "Celine",
-				"text": "Sige, tara na sa barangay hall. Pero ako muna, kasi ang bagal mo!"
+				"text": "Totoo. At may naalala ako — may broken body cam na nakuha natin."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Parehong may koneksyon sa body cam at CCTV."
 			},
 			{
 				"speaker": "Miguel",
-				"text": "Haha, sige lang. Basta magkita tayo doon."
+				"text": "Tama ka. Parehong sira ang mga ebidensya. Hindi pwedeng coincidence lang 'yan."
 			},
 			{
 				"speaker": "Celine",
-				"text": "Oo, baka may mga tao doon na nakakakilala kay Leo. Pwede nating tanungin."
+				"text": "Oo. At kailangan nating siguraduhin na ang legal system ng Pilipinas ay gumagana nang maayos."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Kailangan nating protektahan ang chain of custody ng ebidensya (Rule 130)."
 			},
 			{
 				"speaker": "Miguel",
-				"text": "Tama! Baka may mga co-workers niya o mga taong nakakakilala sa kanya."
-			},
-			{
-				"speaker": "Celine",
-				"text": "Exactly! At baka may mga records doon na pwede nating tingnan."
+				"text": "Tama. Kailangan nating i-ensure na ang ebidensya ay properly documented at handled."
 			},
 			{
 				"speaker": "Miguel",
-				"text": "Oo! Baka may mga files o documents na related kay Leo. Lalo na yung patrol logbook."
+				"text": "Rule 130 ng Rules of Court ang magbibigay ng proper foundation para sa admissibility."
 			},
 			{
 				"speaker": "Celine",
-				"text": "Oo nga! Yung logbook baka may mga entries doon na related sa nangyari kay Leo."
+				"text": "Kaya nga, Miguel. Magtanong ka sa pulis dito tungkol sa chief."
 			},
 			{
 				"speaker": "Celine",
-				"text": "Sige, una na ako. See you sa barangay hall!"
+				"text": "Baka may alam siya tungkol sa broken body cam at CCTV."
 			},
 			{
 				"speaker": "Miguel",
-				"text": "Sige, ingat ka. Magkita tayo doon."
+				"text": "Magandang ideya. Baka may sagot ang chief tungkol dito."
 			},
 			{
 				"speaker": "Celine",
-				"text": "Oo, pero wag ka masyadong magmadali. Baka ma-late ka pa! Haha!"
+				"text": "Sige, ako muna. Magkita tayo mamaya."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Sige, ingat ka. Babalik ka?"
+			},
+			{
+				"speaker": "Celine",
+				"text": "Oo, babalik ako. Una na ako."
 			}
 		]
 	}

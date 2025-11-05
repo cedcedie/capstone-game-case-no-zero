@@ -140,6 +140,9 @@ func interact():
 	if has_recollection:
 		# Recollection completed - use recollection dialogue
 		if not recollection_has_interacted:
+			# Hide station lobby nodes during or after first conversation (only after RECOLLECTION_COMPLETED)
+			if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED):
+				_hide_station_lobby_nodes()
 			dialogue_lines = dialogue_data.get("recollection_completed", [])
 			recollection_has_interacted = true
 			print("💬 Using recollection_completed dialogue (first time)")
@@ -207,6 +210,20 @@ func show_dialogue():
 	# Restore original animation after dialogue
 	restore_original_animation()
 	
+	# Update task display if recollection is completed (after first interaction)
+	var has_recollection: bool = CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED)
+	if has_recollection and recollection_has_interacted:
+		var task_display: Node = get_node_or_null("/root/TaskDisplay")
+		if task_display == null:
+			var tree := get_tree()
+			if tree:
+				var found := tree.get_first_node_in_group("task_display")
+				if found:
+					task_display = found
+		if task_display != null and task_display.has_method("show_task"):
+			task_display.show_task("Pumunta sa chief")
+			print("📝 Task display updated: Pumunta sa chief")
+	
 	# Re-enable player movement after dialogue
 	if player_reference and player_reference.has_method("enable_movement"):
 		player_reference.enable_movement()
@@ -214,3 +231,43 @@ func show_dialogue():
 	# Show the label again if player is still nearby
 	if is_player_nearby:
 		show_interaction_label()
+
+func _hide_station_lobby_nodes() -> void:
+	# Hide station_lobby and StationLobby2 and disable their collision
+	# These are direct children of the scene root
+	var root_scene := get_tree().current_scene
+	if root_scene == null:
+		print("⚠️ Cannot hide station lobby nodes - no root scene")
+		return
+	
+	# Hide station_lobby and disable collision
+	var station_lobby := root_scene.get_node_or_null("station_lobby")
+	if station_lobby != null:
+		if station_lobby is CanvasItem:
+			(station_lobby as CanvasItem).visible = false
+		_set_node_collision_enabled(station_lobby, false)
+		print("🎬 Hidden station_lobby and disabled collision")
+	else:
+		print("⚠️ station_lobby node not found in scene root")
+	
+	# Hide StationLobby2 and disable collision
+	var station_lobby2 := root_scene.get_node_or_null("StationLobby2")
+	if station_lobby2 != null:
+		if station_lobby2 is CanvasItem:
+			(station_lobby2 as CanvasItem).visible = false
+		_set_node_collision_enabled(station_lobby2, false)
+		print("🎬 Hidden StationLobby2 and disabled collision")
+	else:
+		print("⚠️ StationLobby2 node not found in scene root")
+
+func _set_node_collision_enabled(node: Node, enabled: bool) -> void:
+	# Recursively disable/enable all CollisionShape2D nodes within the given node
+	if node == null:
+		return
+	var stack: Array = [node]
+	while stack.size() > 0:
+		var n: Node = stack.pop_back()
+		for child in n.get_children():
+			stack.push_back(child)
+			if child is CollisionShape2D:
+				(child as CollisionShape2D).disabled = not enabled
