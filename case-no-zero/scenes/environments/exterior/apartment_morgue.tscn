@@ -37372,7 +37372,7 @@ offset_bottom = 9.0
 
 [node name="NpcBeardMan" parent="." instance=ExtResource("11_fl2h6")]
 z_index = 4
-position = Vector2(155, 760)
+position = Vector2(120, 800)
 script = ExtResource("13_7btrm")
 
 [node name="AnimatedSprite2D" parent="NpcBeardMan" index="0"]
@@ -37425,7 +37425,8 @@ autoplay = "idle_left"
 z_index = 4
 
 [node name="NpcOneEye" parent="." instance=ExtResource("17_xv305")]
-position = Vector2(192, 760)
+z_index = 4
+position = Vector2(184, 800)
 script = ExtResource("24_mnau3")
 
 [node name="AnimatedSprite2D" parent="NpcOneEye" index="0"]
@@ -37493,7 +37494,8 @@ position = Vector2(2160, 680)
 script = ExtResource("38_evhef")
 
 [node name="NpcCurlyGirly" parent="." instance=ExtResource("26_7btrm")]
-position = Vector2(768, 1032)
+z_index = 7
+position = Vector2(784, 1063)
 
 [node name="AnimatedSprite2D" parent="NpcCurlyGirly" index="0"]
 position = Vector2(-13, 0)

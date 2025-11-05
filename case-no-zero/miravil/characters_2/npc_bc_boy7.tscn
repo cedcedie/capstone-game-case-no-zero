@@ -75,29 +75,29 @@ region = Rect2(512, 64, 32, 64)
 atlas = ExtResource("1_hqbsw")
 region = Rect2(544, 64, 32, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqbsw"]
+atlas = ExtResource("1_hqbsw")
+region = Rect2(0, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbmgh"]
+atlas = ExtResource("1_hqbsw")
+region = Rect2(32, 256, 32, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bmxj5"]
 atlas = ExtResource("1_hqbsw")
-region = Rect2(0, 128, 32, 64)
+region = Rect2(64, 256, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jq3k"]
 atlas = ExtResource("1_hqbsw")
-region = Rect2(32, 128, 32, 64)
+region = Rect2(96, 256, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_krira"]
 atlas = ExtResource("1_hqbsw")
-region = Rect2(64, 128, 32, 64)
+region = Rect2(128, 256, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnkf8"]
 atlas = ExtResource("1_hqbsw")
-region = Rect2(96, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d6315"]
-atlas = ExtResource("1_hqbsw")
-region = Rect2(128, 128, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1o1p3"]
-atlas = ExtResource("1_hqbsw")
-region = Rect2(160, 128, 32, 64)
+region = Rect2(160, 256, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cvppp"]
 animations = [{
@@ -172,6 +172,12 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hqbsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbmgh")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bmxj5")
 }, {
 "duration": 1.0,
@@ -182,12 +188,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dnkf8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d6315")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1o1p3")
 }],
 "loop": true,
 "name": &"idle_right",
@@ -230,7 +230,7 @@ radius = 26.0192
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cvppp")
 animation = &"idle_right"
-autoplay = "read_front"
+autoplay = "idle_right"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
