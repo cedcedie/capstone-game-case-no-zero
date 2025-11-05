@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://cq1mt7kj1x50o"]
+[gd_scene load_steps=31 format=3 uid="uid://cq1mt7kj1x50o"]
 
 [ext_resource type="Texture2D" uid="uid://bj0grjburxphq" path="res://miravil/sprites_police_station_5/npc_pl_po2.png" id="1_7gp4b"]
+[ext_resource type="Script" uid="uid://cpw88gwdf851u" path="res://miravil/character_police_station/npc_pl_po_2.gd" id="1_trqpp"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_trqpp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0y7kl"]
@@ -226,6 +227,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcPlPo2" type="CharacterBody2D"]
+script = ExtResource("1_trqpp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i63ib")

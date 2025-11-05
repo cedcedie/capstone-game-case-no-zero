@@ -38,8 +38,12 @@
 				"text": "Alam ko ang chain of custody. Pero kung nasira ang body cam, wala na tayong magagawa."
 			},
 			{
+				"speaker": "Miguel",
+				"text": "Pero po, may SD card ang body cam. Eto po, binigay namin sa inyo."
+			},
+			{
 				"speaker": "PO1 Darwin",
-				"text": "Kung gusto ninyong makita ang CCTV footage, pumunta kayo sa security server."
+				"text": "SD card? Baka may data pa doon. Pumunta kayo sa security server para ma-check."
 			},
 			{
 				"speaker": "PO1 Darwin",
@@ -51,7 +55,7 @@
 			},
 			{
 				"speaker": "Miguel",
-				"text": "\"Sige, makikita natin ang CCTV footage sa security server.\""
+				"text": "\"Sige, ma-check natin ang SD card ng body cam sa security server.\""
 			},
 			{
 				"speaker": "Miguel",

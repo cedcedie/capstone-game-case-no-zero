@@ -1,0 +1,15 @@
+{
+	"security_server_cutscene": {
+		"dialogue_lines": [
+			{
+				"speaker": "Miguel",
+				"text": "PO1 Darwin, nakarecover po ba kayo ng footage mula sa SD card?"
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Oo, nakita namin. Makikita mo mismo sa screen para sa iyo."
+			}
+		]
+	}
+}
+

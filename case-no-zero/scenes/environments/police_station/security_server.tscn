@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://b5owjsmxnbf08"]
+[gd_scene load_steps=31 format=4 uid="uid://b5owjsmxnbf08"]
 
 [ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/sprites/environments/interior/19_Hospital_32x32.png" id="1_287rg"]
 [ext_resource type="Texture2D" uid="uid://bko828tu8yow7" path="res://assets/sprites/environments/interior/18_Jail_32x32.png" id="2_1pqqw"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="6_6e55x"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="7_wv18c"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="8_tmrtk"]
+[ext_resource type="Script" uid="uid://ddpilm4d6dvgn" path="res://scripts/environments/security_server.gd" id="9_security"]
+[ext_resource type="PackedScene" uid="uid://cq1mt7kj1x50o" path="res://miravil/character_police_station/npc_pl_po2.tscn" id="10_6e55x"]
+[ext_resource type="PackedScene" uid="uid://bqr0txu1h7bch" path="res://miravil/character_police_station/po1Darwin.tscn" id="11_wv18c"]
+[ext_resource type="PackedScene" uid="uid://cgif0hfwgj8h2" path="res://miravil/character_police_station/npc_pl_po5.tscn" id="12_tmrtk"]
+[ext_resource type="PackedScene" uid="uid://m2lpajhjgibi" path="res://miravil/character_police_station/npc_pl_po7.tscn" id="13_wr0j6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gjqan"]
 texture = ExtResource("1_287rg")
@@ -5991,7 +5996,16 @@ sources/0 = SubResource("TileSetAtlasSource_jr5kr")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cl1ug"]
 size = Vector2(53, 42)
 
+[sub_resource type="Animation" id="Animation_6e55x"]
+resource_name = "security_server_cutscene"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wv18c"]
+_data = {
+&"security_server_cutscene": SubResource("Animation_6e55x")
+}
+
 [node name="SecurityxserverRoom" type="Node2D"]
+script = ExtResource("9_security")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(264, 144)
@@ -6030,5 +6044,22 @@ shape = SubResource("RectangleShape2D_cl1ug")
 [node name="PlayerM" parent="." instance=ExtResource("8_tmrtk")]
 z_index = 4
 position = Vector2(456, 248)
+
+[node name="NpcPlPo2" parent="." instance=ExtResource("10_6e55x")]
+position = Vector2(456, 560)
+
+[node name="NpcPlPo1Darwin" parent="." instance=ExtResource("11_wv18c")]
+position = Vector2(680, 312)
+
+[node name="NpcPlPo5" parent="." instance=ExtResource("12_tmrtk")]
+position = Vector2(696, 528)
+
+[node name="NpcPlPo7" parent="." instance=ExtResource("13_wr0j6")]
+position = Vector2(808, 312)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wv18c")
+}
 
 [editable path="PlayerM"]

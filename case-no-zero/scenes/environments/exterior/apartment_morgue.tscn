@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://dvgkhr0qxnpx0"]
+[gd_scene load_steps=89 format=4 uid="uid://dvgkhr0qxnpx0"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_7v4vq"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_xphjy"]
@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://b0k0313qg5upt" path="res://miravil/characters/npc_guy_2.tscn" id="20_xqyx5"]
 [ext_resource type="PackedScene" uid="uid://dbt0khsctyvim" path="res://miravil/characters/npc_guy_5.tscn" id="21_dsbue"]
 [ext_resource type="PackedScene" uid="uid://di11hg7t8dak4" path="res://miravil/characters/npc_guy_6.tscn" id="22_1g55f"]
-[ext_resource type="Script" uid="uid://psk45wtqy2h2" path="res://miravil/characters/npc_mustache.gd" id="22_mhdqn"]
 [ext_resource type="PackedScene" uid="uid://cbnn8pq1mffxm" path="res://miravil/characters/npc_guy_4.tscn" id="23_w58ee"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="24_he11w"]
 [ext_resource type="Script" uid="uid://bm78g1r4lv64g" path="res://miravil/characters/npc_one_eye.gd" id="24_mnau3"]
@@ -37415,7 +37414,6 @@ script = ExtResource("20_0gp1r")
 [node name="NpcMustache" parent="." instance=ExtResource("16_2k7xy")]
 z_index = 4
 position = Vector2(1792, 1000)
-script = ExtResource("22_mhdqn")
 
 [node name="AnimatedSprite2D" parent="NpcMustache" index="0"]
 animation = &"idle_left"

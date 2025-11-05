@@ -461,7 +461,7 @@ func _setup_fade() -> void:
 	var root_scene := get_tree().current_scene
 	if root_scene:
 		root_scene.add_child(fade_layer)
-			else:
+	else:
 		add_child(fade_layer)
 	fade_rect = ColorRect.new()
 	fade_rect.color = Color.BLACK

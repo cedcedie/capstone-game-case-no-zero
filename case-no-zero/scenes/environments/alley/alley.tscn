@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dtdips0keo7wv"]
+[gd_scene load_steps=24 format=4 uid="uid://dtdips0keo7wv"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_6iycu"]
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="2_gf64x"]
@@ -8,8 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bwyvkfptif2cp" path="res://assets/sprites/environments/exterior/19_Graveyard_32x32.png" id="6_c5khy"]
 [ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="7_3lj2i"]
 [ext_resource type="Texture2D" uid="uid://bko828tu8yow7" path="res://assets/sprites/environments/interior/18_Jail_32x32.png" id="7_4cn24"]
-[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main_characters/celine_navarro.tscn" id="10_ykkix"]
-[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="11_cixgr"]
+[ext_resource type="PackedScene" uid="uid://c1mw2t7y4ddem" path="res://scenes/characters/main_characters/leo_mendoza.tscn" id="9_l8mol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4cn24"]
 texture = ExtResource("1_6iycu")
@@ -17988,61 +17987,13 @@ sources/3 = SubResource("TileSetAtlasSource_c5khy")
 
 [sub_resource type="Animation" id="Animation_0l7ls"]
 resource_name = "alley_cutscene"
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("celine/AnimatedSprite2D:celine")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerM/AnimatedSprite2D:miguel")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("celine/AnimatedSprite2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerM/AnimatedSprite2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
@@ -18075,15 +18026,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_ggrdq")
 }
 
-[node name="celine" parent="." instance=ExtResource("10_ykkix")]
-position = Vector2(368, 416)
-
-[node name="AnimatedSprite2D" parent="celine" index="0"]
-animation = &"idle_left"
-
-[node name="PlayerM" parent="." instance=ExtResource("11_cixgr")]
-z_index = 4
-position = Vector2(312, 416)
-
-[editable path="celine"]
-[editable path="PlayerM"]
+[node name="leo_mendoza" parent="." instance=ExtResource("9_l8mol")]
+position = Vector2(400, 416)
