@@ -130,43 +130,43 @@ func set_camera_limits_for_scene():
 		"courtroom":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
-			player_camera.limit_right = 1407.0
-			player_camera.limit_bottom = 774.0
+			player_camera.limit_right = 1407
+			player_camera.limit_bottom = 774
 		"baranggay_court":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
-			player_camera.limit_right = 1728.0
-			player_camera.limit_bottom = 1920.0
+			player_camera.limit_right = 1728
+			player_camera.limit_bottom = 1920
 		"apartment_morgue":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
-			player_camera.limit_right = 2736.0
-			player_camera.limit_bottom = 1021.0
+			player_camera.limit_right = 2736
+			player_camera.limit_bottom = 1021
 		"camp":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
-			player_camera.limit_right = 1568.0
-			player_camera.limit_bottom = 1064.0
+			player_camera.limit_right = 1568
+			player_camera.limit_bottom = 1064
 		"hotel_hospital":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
-			player_camera.limit_right = 1280.0
-			player_camera.limit_bottom = 2700.0
+			player_camera.limit_right = 1280
+			player_camera.limit_bottom = 2700
 		"police_station":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
-			player_camera.limit_right = 2624.0
-			player_camera.limit_bottom = 1544.0
+			player_camera.limit_right = 2624
+			player_camera.limit_bottom = 1544
 		"terminal_market":
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
-			player_camera.limit_right = 2816.0
-			player_camera.limit_bottom = 1080.0
+			player_camera.limit_right = 2816
+			player_camera.limit_bottom = 1080
 		_:
 			player_camera.limit_left = 0
 			player_camera.limit_top = 0
-			player_camera.limit_right = 1280.0
-			player_camera.limit_bottom = 720.0
+			player_camera.limit_right = 1280
+			player_camera.limit_bottom = 720
 
 func _on_tree_changed():
 	"""Called when tree changes - check if scene changed"""

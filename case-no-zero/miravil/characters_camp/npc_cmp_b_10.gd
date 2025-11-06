@@ -33,8 +33,15 @@ func move_to_next_point():
 		is_waiting = true
 		global_position = target  # Snap into exact point
 		velocity = Vector2.ZERO
-		play_idle_animation()  # ✅ Always plays idle_front
-		await wait_before_move()  # ✅ Random wait 0.5–3.0s
+		play_idle_animation()
+		
+		# ✅ Only wait at first (index 0) and last (index size-1) destinations
+		if current_destination == 0 or current_destination == path_points.size() - 1:
+			await wait_before_move()  # Random wait 10-20s
+		else:
+			# Middle destinations: very brief pause (0.1s) or no wait
+			await get_tree().create_timer(0.1).timeout
+		
 		advance_destination()
 		return
 
@@ -45,7 +52,7 @@ func move_to_next_point():
 	move_and_slide()
 
 func wait_before_move() -> void:
-	# ✅ Random pause at destination (adjust if needed)
+	# ✅ Random pause at first/last destination only (adjust if needed)
 	var wait_time: float = randf_range(10.0, 20.0)
 	await get_tree().create_timer(wait_time).timeout
 
@@ -83,5 +90,14 @@ func update_walking_animation(dir: Vector2):
 			last_direction = "up"
 
 func play_idle_animation():
-	# ✅ Always play read_front when stopped, regardless of direction
-	animated_sprite.play("read_front")
+	# ✅ Play read_front only at first (index 0) and last (index size-1) positions
+	# For all other destinations, use direction-based idle animation
+	if current_destination == 0 or current_destination == path_points.size() - 1:
+		animated_sprite.play("read_front")
+	else:
+		# Use direction-based idle animation for middle destinations
+		match last_direction:
+			"right": animated_sprite.play("idle_right")
+			"left": animated_sprite.play("idle_left")
+			"up": animated_sprite.play("idle_back")
+			"down": animated_sprite.play("idle_front")

@@ -53,30 +53,30 @@ func _ready() -> void:
 		print("🎬 HEAD_POLICE_COMPLETED - hiding station lobby nodes permanently")
 		_hide_station_lobby_nodes()
 	
-	# Check if SECURITY_SERVER_CUTSCENE_2_COMPLETED - play celine_call animation (only once)
+	# Check if SECURITY_SERVER_CUTSCENE_2_COMPLETED - play celine_call_cutscene animation (only once)
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_CUTSCENE_2_COMPLETED):
 		if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED):
-			print("🎬 SECURITY_SERVER_CUTSCENE_2_COMPLETED - playing celine_call animation")
+			print("🎬 SECURITY_SERVER_CUTSCENE_2_COMPLETED - playing celine_call_cutscene animation")
 			# Start cutscene
 			cutscene_active = true
 			
-			# Wait for scene fade-in to complete
-			await get_tree().process_frame
-			await get_tree().process_frame
-			await get_tree().process_frame
-			
-			var scene_root := get_tree().current_scene
-			var scene_fade_in := scene_root.get_node_or_null("SceneFadeIn") if scene_root != null else null
-			if scene_fade_in != null:
-				await get_tree().create_timer(0.3).timeout
-			else:
-				await get_tree().create_timer(0.2).timeout
-			
-			# Play celine_call animation
+		# Wait for scene fade-in to complete
+		await get_tree().process_frame
+		await get_tree().process_frame
+		await get_tree().process_frame
+		
+		var scene_root := get_tree().current_scene
+		var fade_in_node := scene_root.get_node_or_null("SceneFadeIn") if scene_root != null else null
+		if fade_in_node != null:
+			await get_tree().create_timer(0.3).timeout
+		else:
+			await get_tree().create_timer(0.2).timeout
+		
+		# Play celine_call_cutscene animation
 			if anim_player != null:
-				if anim_player.has_animation("celine_call"):
-					print("🎬 Playing celine_call animation")
-					anim_player.play("celine_call")
+				if anim_player.has_animation("celine_call_cutscene"):
+					print("🎬 Playing celine_call_cutscene animation")
+					anim_player.play("celine_call_cutscene")
 					# Wait for animation to finish
 					# Note: _set_celine_call_completed() should be called from AnimationPlayer method call track
 					await anim_player.animation_finished
@@ -84,16 +84,16 @@ func _ready() -> void:
 					if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED):
 						_set_celine_call_completed()
 				else:
-					print("⚠️ No 'celine_call' animation found. Available animations: ", anim_player.get_animation_list())
+					print("⚠️ No 'celine_call_cutscene' animation found. Available animations: ", anim_player.get_animation_list())
 					_set_player_active(true)
 			else:
 				print("⚠️ AnimationPlayer not found!")
 				_set_player_active(true)
 			return
-		else:
-			print("🎬 Celine call already completed - skipping")
-			_set_player_active(true)
-			return
+	else:
+		print("🎬 Celine call already completed - skipping")
+		_set_player_active(true)
+		return
 	
 	# Check if lower level cutscene is completed
 	if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED):
@@ -123,8 +123,8 @@ func _ready() -> void:
 		await get_tree().process_frame
 		
 		var scene_root := get_tree().current_scene
-		var scene_fade_in := scene_root.get_node_or_null("SceneFadeIn") if scene_root != null else null
-		if scene_fade_in != null:
+		var fade_in_node := scene_root.get_node_or_null("SceneFadeIn") if scene_root != null else null
+		if fade_in_node != null:
 			await get_tree().create_timer(0.3).timeout
 		else:
 			await get_tree().create_timer(0.2).timeout
@@ -411,7 +411,7 @@ func show_line_auto_advance(index: int, delay_after: float = 2.0) -> void:
 		push_warning("Dialogue index out of range: " + str(index))
 		return
 	var line: Dictionary = dialogue_lines[index]
-	var speaker: String = String(line.get("speaker", ""))
+	var _speaker: String = String(line.get("speaker", ""))
 	var text: String = String(line.get("text", ""))
 	
 	# Show the line (typing will start)
@@ -537,18 +537,18 @@ func _set_post_cutscene_positions() -> void:
 	
 	print("🎬 Post-cutscene positioning complete")
 
-func _find_character_by_name(name: String) -> Node:
+func _find_character_by_name(character_name: String) -> Node:
 	var root_scene := get_tree().current_scene
 	if root_scene == null:
 		return null
 	
 	# Try direct child first
-	var direct := root_scene.get_node_or_null(NodePath(name))
+	var direct := root_scene.get_node_or_null(NodePath(character_name))
 	if direct != null:
 		return direct
 	
 	# Try recursive search
-	var lowered := name.to_lower()
+	var lowered := character_name.to_lower()
 	var candidates := root_scene.find_children("*", "", true, false)
 	for n in candidates:
 		if String(n.name).to_lower() == lowered:
@@ -823,14 +823,14 @@ func _get_camera_2d() -> Camera2D:
 		player_node = _find_player()
 	
 	if player_node != null:
-		var cam := player_node.get_node_or_null("Camera2D")
-		if cam is Camera2D:
-			return cam
+		var player_cam := player_node.get_node_or_null("Camera2D")
+		if player_cam is Camera2D:
+			return player_cam
 	
 	# Fallback to viewport camera
-	var cam := get_viewport().get_camera_2d()
-	if cam:
-		return cam
+	var viewport_cam := get_viewport().get_camera_2d()
+	if viewport_cam:
+		return viewport_cam
 	if has_node("Camera2D"):
 		var c := get_node("Camera2D")
 		if c is Camera2D:
