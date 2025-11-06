@@ -6,6 +6,7 @@ const FOLLOW_DARWIN_SPAWN: Vector2 = Vector2(904.0, 360.0)
 var anim_player: AnimationPlayer = null
 var player_node: Node = null
 var dialogue_lines: Array[Dictionary] = []
+var celine_call_dialogue: Array[Dictionary] = []  # Separate dialogue for celine_call
 var fade_layer: CanvasLayer
 var fade_rect: ColorRect
 var resume_on_next: bool = false
@@ -39,6 +40,8 @@ func _ready() -> void:
 	
 	# Load dialogue
 	_load_dialogue_if_available()
+	# Load celine_call dialogue
+	_load_celine_call_dialogue()
 	
 	# Connect DialogueUI next_pressed signal
 	var dui: Node = get_node_or_null("/root/DialogueUI")
@@ -49,6 +52,48 @@ func _ready() -> void:
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
 		print("🎬 HEAD_POLICE_COMPLETED - hiding station lobby nodes permanently")
 		_hide_station_lobby_nodes()
+	
+	# Check if SECURITY_SERVER_CUTSCENE_2_COMPLETED - play celine_call animation (only once)
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_CUTSCENE_2_COMPLETED):
+		if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED):
+			print("🎬 SECURITY_SERVER_CUTSCENE_2_COMPLETED - playing celine_call animation")
+			# Start cutscene
+			cutscene_active = true
+			
+			# Wait for scene fade-in to complete
+			await get_tree().process_frame
+			await get_tree().process_frame
+			await get_tree().process_frame
+			
+			var scene_root := get_tree().current_scene
+			var scene_fade_in := scene_root.get_node_or_null("SceneFadeIn") if scene_root != null else null
+			if scene_fade_in != null:
+				await get_tree().create_timer(0.3).timeout
+			else:
+				await get_tree().create_timer(0.2).timeout
+			
+			# Play celine_call animation
+			if anim_player != null:
+				if anim_player.has_animation("celine_call"):
+					print("🎬 Playing celine_call animation")
+					anim_player.play("celine_call")
+					# Wait for animation to finish
+					# Note: _set_celine_call_completed() should be called from AnimationPlayer method call track
+					await anim_player.animation_finished
+					# Fallback: if not called from animation, call it here
+					if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED):
+						_set_celine_call_completed()
+				else:
+					print("⚠️ No 'celine_call' animation found. Available animations: ", anim_player.get_animation_list())
+					_set_player_active(true)
+			else:
+				print("⚠️ AnimationPlayer not found!")
+				_set_player_active(true)
+			return
+		else:
+			print("🎬 Celine call already completed - skipping")
+			_set_player_active(true)
+			return
 	
 	# Check if lower level cutscene is completed
 	if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED):
@@ -90,9 +135,11 @@ func _ready() -> void:
 				print("🎬 Playing follow_darwin animation")
 				anim_player.play("follow_darwin")
 				# Wait for animation to finish
+				# Note: _set_follow_darwin_completed() should be called from AnimationPlayer method call track
 				await anim_player.animation_finished
-				# Set checkpoint when animation completes
-				_set_follow_darwin_completed()
+				# Fallback: if not called from animation, call it here
+				if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED):
+					_set_follow_darwin_completed()
 			else:
 				print("⚠️ No 'follow_darwin' animation found. Available animations: ", anim_player.get_animation_list())
 				_set_player_active(true)
@@ -338,8 +385,57 @@ func show_line(index: int, auto_advance: bool = false) -> void:
 		return
 	if dui.has_method("show_dialogue_line"):
 		dui.show_dialogue_line(speaker, text, auto_advance)
+		
+		# If auto_advance is true, wait for typing + 2 second delay, then auto-advance
+		if auto_advance:
+			var typing_speed: float = 0.01  # From DialogueUI
+			var text_length: int = text.length()
+			var typing_duration: float = float(text_length) * typing_speed
+			
+			# Wait for typing to complete
+			await get_tree().create_timer(typing_duration).timeout
+			
+			# Wait additional 2 second delay after typing finishes
+			await get_tree().create_timer(2.0).timeout
+			
+			# Auto-advance by emitting next_pressed signal
+			if dui.has_signal("next_pressed"):
+				dui.emit_signal("next_pressed")
+				print("🎬 Auto-advanced after typing + 2s delay")
 		return
 	print("⚠️ DialogueUI missing show_dialogue_line().")
+
+func show_line_auto_advance(index: int, delay_after: float = 2.0) -> void:
+	"""Show a line with auto-advance: wait for typing to finish + delay, then auto-advance"""
+	if index < 0 or index >= dialogue_lines.size():
+		push_warning("Dialogue index out of range: " + str(index))
+		return
+	var line: Dictionary = dialogue_lines[index]
+	var speaker: String = String(line.get("speaker", ""))
+	var text: String = String(line.get("text", ""))
+	
+	# Show the line (typing will start)
+	show_line(index, true)  # true = auto_advance mode (hides button)
+	
+	# Calculate typing duration: text_length * typing_speed (0.01 seconds per character)
+	var typing_speed: float = 0.01  # From DialogueUI
+	var text_length: int = text.length()
+	var typing_duration: float = float(text_length) * typing_speed
+	
+	# Wait for typing to complete
+	await get_tree().create_timer(typing_duration).timeout
+	
+	# Wait additional delay after typing finishes
+	await get_tree().create_timer(delay_after).timeout
+	
+	# Total time calculation for reference
+	var total_time: float = typing_duration + delay_after
+	print("🎬 Auto-advance: Text length=", text_length, " chars, Typing=", typing_duration, "s, Delay=", delay_after, "s, Total=", total_time, "s")
+	
+	# Auto-advance by emitting next_pressed signal
+	var dui: Node = get_node_or_null("/root/DialogueUI")
+	if dui and dui.has_signal("next_pressed"):
+		dui.emit_signal("next_pressed")
 
 func wait_for_next() -> void:
 	_set_player_active(false)
@@ -476,16 +572,19 @@ func _set_character_animation(character: Node, animation_name: String) -> void:
 		print("🎬 Set animation '", animation_name, "' on ", character.name)
 
 func _set_follow_darwin_completed() -> void:
-	"""Set the FOLLOW_DARWIN_COMPLETED checkpoint after animation completes"""
+	"""Set the FOLLOW_DARWIN_COMPLETED checkpoint after animation completes - callable from AnimationPlayer"""
 	# Prevent duplicate checkpoint setting
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED):
 		print("🎬 FOLLOW_DARWIN_COMPLETED already set, skipping")
 		return
 	
+	# Hide dialogue UI if visible
+	_hide_dialogue_ui()
+	
 	# Set checkpoint
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED)
 	print("🎬 Follow Darwin completed, checkpoint set.")
-
+	
 	# Reposition player to dedicated follow_darwin spawn (not the recollection spawn)
 	if player_node == null:
 		player_node = _find_player()
@@ -495,9 +594,141 @@ func _set_follow_darwin_completed() -> void:
 		(player_node as Node2D).global_position = FOLLOW_DARWIN_SPAWN
 		print("🎬 PlayerM positioned at (", FOLLOW_DARWIN_SPAWN.x, ", ", FOLLOW_DARWIN_SPAWN.y, ") after follow_darwin")
 	
+	# Reset DialogueUI cutscene mode
+	var dui: Node = get_node_or_null("/root/DialogueUI")
+	if dui and dui.has_method("set_cutscene_mode"):
+		dui.set_cutscene_mode(false)
+		print("🎬 Reset DialogueUI cutscene_mode to false")
+	
 	# Cleanup
 	cutscene_active = false
 	_set_player_active(true)
+
+func _set_celine_call_completed() -> void:
+	"""Set the CELINE_CALL_COMPLETED checkpoint after animation completes - callable from AnimationPlayer"""
+	# Prevent duplicate checkpoint setting
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED):
+		print("🎬 CELINE_CALL_COMPLETED already set, skipping")
+		return
+	
+	# Hide dialogue UI first
+	_hide_dialogue_ui()
+	
+	# Set checkpoint
+	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED)
+	print("🎬 Celine call completed, checkpoint set.")
+	
+	# Update task display to "Pumunta sa baranggay hall"
+	_show_task_display("Pumunta sa baranggay hall")
+	
+	# Reset DialogueUI cutscene mode
+	var dui: Node = get_node_or_null("/root/DialogueUI")
+	if dui and dui.has_method("set_cutscene_mode"):
+		dui.set_cutscene_mode(false)
+		print("🎬 Reset DialogueUI cutscene_mode to false")
+	
+	# Cleanup
+	cutscene_active = false
+	_set_player_active(true)
+
+func play_phone_ringtone(ring_count: int = 3) -> float:
+	"""Play phone ringtone using VoiceBlipManager
+	Returns the total duration of the ringtone sequence
+	"""
+	var voice_blip_manager = get_node_or_null("/root/VoiceBlipManager")
+	if voice_blip_manager and voice_blip_manager.has_method("play_ringtone"):
+		print("📞 Playing phone ringtone...")
+		var duration = await voice_blip_manager.play_ringtone(ring_count, 0.2, 0.3)
+		return duration
+	else:
+		print("⚠️ VoiceBlipManager not found or missing play_ringtone method")
+		return 0.0
+
+func call_ringtone(ring_count: int = 3) -> void:
+	"""Call ringtone from AnimationPlayer - non-blocking method call
+	This method can be called from AnimationPlayer's method call track
+	"""
+	print("📞 AnimationPlayer called ringtone with ", ring_count, " rings")
+	# Use call_deferred to start the async function without blocking
+	call_deferred("_start_ringtone_async", ring_count)
+
+func _start_ringtone_async(ring_count: int = 3) -> void:
+	"""Internal async function to start the ringtone"""
+	var duration = await play_phone_ringtone(ring_count)
+	print("📞 Ringtone duration was: ", duration, " seconds")
+
+# ---- Celine Call Dialogue Methods (callable from AnimationPlayer) ----
+func show_celine_call_line_0() -> void:
+	"""Show first line of celine call dialogue - callable from AnimationPlayer"""
+	if celine_call_dialogue.size() > 0:
+		show_line_from_array(celine_call_dialogue, 0)
+	else:
+		print("⚠️ Celine call dialogue not loaded")
+
+func show_celine_call_line_1() -> void:
+	"""Show second line of celine call dialogue - callable from AnimationPlayer"""
+	if celine_call_dialogue.size() > 1:
+		show_line_from_array(celine_call_dialogue, 1)
+	else:
+		print("⚠️ Celine call dialogue line 1 not available")
+
+func show_celine_call_line_2() -> void:
+	"""Show third line of celine call dialogue - callable from AnimationPlayer"""
+	if celine_call_dialogue.size() > 2:
+		show_line_from_array(celine_call_dialogue, 2)
+	else:
+		print("⚠️ Celine call dialogue line 2 not available")
+
+func show_celine_call_line_3() -> void:
+	"""Show fourth line of celine call dialogue - callable from AnimationPlayer"""
+	if celine_call_dialogue.size() > 3:
+		show_line_from_array(celine_call_dialogue, 3)
+	else:
+		print("⚠️ Celine call dialogue line 3 not available")
+
+func show_celine_call_line_4() -> void:
+	"""Show fifth line of celine call dialogue - callable from AnimationPlayer"""
+	if celine_call_dialogue.size() > 4:
+		show_line_from_array(celine_call_dialogue, 4)
+	else:
+		print("⚠️ Celine call dialogue line 4 not available")
+
+func show_line_from_array(dialogue_array: Array[Dictionary], index: int, auto_advance: bool = true) -> void:
+	"""Helper function to show a line from any dialogue array with auto-advance"""
+	if index < 0 or index >= dialogue_array.size():
+		push_warning("Dialogue index out of range: " + str(index))
+		return
+	var line: Dictionary = dialogue_array[index]
+	var speaker: String = String(line.get("speaker", ""))
+	var text: String = String(line.get("text", ""))
+	
+	var dui: Node = get_node_or_null("/root/DialogueUI")
+	if dui == null:
+		print("⚠️ DialogueUI autoload not found.")
+		return
+	if dui.has_method("set_cutscene_mode"):
+		dui.set_cutscene_mode(true)
+	if dui.has_method("show_dialogue_line"):
+		dui.show_dialogue_line(speaker, text, auto_advance)
+		
+		# If auto_advance is true, wait for typing + 2 second delay, then auto-advance
+		if auto_advance:
+			var typing_speed: float = 0.01  # From DialogueUI
+			var text_length: int = text.length()
+			var typing_duration: float = float(text_length) * typing_speed
+			
+			# Wait for typing to complete
+			await get_tree().create_timer(typing_duration).timeout
+			
+			# Wait additional 2 second delay after typing finishes
+			await get_tree().create_timer(2.0).timeout
+			
+			# Auto-advance by emitting next_pressed signal
+			if dui.has_signal("next_pressed"):
+				dui.emit_signal("next_pressed")
+				print("🎬 Auto-advanced celine call dialogue after typing + 2s delay")
+	else:
+		print("⚠️ DialogueUI missing show_dialogue_line().")
 
 func _on_dialogue_next() -> void:
 	if player_node != null:
@@ -534,6 +765,35 @@ func _load_dialogue_if_available() -> void:
 		for item in (arr as Array):
 			if typeof(item) == TYPE_DICTIONARY:
 				dialogue_lines.append(item as Dictionary)
+
+func _load_celine_call_dialogue() -> void:
+	"""Load celine_call dialogue from JSON file"""
+	var path := "res://data/dialogues/celine_call_dialogue.json"
+	if not ResourceLoader.exists(path):
+		print("⚠️ Celine call dialogue file not found: ", path)
+		return
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		print("⚠️ Cannot open celine call dialogue file: ", path)
+		return
+	var parsed: Variant = JSON.parse_string(file.get_as_text())
+	file.close()
+	if typeof(parsed) != TYPE_DICTIONARY:
+		print("⚠️ Invalid celine call dialogue JSON format")
+		return
+	var section: Variant = (parsed as Dictionary).get("celine_call", {})
+	if typeof(section) != TYPE_DICTIONARY:
+		print("⚠️ Missing 'celine_call' section in dialogue file")
+		return
+	var arr: Variant = (section as Dictionary).get("dialogue_lines", [])
+	if typeof(arr) == TYPE_ARRAY:
+		celine_call_dialogue.clear()
+		for item in (arr as Array):
+			if typeof(item) == TYPE_DICTIONARY:
+				celine_call_dialogue.append(item as Dictionary)
+		print("📞 Loaded ", celine_call_dialogue.size(), " celine call dialogue lines")
+	else:
+		print("⚠️ No dialogue_lines array found in celine_call section")
 
 # ---- Camera helpers ----
 func shake_camera(intensity: float = 6.0, duration: float = 0.3) -> void:

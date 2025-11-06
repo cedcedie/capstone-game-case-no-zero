@@ -1,0 +1,27 @@
+{
+	"celine_call": {
+		"dialogue_lines": [
+			{
+				"speaker": "Celine",
+				"text": "Miguel, naririnig mo ba ako?"
+			},
+			{
+				"speaker": "Celine",
+				"text": "Hindi? Hindi mo ako naririnig?"
+			},
+			{
+				"speaker": "Celine",
+				"text": "Buwisit naman 'to."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Anyway, nasa barangay hall ako ngayon. Makikipag-usap ako sa Kapitana para makapagtanong tayo tungkol sa kaso."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Sige, papunta na ako."
+			}
+		]
+	}
+}
+

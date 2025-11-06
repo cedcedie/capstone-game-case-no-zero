@@ -7251,26 +7251,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("celine/AnimatedSprite2D:animation")
+tracks/2/path = NodePath("PlayerM/AnimatedSprite2D:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"give_right"]
+"update": 0,
+"values": [&"idle_back"]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/3/path = NodePath("celine/AnimatedSprite2D:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"idle_back"]
+"values": [&"give_right"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -7299,6 +7299,85 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_lllwm"]
 resource_name = "celine _call_cutscene"
+length = 18.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PoliceLobbyCutscene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4.5, 6.8, 9.1, 11.4, 14.4, 17),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0, true],
+"method": &"show_line"
+}, {
+"args": [1, true],
+"method": &"show_line"
+}, {
+"args": [2, true],
+"method": &"show_line"
+}, {
+"args": [3, true],
+"method": &"show_line"
+}, {
+"args": [4, true],
+"method": &"show_line"
+}, {
+"args": [],
+"method": &"_set_celine_call_completed"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PoliceLobbyCutscene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [6],
+"method": &"call_ringtone"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerM:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(400, 480), Vector2(400, 480), Vector2(399, 384)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.6, 4, 16.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [&"idle_back", &"idle_down", &"phone_out", &"phone_in"]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PoliceLobbyCutscene")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_703sj"]
 resource_name = "follow_darwin"
@@ -7306,26 +7385,26 @@ length = 4.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerM:position")
+tracks/0/path = NodePath("PlayerM/AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(768, 288)]
+"values": [&"idle_down"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("PlayerM:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle_down"]
+"update": 0,
+"values": [Vector2(768, 288)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -7376,7 +7455,7 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"end_cutscene"
+"method": &"_set_follow_darwin_completed"
 }]
 }
 
@@ -7481,26 +7560,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerM:position")
+tracks/3/path = NodePath("PlayerM/AnimatedSprite2D:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(944, 360)]
+"values": [&"idle_left"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/4/path = NodePath("PlayerM:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle_left"]
+"update": 0,
+"values": [Vector2(944, 360)]
 }
 tracks/5/type = "method"
 tracks/5/imported = false
