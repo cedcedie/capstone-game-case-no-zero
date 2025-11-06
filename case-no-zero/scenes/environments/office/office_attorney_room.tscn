@@ -5944,7 +5944,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_rxskd"]
 resource_name = "office_cutscene"
-length = 7.5
+length = 7.7
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true

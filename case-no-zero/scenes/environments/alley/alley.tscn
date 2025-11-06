@@ -1,14 +1,26 @@
-[gd_scene load_steps=24 format=4 uid="uid://dtdips0keo7wv"]
+[gd_scene load_steps=38 format=4 uid="uid://dtdips0keo7wv"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_6iycu"]
+[ext_resource type="Script" uid="uid://3o78b7s26mb0" path="res://scripts/environments/alley.gd" id="1_ggrdq"]
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="2_gf64x"]
+[ext_resource type="Shader" uid="uid://dgamayegiulc6" path="res://scenes/environments/alley/alley.gdshader" id="2_lftte"]
 [ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/sprites/environments/interior/19_Hospital_32x32.png" id="4_4cn24"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="4_tidcq"]
 [ext_resource type="Texture2D" uid="uid://hhugvqvst50x" path="res://assets/sprites/environments/interior/11_Halloween_32x32.png" id="5_l8mol"]
 [ext_resource type="Texture2D" uid="uid://bwyvkfptif2cp" path="res://assets/sprites/environments/exterior/19_Graveyard_32x32.png" id="6_c5khy"]
 [ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="7_3lj2i"]
 [ext_resource type="Texture2D" uid="uid://bko828tu8yow7" path="res://assets/sprites/environments/interior/18_Jail_32x32.png" id="7_4cn24"]
+[ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="7_lu0mt"]
+[ext_resource type="PackedScene" uid="uid://bqr0txu1h7bch" path="res://miravil/character_police_station/po1Darwin.tscn" id="8_2jdhb"]
+[ext_resource type="Shader" uid="uid://bitqfl6lg8ywb" path="res://scenes/environments/alley/character.gdshader" id="9_h7ohf"]
 [ext_resource type="PackedScene" uid="uid://c1mw2t7y4ddem" path="res://scenes/characters/main_characters/leo_mendoza.tscn" id="9_l8mol"]
+[ext_resource type="PackedScene" uid="uid://di11hg7t8dak4" path="res://miravil/characters/npc_guy_6.tscn" id="10_ndgnt"]
+[ext_resource type="AudioStream" uid="uid://yh8c8hf80c2h" path="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 92 Reunited.mp3" id="16_lu0mt"]
+[ext_resource type="AudioStream" uid="uid://ju3vy3cg08fa" path="res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 47 Ooo.mp3" id="17_2jdhb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rt5j4"]
+shader = ExtResource("2_lftte")
+shader_parameter/night_color = Vector4(0, 0, 0.2, 0.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4cn24"]
 texture = ExtResource("1_6iycu")
@@ -5280,6 +5292,320 @@ sources/0 = SubResource("TileSetAtlasSource_4cn24")
 sources/1 = SubResource("TileSetAtlasSource_l8mol")
 sources/4 = SubResource("TileSetAtlasSource_3lj2i")
 
+[sub_resource type="Animation" id="Animation_0l7ls"]
+resource_name = "alley_cutscene"
+length = 33.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.3, 3.8, 9, 11.5, 21.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [0, true],
+"method": &"show_line"
+}, {
+"args": [1, true],
+"method": &"show_line"
+}, {
+"args": [2, true],
+"method": &"show_line"
+}, {
+"args": [3, true],
+"method": &"show_line"
+}, {
+"args": [4, true],
+"method": &"show_line"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.1, 14),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_hide_dialogue_ui"
+}, {
+"args": [],
+"method": &"_hide_dialogue_ui"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("leo_mendoza:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.2, 18, 19.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(304, 424), Vector2(584, 424), Vector2(584, 384), Vector2(584, 384), Vector2(912, 384)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("leo_mendoza/AnimatedSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.2, 6.3, 18, 19.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"walk_right", &"walk_back", &"idle_back", &"idle_right", &"walk_right", &"idle_back"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NpcGuy3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 6, 6.3, 6.8, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(584, 344), Vector2(584, 344), Vector2(648, 344), Vector2(648, 432), Vector2(1300, 432)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(14.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(912, 344), 2.0, 1.0, 2.0],
+"method": &"camera_move_to_position"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("NpcGuy3/AnimatedSprite2D:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6, 6.3, 6.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"idle_front", &"walk_right", &"walk_down", &"walk_right"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("NpcGuy6:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("NpcGuy6/AnimatedSprite2D:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 24.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"idle_back", &"idle_front"]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(30),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_cutscene"
+}]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("NpcPlPo1Darwin:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 21.7, 27),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(56, 440), Vector2(56, 440), Vector2(912, 448)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("NpcPlPo1Darwin/AnimatedSprite2D:animation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_right"]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(3.8, 22),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [6.0, 0.3],
+"method": &"shake_camera"
+}, {
+"args": [4.0],
+"method": &"dramatic_footage_static"
+}]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath(".")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 21, 21.5, 33),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start_main_bg"
+}, {
+"args": [0.5],
+"method": &"stop_main_bg"
+}, {
+"args": [],
+"method": &"start_suspense_bg"
+}, {
+"args": [0.5],
+"method": &"stop_suspense_bg"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_j1e0e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("leo_mendoza:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(304, 424)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NpcGuy3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(584, 344)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NpcGuy6/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_back"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NpcPlPo1Darwin:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(56, 440)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("leo_mendoza/AnimatedSprite2D:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_right"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("NpcGuy3/AnimatedSprite2D:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_back"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("NpcPlPo1Darwin/AnimatedSprite2D:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_right"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ggrdq"]
+_data = {
+&"RESET": SubResource("Animation_j1e0e"),
+&"alley_cutscene": SubResource("Animation_0l7ls")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5k06m"]
+shader = ExtResource("9_h7ohf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggrdq"]
+shader = ExtResource("9_h7ohf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jopmh"]
+shader = ExtResource("2_lftte")
+shader_parameter/night_color = Vector4(0, 0, 0.2, 0.5)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2jdhb"]
 texture = ExtResource("7_3lj2i")
 texture_region_size = Vector2i(32, 32)
@@ -9632,6 +9958,10 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_h7ohf"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_2jdhb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajpfm"]
+shader = ExtResource("2_lftte")
+shader_parameter/night_color = Vector4(0, 0, 0.2, 0.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0l7ls"]
 texture = ExtResource("5_l8mol")
@@ -17985,41 +18315,15 @@ sources/2 = SubResource("TileSetAtlasSource_lftte")
 sources/5 = SubResource("TileSetAtlasSource_lu0mt")
 sources/3 = SubResource("TileSetAtlasSource_c5khy")
 
-[sub_resource type="Animation" id="Animation_0l7ls"]
-resource_name = "alley_cutscene"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ggrdq"]
-_data = {
-&"alley_cutscene": SubResource("Animation_0l7ls")
-}
-
 [node name="Alley" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ggrdq")
 
 [node name="layer1" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_rt5j4")
 position = Vector2(208, 216)
-tile_map_data = PackedByteArray("AAADAAIABAAfABgAAAAEAAMAAAAcACwAAAACAAMAAAAcACwAAAACAAQAAAAcACwAAAACAAUAAAAcACwAAAADAAEABAAfABcAAAADAAMAAAAcACwAAAADAAQAAAAcACwAAAADAAUAAAAcACwAAAAEAAEABAAfABcAAAAEAAIABAAfABgAAAAEAAQAAAAcACwAAAAEAAUAAAAcACwAAAAFAAEABAAfABcAAAAFAAIABAAfABgAAAAFAAMAAAAcACwAAAAFAAQAAAAcACwAAAAFAAUAAAAcACwAAAAGAAEABAAfABcAAAAGAAIABAAfABgAAAAGAAMAAAAcACwAAAAGAAQAAAAcACwAAAAGAAUAAAAcACwAAAAHAAEABAAfABcAAAAHAAIABAAfABgAAAAHAAMAAAAcACwAAAAHAAQAAAAcACwAAAAHAAUAAAAcACwAAAAIAAEABAAfABcAAAAIAAIABAAfABgAAAAIAAMAAAAcACwAAAAIAAQAAAAcACwAAAAIAAUAAAAcACwAAAAJAAEABAAfABcAAAAJAAIABAAfABgAAAAJAAMAAAAcACwAAAAJAAQAAAAcACwAAAAJAAUAAAAcACwAAAAKAAEABAAfABcAAAAKAAIABAAfABgAAAAKAAMAAAAcACwAAAAKAAQAAAAcACwAAAAKAAUAAAAcACwAAAALAAEABAAfABcAAAALAAIABAAfABgAAAALAAMAAAAcACwAAAALAAQAAAAcACwAAAALAAUAAAAcACwAAAAMAAEABAAfABcAAAAMAAIABAAfABgAAAAMAAMAAAAcACwAAAAMAAQAAAAcACwAAAAMAAUAAAAcACwAAAANAAEABAAfABcAAAANAAIABAAfABgAAAANAAMAAAAcACwAAAANAAQAAAAcACwAAAANAAUAAAAcACwAAAAOAAEABAAfABcAAAAOAAIABAAfABgAAAAOAAMAAAAcACwAAAAOAAQAAAAcACwAAAAOAAUAAAAcACwAAAAPAAEABAAfABcAAAAPAAIABAAfABgAAAAPAAMAAAAcACwAAAAPAAQAAAAcACwAAAAPAAUAAAAcACwAAAAQAAEABAAfABcAAAAQAAIABAAfABgAAAAQAAMAAAAcACwAAAAQAAQAAAAcACwAAAAQAAUAAAAcACwAAAARAAEABAAfABcAAAARAAIABAAfABgAAAARAAMAAAAcACwAAAARAAQAAAAcACwAAAARAAUAAAAcACwAAAASAAEABAAfABcAAAASAAIABAAfABgAAAASAAMAAAAcACwAAAASAAQAAAAcACwAAAASAAUAAAAcACwAAAATAAEABAAfABcAAAATAAIABAAfABgAAAATAAMAAAAcACwAAAATAAQAAAAcACwAAAATAAUAAAAcACwAAAAUAAEABAAfABcAAAAUAAIABAAfABgAAAAUAAMAAAAcACwAAAAUAAQAAAAcACwAAAAUAAUAAAAcACwAAAAVAAEABAAfABcAAAAVAAIABAAfABgAAAAVAAMAAAAcACwAAAAVAAQAAAAcACwAAAAVAAUAAAAcACwAAAAWAAEABAAfABcAAAAWAAIABAAfABgAAAAWAAMAAAAcACwAAAAWAAQAAAAcACwAAAAWAAUAAAAcACwAAAAXAAEABAAfABcAAAAXAAIABAAfABgAAAAXAAMAAAAcACwAAAAXAAQAAAAcACwAAAAXAAUAAAAcACwAAAAYAAEABAAfABcAAAAYAAIABAAfABgAAAAYAAMAAAAcACwAAAAYAAQAAAAcACwAAAAYAAUAAAAcACwAAAADAAAABAAfABYAAAAEAAAABAAfABYAAAAFAAAABAAfABYAAAAGAAAABAAfABYAAAAHAAAABAAfABYAAAAIAAAABAAfABYAAAAJAAAABAAfABYAAAAKAAAABAAfABYAAAALAAAABAAfABYAAAAMAAAABAAfABYAAAANAAAABAAfABYAAAAOAAAABAAfABYAAAAPAAAABAAfABYAAAAQAAAABAAfABYAAAARAAAABAAfABYAAAASAAAABAAfABYAAAATAAAABAAfABYAAAAUAAAABAAfABYAAAAVAAAABAAfABYAAAAWAAAABAAfABYAAAAXAAAABAAfABYAAAAYAAAABAAfABYAAAACAAYAAAAOACwAAAADAAYAAAAOACwAAAAEAAYAAAAOACwAAAAFAAYAAAAOACwAAAAGAAYAAAAOACwAAAAHAAYAAAAOACwAAAAIAAYAAAAOACwAAAAJAAYAAAAOACwAAAAKAAYAAAAOACwAAAALAAYAAAAOACwAAAAMAAYAAAAOACwAAAANAAYAAAAOACwAAAAOAAYAAAAOACwAAAAPAAYAAAAOACwAAAAQAAYAAAAOACwAAAARAAYAAAAOACwAAAASAAYAAAAOACwAAAATAAYAAAAOACwAAAAUAAYAAAAOACwAAAAVAAYAAAAOACwAAAAWAAYAAAAOACwAAAAXAAYAAAAOACwAAAAYAAYAAAAOACwAAAADAAcAAAAcACwAAAAEAAcAAAAcACwAAAAFAAcAAAAcACwAAAAGAAcAAAAcACwAAAAHAAcAAAAcACwAAAAIAAcAAAAcACwAAAAJAAcAAAAcACwAAAAKAAcAAAAcACwAAAALAAcAAAAcACwAAAAMAAcAAAAcACwAAAANAAcAAAAcACwAAAAOAAcAAAAcACwAAAAPAAcAAAAcACwAAAAQAAcAAAAcACwAAAARAAcAAAAcACwAAAASAAcAAAAcACwAAAATAAcAAAAcACwAAAAUAAcAAAAcACwAAAAVAAcAAAAcACwAAAAWAAcAAAAcACwAAAAXAAcAAAAcACwAAAAYAAcAAAAcACwAAAACAAcAAAAcACwAAAADAAgAAAAEAB8AAAAEAAgAAAAEAB8AAAAFAAgAAAAFAB8AAAAGAAgAAAAEAB8AAAAHAAgAAAAEAB8AAAAIAAgAAAAEAB8AAAAJAAgAAAAEAB8AAAAKAAgAAAAFAB8AAAALAAgAAAAEAB8AAAAMAAgAAAAEAB8AAAANAAgAAAAEAB8AAAAOAAgAAAAEAB8AAAAPAAgAAAAFAB8AAAAQAAgAAAAEAB8AAAARAAgAAAAEAB8AAAASAAgAAAAEAB8AAAATAAgAAAAEAB8AAAAUAAgAAAAFAB8AAAAVAAgAAAAEAB8AAAAWAAgAAAAEAB8AAAAXAAgAAAAEAB8AAAAYAAgAAAAEAB8AAAACAAgAAAAAAB8AAAACAAAABAAfABYAAAACAAEABAAfABcAAAACAAIABAAfABgAAAA=")
+tile_map_data = PackedByteArray("AAADAAIABAAfABgAAAAEAAMAAAAcACwAAAACAAMAAAAcACwAAAACAAQAAAAcACwAAAACAAUAAAAcACwAAAADAAEABAAfABcAAAADAAMAAAAcACwAAAADAAQAAAAcACwAAAADAAUAAAAcACwAAAAEAAEABAAfABcAAAAEAAIABAAfABgAAAAEAAQAAAAcACwAAAAEAAUAAAAcACwAAAAFAAEABAAfABcAAAAFAAIABAAfABgAAAAFAAMAAAAcACwAAAAFAAQAAAAcACwAAAAFAAUAAAAcACwAAAAGAAEABAAfABcAAAAGAAIABAAfABgAAAAGAAMAAAAcACwAAAAGAAQAAAAcACwAAAAGAAUAAAAcACwAAAAHAAEABAAfABcAAAAHAAIABAAfABgAAAAHAAMAAAAcACwAAAAHAAQAAAAcACwAAAAHAAUAAAAcACwAAAAIAAEABAAfABcAAAAIAAIABAAfABgAAAAIAAMAAAAcACwAAAAIAAQAAAAcACwAAAAIAAUAAAAcACwAAAAJAAEABAAfABcAAAAJAAIABAAfABgAAAAJAAMAAAAcACwAAAAJAAQAAAAcACwAAAAJAAUAAAAcACwAAAAKAAEABAAfABcAAAAKAAIABAAfABgAAAAKAAMAAAAcACwAAAAKAAQAAAAcACwAAAAKAAUAAAAcACwAAAALAAEABAAfABcAAAALAAIABAAfABgAAAALAAMAAAAcACwAAAALAAQAAAAcACwAAAALAAUAAAAcACwAAAAMAAEABAAfABcAAAAMAAIABAAfABgAAAAMAAMAAAAcACwAAAAMAAQAAAAcACwAAAAMAAUAAAAcACwAAAANAAEABAAfABcAAAANAAIABAAfABgAAAANAAMAAAAcACwAAAANAAQAAAAcACwAAAANAAUAAAAcACwAAAAOAAEABAAfABcAAAAOAAIABAAfABgAAAAOAAMAAAAcACwAAAAOAAQAAAAcACwAAAAOAAUAAAAcACwAAAAPAAEABAAfABcAAAAPAAIABAAfABgAAAAPAAMAAAAcACwAAAAPAAQAAAAcACwAAAAPAAUAAAAcACwAAAAQAAEABAAfABcAAAAQAAIABAAfABgAAAAQAAMAAAAcACwAAAAQAAQAAAAcACwAAAAQAAUAAAAcACwAAAARAAEABAAfABcAAAARAAIABAAfABgAAAARAAMAAAAcACwAAAARAAQAAAAcACwAAAARAAUAAAAcACwAAAASAAEABAAfABcAAAASAAIABAAfABgAAAASAAMAAAAcACwAAAASAAQAAAAcACwAAAASAAUAAAAcACwAAAATAAEABAAfABcAAAATAAIABAAfABgAAAATAAQAAAAcACwAAAATAAUAAAAcACwAAAAUAAEABAAfABcAAAAUAAIABAAfABgAAAAUAAMAAAAcACwAAAAUAAQAAAAcACwAAAAUAAUAAAAcACwAAAAVAAEABAAfABcAAAAVAAIABAAfABgAAAAVAAMAAAAcACwAAAAVAAQAAAAcACwAAAAVAAUAAAAcACwAAAAWAAEABAAfABcAAAAWAAIABAAfABgAAAAWAAMAAAAcACwAAAAWAAQAAAAcACwAAAAWAAUAAAAcACwAAAAXAAEABAAfABcAAAAXAAIABAAfABgAAAAXAAMAAAAcACwAAAAXAAQAAAAcACwAAAAXAAUAAAAcACwAAAAYAAEABAAfABcAAAAYAAIABAAfABgAAAAYAAMAAAAcACwAAAAYAAQAAAAcACwAAAAYAAUAAAAcACwAAAADAAAABAAfABYAAAAEAAAABAAfABYAAAAFAAAABAAfABYAAAAGAAAABAAfABYAAAAHAAAABAAfABYAAAAIAAAABAAfABYAAAAJAAAABAAfABYAAAAKAAAABAAfABYAAAALAAAABAAfABYAAAAMAAAABAAfABYAAAANAAAABAAfABYAAAAOAAAABAAfABYAAAAPAAAABAAfABYAAAAQAAAABAAfABYAAAARAAAABAAfABYAAAASAAAABAAfABYAAAATAAAABAAfABYAAAAUAAAABAAfABYAAAAVAAAABAAfABYAAAAWAAAABAAfABYAAAAXAAAABAAfABYAAAAYAAAABAAfABYAAAACAAYAAAAOACwAAAADAAYAAAAOACwAAAAEAAYAAAAOACwAAAAFAAYAAAAOACwAAAAGAAYAAAAOACwAAAAHAAYAAAAOACwAAAAIAAYAAAAOACwAAAAJAAYAAAAOACwAAAAKAAYAAAAOACwAAAALAAYAAAAOACwAAAAMAAYAAAAOACwAAAANAAYAAAAOACwAAAAOAAYAAAAOACwAAAAPAAYAAAAOACwAAAAQAAYAAAAOACwAAAARAAYAAAAOACwAAAASAAYAAAAOACwAAAATAAYAAAAOACwAAAAUAAYAAAAOACwAAAAVAAYAAAAOACwAAAAWAAYAAAAOACwAAAAXAAYAAAAOACwAAAAYAAYAAAAOACwAAAADAAcAAAAcACwAAAAEAAcAAAAcACwAAAAFAAcAAAAcACwAAAAGAAcAAAAcACwAAAAHAAcAAAAcACwAAAAIAAcAAAAcACwAAAAJAAcAAAAcACwAAAAKAAcAAAAcACwAAAALAAcAAAAcACwAAAAMAAcAAAAcACwAAAANAAcAAAAcACwAAAAOAAcAAAAcACwAAAAPAAcAAAAcACwAAAAQAAcAAAAcACwAAAARAAcAAAAcACwAAAASAAcAAAAcACwAAAATAAcAAAAcACwAAAAUAAcAAAAcACwAAAAVAAcAAAAcACwAAAAWAAcAAAAcACwAAAAXAAcAAAAcACwAAAAYAAcAAAAcACwAAAACAAcAAAAcACwAAAADAAgAAAAEAB8AAAAEAAgAAAAEAB8AAAAFAAgAAAAFAB8AAAAGAAgAAAAEAB8AAAAHAAgAAAAEAB8AAAAIAAgAAAAEAB8AAAAJAAgAAAAEAB8AAAAKAAgAAAAFAB8AAAALAAgAAAAEAB8AAAAMAAgAAAAEAB8AAAANAAgAAAAEAB8AAAAOAAgAAAAEAB8AAAAPAAgAAAAFAB8AAAAQAAgAAAAEAB8AAAARAAgAAAAEAB8AAAASAAgAAAAEAB8AAAATAAgAAAAEAB8AAAAUAAgAAAAFAB8AAAAVAAgAAAAEAB8AAAAWAAgAAAAEAB8AAAAXAAgAAAAEAB8AAAAYAAgAAAAEAB8AAAACAAgAAAAAAB8AAAACAAAABAAfABYAAAACAAEABAAfABcAAAACAAIABAAfABgAAAATAAMAAAAcACwAAAA=")
 tile_set = SubResource("TileSet_ykkix")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="layer1"]
-z_index = 1
-tile_map_data = PackedByteArray("AAARAAQAAAAMABEAAAASAAQAAAANABEAAAATAAMAAAANAA8AAAATAAQAAAANABAAAAAQAAMAAAAOABAAAAAQAAQAAAAOABEAAAA=")
-tile_set = SubResource("TileSet_h7ohf")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="layer1/TileMapLayer2"]
-z_index = 2
-tile_map_data = PackedByteArray("AAAQAAMAAQAPABIAAAADAP//AQABACUAAAADAAAAAQABACYAAAACAAIABQAUABUAAAACAAMABQAUABYAAAADAAIABQAVABUAAAADAAMABQAVABYAAAAJAAEAAgAEACoAAAAJAAIAAgAEACsAAAAJAAMAAgAEACwAAAAKAAEAAgAFACoAAAAKAAIAAgAFACsAAAAKAAMAAgAFACwAAAAHAAEAAgAGACoAAAAHAAIAAgAGACsAAAAHAAMAAgAGACwAAAAIAAEAAgAHACoAAAAIAAIAAgAHACsAAAAIAAMAAgAHACwAAAAFAAEAAgAMAAwAAAAFAAIAAgAOAA0AAAAFAAMAAgAMAA4AAAAGAAEAAgANAAwAAAAGAAIAAgAPAA0AAAAGAAMAAgANAA4AAAAEAAMAAgABACsAAAAEAAIAAgAAACwAAAATAAMAAQAUAAMAAAAYAAAAAwABAAoAAAA=")
-tile_set = SubResource("TileSet_ql2bo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -18027,4 +18331,58 @@ libraries = {
 }
 
 [node name="leo_mendoza" parent="." instance=ExtResource("9_l8mol")]
-position = Vector2(400, 416)
+position = Vector2(304, 424)
+
+[node name="Camera2D" type="Camera2D" parent="leo_mendoza"]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+position_smoothing_speed = 7.0
+
+[node name="NpcGuy3" parent="." instance=ExtResource("7_lu0mt")]
+position = Vector2(584, 344)
+
+[node name="AnimatedSprite2D" parent="NpcGuy3" index="0"]
+animation = &"idle_back"
+
+[node name="NpcPlPo1Darwin" parent="." instance=ExtResource("8_2jdhb")]
+position = Vector2(56, 440)
+
+[node name="AnimatedSprite2D" parent="NpcPlPo1Darwin" index="0"]
+material = SubResource("ShaderMaterial_5k06m")
+
+[node name="NpcGuy6" parent="." instance=ExtResource("10_ndgnt")]
+position = Vector2(912, 344)
+
+[node name="AnimatedSprite2D" parent="NpcGuy6" index="0"]
+material = SubResource("ShaderMaterial_ggrdq")
+animation = &"idle_back"
+autoplay = "idle_back"
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_jopmh")
+position = Vector2(208, 216)
+tile_set = SubResource("TileSet_h7ohf")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = 2
+material = SubResource("ShaderMaterial_ajpfm")
+position = Vector2(208, 216)
+tile_map_data = PackedByteArray("AAAQAAMAAQAPABIAAAADAP//AQABACUAAAADAAAAAQABACYAAAACAAIABQAUABUAAAACAAMABQAUABYAAAADAAIABQAVABUAAAADAAMABQAVABYAAAAJAAEAAgAEACoAAAAJAAIAAgAEACsAAAAJAAMAAgAEACwAAAAKAAEAAgAFACoAAAAKAAIAAgAFACsAAAAKAAMAAgAFACwAAAAHAAEAAgAGACoAAAAHAAIAAgAGACsAAAAHAAMAAgAGACwAAAAIAAEAAgAHACoAAAAIAAIAAgAHACsAAAAIAAMAAgAHACwAAAAFAAEAAgAMAAwAAAAFAAIAAgAOAA0AAAAFAAMAAgAMAA4AAAAGAAEAAgANAAwAAAAGAAIAAgAPAA0AAAAGAAMAAgANAA4AAAAEAAMAAgABACsAAAAEAAIAAgAAACwAAAATAAMAAQAUAAMAAAAYAAAAAwABAAoAAAA=")
+tile_set = SubResource("TileSet_ql2bo")
+
+[node name="MainBG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_lu0mt")
+volume_db = -10.0
+
+[node name="SuspenseBG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_2jdhb")
+volume_db = -10.0
+
+[editable path="leo_mendoza"]
+[editable path="NpcGuy3"]
+[editable path="NpcPlPo1Darwin"]
+[editable path="NpcGuy6"]

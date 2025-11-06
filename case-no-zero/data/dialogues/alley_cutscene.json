@@ -1,0 +1,27 @@
+{
+	"alley_cutscene": {
+		"dialogue_lines": [
+			{
+				"speaker": "Leo Mendoza",
+				"text": "Ano pa ba ang ginagawa mo dito? Malapit na mag-curfew."
+			},
+			{
+				"speaker": "Tambay",
+				"text": "Oo, uuwi na ako. Bwisit nga naman."
+			},
+			{
+				"speaker": "Leo Mendoza",
+				"text": "\"Para lang din naman sa kanila, galit pa talaga.\""
+			},
+			{
+				"speaker": "Leo Mendoza",
+				"text": "\"Meron nanaman isa. Sino naman kaya 'yon?\""
+			},
+			{
+				"speaker": "Leo Mendoza",
+				"text": "Curfew na ho. Pwede na pong umuwi na kayo."
+			}
+		]
+	}
+}
+

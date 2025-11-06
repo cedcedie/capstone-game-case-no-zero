@@ -38,23 +38,55 @@ func _ready() -> void:
 			if found is AnimationPlayer:
 				anim_player = found
 	
-	# Start cutscene for first time
-	print("🎬 Starting fade in...")
-	cutscene_active = true
-	show_environment_and_characters()
-	await fade_in()
-	print("🎬 Fade in complete, checking animation...")
-	if anim_player:
-		print("🎬 AnimationPlayer found, available animations: ", anim_player.get_animation_list())
-		# Play the first available animation or a specific one
-		if anim_player.get_animation_list().size() > 0:
-			var first_anim = anim_player.get_animation_list()[0]
-			print("🎬 Playing first available animation: ", first_anim)
-			anim_player.play(first_anim)
+	# Check if alley cutscene is completed - play security_server_cutscene_2
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.ALLEY_CUTSCENE_COMPLETED):
+		print("🎬 Alley cutscene completed - playing security_server_cutscene_2")
+		cutscene_active = true
+		show_environment_and_characters()
+		await fade_in()
+		if anim_player:
+			if anim_player.has_animation("security_server_cutscene_2"):
+				print("🎬 Playing 'security_server_cutscene_2' animation")
+				anim_player.play("security_server_cutscene_2")
+			else:
+				print("⚠️ Animation 'security_server_cutscene_2' not found")
+		return
+	
+	# DEBUG MODE: Set to true to play cutscene regardless of checkpoint
+	var DEBUG_MODE: bool = true
+	
+	# Check if HEAD_POLICE_COMPLETED checkpoint is set (or DEBUG_MODE)
+	if DEBUG_MODE or CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
+		if DEBUG_MODE:
+			print("🎬 DEBUG MODE: Playing cutscene regardless of checkpoint")
 		else:
-			print("⚠️ No animations found in AnimationPlayer")
-	else:
-		print("⚠️ AnimationPlayer node not found!")
+			print("🎬 HEAD_POLICE_COMPLETED checkpoint found - playing security_server_cutscene")
+		
+		# Start cutscene for first time
+		print("🎬 Starting fade in...")
+		cutscene_active = true
+		show_environment_and_characters()
+		await fade_in()
+		print("🎬 Fade in complete, checking animation...")
+		if anim_player:
+			print("🎬 AnimationPlayer found, available animations: ", anim_player.get_animation_list())
+			# Try to play security_server_cutscene first, then fallback to first available
+			if anim_player.has_animation("security_server_cutscene"):
+				print("🎬 Playing 'security_server_cutscene' animation")
+				anim_player.play("security_server_cutscene")
+			elif anim_player.get_animation_list().size() > 0:
+				var first_anim = anim_player.get_animation_list()[0]
+				print("🎬 Playing first available animation: ", first_anim)
+				anim_player.play(first_anim)
+			else:
+				print("⚠️ No animations found in AnimationPlayer")
+		else:
+			print("⚠️ AnimationPlayer node not found!")
+		return
+	
+	# If no checkpoint, don't play cutscene
+	print("⚠️ HEAD_POLICE_COMPLETED checkpoint not set. Cutscene will not play.")
+	print("   Set DEBUG_MODE = true in _ready() to test the cutscene.")
 
 func end_cutscene() -> void:
 	# Dramatic fade out before scene transition
@@ -64,38 +96,23 @@ func end_cutscene() -> void:
 	# Hide dialogue UI during fade
 	_hide_dialogue_ui()
 	
-	# Set checkpoint (add checkpoint here if needed)
+	# Set checkpoint before transitioning
 	cutscene_active = false
-	# CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_COMPLETED)
-	print("🎬 Security server cutscene completed.")
+	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_COMPLETED)
+	print("🎬 Security server cutscene completed - checkpoint set.")
 	
-	# Set everything visible first
-	var root_scene := get_tree().current_scene
-	if root_scene:
-		for tilemap in root_scene.find_children("*", "TileMapLayer", true, false):
-			if tilemap is TileMapLayer:
-				(tilemap as TileMapLayer).visible = true
-		if player_node:
-			if player_node is CanvasItem:
-				(player_node as CanvasItem).visible = true
-	
-	# Now fade in the environment
-	await show_environment_and_characters(0.5)
-	
-	# Fade in the screen overlay to return to normal gameplay
-	await fade_in(0.5)
-	
-	# Re-enable player control
-	_set_player_active(true)
-	print("🎬 Security server cutscene ended - returning to normal gameplay.")
+	# Transition to alley scene and play alley_cutscene animation
+	# Skip fade since we already did dramatic_fade_out above
+	await transition_to_scene("res://scenes/environments/alley/alley.tscn", "alley_cutscene", true)
 
 # Transition to another scene and optionally play an animation
-func transition_to_scene(target_scene_path: String, animation_name: String = "") -> void:
+func transition_to_scene(target_scene_path: String, animation_name: String = "", skip_fade: bool = false) -> void:
 	"""Transition to another scene and optionally play an animation there"""
 	print("🎬 Transitioning to scene: ", target_scene_path)
 	
-	# Dramatic fade out current scene before transition
-	await dramatic_fade_out(2.0)
+	# Dramatic fade out current scene before transition (unless already faded)
+	if not skip_fade:
+		await dramatic_fade_out(2.0)
 	
 	# Hide dialogue UI
 	_hide_dialogue_ui()

@@ -7960,7 +7960,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id="Animation_sg1ei"]
 resource_name = "jail_cutscene"
-length = 10.2
+length = 10.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true

@@ -328,6 +328,14 @@ func set_exterior_ambient(scene_name: String):
 	"""Set ambient audio for exterior scenes and interior scenes without BGM"""
 	print("🌍 AudioManager: Setting ambient for:", scene_name)
 	
+	# Blacklist scenes that have their own specific audio (like alley with MainBG/SuspenseBG)
+	var ambient_blacklist: Array[String] = ["alley"]
+	if scene_name in ambient_blacklist:
+		print("🌍 AudioManager: Scene is blacklisted from ambient audio:", scene_name)
+		pause_ambient_tracked()
+		global_audio_tracker["is_exterior_scene"] = false
+		return
+	
 	# Check if this is an exterior scene OR an interior scene without BGM
 	var has_bgm = scene_bgm_map.has(scene_name) and scene_bgm_map[scene_name] != ""
 	var is_exterior = exterior_ambient_map.has(scene_name)
