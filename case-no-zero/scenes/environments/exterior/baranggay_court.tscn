@@ -22156,7 +22156,7 @@ z_index = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="NpcBcFurry" parent="." instance=ExtResource("24_r1uj8")]
-z_index = 4
+z_index = 6
 position = Vector2(1292, 1116)
 
 [node name="AnimatedSprite2D" parent="NpcBcFurry" index="0"]
