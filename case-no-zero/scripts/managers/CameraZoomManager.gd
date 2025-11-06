@@ -3,6 +3,8 @@ extends Node
 # CameraZoomManager - Autoload for managing dynamic camera zoom based on scene type
 
 signal zoom_changed(new_zoom: float)
+# Positive values zoom in (lower POV / closer to player)
+const PLAYER_POV_BOOST: float = 0.4
 
 # Zoom settings for different scene types
 var zoom_settings: Dictionary = {
@@ -62,7 +64,7 @@ func set_zoom_for_current_scene():
 		return
 	
 	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
-	var target_zoom = get_zoom_for_scene(scene_name)
+	var target_zoom = get_zoom_for_scene(scene_name) + PLAYER_POV_BOOST
 	set_camera_zoom(target_zoom)
 	print("📷 CameraZoomManager: Set zoom to ", target_zoom, " for scene: ", scene_name)
 

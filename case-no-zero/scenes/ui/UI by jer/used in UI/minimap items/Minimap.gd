@@ -9,6 +9,14 @@ signal minimap_ready
 @onready var minimap_root: Node2D = $SubViewportContainer/SubViewport/MinimapRoot
 @onready var player_marker: Sprite2D = $SubViewportContainer/SubViewport/PlayerMarker
 
+# Runtime UI elements for circular masked minimap
+var masked_rect: TextureRect = null
+var border_rect: ColorRect = null
+var north_label: Label = null
+var east_label: Label = null
+var south_label: Label = null
+var west_label: Label = null
+
 var player: Node2D = null
 var tilemap_layers: Array = []
 var scene_minimap_cache: Dictionary = {}
@@ -24,6 +32,10 @@ const EXTERIOR_PATHS := [
 	"res://scenes/environments/exterior/police_station.tscn",
 	"res://scenes/environments/exterior/terminal_market.tscn",
 ]
+
+# Minimap zoom: lower values show more area (higher POV than player)
+const MINIMAP_ZOOM: float = 0.2
+const PLAYER_MARKER_SCALE: float = 7
 
 
 func _ready() -> void:
@@ -54,6 +66,10 @@ func _ready() -> void:
 
 	print("🗺️ Minimap ready (autoload expected) - exterior scene detected.")
 
+	# Build circular masked view from the SubViewport's texture (GTA-style round minimap)
+	_setup_circular_masked_view()
+	_setup_compass_letters()
+
 	if viewport.size == Vector2i.ZERO:
 		viewport.size = Vector2i(256, 256)
 
@@ -68,7 +84,10 @@ func _ready() -> void:
 	elif "enabled" in minimap_camera:
 		minimap_camera.enabled = true
 
-	minimap_camera.zoom = Vector2(0.3, 0.3)
+	minimap_camera.zoom = Vector2(MINIMAP_ZOOM, MINIMAP_ZOOM)
+	# Enlarge player indicator on the minimap
+	if player_marker != null:
+		player_marker.scale = Vector2(PLAYER_MARKER_SCALE, PLAYER_MARKER_SCALE)
 	visible = true
 
 	# DO NOT prebake - causes crashes. Only build when actually needed.
@@ -116,6 +135,9 @@ func _ready() -> void:
 		elif tree.has_signal("scene_changed"):
 			tree.connect("scene_changed", Callable(self, "_on_current_scene_changed"))
 
+	# Align the circular minimap to the placed SubViewportContainer/border
+	_align_minimap_to_container()
+
 
 func _on_current_scene_changed(_new_scene: Node) -> void:
 	# Clear immediately so old map is not shown during transitions
@@ -147,6 +169,8 @@ func _on_current_scene_changed(_new_scene: Node) -> void:
 		elif "enabled" in minimap_camera:
 			minimap_camera.enabled = true
 	visible = true
+	# Keep the masked view centered after scene changes
+	_center_minimap_on_screen()
 
 	# Try to scan and build immediately for instant visual update
 	# First, try to use cache for the newly current scene
@@ -680,6 +704,10 @@ func _copy_tilemap_layers() -> void:
 
 	print("✅ Minimap: copied", tilemap_layers.size(), "layers, total cells:", total_cells)
 
+	# After copying, ensure masked view uses the latest viewport texture
+	if masked_rect != null and viewport != null:
+		masked_rect.texture = viewport.get_texture()
+
 
 func _clamp_camera_to_bounds(target_pos: Vector2) -> Vector2:
 	if minimap_camera == null or viewport == null:
@@ -724,6 +752,11 @@ func _process(_delta: float) -> void:
 		if player_marker != null:
 			player_marker.global_position = player.global_position
 
+	# Keep masked rect texture and position in sync with SubViewportContainer
+	if masked_rect != null and viewport != null:
+		masked_rect.texture = viewport.get_texture()
+		_align_minimap_to_container()
+
 
 # 🆕 Implemented Update Method
 func update_minimap() -> void:
@@ -743,3 +776,142 @@ func update_minimap() -> void:
 		minimap_camera.global_position = clamped_pos
 
 	print("✅ Minimap: update complete.")
+
+func _center_minimap_on_screen() -> void:
+	if masked_rect == null:
+		return
+	var viewport_size := get_viewport().get_visible_rect().size
+	# Place at top-right corner
+	var diameter := masked_rect.size.x
+	var margin := 24.0
+	masked_rect.position = Vector2(viewport_size.x - diameter - margin, margin)
+	if border_rect != null:
+		border_rect.position = masked_rect.position
+	_update_compass_positions()
+
+func _setup_circular_masked_view() -> void:
+	# Hide the raw SubViewportContainer rendering; we will display via TextureRect
+	if viewport_container != null:
+		viewport_container.visible = false
+	# Create a TextureRect that displays the SubViewport's texture
+	masked_rect = TextureRect.new()
+	masked_rect.name = "MinimapCircle"
+	masked_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	masked_rect.stretch_mode = TextureRect.STRETCH_SCALE
+	masked_rect.size = Vector2(180, 180)
+	masked_rect.texture = viewport.get_texture() if viewport != null else null
+	masked_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(masked_rect)
+	# Add a subtle border behind using a ColorRect with shader for ring
+	border_rect = ColorRect.new()
+	border_rect.color = Color(0, 0, 0, 0)
+	border_rect.size = masked_rect.size
+	border_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(border_rect)
+	border_rect.move_to_front()
+	masked_rect.move_to_front()
+	# Circular mask shader for the TextureRect
+	var shader_code := """
+	shader_type canvas_item;
+	uniform float feather = 2.0; // pixels
+	
+	void fragment() {
+		vec2 uv = UV; // 0..1 within rect
+		vec2 c = uv * 2.0 - vec2(1.0);
+		float r = length(c);
+		float edge = 1.0 - smoothstep(1.0 - (feather / float(textureSize(TEXTURE, 0).x))*2.0, 1.0, r);
+		vec4 col = texture(TEXTURE, uv);
+		COL = vec4(col.rgb, col.a * edge);
+	}
+	"""
+	var shader := Shader.new()
+	shader.code = shader_code
+	var mat := ShaderMaterial.new()
+	mat.shader = shader
+	masked_rect.material = mat
+	# Optional ring border shader
+	var border_shader_code := """
+	shader_type canvas_item;
+	uniform vec4 ring_color : source_color = vec4(0.0,0.0,0.0,0.6);
+	uniform float thickness = 3.0; // pixels
+	
+	void fragment() {
+		vec2 uv = UV;
+		vec2 c = uv * 2.0 - vec2(1.0);
+		float r = length(c);
+		float t = thickness / float(textureSize(SCREEN_TEXTURE, 0).x) * 2.0; // approx
+		float ring = smoothstep(1.0, 1.0 - t, r) - smoothstep(1.0 - t, 1.0 - 2.0*t, r);
+		COL = ring_color * ring;
+	}
+	"""
+	var bshader := Shader.new()
+	bshader.code = border_shader_code
+	var bmat := ShaderMaterial.new()
+	bmat.shader = bshader
+	border_rect.material = bmat
+	# Initial placement
+	_center_minimap_on_screen()
+
+func _setup_compass_letters() -> void:
+	if masked_rect == null:
+		return
+	# Create four labels if they don't exist
+	if north_label == null:
+		north_label = Label.new()
+		north_label.text = "N"
+		north_label.add_theme_color_override("font_color", Color(0,0,0))
+		north_label.add_theme_color_override("font_outline_color", Color(0,0,0))
+		north_label.add_theme_constant_override("outline_size", 3)
+		add_child(north_label)
+	if east_label == null:
+		east_label = Label.new()
+		east_label.text = "E"
+		east_label.add_theme_color_override("font_color", Color(0,0,0))
+		east_label.add_theme_color_override("font_outline_color", Color(0,0,0))
+		east_label.add_theme_constant_override("outline_size", 4)
+		add_child(east_label)
+	if south_label == null:
+		south_label = Label.new()
+		south_label.text = "S"
+		south_label.add_theme_color_override("font_color", Color(0,0,0))
+		south_label.add_theme_color_override("font_outline_color", Color(0,0,0))
+		south_label.add_theme_constant_override("outline_size", 4)
+		add_child(south_label)
+	if west_label == null:
+		west_label = Label.new()
+		west_label.text = "W"
+		west_label.add_theme_color_override("font_color", Color(0,0,0))
+		west_label.add_theme_color_override("font_outline_color", Color(0,0,0))
+		west_label.add_theme_constant_override("outline_size", 4)
+		add_child(west_label)
+	_update_compass_positions()
+
+func _update_compass_positions() -> void:
+	if masked_rect == null:
+		return
+	var pos := masked_rect.position
+	var size := masked_rect.size
+	var center := pos + size * 0.5
+	var margin := 6.0
+	# Place labels just outside the circle for clarity
+	if north_label != null:
+		north_label.position = Vector2(center.x - north_label.size.x * 0.5, pos.y - north_label.size.y - margin)
+	if south_label != null:
+		south_label.position = Vector2(center.x - south_label.size.x * 0.5, pos.y + size.y + margin)
+	if east_label != null:
+		east_label.position = Vector2(pos.x + size.x + margin, center.y - east_label.size.y * 0.5)
+	if west_label != null:
+		west_label.position = Vector2(pos.x - west_label.size.x - margin, center.y - west_label.size.y * 0.5)
+
+func _align_minimap_to_container() -> void:
+	if viewport_container == null or masked_rect == null:
+		return
+	# Use the SubViewportContainer’s rect to size and center the circular minimap
+	var pos := viewport_container.global_position
+	var size := viewport_container.size
+	masked_rect.size = size
+	masked_rect.position = pos
+	if border_rect != null:
+		border_rect.size = size
+		border_rect.position = pos
+	_update_compass_positions()

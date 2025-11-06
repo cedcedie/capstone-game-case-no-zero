@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://cgypkb14aq6fh"]
 
 [ext_resource type="Script" uid="uid://bo3tn1sareqde" path="res://scenes/ui/UI by jer/scripts/control_guide.gd" id="1_control_guide"]
-[ext_resource type="Texture2D" uid="uid://osehm2q6lrl5" path="res://scenes/ui/UI by jer/used in UI/istockphoto-1333010525-612x612.jpg" id="2_fa5hd"]
+[ext_resource type="Texture2D" uid="uid://osehm2q6lrl5" path="res://scenes/ui/UI by jer/used in UI/items/istockphoto-1333010525-612x612.jpg" id="2_fa5hd"]
 [ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="3_503p4"]
-[ext_resource type="Texture2D" uid="uid://i4bs1w7psg6j" path="res://scenes/ui/UI by jer/used in UI/Untitled design (1).jpg" id="4_3plx6"]
+[ext_resource type="Texture2D" uid="uid://i4bs1w7psg6j" path="res://scenes/ui/UI by jer/used in UI/items/Untitled design (1).jpg" id="4_3plx6"]
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/limezuUI/Modern_UI_Style_1_32x32.png" id="5_mre7o"]
 [ext_resource type="FontFile" uid="uid://da1sanbtdceii" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="6_mtlkw"]
 
@@ -22,14 +22,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ControlGuideScript" type="Node2D" parent="."]
+position = Vector2(-82, -12)
 script = ExtResource("1_control_guide")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 7.0
-offset_right = 1359.0
-offset_bottom = 733.0
+offset_left = -1.0
+offset_top = 3.0
+offset_right = 1283.0
+offset_bottom = 717.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mre7o")
 
 [node name="Panel" type="Panel" parent="Panel"]
@@ -95,10 +96,10 @@ vertical_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 993.0
-offset_top = 157.0
-offset_right = 1224.0
-offset_bottom = 367.0
+offset_left = 911.0
+offset_top = 145.0
+offset_right = 1142.0
+offset_bottom = 355.0
 texture = ExtResource("5_mre7o")
 region_rect = Rect2(16, 16, 64, 62)
 
@@ -119,10 +120,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_503p4")
 
 [node name="SkipLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 650.0
-offset_right = 400.0
-offset_bottom = 700.0
+offset_left = 11.0
+offset_top = 663.0
+offset_right = 421.0
+offset_bottom = 719.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.8)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
