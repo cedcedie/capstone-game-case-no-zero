@@ -365,12 +365,21 @@ func _input(event):
 		if "main_menu" in scene_name or "chapter_menu" in scene_name:
 			in_menu_scene = true
 	
+	# Check if we're in office scene (TAB disabled throughout, even after cutscene completes)
+	var in_office_scene = false
+	if current_scene:
+		var scene_name = current_scene.name.to_lower()
+		if "office" in scene_name:
+			in_office_scene = true
+	
 	# Only allow evidence inventory access (not in blocked scenes)
 	if event.is_action_pressed("evidence_inventory"):
 		if in_blocked_scene:
 			pass  # Blocked
 		elif in_cutscene:
 			pass  # Blocked during cutscene
+		elif in_office_scene:
+			pass  # Blocked in office scene (even after cutscene completes)
 		else:
 			# Check if Settings is visible or just closed - if so, don't toggle Evidence
 			var settings_ui = get_node_or_null("/root/Settings")

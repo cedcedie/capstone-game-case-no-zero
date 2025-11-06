@@ -1,7 +1,7 @@
 extends Node
 
 # Dedicated spawn for after follow_darwin (separate from recollection spawn)
-const FOLLOW_DARWIN_SPAWN: Vector2 = Vector2(904.0, 360.0)
+const FOLLOW_DARWIN_SPAWN: Vector2 = Vector2(768.0, 288.0)
 
 var anim_player: AnimationPlayer = null
 var player_node: Node = null
@@ -53,30 +53,35 @@ func _ready() -> void:
 		print("🎬 HEAD_POLICE_COMPLETED - hiding station lobby nodes permanently")
 		_hide_station_lobby_nodes()
 	
-	# Check if SECURITY_SERVER_CUTSCENE_2_COMPLETED - play celine_call_cutscene animation (only once)
+	# FLOW ORDER (from latest to earliest):
+	# 1. SECURITY_SERVER_CUTSCENE_2_COMPLETED → celine _call_cutscene (latest in flow)
+	# 2. HEAD_POLICE_COMPLETED → follow_darwin (after recollection)
+	# 3. LOWER_LEVEL_CUTSCENE_COMPLETED → recollection (earliest in flow)
+	
+	# Check if SECURITY_SERVER_CUTSCENE_2_COMPLETED - play celine _call_cutscene animation (only once)
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_CUTSCENE_2_COMPLETED):
 		if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED):
-			print("🎬 SECURITY_SERVER_CUTSCENE_2_COMPLETED - playing celine_call_cutscene animation")
+			print("🎬 SECURITY_SERVER_CUTSCENE_2_COMPLETED - playing celine _call_cutscene animation")
 			# Start cutscene
 			cutscene_active = true
 			
-		# Wait for scene fade-in to complete
-		await get_tree().process_frame
-		await get_tree().process_frame
-		await get_tree().process_frame
-		
-		var scene_root := get_tree().current_scene
-		var fade_in_node := scene_root.get_node_or_null("SceneFadeIn") if scene_root != null else null
-		if fade_in_node != null:
-			await get_tree().create_timer(0.3).timeout
-		else:
-			await get_tree().create_timer(0.2).timeout
-		
-		# Play celine_call_cutscene animation
+			# Wait for scene fade-in to complete
+			await get_tree().process_frame
+			await get_tree().process_frame
+			await get_tree().process_frame
+			
+			var scene_root := get_tree().current_scene
+			var fade_in_node := scene_root.get_node_or_null("SceneFadeIn") if scene_root != null else null
+			if fade_in_node != null:
+				await get_tree().create_timer(0.3).timeout
+			else:
+				await get_tree().create_timer(0.2).timeout
+			
+			# Play celine _call_cutscene animation
 			if anim_player != null:
-				if anim_player.has_animation("celine_call_cutscene"):
-					print("🎬 Playing celine_call_cutscene animation")
-					anim_player.play("celine_call_cutscene")
+				if anim_player.has_animation("celine _call_cutscene"):
+					print("🎬 Playing celine _call_cutscene animation")
+					anim_player.play("celine _call_cutscene")
 					# Wait for animation to finish
 					# Note: _set_celine_call_completed() should be called from AnimationPlayer method call track
 					await anim_player.animation_finished
@@ -84,33 +89,28 @@ func _ready() -> void:
 					if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED):
 						_set_celine_call_completed()
 				else:
-					print("⚠️ No 'celine_call_cutscene' animation found. Available animations: ", anim_player.get_animation_list())
+					print("⚠️ No 'celine _call_cutscene' animation found. Available animations: ", anim_player.get_animation_list())
 					_set_player_active(true)
 			else:
 				print("⚠️ AnimationPlayer not found!")
 				_set_player_active(true)
 			return
-	else:
-		print("🎬 Celine call already completed - skipping")
-		_set_player_active(true)
-		return
+		else:
+			# Celine call already completed - set post-cutscene positions and enable player
+			print("🎬 Celine call already completed - setting post-cutscene positions")
+			_set_post_cutscene_positions()
+			_set_player_active(true)
+			return
 	
-	# Check if lower level cutscene is completed
-	if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED):
-		print("🎬 Lower level cutscene not completed yet - skipping recollection")
-		# Celine already hidden above
-		_set_player_active(true)
-		return
-	
-	# Check if follow_darwin already played (only trigger once)
-	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED):
-		print("🎬 Follow Darwin already completed - skipping")
-		# Celine already hidden above
-		_set_player_active(true)
-		return
-	
-	# Check if head police completed - play follow_darwin animation
+	# Check if HEAD_POLICE_COMPLETED - play follow_darwin animation (after recollection)
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
+		# Check if follow_darwin already played
+		if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED):
+			print("🎬 Follow Darwin already completed - setting post-cutscene positions")
+			_set_post_cutscene_positions()
+			_set_player_active(true)
+			return
+		
 		print("🎬 Head police completed - playing follow_darwin animation")
 		# Hide "Tanungin ang pulis" task display if it's still showing
 		_hide_task_display()
@@ -148,10 +148,18 @@ func _ready() -> void:
 			_set_player_active(true)
 		return
 	
+	# Check if lower level cutscene is completed - play recollection animation
+	if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED):
+		print("🎬 Lower level cutscene not completed yet - skipping recollection")
+		# Celine already hidden above
+		_set_player_active(true)
+		return
+	
 	# Check if recollection already played (only trigger once)
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED):
-		print("🎬 Recollection already completed - skipping")
-		# Celine already hidden above
+		print("🎬 Recollection already completed - setting post-cutscene positions")
+		# Set post-cutscene positions even on revisit
+		_set_post_cutscene_positions()
 		_set_player_active(true)
 		return
 	
@@ -185,10 +193,18 @@ func _ready() -> void:
 		if anim_player.has_animation("recollection_animation"):
 			print("🎬 Playing recollection_animation")
 			anim_player.play("recollection_animation")
+			# Wait for animation to finish
+			# Note: end_cutscene() should be called from AnimationPlayer method call track
+			await anim_player.animation_finished
+			# Fallback: if not called from animation, call it here
+			if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED):
+				end_cutscene()
 		else:
 			print("⚠️ No 'recollection_animation' found. Available animations: ", anim_player.get_animation_list())
+			_set_player_active(true)
 	else:
 		print("⚠️ AnimationPlayer not found!")
+		_set_player_active(true)
 
 func _process(_delta: float) -> void:
 	# Continuously disable movement during cutscene
@@ -621,15 +637,51 @@ func _set_celine_call_completed() -> void:
 	# Update task display to "Pumunta sa baranggay hall"
 	_show_task_display("Pumunta sa baranggay hall")
 	
-	# Reset DialogueUI cutscene mode
+	# Reset DialogueUI cutscene mode FIRST
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui and dui.has_method("set_cutscene_mode"):
 		dui.set_cutscene_mode(false)
 		print("🎬 Reset DialogueUI cutscene_mode to false")
 	
-	# Cleanup
+	# Mark cutscene as inactive FIRST - this stops _process() from disabling movement
 	cutscene_active = false
-	_set_player_active(true)
+	print("🎬 cutscene_active set to FALSE - _process() will stop disabling movement")
+	
+	# Re-enable player movement - fully restore all processing
+	if player_node == null:
+		player_node = _find_player()
+	
+	if player_node != null:
+		print("🔧 Celine Call: Restoring player movement...")
+		# Re-enable input/physics processing FIRST
+		if player_node.has_method("set_process_input"):
+			player_node.set_process_input(true)
+			print("   ✅ Enabled set_process_input(true)")
+		if player_node.has_method("set_physics_process"):
+			player_node.set_physics_process(true)
+			print("   ✅ Enabled set_physics_process(true)")
+		
+		# Re-enable movement control - call enable_movement() which sets control_enabled
+		if player_node.has_method("enable_movement"):
+			player_node.enable_movement()
+			print("   ✅ Called enable_movement()")
+		
+		# Force set control_enabled to true - make absolutely sure
+		if "control_enabled" in player_node:
+			player_node.control_enabled = true
+			print("   ✅ Force set control_enabled = true")
+		
+		# Wait a frame to ensure everything is applied
+		await get_tree().process_frame
+		
+		# Final check
+		var final_control = player_node.get("control_enabled") if "control_enabled" in player_node else "N/A"
+		var final_mode = player_node.get("process_mode") if "process_mode" in player_node else "N/A"
+		print("   Final state - control_enabled: ", final_control, ", process_mode: ", final_mode)
+		print("🎬 Celine Call: Player movement fully restored - YOU SHOULD BE ABLE TO MOVE NOW!")
+	else:
+		print("⚠️ Celine Call: player_node is null! Cannot restore movement!")
+		_set_player_active(true)  # Fallback
 
 func play_phone_ringtone(ring_count: int = 3) -> float:
 	"""Play phone ringtone using VoiceBlipManager
@@ -657,13 +709,110 @@ func _start_ringtone_async(ring_count: int = 3) -> void:
 	var duration = await play_phone_ringtone(ring_count)
 	print("📞 Ringtone duration was: ", duration, " seconds")
 
+# ---- Phone Animation Helpers (callable from AnimationPlayer) ----
+func stop_phone_in_at_last_frame() -> void:
+	"""Stop phone_in animation at last frame - callable from AnimationPlayer"""
+	if player_node == null:
+		player_node = _find_player()
+	if player_node == null:
+		print("⚠️ Cannot stop phone_in - player not found")
+		return
+	
+	var anim_sprite: AnimatedSprite2D = player_node.get_node_or_null("AnimatedSprite2D")
+	if anim_sprite == null:
+		print("⚠️ Cannot stop phone_in - AnimatedSprite2D not found on player")
+		return
+	
+	# Wait for animation to finish if it's playing
+	if anim_sprite.is_playing() and anim_sprite.animation == "phone_in":
+		# Wait for animation to complete
+		await anim_sprite.animation_finished
+	
+	# Get the sprite frames resource
+	var sprite_frames = anim_sprite.sprite_frames
+	if sprite_frames == null:
+		print("⚠️ Cannot stop phone_in - SpriteFrames not found")
+		return
+	
+	# Get the phone_in animation
+	if not sprite_frames.has_animation("phone_in"):
+		print("⚠️ Cannot stop phone_in - animation 'phone_in' not found")
+		return
+	
+	# Get the last frame index
+	var frame_count = sprite_frames.get_frame_count("phone_in")
+	if frame_count == 0:
+		print("⚠️ Cannot stop phone_in - animation has no frames")
+		return
+	
+	# Play the animation and seek to last frame
+	anim_sprite.play("phone_in")
+	# Wait a frame to ensure animation starts
+	await get_tree().process_frame
+	# Seek to the last frame (frame_count - 1, since it's 0-indexed)
+	anim_sprite.frame = frame_count - 1
+	# Stop the animation so it stays on the last frame
+	anim_sprite.stop()
+	print("📞 phone_in stopped at last frame (frame ", frame_count - 1, ")")
+
+func stop_phone_out_at_last_frame() -> void:
+	"""Stop phone_out animation at last frame - callable from AnimationPlayer"""
+	if player_node == null:
+		player_node = _find_player()
+	if player_node == null:
+		print("⚠️ Cannot stop phone_out - player not found")
+		return
+	
+	var anim_sprite: AnimatedSprite2D = player_node.get_node_or_null("AnimatedSprite2D")
+	if anim_sprite == null:
+		print("⚠️ Cannot stop phone_out - AnimatedSprite2D not found on player")
+		return
+	
+	# Wait for animation to finish if it's playing
+	if anim_sprite.is_playing() and anim_sprite.animation == "phone_out":
+		# Wait for animation to complete
+		await anim_sprite.animation_finished
+	
+	# Get the sprite frames resource
+	var sprite_frames = anim_sprite.sprite_frames
+	if sprite_frames == null:
+		print("⚠️ Cannot stop phone_out - SpriteFrames not found")
+		return
+	
+	# Get the phone_out animation
+	if not sprite_frames.has_animation("phone_out"):
+		print("⚠️ Cannot stop phone_out - animation 'phone_out' not found")
+		return
+	
+	# Get the last frame index
+	var frame_count = sprite_frames.get_frame_count("phone_out")
+	if frame_count == 0:
+		print("⚠️ Cannot stop phone_out - animation has no frames")
+		return
+	
+	# Play the animation and seek to last frame
+	anim_sprite.play("phone_out")
+	# Wait a frame to ensure animation starts
+	await get_tree().process_frame
+	# Seek to the last frame (frame_count - 1, since it's 0-indexed)
+	anim_sprite.frame = frame_count - 1
+	# Stop the animation so it stays on the last frame
+	anim_sprite.stop()
+	print("📞 phone_out stopped at last frame (frame ", frame_count - 1, ")")
+
 # ---- Celine Call Dialogue Methods (callable from AnimationPlayer) ----
 func show_celine_call_line_0() -> void:
 	"""Show first line of celine call dialogue - callable from AnimationPlayer"""
+	print("📞 show_celine_call_line_0 called - celine_call_dialogue size: ", celine_call_dialogue.size())
 	if celine_call_dialogue.size() > 0:
 		show_line_from_array(celine_call_dialogue, 0)
 	else:
-		print("⚠️ Celine call dialogue not loaded")
+		print("⚠️ Celine call dialogue not loaded - attempting to reload...")
+		_load_celine_call_dialogue()
+		if celine_call_dialogue.size() > 0:
+			show_line_from_array(celine_call_dialogue, 0)
+		else:
+			print("⚠️ Celine call dialogue still not loaded after reload attempt")
 
 func show_celine_call_line_1() -> void:
 	"""Show second line of celine call dialogue - callable from AnimationPlayer"""
@@ -791,7 +940,11 @@ func _load_celine_call_dialogue() -> void:
 		for item in (arr as Array):
 			if typeof(item) == TYPE_DICTIONARY:
 				celine_call_dialogue.append(item as Dictionary)
-		print("📞 Loaded ", celine_call_dialogue.size(), " celine call dialogue lines")
+		print("📞 Loaded ", celine_call_dialogue.size(), " celine call dialogue lines from celine_call_dialogue.json")
+		# Debug: print first line to verify
+		if celine_call_dialogue.size() > 0:
+			var first_line = celine_call_dialogue[0]
+			print("📞 First line - Speaker: ", first_line.get("speaker", ""), ", Text: ", first_line.get("text", ""))
 	else:
 		print("⚠️ No dialogue_lines array found in celine_call section")
 

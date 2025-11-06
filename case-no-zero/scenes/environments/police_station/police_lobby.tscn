@@ -7336,11 +7336,14 @@ tracks/1/path = NodePath("PoliceLobbyCutscene")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(2.6, 17),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [6],
 "method": &"call_ringtone"
+}, {
+"args": [],
+"method": &"stop_phone_out_at_last_frame"
 }]
 }
 tracks/2/type = "value"
@@ -7362,10 +7365,10 @@ tracks/3/path = NodePath("PlayerM/AnimatedSprite2D:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.6, 4, 16.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2, 2.6, 4, 16.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [&"idle_back", &"idle_down", &"phone_out", &"phone_in"]
+"values": [&"idle_back", &"walk_back", &"idle_down", &"phone_out", &"phone_in"]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -7374,8 +7377,23 @@ tracks/4/path = NodePath("PoliceLobbyCutscene")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_phone_out_at_last_frame"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerM/AnimatedSprite2D:sprite_frames")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
+"update": 1,
 "values": []
 }
 
