@@ -24413,6 +24413,7 @@ position = Vector2(672, 784)
 
 [node name="AnimatedSprite2D" parent="NpcPlPo1Darwin" index="0"]
 animation = &"idle_front"
+autoplay = "idle_front"
 
 [node name="NpcPlPo2" parent="." instance=ExtResource("12_1n6kl")]
 z_index = 4
@@ -24431,7 +24432,7 @@ animation = &"idle_front"
 
 [node name="NpcPlPo4" parent="." instance=ExtResource("14_6s882")]
 z_index = 4
-position = Vector2(1231, 1216)
+position = Vector2(952, 648)
 
 [node name="NpcPlPo5" parent="." instance=ExtResource("15_0ayku")]
 z_index = 4
@@ -24456,14 +24457,14 @@ animation = &"idle_left"
 
 [node name="NpcPlPo6" parent="." instance=ExtResource("18_yq1yh")]
 z_index = 4
-position = Vector2(2196, 1422)
+position = Vector2(2192, 1376)
 
 [node name="AnimatedSprite2D" parent="NpcPlPo6" index="0"]
 animation = &"idle_front"
 
 [node name="NpcPlGuy7" parent="." instance=ExtResource("19_vbhek")]
 z_index = 4
-position = Vector2(512, 1448)
+position = Vector2(784, 208)
 
 [node name="AnimatedSprite2D" parent="NpcPlGuy7" index="0"]
 animation = &"idle_back"
@@ -24493,14 +24494,14 @@ autoplay = ""
 
 [node name="NpcPlGuy9" parent="." instance=ExtResource("24_plssp")]
 z_index = 4
-position = Vector2(2144, 1067)
+position = Vector2(2272, 1136)
 
 [node name="AnimatedSprite2D" parent="NpcPlGuy9" index="0"]
 animation = &"idle_front"
 
 [node name="NpcPlGuy8" parent="." instance=ExtResource("25_rhcut")]
 z_index = 4
-position = Vector2(1152, 520)
+position = Vector2(1368, 232)
 
 [node name="NpcPlGuy5" parent="." instance=ExtResource("26_tmrfp")]
 z_index = 4

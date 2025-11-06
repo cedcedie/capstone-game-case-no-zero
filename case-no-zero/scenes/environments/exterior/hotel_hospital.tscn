@@ -30115,11 +30115,11 @@ z_index = 4
 
 [node name="NpcHtlF3" parent="." instance=ExtResource("12_gs130")]
 z_index = 10
-position = Vector2(804, 155)
+position = Vector2(544, 152)
 
 [node name="NpcHtlF4" parent="." instance=ExtResource("13_yfvvq")]
 z_index = 4
-position = Vector2(273, 175)
+position = Vector2(432, 424)
 
 [node name="AnimatedSprite2D" parent="NpcHtlF4" index="0"]
 animation = &"idle_front"
@@ -30160,7 +30160,7 @@ z_index = 4
 
 [node name="NpcHtlEm4" parent="." instance=ExtResource("17_fkgri")]
 z_index = 4
-position = Vector2(445, 1646)
+position = Vector2(382, 1632)
 
 [node name="AnimatedSprite2D" parent="NpcHtlEm4" index="0"]
 animation = &"idle_left"
@@ -30205,7 +30205,7 @@ z_index = 4
 
 [node name="NpcHtlGuy2" parent="." instance=ExtResource("23_qvy27")]
 z_index = 4
-position = Vector2(720, 2542)
+position = Vector2(720, 2528)
 
 [node name="AnimatedSprite2D" parent="NpcHtlGuy2" index="0"]
 animation = &"idle_front"
