@@ -37447,7 +37447,7 @@ script = ExtResource("30_ax1g1")
 
 [node name="NpcGuy5" parent="." instance=ExtResource("21_dsbue")]
 z_index = 4
-position = Vector2(1784, 1063)
+position = Vector2(2624, 408)
 
 [node name="NpcGuy4" parent="." instance=ExtResource("23_w58ee")]
 position = Vector2(128, 496)
@@ -37516,7 +37516,7 @@ position = Vector2(1160, 504)
 script = ExtResource("41_h58kl")
 
 [node name="NpcYellowGlassMan" parent="." instance=ExtResource("28_xrcoi")]
-position = Vector2(1792, 224)
+position = Vector2(1800, 224)
 
 [node name="NpcGirl1" parent="." instance=ExtResource("29_0gp1r")]
 position = Vector2(1528, 1063)

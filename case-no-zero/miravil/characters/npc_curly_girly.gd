@@ -76,4 +76,4 @@ func play_idle_animation():
 		"up":
 			animated_sprite.play("idle_back")
 		"down":
-			animated_sprite.play("idle_down")
+			animated_sprite.play("idle_front")

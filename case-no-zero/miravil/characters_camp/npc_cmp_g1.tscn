@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://cddtmse0ou66o"]
+[gd_scene load_steps=31 format=3 uid="uid://cddtmse0ou66o"]
 
+[ext_resource type="Script" uid="uid://dlsssnhm4hrmg" path="res://miravil/characters_camp/npc_cmp_g_1.gd" id="1_1jgc2"]
 [ext_resource type="Texture2D" uid="uid://dxh1n6tarhflt" path="res://miravil/sprites_camp_3/npc_cmp_g1.png" id="1_qh47r"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_1jgc2"]
 
@@ -231,6 +232,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcCmpG1" type="CharacterBody2D"]
+script = ExtResource("1_1jgc2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qs3qw")

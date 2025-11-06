@@ -10,10 +10,11 @@ var last_direction: String = "down"
 
 # ✅ EDIT THESE PATH POINTS IF YOU WANT NEW DESTINATIONS
 var path_points: Array[Vector2] = [
-	Vector2(874.0, 857.0),
-	Vector2(755.0, 857.0),
-	Vector2(768.0, 120.0),
-	Vector2(1800.0, 120.0)
+	Vector2(1512.0, 944.0),
+	Vector2(1512.0, 312.0),
+	Vector2(1202.0, 312.0),
+	Vector2(1202.0, 440.0),
+	Vector2(1264.0, 440.0)
 ]
 
 func _ready():

@@ -10,9 +10,9 @@ var last_direction: String = "down"
 
 # ✅ EDIT THESE PATH POINTS IF YOU WANT NEW DESTINATIONS
 var path_points: Array[Vector2] = [
-	Vector2(1672.0, 496.0),
-	Vector2(1672.0, 1000.0),
-	Vector2(1792.0, 1000.0)
+	Vector2(1672.0, 382.0),
+	Vector2(1672.0, 896.0),
+	Vector2(1792.0, 896.0)
 
 	
 ]
@@ -87,4 +87,4 @@ func play_idle_animation():
 		"right": animated_sprite.play("idle_right")
 		"left": animated_sprite.play("idle_left")
 		"up": animated_sprite.play("idle_back")
-		"down": animated_sprite.play("idle_down")
+		"down": animated_sprite.play("idle_front")
