@@ -161,8 +161,10 @@ libraries = {
 
 [node name="mysteryBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_5oq4b")
+bus = "Music"
 
 [node name="DangerBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_fiiln")
+bus = "Music"
 
 [editable path="leo_mendoza"]

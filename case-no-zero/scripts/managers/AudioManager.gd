@@ -7,6 +7,10 @@ signal bgm_changed(new_bgm: String)
 signal bgm_restored()
 signal ambient_changed(new_ambient: String)
 
+# Global volume signals (0.0 - 1.0 linear)
+signal music_volume_changed(value: float)
+signal sfx_volume_changed(value: float)
+
 # BGM Audio settings
 var current_bgm: String = ""
 var scene_bgm: String = ""  # The BGM that should play for the current scene
@@ -58,6 +62,10 @@ var exterior_ambient_map: Dictionary = {
 var ambient_layers: Array[AudioStreamPlayer] = []
 var max_layers: int = 3
 
+# Global volume state (linear 0..1)
+var music_volume: float = 1.0
+var sfx_volume: float = 1.0
+
 # Scene BGM mapping
 var scene_bgm_map: Dictionary = {
 	"main_menu": "res://assets/audio/deltarune/From Now On (Battle 2).ogg",
@@ -84,10 +92,21 @@ var scene_bgm_map: Dictionary = {
 
 func _ready():
 	print("🎵 AudioManager: Ready")
+
+	# Ensure required audio buses exist so UI sliders work
+	_ensure_audio_buses()
+
+	# Initialize volume state from current buses
+	# Load saved volumes if present
+	_load_volumes()
+	# Apply to buses and notify listeners
+	set_music_volume(music_volume)
+	set_sfx_volume(sfx_volume)
 	
 	# Create BGM player
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.name = "BGMAudioPlayer"
+	bgm_player.bus = "Music"
 	add_child(bgm_player)
 	print("🎵 AudioManager: BGM player created")
 	
@@ -95,6 +114,7 @@ func _ready():
 	ambient_player = AudioStreamPlayer.new()
 	ambient_player.name = "AmbientAudioPlayer"
 	ambient_player.volume_db = -10  # Set to -10 dB
+	ambient_player.bus = "Music"
 	add_child(ambient_player)
 	
 	# Connect to track finished signal for playlist progression
@@ -108,6 +128,7 @@ func _ready():
 		var layer_player = AudioStreamPlayer.new()
 		layer_player.name = "AmbientLayer" + str(i)
 		layer_player.volume_db = -25
+		layer_player.bus = "Music"
 		add_child(layer_player)
 		ambient_layers.append(layer_player)
 	
@@ -321,6 +342,59 @@ func _on_scene_changed():
 		set_exterior_ambient(scene_name)
 	else:
 		print("⚠️ AudioManager: No current scene found")
+
+func _ensure_audio_buses() -> void:
+	# Create Music and SFX buses if missing so sliders always target valid buses
+	var music_idx := AudioServer.get_bus_index("Music")
+	if music_idx == -1:
+		AudioServer.add_bus(AudioServer.get_bus_count())
+		AudioServer.set_bus_name(AudioServer.get_bus_count() - 1, "Music")
+		print("🎚️ Created 'Music' audio bus")
+
+	var sfx_idx := AudioServer.get_bus_index("SFX")
+	if sfx_idx == -1:
+		AudioServer.add_bus(AudioServer.get_bus_count())
+		AudioServer.set_bus_name(AudioServer.get_bus_count() - 1, "SFX")
+		print("🎚️ Created 'SFX' audio bus")
+
+func _load_volumes() -> void:
+	var cfg := ConfigFile.new()
+	var err := cfg.load("user://settings.cfg")
+	if err == OK:
+		music_volume = clamp(cfg.get_value("audio", "music_volume", _get_bus_linear("Music")), 0.0, 1.0)
+		sfx_volume = clamp(cfg.get_value("audio", "sfx_volume", _get_bus_linear("SFX")), 0.0, 1.0)
+	else:
+		# Defaults from current bus levels if no file
+		music_volume = _get_bus_linear("Music")
+		sfx_volume = _get_bus_linear("SFX")
+
+func _save_volumes() -> void:
+	var cfg := ConfigFile.new()
+	cfg.set_value("audio", "music_volume", music_volume)
+	cfg.set_value("audio", "sfx_volume", sfx_volume)
+	cfg.save("user://settings.cfg")
+
+func _get_bus_linear(bus_name: String) -> float:
+	var idx := AudioServer.get_bus_index(bus_name)
+	if idx == -1:
+		return 1.0
+	return db_to_linear(AudioServer.get_bus_volume_db(idx))
+
+func set_music_volume(value: float) -> void:
+	music_volume = clamp(value, 0.0, 1.0)
+	var idx := AudioServer.get_bus_index("Music")
+	if idx != -1:
+		AudioServer.set_bus_volume_db(idx, linear_to_db(music_volume))
+	music_volume_changed.emit(music_volume)
+	_save_volumes()
+
+func set_sfx_volume(value: float) -> void:
+	sfx_volume = clamp(value, 0.0, 1.0)
+	var idx := AudioServer.get_bus_index("SFX")
+	if idx != -1:
+		AudioServer.set_bus_volume_db(idx, linear_to_db(sfx_volume))
+	sfx_volume_changed.emit(sfx_volume)
+	_save_volumes()
 
 # ===========================================
 # AMBIENT AUDIO FUNCTIONS

@@ -126,3 +126,4 @@ theme = SubResource("Theme_owpfv")
 text = "next"
 
 [node name="TypingSound" type="AudioStreamPlayer" parent="Container"]
+bus = "SFX"

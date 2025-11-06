@@ -7,6 +7,7 @@ func _ready():
 	# Create the voice blip player
 	voice_blip_player = AudioStreamPlayer.new()
 	voice_blip_player.name = "VoiceBlipPlayer"
+	voice_blip_player.bus = "SFX"
 	
 	# Add to this autoload node so it can play audio
 	add_child(voice_blip_player)

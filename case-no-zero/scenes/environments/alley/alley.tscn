@@ -18377,10 +18377,12 @@ tile_set = SubResource("TileSet_ql2bo")
 [node name="MainBG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_lu0mt")
 volume_db = -10.0
+bus = "Music"
 
 [node name="SuspenseBG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_2jdhb")
 volume_db = -10.0
+bus = "Music"
 
 [editable path="leo_mendoza"]
 [editable path="NpcGuy3"]

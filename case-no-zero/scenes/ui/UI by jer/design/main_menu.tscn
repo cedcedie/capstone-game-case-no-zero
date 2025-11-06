@@ -225,22 +225,22 @@ offset_right = 195.5
 offset_bottom = 61.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/VBoxContainer"]
+[node name="HBoxContainerMusic" type="HBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainerMusic"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 30
 theme_override_fonts/font = ExtResource("4_t8b3b")
 theme_override_font_sizes/font_size = 20
-text = " Master volume"
+text = " Music volume"
 
-[node name="Audio Control" type="HSlider" parent="Options/VBoxContainer/HBoxContainer"]
+[node name="Music Control" type="HSlider" parent="Options/VBoxContainer/HBoxContainerMusic"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -251,7 +251,33 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 script = ExtResource("5_adqss")
-audio_bus_name = "Master"
+audio_bus_name = "Music"
+
+[node name="HBoxContainerSFX" type="HBoxContainer" parent="Options/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainerSFX"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("4_t8b3b")
+theme_override_font_sizes/font_size = 20
+text = " SFX volume"
+
+[node name="SFX Control" type="HSlider" parent="Options/VBoxContainer/HBoxContainerSFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_o08tu")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_adqss")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_y3fev")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_adqss")
+audio_bus_name = "SFX"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
@@ -272,5 +298,6 @@ script = ExtResource("6_y3fev")
 [connection signal="pressed" from="mainbuttons/options" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="mainbuttons/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Options/back" to="." method="_on_back_options_pressed"]
-[connection signal="value_changed" from="Options/VBoxContainer/HBoxContainer/Audio Control" to="Options/VBoxContainer/HBoxContainer/Audio Control" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/HBoxContainerMusic/Music Control" to="Options/VBoxContainer/HBoxContainerMusic/Music Control" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/HBoxContainerSFX/SFX Control" to="Options/VBoxContainer/HBoxContainerSFX/SFX Control" method="_on_value_changed"]
 [connection signal="toggled" from="Options/VBoxContainer/HBoxContainer2/Fullscreen Control" to="Options/VBoxContainer/HBoxContainer2/Fullscreen Control" method="_on_toggled"]
