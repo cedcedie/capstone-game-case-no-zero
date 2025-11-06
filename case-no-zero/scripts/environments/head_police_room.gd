@@ -112,10 +112,7 @@ func end_cutscene() -> void:
 			if player_node is CanvasItem:
 				(player_node as CanvasItem).visible = true
 	
-	# Now fade in the environment
-	await show_environment_and_characters(0.5)
-	
-	# Fade in the screen overlay to return to normal gameplay
+	# Fade in the screen overlay to return to normal gameplay (remove black overlay from fade_out)
 	await fade_in(0.5)
 	
 	# Re-enable player control

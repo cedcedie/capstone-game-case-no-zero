@@ -136,8 +136,7 @@ func transition_to_scene(target_scene_path: String, animation_name: String = "",
 			else:
 				print("⚠️ AnimationPlayer not found or animation '", animation_name, "' not available in new scene")
 	
-	# Fade in new scene
-	await fade_in(0.5)
+	# Note: SceneFadeIn autoload handles fade-in automatically, no need to fade here
 
 func _process(_delta: float) -> void:
 	# Continuously disable movement during cutscene

@@ -76,14 +76,34 @@
 	  "description": "Visitor log and valid ID required; recording devices prohibited; follow jail visitation procedures.",
 	  "citation": "BJMP Visitation Guidelines / Facility Rules",
 	  "unlocks_after": "LOWER_LEVEL_CUTSCENE_COMPLETED"
-	}
-	,
+	},
 	{
 	  "key": "chain_of_custody",
 	  "label": "Chain of Custody",
 	  "description": "Documentation and handling of evidence from collection to presentation to ensure integrity and admissibility.",
 	  "citation": "Rules of Court (Rule 130) and jurisprudence; specific statutes (e.g., Sec. 21, R.A. 9165).",
 	  "unlocks_after": "RECOLLECTION_COMPLETED"
+	},
+	{
+	  "key": "rule_130_authentication",
+	  "label": "Rule 130 — Authentication of Evidence",
+	  "description": "Requirements for authenticating documents and other evidence to establish their genuineness and admissibility in court.",
+	  "citation": "Rules of Court, Rule 130, Sections 19-25",
+	  "unlocks_after": "SECURITY_SERVER_CUTSCENE_2_COMPLETED"
+	},
+	{
+	  "key": "electronic_evidence",
+	  "label": "Electronic Evidence",
+	  "description": "Evidence in electronic form, including digital files, video recordings, and electronic communications. Requires proper authentication and chain of custody.",
+	  "citation": "Rules on Electronic Evidence (A.M. No. 01-7-01-SC); Rules of Court, Rule 130",
+	  "unlocks_after": "SECURITY_SERVER_CUTSCENE_2_COMPLETED"
+	},
+	{
+	  "key": "documentary_evidence",
+	  "label": "Documentary Evidence",
+	  "description": "Evidence consisting of writings, recordings, or other documents. Requires authentication to be admissible in court proceedings.",
+	  "citation": "Rules of Court, Rule 130, Sections 19-25",
+	  "unlocks_after": "SECURITY_SERVER_CUTSCENE_2_COMPLETED"
 	}
   ]
 }

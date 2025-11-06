@@ -29,9 +29,9 @@ signal evidence_inventory_closed()
 # Evidence mapping: Evidence1-6 to evidence IDs
 var evidence_mapping: Array = [
 	"broken_body_cam",    # Evidence1
-	"logbook",            # Evidence2  
-	"handwriting_sample", # Evidence3
-	"radio_log",          # Evidence4
+	"radio_log",          # Evidence2
+	"logbook",            # Evidence3
+	"handwriting_sample", # Evidence4
 	"autopsy_report",     # Evidence5
 	"leos_notebook"       # Evidence6
 ]

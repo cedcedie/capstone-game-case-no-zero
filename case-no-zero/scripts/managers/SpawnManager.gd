@@ -9,11 +9,6 @@ var entry_point: String = ""
 # Define spawn positions for each scene based on entry points
 var spawn_positions: Dictionary = {
 	"police_lobby": {
-		"from_security_server": {
-			"position": Vector2(400, 488),
-			"animation": "idle_back"
-		},
-		
 		"from_head_police_room": {
 			"position": Vector2(768, 288), 
 			"animation": "idle_down"

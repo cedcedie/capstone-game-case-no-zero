@@ -141,7 +141,7 @@ func _get_target_scene_path_from_area_name() -> String:
 		"Area2D_exterior_police":
 			return "res://scenes/environments/Police Station/police_lobby.tscn"
 		"Area2D_police_lobby_from_security_server":
-			return "res://scenes/environments/Police Station/police_lobby.tscn"
+			return "res://scenes/environments/police_station/police_lobby.tscn"
 		"Area2D_police_to_lobby":
 			return "res://scenes/environments/police_station/police_lobby.tscn"
 		# Hotel and Hospital Area2D transitions

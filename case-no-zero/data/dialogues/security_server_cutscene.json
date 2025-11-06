@@ -10,6 +10,58 @@
 				"text": "Oo, nakita namin. Makikita mo mismo sa screen para sa iyo."
 			}
 		]
+	},
+	"security_server_cutscene_2": {
+		"dialogue_lines": [
+			{
+				"speaker": "Miguel",
+				"text": "PO1 Darwin, bakit po biglang nag-cut ang footage?"
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Technical error lang 'yan. Minsan ganito talaga 'pag corrupted ang SD card. Pero may nakita ka na ba doon?"
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Oo po, nakita ko. Nag cucurfew lang po siya. Wala naman pong masama na nangyari."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Pwede po ba makita ang radio logs? Baka may makita tayo doon na makakatulong."
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Oo, pero dapat ma-properly authenticate natin 'yan para admissible sa korte. Ayon sa Rule 130, kailangan natin ng proper authentication para sa documentary evidence."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Opo, tama po. Importante po ang chain of custody para sa integrity ng evidence. Baka may makita tayo sa radio logs na makakatulong sa kaso."
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Oo, wait lang. May kasama tayo dito na may hawak ng radio logs."
+			},
+			{
+				"speaker": "NPC Police",
+				"text": "Sir, eto po ang radio logs na hinihingi ninyo."
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Salamat."
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Eto, Miguel. Baka makita mo dito ang kailangan mo."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Salamat po. Titingnan ko po ito. Siguraduhin natin na properly documented ang evidence para ma-establish natin ang chain of custody. Ayon sa Rule 130, kailangan natin ng proper authentication para admissible sa court."
+			},
+			{
+				"speaker": "PO1 Darwin",
+				"text": "Sige, mauna na ako. May iba pa akong gagawin."
+			}
+		]
 	}
 }
 
