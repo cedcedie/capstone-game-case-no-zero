@@ -30681,7 +30681,7 @@ position = Vector2(400, 704)
 script = ExtResource("7_xbrck")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_og0j4")]
-z_index = 5
+z_index = 7
 position = Vector2(1475, 272)
 
 [node name="from_camp_to_barangay" type="Area2D" parent="."]
@@ -30763,8 +30763,8 @@ z_index = 4
 position = Vector2(365, 174)
 
 [node name="NpcCmpB10" parent="." instance=ExtResource("21_ro2qy")]
-z_index = 4
-position = Vector2(853, 836)
+z_index = 7
+position = Vector2(976, 581)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -45)
@@ -30778,3 +30778,4 @@ polygon = PackedVector2Array(627, 12, 627, 167, 1440, 160, 1440, 12, 1586, 12, 1
 [editable path="NpcCmpB4"]
 [editable path="NpcCmpB9"]
 [editable path="NpcCmpG1"]
+[editable path="NpcCmpB10"]

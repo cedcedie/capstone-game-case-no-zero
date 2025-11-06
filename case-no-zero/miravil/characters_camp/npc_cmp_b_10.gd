@@ -10,10 +10,11 @@ var last_direction: String = "down"
 
 # ✅ EDIT THESE PATH POINTS IF YOU WANT NEW DESTINATIONS
 var path_points: Array[Vector2] = [
-	Vector2(1288.0, 812.0),
-	Vector2(1144.0, 812.0),
-	Vector2(1144.0, 888.0),
-	Vector2(1200.0, 888.0)
+	Vector2(853.0, 836.0),
+	Vector2(920.0, 836.0),
+	Vector2(920.0, 704.0),
+	Vector2(976.0, 704.0),
+	Vector2(976.0, 581.0)
 ]
 
 func _ready():
@@ -45,7 +46,7 @@ func move_to_next_point():
 
 func wait_before_move() -> void:
 	# ✅ Random pause at destination (adjust if needed)
-	var wait_time: float = randf_range(1.0, 5.0)
+	var wait_time: float = randf_range(10.0, 20.0)
 	await get_tree().create_timer(wait_time).timeout
 
 func advance_destination():
