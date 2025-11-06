@@ -9,38 +9,76 @@ extends Node
 
 var current_fade_overlay: CanvasLayer
 var is_fading: bool = false
+var current_scene_path: String = ""
+var has_faded_scene: bool = false
 
 func _ready():
-	# Connect to scene change signals
-	get_tree().node_added.connect(_on_node_added)
-	
 	# Start with a fade-in for the initial scene
 	call_deferred("_fade_in_initial_scene")
+	
+	# Connect to scene change signals - only once
+	if not get_tree().node_added.is_connected(_on_node_added):
+		get_tree().node_added.connect(_on_node_added)
 
 func _on_node_added(node: Node):
 	"""Called when a node is added to the scene tree"""
-	# Only respond to scene root nodes
+	# Only respond to scene root nodes and only if it's a new scene
 	if node == get_tree().current_scene:
-		call_deferred("_on_scene_changed")
+		var scene_path = ""
+		if get_tree().current_scene and get_tree().current_scene.scene_file_path:
+			scene_path = get_tree().current_scene.scene_file_path
+		
+		# Only trigger if this is a different scene than we've already handled
+		if scene_path != current_scene_path:
+			current_scene_path = scene_path
+			has_faded_scene = false
+			call_deferred("_on_scene_changed")
 
 func _on_scene_changed():
 	"""Called when scene changes - automatically fade in the new scene"""
+	# Prevent multiple simultaneous fades for the same scene
+	if has_faded_scene or is_fading:
+		return
+	
 	await get_tree().process_frame
+	
+	# Double-check after waiting
+	if has_faded_scene or is_fading:
+		return
+		
 	if get_tree().current_scene and not is_fading:
+		# Mark as fading immediately to prevent double fade from _fade_in_initial_scene
+		is_fading = true
+		has_faded_scene = true
 		print("🎬 SceneFadeIn: Auto-fading in scene:", get_tree().current_scene.scene_file_path.get_file())
 		await _fade_in_scene()
 
 func _fade_in_initial_scene():
 	"""Fade in the very first scene when the game starts"""
-	if get_tree().current_scene:
+	await get_tree().process_frame  # Wait a frame to ensure scene is fully loaded
+	
+	if get_tree().current_scene and not has_faded_scene and not is_fading:
+		var scene_path = ""
+		if get_tree().current_scene.scene_file_path:
+			scene_path = get_tree().current_scene.scene_file_path
+		
+		# Mark as fading immediately to prevent double fade
+		is_fading = true
+		current_scene_path = scene_path
+		has_faded_scene = true
+		
 		await _fade_in_scene()
 
 func _fade_in_scene():
 	"""Create and execute fade-in effect for current scene"""
-	if is_fading:
+	# Double-check: if already fading, return (shouldn't happen but safety check)
+	if is_fading and current_fade_overlay != null:
+		print("⚠️ SceneFadeIn: Already fading, skipping duplicate fade")
 		return
 	
-	is_fading = true
+	# is_fading should already be set by caller, but set it here as well for safety
+	if not is_fading:
+		is_fading = true
 	
 	# Create a CanvasLayer to be above everything
 	var canvas_layer = CanvasLayer.new()

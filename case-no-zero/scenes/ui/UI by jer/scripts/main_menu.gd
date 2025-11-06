@@ -20,9 +20,8 @@ func _input(event: InputEvent) -> void:
 				if CheckpointManager:
 					CheckpointManager.debug_set_phase("start")
 			KEY_F3:
-				# Set to bedroom completed
-				if CheckpointManager:
-					CheckpointManager.debug_set_phase("bedroom")
+				# Reserved (bedroom phase removed - no checkpoint)
+				print("🐛 Debug: F3 reserved - bedroom phase removed")
 			KEY_F4:
 				# Set to lower level completed
 				if CheckpointManager:
@@ -48,9 +47,8 @@ func _input(event: InputEvent) -> void:
 				if CheckpointManager:
 					CheckpointManager.debug_clear_file()
 			KEY_F10:
-				# Skip to bedroom completed and go to apartment_morgue
-				if CheckpointManager:
-					CheckpointManager.debug_skip_to_apartment_morgue()
+				# Reserved (bedroom phase removed - no checkpoint)
+				print("🐛 Debug: F10 reserved - bedroom phase removed")
 			KEY_F11:
 				# Debug: Go directly to lower level station
 				print("🐛 Debug: Going to lower level station")

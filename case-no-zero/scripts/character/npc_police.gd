@@ -132,6 +132,7 @@ func interact():
 	# Disable player movement during dialogue
 	if player_reference and player_reference.has_method("disable_movement"):
 		player_reference.disable_movement()
+		print("👮 NPC Police: Disabled player movement (control_enabled only)")
 	
 	# Choose dialogue based on checkpoint state and interaction history
 	var has_recollection: bool = CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED)
@@ -174,9 +175,33 @@ func interact():
 	else:
 		print("⚠️ No dialogue lines loaded")
 		is_in_dialogue = false  # Reset if no dialogue
-		# Re-enable player movement if no dialogue
-		if player_reference and player_reference.has_method("enable_movement"):
-			player_reference.enable_movement()
+		# Re-enable player movement if no dialogue - fully restore all processing
+		if player_reference:
+			print("🔧 NPC Police: Restoring player movement (no dialogue)...")
+			# Re-enable processing mode first
+			if "process_mode" in player_reference:
+				player_reference.process_mode = Node.PROCESS_MODE_INHERIT
+			else:
+				if player_reference.has_method("set_process_mode"):
+					player_reference.set_process_mode(Node.PROCESS_MODE_INHERIT)
+			
+			# Enable input/physics processing
+			if player_reference.has_method("set_process_input"):
+				player_reference.set_process_input(true)
+			if player_reference.has_method("set_physics_process"):
+				player_reference.set_physics_process(true)
+			
+			# Enable movement control
+			if player_reference.has_method("enable_movement"):
+				player_reference.enable_movement()
+			
+			# Enable control_enabled property
+			if "control_enabled" in player_reference:
+				player_reference.control_enabled = true
+			
+			print("👮 NPC Police: Player movement fully restored (no dialogue)")
+		else:
+			print("⚠️ NPC Police: player_reference is null! Cannot restore movement (no dialogue)!")
 
 func show_dialogue():
 	# Use the global DialogueUI autoload
@@ -204,13 +229,18 @@ func show_dialogue():
 	# Hide dialogue after all lines shown
 	DialogueUI.hide_ui()
 	
+	# Reset cutscene mode in DialogueUI to allow normal input
+	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(false)
+		print("👮 NPC Police: Reset DialogueUI cutscene_mode to false")
+	
 	# Reset dialogue state
 	is_in_dialogue = false
 	
 	# Restore original animation after dialogue
 	restore_original_animation()
 	
-	# Update task display if recollection is completed (after first interaction)
+	# Hide "Tanungin ang pulis" task display after talking to NPC police
 	var has_recollection: bool = CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED)
 	if has_recollection and recollection_has_interacted:
 		var task_display: Node = get_node_or_null("/root/TaskDisplay")
@@ -220,13 +250,74 @@ func show_dialogue():
 				var found := tree.get_first_node_in_group("task_display")
 				if found:
 					task_display = found
-		if task_display != null and task_display.has_method("show_task"):
-			task_display.show_task("Pumunta sa chief")
-			print("📝 Task display updated: Pumunta sa chief")
+		if task_display != null and task_display.has_method("hide_task"):
+			task_display.hide_task()
+			print("📝 Task display 'Tanungin ang pulis' hidden after talking to NPC police")
 	
-	# Re-enable player movement after dialogue
-	if player_reference and player_reference.has_method("enable_movement"):
-		player_reference.enable_movement()
+	# Reset cutscene mode in DialogueUI FIRST to allow normal input
+	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(false)
+		print("👮 NPC Police: Reset DialogueUI cutscene_mode to false")
+	
+	# Re-enable player movement after dialogue - fully restore all processing
+	# Try to get player reference if it's null
+	if not player_reference:
+		# Try to find player in scene
+		var root_scene = get_tree().current_scene
+		if root_scene:
+			player_reference = root_scene.get_node_or_null("PlayerM")
+			if not player_reference:
+				# Try to find by name
+				var found = root_scene.find_child("PlayerM", true, false)
+				if found:
+					player_reference = found
+	
+	if player_reference:
+		print("🔧 NPC Police: Restoring player movement...")
+		print("   Player node: ", player_reference)
+		print("   Has process_mode: ", "process_mode" in player_reference)
+		print("   Current process_mode: ", player_reference.get("process_mode") if "process_mode" in player_reference else "N/A")
+		print("   Current control_enabled: ", player_reference.get("control_enabled") if "control_enabled" in player_reference else "N/A")
+		
+		# Force enable processing mode - ensure it's not INHERIT if parent is disabled
+		if "process_mode" in player_reference:
+			var current_mode = player_reference.process_mode
+			# Use PROCESS_MODE_PAUSABLE or PROCESS_MODE_ALWAYS to ensure it works
+			player_reference.process_mode = Node.PROCESS_MODE_INHERIT
+			print("   Changed process_mode from ", current_mode, " to ", Node.PROCESS_MODE_INHERIT)
+		
+		# Enable input/physics processing - CRITICAL
+		if player_reference.has_method("set_process_input"):
+			player_reference.set_process_input(true)
+			print("   ✅ Enabled set_process_input(true)")
+		if player_reference.has_method("set_physics_process"):
+			player_reference.set_physics_process(true)
+			print("   ✅ Enabled set_physics_process(true)")
+		
+		# Enable movement control - call enable_movement() which sets control_enabled
+		if player_reference.has_method("enable_movement"):
+			player_reference.enable_movement()
+			print("   ✅ Called enable_movement()")
+		
+		# Force set control_enabled to true - make absolutely sure
+		if "control_enabled" in player_reference:
+			player_reference.control_enabled = true
+			print("   ✅ Force set control_enabled = true")
+		
+		# Wait a frame to ensure everything is applied
+		await get_tree().process_frame
+		
+		# Final check
+		var final_control = player_reference.get("control_enabled") if "control_enabled" in player_reference else "N/A"
+		var final_mode = player_reference.get("process_mode") if "process_mode" in player_reference else "N/A"
+		var final_process_input = player_reference.get_process_input() if player_reference.has_method("get_process_input") else "N/A"
+		var final_physics = player_reference.get_physics_process() if player_reference.has_method("get_physics_process") else "N/A"
+		print("   Final state - control_enabled: ", final_control, ", process_mode: ", final_mode)
+		print("   Final state - process_input: ", final_process_input, ", physics_process: ", final_physics)
+		print("👮 NPC Police: Player movement fully restored after dialogue - YOU SHOULD BE ABLE TO MOVE NOW!")
+	else:
+		print("⚠️ NPC Police: player_reference is null! Cannot restore movement!")
+		print("   Tried to find player in scene but failed")
 	
 	# Show the label again if player is still nearby
 	if is_player_nearby:

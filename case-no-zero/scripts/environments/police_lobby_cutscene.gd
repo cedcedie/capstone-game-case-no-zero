@@ -1,5 +1,8 @@
 extends Node
 
+# Dedicated spawn for after follow_darwin (separate from recollection spawn)
+const FOLLOW_DARWIN_SPAWN: Vector2 = Vector2(904.0, 360.0)
+
 var anim_player: AnimationPlayer = null
 var player_node: Node = null
 var dialogue_lines: Array[Dictionary] = []
@@ -42,6 +45,11 @@ func _ready() -> void:
 	if dui and dui.has_signal("next_pressed") and not dui.next_pressed.is_connected(_on_dialogue_next):
 		dui.next_pressed.connect(_on_dialogue_next)
 	
+	# Check if HEAD_POLICE_COMPLETED - hide station lobby nodes permanently
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
+		print("🎬 HEAD_POLICE_COMPLETED - hiding station lobby nodes permanently")
+		_hide_station_lobby_nodes()
+	
 	# Check if lower level cutscene is completed
 	if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED):
 		print("🎬 Lower level cutscene not completed yet - skipping recollection")
@@ -59,6 +67,8 @@ func _ready() -> void:
 	# Check if head police completed - play follow_darwin animation
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
 		print("🎬 Head police completed - playing follow_darwin animation")
+		# Hide "Tanungin ang pulis" task display if it's still showing
+		_hide_task_display()
 		# Start cutscene
 		cutscene_active = true
 		
@@ -82,10 +92,7 @@ func _ready() -> void:
 				# Wait for animation to finish
 				await anim_player.animation_finished
 				# Set checkpoint when animation completes
-				CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED)
-				print("🎬 Follow Darwin completed, checkpoint set.")
-				cutscene_active = false
-				_set_player_active(true)
+				_set_follow_darwin_completed()
 			else:
 				print("⚠️ No 'follow_darwin' animation found. Available animations: ", anim_player.get_animation_list())
 				_set_player_active(true)
@@ -157,8 +164,8 @@ func end_cutscene() -> void:
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED)
 	print("🎬 Recollection completed, checkpoint set.")
 	
-	# Hide Celine after cutscene completion
-	_hide_celine()
+	# Position all characters after cutscene
+	_set_post_cutscene_positions()
 	
 	# Update task display
 	_show_task_display("Tanungin ang pulis")
@@ -171,34 +178,54 @@ func end_cutscene() -> void:
 	print("🎬 Police lobby recollection cutscene ended - returning to normal gameplay.")
 
 func _hide_station_lobby_nodes() -> void:
-	# Hide station_lobby and StationLobby2
+	# Hide station_lobby, StationLobby2, and StationLobby3 and disable their collision
 	# These are direct children of the scene root
 	var root_scene := get_tree().current_scene
 	if root_scene == null:
 		print("⚠️ Cannot hide station lobby nodes - no root scene")
 		return
 	
-	# Hide station_lobby
+	# Hide station_lobby and disable collision
 	var station_lobby := root_scene.get_node_or_null("station_lobby")
 	if station_lobby != null:
 		if station_lobby is CanvasItem:
 			(station_lobby as CanvasItem).visible = false
-			print("🎬 Hidden station_lobby")
-		else:
-			print("⚠️ station_lobby is not a CanvasItem")
+		_set_node_collision_enabled(station_lobby, false)
+		print("🎬 Hidden station_lobby and disabled collision")
 	else:
 		print("⚠️ station_lobby node not found in scene root")
 	
-	# Hide StationLobby2
+	# Hide StationLobby2 and disable collision
 	var station_lobby2 := root_scene.get_node_or_null("StationLobby2")
 	if station_lobby2 != null:
 		if station_lobby2 is CanvasItem:
 			(station_lobby2 as CanvasItem).visible = false
-			print("🎬 Hidden StationLobby2")
-		else:
-			print("⚠️ StationLobby2 is not a CanvasItem")
+		_set_node_collision_enabled(station_lobby2, false)
+		print("🎬 Hidden StationLobby2 and disabled collision")
 	else:
 		print("⚠️ StationLobby2 node not found in scene root")
+	
+	# Hide StationLobby3 and disable collision
+	var station_lobby3 := root_scene.get_node_or_null("StationLobby3")
+	if station_lobby3 != null:
+		if station_lobby3 is CanvasItem:
+			(station_lobby3 as CanvasItem).visible = false
+		_set_node_collision_enabled(station_lobby3, false)
+		print("🎬 Hidden StationLobby3 and disabled collision")
+	else:
+		print("⚠️ StationLobby3 node not found in scene root")
+
+func _set_node_collision_enabled(node: Node, enabled: bool) -> void:
+	# Recursively disable/enable all CollisionShape2D nodes within the given node
+	if node == null:
+		return
+	var stack: Array = [node]
+	while stack.size() > 0:
+		var n: Node = stack.pop_back()
+		for child in n.get_children():
+			stack.push_back(child)
+			if child is CollisionShape2D:
+				(child as CollisionShape2D).disabled = not enabled
 
 func _hide_celine() -> void:
 	# Ensure Celine is hidden and collision disabled
@@ -340,6 +367,137 @@ func show_dialogue_line_wait(speaker: String, text: String) -> void:
 		wait_for_next()
 	else:
 		print("⚠️ DialogueUI missing show_dialogue_line().")
+
+func _set_post_cutscene_positions() -> void:
+	"""Set all characters to their post-cutscene positions"""
+	var root_scene := get_tree().current_scene
+	if root_scene == null:
+		print("⚠️ Cannot set post-cutscene positions - no root scene")
+		return
+	
+	print("🎬 Setting post-cutscene positions...")
+	
+	# Hide Celine and disable collision
+	var celine := _find_celine()
+	if celine != null:
+		if celine is CanvasItem:
+			(celine as CanvasItem).visible = false
+			(celine as CanvasItem).modulate.a = 0.0
+		_set_celine_collision_enabled(false)
+		print("🎬 Celine hidden and collision disabled")
+	else:
+		print("⚠️ Celine not found")
+	
+	# Find and position erwin
+	var erwin := _find_character_by_name("erwin")
+	if erwin == null:
+		erwin = _find_character_by_name("Erwin")
+	if erwin == null:
+		erwin = _find_character_by_name("Erwin Boy Trip")
+	if erwin != null and erwin is Node2D:
+		# Ensure visibility first
+		if erwin is CanvasItem:
+			(erwin as CanvasItem).visible = true
+		(erwin as Node2D).global_position = Vector2(480.0, 360.0)
+		_set_character_animation(erwin, "idle_back")
+		print("🎬 erwin positioned at (480.0, 360.0) with idle_back")
+	else:
+		print("⚠️ erwin not found")
+	
+	# Find and position station_guard
+	var station_guard := _find_character_by_name("station_guard")
+	if station_guard != null and station_guard is Node2D:
+		# Ensure visibility first
+		if station_guard is CanvasItem:
+			(station_guard as CanvasItem).visible = true
+		(station_guard as Node2D).global_position = Vector2(672.0, 464.0)
+		_set_character_animation(station_guard, "idle_right")
+		print("🎬 station_guard positioned at (672.0, 464.0) with idle_right")
+	else:
+		print("⚠️ station_guard not found")
+	
+	# Find and position station_guard_2
+	var station_guard_2 := _find_character_by_name("station_guard_2")
+	if station_guard_2 != null and station_guard_2 is Node2D:
+		# Ensure visibility first
+		if station_guard_2 is CanvasItem:
+			(station_guard_2 as CanvasItem).visible = true
+		(station_guard_2 as Node2D).global_position = Vector2(672.0, 496.0)
+		_set_character_animation(station_guard_2, "idle_right")
+		print("🎬 station_guard_2 positioned at (672.0, 496.0) with idle_right")
+	else:
+		print("⚠️ station_guard_2 not found")
+	
+	# Position PlayerM (Miguel) at (944.0, 360.0) after recollection cutscene
+	if player_node == null:
+		player_node = _find_player()
+	if player_node != null and player_node is Node2D:
+		if player_node is CanvasItem:
+			(player_node as CanvasItem).visible = true
+		(player_node as Node2D).global_position = Vector2(944.0, 360.0)
+		print("🎬 PlayerM positioned at (944.0, 360.0)")
+	else:
+		print("⚠️ PlayerM not found")
+	
+	print("🎬 Post-cutscene positioning complete")
+
+func _find_character_by_name(name: String) -> Node:
+	var root_scene := get_tree().current_scene
+	if root_scene == null:
+		return null
+	
+	# Try direct child first
+	var direct := root_scene.get_node_or_null(NodePath(name))
+	if direct != null:
+		return direct
+	
+	# Try recursive search
+	var lowered := name.to_lower()
+	var candidates := root_scene.find_children("*", "", true, false)
+	for n in candidates:
+		if String(n.name).to_lower() == lowered:
+			return n
+	
+	return null
+
+func _set_character_animation(character: Node, animation_name: String) -> void:
+	if character == null:
+		return
+	# Try to find AnimatedSprite2D child
+	var anim_sprite := character.get_node_or_null("AnimatedSprite2D")
+	if anim_sprite == null:
+		# Try recursive search
+		for child in character.find_children("*", "AnimatedSprite2D", true, false):
+			if child is AnimatedSprite2D:
+				anim_sprite = child
+				break
+	if anim_sprite != null and anim_sprite is AnimatedSprite2D:
+		(anim_sprite as AnimatedSprite2D).play(animation_name)
+		print("🎬 Set animation '", animation_name, "' on ", character.name)
+
+func _set_follow_darwin_completed() -> void:
+	"""Set the FOLLOW_DARWIN_COMPLETED checkpoint after animation completes"""
+	# Prevent duplicate checkpoint setting
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED):
+		print("🎬 FOLLOW_DARWIN_COMPLETED already set, skipping")
+		return
+	
+	# Set checkpoint
+	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED)
+	print("🎬 Follow Darwin completed, checkpoint set.")
+
+	# Reposition player to dedicated follow_darwin spawn (not the recollection spawn)
+	if player_node == null:
+		player_node = _find_player()
+	if player_node != null and player_node is Node2D:
+		if player_node is CanvasItem:
+			(player_node as CanvasItem).visible = true
+		(player_node as Node2D).global_position = FOLLOW_DARWIN_SPAWN
+		print("🎬 PlayerM positioned at (", FOLLOW_DARWIN_SPAWN.x, ", ", FOLLOW_DARWIN_SPAWN.y, ") after follow_darwin")
+	
+	# Cleanup
+	cutscene_active = false
+	_set_player_active(true)
 
 func _on_dialogue_next() -> void:
 	if player_node != null:
@@ -496,6 +654,22 @@ func fade_out(duration: float = 0.5) -> void:
 	await t.finished
 
 # ---- Task display ----
+func _hide_task_display() -> void:
+	"""Hide the task display"""
+	var task_display: Node = get_node_or_null("/root/TaskDisplay")
+	if task_display == null:
+		# Try to find it in scene tree
+		var tree := get_tree()
+		if tree:
+			var found := tree.get_first_node_in_group("task_display")
+			if found:
+				task_display = found
+	if task_display != null and task_display.has_method("hide_task"):
+		task_display.hide_task()
+		print("📝 Task display hidden")
+	else:
+		print("⚠️ TaskDisplay not found or missing hide_task() method")
+
 func _show_task_display(task_text: String) -> void:
 	var task_display: Node = get_node_or_null("/root/TaskDisplay")
 	if task_display == null:

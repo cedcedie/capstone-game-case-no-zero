@@ -56,7 +56,7 @@ func _ready() -> void:
 		return
 	
 	# DEBUG MODE: Set to true to play cutscene regardless of checkpoint
-	var DEBUG_MODE: bool = true
+	var DEBUG_MODE: bool = false
 	
 	# Check if HEAD_POLICE_COMPLETED checkpoint is set (or DEBUG_MODE)
 	if DEBUG_MODE or CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):

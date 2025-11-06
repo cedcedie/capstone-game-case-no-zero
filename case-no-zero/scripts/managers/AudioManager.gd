@@ -75,6 +75,7 @@ var scene_bgm_map: Dictionary = {
 	"office_main": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
 	"office_balcony": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
 	"office_rooftop": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
+	"office rooftop": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",  # Scene file name has space
 	"office_attorney_room": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
 	"office_lobby": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg"
 }
@@ -159,6 +160,7 @@ func set_scene_bgm(scene_name: String):
 		"office_main",
 		"office_balcony",
 		"office_rooftop",
+		"office rooftop",  # Scene file name has space
 		"office_attorney_room",
 		"office_lobby"
 	]

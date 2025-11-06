@@ -11,12 +11,16 @@ var played_reactions: Dictionary = {}
 @onready var reaction_bubble := get_node_or_null(reaction_bubble_path)
 @onready var reaction_anim: AnimationPlayer = reaction_bubble if reaction_bubble == null else reaction_bubble.get_node_or_null("AnimationPlayer")
 var player_node: Node = null
+var cutscene_active: bool = false
 
 func _ready() -> void:
 	_load_dialogue()
 	if DialogueUI and not DialogueUI.next_pressed.is_connected(_on_dialogue_next):
 		DialogueUI.next_pressed.connect(_on_dialogue_next)
 	_setup_fade()
+	
+	# Find player node early
+	player_node = _find_player()
 	
 	# Check if cutscene already played
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.OFFICE_CUTSCENE_COMPLETED):
@@ -27,9 +31,18 @@ func _ready() -> void:
 		_despawn_celine_if_completed()
 		return
 	
-	# Start cutscene for first time
-	player_node = _find_player()
+	# Start cutscene for first time - disable movement immediately and set cutscene_active
+	cutscene_active = true
+	# Ensure player is found before disabling
+	if player_node == null:
+		player_node = _find_player()
+	# Disable movement immediately - this happens before fade in
 	_set_player_active(false)
+	# Double-check: ensure movement is disabled right after setting
+	if player_node != null:
+		player_node.control_enabled = false
+		if "velocity" in player_node:
+			player_node.velocity = Vector2.ZERO
 	await fade_in()
 	play_cutscene()
 
@@ -54,9 +67,14 @@ func _load_dialogue() -> void:
 
 # Animation hooks (call these from AnimationPlayer 'office_cutscene')
 func play_cutscene() -> void:
+	# cutscene_active is already set to true in _ready()
+	# Movement is already disabled in _ready()
+	
 	if DialogueUI:
 		DialogueUI.set_cutscene_mode(true)
 	anim.play("office_cutscene")
+	
+	# Keep movement disabled throughout the entire animation
 	# Mark cutscene as completed when it finishes
 	await anim.animation_finished
 	end_cutscene()
@@ -65,10 +83,20 @@ func end_cutscene() -> void:
 	# Called when the office cutscene ends (or via AnimationPlayer method track)
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.OFFICE_CUTSCENE_COMPLETED)
 	print("🎬 Office cutscene completed, checkpoint set.")
+	
+	# Mark cutscene as inactive FIRST - this stops _process() from disabling movement
+	cutscene_active = false
+	print("🎬 cutscene_active set to FALSE - _process() will stop disabling movement")
+	
+	# Re-enable player movement
 	_set_player_active(true)
 	# Hide Dialogue UI after cutscene
 	if DialogueUI:
 		DialogueUI.hide_ui()
+		# CRITICAL: Reset cutscene mode to allow normal input
+		if DialogueUI.has_method("set_cutscene_mode"):
+			DialogueUI.set_cutscene_mode(false)
+			print("🎬 Office: Reset DialogueUI cutscene_mode to false")
 	# Update next task (no-op safe)
 	if Engine.has_singleton("TaskManager") or typeof(TaskManager) != TYPE_NIL:
 		if TaskManager.has_method("update_task"):
@@ -151,9 +179,51 @@ func show_line_wait(index: int) -> void:
 	wait_for_next()
 
 func _on_dialogue_next() -> void:
+	# Ensure movement stays disabled even when dialogue advances
+	if cutscene_active and player_node != null:
+		player_node.control_enabled = false
+		if "velocity" in player_node:
+			player_node.velocity = Vector2.ZERO
+		if player_node.has_method("set_process_input"):
+			player_node.set_process_input(false)
+		if player_node.has_method("set_physics_process"):
+			player_node.set_physics_process(false)
+	
 	if resume_on_next and anim:
 		resume_on_next = false
 		anim.play()
+
+func _process(_delta: float) -> void:
+	# Continuously disable movement during cutscene - ensures movement stays disabled
+	if cutscene_active and player_node != null:
+		# Continuously disable all movement properties EVERY FRAME
+		if "control_enabled" in player_node:
+			player_node.control_enabled = false
+		if "velocity" in player_node:
+			player_node.velocity = Vector2.ZERO
+		# Ensure input/physics processing stays disabled EVERY FRAME
+		if player_node.has_method("set_process_input"):
+			player_node.set_process_input(false)
+		if player_node.has_method("set_physics_process"):
+			player_node.set_physics_process(false)
+		# Also ensure player doesn't process input via process_mode
+		# But keep process_mode enabled so AnimationPlayer can control animations
+
+func _input(event: InputEvent) -> void:
+	# Block all input events during cutscene (except dialogue UI which handles its own input)
+	if cutscene_active:
+		# Allow UI input (dialogue next button, etc) but block movement input
+		if event is InputEventKey:
+			# Block WASD and arrow keys
+			var keycode = event.keycode
+			if keycode in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]:
+				get_viewport().set_input_as_handled()
+				return
+		elif event is InputEventAction:
+			# Block movement actions
+			if event.action in ["ui_up", "ui_down", "ui_left", "ui_right", "move_up", "move_down", "move_left", "move_right"]:
+				get_viewport().set_input_as_handled()
+				return
 
 # =============================
 # ENV/CHAR HIDE/SHOW + FADE
@@ -339,11 +409,64 @@ func _set_player_active(active: bool) -> void:
 		player_node = _find_player()
 	if player_node == null:
 		return
-	# Disable input/physics processing during cutscene
+	
+	if active:
+		_enable_player_movement()
+	else:
+		_disable_player_movement()
+
+func _disable_player_movement() -> void:
+	"""Disable player movement during dialogue/cutscene (exactly like security_server.gd)"""
+	if player_node == null:
+		player_node = _find_player()
+	if player_node == null:
+		return
+	
+	# Disable exactly like security_server - disable input/physics processing
+	if "control_enabled" in player_node:
+		player_node.control_enabled = false
+	if "velocity" in player_node:
+		player_node.velocity = Vector2.ZERO
 	if player_node.has_method("set_process_input"):
-		player_node.set_process_input(active)
+		player_node.set_process_input(false)
 	if player_node.has_method("set_physics_process"):
-		player_node.set_physics_process(active)
+		player_node.set_physics_process(false)
+	# DO NOT disable process_mode - AnimationPlayer needs it to control animations
+	print("🎬 Office: Player movement disabled")
+
+func _enable_player_movement() -> void:
+	"""Enable player movement after dialogue/cutscene"""
+	if player_node == null:
+		player_node = _find_player()
+	if player_node == null:
+		print("⚠️ Office: Cannot enable movement - player not found!")
+		return
+	
+	print("🔧 Office: Enabling player movement...")
+	print("   Before - control_enabled: ", player_node.get("control_enabled") if "control_enabled" in player_node else "N/A")
+	
+	# Re-enable input/physics processing FIRST
+	if player_node.has_method("set_process_input"):
+		player_node.set_process_input(true)
+		print("   ✅ Enabled set_process_input")
+	if player_node.has_method("set_physics_process"):
+		player_node.set_physics_process(true)
+		print("   ✅ Enabled set_physics_process")
+	
+	# Re-enable movement control
+	if player_node.has_method("enable_movement"):
+		player_node.enable_movement()
+		print("   ✅ Called enable_movement()")
+	
+	# Enable control_enabled property
+	if "control_enabled" in player_node:
+		player_node.control_enabled = true
+		print("   ✅ Set control_enabled = true")
+	
+	# Final check
+	var final_control = player_node.get("control_enabled") if "control_enabled" in player_node else "N/A"
+	print("   After - control_enabled: ", final_control)
+	print("🎬 Office: Player movement fully enabled - you should be able to move now!")
 
 # =============================
 # CHARACTER FADE HELPERS (CELINE)

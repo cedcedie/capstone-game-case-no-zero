@@ -100,7 +100,7 @@ func end_cutscene() -> void:
 	_hide_station_lobby_nodes()
 	
 	# Set task display to follow PO1 Darwin
-	_show_task_display("Sundin ang PO1 Darwin")
+	_show_task_display("Sundan si PO1 Darwin")
 	
 	# Set everything visible first
 	var root_scene := get_tree().current_scene

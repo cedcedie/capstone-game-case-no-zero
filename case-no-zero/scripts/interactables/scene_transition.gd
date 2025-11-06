@@ -129,7 +129,7 @@ func _get_target_scene_path_from_area_name() -> String:
 		"Area2D_head_police":
 			return "res://scenes/environments/police_station/head_police_room.tscn"
 		"Area2D_security_server":
-			return "res://scenes/environments/Police Station/security_server.tscn"
+			return "res://scenes/environments/police_station/security_server.tscn"
 		"Area2D_police_lobby":
 			return "res://scenes/environments/police_station/police_lobby.tscn"
 		"Area2D_police_lobby_to_police_station":

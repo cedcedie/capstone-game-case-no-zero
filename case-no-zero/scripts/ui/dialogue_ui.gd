@@ -28,9 +28,20 @@ func _ready():
 	# Setup autosizing for labels
 	_setup_autosizing()
 
+func _process(_delta):
+	# Handle ui_accept action (Space/Enter) - checked in _process for better reliability
+	if waiting_for_next and not is_typing:
+		if Input.is_action_just_pressed("ui_accept"):
+			_on_next_pressed()
+
 func _input(event):
-	# No special input handling - let the next button handle everything
-	pass
+	# Handle space key or ui_accept action to advance dialogue
+	if waiting_for_next and not is_typing:
+		# Check for space key press
+		if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
+			# Prevent space from being processed elsewhere
+			get_viewport().set_input_as_handled()
+			_on_next_pressed()
 
 # Smooth fade-in
 func show_ui():
@@ -126,19 +137,76 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 # -----------------------------
 func _bold_keywords(input_text: String) -> String:
 	var result := input_text
-	# Curated keywords/phrases to emphasize; adjust freely
+	# Curated keywords/phrases to emphasize; includes all citations and legal terms
 	var keywords := [
+		# Story/Character keywords (longer phrases first)
 		"BATAS AY PARA SA MGA TAO",
 		"UNANG MALAKING KASO",
-		"LEO",
-		"ERWIN",
 		"KATOTOHANAN",
+		# Character Names (full names first, then first names)
+		"Leo Mendoza",
+		"PO1 Darwin",
+		"Dr. Leticia Salvador",
+		"Leticia Salvador",
+		"Kapitana Palma",
+		"Miguel",
+		"Celine",
+		"Erwin",
+		"Leo",
+		"Darwin",
+		# Legal Citations - Rules of Court (more specific first)
+		"Rules of Court",
+		"Rule 130",
+		"Rule 133",
+		"Rule 112",
+		"Rule 110",
+		# Constitutional Citations (more specific first)
+		"1987 Const. Art. III, Sec. 14(2)",
+		"1987 Const., Art. III, Sec. 1",
+		"1987 Const.",
+		"Art. III, Sec. 14(2)",
+		"Art. III, Sec. 1",
+		"Art. III, Sec. 14[2]",
+		"Sec. 14(2)",
+		"Art. III",
+		"Sec. 1",
+		"Sec. 14",
+		# Revised Penal Code
+		"RPC Art. 248",
+		# Professional Code (more specific first)
+		"CPRA (2023)",
+		"CPRA 2023",
+		"CPRA",
+		# Other Rules
+		"BJMP visitation rules",
+		# Legal Terms (longer phrases first to avoid partial matches)
+		"presumption of innocence",
+		"burden of prosecution",
+		"chain of custody",
+		"documentary evidence",
+		"testimonial evidence",
+		"evidence tampering",
+		"preliminary investigation",
+		"due process",
+		"authentication",
+		"admissible",
+		"burden",
+		"evidence",
+		"ebidensya",
 	]
 	for kw in keywords:
 		# (?i) = case-insensitive, capture original for preservation
 		var rx := RegEx.new()
 		# Word-boundary-ish: allow spaces in phrases; avoid partial matches inside words
-		rx.compile("(?i)(?<!\\w)" + _regex_escape(kw) + "(?!\\w)")
+		# For citations with parentheses or special chars, use a more flexible pattern
+		var pattern: String
+		if kw.contains("(") or kw.contains(".") or kw.contains("/"):
+			# For citations with special chars, escape them but allow flexible matching
+			pattern = "(?i)" + _regex_escape(kw)
+		else:
+			# For regular words, use word boundaries
+			pattern = "(?i)(?<!\\w)" + _regex_escape(kw) + "(?!\\w)"
+		rx.compile(pattern)
 		result = rx.sub(result, "[b]$0[/b]", true)
 	return result
 

@@ -43,6 +43,8 @@ func _ready() -> void:
 
 	# Start cutscene for first time
 	print("🎬 Starting fade in...")
+	# Hide task display when cutscene plays for the first time
+	_hide_task_display()
 	cutscene_active = true
 	show_environment_and_characters()
 	await fade_in()
@@ -77,8 +79,10 @@ func end_cutscene() -> void:
 	if player_node == null:
 		player_node = _find_player()
 	if player_node != null and player_node is Node2D:
-		(player_node as Node2D).global_position = Vector2(880.0, 464.0)
-		print("🎬 PlayerM positioned at (880.0, 464.0) after cutscene")
+		if player_node is CanvasItem:
+			(player_node as CanvasItem).visible = true
+		(player_node as Node2D).global_position = Vector2(872.0, 472.0)
+		print("🎬 PlayerM positioned at (872.0, 472.0) after cutscene")
 	
 	# Set everything visible first (with new positions)
 	var root_scene := get_tree().current_scene
@@ -334,6 +338,22 @@ func show_lines_sequence(lines: Array[Dictionary]) -> void:
 func hide_ui() -> void:
 	_hide_dialogue_ui()
 
+func _hide_task_display() -> void:
+	"""Hide the task display"""
+	var task_display: Node = get_node_or_null("/root/TaskDisplay")
+	if task_display == null:
+		# Try to find it in scene tree
+		var tree := get_tree()
+		if tree:
+			var found := tree.get_first_node_in_group("task_display")
+			if found:
+				task_display = found
+	if task_display != null and task_display.has_method("hide_task"):
+		task_display.hide_task()
+		print("📝 Task display hidden")
+	else:
+		print("⚠️ TaskDisplay not found or missing hide_task() method")
+
 func _hide_dialogue_ui() -> void:
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui and dui.has_method("hide_ui"):
@@ -409,7 +429,7 @@ func _set_post_cutscene_positions() -> void:
 		print("⚠️ Cannot set post-cutscene positions - no root scene")
 		return
 	
-	# PlayerM position is handled by SpawnManager - don't override it here
+	print("🎬 Setting post-cutscene positions...")
 	
 	# Find and hide Celine
 	var celine := _find_character_by_name("celine")
@@ -419,20 +439,32 @@ func _set_post_cutscene_positions() -> void:
 			(celine as CanvasItem).modulate.a = 0.0
 		_set_character_collision_enabled(celine, false)
 		print("🎬 Celine hidden and collision disabled")
+	else:
+		print("⚠️ Celine not found")
 	
 	# Find and position station_guard_2
 	var station_guard_2 := _find_character_by_name("station_guard_2")
 	if station_guard_2 != null and station_guard_2 is Node2D:
-		(station_guard_2 as Node2D).global_position = Vector2(672.0, 504.0)
+		# Ensure visibility first
+		if station_guard_2 is CanvasItem:
+			(station_guard_2 as CanvasItem).visible = true
+		(station_guard_2 as Node2D).global_position = Vector2(672.0, 496.0)
 		_set_character_animation(station_guard_2, "idle_right")
-		print("🎬 station_guard_2 positioned at (672.0, 504.0) with idle_right")
+		print("🎬 station_guard_2 positioned at (672.0, 496.0) with idle_right")
+	else:
+		print("⚠️ station_guard_2 not found")
 	
 	# Find and position station_guard
 	var station_guard := _find_character_by_name("station_guard")
 	if station_guard != null and station_guard is Node2D:
+		# Ensure visibility first
+		if station_guard is CanvasItem:
+			(station_guard as CanvasItem).visible = true
 		(station_guard as Node2D).global_position = Vector2(672.0, 464.0)
 		_set_character_animation(station_guard, "idle_right")
 		print("🎬 station_guard positioned at (672.0, 464.0) with idle_right")
+	else:
+		print("⚠️ station_guard not found")
 	
 	# Find and position erwin
 	var erwin := _find_character_by_name("erwin")
@@ -441,9 +473,27 @@ func _set_post_cutscene_positions() -> void:
 	if erwin == null:
 		erwin = _find_character_by_name("Erwin Boy Trip")
 	if erwin != null and erwin is Node2D:
+		# Ensure visibility first
+		if erwin is CanvasItem:
+			(erwin as CanvasItem).visible = true
 		(erwin as Node2D).global_position = Vector2(480.0, 360.0)
 		_set_character_animation(erwin, "idle_back")
 		print("🎬 erwin positioned at (480.0, 360.0) with idle_back")
+	else:
+		print("⚠️ erwin not found")
+	
+	# Position PlayerM (Miguel)
+	if player_node == null:
+		player_node = _find_player()
+	if player_node != null and player_node is Node2D:
+		if player_node is CanvasItem:
+			(player_node as CanvasItem).visible = true
+		(player_node as Node2D).global_position = Vector2(872.0, 472.0)
+		print("🎬 PlayerM positioned at (872.0, 472.0)")
+	else:
+		print("⚠️ PlayerM not found")
+	
+	print("🎬 Post-cutscene positioning complete")
 
 func _find_character_by_name(name: String) -> Node:
 	var root_scene := get_tree().current_scene
