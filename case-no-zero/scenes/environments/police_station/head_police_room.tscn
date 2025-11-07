@@ -11238,6 +11238,8 @@ position = Vector2(824, 480)
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]
 animation = &"walk_back"
 autoplay = "idle_left"
+frame = 0
+frame_progress = 0.0
 
 [node name="Area2D_police_lobby_from_head" type="Area2D" parent="."]
 script = ExtResource("12_vsxqb")

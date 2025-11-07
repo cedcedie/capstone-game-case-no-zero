@@ -7720,5 +7720,6 @@ position = Vector2(904, 360)
 [node name="NpcPlPo1Darwin" parent="." instance=ExtResource("14_tt2fo")]
 
 [editable path="PlayerM"]
+[editable path="station_lobby"]
 [editable path="celine"]
 [editable path="NpcPlPo1Darwin"]

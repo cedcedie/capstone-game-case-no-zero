@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://dvgkhr0qxnpx0"]
+[gd_scene load_steps=88 format=4 uid="uid://dvgkhr0qxnpx0"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_7v4vq"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_xphjy"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="11_fl2h6"]
 [ext_resource type="Script" uid="uid://d0hee1ciupk7p" path="res://miravil/characters/npc_backpack_man.gd" id="11_o0l8t"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="12_jtlfh"]
-[ext_resource type="Script" uid="uid://cgi80m2jwgq2e" path="res://miravil/characters/npc_beard_man.gd" id="13_7btrm"]
 [ext_resource type="PackedScene" uid="uid://c4ajw31sko6wi" path="res://miravil/characters/npc_boy_1.tscn" id="13_udjt5"]
 [ext_resource type="PackedScene" uid="uid://bolu1rajvp4ey" path="res://miravil/characters/npc_boy_icecream_hair.tscn" id="14_el8te"]
 [ext_resource type="PackedScene" uid="uid://b74ajxmhj41h7" path="res://miravil/characters/npc_cool_hoodie.tscn" id="15_63oev"]
@@ -37293,9 +37292,6 @@ sources/0 = SubResource("TileSetAtlasSource_l8vic")
 sources/1 = SubResource("TileSetAtlasSource_wsi3l")
 sources/2 = SubResource("TileSetAtlasSource_1em5d")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5fqa"]
-size = Vector2(81.25, 24)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8eggf"]
 size = Vector2(44, 1063)
 
@@ -37307,6 +37303,9 @@ size = Vector2(29, 1056)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0l8t"]
 size = Vector2(88, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5fqa"]
+size = Vector2(81.25, 24)
 
 [node name="ApartmentAndMorgue" type="Node2D"]
 position = Vector2(0, -104)
@@ -37348,15 +37347,6 @@ tile_map_data = PackedByteArray("AAA7AAoAAQAUAB8AAAA7AAsAAQAUACAAAAA7AAwAAQAUACE
 tile_set = SubResource("TileSet_7ipk8")
 collision_visibility_mode = 1
 
-[node name="Area2D_morgue_interior" type="Area2D" parent="."]
-position = Vector2(0, 36)
-script = ExtResource("9_qoipj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_morgue_interior"]
-z_index = 10
-position = Vector2(368, 692)
-shape = SubResource("RectangleShape2D_k5fqa")
-
 [node name="NpcBackpackMan" parent="." instance=ExtResource("10_kev02")]
 position = Vector2(2032, 1024)
 script = ExtResource("11_o0l8t")
@@ -37373,14 +37363,13 @@ offset_bottom = 9.0
 [node name="NpcBeardMan" parent="." instance=ExtResource("11_fl2h6")]
 z_index = 4
 position = Vector2(120, 800)
-script = ExtResource("13_7btrm")
 
 [node name="AnimatedSprite2D" parent="NpcBeardMan" index="0"]
 animation = &"idle_right"
 autoplay = "idle_right"
 
 [node name="PlayerM" parent="." instance=ExtResource("12_jtlfh")]
-z_index = 6
+z_index = 4
 position = Vector2(1144, 1009)
 
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]
@@ -37473,7 +37462,7 @@ position = Vector2(0, 7)
 script = ExtResource("9_qoipj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_morgue_to_police_station"]
-position = Vector2(1390, 1186)
+position = Vector2(1380, 1148)
 scale = Vector2(0.495, 33)
 shape = SubResource("RectangleShape2D_7v4vq")
 
@@ -37618,6 +37607,15 @@ shape = SubResource("RectangleShape2D_o0l8t")
 [node name="NpcGuy6" parent="." instance=ExtResource("22_1g55f")]
 z_index = 15
 position = Vector2(576, 576)
+
+[node name="Area2D_morgue_interior" type="Area2D" parent="."]
+position = Vector2(0, 36)
+script = ExtResource("9_qoipj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_morgue_interior"]
+z_index = 10
+position = Vector2(368, 692)
+shape = SubResource("RectangleShape2D_k5fqa")
 
 [editable path="NpcBackpackMan"]
 [editable path="NpcBeardMan"]

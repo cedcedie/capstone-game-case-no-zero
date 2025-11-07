@@ -1,20 +1,28 @@
 extends CharacterBody2D
 
 # ============================================
-# REUSABLE NPC INTERACTION SCRIPT
+# REUSABLE NPC INTERACTION SCRIPT TEMPLATE
 # ============================================
 # 
-# CONFIGURATION - CHANGE THESE FOR EACH NPC:
-# - dialogue_file_path: Path to your dialogue JSON file
-# - dialogue_key: The key in the JSON file
-# - default_idle_animation: The default idle animation to restore (e.g., "idle_front", "idle_back", etc.)
+# INSTRUCTIONS FOR USE:
+# 1. Copy this script to your NPC's script file
+# 2. Change the @export variables below:
+#    - dialogue_file_path: Path to your dialogue JSON file
+#    - dialogue_key: The key in the JSON file (e.g., "npc_beard_man")
+#    - default_idle_animation: The default idle animation to restore (e.g., "idle_front", "idle_back", etc.)
+# 3. Make sure your scene has these nodes:
+#    - Label (child node) - for "Press E to interact" text
+#    - AnimatedSprite2D (child node) - for NPC animations
+#    - Area2D (child node) - for interaction detection
+# 4. In the Area2D, add a CollisionShape2D with a CircleShape2D or RectangleShape2D
+# 5. Set the Area2D's monitoring to true
 #
 # ============================================
 
 # ============================================
 # CONFIGURATION - CHANGE THESE FOR EACH NPC
 # ============================================
-@export var dialogue_file_path: String = "res://data/npc/npc_beard_man_dialogue.json"
+@export var dialogue_file_path: String = "res://data/dialogues/npc_beard_man_dialogue.json"
 @export var dialogue_key: String = "npc_beard_man"
 @export var default_idle_animation: String = "idle_front"  # Animation to restore when player leaves
 
@@ -270,3 +278,4 @@ func show_dialogue():
 	# Show the label again if player is still nearby
 	if is_player_nearby:
 		show_interaction_label()
+

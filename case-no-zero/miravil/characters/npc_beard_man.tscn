@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://d2a10qxxr7ti6"]
+[gd_scene load_steps=31 format=3 uid="uid://d2a10qxxr7ti6"]
 
 [ext_resource type="Texture2D" uid="uid://ccicwpri1jkc3" path="res://miravil/sprites/npc_beard_man.png" id="1_fqblv"]
+[ext_resource type="Script" uid="uid://cgi80m2jwgq2e" path="res://miravil/characters/npc_beard_man.gd" id="1_ww28d"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_ww28d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phcwp"]
@@ -218,13 +219,14 @@ animations = [{
 size = Vector2(20, 17)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uqync"]
-radius = 26.0192
+radius = 35.0143
 
 [node name="NpcBeardMan" type="CharacterBody2D"]
+script = ExtResource("1_ww28d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_53r1p")
-animation = &"idle_front"
+animation = &"idle_left"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 
