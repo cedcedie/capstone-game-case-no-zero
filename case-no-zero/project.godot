@@ -35,6 +35,7 @@ Settings="*res://scenes/ui/Settings.tscn"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 DebugKeys="*res://scripts/managers/DebugKeys.gd"
 Minimap="*res://scenes/ui/UI by jer/used in UI/minimap items/Minimap.tscn"
+GlossaryHUD="*res://scripts/ui/GlossaryHUD.gd"
 
 [dialogic]
 

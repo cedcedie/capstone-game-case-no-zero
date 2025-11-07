@@ -8,12 +8,19 @@ signal settings_press
 @onready var ui_container = $UIContainer
 @onready var evidence_tab: Node = null
 @onready var settings_tab: Node = null
+@onready var glossary_button: Button = null
 
 var is_visible = false
 var just_closed = false  # Flag to prevent Evidence Inventory from opening when Settings closes
 
+# Glossary overlay state for global key handling
+var glossary_overlay: CanvasLayer = null
+var prev_paused_state: bool = false
+
 func _ready():
 	"""Initialize the settings UI"""
+	# Ensure we still receive input callbacks while the game is paused (for glossary back key)
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Start completely hidden - only show when Settings tab is clicked from Evidence Inventory
 	hide()
 	is_visible = false
@@ -30,11 +37,100 @@ func _get_ui_references():
 	"""Get references to UI elements"""
 	evidence_tab = ui_container.get_node("EvidenceTab/Button")
 	settings_tab = ui_container.get_node("SettingsTab/Button")
+	if ui_container.has_node("GlossaryTab/Button"):
+		glossary_button = ui_container.get_node("GlossaryTab/Button")
 
 func _setup_buttons():
 	"""Setup button connections - icons are no longer clickable"""
 	# Icons are now non-interactive - only for visual indication
-	pass
+	if glossary_button != null and not glossary_button.is_connected("pressed", Callable(self, "_on_glossary_pressed")):
+		glossary_button.pressed.connect(_on_glossary_pressed)
+
+func _on_glossary_pressed():
+	# Open the interactive glossary book scene in an overlay CanvasLayer
+	var scene_path := "res://glossary/interactive_book_2d.tscn"
+	var packed: PackedScene = load(scene_path)
+	if packed == null:
+		push_warning("Glossary: failed to load scene at " + scene_path)
+		return
+	var overlay := CanvasLayer.new()
+	overlay.name = "GlossaryOverlay"
+	# Ensure overlay keeps processing while game is paused
+	overlay.process_mode = Node.PROCESS_MODE_ALWAYS
+	# Pause gameplay underneath and remember previous state
+	var prev_paused: bool = get_tree().paused
+	get_tree().paused = true
+	# Save for global key handling
+	glossary_overlay = overlay
+	prev_paused_state = prev_paused
+	# Fullscreen blur behind dim
+	var blur := ColorRect.new()
+	blur.name = "BlurBackground"
+	blur.anchors_preset = Control.PRESET_FULL_RECT
+	var blur_shader := Shader.new()
+	blur_shader.code = """
+	shader_type canvas_item;
+	uniform float radius = 6.0; // blur radius in pixels
+	void fragment() {
+		vec2 tex_size = vec2(textureSize(SCREEN_TEXTURE, 0));
+		vec2 uv = SCREEN_UV;
+		vec4 sum = vec4(0.0);
+		float samples = 0.0;
+		// 9-tap simple blur
+		for (int x = -1; x <= 1; x++) {
+			for (int y = -1; y <= 1; y++) {
+				vec2 off = vec2(float(x), float(y)) * radius / tex_size;
+				sum += texture(SCREEN_TEXTURE, uv + off);
+				samples += 1.0;
+			}
+		}
+		COLOR = sum / samples;
+	}
+	"""
+	var blur_mat := ShaderMaterial.new()
+	blur_mat.shader = blur_shader
+	blur.material = blur_mat
+	overlay.add_child(blur)
+	# Dim background above blur
+	var dim := ColorRect.new()
+	dim.color = Color(0,0,0,0.5)
+	dim.anchors_preset = Control.PRESET_FULL_RECT
+	dim.focus_mode = Control.FOCUS_ALL
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.process_mode = Node.PROCESS_MODE_ALWAYS
+	overlay.add_child(dim)
+	# Ensure keyboard focus so Backspace/ESC are delivered here
+	dim.call_deferred("grab_focus")
+	# Instance book and center on screen
+	var inst := packed.instantiate()
+	overlay.add_child(inst)
+	if inst is Node2D:
+		var vp_size: Vector2 = get_viewport().get_visible_rect().size
+		# Scale book responsively: ~35% of width or ~50% of height, whichever fits
+		var target_w: float = vp_size.x * 0.35
+		var target_h: float = vp_size.y * 0.5
+		var base_px: float = 64.0  # each frame is 64x64
+		var s: float = min(target_w / base_px, target_h / base_px)
+		var scale_vec: Vector2 = Vector2(s, s) * 2.0
+		(inst as Node2D).scale = scale_vec
+		(inst as Node2D).position = vp_size * 0.5
+		(inst as Node2D).z_index = 10
+	# Enlarge the in-book Back_Button (CloseButton) and route to Settings
+	var close_btn := inst.get_node_or_null("Control/CloseButton")
+	if close_btn and close_btn is Control:
+		# Remove/disable in-book button; we'll use Backspace to close
+		(close_btn as Control).visible = false
+		(close_btn as Control).mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if close_btn is BaseButton:
+			(close_btn as BaseButton).disabled = true
+	# ESC to close via dim's GUI input
+	dim.gui_input.connect(func(event):
+		if event is InputEventKey and (event.is_action_pressed("ui_cancel") or event.keycode == KEY_BACKSPACE or event.physical_keycode == KEY_BACKSPACE):
+			_close_glossary_overlay()
+		)
+	get_tree().root.add_child(overlay)
+	glossary_overlay = overlay
+	print("📖 Glossary opened")
 
 func show_settings():
 	"""Show settings with smooth animation"""
@@ -146,3 +242,27 @@ func _input(event):
 		get_viewport().set_input_as_handled()
 
 # Hover functions removed - icons are no longer interactive
+
+# Close glossary overlay regardless of focus
+func _unhandled_input(event: InputEvent) -> void:
+	if glossary_overlay == null:
+		return
+	if event is InputEventKey:
+		var ek := event as InputEventKey
+		if ek.is_action_pressed("ui_cancel") or ek.keycode == KEY_BACKSPACE or ek.physical_keycode == KEY_BACKSPACE:
+			_close_glossary_overlay()
+			get_viewport().set_input_as_handled()
+
+func _close_glossary_overlay() -> void:
+	if glossary_overlay == null:
+		return
+	if has_node("/root/Settings"):
+		var s = get_node("/root/Settings")
+		if s.has_method("show_settings"):
+			s.show_settings()
+	get_tree().paused = prev_paused_state
+	if is_instance_valid(glossary_overlay):
+		glossary_overlay.queue_free()
+	glossary_overlay = null
+
+# No global key handler needed; dim grabs focus and handles Backspace/ESC
