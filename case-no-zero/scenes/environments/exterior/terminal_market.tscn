@@ -37476,7 +37476,8 @@ position = Vector2(149.783, 592.406)
 scale = Vector2(1.806, 1.412)
 
 [node name="NpcBoyIcecreamHair" parent="." instance=ExtResource("7_g6t3t")]
-position = Vector2(896, 520)
+z_index = 4
+position = Vector2(2064, 521)
 
 [node name="AnimatedSprite2D" parent="NpcBoyIcecreamHair" index="0"]
 animation = &"idle_front"
@@ -37542,8 +37543,8 @@ position = Vector2(304, 216)
 animation = &"idle_front"
 
 [node name="NpcTmGuy2" parent="." instance=ExtResource("12_un5o6")]
-z_index = 4
-position = Vector2(2720, 210)
+z_index = 6
+position = Vector2(2016, 521)
 
 [node name="AnimatedSprite2D" parent="NpcTmGuy2" index="0"]
 animation = &"idle_left"
@@ -37576,6 +37577,7 @@ position = Vector2(992, 744)
 
 [node name="AnimatedSprite2D" parent="NpcTmGuy6" index="0"]
 animation = &"idle_right"
+autoplay = "idle_right"
 
 [node name="NpcTmGuy7" parent="." instance=ExtResource("17_yvvub")]
 z_index = 4
@@ -37590,7 +37592,7 @@ position = Vector2(768, 688)
 
 [node name="NpcTmGuy9" parent="." instance=ExtResource("19_th2xw")]
 z_index = 4
-position = Vector2(568, 643)
+position = Vector2(488, 624)
 
 [node name="NpcTmGirl2" parent="." instance=ExtResource("20_pw44w")]
 z_index = 4
@@ -37601,25 +37603,25 @@ animation = &"idle_front"
 
 [node name="NpcTmGirl6" parent="." instance=ExtResource("21_s6vqj")]
 z_index = 20
-position = Vector2(1440, 24)
+position = Vector2(1608, 56)
 
 [node name="AnimatedSprite2D" parent="NpcTmGirl6" index="0"]
 animation = &"idle_front"
 
 [node name="NpcTmGirl5" parent="." instance=ExtResource("22_gwk7j")]
-z_index = 4
-position = Vector2(2288, 720)
+z_index = 6
+position = Vector2(2272, 504)
 
 [node name="NpcTmGirl4" parent="." instance=ExtResource("23_dww58")]
 z_index = 4
-position = Vector2(832, 208)
+position = Vector2(1104, 488)
 
 [node name="AnimatedSprite2D" parent="NpcTmGirl4" index="0"]
 animation = &"idle_left"
 
 [node name="NpcTmGirl3" parent="." instance=ExtResource("24_gfxba")]
 z_index = 4
-position = Vector2(1936, 768)
+position = Vector2(1584, 704)
 
 [node name="AnimatedSprite2D" parent="NpcTmGirl3" index="0"]
 animation = &"idle_back"
@@ -37646,26 +37648,37 @@ position = Vector2(1936, 717)
 position = Vector2(1536, 658)
 
 [node name="Vendor5" parent="." instance=ExtResource("31_s6vqj")]
+z_index = 3
+y_sort_enabled = true
 position = Vector2(2029, 744)
 scale = Vector2(3.12854, 3.15989)
 
 [node name="Vendor4" parent="." instance=ExtResource("30_pw44w")]
+z_index = 3
+y_sort_enabled = true
 position = Vector2(1600, 696)
 scale = Vector2(3.12854, 3.15989)
 
 [node name="Vendor3" parent="." instance=ExtResource("32_gwk7j")]
+z_index = 3
+y_sort_enabled = true
 position = Vector2(1416, 699)
 scale = Vector2(3.12854, 3.15989)
 
 [node name="Vendor6" parent="." instance=ExtResource("33_gwk7j")]
-position = Vector2(1888, 736)
+z_index = 3
+y_sort_enabled = true
+position = Vector2(1880, 728)
 scale = Vector2(2.25009, 1.88363)
 
 [node name="Vendor2" parent="." instance=ExtResource("33_dww58")]
+z_index = 3
+y_sort_enabled = true
 position = Vector2(1224, 699)
 scale = Vector2(3.12854, 3.15989)
 
 [node name="PlayerM" parent="." instance=ExtResource("35_dww58")]
+z_index = 6
 position = Vector2(768, 128)
 
 [editable path="NpcBoyIcecreamHair"]
