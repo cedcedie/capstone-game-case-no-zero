@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://6hvjcmf0swd7"]
+
+[ext_resource type="Texture2D" uid="uid://dg0v5lso42a6o" path="res://miravil/face_apartment_morgue/face_apt_beard_man.png" id="1_jdcby"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tl0d"]
+atlas = ExtResource("1_jdcby")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0jdq"]
+atlas = ExtResource("1_jdcby")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iwp1"]
+atlas = ExtResource("1_jdcby")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0l2m"]
+atlas = ExtResource("1_jdcby")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmjq3"]
+atlas = ExtResource("1_jdcby")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4j3p"]
+atlas = ExtResource("1_jdcby")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p53jv"]
+atlas = ExtResource("1_jdcby")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgfac"]
+atlas = ExtResource("1_jdcby")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ormcr"]
+atlas = ExtResource("1_jdcby")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gpdb"]
+atlas = ExtResource("1_jdcby")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_20kmp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tl0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0jdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7iwp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0l2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmjq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4j3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p53jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgfac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ormcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gpdb")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="BeardMan" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_20kmp")
+animation = &"talk"
+frame = 5
+frame_progress = 0.223687

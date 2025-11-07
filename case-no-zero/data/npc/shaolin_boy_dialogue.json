@@ -1,22 +1,22 @@
 {
-  "npc_beard_man": {
+  "npc_shaolin_boy": {
 	"first_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Shaolin boy",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Shaolin boy",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Shaolin boy",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Shaolin boy",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

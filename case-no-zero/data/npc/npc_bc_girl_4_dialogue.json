@@ -1,22 +1,22 @@
 {
-  "npc_beard_man": {
+  "npc_bc_girl_4": {
 	"first_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "girl 4",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "girl 4",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "girl 4",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "girl 4",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]
