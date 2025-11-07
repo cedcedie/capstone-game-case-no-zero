@@ -137,6 +137,8 @@ func _ready() -> void:
 
 	# Align the circular minimap to the placed SubViewportContainer/border
 	_align_minimap_to_container()
+	# Ensure consistent style on first build
+	_apply_consistent_style()
 
 
 func _on_current_scene_changed(_new_scene: Node) -> void:
@@ -169,6 +171,8 @@ func _on_current_scene_changed(_new_scene: Node) -> void:
 		elif "enabled" in minimap_camera:
 			minimap_camera.enabled = true
 	visible = true
+	# Re-apply consistent styling to avoid mismatches across flows
+	_apply_consistent_style()
 	# Keep the masked view centered after scene changes
 	_center_minimap_on_screen()
 
@@ -212,6 +216,8 @@ func _on_transition_complete(_target_scene_path: String = "") -> void:
 	var tree2 := get_tree()
 	if tree2 == null:
 		return
+	# Ensure consistent look immediately after transition
+	_apply_consistent_style()
 	var root2 := tree2.current_scene
 	if root2 != null:
 		var key2 := _find_cached_scene_key(root2)
@@ -744,6 +750,9 @@ func _process(_delta: float) -> void:
 	# Only process if minimap is visible (exterior scene)
 	if not visible:
 		return
+	# Ensure the raw SubViewportContainer stays hidden (we render via masked TextureRect)
+	if viewport_container != null and viewport_container.visible:
+		viewport_container.visible = false
 	if player != null and minimap_camera != null:
 		var target_pos := player.global_position
 		# Clamp camera position to map bounds to avoid showing blank space
@@ -756,6 +765,45 @@ func _process(_delta: float) -> void:
 	if masked_rect != null and viewport != null:
 		masked_rect.texture = viewport.get_texture()
 		_align_minimap_to_container()
+
+
+# Ensures the minimap looks identical across direct loads and story-flow transitions
+func _apply_consistent_style() -> void:
+	# Hide the original SubViewportContainer UI; we show the circular masked version
+	if viewport_container != null:
+		viewport_container.visible = false
+
+	# Make sure masked view exists
+	if masked_rect == null:
+		_setup_circular_masked_view()
+		_setup_compass_letters()
+
+	# Keep the viewport rendering every frame
+	if viewport != null:
+		if viewport.has_method("set_update_mode"):
+			viewport.set_update_mode(SubViewport.UPDATE_ALWAYS)
+		else:
+			viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+
+	# Camera settings
+	if minimap_camera != null:
+		if minimap_camera.has_method("make_current"):
+			minimap_camera.make_current()
+		elif "enabled" in minimap_camera:
+			minimap_camera.enabled = true
+		minimap_camera.zoom = Vector2(MINIMAP_ZOOM, MINIMAP_ZOOM)
+
+	# Player marker scale
+	if player_marker != null:
+		player_marker.scale = Vector2(PLAYER_MARKER_SCALE, PLAYER_MARKER_SCALE)
+
+	# Ensure masked texture is the current viewport texture
+	if masked_rect != null and viewport != null:
+		masked_rect.texture = viewport.get_texture()
+
+	# Align UI
+	_align_minimap_to_container()
+	_update_compass_positions()
 
 
 # 🆕 Implemented Update Method
