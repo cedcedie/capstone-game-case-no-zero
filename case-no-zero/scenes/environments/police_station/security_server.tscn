@@ -6317,6 +6317,11 @@ shape = SubResource("RectangleShape2D_cl1ug")
 z_index = 5
 position = Vector2(456, 248)
 
+[node name="AnimatedSprite2D" parent="PlayerM" index="0"]
+animation = &"idle_back"
+frame = 0
+frame_progress = 0.0
+
 [node name="NpcPlPo2" parent="." instance=ExtResource("10_6e55x")]
 z_index = 2
 position = Vector2(456, 520)

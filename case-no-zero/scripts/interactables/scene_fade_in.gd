@@ -71,14 +71,18 @@ func _fade_in_initial_scene():
 
 func _fade_in_scene():
 	"""Create and execute fade-in effect for current scene"""
-	# Double-check: if already fading, return (shouldn't happen but safety check)
-	if is_fading and current_fade_overlay != null:
+	# Double-check: if already fading, return immediately (safety check)
+	if is_fading:
 		print("⚠️ SceneFadeIn: Already fading, skipping duplicate fade")
 		return
 	
-	# is_fading should already be set by caller, but set it here as well for safety
-	if not is_fading:
-		is_fading = true
+	# Check if there's already a fade overlay active
+	if current_fade_overlay != null and is_instance_valid(current_fade_overlay):
+		print("⚠️ SceneFadeIn: Fade overlay already exists, skipping duplicate fade")
+		return
+	
+	# Mark as fading immediately to prevent any other calls
+	is_fading = true
 	
 	# Create a CanvasLayer to be above everything
 	var canvas_layer = CanvasLayer.new()
@@ -112,6 +116,10 @@ func _fade_in_scene():
 	await tween.finished
 	if canvas_layer and is_instance_valid(canvas_layer):
 		canvas_layer.queue_free()
+	
+	# Clear the overlay reference before resetting the flag
+	if current_fade_overlay == canvas_layer:
+		current_fade_overlay = null
 	
 	is_fading = false
 	print("🎬 SceneFadeIn: Scene fade-in completed")

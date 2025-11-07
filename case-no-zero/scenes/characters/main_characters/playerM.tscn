@@ -1561,8 +1561,10 @@ script = ExtResource("1_6fh6j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bpsoc")
-animation = &"idle_back"
+animation = &"phone_out"
 autoplay = "idle_back"
+frame = 5
+frame_progress = 1.0
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

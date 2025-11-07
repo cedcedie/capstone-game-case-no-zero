@@ -1,5 +1,6 @@
-[gd_scene load_steps=61 format=4 uid="uid://b1qvf3enoo2yr"]
+[gd_scene load_steps=68 format=4 uid="uid://b1qvf3enoo2yr"]
 
+[ext_resource type="Script" uid="uid://bomlysk3xeasd" path="res://scripts/environments/barangay_hall_manager.gd" id="1_lt0o1"]
 [ext_resource type="Script" uid="uid://bp0fhcysl8dl3" path="res://scripts/interactables/scene_fade_in.gd" id="1_t0wts"]
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="2_ev27n"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="3_4up3w"]
@@ -17,8 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/sprites/environments/interior/4_Bedroom_32x32.png" id="15_xl2oy"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="16_ev27n"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="17_scene_transition"]
+[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main_characters/celine_navarro.tscn" id="21_7a2pv"]
 [ext_resource type="PackedScene" uid="uid://56ldwej8xfdd" path="res://miravil/characters/npc_backpack_man.tscn" id="22_lt0o1"]
+[ext_resource type="PackedScene" uid="uid://blneit8blyobn" path="res://scenes/characters/main_characters/kapitanaPalma.tscn" id="22_t88r4"]
 [ext_resource type="PackedScene" uid="uid://d2a10qxxr7ti6" path="res://miravil/characters/npc_beard_man.tscn" id="23_d63v8"]
+[ext_resource type="PackedScene" uid="uid://d0efginbegrng" path="res://shine.tscn" id="24_d63v8"]
 [ext_resource type="PackedScene" uid="uid://cqws3ntoa3f31" path="res://miravil/characters/npc_random_guy.tscn" id="24_w6lk3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s6tl7"]
@@ -24241,8 +24245,311 @@ sources/0 = SubResource("TileSetAtlasSource_soede")
 sources/1 = SubResource("TileSetAtlasSource_v0mbl")
 sources/2 = SubResource("TileSetAtlasSource_yi4he")
 
+[sub_resource type="Animation" id="Animation_lt0o1"]
+resource_name = "baranggay_hall_cutscene"
+length = 19.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 2.1, 2.2, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 10.7, 10.8, 13.6, 17, 17.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0, true],
+"method": &"show_line"
+}, {
+"args": [1, true],
+"method": &"show_line"
+}, {
+"args": [2, true],
+"method": &"show_line"
+}, {
+"args": [3, true],
+"method": &"show_line"
+}, {
+"args": [4, true],
+"method": &"show_line"
+}, {
+"args": [5, true],
+"method": &"show_line"
+}, {
+"args": [6, true],
+"method": &"show_line"
+}, {
+"args": [7, true],
+"method": &"show_line"
+}, {
+"args": [8, true],
+"method": &"show_line"
+}, {
+"args": [9, true],
+"method": &"show_line"
+}, {
+"args": [10, true],
+"method": &"show_line"
+}, {
+"args": [11, true],
+"method": &"show_line"
+}, {
+"args": [12, true],
+"method": &"show_line"
+}, {
+"args": [13, true],
+"method": &"show_line"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(7, 13.8, 17.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"add_logbook_evidence"
+}, {
+"args": [],
+"method": &"add_handwriting_sample_evidence"
+}, {
+"args": [],
+"method": &"_hide_dialogue_ui"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.3, 6.2, 10.9, 13.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_hide_dialogue_ui"
+}, {
+"args": [],
+"method": &"_hide_dialogue_ui"
+}, {
+"args": [],
+"method": &"_hide_dialogue_ui"
+}, {
+"args": [],
+"method": &"_hide_dialogue_ui"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(17.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_cutscene"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerM:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 1.9, 4.7, 5.2, 5.5, 6.2, 6.4, 6.8, 10, 10.4, 10.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(464, 528), Vector2(464, 528), Vector2(464, 448), Vector2(440, 448), Vector2(440, 448), Vector2(480, 448), Vector2(480, 424), Vector2(480, 424), Vector2(512, 424), Vector2(512, 360), Vector2(512, 360), Vector2(512, 424), Vector2(480, 424)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 1.9, 2.5, 4.7, 5.2, 5.5, 6.2, 6.4, 6.8, 10, 10.4, 10.6, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"idle_back", &"walk_back", &"walk_left", &"idle_left", &"idle_right", &"walk_right", &"walk_back", &"idle_back", &"walk_right", &"walk_back", &"idle_back", &"walk_down", &"walk_left", &"idle_back", &"idle_left"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("celine:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 4.7, 5.2, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(408, 448), Vector2(408, 448), Vector2(448, 448), Vector2(448, 424)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("celine/AnimatedSprite2D:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 4.7, 5.2, 5.5, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"idle_right", &"walk_right", &"walk_back", &"idle_back", &"idle_right"]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("KapitanaPalma:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(2, 4, 4.7, 5.2, 5.5, 11, 11.3, 12.1, 12.4, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(640, -16), Vector2(640, 456), Vector2(512, 456), Vector2(512, 376), Vector2(464, 376), Vector2(464, 376), Vector2(512, 376), Vector2(512, 528), Vector2(464, 528), Vector2(464, 792)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("KapitanaPalma/AnimatedSprite2D:animation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 4, 4.7, 5.2, 5.5, 11, 11.3, 12.1, 12.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"walk_down", &"walk_left", &"walk_back", &"walk_left", &"idle_front", &"walk_right", &"walk_down", &"walk_left", &"walk_down"]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Shine:animation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 6, 9.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"new_animation", &"shine", &"new_animation"]
+}
+
+[sub_resource type="Animation" id="Animation_w6lk3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KapitanaPalma/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_back"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shine:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"shine"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerM:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(464, 528)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("celine:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(408, 448)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("KapitanaPalma:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"phone_out"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("celine/AnimatedSprite2D:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"give_right"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d63v8"]
+_data = {
+&"RESET": SubResource("Animation_w6lk3"),
+&"baranggay_hall_cutscene": SubResource("Animation_lt0o1")
+}
+
 [node name="baranggay_hall" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_lt0o1")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = 1
@@ -24278,7 +24585,11 @@ script = ExtResource("1_t0wts")
 
 [node name="PlayerM" parent="." instance=ExtResource("16_ev27n")]
 z_index = 2
-position = Vector2(640, 416)
+position = Vector2(464, 528)
+
+[node name="AnimatedSprite2D" parent="PlayerM" index="0"]
+frame = 0
+frame_progress = 0.0
 
 [node name="Area2D_barangay_hall_second_floor" type="Area2D" parent="."]
 z_index = 1
@@ -24299,7 +24610,7 @@ position = Vector2(464, 557)
 shape = SubResource("RectangleShape2D_mc44i")
 
 [node name="NpcBackpackMan" parent="." instance=ExtResource("22_lt0o1")]
-position = Vector2(575, 432)
+position = Vector2(760, 432)
 
 [node name="NpcBeardMan" parent="." instance=ExtResource("23_d63v8")]
 position = Vector2(464, 316)
@@ -24312,4 +24623,23 @@ position = Vector2(272, 152)
 tile_map_data = PackedByteArray("AAADAAIAAgABAB0AAAAEAAIAAgABAB0AAAAFAAIAAgABAB0AAAAGAAIAAgABAB0AAAAHAAIAAgABAB0AAAAIAAIAAgABAB0AAAAJAAIAAAAKAAYAAAAKAAIAAgABAB0AAAALAAIAAgABAB0AAAAMAAIAAgABAB0AAAANAAIAAAAKAAYAAAAOAAIAAgABAB0AAAAPAAIAAgABAB0AAAAQAAIAAgABAB0AAAARAAIAAgABAB0AAAASAAIAAgABAB0AAAATAAIAAgABAB0AAAADAAAAAgABABwAAAAEAAAAAgABABwAAAAFAAAAAgABABwAAAAGAAAAAgABABwAAAAHAAAAAgABABwAAAAIAAAAAgABABwAAAAJAAAAAAAJAAUAAAANAAAAAAALAAUAAAAOAAAAAgABABwAAAAPAAAAAgABABwAAAAQAAAAAgABABwAAAARAAAAAgABABwAAAASAAAAAgABABwAAAATAAAAAgABABwAAAATAAEAAgAFABwAAAASAAEAAgAFABwAAAARAAEAAgAFABwAAAAQAAEAAgAFABwAAAAPAAEAAgAFABwAAAAOAAEAAgAFABwAAAANAAEAAAAKAAYAAAAMAAEAAgAFABwAAAALAAEAAgAFABwAAAAKAAEAAgAFABwAAAAJAAEAAAAKAAYAAAAIAAEAAgAFABwAAAAHAAEAAgAFABwAAAAGAAEAAgAFABwAAAAFAAEAAgAFABwAAAAEAAEAAgAFABwAAAADAAEAAgAFABwAAAACAAAAAAAGAAYAAAAUAAAAAAAIAAYAAAACAAEAAAAGAAcAAAACAAIAAAAGAAcAAAACAAMAAAAGAAcAAAACAAQAAAAGAAcAAAACAAUAAAAGAAcAAAACAAYAAAAGAAcAAAACAAcAAAAGAAcAAAACAAgAAAAGAAcAAAACAAkAAAAGAAcAAAACAAoAAAAGAAcAAAACAAsAAAAGAAcAAAACAAwAAAAGAAgAAAADAAwAAAAHAAgAAAAEAAwAAAAEAAYAAAAHAAwAAAAFAAYAAAAIAAwAAAAHAAgAAAAJAAwAAAAHAAgAAAAKAAwAAAAHAAgAAAALAAwAAAAHAAgAAAAMAAwAAAAHAAgAAAANAAwAAAAHAAgAAAAOAAwAAAAHAAgAAAAPAAwAAAAHAAgAAAAQAAwAAAAHAAgAAAARAAwAAAAHAAgAAAASAAwAAAAHAAgAAAATAAwAAAAHAAgAAAAUAAwAAAAIAAgAAAAUAAsAAAAIAAcAAAAUAAoAAAAIAAcAAAAUAAkAAAAIAAcAAAAUAAgAAAAIAAcAAAAUAAcAAAAIAAcAAAAUAAYAAAAIAAcAAAAUAAUAAAAIAAcAAAAUAAQAAAAIAAcAAAAUAAMAAAAIAAcAAAAUAAIAAAAIAAcAAAAUAAEAAAAIAAcAAAANAAMAAAAKAAYAAAANAAQAAAAKAAYAAAANAAUAAAAKAAYAAAANAAYAAgADABwAAAANAAcAAgADAB0AAAAJAAMAAAAKAAYAAAAJAAQAAAAKAAYAAAAJAAUAAAAKAAYAAAAJAAYAAgADABwAAAAJAAcAAgADAB0AAAAGAAwAAAAHAAUAAAAFAAwAAAAHAAUAAAA=")
 tile_set = SubResource("TileSet_s0rvr")
 
+[node name="celine" parent="." instance=ExtResource("21_7a2pv")]
+z_index = 4
+position = Vector2(408, 448)
+
+[node name="KapitanaPalma" parent="." instance=ExtResource("22_t88r4")]
+z_index = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_d63v8")
+}
+
+[node name="Shine" parent="." instance=ExtResource("24_d63v8")]
+z_index = 6
+position = Vector2(512, 308)
+scale = Vector2(1.54459, 1.63513)
+
 [editable path="PlayerM"]
+[editable path="celine"]
+[editable path="KapitanaPalma"]

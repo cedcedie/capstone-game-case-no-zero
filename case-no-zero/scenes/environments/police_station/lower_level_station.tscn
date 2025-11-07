@@ -8307,6 +8307,8 @@ position = Vector2(1048, 352)
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]
 animation = &"idle_left"
 autoplay = "idle_left"
+frame = 0
+frame_progress = 0.0
 
 [node name="erwin" parent="." instance=ExtResource("14_v24ci")]
 z_index = 1

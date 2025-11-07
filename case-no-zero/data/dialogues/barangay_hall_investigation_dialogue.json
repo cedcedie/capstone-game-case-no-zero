@@ -2,12 +2,16 @@
   "barangay_hall_investigation": {
 	"dialogue_lines": [
 	  {
+		"speaker": "Celine",
+		"text": "Late ka na naman. May inasikaso ka ba? Kailangan na nating mag-proceed sa investigation."
+	  },
+	  {
 		"speaker": "Miguel",
-		"text": "Celine, dito tayo sa barangay hall. Kailangan nating makausap si Kapitana Lourdes."
+		"text": "Pasensya na, Celine. May inasikaso lang ako sa office. Dito na tayo sa barangay hall?"
 	  },
 	  {
 		"speaker": "Celine",
-		"text": "Oo, para malaman natin kung ano ang nangyari kay Leo. Sana maging cooperative siya."
+		"text": "Oo, dito na tayo. Kailangan nating makausap si Kapitana Lourdes para sa records tungkol kay Leo."
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",
@@ -15,124 +19,44 @@
 	  },
 	  {
 		"speaker": "Miguel",
-		"text": "Good morning po, Kapitana. Kami po si Miguel at Celine. May mga tanong po kami tungkol kay Leo."
+		"text": "Good morning po, Kapitana. Kami po si Miguel at Celine. Nag-iinvestigate po kami tungkol kay PO1 Leo Mendoza. May mga tanong po kami."
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",
-		"text": "Ah, kayo pala yung mga nag-iinvestigate. Si Leo ay mabuting pulis. Mabait na bata yun, laging tumutulong sa community. Ano ba ang gusto ninyong malaman tungkol sa kanya?"
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Kapitana, may mga tanong po kami tungkol kay Leo."
+		"text": "Ah, kayo pala yung nag-iinvestigate. Si Leo ay mabuting pulis. Ano ba ang gusto ninyong malaman?"
 	  },
 	  {
 		"speaker": "Celine",
-		"text": "Salamat po, Kapitana. Pwede po ba naming i-examine yung patrol logbook? Baka may makita kami doon na related sa nangyari kay Leo. Para sa legal documentation lang po."
+		"text": "Salamat po, Kapitana. Pwede po ba naming makita yung patrol logbook? Kailangan po namin i-examine bilang documentary evidence."
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",
-		"text": "Oo, pero-"
+		"text": "Oo, sige. Nandiyan lang yung logbook sa desk. Pwede ninyong tingnan."
 	  },
 	  {
-		"speaker": "Barangay NPC",
-		"text": "Kapitana, may tawag po sa inyo sa second floor."
+		"speaker": "Miguel",
+		"text": "Sige po, Kapitana. Salamat po."
 	  },
 	  {
 		"speaker": "Kapitana Lourdes",
-		"text": "Ah, sige. Kayo muna dito. Babalik ako teka lang."
+		"text": "Pasensya na, may kailangan akong asikasuhin. Kayo muna dito. Babalik ako teka lang."
 	  },
 	  {
 		"speaker": "Celine",
 		"text": "Sige po, Kapitana. Salamat po."
 	  },
 	  {
+		"speaker": "Celine",
+		"text": "Miguel, tingnan mo yung signature dito sa logbook. May slight discrepancy sa handwriting."
+	  },
+	  {
 		"speaker": "Miguel",
-		"text": "Celine, tingnan mo yung entry ni Leo sa logbook. Parang may mali sa handwriting niya."
+		"text": "Oo nga, Celine. May discrepancy yung signature. Pero hindi tayo sure kasi di naman nagkakalayo. Pwede ring natural variation lang sa handwriting."
 	  },
 	  {
 		"speaker": "Celine",
-		"text": "Oo nga! Hindi ito yung handwriting ni Leo. Parang may nag-fake ng entry na ito."
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Tama ka. May nag-tamper sa logbook. Baka may nag-cover up ng mga nangyari."
-	  },
-	  {
-		"speaker": "Celine",
-		"text": "Kailangan nating maghanap ng iba pang evidence. Baka may makita tayo sa first floor lang."
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Oo, maghanap tayo ng iba pang clues dito sa first floor."
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Nakita ninyo na ba yung logbook? May nakita ba kayong unusual?"
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Kapitana, may nakita kaming handwriting sample ni Leo. Hindi match sa entry sa logbook. Parang may nag-tamper sa records. Baka may nag-cover up ng mga nangyari."
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Hindi ko alam kung ano ang sinasabi ninyo. Pero kailangan ninyong umalis na dito."
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Kapitana, bakit po kayo defensive? May tinatago po ba kayo? Bakit parang ayaw ninyong mag-cooperate sa investigation? Para sa ikabubuti ng lahat ito."
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Wala akong tinatago! Kailangan ko lang gawin ang mga kapitana things. Umalis na kayo."
-	  },
-	  {
-		"speaker": "Celine",
-		"text": "Miguel, may nakita tayong evidence. Fake Patrol Logbook Entry at Handwriting Sample. May tinatago siya."
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Oo, obvious na may tinatago si Kapitana. Siguro pwede tayong bumalik sa police station para sa radio logs. Related yun sa patrol logbook."
-	  },
-	  {
-		"speaker": "Celine",
-		"text": "Oo, maganda yan. Baka may makita tayo sa radio logs na related sa patrol logbook."
+		"text": "Tama ka, Miguel. Hindi conclusive kung tampering o forgery ito. Kailangan nating i-document ito, pero kailangan natin ng further examination."
 	  }
 	]
-  },
-  "MiguelChoices": [
-	{
-	  "choice_id": "initial_questions",
-	  "line_index": 5,
-	  "choices": [
-		"May mga unusual ba na nangyari sa area ninyo?",
-		"Pwede po ba naming makita yung patrol logbook?"
-	  ],
-	  "responses": [
-		"Wala naman. Si Leo ay maayos na pulis. Normal lang ang lahat dito sa area namin.",
-		"Hmm... sige, pero wala kayong makikita doon. Normal lang ang lahat ng entries."
-	  ]
-	},
-	{
-	  "choice_id": "kapitana_confrontation",
-	  "line_index": 19,
-	  "choices": [
-		"Naghahanap lang po kami ng information.",
-		"Nakita namin na may mali sa patrol logbook."
-	  ],
-	  "responses": [
-		"Hindi ninyo dapat ginagawa yan. Hindi kayo authorized na mag-snoop around dito.",
-		"Ano? Hindi totoo yan! Normal lang ang lahat ng entries sa logbook."
-	  ]
-	},
-	{
-	  "line_index": 20,
-	  "speaker": "Miguel",
-	  "text": "Siguro pwede tayong bumalik sa police station para sa radio logs. Related yun sa patrol logbook."
-	},
-	{
-	  "line_index": 21,
-	  "speaker": "Celine",
-	  "text": "Oo, maganda yan. Baka may makita tayo sa radio logs na related sa patrol logbook."
-	}
-  ]
+  }
 }

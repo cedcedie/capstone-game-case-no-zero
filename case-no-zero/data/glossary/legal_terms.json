@@ -104,6 +104,20 @@
 	  "description": "Evidence consisting of writings, recordings, or other documents. Requires authentication to be admissible in court proceedings.",
 	  "citation": "Rules of Court, Rule 130, Sections 19-25",
 	  "unlocks_after": "SECURITY_SERVER_CUTSCENE_2_COMPLETED"
+	},
+	{
+	  "key": "patrol_logbook",
+	  "label": "Patrol Logbook",
+	  "description": "Official record maintained by barangay or police units documenting patrol activities, officer assignments, and time entries. Considered documentary evidence subject to authentication requirements.",
+	  "citation": "Rules of Court, Rule 130, Sections 19-25; Local Government Code provisions",
+	  "unlocks_after": "BARANGAY_HALL_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "signature_discrepancy",
+	  "label": "Signature Discrepancy / Forgery",
+	  "description": "A difference between an authentic signature and a questioned signature in a document. May indicate forgery or evidence tampering, but requires careful examination to determine if it is a material discrepancy or merely natural handwriting variation. Not all discrepancies are conclusive evidence of tampering.",
+	  "citation": "Rules of Court, Rule 130, Sections 19-25; Revised Penal Code, Article 171 (Falsification)",
+	  "unlocks_after": "BARANGAY_HALL_CUTSCENE_COMPLETED"
 	}
   ]
 }
