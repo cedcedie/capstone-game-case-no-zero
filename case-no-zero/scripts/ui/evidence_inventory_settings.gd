@@ -6,6 +6,12 @@ var is_visible: bool = false
 var player_camera: Camera2D = null
 var ui_container: Control = null
 
+# Cached values for optimization
+var _cached_current_scene: Node = null
+var _cached_scene_name: String = ""
+var _cached_in_cutscene: bool = false
+var _last_scene_check_frame: int = -1
+
 # Evidence system
 var evidence_data: Dictionary = {}
 var collected_evidence: Array = []
@@ -290,6 +296,50 @@ func _update_settings_tab_state():
 			if settings_icon:
 				settings_icon.modulate = Color.WHITE
 
+func _check_cutscene_state(current_scene: Node) -> bool:
+	"""Check if we're in a cutscene - extracted for optimization"""
+	if not current_scene:
+		return false
+	
+	var scene_name = current_scene.name.to_lower()
+	
+	# Check for cutscene indicators in all target scenes
+	if current_scene.has_method("_input"):
+		if "cutscene_played" in current_scene and not current_scene.cutscene_played:
+			return true
+	
+	# Check for specific scene cutscene states
+	if "bedroom" in scene_name or "police_lobby" in scene_name or "lower_level" in scene_name or "barangay" in scene_name:
+		if "in_cutscene" in current_scene and current_scene.in_cutscene:
+			return true
+		elif "cutscene_active" in current_scene and current_scene.cutscene_active:
+			return true
+		elif "dialogue_active" in current_scene and current_scene.dialogue_active:
+			return true
+	
+	# Check for Tween and AnimationPlayer cutscenes (only check once per scene change)
+	var tweens = get_tree().get_nodes_in_group("tween")
+	for tween in tweens:
+		if tween.is_valid() and tween.is_running():
+			return true
+	
+	var animation_players = get_tree().get_nodes_in_group("animation_player")
+	for anim_player in animation_players:
+		if anim_player.is_playing():
+			return true
+	
+	# Check for any running animations in the current scene
+	var scene_animations = current_scene.get_tree().get_nodes_in_group("animation")
+	for anim in scene_animations:
+		if anim.is_playing():
+			return true
+	
+	# Special case: check if we're in evidence collection phase (line 12 exception)
+	if "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
+		return false  # Allow during evidence collection phase
+	
+	return false
+
 func _find_player_camera():
 	"""Find the player's camera for positioning"""
 	var scene_root = get_tree().current_scene
@@ -303,73 +353,39 @@ func _find_player_camera():
 
 func _input(event):
 	"""Handle input for evidence inventory"""
+	# Cache scene checks (only update once per frame)
+	var current_frame = Engine.get_process_frames()
+	if _last_scene_check_frame != current_frame:
+		_last_scene_check_frame = current_frame
+		_cached_current_scene = get_tree().current_scene
+		if _cached_current_scene:
+			_cached_scene_name = _cached_current_scene.name.to_lower()
+		else:
+			_cached_scene_name = ""
+	
 	# Check if we're in blocked scenes (main_menu, chapter_menu, intro_story)
 	var in_blocked_scene = false
-	var current_scene = get_tree().current_scene
-	if current_scene:
-		var scene_name = current_scene.name.to_lower()
-		if "introstory" in scene_name or "mainmenu" in scene_name or "chaptermenu" in scene_name:
+	if _cached_current_scene:
+		if "introstory" in _cached_scene_name or "mainmenu" in _cached_scene_name or "chaptermenu" in _cached_scene_name:
 			in_blocked_scene = true
 	
-	# Check if we're in a cutscene - comprehensive detection for all scenes
-	var in_cutscene = false
-	var current_scene_name = ""
+	# Check if we're in a cutscene - recalculate if scene changed, otherwise use cache
+	var current_scene = get_tree().current_scene
+	if _cached_current_scene != current_scene:
+		_cached_in_cutscene = _check_cutscene_state(current_scene)
 	
-	if current_scene:
-		current_scene_name = current_scene.name.to_lower()
-		
-		# Check for cutscene indicators in all target scenes
-		if current_scene.has_method("_input"):
-			# Check if this scene has cutscene_played property and it's false
-			if "cutscene_played" in current_scene and not current_scene.cutscene_played:
-				in_cutscene = true
-		
-		# Check for specific scene cutscene states
-		if "bedroom" in current_scene_name or "police_lobby" in current_scene_name or "lower_level" in current_scene_name or "barangay" in current_scene_name:
-			# Check for cutscene flags in these specific scenes
-			if "in_cutscene" in current_scene and current_scene.in_cutscene:
-				in_cutscene = true
-			elif "cutscene_active" in current_scene and current_scene.cutscene_active:
-				in_cutscene = true
-			elif "dialogue_active" in current_scene and current_scene.dialogue_active:
-				in_cutscene = true
-		
-		# Check for Tween and AnimationPlayer cutscenes
-		var tweens = get_tree().get_nodes_in_group("tween")
-		for tween in tweens:
-			if tween.is_valid() and tween.is_running():
-				in_cutscene = true
-				break
-		
-		var animation_players = get_tree().get_nodes_in_group("animation_player")
-		for anim_player in animation_players:
-			if anim_player.is_playing():
-				in_cutscene = true
-				break
-		
-		# Check for any running animations in the current scene
-		var scene_animations = current_scene.get_tree().get_nodes_in_group("animation")
-		for anim in scene_animations:
-			if anim.is_playing():
-				in_cutscene = true
-				break
-		
-		# Special case: check if we're in evidence collection phase (line 12 exception)
-		if "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
-			in_cutscene = false  # Allow during evidence collection phase
+	var in_cutscene = _cached_in_cutscene
 	
 	# Check if we're in a menu scene (TAB not allowed) - separate from blocked scenes
 	var in_menu_scene = false
-	if current_scene:
-		var scene_name = current_scene.name.to_lower()
-		if "main_menu" in scene_name or "chapter_menu" in scene_name:
+	if _cached_current_scene:
+		if "main_menu" in _cached_scene_name or "chapter_menu" in _cached_scene_name:
 			in_menu_scene = true
 	
 	# Check if we're in office scene (TAB disabled throughout, even after cutscene completes)
 	var in_office_scene = false
-	if current_scene:
-		var scene_name = current_scene.name.to_lower()
-		if "office" in scene_name:
+	if _cached_current_scene:
+		if "office" in _cached_scene_name:
 			in_office_scene = true
 	
 	# Only allow evidence inventory access (not in blocked scenes)

@@ -37305,7 +37305,7 @@ size = Vector2(29, 1056)
 size = Vector2(88, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5fqa"]
-size = Vector2(81.25, 24)
+size = Vector2(77.625, 24)
 
 [node name="ApartmentAndMorgue" type="Node2D"]
 position = Vector2(0, -104)
@@ -37614,7 +37614,7 @@ script = ExtResource("9_qoipj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_morgue_interior"]
 z_index = 10
-position = Vector2(368, 692)
+position = Vector2(366.188, 692)
 shape = SubResource("RectangleShape2D_k5fqa")
 
 [editable path="NpcBackpackMan"]

@@ -43,10 +43,9 @@ func _ready() -> void:
 	# Load celine_call dialogue
 	_load_celine_call_dialogue()
 	
-	# Connect DialogueUI next_pressed signal
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui and dui.has_signal("next_pressed") and not dui.next_pressed.is_connected(_on_dialogue_next):
-		dui.next_pressed.connect(_on_dialogue_next)
+	# Connect DialogueUI next_pressed signal (use autoload directly)
+	if DialogueUI and DialogueUI.has_signal("next_pressed") and not DialogueUI.next_pressed.is_connected(_on_dialogue_next):
+		DialogueUI.next_pressed.connect(_on_dialogue_next)
 	
 	# Check if HEAD_POLICE_COMPLETED - hide station lobby nodes permanently
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
@@ -395,12 +394,11 @@ func show_line(index: int, auto_advance: bool = false) -> void:
 	var line: Dictionary = dialogue_lines[index]
 	var speaker: String = String(line.get("speaker", ""))
 	var text: String = String(line.get("text", ""))
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui == null:
+	if DialogueUI == null:
 		print("⚠️ DialogueUI autoload not found.")
 		return
-	if dui.has_method("show_dialogue_line"):
-		dui.show_dialogue_line(speaker, text, auto_advance)
+	if DialogueUI.has_method("show_dialogue_line"):
+		DialogueUI.show_dialogue_line(speaker, text, auto_advance)
 		
 		# If auto_advance is true, wait for typing + 2 second delay, then auto-advance
 		if auto_advance:
@@ -415,8 +413,8 @@ func show_line(index: int, auto_advance: bool = false) -> void:
 			await get_tree().create_timer(2.0).timeout
 			
 			# Auto-advance by emitting next_pressed signal
-			if dui.has_signal("next_pressed"):
-				dui.emit_signal("next_pressed")
+			if DialogueUI and DialogueUI.has_signal("next_pressed"):
+				DialogueUI.emit_signal("next_pressed")
 				print("🎬 Auto-advanced after typing + 2s delay")
 		return
 	print("⚠️ DialogueUI missing show_dialogue_line().")
@@ -448,10 +446,9 @@ func show_line_auto_advance(index: int, delay_after: float = 2.0) -> void:
 	var total_time: float = typing_duration + delay_after
 	print("🎬 Auto-advance: Text length=", text_length, " chars, Typing=", typing_duration, "s, Delay=", delay_after, "s, Total=", total_time, "s")
 	
-	# Auto-advance by emitting next_pressed signal
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui and dui.has_signal("next_pressed"):
-		dui.emit_signal("next_pressed")
+	# Auto-advance by emitting next_pressed signal (use autoload directly)
+	if DialogueUI and DialogueUI.has_signal("next_pressed"):
+		DialogueUI.emit_signal("next_pressed")
 
 func wait_for_next() -> void:
 	_set_player_active(false)
@@ -468,14 +465,13 @@ func show_line_wait(index: int) -> void:
 	wait_for_next()
 
 func show_dialogue_line_wait(speaker: String, text: String) -> void:
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui == null:
+	if DialogueUI == null:
 		print("⚠️ DialogueUI autoload not found.")
 		return
-	if dui.has_method("set_cutscene_mode"):
-		dui.set_cutscene_mode(true)
-	if dui.has_method("show_dialogue_line"):
-		dui.show_dialogue_line(speaker, text, false)
+	if DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(true)
+	if DialogueUI.has_method("show_dialogue_line"):
+		DialogueUI.show_dialogue_line(speaker, text, false)
 		wait_for_next()
 	else:
 		print("⚠️ DialogueUI missing show_dialogue_line().")
@@ -610,10 +606,9 @@ func _set_follow_darwin_completed() -> void:
 		(player_node as Node2D).global_position = FOLLOW_DARWIN_SPAWN
 		print("🎬 PlayerM positioned at (", FOLLOW_DARWIN_SPAWN.x, ", ", FOLLOW_DARWIN_SPAWN.y, ") after follow_darwin")
 	
-	# Reset DialogueUI cutscene mode
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui and dui.has_method("set_cutscene_mode"):
-		dui.set_cutscene_mode(false)
+	# Reset DialogueUI cutscene mode (use autoload directly)
+	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(false)
 		print("🎬 Reset DialogueUI cutscene_mode to false")
 	
 	# Cleanup
@@ -637,60 +632,26 @@ func _set_celine_call_completed() -> void:
 	# Update task display to "Pumunta sa baranggay hall"
 	_show_task_display("Pumunta sa baranggay hall")
 	
-	# Reset DialogueUI cutscene mode FIRST
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui and dui.has_method("set_cutscene_mode"):
-		dui.set_cutscene_mode(false)
+	# Reset DialogueUI cutscene mode FIRST (use autoload directly)
+	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(false)
 		print("🎬 Reset DialogueUI cutscene_mode to false")
 	
 	# Mark cutscene as inactive FIRST - this stops _process() from disabling movement
 	cutscene_active = false
 	print("🎬 cutscene_active set to FALSE - _process() will stop disabling movement")
 	
-	# Re-enable player movement - fully restore all processing
-	if player_node == null:
-		player_node = _find_player()
-	
-	if player_node != null:
-		print("🔧 Celine Call: Restoring player movement...")
-		# Re-enable input/physics processing FIRST
-		if player_node.has_method("set_process_input"):
-			player_node.set_process_input(true)
-			print("   ✅ Enabled set_process_input(true)")
-		if player_node.has_method("set_physics_process"):
-			player_node.set_physics_process(true)
-			print("   ✅ Enabled set_physics_process(true)")
-		
-		# Re-enable movement control - call enable_movement() which sets control_enabled
-		if player_node.has_method("enable_movement"):
-			player_node.enable_movement()
-			print("   ✅ Called enable_movement()")
-		
-		# Force set control_enabled to true - make absolutely sure
-		if "control_enabled" in player_node:
-			player_node.control_enabled = true
-			print("   ✅ Force set control_enabled = true")
-		
-		# Wait a frame to ensure everything is applied
-		await get_tree().process_frame
-		
-		# Final check
-		var final_control = player_node.get("control_enabled") if "control_enabled" in player_node else "N/A"
-		var final_mode = player_node.get("process_mode") if "process_mode" in player_node else "N/A"
-		print("   Final state - control_enabled: ", final_control, ", process_mode: ", final_mode)
-		print("🎬 Celine Call: Player movement fully restored - YOU SHOULD BE ABLE TO MOVE NOW!")
-	else:
-		print("⚠️ Celine Call: player_node is null! Cannot restore movement!")
-		_set_player_active(true)  # Fallback
+	# Re-enable player movement using the standard helper function
+	_set_player_active(true)
+	print("🎬 Celine Call: Player movement enabled via _set_player_active(true)")
 
 func play_phone_ringtone(ring_count: int = 3) -> float:
 	"""Play phone ringtone using VoiceBlipManager
 	Returns the total duration of the ringtone sequence
 	"""
-	var voice_blip_manager = get_node_or_null("/root/VoiceBlipManager")
-	if voice_blip_manager and voice_blip_manager.has_method("play_ringtone"):
+	if VoiceBlipManager and VoiceBlipManager.has_method("play_ringtone"):
 		print("📞 Playing phone ringtone...")
-		var duration = await voice_blip_manager.play_ringtone(ring_count, 0.2, 0.3)
+		var duration = await VoiceBlipManager.play_ringtone(ring_count, 0.2, 0.3)
 		return duration
 	else:
 		print("⚠️ VoiceBlipManager not found or missing play_ringtone method")
@@ -723,11 +684,6 @@ func stop_phone_in_at_last_frame() -> void:
 		print("⚠️ Cannot stop phone_in - AnimatedSprite2D not found on player")
 		return
 	
-	# Wait for animation to finish if it's playing
-	if anim_sprite.is_playing() and anim_sprite.animation == "phone_in":
-		# Wait for animation to complete
-		await anim_sprite.animation_finished
-	
 	# Get the sprite frames resource
 	var sprite_frames = anim_sprite.sprite_frames
 	if sprite_frames == null:
@@ -745,14 +701,15 @@ func stop_phone_in_at_last_frame() -> void:
 		print("⚠️ Cannot stop phone_in - animation has no frames")
 		return
 	
-	# Play the animation and seek to last frame
-	anim_sprite.play("phone_in")
-	# Wait a frame to ensure animation starts
-	await get_tree().process_frame
-	# Seek to the last frame (frame_count - 1, since it's 0-indexed)
-	anim_sprite.frame = frame_count - 1
-	# Stop the animation so it stays on the last frame
-	anim_sprite.stop()
+	# If animation is currently playing, wait for it to finish first
+	if anim_sprite.is_playing() and anim_sprite.animation == "phone_in":
+		# Wait for animation to complete
+		await anim_sprite.animation_finished
+	
+	# Now set to the last frame directly without playing
+	anim_sprite.animation = "phone_in"
+	anim_sprite.frame = frame_count - 1  # Last frame (0-indexed)
+	anim_sprite.stop()  # Stop so it stays on this frame
 	print("📞 phone_in stopped at last frame (frame ", frame_count - 1, ")")
 
 func stop_phone_out_at_last_frame() -> void:
@@ -767,11 +724,6 @@ func stop_phone_out_at_last_frame() -> void:
 	if anim_sprite == null:
 		print("⚠️ Cannot stop phone_out - AnimatedSprite2D not found on player")
 		return
-	
-	# Wait for animation to finish if it's playing
-	if anim_sprite.is_playing() and anim_sprite.animation == "phone_out":
-		# Wait for animation to complete
-		await anim_sprite.animation_finished
 	
 	# Get the sprite frames resource
 	var sprite_frames = anim_sprite.sprite_frames
@@ -790,14 +742,15 @@ func stop_phone_out_at_last_frame() -> void:
 		print("⚠️ Cannot stop phone_out - animation has no frames")
 		return
 	
-	# Play the animation and seek to last frame
-	anim_sprite.play("phone_out")
-	# Wait a frame to ensure animation starts
-	await get_tree().process_frame
-	# Seek to the last frame (frame_count - 1, since it's 0-indexed)
-	anim_sprite.frame = frame_count - 1
-	# Stop the animation so it stays on the last frame
-	anim_sprite.stop()
+	# If animation is currently playing, wait for it to finish first
+	if anim_sprite.is_playing() and anim_sprite.animation == "phone_out":
+		# Wait for animation to complete
+		await anim_sprite.animation_finished
+	
+	# Now set to the last frame directly without playing
+	anim_sprite.animation = "phone_out"
+	anim_sprite.frame = frame_count - 1  # Last frame (0-indexed)
+	anim_sprite.stop()  # Stop so it stays on this frame
 	print("📞 phone_out stopped at last frame (frame ", frame_count - 1, ")")
 
 # ---- Celine Call Dialogue Methods (callable from AnimationPlayer) ----
@@ -851,14 +804,13 @@ func show_line_from_array(dialogue_array: Array[Dictionary], index: int, auto_ad
 	var speaker: String = String(line.get("speaker", ""))
 	var text: String = String(line.get("text", ""))
 	
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui == null:
+	if DialogueUI == null:
 		print("⚠️ DialogueUI autoload not found.")
 		return
-	if dui.has_method("set_cutscene_mode"):
-		dui.set_cutscene_mode(true)
-	if dui.has_method("show_dialogue_line"):
-		dui.show_dialogue_line(speaker, text, auto_advance)
+	if DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(true)
+	if DialogueUI.has_method("show_dialogue_line"):
+		DialogueUI.show_dialogue_line(speaker, text, auto_advance)
 		
 		# If auto_advance is true, wait for typing + 2 second delay, then auto-advance
 		if auto_advance:
@@ -873,8 +825,8 @@ func show_line_from_array(dialogue_array: Array[Dictionary], index: int, auto_ad
 			await get_tree().create_timer(2.0).timeout
 			
 			# Auto-advance by emitting next_pressed signal
-			if dui.has_signal("next_pressed"):
-				dui.emit_signal("next_pressed")
+			if DialogueUI and DialogueUI.has_signal("next_pressed"):
+				DialogueUI.emit_signal("next_pressed")
 				print("🎬 Auto-advanced celine call dialogue after typing + 2s delay")
 	else:
 		print("⚠️ DialogueUI missing show_dialogue_line().")
@@ -891,9 +843,8 @@ func _on_dialogue_next() -> void:
 		anim_player.play()
 
 func _hide_dialogue_ui() -> void:
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui and dui.has_method("hide_ui"):
-		dui.hide_ui()
+	if DialogueUI and DialogueUI.has_method("hide_ui"):
+		DialogueUI.hide_ui()
 
 func _load_dialogue_if_available() -> void:
 	var path := "res://data/dialogues/police_lobby_cutscene_dialogue.json"

@@ -28,10 +28,9 @@ func _ready() -> void:
 	# Load dialogue
 	_load_dialogue_if_available()
 	
-	# Connect DialogueUI next_pressed signal
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui and dui.has_signal("next_pressed") and not dui.next_pressed.is_connected(_on_dialogue_next):
-		dui.next_pressed.connect(_on_dialogue_next)
+	# Connect DialogueUI next_pressed signal (use autoload directly)
+	if DialogueUI and DialogueUI.has_signal("next_pressed") and not DialogueUI.next_pressed.is_connected(_on_dialogue_next):
+		DialogueUI.next_pressed.connect(_on_dialogue_next)
 	
 	# Check if CELINE_CALL_COMPLETED - play barangay hall cutscene (only once)
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED):
@@ -138,14 +137,13 @@ func show_line(index: int, auto_advance: bool = false) -> void:
 	var line: Dictionary = dialogue_lines[index]
 	var speaker: String = String(line.get("speaker", ""))
 	var text: String = String(line.get("text", ""))
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui == null:
+	if DialogueUI == null:
 		print("⚠️ DialogueUI autoload not found.")
 		return
-	if dui.has_method("set_cutscene_mode"):
-		dui.set_cutscene_mode(true)
-	if dui.has_method("show_dialogue_line"):
-		dui.show_dialogue_line(speaker, text, auto_advance)
+	if DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(true)
+	if DialogueUI.has_method("show_dialogue_line"):
+		DialogueUI.show_dialogue_line(speaker, text, auto_advance)
 		return
 	print("⚠️ DialogueUI missing show_dialogue_line().")
 
@@ -172,10 +170,9 @@ func show_line_auto_advance(index: int, delay_after: float = 2.0) -> void:
 	# Wait additional delay after typing finishes
 	await get_tree().create_timer(delay_after).timeout
 	
-	# Auto-advance by emitting next_pressed signal
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui and dui.has_signal("next_pressed"):
-		dui.emit_signal("next_pressed")
+	# Auto-advance by emitting next_pressed signal (use autoload directly)
+	if DialogueUI and DialogueUI.has_signal("next_pressed"):
+		DialogueUI.emit_signal("next_pressed")
 
 func wait_for_next() -> void:
 	_set_player_active(false)
@@ -203,9 +200,8 @@ func _on_dialogue_next() -> void:
 		anim_player.play()
 
 func _hide_dialogue_ui() -> void:
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui and dui.has_method("hide_ui"):
-		dui.hide_ui()
+	if DialogueUI and DialogueUI.has_method("hide_ui"):
+		DialogueUI.hide_ui()
 
 func _load_dialogue_if_available() -> void:
 	var path := "res://data/dialogues/barangay_hall_investigation_dialogue.json"
@@ -249,9 +245,8 @@ func _set_barangay_hall_completed() -> void:
 	print("🎬 Barangay hall cutscene completed, checkpoint set.")
 	
 	# Reset DialogueUI cutscene mode FIRST
-	var dui: Node = get_node_or_null("/root/DialogueUI")
-	if dui and dui.has_method("set_cutscene_mode"):
-		dui.set_cutscene_mode(false)
+	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
+		DialogueUI.set_cutscene_mode(false)
 		print("🎬 Reset DialogueUI cutscene_mode to false")
 	
 	# Mark cutscene as inactive FIRST - this stops _process() from disabling movement

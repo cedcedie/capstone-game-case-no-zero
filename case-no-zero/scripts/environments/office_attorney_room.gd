@@ -193,21 +193,25 @@ func _on_dialogue_next() -> void:
 		resume_on_next = false
 		anim.play()
 
+var _player_movement_disabled: bool = false  # Track if we've already disabled movement
+
 func _process(_delta: float) -> void:
-	# Continuously disable movement during cutscene - ensures movement stays disabled
+	# Only check/disable movement if cutscene is active and we haven't already disabled it
 	if cutscene_active and player_node != null:
-		# Continuously disable all movement properties EVERY FRAME
-		if "control_enabled" in player_node:
-			player_node.control_enabled = false
-		if "velocity" in player_node:
-			player_node.velocity = Vector2.ZERO
-		# Ensure input/physics processing stays disabled EVERY FRAME
-		if player_node.has_method("set_process_input"):
-			player_node.set_process_input(false)
-		if player_node.has_method("set_physics_process"):
-			player_node.set_physics_process(false)
-		# Also ensure player doesn't process input via process_mode
-		# But keep process_mode enabled so AnimationPlayer can control animations
+		# Only disable if not already disabled (avoid redundant calls)
+		if not _player_movement_disabled:
+			if "control_enabled" in player_node:
+				player_node.control_enabled = false
+			if "velocity" in player_node:
+				player_node.velocity = Vector2.ZERO
+			if player_node.has_method("set_process_input"):
+				player_node.set_process_input(false)
+			if player_node.has_method("set_physics_process"):
+				player_node.set_physics_process(false)
+			_player_movement_disabled = true
+	elif not cutscene_active:
+		# Reset flag when cutscene ends
+		_player_movement_disabled = false
 
 func _input(event: InputEvent) -> void:
 	# Block all input events during cutscene (except dialogue UI which handles its own input)
