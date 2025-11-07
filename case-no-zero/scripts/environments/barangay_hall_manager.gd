@@ -244,6 +244,9 @@ func _set_barangay_hall_completed() -> void:
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED)
 	print("🎬 Barangay hall cutscene completed, checkpoint set.")
 	
+	# Update task display to "Pumunta sa morgue"
+	_show_task_display("Pumunta sa morgue")
+	
 	# Reset DialogueUI cutscene mode FIRST
 	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
 		DialogueUI.set_cutscene_mode(false)
@@ -468,6 +471,22 @@ func _hide_task_display() -> void:
 		print("📝 Task display hidden")
 	else:
 		print("⚠️ TaskDisplay not found or missing hide_task() method")
+
+func _show_task_display(task_text: String) -> void:
+	"""Show the task display with the given text"""
+	var task_display: Node = get_node_or_null("/root/TaskDisplay")
+	if task_display == null:
+		# Try to find it in scene tree
+		var tree := get_tree()
+		if tree:
+			var found := tree.get_first_node_in_group("task_display")
+			if found:
+				task_display = found
+	if task_display != null and task_display.has_method("show_task"):
+		task_display.show_task(task_text)
+		print("📝 Task display updated: ", task_text)
+	else:
+		print("⚠️ TaskDisplay not found or missing show_task() method")
 
 func end_cutscene() -> void:
 	"""End the cutscene - callable from AnimationPlayer"""

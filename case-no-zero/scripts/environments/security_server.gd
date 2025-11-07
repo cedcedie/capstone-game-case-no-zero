@@ -181,13 +181,20 @@ func transition_to_scene(target_scene_path: String, animation_name: String = "",
 	
 	# Note: SceneFadeIn autoload handles fade-in automatically, no need to fade here
 
+var _player_movement_disabled: bool = false  # Track if movement is already disabled
+
 func _process(_delta: float) -> void:
-	# Continuously disable movement during cutscene
+	# Only disable movement once during cutscene (performance optimization)
 	if cutscene_active and player_node != null:
-		if "control_enabled" in player_node and player_node.control_enabled:
-			player_node.control_enabled = false
-		if "velocity" in player_node:
-			player_node.velocity = Vector2.ZERO
+		if not _player_movement_disabled:
+			if "control_enabled" in player_node:
+				player_node.control_enabled = false
+			if "velocity" in player_node:
+				player_node.velocity = Vector2.ZERO
+			_player_movement_disabled = true
+	elif not cutscene_active:
+		# Reset flag when cutscene ends
+		_player_movement_disabled = false
 
 # ---- Environment visibility helpers ----
 func hide_environment_and_characters(duration: float = 0.5) -> void:

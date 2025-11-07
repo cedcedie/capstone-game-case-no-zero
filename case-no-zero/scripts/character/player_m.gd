@@ -6,54 +6,31 @@ extends CharacterBody2D
 
 var direction: Vector2 = Vector2.ZERO
 var last_facing: String = "down"
-var control_enabled: bool = true   # can the player move?
-var last_direction: Vector2 = Vector2.ZERO  # Track last movement direction
+var control_enabled: bool = true
+var last_direction: Vector2 = Vector2.ZERO
 
-# --------------------
-# READY + MINIMAP
-# --------------------
 func _ready() -> void:
-	# Handle spawn / reposition logic
 	_check_and_reposition_based_on_entry()
-
-	# 🔹 Register this player to the global minimap (if available)
+	
 	if Engine.has_singleton("Minimap"):
 		Minimap.set_player(self)
-
-		# 🔹 Also load the current map into the minimap (optional)
 		var map_node := get_tree().current_scene.get_node_or_null("Map")
 		if map_node:
 			Minimap.load_map(map_node)
-
-
-# --------------------
-# SPAWN HANDLING
-# --------------------
 func _check_and_reposition_based_on_entry():
 	"""Check if we need to reposition based on entry point"""
-	print("🔍 Player: Checking for repositioning...")
-	
 	if not has_node("/root/SpawnManager"):
-		print("⚠️ Player: SpawnManager not found!")
 		return
 	
 	var spawn_manager = get_node("/root/SpawnManager")
 	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
-	print("🔍 Player: Current scene name: ", scene_name)
-	print("🔍 Player: SpawnManager entry_point: ", spawn_manager.entry_point)
-	
 	var spawn_data = spawn_manager.get_spawn_data(scene_name)
-	print("🔍 Player: Spawn data: ", spawn_data)
 	
 	if not spawn_data.is_empty():
-		# Set position
 		global_position = spawn_data.position
-		
-		# Set animation and facing direction
 		var animation = spawn_data.animation
 		anim_sprite.play(animation)
 		
-		# Update last_facing based on animation
 		if animation.contains("down"):
 			last_facing = "down"
 		elif animation.contains("back"):
@@ -62,35 +39,21 @@ func _check_and_reposition_based_on_entry():
 			last_facing = "left"
 		elif animation.contains("right"):
 			last_facing = "right"
-		
-		print("📍 Player: Repositioned to ", spawn_data.position, " with animation ", animation, " for scene ", scene_name)
-	else:
-		print("⚠️ Player: No spawn data found, using default position")
-		pass
 	
-	# Clear the entry point after use
 	spawn_manager.clear_entry_point()
 
 
-# --------------------
-# MOVEMENT CONTROL
-# --------------------
 func disable_movement():
 	control_enabled = false
 	anim_sprite.play("idle_" + last_facing)
-	print_stack()  # Print call stack to see who called this
 
 func enable_movement():
 	control_enabled = true
-	print_stack()  # Print call stack to see who called this
 
 func get_camera() -> Camera2D:
 	return $Camera2D
 
 
-# --------------------
-# PHYSICS + INPUT
-# --------------------
 func _physics_process(_delta: float) -> void:
 	if control_enabled:
 		_handle_input()
@@ -135,7 +98,7 @@ func _handle_input() -> void:
 				last_direction = direction
 
 	var current_speed = walk_speed
-	if Input.is_action_pressed("ui_select"):  # run key
+	if Input.is_action_pressed("ui_select"):
 		current_speed = run_speed
 		anim_sprite.speed_scale = 2.0
 	else:

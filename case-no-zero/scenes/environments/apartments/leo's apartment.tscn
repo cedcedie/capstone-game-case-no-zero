@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://b30mu58jiqt5x"]
+[gd_scene load_steps=44 format=4 uid="uid://b30mu58jiqt5x"]
 
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="1_th3li"]
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="2_ps3tc"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cm7e8tdl8gnj6" path="res://miravil/character_police_station/npc_pl_guy4.tscn" id="11_1vkke"]
 [ext_resource type="PackedScene" uid="uid://dq472mj2tndm4" path="res://miravil/character_police_station/npc_pl_guy9.tscn" id="12_vsab5"]
 [ext_resource type="PackedScene" uid="uid://31iyw6734iog" path="res://miravil/characters_camp/npc_cmp_b5.tscn" id="13_0y3i7"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="14_vsab5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1cifo"]
 texture = ExtResource("1_th3li")
@@ -16746,6 +16747,14 @@ sources/1 = SubResource("TileSetAtlasSource_0rwn4")
 sources/2 = SubResource("TileSetAtlasSource_s4tpy")
 sources/3 = SubResource("TileSetAtlasSource_j0j16")
 
+[sub_resource type="Animation" id="Animation_0y3i7"]
+resource_name = "apartment_cutscene"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_24v2p"]
+_data = {
+&"apartment_cutscene": SubResource("Animation_0y3i7")
+}
+
 [node name="Apartment3" type="Node2D"]
 
 [node name="ground wall" type="TileMapLayer" parent="."]
@@ -16780,3 +16789,11 @@ position = Vector2(353, 165)
 
 [node name="NpcCmpB5" parent="." instance=ExtResource("13_0y3i7")]
 position = Vector2(658, 252)
+
+[node name="PlayerM" parent="." instance=ExtResource("14_vsab5")]
+position = Vector2(320, 400)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_24v2p")
+}

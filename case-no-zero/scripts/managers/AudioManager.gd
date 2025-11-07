@@ -66,6 +66,11 @@ var max_layers: int = 3
 var music_volume: float = 1.0
 var sfx_volume: float = 1.0
 
+# Cached scene checks for performance
+var _cached_scene_name: String = ""
+var _cached_scene_path: String = ""
+var _last_scene_check_frame: int = -1
+
 # Scene BGM mapping
 var scene_bgm_map: Dictionary = {
 	"main_menu": "res://assets/audio/deltarune/From Now On (Battle 2).ogg",
@@ -330,18 +335,25 @@ func _on_node_added(node: Node):
 func _on_scene_changed():
 	"""Called when scene changes - set appropriate BGM and ambient"""
 	await get_tree().process_frame
-	if get_tree().current_scene:
-		var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
-		print("🎵 AudioManager: Auto-detecting scene:", scene_name)
-		print("🎵 AudioManager: Scene file path:", get_tree().current_scene.scene_file_path)
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		# Cache scene name to avoid repeated string operations
+		var scene_path = current_scene.scene_file_path
+		if scene_path != _cached_scene_path:
+			_cached_scene_path = scene_path
+			_cached_scene_name = scene_path.get_file().get_basename()
+			print("🎵 AudioManager: Auto-detecting scene:", _cached_scene_name)
+			print("🎵 AudioManager: Scene file path:", scene_path)
 		
 		# Set BGM for the scene
-		set_scene_bgm(scene_name)
+		set_scene_bgm(_cached_scene_name)
 
 		# Set ambient for exterior scenes
-		set_exterior_ambient(scene_name)
+		set_exterior_ambient(_cached_scene_name)
 	else:
 		print("⚠️ AudioManager: No current scene found")
+		_cached_scene_name = ""
+		_cached_scene_path = ""
 
 func _ensure_audio_buses() -> void:
 	# Create Music and SFX buses if missing so sliders always target valid buses

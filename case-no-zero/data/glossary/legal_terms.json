@@ -118,6 +118,48 @@
 	  "description": "A difference between an authentic signature and a questioned signature in a document. May indicate forgery or evidence tampering, but requires careful examination to determine if it is a material discrepancy or merely natural handwriting variation. Not all discrepancies are conclusive evidence of tampering.",
 	  "citation": "Rules of Court, Rule 130, Sections 19-25; Revised Penal Code, Article 171 (Falsification)",
 	  "unlocks_after": "BARANGAY_HALL_CUTSCENE_COMPLETED"
+	},
+	{
+	  "key": "autopsy_report",
+	  "label": "Autopsy Report",
+	  "description": "Official medical document detailing findings from post-mortem examination. Considered documentary evidence under Rule 130 and requires proper authentication and chain of custody. May be subject to medical confidentiality but accessible for legal proceedings.",
+	  "citation": "Rules of Court, Rule 130, Sections 19-25; Medical Act of 1959",
+	  "unlocks_after": "MORGUE_COMPLETED"
+	},
+	{
+	  "key": "expert_witness",
+	  "label": "Expert Witness / Expert Testimony",
+	  "description": "A person with specialized knowledge, skill, or experience who provides testimony in court. Medical experts (like forensic pathologists) can testify on autopsy findings, cause of death, and forensic evidence. Their testimony must be based on scientific principles and proper methodology.",
+	  "citation": "Rules of Court, Rule 130, Section 49",
+	  "unlocks_after": "MORGUE_COMPLETED"
+	},
+	{
+	  "key": "defensive_wounds",
+	  "label": "Defensive Wounds",
+	  "description": "Injuries sustained by a victim while attempting to protect themselves from an attack. Common patterns include injuries to hands, arms, and forearms. In forensic pathology, defensive wounds indicate the victim was conscious and actively resisting, contradicting claims of suicide or passive killing.",
+	  "citation": "Forensic Pathology principles; Rules of Court, Rule 130 (Expert Testimony)",
+	  "unlocks_after": "MORGUE_COMPLETED"
+	},
+	{
+	  "key": "rigor_mortis",
+	  "label": "Rigor Mortis",
+	  "description": "Post-mortem stiffening of muscles that occurs after death. Used in forensic pathology to estimate time of death. Rigor mortis typically begins 2-4 hours after death, peaks at 12-24 hours, and resolves after 24-36 hours. Combined with algor mortis (body cooling), it helps establish time of death.",
+	  "citation": "Forensic Pathology principles; Rules of Court, Rule 130 (Expert Testimony)",
+	  "unlocks_after": "MORGUE_COMPLETED"
+	},
+	{
+	  "key": "medical_confidentiality",
+	  "label": "Medical Confidentiality / Physician-Patient Privilege",
+	  "description": "Legal principle protecting patient medical information from disclosure. Under Rule 130, Section 24, medical records are privileged, but exceptions exist for legal proceedings, court orders, and when the patient's condition is at issue in litigation.",
+	  "citation": "Rules of Court, Rule 130, Section 24; Medical Act of 1959",
+	  "unlocks_after": "MORGUE_COMPLETED"
+	},
+	{
+	  "key": "ra_6713",
+	  "label": "Republic Act No. 6713",
+	  "description": "Code of Conduct and Ethical Standards for Public Officials and Employees. Establishes rights to access public records for legal proceedings, subject to reasonable regulations. Provides framework for transparency and accountability in government service.",
+	  "citation": "Republic Act No. 6713",
+	  "unlocks_after": "MORGUE_COMPLETED"
 	}
   ]
 }

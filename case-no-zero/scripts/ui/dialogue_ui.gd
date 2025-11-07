@@ -14,6 +14,10 @@ var typing_speed := 0.01
 var cutscene_mode: bool = false
 var blip_interval: int = 3  # play a voice blip every N characters
 
+# Cached compiled RegEx objects for keyword bolding (performance optimization)
+var _cached_regexes: Dictionary = {}
+var _regex_cache_initialized: bool = false
+
 func set_cutscene_mode(enabled: bool) -> void:
 	cutscene_mode = enabled
 	print("🎬 DialogueUI cutscene mode set to:", enabled)
@@ -127,7 +131,7 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 		"leo mendoza":
 			tex = load("res://assets/sprites/characters/closeup_face/leo_closeup.png")
 		"dr. leticia salvador", "dr leticia salvador", "leticia salvador":
-			tex = load("res://dr_leticia_salvador_closeup.png")
+			tex = load("res://assets/sprites/characters/closeup_face/dr_leticia_salvador_closeup.png")
 		_:
 			tex = null
 	portrait_rect.texture = tex
@@ -137,6 +141,23 @@ func _apply_portrait_for_speaker(speaker: String) -> void:
 # -----------------------------
 func _bold_keywords(input_text: String) -> String:
 	var result := input_text
+	
+	# Initialize regex cache on first call (performance optimization)
+	if not _regex_cache_initialized:
+		_initialize_regex_cache()
+	
+	# Use cached compiled regexes instead of creating new ones each time
+	for kw in _cached_regexes.keys():
+		var rx: RegEx = _cached_regexes[kw]
+		result = rx.sub(result, "[b]$0[/b]", true)
+	
+	return result
+
+func _initialize_regex_cache() -> void:
+	"""Initialize the regex cache with compiled RegEx objects (called once)"""
+	if _regex_cache_initialized:
+		return
+	
 	# Curated keywords/phrases to emphasize; includes all citations and legal terms
 	var keywords := [
 		# Story/Character keywords (longer phrases first)
@@ -144,22 +165,32 @@ func _bold_keywords(input_text: String) -> String:
 		"UNANG MALAKING KASO",
 		"KATOTOHANAN",
 		# Character Names (full names first, then first names)
-		"Leo Mendoza",
-		"PO1 Darwin",
 		"Dr. Leticia Salvador",
 		"Leticia Salvador",
+		"Kapitana Lourdes",
 		"Kapitana Palma",
+		"PO1 Leo Mendoza",
+		"Leo Mendoza",
+		"PO1 Darwin",
+		"Atty. Miguel Ramos",
+		"Atty. Miguel",
+		"Atty.",
 		"Miguel",
 		"Celine",
 		"Erwin",
+		"Erwin Tambay",
 		"Leo",
 		"Darwin",
 		# Legal Citations - Rules of Court (more specific first)
 		"Rules of Court",
+		"Rule 130, Section 24",
+		"Rule 130, Section 49",
 		"Rule 130",
 		"Rule 133",
 		"Rule 112",
 		"Rule 110",
+		"Section 24",
+		"Section 49",
 		# Constitutional Citations (more specific first)
 		"1987 Const. Art. III, Sec. 14(2)",
 		"1987 Const., Art. III, Sec. 1",
@@ -173,6 +204,10 @@ func _bold_keywords(input_text: String) -> String:
 		"Sec. 14",
 		# Revised Penal Code
 		"RPC Art. 248",
+		# Republic Acts (more specific first)
+		"Republic Act No. 6713",
+		"RA No. 6713",
+		"RA 6713",
 		# Professional Code (more specific first)
 		"CPRA (2023)",
 		"CPRA 2023",
@@ -180,6 +215,14 @@ func _bold_keywords(input_text: String) -> String:
 		# Other Rules
 		"BJMP visitation rules",
 		# Legal Terms (longer phrases first to avoid partial matches)
+		"medical expert testimony",
+		"expert witness",
+		"expert testimony",
+		"medical confidentiality",
+		"medical confidentiality laws",
+		"physician-patient privilege",
+		"court order",
+		"legal proceedings",
 		"presumption of innocence",
 		"burden of prosecution",
 		"chain of custody",
@@ -193,12 +236,32 @@ func _bold_keywords(input_text: String) -> String:
 		"burden",
 		"evidence",
 		"ebidensya",
+		# Forensic Terms (longer phrases first)
+		"autopsy report",
+		"autopsy findings",
+		"rigor mortis",
+		"algor mortis",
+		"defensive wounds",
+		"ligature marks",
+		"time of death",
+		"cause of death",
+		"gunshot wound",
+		"foreign DNA",
+		# Barangay/Police Terms
+		"patrol logbook",
+		"signature discrepancy",
+		"signature",
+		"discrepancy",
+		"handwriting",
+		"tampering",
+		"forgery",
+		"police report",
+		"official police report",
 	]
+	
+	# Compile regexes once and cache them
 	for kw in keywords:
-		# (?i) = case-insensitive, capture original for preservation
 		var rx := RegEx.new()
-		# Word-boundary-ish: allow spaces in phrases; avoid partial matches inside words
-		# For citations with parentheses or special chars, use a more flexible pattern
 		var pattern: String
 		if kw.contains("(") or kw.contains(".") or kw.contains("/"):
 			# For citations with special chars, escape them but allow flexible matching
@@ -206,9 +269,15 @@ func _bold_keywords(input_text: String) -> String:
 		else:
 			# For regular words, use word boundaries
 			pattern = "(?i)(?<!\\w)" + _regex_escape(kw) + "(?!\\w)"
-		rx.compile(pattern)
-		result = rx.sub(result, "[b]$0[/b]", true)
-	return result
+		
+		var compile_result = rx.compile(pattern)
+		if compile_result == OK:
+			_cached_regexes[kw] = rx
+		else:
+			push_warning("Failed to compile regex for keyword: " + kw)
+	
+	_regex_cache_initialized = true
+	print("✅ DialogueUI: Regex cache initialized with ", _cached_regexes.size(), " compiled patterns")
 
 func _regex_escape(text: String) -> String:
 	# Escape common regex metacharacters

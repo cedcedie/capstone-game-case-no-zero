@@ -56,7 +56,16 @@
 	  {
 		"speaker": "Celine",
 		"text": "Tama ka, Miguel. Hindi conclusive kung tampering o forgery ito. Kailangan nating i-document ito, pero kailangan natin ng further examination."
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "I-check natin yung morgue? Para sa autopsy report."
+	  },
+	  {
+		"speaker": "Celine",
+		"text": "Kailangan natin yan. Tara, pumunta na tayo."
 	  }
+	
 	]
   }
 }

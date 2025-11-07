@@ -102,16 +102,23 @@ func end_cutscene() -> void:
 	_set_player_active(true)
 	print("🎬 Lower level station cutscene ended - returning to normal gameplay.")
 
+var _player_movement_disabled: bool = false  # Track if movement is already disabled
+
 func _process(_delta: float) -> void:
-	# Continuously disable movement during cutscene
+	# Only disable movement once during cutscene (performance optimization)
 	# But don't reset animation - let AnimationPlayer control it
 	if cutscene_active and player_node != null:
-		# Only disable control_enabled, don't call disable_movement() which resets animation
-		if "control_enabled" in player_node and player_node.control_enabled:
-			player_node.control_enabled = false
+		if not _player_movement_disabled:
+			# Only disable control_enabled, don't call disable_movement() which resets animation
+			if "control_enabled" in player_node:
+				player_node.control_enabled = false
 			# Also stop velocity if player has it
 			if "velocity" in player_node:
 				player_node.velocity = Vector2.ZERO
+			_player_movement_disabled = true
+	elif not cutscene_active:
+		# Reset flag when cutscene ends
+		_player_movement_disabled = false
 
 # ---- Environment visibility helpers ----
 func hide_environment_and_characters(duration: float = 0.5) -> void:
