@@ -246,16 +246,24 @@ func _find_player() -> Node:
 	if root_scene == null:
 		return null
 	
-	# Try direct child
-	var direct := root_scene.get_node_or_null("PlayerM")
-	if direct != null:
-		return direct
+	var n := root_scene.get_node_or_null("PlayerM")
+	if n:
+		return n
 	
-	# Try recursive search
+	n = root_scene.find_child("PlayerM", true, false)
+	if n:
+		return n
+	
+	for node in get_tree().get_nodes_in_group("player"):
+		return node
+	
+	if has_node("/root/PlayerM"):
+		return get_node("/root/PlayerM")
+	
 	var candidates := root_scene.find_children("*", "", true, false)
-	for n in candidates:
-		if String(n.name).to_lower().contains("playerm") or String(n.name).to_lower().contains("player"):
-			return n
+	for candidate in candidates:
+		if String(candidate.name).to_lower().contains("playerm"):
+			return candidate
 	
 	return null
 
@@ -283,6 +291,8 @@ func _set_player_active(active: bool) -> void:
 			player_node.set_physics_process(true)
 		if "control_enabled" in player_node:
 			player_node.control_enabled = true
+		if "velocity" in player_node:
+			player_node.velocity = Vector2.ZERO
 
 func show_line(index: int, auto_advance: bool = false) -> void:
 	if index < 0 or index >= dialogue_lines.size():
@@ -459,6 +469,11 @@ func _set_celine_call_completed() -> void:
 		DialogueUI.set_cutscene_mode(false)
 
 	cutscene_active = false
+	_player_movement_disabled = false
+	
+	if player_node == null:
+		player_node = _find_player()
+	
 	_set_player_active(true)
 
 func play_phone_ringtone(ring_count: int = 3) -> float:
@@ -591,8 +606,8 @@ func _on_dialogue_next() -> void:
 		anim_player.play()
 
 func _hide_dialogue_ui() -> void:
-		if DialogueUI and DialogueUI.has_method("hide_ui"):
-			DialogueUI.hide_ui()
+	if DialogueUI and DialogueUI.has_method("hide_ui"):
+		DialogueUI.hide_ui()
 
 func _load_dialogue_if_available() -> void:
 	var path := "res://data/dialogues/police_lobby_cutscene_dialogue.json"
