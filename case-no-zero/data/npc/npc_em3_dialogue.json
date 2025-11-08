@@ -2,21 +2,21 @@
   "npc_em3": {
 	"first_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Liam",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Liam",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Liam",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Liam",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

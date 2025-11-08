@@ -2,21 +2,21 @@
   "npc_guy_3": {
 	"first_interaction": [
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Henry",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Henry",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Henry",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Henry",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

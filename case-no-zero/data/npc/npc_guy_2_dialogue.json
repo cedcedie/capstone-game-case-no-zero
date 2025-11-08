@@ -2,21 +2,21 @@
   "npc_guy_2": {
 	"first_interaction": [
 	  {
-		"speaker": "Guy 2",
+		"speaker": "Mateo",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Guy 2",
+		"speaker": "Mateo",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Guy 2",
+		"speaker": "Mateo",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Guy 2",
+		"speaker": "Mateo",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

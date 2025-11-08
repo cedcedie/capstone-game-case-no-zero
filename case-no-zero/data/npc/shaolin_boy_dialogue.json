@@ -2,21 +2,21 @@
   "npc_shaolin_boy": {
 	"first_interaction": [
 	  {
-		"speaker": "Shaolin boy",
+		"speaker": "Peng",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Shaolin boy",
+		"speaker": "Peng",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Shaolin boy",
+		"speaker": "Peng",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Shaolin boy",
+		"speaker": "Peng",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

@@ -2,21 +2,21 @@
   "npc_cmp_b4": {
 	"first_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "John",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "John",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "John",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "John",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

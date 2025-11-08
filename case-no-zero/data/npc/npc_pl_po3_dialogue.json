@@ -2,21 +2,21 @@
   "npc_pl_po3": {
 	"first_interaction": [
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Jack",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Jack",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Jack",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Jack",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

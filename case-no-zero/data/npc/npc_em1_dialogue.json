@@ -2,21 +2,21 @@
   "npc_em1": {
 	"first_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "justine",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "justine",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "justine",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "justine",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

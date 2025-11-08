@@ -2,21 +2,22 @@
   "npc_bc_girl_4": {
 	"first_interaction": [
 	  {
-		"speaker": "girl 4",
+		"speaker": "carla",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "girl 4",
+		"speaker": "carla",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "girl 4",
+		"speaker": "carla",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "girl 4",
+		"speaker": "carla
+		",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

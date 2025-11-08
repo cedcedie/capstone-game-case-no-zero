@@ -2,21 +2,21 @@
   "npc_htl_guy1": {
 	"first_interaction": [
 	  {
-		"speaker": "Guy 3",
+		"speaker": "William",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Guy 3",
+		"speaker": "William",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Guy 3",
+		"speaker": "William",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Guy 3",
+		"speaker": "William",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

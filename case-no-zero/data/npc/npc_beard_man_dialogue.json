@@ -2,21 +2,21 @@
   "npc_beard_man": {
 	"first_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Jacob",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Jacob",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Jacob",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Beard Man",
+		"speaker": "Jacob",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

@@ -2,21 +2,21 @@
   "npc_tm_girl2": {
 	"first_interaction": [
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Clouie",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Clouie",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Clouie",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "Guy 3",
+		"speaker": "Clouie",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]

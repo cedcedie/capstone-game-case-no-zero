@@ -2,21 +2,21 @@
   "npc_bc_girl_5": {
 	"first_interaction": [
 	  {
-		"speaker": "girl 5",
+		"speaker": "yumi",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "girl 5",
+		"speaker": "yumi",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "girl 5",
+		"speaker": "yumi",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "girl 5",
+		"speaker": "yumi",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]
