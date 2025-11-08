@@ -591,8 +591,8 @@ func _on_dialogue_next() -> void:
 		anim_player.play()
 
 func _hide_dialogue_ui() -> void:
-	if DialogueUI and DialogueUI.has_method("hide_ui"):
-	DialogueUI.hide_ui()
+		if DialogueUI and DialogueUI.has_method("hide_ui"):
+			DialogueUI.hide_ui()
 
 func _load_dialogue_if_available() -> void:
 	var path := "res://data/dialogues/police_lobby_cutscene_dialogue.json"
