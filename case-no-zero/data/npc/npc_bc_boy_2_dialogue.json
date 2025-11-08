@@ -2,21 +2,21 @@
   "npc_bc_boy_2": {
 	"first_interaction": [
 	  {
-		"speaker": "boy 2",
+		"speaker": "Gio",
 		"text": "Kamusta ka? May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "boy 2",
+		"speaker": "Gio",
 		"text": "Kung may problema ka, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "boy 2",
+		"speaker": "Gio",
 		"text": "Kamusta ka na ulit?"
 	  },
 	  {
-		"speaker": "boy 2",
+		"speaker": "Gio",
 		"text": "May iba ka pa bang kailangan?"
 	  }
 	]
