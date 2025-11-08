@@ -316,6 +316,11 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(1144.0,1009.0),
 			"animation": "idle_down"
 	},
+		"from_apartment_1_to_apartment_morgue": {
+			"position": Vector2(877.0, 910.0),
+			"animation": "idle_down"
+	},
+	
 		"default": {
 			"position": Vector2(368.0, 704.0),
 			"animation": "idle_down"
@@ -323,6 +328,14 @@ var spawn_positions: Dictionary = {
 		
 	},
 	"camp": {
+		"from_abadoned_court": {
+			"position": Vector2(256.0, 312.0),
+			"animation": "idle_back"
+		},
+		"from_inside_abandoned_court": {
+			"position": Vector2(398.0, 192.0),
+			"animation": "idle_down"
+		},
 		"morgue_to_camp": {
 			"position": Vector2(1475.0, 272.0),
 			"animation": "idle_left"
@@ -413,9 +426,16 @@ var spawn_positions: Dictionary = {
 		}
 		
 	},
+	"apartment_1": { # 💡 also: avoid spaces in keys, see note below
+		"from_apartment_morgue_to_apartment_1": {
+			"position": Vector2(544.0, 426.0),
+			"animation": "idle_back"
+	},
+}
 	
 	
 	
+
 }
 
 

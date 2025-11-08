@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cdmcjdiukxqyx"]
+[gd_scene load_steps=20 format=4 uid="uid://cdmcjdiukxqyx"]
 
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_yycuc"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_yb7v1"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://djqpqhg0regnh" path="res://assets/sprites/environments/interior/2_LivingRoom_32x32.png" id="5_rx5bk"]
 [ext_resource type="PackedScene" uid="uid://1n4nyc7f32i0" path="res://miravil/character_police_station/npc_pl_guy2.tscn" id="6_wxmdx"]
 [ext_resource type="PackedScene" uid="uid://cm0jruxbtorh8" path="res://miravil/characters_terminal_market/npc_tm_girl1.tscn" id="7_fa8lw"]
+[ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="8_to13k"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_tq2q2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8cgiv"]
 texture = ExtResource("1_yycuc")
@@ -3998,6 +4000,9 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_85xa7")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx5bk"]
+size = Vector2(63, 20)
+
 [node name="Apartment1" type="Node2D"]
 
 [node name="ground wall" type="TileMapLayer" parent="."]
@@ -4019,3 +4024,14 @@ position = Vector2(447, 159)
 
 [node name="NpcTmGirl1" parent="." instance=ExtResource("7_fa8lw")]
 position = Vector2(209, 184)
+
+[node name="PlayerM" parent="." instance=ExtResource("8_to13k")]
+z_index = 5
+position = Vector2(544, 426)
+
+[node name="from_apartment_1_to_apartment_morgue" type="Area2D" parent="."]
+script = ExtResource("9_tq2q2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_apartment_1_to_apartment_morgue"]
+position = Vector2(544, 469)
+shape = SubResource("RectangleShape2D_rx5bk")

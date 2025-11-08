@@ -106,7 +106,11 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"office_attorney_room_to_office_main": "office_attorney_room_to_office_main",
 		"from_office_lobby_to_office_main" : "from_office_lobby_to_office_main",
 		"from_office_lobby_to_apartment_morgue":"from_office_lobby_to_apartment_morgue",
-		"from_apartment_morgue_to_office_lobby":"from_apartment_morgue_to_office_lobby"
+		"from_apartment_morgue_to_office_lobby":"from_apartment_morgue_to_office_lobby",
+		"from_abadoned_court":"from_abadoned_court",
+		"from_inside_abandoned_court":"from_inside_abandoned_court",
+		"from_apartment_morgue_to_apartment_1":"from_apartment_morgue_to_apartment_1",
+		"from_apartment_1_to_apartment_morgue":"from_apartment_1_to_apartment_morgue"
 		
 	}
 	
@@ -292,6 +296,14 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/exterior/apartment_morgue.tscn"
 		"from_apartment_morgue_to_office_lobby":
 			return "res://scenes/environments/office/office_lobby.tscn"
+		"from_abadoned_court":
+			return "res://scenes/environments/abandoned court/abandoned court house.tscn"
+		"from_inside_abandoned_court":
+			return "res://scenes/environments/exterior/camp.tscn"
+		"from_apartment_morgue_to_apartment_1":
+			return "res://scenes/environments/apartments/apartment_1.tscn"
+		"from_apartment_1_to_apartment_morgue":
+			return "res://scenes/environments/exterior/apartment_morgue.tscn"
 		_:
 			return ""
 

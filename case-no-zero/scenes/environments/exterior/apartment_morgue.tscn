@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://dvgkhr0qxnpx0"]
+[gd_scene load_steps=86 format=4 uid="uid://dvgkhr0qxnpx0"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_7v4vq"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_xphjy"]
@@ -37293,7 +37293,7 @@ sources/2 = SubResource("TileSetAtlasSource_1em5d")
 size = Vector2(44, 1063)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v4vq"]
-size = Vector2(5561.62, 1.28788)
+size = Vector2(5483.08, 1.28788)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xphjy"]
 size = Vector2(29, 1056)
@@ -37303,6 +37303,9 @@ size = Vector2(88, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5fqa"]
 size = Vector2(77.625, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w58ee"]
+size = Vector2(74, 41.5)
 
 [node name="ApartmentAndMorgue" type="Node2D"]
 position = Vector2(0, -104)
@@ -37373,8 +37376,8 @@ autoplay = "idle_right"
 z_index = 10
 
 [node name="PlayerM" parent="." instance=ExtResource("12_jtlfh")]
-z_index = 4
-position = Vector2(1144, 1009)
+z_index = 6
+position = Vector2(877, 928)
 
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]
 position = Vector2(0, 48)
@@ -37480,7 +37483,7 @@ position = Vector2(0, 7)
 script = ExtResource("9_qoipj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_morgue_to_police_station"]
-position = Vector2(1380, 1148)
+position = Vector2(1368, 1193)
 scale = Vector2(0.495, 33)
 shape = SubResource("RectangleShape2D_7v4vq")
 
@@ -37646,6 +37649,13 @@ script = ExtResource("9_qoipj")
 z_index = 10
 position = Vector2(366.188, 692)
 shape = SubResource("RectangleShape2D_k5fqa")
+
+[node name="from_apartment_morgue_to_apartment_1" type="Area2D" parent="."]
+script = ExtResource("9_qoipj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_apartment_morgue_to_apartment_1"]
+position = Vector2(877, 894)
+shape = SubResource("RectangleShape2D_w58ee")
 
 [editable path="NpcBackpackMan"]
 [editable path="NpcBeardMan"]
