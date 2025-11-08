@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://dxpkalqq3osyf"]
+[gd_scene load_steps=31 format=3 uid="uid://dxpkalqq3osyf"]
 
+[ext_resource type="Script" uid="uid://cryqnfqihvq37" path="res://miravil/characters_hotel_hospital/npc_htl_girl_1.gd" id="1_glmc7"]
 [ext_resource type="Texture2D" uid="uid://bioi4c2bpqya5" path="res://miravil/sprites_hotel_hospital_4/npc_htl_girl1.png" id="1_xsdmr"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_glmc7"]
 
@@ -226,10 +227,11 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcHtlGirl1" type="CharacterBody2D"]
+script = ExtResource("1_glmc7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q5veb")
-animation = &"idle_right"
+animation = &"idle_front"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://bwrv04y0a2dma"]
+
+[ext_resource type="Texture2D" uid="uid://bpubk6l3krtxl" path="res://miravil/face_camp/face_cmp_b3.png" id="1_fhv46"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7422"]
+atlas = ExtResource("1_fhv46")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_385ji"]
+atlas = ExtResource("1_fhv46")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqs5x"]
+atlas = ExtResource("1_fhv46")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hscqe"]
+atlas = ExtResource("1_fhv46")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ef1j"]
+atlas = ExtResource("1_fhv46")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri8y4"]
+atlas = ExtResource("1_fhv46")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2otk"]
+atlas = ExtResource("1_fhv46")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3fw7"]
+atlas = ExtResource("1_fhv46")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjlsy"]
+atlas = ExtResource("1_fhv46")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2ci6"]
+atlas = ExtResource("1_fhv46")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w56yc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7422")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_385ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqs5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hscqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ef1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri8y4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2otk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3fw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjlsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2ci6")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="NpcCmpB3" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_w56yc")
+animation = &"talk"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://w6pq2a5xkmyd"]
+[gd_scene load_steps=31 format=3 uid="uid://w6pq2a5xkmyd"]
 
 [ext_resource type="Texture2D" uid="uid://dxv8tag8ildha" path="res://miravil/sprites_terminal_market_6/npc_tm_guy8.png" id="1_lx6sb"]
+[ext_resource type="Script" uid="uid://4wjuo2o7y6e1" path="res://miravil/characters_terminal_market/npc_tm_guy_8.gd" id="1_vqug0"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_vqug0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yg2g1"]
@@ -226,10 +227,11 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcTmGuy8" type="CharacterBody2D"]
+script = ExtResource("1_vqug0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kioi6")
-animation = &"idle_back"
+animation = &"idle_front"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

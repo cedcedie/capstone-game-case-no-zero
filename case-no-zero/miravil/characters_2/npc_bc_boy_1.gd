@@ -14,8 +14,8 @@ extends CharacterBody2D
 # ============================================
 # CONFIGURATION - CHANGE THESE FOR EACH NPC
 # ============================================
-@export var dialogue_file_path: String = "res://data/npc/npc_bc_girl_4_dialogue.json"
-@export var dialogue_key: String = "npc_bc_girl_4"
+@export var dialogue_file_path: String = "res://data/npc/npc_bc_boy_1_dialogue.json"
+@export var dialogue_key: String = "npc_bc_boy_1"
 @export var default_idle_animation: String = "idle_front"  # Animation to restore when player leaves
 
 # Node references

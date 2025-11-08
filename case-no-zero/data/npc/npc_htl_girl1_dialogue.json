@@ -1,0 +1,24 @@
+{
+  "npc_htl_girl1": {
+	"first_interaction": [
+	  {
+		"speaker": "Marine Jr",
+		"text": "Kamusta ka? May kailangan ka ba?"
+	  },
+	  {
+		"speaker": "Marine Jr",
+		"text": "Kung may problema ka, sabihin mo lang sa akin."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Marine Jr",
+		"text": "Kamusta ka na ulit?"
+	  },
+	  {
+		"speaker": "Marine Jr",
+		"text": "May iba ka pa bang kailangan?"
+	  }
+	]
+  }
+}

@@ -30724,7 +30724,6 @@ z_index = 4
 position = Vector2(1024, 547)
 
 [node name="AnimatedSprite2D" parent="NpcCmpB4" index="0"]
-animation = &"idle_front"
 autoplay = "idle_front"
 
 [node name="NpcCmpB5" parent="." instance=ExtResource("14_pvoir")]

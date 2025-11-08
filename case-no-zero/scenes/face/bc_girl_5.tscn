@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://blyhgyq11vsr5"]
+
+[ext_resource type="Texture2D" uid="uid://fkl3h687oev2" path="res://miravil/face_baranggay_court/face_bc_girl_5.png" id="1_rl4lo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41d1l"]
+atlas = ExtResource("1_rl4lo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjn0k"]
+atlas = ExtResource("1_rl4lo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y4gg"]
+atlas = ExtResource("1_rl4lo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbv5h"]
+atlas = ExtResource("1_rl4lo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svg2a"]
+atlas = ExtResource("1_rl4lo")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge76m"]
+atlas = ExtResource("1_rl4lo")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cycdu"]
+atlas = ExtResource("1_rl4lo")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ove5c"]
+atlas = ExtResource("1_rl4lo")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cvq0"]
+atlas = ExtResource("1_rl4lo")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u8hl"]
+atlas = ExtResource("1_rl4lo")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u62pa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41d1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjn0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y4gg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbv5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svg2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge76m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cycdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ove5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cvq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u8hl")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="BcGirl5" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_u62pa")
+animation = &"talk"

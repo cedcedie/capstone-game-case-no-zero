@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://ycffvj7lpok"]
+
+[ext_resource type="Texture2D" uid="uid://cox1iuyn6vsko" path="res://miravil/face_camp/face_cmp_b7.png" id="1_eu04j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6h01"]
+atlas = ExtResource("1_eu04j")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf86w"]
+atlas = ExtResource("1_eu04j")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxxt3"]
+atlas = ExtResource("1_eu04j")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g42vh"]
+atlas = ExtResource("1_eu04j")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hcvm"]
+atlas = ExtResource("1_eu04j")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q54i3"]
+atlas = ExtResource("1_eu04j")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_carv8"]
+atlas = ExtResource("1_eu04j")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i5r1"]
+atlas = ExtResource("1_eu04j")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku0e4"]
+atlas = ExtResource("1_eu04j")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mslhl"]
+atlas = ExtResource("1_eu04j")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e17wb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6h01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf86w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxxt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g42vh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hcvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q54i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_carv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7i5r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mslhl")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="CmpB7" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_e17wb")
+animation = &"talk"

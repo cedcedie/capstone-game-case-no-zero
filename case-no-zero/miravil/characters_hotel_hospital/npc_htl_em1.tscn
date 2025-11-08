@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://do5ssgvy0t4b1"]
+[gd_scene load_steps=31 format=3 uid="uid://do5ssgvy0t4b1"]
 
 [ext_resource type="Texture2D" uid="uid://byb04rdiorm7l" path="res://miravil/sprites_hotel_hospital_4/npc_htl_em1.png" id="1_h4fwu"]
+[ext_resource type="Script" uid="uid://dvbwfcylfvaxi" path="res://miravil/characters_hotel_hospital/npc_htl_em_1.gd" id="1_ym8mt"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_ym8mt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v7i0m"]
@@ -226,6 +227,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcHtlEm1" type="CharacterBody2D"]
+script = ExtResource("1_ym8mt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r4cy6")

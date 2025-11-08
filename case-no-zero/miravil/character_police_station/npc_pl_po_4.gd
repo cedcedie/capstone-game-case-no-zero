@@ -15,8 +15,8 @@ var path_points: Array[Vector2] = [
 	Vector2(1216.0, 1216.0),
 	Vector2(1216.0, 1112.0),
 	Vector2(1656.0, 1112.0),
-	Vector2(1656.0, 11040.0),
-	Vector2(1736.0, 11040.0),
+	Vector2(1656.0, 1040.0),
+	Vector2(1736.0, 1040.0),
 	Vector2(1736.0, 648.0),
 	Vector2(952.0, 648.0)
 

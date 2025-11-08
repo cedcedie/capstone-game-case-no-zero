@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://dxuw5gwsudjkb"]
+[gd_scene load_steps=31 format=3 uid="uid://dxuw5gwsudjkb"]
 
+[ext_resource type="Script" uid="uid://b6qitur857dun" path="res://miravil/characters/npc_shaolin_boy.gd" id="1_wmlq7"]
 [ext_resource type="Texture2D" uid="uid://rutbj0bciff1" path="res://miravil/sprites/npc_shaolin_boy.png" id="1_x02do"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_wmlq7"]
 
@@ -221,6 +222,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcShaolinBoy" type="CharacterBody2D"]
+script = ExtResource("1_wmlq7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ijbuj")

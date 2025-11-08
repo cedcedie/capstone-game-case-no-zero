@@ -1,6 +1,7 @@
-[gd_scene load_steps=54 format=3 uid="uid://dyiqujhav8jhi"]
+[gd_scene load_steps=55 format=3 uid="uid://dyiqujhav8jhi"]
 
 [ext_resource type="Texture2D" uid="uid://chhc0x73u2i2d" path="res://miravil/sprites/npc_guy_3.png" id="1_3t4ah"]
+[ext_resource type="Script" uid="uid://dybeghxher5hs" path="res://miravil/characters/npc_guy_3.gd" id="1_c05wt"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_c05wt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7jbm"]
@@ -389,10 +390,11 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcGuy3" type="CharacterBody2D"]
+script = ExtResource("1_c05wt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_celcs")
-animation = &"walk_right"
+animation = &"idle_front"
 autoplay = "idle_left"
 offset = Vector2(0, -32)
 

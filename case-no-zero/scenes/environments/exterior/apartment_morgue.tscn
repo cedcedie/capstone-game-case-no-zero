@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://dvgkhr0qxnpx0"]
+[gd_scene load_steps=85 format=4 uid="uid://dvgkhr0qxnpx0"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_7v4vq"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_xphjy"]
@@ -33,10 +33,8 @@
 [ext_resource type="PackedScene" uid="uid://bthvnds1w3orw" path="res://miravil/characters/npc_curly_girly.tscn" id="26_7btrm"]
 [ext_resource type="Script" uid="uid://dhgxe3ul30qwc" path="res://miravil/characters/npc_random_girl.gd" id="26_pevcj"]
 [ext_resource type="PackedScene" uid="uid://cqws3ntoa3f31" path="res://miravil/characters/npc_random_guy.tscn" id="27_3l2y6"]
-[ext_resource type="Script" uid="uid://b6qitur857dun" path="res://miravil/characters/npc_shaolin_boy.gd" id="28_p34yk"]
 [ext_resource type="PackedScene" uid="uid://b84ieuct4jt0x" path="res://miravil/characters/npc_yellow_glass_man.tscn" id="28_xrcoi"]
 [ext_resource type="PackedScene" uid="uid://umei5rc0s03h" path="res://miravil/characters/npc_girl_1.tscn" id="29_0gp1r"]
-[ext_resource type="Script" uid="uid://yje2qpbbwtwt" path="res://miravil/characters/npc_guy_2.gd" id="30_ax1g1"]
 [ext_resource type="PackedScene" uid="uid://dyiqujhav8jhi" path="res://miravil/characters/npc_guy_3.tscn" id="30_mhdqn"]
 [ext_resource type="PackedScene" uid="uid://0hfqkpj2i2t4" path="res://miravil/vehicle_triyk/triyk_4.tscn" id="31_1em5d"]
 [ext_resource type="PackedScene" uid="uid://ngiiiml5ij1" path="res://miravil/characters/npc_pinkish.tscn" id="31_mnau3"]
@@ -49,7 +47,6 @@
 [ext_resource type="Script" uid="uid://cgixo4tmxff80" path="res://miravil/characters/npc_boy_kunat.gd" id="38_evhef"]
 [ext_resource type="Script" uid="uid://dokttmqf2s46c" path="res://miravil/characters/npc_random_guy.gd" id="41_h58kl"]
 [ext_resource type="Script" uid="uid://bos60h1ifhjtt" path="res://miravil/characters/npc_girl_1.gd" id="45_xd6iu"]
-[ext_resource type="Script" uid="uid://dybeghxher5hs" path="res://miravil/characters/npc_guy_3.gd" id="47_ddaur"]
 [ext_resource type="PackedScene" uid="uid://2lfkuf8ys7ck" path="res://miravil/vehicle_triyk/triyk_10.tscn" id="48_mnau3"]
 [ext_resource type="PackedScene" uid="uid://xfdfgtdskt1o" path="res://miravil/vehicle_triyk/triyk_8.tscn" id="49_pevcj"]
 [ext_resource type="PackedScene" uid="uid://cmfdk5ln2g5ft" path="res://miravil/vehicle_triyk/triyk_11.tscn" id="50_p34yk"]
@@ -37444,14 +37441,12 @@ script = ExtResource("26_pevcj")
 
 [node name="NpcShaolinBoy" parent="." instance=ExtResource("19_cexpq")]
 position = Vector2(2440, 923)
-script = ExtResource("28_p34yk")
 
 [node name="CollisionShape2D" parent="NpcShaolinBoy/Area2D" index="0"]
 z_index = 4
 
 [node name="NpcGuy2" parent="." instance=ExtResource("20_xqyx5")]
 position = Vector2(1864, 224)
-script = ExtResource("30_ax1g1")
 
 [node name="CollisionShape2D" parent="NpcGuy2/Area2D" index="0"]
 z_index = 4
@@ -37548,7 +37543,6 @@ z_index = 4
 
 [node name="NpcGuy3" parent="." instance=ExtResource("30_mhdqn")]
 position = Vector2(1944, 224)
-script = ExtResource("47_ddaur")
 
 [node name="CollisionShape2D" parent="NpcGuy3/Area2D" index="0"]
 z_index = 4

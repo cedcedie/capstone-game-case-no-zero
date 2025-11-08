@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://cgif0hfwgj8h2"]
+[gd_scene load_steps=31 format=3 uid="uid://cgif0hfwgj8h2"]
 
+[ext_resource type="Script" uid="uid://bedsm4hc62jg0" path="res://miravil/character_police_station/npc_pl_po_5.gd" id="1_fq5f8"]
 [ext_resource type="Texture2D" uid="uid://d0kwqe4whhdne" path="res://miravil/sprites_police_station_5/npc_pl_po5.png" id="1_wjukl"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_fq5f8"]
 
@@ -226,10 +227,11 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcPlPo5" type="CharacterBody2D"]
+script = ExtResource("1_fq5f8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0dndk")
-animation = &"idle_right"
+animation = &"idle_front"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

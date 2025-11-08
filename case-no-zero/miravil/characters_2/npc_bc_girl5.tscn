@@ -229,7 +229,7 @@ radius = 26.0192
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8rlr0")
-animation = &"idle_right"
+animation = &"idle_front"
 autoplay = "read_front"
 offset = Vector2(0, -32)
 

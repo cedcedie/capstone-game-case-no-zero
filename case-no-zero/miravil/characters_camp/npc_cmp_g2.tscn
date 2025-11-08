@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://bfgitratsswyw"]
+[gd_scene load_steps=31 format=3 uid="uid://bfgitratsswyw"]
 
 [ext_resource type="Texture2D" uid="uid://xvgodapabdxk" path="res://miravil/sprites_camp_3/npc_cmp_g2.png" id="1_fi6e3"]
+[ext_resource type="Script" uid="uid://blqfq04w2cw8v" path="res://miravil/characters_camp/npc_cmp_g_2.gd" id="1_relgl"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_relgl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idsa0"]
@@ -231,6 +232,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcCmpG2" type="CharacterBody2D"]
+script = ExtResource("1_relgl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yfrau")

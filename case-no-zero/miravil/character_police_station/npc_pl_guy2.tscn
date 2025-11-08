@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://1n4nyc7f32i0"]
+[gd_scene load_steps=31 format=3 uid="uid://1n4nyc7f32i0"]
 
 [ext_resource type="Texture2D" uid="uid://p3fhnpak3vk0" path="res://miravil/sprites_police_station_5/npc_pl_guy2.png" id="1_ak8xm"]
+[ext_resource type="Script" uid="uid://blnfali63vxyy" path="res://miravil/character_police_station/npc_pl_guy_2.gd" id="1_tjesp"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_tjesp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgtkb"]
@@ -226,10 +227,11 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcPlGuy2" type="CharacterBody2D"]
+script = ExtResource("1_tjesp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_crqyx")
-animation = &"idle_back"
+animation = &"idle_front"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://bbjntxhg5ng7k"]
+[gd_scene load_steps=31 format=3 uid="uid://bbjntxhg5ng7k"]
 
 [ext_resource type="Texture2D" uid="uid://vb2v2f3g00kp" path="res://miravil/sprites_camp_3/npc_cmp_b7.png" id="1_mhnnh"]
+[ext_resource type="Script" uid="uid://3rm4h7ub3t2" path="res://miravil/characters_camp/npc_cmp_b_7.gd" id="1_umdde"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_umdde"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fng24"]
@@ -226,6 +227,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcCmpB7" type="CharacterBody2D"]
+script = ExtResource("1_umdde")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lmwfk")

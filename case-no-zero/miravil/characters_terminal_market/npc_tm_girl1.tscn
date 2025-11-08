@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://cm0jruxbtorh8"]
+[gd_scene load_steps=31 format=3 uid="uid://cm0jruxbtorh8"]
 
+[ext_resource type="Script" uid="uid://bjtskgl06i6lf" path="res://miravil/characters_terminal_market/npc_tm_girl_1.gd" id="1_0r1t3"]
 [ext_resource type="Texture2D" uid="uid://cvuyk3f15eubs" path="res://miravil/sprites_terminal_market_6/npc_tm_girl1.png" id="1_gjnsr"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_0r1t3"]
 
@@ -226,10 +227,11 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcTmGirl1" type="CharacterBody2D"]
+script = ExtResource("1_0r1t3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xsvr2")
-animation = &"idle_right"
+animation = &"idle_front"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

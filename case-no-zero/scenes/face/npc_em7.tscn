@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://cc0eu838sq3e4"]
+
+[ext_resource type="Texture2D" uid="uid://c8cnjjrsh2hys" path="res://miravil/face_hotel_hospital/face_htl_em7.png" id="1_hjw55"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7weu5"]
+atlas = ExtResource("1_hjw55")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d2ud"]
+atlas = ExtResource("1_hjw55")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3ga4"]
+atlas = ExtResource("1_hjw55")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5hkg"]
+atlas = ExtResource("1_hjw55")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qtlc"]
+atlas = ExtResource("1_hjw55")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5lpv"]
+atlas = ExtResource("1_hjw55")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk3w0"]
+atlas = ExtResource("1_hjw55")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijrwj"]
+atlas = ExtResource("1_hjw55")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21255"]
+atlas = ExtResource("1_hjw55")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st13h"]
+atlas = ExtResource("1_hjw55")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngiw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7weu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d2ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3ga4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5hkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qtlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5lpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk3w0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijrwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21255")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st13h")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="NpcEm7" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ngiw3")
+animation = &"talk"

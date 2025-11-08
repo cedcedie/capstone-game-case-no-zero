@@ -1,0 +1,24 @@
+{
+  "npc_tm_guy8": {
+	"first_interaction": [
+	  {
+		"speaker": "Guy 3",
+		"text": "Kamusta ka? May kailangan ka ba?"
+	  },
+	  {
+		"speaker": "Guy 3",
+		"text": "Kung may problema ka, sabihin mo lang sa akin."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Guy 3",
+		"text": "Kamusta ka na ulit?"
+	  },
+	  {
+		"speaker": "Guy 3",
+		"text": "May iba ka pa bang kailangan?"
+	  }
+	]
+  }
+}

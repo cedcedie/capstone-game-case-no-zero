@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://8wxjrmpmxemy"]
+
+[ext_resource type="Texture2D" uid="uid://dxhil7sga3v3s" path="res://miravil/face_hotel_hospital/face_htl_girl2.png" id="1_o24v3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkxd8"]
+atlas = ExtResource("1_o24v3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_653hv"]
+atlas = ExtResource("1_o24v3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t65t8"]
+atlas = ExtResource("1_o24v3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8oof"]
+atlas = ExtResource("1_o24v3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srdtp"]
+atlas = ExtResource("1_o24v3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uhbs"]
+atlas = ExtResource("1_o24v3")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmgjk"]
+atlas = ExtResource("1_o24v3")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n47cy"]
+atlas = ExtResource("1_o24v3")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c5o0"]
+atlas = ExtResource("1_o24v3")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juebr"]
+atlas = ExtResource("1_o24v3")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gctxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkxd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_653hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t65t8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8oof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srdtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uhbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmgjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n47cy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c5o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juebr")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="HtlGirl2" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_gctxs")
+animation = &"talk"

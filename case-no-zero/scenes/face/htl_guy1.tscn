@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://cdvq7ukxanryp"]
+
+[ext_resource type="Texture2D" uid="uid://c2pnjqk60g3eb" path="res://miravil/face_hotel_hospital/face_htl_guy1.png" id="1_6s4jt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmujs"]
+atlas = ExtResource("1_6s4jt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbr3l"]
+atlas = ExtResource("1_6s4jt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0snon"]
+atlas = ExtResource("1_6s4jt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_586tj"]
+atlas = ExtResource("1_6s4jt")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5khsg"]
+atlas = ExtResource("1_6s4jt")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr17b"]
+atlas = ExtResource("1_6s4jt")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4jj1"]
+atlas = ExtResource("1_6s4jt")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci4ft"]
+atlas = ExtResource("1_6s4jt")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojt61"]
+atlas = ExtResource("1_6s4jt")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ehc2"]
+atlas = ExtResource("1_6s4jt")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2c55n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmujs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbr3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0snon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_586tj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5khsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr17b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4jj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci4ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojt61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ehc2")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="HtlGuy1" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_2c55n")
+animation = &"talk"

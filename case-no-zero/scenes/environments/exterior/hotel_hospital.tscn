@@ -30140,10 +30140,10 @@ z_index = 4
 
 [node name="NpcHtlEm2" parent="." instance=ExtResource("15_j68ja")]
 z_index = 4
-position = Vector2(270, 1382)
+position = Vector2(336, 1360)
 
 [node name="AnimatedSprite2D" parent="NpcHtlEm2" index="0"]
-animation = &"idle_front"
+autoplay = "idle_back"
 
 [node name="CollisionShape2D" parent="NpcHtlEm2/Area2D" index="0"]
 z_index = 4
@@ -30174,18 +30174,17 @@ z_index = 10
 position = Vector2(366, 862)
 
 [node name="AnimatedSprite2D" parent="NpcHtlEm5" index="0"]
-animation = &"idle_right"
+animation = &"idle_front"
 
 [node name="NpcHtlEm6" parent="." instance=ExtResource("19_0hu3s")]
 z_index = 4
-position = Vector2(272, 976)
+position = Vector2(1080, 1288)
 
 [node name="NpcHtlEm7" parent="." instance=ExtResource("20_aml3o")]
 z_index = 10
-position = Vector2(411, 862)
+position = Vector2(443, 1624)
 
 [node name="AnimatedSprite2D" parent="NpcHtlEm7" index="0"]
-animation = &"idle_left"
 autoplay = ""
 
 [node name="NpcHtl" parent="." instance=ExtResource("21_j46hr")]
@@ -30227,6 +30226,9 @@ z_index = 4
 [node name="NpcHtlGirl1" parent="." instance=ExtResource("25_3jp7t")]
 z_index = 4
 position = Vector2(402, 2542)
+
+[node name="AnimatedSprite2D" parent="NpcHtlGirl1" index="0"]
+autoplay = "idle_right"
 
 [node name="CollisionShape2D" parent="NpcHtlGirl1/Area2D" index="0"]
 z_index = 4
