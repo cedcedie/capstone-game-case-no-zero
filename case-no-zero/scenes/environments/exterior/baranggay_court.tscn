@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ctvo3c0ae47lh" path="res://miravil/characters_2/npc_bc_boy1.tscn" id="10_pa2sg"]
 [ext_resource type="PackedScene" uid="uid://juttmy3vqu4h" path="res://miravil/characters_2/npc_bc_boy2.tscn" id="11_uxeo2"]
 [ext_resource type="PackedScene" uid="uid://88p2xsk3a0jc" path="res://miravil/characters_2/npc_bc_boy3.tscn" id="12_lyl74"]
-[ext_resource type="Script" path="res://miravil/characters_2/npc_bc_boy_2.gd" id="12_teyyt"]
+[ext_resource type="Script" uid="uid://cbd8e4esve7ej" path="res://miravil/characters_2/npc_bc_boy_2.gd" id="12_teyyt"]
 [ext_resource type="PackedScene" uid="uid://dfw7sn1pdhrgb" path="res://miravil/characters_2/npc_bc_boy4.tscn" id="13_bn4bk"]
 [ext_resource type="PackedScene" uid="uid://baeoojjgi4jy4" path="res://miravil/characters_2/npc_bc_boy5.tscn" id="14_optue"]
 [ext_resource type="PackedScene" uid="uid://cpb2erm6gya8v" path="res://miravil/characters_2/npc_bc_boy6.tscn" id="15_xctx0"]

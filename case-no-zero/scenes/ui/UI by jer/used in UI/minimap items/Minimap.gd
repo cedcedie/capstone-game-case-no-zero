@@ -17,6 +17,13 @@ var east_label: Label = null
 var south_label: Label = null
 var west_label: Label = null
 
+# Waypoint marker for task navigation
+var waypoint_marker: Sprite2D = null
+var waypoint_edge_indicator: Sprite2D = null  # Edge indicator when waypoint is off-screen
+var waypoint_active: bool = false
+var waypoint_position: Vector2 = Vector2.ZERO
+var waypoint_target_scene: String = ""
+
 var player: Node2D = null
 var tilemap_layers: Array = []
 var scene_minimap_cache: Dictionary = {}
@@ -135,6 +142,26 @@ func _ready() -> void:
 		elif tree.has_signal("scene_changed"):
 			tree.connect("scene_changed", Callable(self, "_on_current_scene_changed"))
 
+	# Connect to TaskManager for waypoint updates
+	var task_manager := get_node_or_null("/root/TaskManager")
+	if task_manager != null:
+		if not task_manager.is_connected("waypoint_set", Callable(self, "_on_waypoint_set")):
+			task_manager.connect("waypoint_set", Callable(self, "_on_waypoint_set"))
+		if not task_manager.is_connected("waypoint_cleared", Callable(self, "_on_waypoint_cleared")):
+			task_manager.connect("waypoint_cleared", Callable(self, "_on_waypoint_cleared"))
+		# Check if there's already an active waypoint
+		if task_manager.has_waypoint():
+			_on_waypoint_set(task_manager.get_current_task_scene_target(), task_manager.get_current_waypoint_position())
+
+	# Create waypoint marker
+	_create_waypoint_marker()
+	
+	# Re-check waypoint if one exists
+	if task_manager != null and task_manager.has_waypoint():
+		var target_scene: String = task_manager.get_current_task_scene_target()
+		var target_pos: Vector2 = task_manager.get_current_waypoint_position()
+		_on_waypoint_set(target_scene, target_pos)
+
 	# Align the circular minimap to the placed SubViewportContainer/border
 	_align_minimap_to_container()
 	# Ensure consistent style on first build
@@ -155,9 +182,16 @@ func _on_current_scene_changed(_new_scene: Node) -> void:
 		print("[Minimap] New scene is not exterior - disabling minimap")
 		visible = false
 		_clear_minimap()
+		# Hide waypoint marker when not in exterior scene
+		if waypoint_marker != null:
+			waypoint_marker.visible = false
 		return
 	
 	print("[Minimap] current_scene_changed: exterior scene detected, building minimap")
+
+	# Ensure waypoint marker exists before proceeding
+	if waypoint_marker == null:
+		_create_waypoint_marker()
 
 	# Re-apply viewport/camera settings to avoid stale state across scenes
 	if viewport != null:
@@ -198,6 +232,22 @@ func _on_current_scene_changed(_new_scene: Node) -> void:
 	_scan_and_build()
 	if minimap_root.get_child_count() > 0:
 		emit_signal("minimap_ready")
+	
+	# Re-check waypoint visibility after scene change - ensure it persists
+	await get_tree().process_frame  # Wait a frame for scene to fully load
+	var task_manager := get_node_or_null("/root/TaskManager")
+	if task_manager != null and task_manager.has_waypoint():
+		print("📍 Minimap: Re-checking waypoint after scene change to ", root.name if root else "unknown")
+		# Re-trigger waypoint display with current waypoint data
+		# This will recalculate the waypoint position based on the new scene
+		var target_scene: String = task_manager.get_current_task_scene_target()
+		var target_pos: Vector2 = task_manager.get_current_waypoint_position()
+		_on_waypoint_set(target_scene, target_pos)
+	else:
+		# If no waypoint is active, ensure marker is hidden
+		if waypoint_marker != null:
+			waypoint_marker.visible = false
+			waypoint_active = false
 
 
 func _on_transition_start() -> void:
@@ -337,6 +387,14 @@ func _scan_and_build() -> void:
 	if player != null:
 		var clamped_pos := _clamp_camera_to_bounds(player.global_position)
 		minimap_camera.global_position = clamped_pos
+	
+	# Re-check waypoint after building minimap
+	var task_manager_check := get_node_or_null("/root/TaskManager")
+	if task_manager_check != null and task_manager_check.has_waypoint():
+		var target_scene_check: String = task_manager_check.get_current_task_scene_target()
+		var target_pos_check: Vector2 = task_manager_check.get_current_waypoint_position()
+		_on_waypoint_set(target_scene_check, target_pos_check)
+	
 	if minimap_root.get_child_count() > 0:
 		emit_signal("minimap_ready")
 
@@ -455,6 +513,14 @@ func _use_cached_minimap(scene_path: String) -> void:
 			minimap_camera.global_position = _clamp_camera_to_bounds(center)
 		else:
 			print("[Minimap] use_cache: empty bounds after instancing for:", scene_path)
+	
+	# Re-check waypoint after using cached minimap
+	var task_manager := get_node_or_null("/root/TaskManager")
+	if task_manager != null and task_manager.has_waypoint():
+		var target_scene: String = task_manager.get_current_task_scene_target()
+		var target_pos: Vector2 = task_manager.get_current_waypoint_position()
+		_on_waypoint_set(target_scene, target_pos)
+	
 	# Signal readiness
 	emit_signal("minimap_ready")
 
@@ -761,6 +827,78 @@ func _process(_delta: float) -> void:
 		if player_marker != null:
 			player_marker.global_position = player.global_position
 
+	# Update waypoint marker position if active
+	if waypoint_active:
+		# Ensure waypoint marker exists
+		if waypoint_marker == null:
+			_create_waypoint_marker()
+		
+		if waypoint_marker != null:
+			# Ensure waypoint marker is in the viewport
+			if waypoint_marker.get_parent() != viewport:
+				if waypoint_marker.get_parent() != null:
+					waypoint_marker.get_parent().remove_child(waypoint_marker)
+				if viewport != null:
+					viewport.add_child(waypoint_marker)
+					print("📍 Minimap: Waypoint marker re-parented to viewport in _process")
+			
+			# Update waypoint position based on current scene (in case scene changed)
+			# Get base position from TaskManager and recalculate for current scene
+			var task_manager := get_node_or_null("/root/TaskManager")
+			if task_manager != null and task_manager.has_waypoint():
+				var base_pos: Vector2 = task_manager.get_current_waypoint_position()
+				var updated_pos: Vector2 = _get_waypoint_position_for_current_scene(waypoint_target_scene, base_pos)
+				if updated_pos.distance_to(waypoint_position) > 10.0:  # Only update if significantly different
+					waypoint_position = updated_pos
+					print("📍 Minimap: Updated waypoint position to ", waypoint_position, " for current scene")
+			
+			# Always use the waypoint position (target location) regardless of current scene
+			waypoint_marker.global_position = waypoint_position
+			# Make it pulse for visibility (very subtle animation, small size)
+			var pulse := sin(Engine.get_process_frames() * 0.2) * 0.1 + 1.0
+			waypoint_marker.scale = Vector2(pulse, pulse) * 1.0  # Very small size with subtle pulse
+			# Ensure it stays visible when in exterior scenes
+			waypoint_marker.visible = true
+			waypoint_marker.z_index = 1000  # Above everything
+			waypoint_marker.modulate = Color(1, 0.2, 0.2, 1)  # Bright red
+			
+			# Check if waypoint is in camera view and update edge indicator
+			if minimap_camera != null:
+				var camera_pos := minimap_camera.global_position
+				var viewport_size := Vector2(viewport.size) if viewport != null else Vector2(256, 256)
+				var world_viewport_size := viewport_size / minimap_camera.zoom
+				var half_viewport := world_viewport_size * 0.5
+				var distance := waypoint_position.distance_to(camera_pos)
+				
+				# Check if waypoint is within camera view bounds
+				var waypoint_offset := waypoint_position - camera_pos
+				var in_view_x: bool = abs(waypoint_offset.x) <= half_viewport.x
+				var in_view_y: bool = abs(waypoint_offset.y) <= half_viewport.y
+				var in_view: bool = in_view_x and in_view_y
+				
+				if not in_view:
+					# Waypoint is off-screen - hide the marker and show edge indicator
+					waypoint_marker.visible = false
+					_update_waypoint_edge_indicator(camera_pos, waypoint_position, viewport_size)
+				else:
+					# Waypoint is in view - show marker and hide edge indicator
+					waypoint_marker.visible = true
+					waypoint_marker.modulate = Color(1, 0.2, 0.2, 1)  # Bright red
+					if waypoint_edge_indicator != null:
+						waypoint_edge_indicator.visible = false
+			
+			# Debug: Print waypoint status every 60 frames
+			if Engine.get_process_frames() % 60 == 0:
+				var has_texture := waypoint_marker.texture != null
+				var is_in_tree := waypoint_marker.is_inside_tree()
+				var marker_scale := waypoint_marker.scale
+				print("📍 Minimap DEBUG: waypoint_active=", waypoint_active, ", visible=", waypoint_marker.visible, ", position=", waypoint_marker.global_position, ", scale=", marker_scale, ", has_texture=", has_texture, ", in_tree=", is_in_tree, ", z_index=", waypoint_marker.z_index, ", modulate=", waypoint_marker.modulate)
+	elif waypoint_marker != null and not waypoint_active:
+		# Hide waypoint marker when not active
+		waypoint_marker.visible = false
+		if waypoint_edge_indicator != null:
+			waypoint_edge_indicator.visible = false
+
 	# Keep masked rect texture and position in sync with SubViewportContainer
 	if masked_rect != null and viewport != null:
 		masked_rect.texture = viewport.get_texture()
@@ -954,7 +1092,7 @@ func _update_compass_positions() -> void:
 func _align_minimap_to_container() -> void:
 	if viewport_container == null or masked_rect == null:
 		return
-	# Use the SubViewportContainer’s rect to size and center the circular minimap
+	# Use the SubViewportContainer's rect to size and center the circular minimap
 	var pos := viewport_container.global_position
 	var size := viewport_container.size
 	masked_rect.size = size
@@ -963,3 +1101,279 @@ func _align_minimap_to_container() -> void:
 		border_rect.size = size
 		border_rect.position = pos
 	_update_compass_positions()
+
+func _create_waypoint_marker() -> void:
+	"""Create a waypoint marker sprite for task navigation"""
+	if waypoint_marker != null:
+		# If marker already exists but might be orphaned, ensure it's in the viewport
+		if waypoint_marker.get_parent() != viewport and viewport != null:
+			if waypoint_marker.get_parent() != null:
+				waypoint_marker.get_parent().remove_child(waypoint_marker)
+			viewport.add_child(waypoint_marker)
+			print("📍 Minimap: Waypoint marker re-parented to viewport in _create_waypoint_marker")
+		return  # Already created
+	
+	if viewport == null:
+		print("⚠️ Minimap: Cannot create waypoint marker - viewport is null")
+		return
+	
+	# Create waypoint marker using icon_4_6.png
+	waypoint_marker = Sprite2D.new()
+	waypoint_marker.name = "WaypointMarker"
+	
+	# Load the waypoint icon
+	var icon_path := "res://scenes/ui/UI by jer/used in UI/minimap items/icon_4_6.png"
+	var waypoint_texture := load(icon_path) as Texture2D
+	if waypoint_texture == null:
+		push_error("📍 Minimap: Failed to load waypoint icon from " + icon_path)
+		# Fallback to player marker icon if available
+		if player_marker != null and player_marker.texture != null:
+			waypoint_texture = player_marker.texture
+			print("📍 Minimap: Using player marker texture as fallback")
+		else:
+			print("⚠️ Minimap: No fallback texture available for waypoint marker")
+			return
+	
+	waypoint_marker.texture = waypoint_texture
+	waypoint_marker.z_index = 1000  # Above everything including player marker
+	waypoint_marker.scale = Vector2(1.0, 1.0)  # Very small - similar to minimap arrow size
+	waypoint_marker.visible = false
+	waypoint_marker.modulate = Color(1, 0.2, 0.2, 1)  # Bright red to stand out
+	waypoint_marker.show_behind_parent = false  # Ensure it's not hidden
+	viewport.add_child(waypoint_marker)
+	
+	# Verify it was added correctly
+	if waypoint_marker.get_parent() == viewport:
+		print("✅ Minimap: Waypoint marker created and added to viewport (z_index: ", waypoint_marker.z_index, ", scale: ", waypoint_marker.scale, ", texture: ", "loaded" if waypoint_marker.texture != null else "MISSING", ")")
+	else:
+		print("❌ Minimap: ERROR - Waypoint marker parent is not viewport! Parent: ", waypoint_marker.get_parent())
+	
+	# Create edge indicator for when waypoint is off-screen
+	_create_waypoint_edge_indicator()
+
+func _create_waypoint_edge_indicator() -> void:
+	"""Create an edge indicator sprite that shows at the minimap edge when waypoint is off-screen"""
+	if waypoint_edge_indicator != null:
+		return  # Already created
+	
+	# Create edge indicator using the same icon
+	var icon_path := "res://scenes/ui/UI by jer/used in UI/minimap items/icon_4_6.png"
+	var edge_texture := load(icon_path) as Texture2D
+	if edge_texture == null:
+		# Fallback to player marker icon
+		if player_marker != null and player_marker.texture != null:
+			edge_texture = player_marker.texture
+		else:
+			print("⚠️ Minimap: Cannot create edge indicator - no texture available")
+			return
+	
+	waypoint_edge_indicator = Sprite2D.new()
+	waypoint_edge_indicator.name = "WaypointEdgeIndicator"
+	waypoint_edge_indicator.texture = edge_texture
+	waypoint_edge_indicator.z_index = 2000  # Very high z-index to be above everything
+	waypoint_edge_indicator.scale = Vector2(0.8, 0.8)  # Very small - similar to minimap arrow size
+	waypoint_edge_indicator.modulate = Color(1, 0, 0, 1)  # Pure red
+	waypoint_edge_indicator.visible = false
+	
+	# Add to CanvasLayer (not viewport) so it's always visible
+	add_child(waypoint_edge_indicator)
+	print("✅ Minimap: Waypoint edge indicator created")
+
+func _update_waypoint_edge_indicator(camera_pos: Vector2, waypoint_pos: Vector2, viewport_size: Vector2) -> void:
+	"""Update the edge indicator position and rotation to point toward the waypoint"""
+	if waypoint_edge_indicator == null:
+		_create_waypoint_edge_indicator()
+		if waypoint_edge_indicator == null:
+			return
+	
+	# Calculate direction from camera to waypoint (in world coordinates)
+	var waypoint_offset := waypoint_pos - camera_pos
+	
+	# Avoid division by zero
+	if waypoint_offset.length() < 0.001:
+		waypoint_edge_indicator.visible = false
+		return
+	
+	var direction := waypoint_offset.normalized()
+	
+	# Debug: Print direction info every 120 frames to verify it's pointing correctly
+	if Engine.get_process_frames() % 120 == 0:
+		var angle_deg := rad_to_deg(atan2(direction.y, direction.x))
+		print("📍 Edge Indicator: Camera at ", camera_pos, ", Waypoint at ", waypoint_pos, ", Direction: ", direction, ", Angle: ", angle_deg, "°")
+	
+	# Get minimap circle position and size
+	if masked_rect == null:
+		return
+	
+	var minimap_center := masked_rect.position + masked_rect.size * 0.5
+	var minimap_radius := masked_rect.size.x * 0.5
+	
+	# Calculate position on the edge of the circle
+	# Position the indicator at the edge, pointing outward
+	var edge_distance := minimap_radius - 8  # Slightly inside the edge for better visibility
+	var edge_pos := minimap_center + direction * edge_distance
+	
+	# Set position (use position since it's a child of CanvasLayer)
+	waypoint_edge_indicator.position = edge_pos
+	
+	# Rotate to point toward the waypoint
+	# Calculate angle from direction vector (atan2 gives angle in radians)
+	# atan2(y, x) gives angle where 0 is right, PI/2 is down, PI is left, -PI/2 is up
+	var angle := atan2(direction.y, direction.x)
+	# Adjust rotation so sprite points in the correct direction
+	# Try different adjustments: if sprite points right by default, use angle directly
+	# If sprite points up by default, add PI/2. If it points down, subtract PI/2.
+	# Testing: try without adjustment first, then with PI/2 if needed
+	waypoint_edge_indicator.rotation = angle  # Try pointing right = 0 degrees first
+	
+	# Make it pulse for visibility (very subtle pulse)
+	var pulse := sin(Engine.get_process_frames() * 0.2) * 0.1 + 1.0
+	waypoint_edge_indicator.scale = Vector2(pulse, pulse) * 0.8  # Very small arrow size with subtle pulse
+	
+	# Make it visible
+	waypoint_edge_indicator.visible = true
+	waypoint_edge_indicator.z_index = 2000
+
+func _get_waypoint_position_for_current_scene(target_scene: String, base_position: Vector2) -> Vector2:
+	"""Get the appropriate waypoint position based on current scene"""
+	var current_scene := get_tree().current_scene
+	if current_scene == null:
+		return base_position
+	
+	var current_scene_path := ""
+	if "scene_file_path" in current_scene:
+		current_scene_path = String(current_scene.scene_file_path)
+	
+	# If we're already at the target scene, use the base position
+	if target_scene.contains("police_station") and current_scene_path.contains("police_station"):
+		return base_position  # Use actual police station position (336, 992)
+	if (target_scene.contains("baranggay_court") or target_scene.contains("barangay_court")) and (current_scene_path.contains("baranggay_court") or current_scene_path.contains("barangay_court")):
+		return base_position  # Use actual barangay hall position (144, 395)
+	
+	# Determine which transition area to use based on target scene and current scene
+	var transition_area_name := ""
+	var is_target_police := target_scene.contains("police_station")
+	var is_target_barangay := target_scene.contains("baranggay_court") or target_scene.contains("barangay_court")
+	
+	if current_scene_path.contains("apartment_morgue"):
+		if is_target_police:
+			transition_area_name = "from_morgue_to_police_station"
+		elif is_target_barangay:
+			transition_area_name = "from_morgue_to_camp"  # First step towards barangay
+	elif current_scene_path.contains("hotel_hospital"):
+		if is_target_police:
+			transition_area_name = "from_hospital_to_police_station"
+		elif is_target_barangay:
+			# Check which transition leads to barangay (hospital -> market -> barangay or hospital -> morgue -> camp -> barangay)
+			transition_area_name = "from_hospital_to_market"  # Direct path to barangay via market
+	elif current_scene_path.contains("police_station"):
+		if is_target_barangay:
+			transition_area_name = "from_police_to_baranggay"
+	elif current_scene_path.contains("terminal_market"):
+		if is_target_police:
+			transition_area_name = "from_market_to_police"
+		elif is_target_barangay:
+			transition_area_name = "from_market_to_baranggay"
+	elif current_scene_path.contains("camp"):
+		if is_target_police:
+			transition_area_name = "from_camp_to_morgue"  # First step towards police
+		elif is_target_barangay:
+			transition_area_name = "from_camp_to_barangay"
+	elif current_scene_path.contains("baranggay_court") or current_scene_path.contains("barangay_court"):
+		if is_target_police:
+			transition_area_name = "from_barangay_to_police_station"
+	
+	# Find the transition area in the current scene
+	if transition_area_name != "":
+		var transition_area := current_scene.find_child(transition_area_name, true, false)
+		if transition_area != null and transition_area is Area2D:
+			# Get the global position of the Area2D
+			var area_pos := (transition_area as Area2D).global_position
+			# Try to get the CollisionShape2D position for more accuracy
+			var collision := transition_area.find_child("CollisionShape2D", true, false)
+			if collision != null and collision is CollisionShape2D:
+				var collision_pos := (collision as CollisionShape2D).global_position
+				print("📍 Minimap: Found transition area '", transition_area_name, "' at ", collision_pos, " (Area2D: ", area_pos, ")")
+				return collision_pos
+			else:
+				print("📍 Minimap: Found transition area '", transition_area_name, "' at ", area_pos, " (no CollisionShape2D)")
+				return area_pos
+		else:
+			print("⚠️ Minimap: Transition area '", transition_area_name, "' not found in current scene")
+	
+	# Fallback to base position if transition area not found
+	return base_position
+
+func _on_waypoint_set(target_scene: String, target_position: Vector2) -> void:
+	"""Handle waypoint set signal from TaskManager - called when new task is set"""
+	# Reset waypoint state for new task
+	waypoint_target_scene = target_scene
+	
+	# Get the appropriate waypoint position based on current scene
+	waypoint_position = _get_waypoint_position_for_current_scene(target_scene, target_position)
+	
+	# waypoint_active will be set based on whether we're in exterior scene below
+	
+	# Ensure waypoint marker exists
+	if waypoint_marker == null:
+		_create_waypoint_marker()
+		if waypoint_marker == null:
+			print("⚠️ Minimap: Failed to create waypoint marker")
+			return
+	
+	# Ensure edge indicator exists
+	if waypoint_edge_indicator == null:
+		_create_waypoint_edge_indicator()
+	
+	# Ensure waypoint marker is in the viewport
+	if waypoint_marker.get_parent() != viewport:
+		if waypoint_marker.get_parent() != null:
+			waypoint_marker.get_parent().remove_child(waypoint_marker)
+		if viewport != null:
+			viewport.add_child(waypoint_marker)
+			print("📍 Minimap: Waypoint marker re-parented to viewport")
+	
+	# Check if we're in an exterior scene
+	var current_scene := get_tree().current_scene
+	if current_scene == null:
+		print("⚠️ Minimap: No current scene for waypoint")
+		waypoint_active = false
+		if waypoint_marker != null:
+			waypoint_marker.visible = false
+		return
+	
+	var current_scene_path := ""
+	if "scene_file_path" in current_scene:
+		current_scene_path = String(current_scene.scene_file_path)
+	
+	# Show waypoint on ALL exterior scenes - it points to where you need to go
+	var is_exterior := _is_exterior_scene(current_scene)
+	
+	if is_exterior and waypoint_marker != null:
+		waypoint_active = true
+		waypoint_marker.visible = true
+		# Use the target position (police station location) regardless of current scene
+		waypoint_marker.global_position = target_position
+		waypoint_marker.z_index = 1000  # Above everything
+		waypoint_marker.scale = Vector2(1.0, 1.0)  # Very small - similar to minimap arrow size
+		waypoint_marker.modulate = Color(1, 0.2, 0.2, 1)  # Bright red
+		print("📍 Minimap: Waypoint shown at ", target_position, " pointing to ", target_scene, " (current scene: ", current_scene_path, ", is_exterior: ", is_exterior, ", marker visible: ", waypoint_marker.visible, ", scale: ", waypoint_marker.scale, ", z_index: ", waypoint_marker.z_index, ")")
+	else:
+		waypoint_active = false
+		if waypoint_marker != null:
+			waypoint_marker.visible = false
+		print("📍 Minimap: Waypoint set but not in exterior scene (current: ", current_scene_path, ", target: ", target_scene, ", is_exterior: ", is_exterior, ")")
+
+func _on_waypoint_cleared() -> void:
+	"""Handle waypoint cleared signal from TaskManager - called when task is completed"""
+	waypoint_active = false
+	waypoint_target_scene = ""
+	waypoint_position = Vector2.ZERO
+	
+	# Hide both waypoint marker and edge indicator
+	if waypoint_marker != null:
+		waypoint_marker.visible = false
+	if waypoint_edge_indicator != null:
+		waypoint_edge_indicator.visible = false
+	
+	print("📍 Minimap: Waypoint cleared - indicator hidden (task completed)")
