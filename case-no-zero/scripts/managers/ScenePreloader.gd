@@ -270,6 +270,10 @@ var is_preloading: bool = false
 var preload_progress: int = 0
 
 func _ready():
+	if OS.has_feature("editor"):
+		print("🚫 ScenePreloader: Running inside editor - skipping automatic preload to avoid progress dialog warnings.")
+		return
+	
 	print("🚀 ScenePreloader: Ready - preloading all scenes for optimal performance")
 	# Preloading enabled for exported game
 	await get_tree().create_timer(0.5).timeout

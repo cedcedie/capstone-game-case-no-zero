@@ -41,6 +41,10 @@ const TASK_WAYPOINTS := {
 	"baranggay": {
 		"scene": "res://scenes/environments/exterior/baranggay_court.tscn",
 		"position": Vector2(144.0, 395.0)
+	},
+	"morgue": {
+		"scene": "res://scenes/environments/exterior/apartment_morgue.tscn",
+		"position": Vector2(359.0, 768.0)
 	}
 }
 

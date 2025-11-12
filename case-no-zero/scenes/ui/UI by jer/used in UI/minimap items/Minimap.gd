@@ -1244,43 +1244,59 @@ func _get_waypoint_position_for_current_scene(target_scene: String, base_positio
 	if "scene_file_path" in current_scene:
 		current_scene_path = String(current_scene.scene_file_path)
 	
+	var is_target_police := target_scene.contains("police_station")
+	var is_target_barangay := target_scene.contains("baranggay_court") or target_scene.contains("barangay_court")
+	var is_target_morgue := target_scene.contains("apartment_morgue") or target_scene.contains("morgue")
+	
 	# If we're already at the target scene, use the base position
-	if target_scene.contains("police_station") and current_scene_path.contains("police_station"):
+	if is_target_police and current_scene_path.contains("police_station"):
 		return base_position  # Use actual police station position (336, 992)
-	if (target_scene.contains("baranggay_court") or target_scene.contains("barangay_court")) and (current_scene_path.contains("baranggay_court") or current_scene_path.contains("barangay_court")):
+	if is_target_barangay and (current_scene_path.contains("baranggay_court") or current_scene_path.contains("barangay_court")):
 		return base_position  # Use actual barangay hall position (144, 395)
+	if is_target_morgue and current_scene_path.contains("apartment_morgue"):
+		return base_position
 	
 	# Determine which transition area to use based on target scene and current scene
 	var transition_area_name := ""
-	var is_target_police := target_scene.contains("police_station")
-	var is_target_barangay := target_scene.contains("baranggay_court") or target_scene.contains("barangay_court")
 	
 	if current_scene_path.contains("apartment_morgue"):
 		if is_target_police:
 			transition_area_name = "from_morgue_to_police_station"
 		elif is_target_barangay:
 			transition_area_name = "from_morgue_to_camp"  # First step towards barangay
+		elif is_target_morgue:
+			return base_position
 	elif current_scene_path.contains("hotel_hospital"):
 		if is_target_police:
 			transition_area_name = "from_hospital_to_police_station"
 		elif is_target_barangay:
 			# Check which transition leads to barangay (hospital -> market -> barangay or hospital -> morgue -> camp -> barangay)
 			transition_area_name = "from_hospital_to_market"  # Direct path to barangay via market
+		elif is_target_morgue:
+			transition_area_name = "from_hospital_to_morgue"
 	elif current_scene_path.contains("police_station"):
 		if is_target_barangay:
 			transition_area_name = "from_police_to_baranggay"
+		elif is_target_morgue:
+			transition_area_name = "from_police_to_morgue"
 	elif current_scene_path.contains("terminal_market"):
 		if is_target_police:
 			transition_area_name = "from_market_to_police"
 		elif is_target_barangay:
 			transition_area_name = "from_market_to_baranggay"
+		elif is_target_morgue:
+			transition_area_name = "from_market_to_police"
 	elif current_scene_path.contains("camp"):
 		if is_target_police:
 			transition_area_name = "from_camp_to_morgue"  # First step towards police
 		elif is_target_barangay:
 			transition_area_name = "from_camp_to_barangay"
+		elif is_target_morgue:
+			transition_area_name = "from_camp_to_morgue"
 	elif current_scene_path.contains("baranggay_court") or current_scene_path.contains("barangay_court"):
 		if is_target_police:
+			transition_area_name = "from_barangay_to_police_station"
+		elif is_target_morgue:
 			transition_area_name = "from_barangay_to_police_station"
 	
 	# Find the transition area in the current scene
