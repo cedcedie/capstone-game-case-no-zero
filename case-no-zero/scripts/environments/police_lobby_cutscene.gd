@@ -65,13 +65,6 @@ func _ready() -> void:
 						_set_celine_call_completed()
 				else:
 					_set_player_active(true)
-			else:
-				_set_player_active(true)
-			return
-		else:
-			_set_post_cutscene_positions()
-			_set_player_active(true)
-		return
 	
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
 		if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED):
@@ -776,3 +769,12 @@ func _show_task_display(task_text: String) -> void:
 				task_display = found
 	if task_display != null and task_display.has_method("show_task"):
 		task_display.show_task(task_text)
+
+
+func _input(event: InputEvent) -> void:
+	# Debug controls
+	if event is InputEventKey and event.pressed and not event.echo:
+		match event.keycode:
+			KEY_F1:
+				if CheckpointManager:
+					CheckpointManager.debug_set_phase("SECURITY_SERVER_CUTSCENE_2_COMPLETED")
