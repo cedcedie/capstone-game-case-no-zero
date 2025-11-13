@@ -50,9 +50,11 @@ func _input(event: InputEvent) -> void:
 				# Reserved (bedroom phase removed - no checkpoint)
 				print("🐛 Debug: F10 reserved - bedroom phase removed")
 			KEY_F11:
-				# Debug: Go directly to lower level station
+				
 				print("🐛 Debug: Going to lower level station")
-				get_tree().change_scene_to_file("res://scenes/environments/Police Station/lower_level_station.tscn")
+				get_tree().change_scene_to_file("res://scenes/environments/police_station/security_server.tscn")
+				CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.ALLEY_CUTSCENE_COMPLETED)
+				
 			KEY_F12:
 				# Debug: Reserved (no-op under fresh checkpoint system)
 				print("🐛 Debug: F12 reserved - no action in fresh start")

@@ -600,3 +600,10 @@ func _set_player_active(active: bool) -> void:
 		if "control_enabled" in player_node:
 			player_node.control_enabled = true
 		print("🎬 Player movement enabled")
+func _input(event: InputEvent) -> void:
+	# Debug controls
+	if event is InputEventKey and event.pressed and not event.echo:
+		match event.keycode:
+			KEY_F1:
+				if CheckpointManager:
+					CheckpointManager.debug_set_phase("SECURITY_SERVER_CUTSCENE_2_COMPLETED")
