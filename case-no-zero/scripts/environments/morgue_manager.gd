@@ -7,9 +7,12 @@ var fade_layer: CanvasLayer
 var fade_rect: ColorRect
 var resume_on_next: bool = false
 var cutscene_active: bool = false
-var evidence_added: bool = false
+var evidence_added: bool = false  # Prevent duplicate evidence addition
 
 func _ready() -> void:
+	print("🎬 Morgue cutscene: _ready() started")
+	
+	# Setup fade layer
 	_setup_fade()
 	
 	# Find AnimationPlayer (sibling node in scene root)
@@ -32,9 +35,11 @@ func _ready() -> void:
 	if DialogueUI and DialogueUI.has_signal("next_pressed") and not DialogueUI.next_pressed.is_connected(_on_dialogue_next):
 		DialogueUI.next_pressed.connect(_on_dialogue_next)
 	
-	# Only play cutscene if BARANGAY_HALL_CUTSCENE_COMPLETED is set and MORGUE_CUTSCENE_COMPLETED is not
+	# Only play cutscene if BARANGAY_HALL_CUTSCENE_COMPLETED is set and MORGUE_COMPLETED is not
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED):
 		if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.MORGUE_CUTSCENE_COMPLETED):
+			print("🎬 BARANGAY_HALL_CUTSCENE_COMPLETED found - playing morgue cutscene")
+			# Start cutscene
 			cutscene_active = true
 			_set_player_active(false)
 			
@@ -53,17 +58,20 @@ func _ready() -> void:
 			# Play morgue cutscene animation
 			if anim_player != null:
 				if anim_player.has_animation("morgue_cutscene"):
+					print("🎬 Playing morgue_cutscene animation")
 					anim_player.play("morgue_cutscene")
 				else:
-					push_warning("No 'morgue_cutscene' animation found. Available animations: " + str(anim_player.get_animation_list()))
+					print("⚠️ No 'morgue_cutscene' animation found. Available animations: ", anim_player.get_animation_list())
 					_set_player_active(true)
 			else:
-				push_warning("AnimationPlayer not found!")
+				print("⚠️ AnimationPlayer not found!")
 				_set_player_active(true)
 		else:
+			print("🎬 MORGUE_COMPLETED already set - cutscene already played")
 			await fade_in()
 			_set_player_active(true)
 	else:
+		print("⚠️ BARANGAY_HALL_CUTSCENE_COMPLETED not set - cutscene will not play")
 		await fade_in()
 		_set_player_active(true)
 
@@ -90,6 +98,7 @@ func _set_player_active(active: bool) -> void:
 	if player_node == null:
 		player_node = _find_player()
 	if player_node == null:
+		print("⚠️ Cannot set player active - player not found")
 		return
 	
 	if not active:
@@ -101,6 +110,7 @@ func _set_player_active(active: bool) -> void:
 			player_node.set_process_input(false)
 		if player_node.has_method("set_physics_process"):
 			player_node.set_physics_process(false)
+		print("🎬 Player movement disabled")
 	else:
 		if player_node.has_method("enable_movement"):
 			player_node.enable_movement()
@@ -110,6 +120,7 @@ func _set_player_active(active: bool) -> void:
 			player_node.set_physics_process(true)
 		if "control_enabled" in player_node:
 			player_node.control_enabled = true
+		print("🎬 Player movement enabled")
 
 # ---- Dialogue helpers ----
 func _load_dialogue_if_available() -> void:
@@ -118,6 +129,7 @@ func _load_dialogue_if_available() -> void:
 	
 	var file: FileAccess = FileAccess.open(dialogue_file_path, FileAccess.READ)
 	if file == null:
+		print("⚠️ Morgue dialogue file not found: ", dialogue_file_path)
 		return
 	
 	var text: String = file.get_as_text()
@@ -125,16 +137,15 @@ func _load_dialogue_if_available() -> void:
 	
 	var parsed: Variant = JSON.parse_string(text)
 	if typeof(parsed) != TYPE_DICTIONARY or not parsed.has(dialogue_key):
+		print("⚠️ Failed to parse morgue dialogue file or missing key: ", dialogue_key)
 		return
 	
 	var dialogue_data = parsed[dialogue_key]
 	if dialogue_data.has("dialogue_lines"):
-		var loaded_lines = dialogue_data["dialogue_lines"]
-		if typeof(loaded_lines) == TYPE_ARRAY:
-			dialogue_lines.clear()
-			for item in loaded_lines:
-				if typeof(item) == TYPE_DICTIONARY:
-					dialogue_lines.append(item as Dictionary)
+		dialogue_lines = dialogue_data["dialogue_lines"]
+		print("✅ Loaded morgue dialogue: ", dialogue_lines.size(), " lines")
+	else:
+		print("⚠️ Morgue dialogue data missing 'dialogue_lines' key")
 
 func _on_dialogue_next() -> void:
 	resume_on_next = true
@@ -142,6 +153,7 @@ func _on_dialogue_next() -> void:
 
 func show_line(index: int, auto_advance: bool = false) -> void:
 	if index < 0 or index >= dialogue_lines.size():
+		print("⚠️ Dialogue line ", index, " not available")
 		return
 	
 	var line = dialogue_lines[index]
@@ -153,6 +165,8 @@ func show_line(index: int, auto_advance: bool = false) -> void:
 		if not auto_advance:
 			resume_on_next = false
 			await wait_for_next()
+	else:
+		print("⚠️ DialogueUI not found")
 
 func wait_for_next() -> void:
 	resume_on_next = false
@@ -164,22 +178,28 @@ func _hide_dialogue_ui() -> void:
 		DialogueUI.hide_ui()
 
 func add_autopsy_evidence() -> void:
+	"""Add autopsy evidence and show inventory - callable from AnimationPlayer"""
 	var eis: Node = get_node_or_null("/root/EvidenceInventorySettings")
 	if eis == null:
+		print("⚠️ EvidenceInventorySettings node not found at /root/EvidenceInventorySettings")
 		return
 	
 	if not eis.has_method("add_evidence"):
+		print("⚠️ EvidenceInventorySettings missing add_evidence method")
 		return
 	
 	eis.add_evidence("autopsy")
+	print("🔎 Autopsy evidence added")
 	
 	# Wait a brief moment to ensure evidence is processed, then show inventory
 	await get_tree().create_timer(0.2).timeout
 	_show_inventory_brief(3.0)
 
 func _show_inventory_brief(seconds: float = 3.0) -> void:
+	"""Briefly show the evidence inventory for a few seconds"""
 	var inv: Node = get_node_or_null("/root/EvidenceInventorySettings")
 	if inv == null:
+		print("⚠️ EvidenceInventorySettings not found for brief show")
 		return
 	
 	# Use the proper API method to show the inventory
@@ -190,6 +210,7 @@ func _show_inventory_brief(seconds: float = 3.0) -> void:
 		# Hide the inventory
 		if inv.has_method("hide_evidence_inventory"):
 			inv.hide_evidence_inventory()
+		print("🔎 Evidence inventory shown briefly for ", seconds, " seconds")
 		return
 	
 		# Fallback: try to access ui_container directly
@@ -217,111 +238,7 @@ func _show_inventory_brief(seconds: float = 3.0) -> void:
 			tout.tween_property(ci, "modulate:a", 0.0, 0.25)
 			await tout.finished
 			ci.visible = false
-
-# ---- Environment visibility helpers ----
-func hide_environment_and_characters(duration: float = 0.5) -> void:
-	var root_scene := get_tree().current_scene
-	if root_scene == null:
-		return
-
-	# Collect all elements to fade out
-	var elements_to_fade: Array[CanvasItem] = []
-	
-	# Find all TileMapLayers recursively
-	for tilemap in root_scene.find_children("*", "TileMapLayer", true, false):
-		if tilemap is TileMapLayer and (tilemap as TileMapLayer).visible:
-			elements_to_fade.append(tilemap as CanvasItem)
-	
-	# Find PlayerM
-	if player_node == null:
-		player_node = _find_player()
-	if player_node != null and player_node is CanvasItem and (player_node as CanvasItem).visible:
-		elements_to_fade.append(player_node as CanvasItem)
-	
-	# Find other character nodes (NPCs, etc.)
-	for child in root_scene.get_children():
-		if child is Node2D:
-			# Check if it's a character (not a TileMapLayer or other environment element)
-			var is_character := false
-			if child is CharacterBody2D:
-				is_character = true
-			elif String(child.name).to_lower().contains("npc") or String(child.name).to_lower().contains("character"):
-				is_character = true
-			# Also include any visible Node2D that's not a TileMapLayer
-			elif not (child is TileMapLayer):
-				# Check if it has an AnimatedSprite2D child (likely a character)
-				if child.find_child("AnimatedSprite2D", true, false) != null:
-					is_character = true
-			
-			if is_character and child is CanvasItem and (child as CanvasItem).visible:
-				elements_to_fade.append(child as CanvasItem)
-	
-	if elements_to_fade.is_empty():
-		return
-	
-	# Ensure all elements start at full alpha and are visible
-	for element in elements_to_fade:
-		element.modulate.a = 1.0
-		element.visible = true
-	
-	# Smoothly fade out with tween
-	var tween := create_tween()
-	tween.set_parallel(true)  # Animate all elements simultaneously
-	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-	
-	for element in elements_to_fade:
-		tween.tween_property(element, "modulate:a", 0.0, duration)
-	
-	await tween.finished
-	
-	# Set visibility to false after fade completes
-	for element in elements_to_fade:
-		element.visible = false
-		element.modulate.a = 1.0  # Reset for next time
-
-func fade_environment_and_transition_to_cinematic_text(duration: float = 1.0) -> void:
-	_hide_dialogue_ui()
-	
-	await hide_environment_and_characters(duration)
-	await fade_out(0.5)
-	var tree := get_tree()
-	if tree == null:
-		push_error("⚠️ Cannot transition - tree is null")
-		return
-	
-	var cinematic_scene_path := "res://cinematic_text.tscn"
-	var result: Error
-	
-	# Check if ScenePreloader autoload exists
-	var scene_preloader = get_node_or_null("/root/ScenePreloader")
-	if scene_preloader and scene_preloader.has_method("is_scene_preloaded") and scene_preloader.is_scene_preloaded(cinematic_scene_path):
-		var preloaded_scene = scene_preloader.get_preloaded_scene(cinematic_scene_path)
-		result = tree.change_scene_to_packed(preloaded_scene)
-	else:
-		result = tree.change_scene_to_file(cinematic_scene_path)
-	
-	if result != OK:
-		push_error("❌ Failed to change scene to: " + cinematic_scene_path)
-		return
-	
-	await tree.process_frame
-	await tree.process_frame
-	
-	var new_scene := tree.current_scene
-	if new_scene:
-		var anim_player: AnimationPlayer = new_scene.get_node_or_null("AnimationPlayer")
-		if anim_player == null:
-			anim_player = new_scene.find_child("AnimationPlayer", true, false) as AnimationPlayer
-		
-		if anim_player:
-			var animation_name = "cinematic_text_cutscene"
-			if not anim_player.has_animation(animation_name):
-				animation_name = "cinematic_text"
-			
-			if anim_player.has_animation(animation_name):
-				anim_player.play(animation_name)
-			else:
-				push_warning("⚠️ Animation not found in cinematic_text scene. Available animations: " + str(anim_player.get_animation_list() if anim_player else "No AnimationPlayer found"))
+			print("🔎 Evidence inventory shown briefly for ", seconds, " seconds (fallback method)")
 
 # ---- Fade helpers ----
 func _setup_fade() -> void:
@@ -345,16 +262,19 @@ func _setup_fade() -> void:
 	fade_rect.offset_right = 0
 	fade_rect.offset_bottom = 0
 	fade_layer.add_child(fade_rect)
+	print("🎬 Fade layer created with alpha: ", fade_rect.modulate.a)
 
 func fade_in(duration: float = 0.5) -> void:
 	if not fade_rect:
 		_setup_fade()
 	fade_rect.visible = true
 	fade_rect.modulate.a = 1.0
+	print("🎬 Fade in starting from alpha: ", fade_rect.modulate.a)
 	var t := create_tween()
 	t.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	t.tween_property(fade_rect, "modulate:a", 0.0, duration)
 	await t.finished
+	print("🎬 Fade in complete, alpha: ", fade_rect.modulate.a)
 	fade_rect.visible = false
 
 func fade_out(duration: float = 0.5) -> void:
@@ -378,52 +298,83 @@ func dramatic_fade_out(duration: float = 2.0) -> void:
 	t.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 	t.tween_property(fade_rect, "modulate:a", 1.0, duration)
 	await t.finished
+	print("🎬 Dramatic fade out complete")
 
+# Transition to another scene and optionally play an animation
 func transition_to_scene(target_scene_path: String, animation_name: String = "", skip_fade: bool = false) -> void:
+	"""Transition to another scene and optionally play an animation there"""
+	print("🎬 Transitioning to scene: ", target_scene_path)
+	
+	# Dramatic fade out current scene before transition (unless already faded)
 	if not skip_fade:
 		await dramatic_fade_out(2.0)
 	
+	# Hide dialogue UI
 	_hide_dialogue_ui()
 	
+	# Change scene
 	var tree := get_tree()
 	if tree == null:
-		push_error("Cannot transition - tree is null")
+		print("⚠️ Cannot transition - tree is null")
 		return
 	
 	var result: Error
+	# Check if ScenePreloader autoload exists
 	var scene_preloader = get_node_or_null("/root/ScenePreloader")
 	if scene_preloader and scene_preloader.has_method("is_scene_preloaded") and scene_preloader.is_scene_preloaded(target_scene_path):
+		print("🚀 Using preloaded scene: ", target_scene_path.get_file())
 		var preloaded_scene = scene_preloader.get_preloaded_scene(target_scene_path)
 		result = tree.change_scene_to_packed(preloaded_scene)
 	else:
+		print("📁 Loading scene from file: ", target_scene_path.get_file())
 		result = tree.change_scene_to_file(target_scene_path)
 	
 	if result != OK:
-		push_error("Failed to change scene to: " + target_scene_path)
+		print("❌ Failed to change scene to: ", target_scene_path)
 		return
 	
+	# Wait for scene to be ready
 	await tree.process_frame
 	await tree.process_frame
 	
+	# If animation name is provided, play it in the new scene
 	if animation_name != "":
 		var new_scene := tree.current_scene
 		if new_scene:
+			# Find AnimationPlayer in new scene
 			var new_anim_player: AnimationPlayer = new_scene.get_node_or_null("AnimationPlayer")
 			if new_anim_player == null:
 				new_anim_player = new_scene.find_child("AnimationPlayer", true, false) as AnimationPlayer
 			
 			if new_anim_player and new_anim_player.has_animation(animation_name):
+				print("🎬 Playing animation '", animation_name, "' in new scene")
 				new_anim_player.play(animation_name)
 			else:
-				push_warning("Animation '" + animation_name + "' not found in new scene.")
+				print("⚠️ Animation '", animation_name, "' not found in new scene. Available animations: ", new_anim_player.get_animation_list() if new_anim_player else "No AnimationPlayer found")
 
 func end_cutscene() -> void:
+	"""End the cutscene - callable from AnimationPlayer"""
+	# Prevent duplicate checkpoint setting
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.MORGUE_CUTSCENE_COMPLETED):
+		print("🎬 MORGUE_COMPLETED already set, skipping")
 		return
 	
+	# Dramatic fade out before scene transition
+	print("🎬 Morgue cutscene ending - dramatic fade out...")
+	await dramatic_fade_out(2.0)
+	
+	# Hide dialogue UI during fade
+	_hide_dialogue_ui()
+	
+	# Set checkpoint before transitioning
+	cutscene_active = false
+	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.MORGUE_CUTSCENE_COMPLETED)
+	print("🎬 Morgue cutscene completed - checkpoint set.")
+	
+	# Reset DialogueUI cutscene mode
 	if DialogueUI:
 		DialogueUI.cutscene_mode = false
 	
-	await fade_environment_and_transition_to_cinematic_text(1.0)
-	cutscene_active = false
-	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.MORGUE_CUTSCENE_COMPLETED)
+	# Transition to apartment scene and play apartment_cutscene animation
+	# Skip fade since we already did dramatic_fade_out above
+	await transition_to_scene("res://scenes/environments/apartments/leo's apartment.tscn", "apartment_cutscene", true)

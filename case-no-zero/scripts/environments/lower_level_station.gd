@@ -14,8 +14,8 @@ func _ready() -> void:
 	_setup_fade()
 	player_node = _find_player()
 	if player_node != null:
-	_set_player_active(false)
-	_load_dialogue_if_available()
+		_set_player_active(false)
+		_load_dialogue_if_available()
 	# Connect DialogueUI next_pressed signal to resume animation
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui and dui.has_signal("next_pressed") and not dui.next_pressed.is_connected(_on_dialogue_next):
@@ -43,8 +43,6 @@ func _ready() -> void:
 	if anim_player:
 		if anim_player.has_animation("jail_cutscene"):
 			anim_player.play("jail_cutscene")
-		else:
-	else:
 
 func end_cutscene() -> void:
 	# Fade out to black for scene transition
@@ -291,7 +289,6 @@ func show_dialogue_line_wait(speaker: String, text: String) -> void:
 	if dui.has_method("show_dialogue_line"):
 		dui.show_dialogue_line(speaker, text, false)
 		wait_for_next()
-	else:
 
 func _on_dialogue_next() -> void:
 	# Called when DialogueUI next_pressed signal fires - resume animation
@@ -327,7 +324,6 @@ func _hide_task_display() -> void:
 				task_display = found
 	if task_display != null and task_display.has_method("hide_task"):
 		task_display.hide_task()
-	else:
 
 func _hide_dialogue_ui() -> void:
 	var dui: Node = get_node_or_null("/root/DialogueUI")
@@ -410,7 +406,6 @@ func _set_post_cutscene_positions() -> void:
 			(celine as CanvasItem).visible = false
 			(celine as CanvasItem).modulate.a = 0.0
 		_set_character_collision_enabled(celine, false)
-	else:
 	
 	# Find and position station_guard_2
 	var station_guard_2 := _find_character_by_name("station_guard_2")
@@ -420,7 +415,7 @@ func _set_post_cutscene_positions() -> void:
 			(station_guard_2 as CanvasItem).visible = true
 		(station_guard_2 as Node2D).global_position = Vector2(672.0, 496.0)
 		_set_character_animation(station_guard_2, "idle_right")
-	else:
+
 	
 	# Find and position station_guard
 	var station_guard := _find_character_by_name("station_guard")
@@ -430,7 +425,6 @@ func _set_post_cutscene_positions() -> void:
 			(station_guard as CanvasItem).visible = true
 		(station_guard as Node2D).global_position = Vector2(672.0, 464.0)
 		_set_character_animation(station_guard, "idle_right")
-	else:
 	
 	# Find and position erwin
 	var erwin := _find_character_by_name("erwin")
@@ -444,7 +438,6 @@ func _set_post_cutscene_positions() -> void:
 			(erwin as CanvasItem).visible = true
 		(erwin as Node2D).global_position = Vector2(480.0, 360.0)
 		_set_character_animation(erwin, "idle_back")
-	else:
 	
 	# Position PlayerM (Miguel)
 	if player_node == null:
@@ -453,7 +446,6 @@ func _set_post_cutscene_positions() -> void:
 		if player_node is CanvasItem:
 			(player_node as CanvasItem).visible = true
 		(player_node as Node2D).global_position = Vector2(872.0, 472.0)
-	else:
 	
 
 func _find_character_by_name(name: String) -> Node:
@@ -681,7 +673,6 @@ func _set_player_active(active: bool) -> void:
 		# Re-enable movement normally
 		if player_node.has_method("enable_movement"):
 			player_node.enable_movement()
-		else:
 		if player_node.has_method("set_process_input"):
 			player_node.set_process_input(true)
 		if player_node.has_method("set_physics_process"):

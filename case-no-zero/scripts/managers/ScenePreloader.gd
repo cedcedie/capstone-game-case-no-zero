@@ -304,7 +304,6 @@ func preload_single_scene(scene_path: String):
 	if scene_resource:
 		preloaded_scenes[scene_path] = scene_resource
 		scene_preloaded.emit(scene_path)
-	else:
 
 func get_preloaded_scene(scene_path: String) -> PackedScene:
 	"""Get a preloaded scene"""

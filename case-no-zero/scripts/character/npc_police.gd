@@ -30,7 +30,6 @@ func _ready():
 	if interaction_area:
 		interaction_area.connect("body_entered", Callable(self, "_on_body_entered"))
 		interaction_area.connect("body_exited", Callable(self, "_on_body_exited"))
-	else:
 	
 	# Load dialogue
 	load_dialogue()
@@ -180,7 +179,7 @@ func interact():
 			if "control_enabled" in player_reference:
 				player_reference.control_enabled = true
 			
-		else:
+
 
 func show_dialogue():
 	# Use the global DialogueUI autoload
@@ -273,7 +272,7 @@ func show_dialogue():
 		var final_mode = player_reference.get("process_mode") if "process_mode" in player_reference else "N/A"
 		var final_process_input = player_reference.get_process_input() if player_reference.has_method("get_process_input") else "N/A"
 		var final_physics = player_reference.get_physics_process() if player_reference.has_method("get_physics_process") else "N/A"
-	else:
+
 	
 	# Show the label again if player is still nearby
 	if is_player_nearby:
@@ -292,7 +291,6 @@ func _hide_station_lobby_nodes() -> void:
 		if station_lobby is CanvasItem:
 			(station_lobby as CanvasItem).visible = false
 		_set_node_collision_enabled(station_lobby, false)
-	else:
 	
 	# Hide StationLobby2 and disable collision
 	var station_lobby2 := root_scene.get_node_or_null("StationLobby2")
@@ -300,7 +298,6 @@ func _hide_station_lobby_nodes() -> void:
 		if station_lobby2 is CanvasItem:
 			(station_lobby2 as CanvasItem).visible = false
 		_set_node_collision_enabled(station_lobby2, false)
-	else:
 
 func _set_node_collision_enabled(node: Node, enabled: bool) -> void:
 	# Recursively disable/enable all CollisionShape2D nodes within the given node

@@ -97,6 +97,7 @@ var scene_bgm_map: Dictionary = {
 # Cutscene BGM mapping removed - scenes handle their own cutscene audio
 
 func _ready():
+	print("🎵 AudioManager: Ready")
 
 	# Ensure required audio buses exist so UI sliders work
 	_ensure_audio_buses()
@@ -113,6 +114,7 @@ func _ready():
 	bgm_player.name = "BGMAudioPlayer"
 	bgm_player.bus = "Music"
 	add_child(bgm_player)
+	print("🎵 AudioManager: BGM player created")
 	
 	# Create ambient player
 	ambient_player = AudioStreamPlayer.new()
@@ -136,6 +138,7 @@ func _ready():
 		add_child(layer_player)
 		ambient_layers.append(layer_player)
 	
+	print("🎵 AudioManager: Ambient players created")
 	
 	# Connect to scene change detection
 	get_tree().node_added.connect(_on_node_added)
@@ -146,16 +149,22 @@ func _ready():
 	# Also try to set audio immediately if scene is already loaded
 	await get_tree().process_frame
 	if get_tree().current_scene:
+		print("🎵 AudioManager: Scene already loaded, setting audio immediately")
 		_on_scene_changed()
 
 func set_scene_bgm(scene_name: String):
 	"""Set the BGM for a specific scene with smooth transitions"""
+	print("🎵 AudioManager: set_scene_bgm called for:", scene_name)
+	print("🎵 AudioManager: Available BGM scenes:", scene_bgm_map.keys())
 	var bgm_path = scene_bgm_map.get(scene_name, "")
+	print("🎵 AudioManager: BGM path found:", bgm_path)
 	
 	# Check if this is an exterior scene (no BGM, only ambient)
 	if bgm_path == "":
+		print("⚠️ AudioManager: No BGM defined for scene:", scene_name)
 		# If we're transitioning to an exterior scene, stop current BGM
 		if bgm_player and bgm_player.playing:
+			print("🎵 AudioManager: Stopping BGM for exterior scene transition")
 			await fade_out_bgm(1.0)  # Fade out BGM for exterior scenes
 			stop_bgm()
 		return
@@ -163,6 +172,7 @@ func set_scene_bgm(scene_name: String):
 	# Check if we're switching between related station scenes
 	var is_station_scene = scene_name in ["lower_level_station", "head_police_room", "security_server", "police_lobby"]
 	var current_is_station = current_bgm.contains("Scarlet Forest")
+	print("🎵 AudioManager: Station scene check - scene:", scene_name, "is_station:", is_station_scene, "current_is_station:", current_is_station)
 	
 	# Check if we're switching between barangay hall scenes
 	var is_barangay_scene = scene_name in ["barangay_hall", "barangay_hall_second_floor"]
@@ -188,35 +198,42 @@ func set_scene_bgm(scene_name: String):
 	
 	# If switching between station scenes, don't restart the audio
 	if is_station_scene and current_is_station and bgm_player and bgm_player.playing:
+		print("🎵 AudioManager: Continuing Scarlet Forest BGM for", scene_name, "- no restart needed")
 		scene_bgm = bgm_path
 		return
 	
 	# If switching between barangay hall scenes, don't restart the audio
 	if is_barangay_scene and current_is_barangay and bgm_player and bgm_player.playing:
+		print("🎵 AudioManager: Continuing Waterfall BGM for", scene_name, "- no restart needed")
 		scene_bgm = bgm_path
 		return
 	
 	# If switching between menu scenes, don't restart the audio
 	if is_menu_scene and current_is_menu and bgm_player and bgm_player.playing:
+		print("🎵 AudioManager: Continuing menu BGM for", scene_name, "- no restart needed")
 		scene_bgm = bgm_path
 		return
 
 	# If switching between office scenes, don't restart the audio
 	if is_office_scene and current_is_office and bgm_player and bgm_player.playing:
+		print("🎵 AudioManager: Continuing office BGM for", scene_name, "- no restart needed")
 		scene_bgm = bgm_path
 		return
 	
 	# If switching from intro story to bedroom, use smooth transition
 	if is_intro_to_bedroom:
+		print("🎵 AudioManager: Smooth transition from intro story to bedroom")
 		# Brief pause for smooth transition
 		await get_tree().create_timer(0.3).timeout
 	
 	# If switching between different scene groups, fade out current BGM first
 	if bgm_player and bgm_player.playing:
+		print("🎵 AudioManager: Fading out current BGM before switching to", scene_name)
 		await fade_out_bgm(1.5)  # 1.5-second fade out for smoother transition
 	
 	scene_bgm = bgm_path
 	play_bgm(bgm_path)
+	print("🎵 AudioManager: Scene BGM set for", scene_name, ":", bgm_path)
 
 # play_cutscene_bgm function removed - scenes handle their own cutscene audio
 
@@ -224,36 +241,47 @@ func restore_scene_bgm():
 	"""Restore the scene BGM after cutscene ends"""
 	if scene_bgm != "":
 		play_bgm(scene_bgm)
+		print("🎵 AudioManager: Scene BGM restored:", scene_bgm)
 		bgm_restored.emit()
 	else:
+		print("⚠️ AudioManager: No scene BGM to restore")
 
 func play_bgm(bgm_path: String):
 	"""Play a BGM file with fade-in"""
+	print("🎵 AudioManager: play_bgm called with:", bgm_path)
 	if not bgm_player:
+		print("⚠️ AudioManager: BGM player not available")
 		return
 	
 	# Load and play the BGM
+	print("🎵 AudioManager: Loading BGM file:", bgm_path)
 	var bgm_stream = load(bgm_path)
 	if bgm_stream:
+		print("🎵 AudioManager: BGM loaded successfully")
 		bgm_player.stream = bgm_stream
 		bgm_player.volume_db = -10  # Set to -10 dB as requested
 		bgm_player.play()
 		current_bgm = bgm_path
 		bgm_changed.emit(bgm_path)
+		print("🎵 AudioManager: Playing BGM:", bgm_path, "at -10 dB")
+		print("🎵 AudioManager: BGM playing:", bgm_player.playing)
 		
 		# Fade in the new BGM
 		await fade_in_bgm(0.3)
 	else:
+		print("⚠️ AudioManager: Failed to load BGM:", bgm_path)
 
 func stop_bgm():
 	"""Stop the current BGM"""
 	if bgm_player:
 		bgm_player.stop()
+		print("🎵 AudioManager: BGM stopped")
 
 func set_volume(volume_db: float):
 	"""Set BGM volume"""
 	if bgm_player:
 		bgm_player.volume_db = volume_db
+		print("🎵 AudioManager: Volume set to", volume_db, "dB")
 
 func is_playing() -> bool:
 	"""Check if BGM is currently playing"""
@@ -283,6 +311,7 @@ func fade_out_bgm(duration: float = 0.3):
 	await fade_tween.finished
 	bgm_player.stop()
 	bgm_player.volume_db = original_volume
+	print("🎵 AudioManager: BGM faded out")
 
 func fade_in_bgm(duration: float = 0.3):
 	"""Fade in the current BGM smoothly"""
@@ -295,6 +324,7 @@ func fade_in_bgm(duration: float = 0.3):
 	fade_tween.set_ease(Tween.EASE_IN_OUT)
 	fade_tween.set_trans(Tween.TRANS_CUBIC)
 	fade_tween.tween_property(bgm_player, "volume_db", target_volume, duration)
+	print("🎵 AudioManager: BGM faded in")
 
 # Scene change detection
 func _on_node_added(node: Node):
@@ -313,6 +343,8 @@ func _on_scene_changed():
 		if scene_path != _cached_scene_path:
 			_cached_scene_path = scene_path
 			_cached_scene_name = scene_path.get_file().get_basename()
+			print("🎵 AudioManager: Auto-detecting scene:", _cached_scene_name)
+			print("🎵 AudioManager: Scene file path:", scene_path)
 		
 		# Set BGM for the scene
 		set_scene_bgm(_cached_scene_name)
@@ -320,6 +352,7 @@ func _on_scene_changed():
 		# Set ambient for exterior scenes
 		set_exterior_ambient(_cached_scene_name)
 	else:
+		print("⚠️ AudioManager: No current scene found")
 		_cached_scene_name = ""
 		_cached_scene_path = ""
 
@@ -329,11 +362,13 @@ func _ensure_audio_buses() -> void:
 	if music_idx == -1:
 		AudioServer.add_bus(AudioServer.get_bus_count())
 		AudioServer.set_bus_name(AudioServer.get_bus_count() - 1, "Music")
+		print("🎚️ Created 'Music' audio bus")
 
 	var sfx_idx := AudioServer.get_bus_index("SFX")
 	if sfx_idx == -1:
 		AudioServer.add_bus(AudioServer.get_bus_count())
 		AudioServer.set_bus_name(AudioServer.get_bus_count() - 1, "SFX")
+		print("🎚️ Created 'SFX' audio bus")
 
 func _load_volumes() -> void:
 	var cfg := ConfigFile.new()
@@ -380,10 +415,12 @@ func set_sfx_volume(value: float) -> void:
 
 func set_exterior_ambient(scene_name: String):
 	"""Set ambient audio for exterior scenes and interior scenes without BGM"""
+	print("🌍 AudioManager: Setting ambient for:", scene_name)
 	
 	# Blacklist scenes that have their own specific audio (like alley with MainBG/SuspenseBG)
 	var ambient_blacklist: Array[String] = ["alley"]
 	if scene_name in ambient_blacklist:
+		print("🌍 AudioManager: Scene is blacklisted from ambient audio:", scene_name)
 		pause_ambient_tracked()
 		global_audio_tracker["is_exterior_scene"] = false
 		return
@@ -393,23 +430,28 @@ func set_exterior_ambient(scene_name: String):
 	var is_exterior = exterior_ambient_map.has(scene_name)
 	
 	if not is_exterior and has_bgm:
+		print("🌍 AudioManager: Interior scene with BGM, pausing ambient")
 		pause_ambient_tracked()
 		global_audio_tracker["is_exterior_scene"] = false
 		return
 	
 	# If it's an exterior scene OR interior scene without BGM, play ambient
 	if is_exterior or not has_bgm:
+		print("🌍 AudioManager: Playing ambient for scene (exterior or interior without BGM)")
 		global_audio_tracker["is_exterior_scene"] = true
 	
 	# If already playing ambient, just continue - no restart
 	if ambient_is_playing and ambient_player and ambient_player.playing:
+		print("🌍 AudioManager: Ambient already playing, continuing seamlessly")
 		return
 	
 	# If ambient was paused, resume from where it left off
 	if global_audio_tracker["was_playing"]:
+		print("🌍 AudioManager: Resuming ambient from paused position")
 		resume_ambient_tracked()
 	else:
 		# Start fresh only if never played before
+		print("🌍 AudioManager: Starting fresh ambient")
 		start_fresh_ambient()
 
 func pause_ambient_tracked():
@@ -420,10 +462,12 @@ func pause_ambient_tracked():
 		global_audio_tracker["was_playing"] = true
 		ambient_player.stream_paused = true
 		ambient_is_playing = false
+		print("🌍 AudioManager: Ambient paused at position:", global_audio_tracker["playback_position"])
 	elif ambient_player and not ambient_player.playing and global_audio_tracker["was_playing"]:
 		# Already paused, just update the flag
 		global_audio_tracker["was_playing"] = true
 		ambient_is_playing = false
+		print("🌍 AudioManager: Ambient already paused, position tracked")
 
 func resume_ambient_tracked():
 	"""Resume ambient from tracked position"""
@@ -436,12 +480,14 @@ func resume_ambient_tracked():
 			if ambient_stream:
 				ambient_player.stream = ambient_stream
 				global_audio_tracker["current_track"] = ambient_path
+				print("🌍 AudioManager: Loaded ambient track from playlist:", ambient_path)
 		
 		ambient_player.stream_paused = false
 		# Set playback position to where we left off
 		ambient_player.seek(global_audio_tracker["playback_position"])
 		
 		ambient_is_playing = true
+		print("🌍 AudioManager: Ambient resumed seamlessly from position:", global_audio_tracker["playback_position"])
 	else:
 		# Start fresh if never played before
 		start_fresh_ambient()
@@ -449,6 +495,7 @@ func resume_ambient_tracked():
 func start_fresh_ambient():
 	"""Start ambient from beginning of playlist with smooth fade in"""
 	var ambient_path = ambient_playlist[0]
+	print("🌍 AudioManager: Starting fresh ambient playlist:", ambient_path)
 	var ambient_stream = load(ambient_path)
 	if ambient_stream:
 		ambient_player.stream = ambient_stream
@@ -471,16 +518,20 @@ func start_fresh_ambient():
 		ambient_is_playing = true
 		current_ambient = ambient_path
 		ambient_changed.emit(ambient_path)
+		print("🌍 AudioManager: Started fresh ambient with smooth fade in:", ambient_path)
 	else:
+		print("⚠️ AudioManager: Failed to load ambient:", ambient_path)
 
 func _on_ambient_finished():
 	"""Called when current track finishes - advance to next track"""
+	print("🌍 AudioManager: Track finished, advancing playlist")
 	advance_to_next_track()
 
 func advance_to_next_track():
 	"""Move to next track in playlist with smooth transition"""
 	current_track_index = (current_track_index + 1) % ambient_playlist.size()
 	var next_track = ambient_playlist[current_track_index]
+	print("🌍 AudioManager: Advancing to track", current_track_index + 1, ":", next_track)
 	
 	# Smooth crossfade transition
 	await crossfade_to_next_track(next_track)
@@ -489,6 +540,7 @@ func crossfade_to_next_track(next_track: String):
 	"""Smooth crossfade transition to next track"""
 	var ambient_stream = load(next_track)
 	if not ambient_stream:
+		print("⚠️ AudioManager: Failed to load next track:", next_track)
 		return
 	
 	# Start crossfade: fade out current, fade in new
@@ -522,6 +574,7 @@ func crossfade_to_next_track(next_track: String):
 	playlist_tracker["playback_position"] = 0.0
 	current_ambient = next_track
 	ambient_changed.emit(next_track)
+	print("🌍 AudioManager: Smoothly transitioned to:", next_track)
 
 func stop_ambient():
 	"""Stop ambient audio completely"""
@@ -532,6 +585,7 @@ func stop_ambient():
 		global_audio_tracker["playback_position"] = 0.0
 		playlist_tracker["was_playing"] = false
 		playlist_tracker["playback_position"] = 0.0
+		print("🌍 AudioManager: Ambient stopped completely")
 
 func pause_ambient():
 	"""Pause ambient audio (for cutscenes) - uses tracking system"""
@@ -542,6 +596,7 @@ func resume_ambient():
 	if global_audio_tracker["is_exterior_scene"]:
 		resume_ambient_tracked()
 	else:
+		print("🌍 AudioManager: Not in exterior scene, ambient stays paused")
 
 func add_ambient_layer(layer_path: String, volume_db: float = -25):
 	"""Add an additional ambient layer (for complex audio)"""
@@ -552,17 +607,21 @@ func add_ambient_layer(layer_path: String, volume_db: float = -25):
 				layer.stream = layer_stream
 				layer.volume_db = volume_db
 				layer.play()
+				print("🌍 AudioManager: Added ambient layer:", layer_path)
 				return
+	print("⚠️ AudioManager: No available ambient layer slots")
 
 func remove_ambient_layers():
 	"""Remove all ambient layers"""
 	for layer in ambient_layers:
 		layer.stop()
+	print("🌍 AudioManager: All ambient layers removed")
 
 func set_ambient_volume(volume_db: float):
 	"""Set main ambient volume"""
 	if ambient_player:
 		ambient_player.volume_db = volume_db
+		print("🌍 AudioManager: Ambient volume set to", volume_db, "dB")
 
 func is_ambient_playing() -> bool:
 	"""Check if ambient is currently playing"""
@@ -579,6 +638,7 @@ func start_position_tracking():
 	timer.timeout.connect(_update_ambient_position)
 	timer.autostart = true
 	add_child(timer)
+	print("🌍 AudioManager: Position tracking started")
 
 func _update_ambient_position():
 	"""Update ambient position continuously while playing"""
@@ -601,8 +661,16 @@ func _input(event):
 				restore_scene_bgm()
 			KEY_F3:
 				# F3 - Test current BGM
+				print("🎵 AudioManager: Current BGM:", current_bgm)
 			KEY_F6:
 				# F6 - Test ambient and tracking info
+				print("🌍 AudioManager: Current ambient:", current_ambient)
+				print("🌍 AudioManager: Is playing:", ambient_is_playing)
+				print("🌍 AudioManager: Tracked position:", global_audio_tracker["playback_position"])
+				print("🌍 AudioManager: Was playing:", global_audio_tracker["was_playing"])
+				print("🌍 AudioManager: Is exterior scene:", global_audio_tracker["is_exterior_scene"])
+				print("🌍 AudioManager: Current track index:", current_track_index + 1, "/", ambient_playlist.size())
+				print("🌍 AudioManager: Playlist tracker position:", playlist_tracker["playback_position"])
 			KEY_F7:
 				# F7 - Stop ambient
 				stop_ambient()

@@ -16,8 +16,8 @@ func _ready() -> void:
 	_setup_fade()
 	player_node = _find_player()
 	if player_node != null:
-	_set_player_active(false)
-	_load_dialogue_if_available()
+		_set_player_active(false)
+		_load_dialogue_if_available()
 	# Connect DialogueUI next_pressed signal to resume animation
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui and dui.has_signal("next_pressed") and not dui.next_pressed.is_connected(_on_dialogue_next):
@@ -55,7 +55,7 @@ func _ready() -> void:
 			if anim_player.get_animation_list().size() > 0:
 				var first_anim = anim_player.get_animation_list()[0]
 				anim_player.play(first_anim)
-	else:
+
 
 func end_cutscene() -> void:
 	# Hide dialogue UI
@@ -112,7 +112,7 @@ func transition_to_scene(target_scene_path: String, animation_name: String = "",
 			
 			if new_anim_player and new_anim_player.has_animation(animation_name):
 				new_anim_player.play(animation_name)
-			else:
+
 	
 	# Note: SceneFadeIn autoload handles fade-in automatically, no need to fade here
 
@@ -456,7 +456,7 @@ func show_dialogue_line_wait(speaker: String, text: String) -> void:
 	if dui.has_method("show_dialogue_line"):
 		dui.show_dialogue_line(speaker, text, false)
 		wait_for_next()
-	else:
+
 
 func _on_dialogue_next() -> void:
 	if player_node != null:

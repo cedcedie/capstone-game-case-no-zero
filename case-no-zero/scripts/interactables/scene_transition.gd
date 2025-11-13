@@ -118,7 +118,6 @@ func _set_entry_point_for_target(target_scene_path: String):
 		var spawn_manager = get_node("/root/SpawnManager")
 		spawn_manager.set_entry_point(current_scene_name, _entry_point)
 		# print("🔄 Scene Transition: Set entry point from ", current_scene_name, " to ", target_scene_name, " via ", _entry_point)
-	else:
 
 func _get_target_scene_path_from_area_name() -> String:
 	# Get the scene path based on the Area2D's name
@@ -314,9 +313,6 @@ func _check_and_complete_task(target_scene_path: String):
 			
 			if target_scene_name.to_lower().contains(current_target.to_lower()):
 				TaskManager.complete_current_task()
-			else:
-		else:
-	else:
 
 func _check_barangay_hall_access(target_scene_path: String) -> bool:
 	"""Check if player has access to barangay hall"""

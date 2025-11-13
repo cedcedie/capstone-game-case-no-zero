@@ -28,7 +28,6 @@ func _ready():
 	if interaction_area:
 		interaction_area.connect("body_entered", Callable(self, "_on_body_entered"))
 		interaction_area.connect("body_exited", Callable(self, "_on_body_exited"))
-	else:
 	
 	# Load dialogue
 	load_dialogue()

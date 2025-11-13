@@ -1,16 +1,16 @@
 {
-	"station_guard_3": {
-		"first_interaction": [
-			{
-				"speaker": "Station Guard 3",
-				"text": "Ang hirap ng trabaho namin dito sa istasyon. Nakakastress talaga."
-			}
-		],
-		"repeated_interaction": [
-			{
-				"speaker": "Station Guard 3",
-				"text": "Ang hirap pa rin ng trabaho namin dito."
-			}
-		]
-	}
+  "station_guard_3": {
+	"first_interaction": [
+	  {
+		"speaker": "Station Guard 3",
+		"text": "Ang hirap ng trabaho namin dito sa istasyon. Nakakastress talaga."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Station Guard 3",
+		"text": "Ang hirap pa rin ng trabaho namin dito."
+	  }
+	]
+  }
 }

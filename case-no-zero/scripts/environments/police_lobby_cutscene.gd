@@ -463,6 +463,7 @@ func _set_celine_call_completed() -> void:
 	# Update task in TaskManager to trigger waypoint indicator change
 	if TaskManager and TaskManager.has_method("update_task"):
 		TaskManager.update_task("Pumunta sa baranggay")
+		print("📍 TaskManager: Updated task to 'Pumunta sa baranggay' - waypoint should now point to barangay hall")
 	
 	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
 		DialogueUI.set_cutscene_mode(false)
@@ -741,10 +742,13 @@ func camera_move_to_position(target_position: Vector2, target_zoom: float = 1.5,
 	"""
 	var cam: Camera2D = _get_camera_2d()
 	if cam == null:
+		print("⚠️ No Camera2D found for position move")
 		return
 	
+	# Get the camera's parent (likely the character node)
 	var cam_parent: Node2D = cam.get_parent() as Node2D
 	if cam_parent == null:
+		print("⚠️ Camera parent not found or not a Node2D")
 		return
 	
 	# Store original position and zoom if not already stored
@@ -758,29 +762,44 @@ func camera_move_to_position(target_position: Vector2, target_zoom: float = 1.5,
 	var current_global_pos: Vector2 = cam_parent.global_position + cam.offset
 	var offset_needed: Vector2 = target_position - cam_parent.global_position
 	
+	print("🎬 Camera moving to position: ", target_position)
+	print("   Target zoom: ", target_zoom, " (instant)")
+	print("   Move duration: ", move_duration, "s")
+	print("   Hold duration: ", hold_duration, "s (0 = stay forever)")
+	
+	# Apply zoom instantly
 	var target_zoom_vec := Vector2(target_zoom, target_zoom)
 	cam.zoom = target_zoom_vec
+	print("🎬 Camera zoom set instantly to: ", target_zoom_vec)
 	
 	# Tween camera offset to move to target position
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(cam, "offset", offset_needed, move_duration)
 	await tween.finished
+	print("🎬 Camera moved to position: ", target_position)
 	
+	# If hold_duration > 0, wait then return to original position
 	if hold_duration > 0.0:
 		await get_tree().create_timer(hold_duration).timeout
+		print("🎬 Returning camera to original position...")
 		var return_tween := create_tween()
 		return_tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 		return_tween.tween_property(cam, "offset", original_camera_offset, move_duration)
 		await return_tween.finished
+		# Return zoom to original
 		cam.zoom = original_camera_zoom
+		print("🎬 Camera returned to original position and zoom")
 
 func camera_zoom_to_body2d(target: CharacterBody2D, target_zoom: float = 1.5, duration_in: float = 0.5, hold_duration: float = 1.0, duration_out: float = 0.5) -> void:
+	"""Zoom camera to a specific CharacterBody2D node"""
 	if target == null:
+		print("⚠️ Target CharacterBody2D is null")
 		return
 	
 	var cam: Camera2D = _get_camera_2d()
 	if cam == null:
+		print("⚠️ No Camera2D found for zoom")
 		return
 	
 	# Store original values if not already stored
@@ -792,6 +811,9 @@ func camera_zoom_to_body2d(target: CharacterBody2D, target_zoom: float = 1.5, du
 	var target_pos := target.global_position
 	var player_pos := _get_player_global_position()
 	
+	print("🎬 Camera zoom to Body2D at: ", target_pos)
+	
+	# Calculate target offset to center on character
 	var delta := target_pos - player_pos
 	var max_offset := Vector2(400.0, 300.0)  # Reasonable pan distance
 	if abs(delta.x) > max_offset.x:
@@ -809,16 +831,20 @@ func camera_zoom_to_body2d(target: CharacterBody2D, target_zoom: float = 1.5, du
 	tween_in.tween_property(cam, "offset", target_offset, duration_in)
 	tween_in.tween_property(cam, "zoom", target_zoom_vec, duration_in)
 	await tween_in.finished
+	print("🎬 Camera zoomed and panned to Body2D")
 	
+	# Hold at zoomed position
 	if hold_duration > 0.0:
 		await get_tree().create_timer(hold_duration).timeout
 	
+	# Zoom back and return to original position
 	var tween_out := create_tween()
 	tween_out.set_parallel(true)
 	tween_out.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween_out.tween_property(cam, "offset", original_camera_offset, duration_out)
 	tween_out.tween_property(cam, "zoom", original_camera_zoom, duration_out)
 	await tween_out.finished
+	print("🎬 Camera zoomed back to original position")
 
 func _setup_fade() -> void:
 	if fade_layer:

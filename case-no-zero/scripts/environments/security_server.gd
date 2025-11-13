@@ -13,7 +13,7 @@ func _ready() -> void:
 	_setup_fade()
 	player_node = _find_player()
 	if player_node != null:
-	_set_player_active(false)
+		_set_player_active(false)
 	# Load dialogue will be determined based on which cutscene plays
 	# Connect DialogueUI next_pressed signal to resume animation
 	var dui: Node = get_node_or_null("/root/DialogueUI")
@@ -43,17 +43,6 @@ func _ready() -> void:
 		if anim_player:
 			if anim_player.has_animation("security_server_cutscene_2"):
 				anim_player.play("security_server_cutscene_2")
-			else:
-		return
-	
-	# DEBUG MODE: Set to true to play cutscene regardless of checkpoint
-	var DEBUG_MODE: bool = false
-	
-	# Check if HEAD_POLICE_COMPLETED checkpoint is set (or DEBUG_MODE)
-	if DEBUG_MODE or CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
-		if DEBUG_MODE:
-		else:
-		
 		# Hide task display when cutscene plays
 		_hide_task_display()
 		
@@ -71,9 +60,7 @@ func _ready() -> void:
 			elif anim_player.get_animation_list().size() > 0:
 				var first_anim = anim_player.get_animation_list()[0]
 				anim_player.play(first_anim)
-			else:
-		else:
-		return
+
 	
 	# If no checkpoint, don't play cutscene
 
@@ -145,7 +132,6 @@ func transition_to_scene(target_scene_path: String, animation_name: String = "",
 			
 			if new_anim_player and new_anim_player.has_animation(animation_name):
 				new_anim_player.play(animation_name)
-			else:
 	
 	# Note: SceneFadeIn autoload handles fade-in automatically, no need to fade here
 
@@ -339,7 +325,6 @@ func show_dialogue_line_wait(speaker: String, text: String) -> void:
 	if dui.has_method("show_dialogue_line"):
 		dui.show_dialogue_line(speaker, text, false)
 		wait_for_next()
-	else:
 
 func _on_dialogue_next() -> void:
 	if player_node != null:
@@ -496,7 +481,6 @@ func _hide_task_display() -> void:
 				task_display = found
 	if task_display != null and task_display.has_method("hide_task"):
 		task_display.hide_task()
-	else:
 
 # ---- Player helpers ----
 func _find_player() -> Node:

@@ -1,16 +1,18 @@
 {
-	"celine_miguel_recollection": {
-		"dialogue_lines": [
-			{ "speaker": "Celine", "text": "Miguel, mabilis ang oras kanina. Ano tingin mo?" },
-			{ "speaker": "Miguel", "text": "Hindi nagtutugma ang mga piraso. May nagsusulat ng istorya na hindi totoo." },
-			{ "speaker": "Celine", "text": "Balikan natin ang standards: presumption of innocence (1987 Const. Art. III, Sec. 14(2)) at due process (Sec. 1)." },
-			{ "speaker": "Miguel", "text": "Oo. At burden ng prosecution (Rule 133). Kailangan ng solidong ebidensya (Rule 130)." },
-			{ "speaker": "Celine", "text": "May hawak tayong broken body cam. Ibigay natin for potential recovery ng footage." },
-			{ "speaker": "Miguel", "text": "Maganda. Pwedeng maglabas 'yan ng timeline at accountability." },
-			{ "speaker": "Celine", "text": "I-forward natin sa tamang unit. Chain of custody, ha. Huwag papabayaan." },
-			{ "speaker": "Miguel", "text": "Sige. Kasunod nito, preliminary investigation (Rule 112) kung kinakailangan, at ihanda ang mga pleading kung aabot (Rule 110)." },
-			{ "speaker": "Celine", "text": "At sa lahat ng ito — CPRA (2023). Walang bias, walang shortcut." },
-			{ "speaker": "Miguel", "text": "Tama. Katotohanan ang target. Simulan natin agad." }
-		]
-	}
+  "celine_miguel_recollection": {
+    "dialogue_lines": [
+      { "speaker": "Celine", "text": "Miguel, mabilis ang oras kanina. Ano tingin mo?" },
+      { "speaker": "Miguel", "text": "Hindi nagtutugma ang mga piraso. May nagsusulat ng istorya na hindi totoo." },
+      { "speaker": "Celine", "text": "Balikan natin ang standards: presumption of innocence (1987 Const. Art. III, Sec. 14(2)) at due process (Sec. 1)." },
+      { "speaker": "Miguel", "text": "Oo. At burden ng prosecution (Rule 133). Kailangan ng solidong ebidensya (Rule 130)." },
+      { "speaker": "Celine", "text": "May hawak tayong broken body cam. Ibigay natin for potential recovery ng footage." },
+      { "speaker": "Miguel", "text": "Maganda. Pwedeng maglabas 'yan ng timeline at accountability." },
+      { "speaker": "Celine", "text": "I-forward natin sa tamang unit. Chain of custody, ha. Huwag papabayaan." },
+      { "speaker": "Miguel", "text": "Sige. Kasunod nito, preliminary investigation (Rule 112) kung kinakailangan, at ihanda ang mga pleading kung aabot (Rule 110)." },
+      { "speaker": "Celine", "text": "At sa lahat ng ito — CPRA (2023). Walang bias, walang shortcut." },
+      { "speaker": "Miguel", "text": "Tama. Katotohanan ang target. Simulan natin agad." }
+    ]
+  }
 }
+
+

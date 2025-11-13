@@ -13,8 +13,8 @@ func _ready() -> void:
 	_setup_fade()
 	player_node = _find_player()
 	if player_node != null:
-	_set_player_active(false)
-	_load_dialogue_if_available()
+		_set_player_active(false)
+		_load_dialogue_if_available()
 	# Connect DialogueUI next_pressed signal to resume animation
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui and dui.has_signal("next_pressed") and not dui.next_pressed.is_connected(_on_dialogue_next):
@@ -65,8 +65,6 @@ func _ready() -> void:
 		elif anim_player.get_animation_list().size() > 0:
 			var first_anim = anim_player.get_animation_list()[0]
 			anim_player.play(first_anim)
-		else:
-	else:
 
 func end_cutscene() -> void:
 	# Fade out to black for scene transition
@@ -279,7 +277,7 @@ func show_dialogue_line_wait(speaker: String, text: String) -> void:
 	if dui.has_method("show_dialogue_line"):
 		dui.show_dialogue_line(speaker, text, false)
 		wait_for_next()
-	else:
+
 
 func _on_dialogue_next() -> void:
 	if player_node != null:
@@ -373,7 +371,7 @@ func _hide_station_lobby_nodes() -> void:
 		if station_lobby is CanvasItem:
 			(station_lobby as CanvasItem).visible = false
 		_set_node_collision_enabled(station_lobby, false)
-	else:
+
 	
 	# Hide StationLobby2 and disable collision
 	var station_lobby2 := root_scene.get_node_or_null("StationLobby2")
@@ -381,7 +379,7 @@ func _hide_station_lobby_nodes() -> void:
 		if station_lobby2 is CanvasItem:
 			(station_lobby2 as CanvasItem).visible = false
 		_set_node_collision_enabled(station_lobby2, false)
-	else:
+
 	
 	# Hide StationLobby3 and disable collision
 	var station_lobby3 := root_scene.get_node_or_null("StationLobby3")
@@ -389,7 +387,7 @@ func _hide_station_lobby_nodes() -> void:
 		if station_lobby3 is CanvasItem:
 			(station_lobby3 as CanvasItem).visible = false
 		_set_node_collision_enabled(station_lobby3, false)
-	else:
+
 
 func _set_node_collision_enabled(node: Node, enabled: bool) -> void:
 	# Recursively disable/enable all CollisionShape2D nodes within the given node
@@ -414,7 +412,6 @@ func _hide_task_display() -> void:
 				task_display = found
 	if task_display != null and task_display.has_method("hide_task"):
 		task_display.hide_task()
-	else:
 
 func _show_task_display(task_text: String) -> void:
 	var task_display: Node = get_node_or_null("/root/TaskDisplay")
@@ -426,7 +423,6 @@ func _show_task_display(task_text: String) -> void:
 				task_display = found
 	if task_display != null and task_display.has_method("show_task"):
 		task_display.show_task(task_text)
-	else:
 
 # ---- Player helpers ----
 func _find_player() -> Node:

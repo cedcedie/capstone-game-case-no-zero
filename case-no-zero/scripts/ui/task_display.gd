@@ -73,7 +73,6 @@ func _adjust_font_size_for_text(text: String):
 		# Create label_settings if it doesn't exist
 		label.label_settings = LabelSettings.new()
 		label.label_settings.font_size = font_size
-	else:
 
 func hide_task():
 	

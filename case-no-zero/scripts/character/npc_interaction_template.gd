@@ -198,4 +198,3 @@ func show_dialogue():
 	
 	if is_player_nearby:
 		show_interaction_label()
-

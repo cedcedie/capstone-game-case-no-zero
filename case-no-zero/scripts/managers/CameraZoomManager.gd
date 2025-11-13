@@ -50,8 +50,6 @@ func find_player_camera():
 			if player_camera:
 				set_zoom_for_current_scene()
 				set_camera_limits_for_scene()
-			else:
-		else:
 
 func set_zoom_for_current_scene():
 	if not get_tree().current_scene:

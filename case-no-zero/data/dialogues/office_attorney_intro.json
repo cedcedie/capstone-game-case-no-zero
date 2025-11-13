@@ -1,35 +1,40 @@
 {
-	"office_attorney_intro": {
-		"dialogue_lines": [
-			{ "speaker": "Miguel", "text": "Miguel Reyes, attorney-at-law. Kakakuha ko lang ng promotion." },
-			{ "speaker": "Miguel", "text": "Ang batas ay para sa mga tao. 'Yan ang paniniwala ko." },
-			{ "speaker": "Miguel", "text": "Rule of law ang batayan — walang sinuman ang higit sa batas." },
-			{ "speaker": "Celine", "text": "Ayun ka na! Fresh promotion, ha?" },
-			{ "speaker": "Miguel", "text": "Nakaka-adjust pa sa mas malaking desk. Pero excited ako." },
-			{ "speaker": "Celine", "text": "Eto na ang pagkakataon mo. May unang malaking kaso ako." },
-			{ "speaker": "Miguel", "text": "Talaga? Anong klaseng kaso?" },
-			{ "speaker": "Celine", "text": "Murder case. High profile — (RPC Art. 248)." },
-			{ "speaker": "Celine", "text": "Public accountability din ang kailangan — malinaw ang papel ng lahat." },
-			{ "speaker": "Miguel", "text": "Murder? Grabe... seryoso 'yan." },
-			{ "speaker": "Miguel", "text": "Kilala ko ang mga taong 'to. Si Leo — kasama ko 'yan lumaki." },
-			{ "speaker": "Miguel", "text": "Si Erwin naman, tumulong sa akin noong nagsisimula pa lang ako." },
-			{ "speaker": "Celine", "text": "Maliit na mundo nga, ano?" },
-			{ "speaker": "Celine", "text": "May isang ebidensya na posibleng mahalaga — isang BODY CAM na na-recover." },
-			{ "speaker": "Miguel", "text": "Celine, siguro... dapat ko na lang i-turn down 'to." },
-			{ "speaker": "Miguel", "text": "Walang witnesses at walang murder weapon." },
-			{ "speaker": "Miguel", "text": "Due process muna — (1987 Const., Art. III, Sec. 1) at presumption of innocence — (Art. III, Sec. 14[2])." },
-			{ "speaker": "Celine", "text": "'Yan nga ang dahilan kung bakit dapat mo itong tanggapin." },
-			{ "speaker": "Celine", "text": "Hanapin mo ang katotohanan, Miguel." },
-			{ "speaker": "Miguel", "text": "Hanapin natin ang katotohanan sa pamamagitan ng ebidensya at tamang proseso — (Rule 130 at Rule 133)." },
-			{ "speaker": "Miguel", "text": "Tama ka. Tatanggapin ko ang kaso." },
-			{ "speaker": "Miguel", "text": "Hindi para depensahan ang akusado, kundi para malaman ang nangyari." },
-			{ "speaker": "Miguel", "text": "Impartiality at ethics — (CPRA 2023) — 'yan ang hahawak sa atin sa kaso." },
-			{ "speaker": "Celine", "text": "'Yan ang spirit! Ang katotohanan ang magpapalaya sa lahat." },
-			{ "speaker": "Celine", "text": "Nandiyan lahat sa case file. Basahin mo nang mabuti." },
-			{ "speaker": "Miguel", "text": "Gagawin ko. At hahanapin ko ang katotohanan." },
-			{ "speaker": "Celine", "text": "Siguraduhin ang documentary at testimonial evidence — (Rule 130)." },
-			{ "speaker": "Celine", "text": "Kung kailangan, preliminary investigation muna — (Rule 112) — at suriin ang information — (Rule 110)." },
-			{ "speaker": "Miguel", "text": "\"Oo nga, kailangan ko ng kape.\" " }
-		]
-	}
+  "office_attorney_intro": {
+    "dialogue_lines": [
+      { "speaker": "Miguel", "text": "Miguel Reyes, attorney-at-law. Kakakuha ko lang ng promotion." },
+      { "speaker": "Miguel", "text": "Ang batas ay para sa mga tao. 'Yan ang paniniwala ko." },
+      { "speaker": "Miguel", "text": "Rule of law ang batayan — walang sinuman ang higit sa batas." },
+      { "speaker": "Celine", "text": "Ayun ka na! Fresh promotion, ha?" },
+      { "speaker": "Miguel", "text": "Nakaka-adjust pa sa mas malaking desk. Pero excited ako." },
+      { "speaker": "Celine", "text": "Eto na ang pagkakataon mo. May unang malaking kaso ako." },
+      { "speaker": "Miguel", "text": "Talaga? Anong klaseng kaso?" },
+      { "speaker": "Celine", "text": "Murder case. High profile — (RPC Art. 248)." },
+      { "speaker": "Celine", "text": "Public accountability din ang kailangan — malinaw ang papel ng lahat." },
+      { "speaker": "Miguel", "text": "Murder? Grabe... seryoso 'yan." },
+      
+      { "speaker": "Miguel", "text": "Kilala ko ang mga taong 'to. Si Leo — kasama ko 'yan lumaki." },
+      { "speaker": "Miguel", "text": "Si Erwin naman, tumulong sa akin noong nagsisimula pa lang ako." },
+      { "speaker": "Celine", "text": "Maliit na mundo nga, ano?" },
+      { "speaker": "Celine", "text": "May isang ebidensya na posibleng mahalaga — isang BODY CAM na na-recover." },
+      
+      { "speaker": "Miguel", "text": "Celine, siguro... dapat ko na lang i-turn down 'to." },
+      { "speaker": "Miguel", "text": "Walang witnesses at walang murder weapon." },
+      { "speaker": "Miguel", "text": "Due process muna — (1987 Const., Art. III, Sec. 1) at presumption of innocence — (Art. III, Sec. 14[2])." },
+      { "speaker": "Celine", "text": "'Yan nga ang dahilan kung bakit dapat mo itong tanggapin." },
+      { "speaker": "Celine", "text": "Hanapin mo ang katotohanan, Miguel." },
+      { "speaker": "Miguel", "text": "Hanapin natin ang katotohanan sa pamamagitan ng ebidensya at tamang proseso — (Rule 130 at Rule 133)." },
+      
+      { "speaker": "Miguel", "text": "Tama ka. Tatanggapin ko ang kaso." },
+      { "speaker": "Miguel", "text": "Hindi para depensahan ang akusado, kundi para malaman ang nangyari." },
+      { "speaker": "Miguel", "text": "Impartiality at ethics — (CPRA 2023) — 'yan ang hahawak sa atin sa kaso." },
+      { "speaker": "Celine", "text": "'Yan ang spirit! Ang katotohanan ang magpapalaya sa lahat." },
+      
+      { "speaker": "Celine", "text": "Nandiyan lahat sa case file. Basahin mo nang mabuti." },
+      { "speaker": "Miguel", "text": "Gagawin ko. At hahanapin ko ang katotohanan." },
+      { "speaker": "Celine", "text": "Siguraduhin ang documentary at testimonial evidence — (Rule 130)." },
+      { "speaker": "Celine", "text": "Kung kailangan, preliminary investigation muna — (Rule 112) — at suriin ang information — (Rule 110)." },
+      { "speaker": "Miguel", "text": "\"Oo nga, kailangan ko ng kape.\" " }
+    ]
+  }
 }
+

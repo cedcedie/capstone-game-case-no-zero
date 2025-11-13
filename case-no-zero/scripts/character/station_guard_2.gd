@@ -33,7 +33,7 @@ func _ready():
 	if interaction_area:
 		interaction_area.connect("body_entered", Callable(self, "_on_body_entered"))
 		interaction_area.connect("body_exited", Callable(self, "_on_body_exited"))
-	else:
+
 	
 	# Load dialogue
 	load_dialogue()
@@ -54,8 +54,7 @@ func _process(_delta):
 			if not is_any_npc_in_dialogue():
 				last_interaction_time = current_time.second
 				interact()
-			else:
-		else:
+
 	
 	# Safety check: If dialogue is marked as finished but movement is still disabled, re-enable it
 	if not is_in_dialogue and player_reference and player_reference.has_method("enable_movement"):
@@ -210,7 +209,6 @@ func show_dialogue():
 	# CRITICAL: Always re-enable player movement after dialogue
 	if player_reference and player_reference.has_method("enable_movement"):
 		player_reference.enable_movement()
-	else:
 	
 	# Hide the interaction label first, then show it again if player is still nearby
 	hide_interaction_label()

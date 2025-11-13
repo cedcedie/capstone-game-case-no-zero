@@ -1,16 +1,16 @@
 {
-	"station_guard": {
-		"first_interaction": [
-			{
-				"speaker": "Station Guard",
-				"text": "Sorry, hindi ka makakapasok dito."
-			}
-		],
-		"repeated_interaction": [
-			{
-				"speaker": "Station Guard",
-				"text": "Sabi ko na, hindi ka makakapasok dito."
-			}
-		]
-	}
+  "station_guard": {
+    "first_interaction": [
+      {
+        "speaker": "Station Guard",
+        "text": "Sorry, hindi ka makakapasok dito."
+      }
+    ],
+    "repeated_interaction": [
+      {
+        "speaker": "Station Guard",
+        "text": "Sabi ko na, hindi ka makakapasok dito."
+      }
+    ]
+  }
 }

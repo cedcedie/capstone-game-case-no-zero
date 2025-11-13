@@ -1,102 +1,103 @@
 {
-	"morgue_autopsy": {
-		"dialogue_lines": [
-			{
-				"speaker": "Miguel",
-				"text": "Good morning, Dr. Leticia Salvador. Ako si Atty. Miguel Ramos. Kailangan po namin ng autopsy report ni Leo Mendoza para sa legal case."
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Ah, Atty. Ramos. Para sa autopsy report, kailangan ninyo ng proper authorization. May court order ba kayo?"
-			},
-			{
-				"speaker": "Miguel",
-				"text": "Wala pa po kaming court order. Pero under Republic Act No. 6713, may karapatan kaming mag-access ng public records para sa legal proceedings. Under Rule 130 ng Rules of Court, kailangan namin yung medical evidence para sa defense."
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Sige, pero may warning ako. Yung report ay confidential under medical confidentiality laws. Under Rule 130, Section 24, may privilege ang medical records, pero may exception para sa legal proceedings."
-			},
-			{
-				"speaker": "Miguel",
-				"text": "Understood po. Para lang sa legal proceedings. May nakita po ba kayong unusual sa autopsy findings?"
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Oo. May mga inconsistencies sa official police report versus yung actual findings ko."
-			},
-			{
-				"speaker": "Celine",
-				"text": "Ano po yung mga inconsistencies, Dr. Salvador?"
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Una, yung time of death. Police report says 11 PM, pero based sa rigor mortis at algor mortis, mas likely na 9 PM."
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Pangalawa, may defensive wounds sa kamay ni Leo - consistent sa self-defense, hindi suicide."
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Pangatlo, may ligature marks sa wrists - parang na-restrain siya bago pinatay."
-			},
-			{
-				"speaker": "Miguel",
-				"text": "Defensive wounds? Meaning nag-fight back si Leo?"
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Oo. May bruising sa knuckles, parang nakipag-suntukan. At yung gunshot wound pattern, hindi consistent sa police training."
-			},
-			{
-				"speaker": "Miguel",
-				"text": "May iba pa po bang findings na hindi nasama sa official report?"
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Oo. May foreign DNA sa fingernails ni Leo. Hindi niya yung DNA. At may evidence ng struggle na hindi documented sa police report."
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Actually, may nakita akong notebook sa pocket ni Leo. May mga notes about police operations. Kinuha ng police evidence team, pero may photos ako ng ilang pages."
-			},
-			{
-				"speaker": "Miguel",
-				"text": "Pwede po ba naming makita yung autopsy report at yung photos? Kailangan namin yan para sa chain of custody."
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Sige, pero may condition. Kapag ginamit mo yan sa court, dapat ako yung mag-testify bilang expert witness. Hindi ko pwedeng i-allow na i-misrepresent yung findings ko."
-			},
-			{
-				"speaker": "Miguel",
-				"text": "Of course po. Kailangan namin yung medical expert testimony para sa defense under Rule 130."
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Good. Eto yung complete autopsy report at yung photos ng notebook pages. Pero remember, confidential yan. Hindi pwedeng i-leak sa media."
-			},
-			{
-				"speaker": "Miguel",
-				"text": "Salamat po, Dr. Leticia Salvador. May sapat na ebidensya na kami para sa korte."
-			},
-			{
-				"speaker": "Dr. Leticia Salvador",
-				"text": "Welcome. Si Leo ay mabuting pulis. Deserve niya ng justice."
-			},
-			{
-				"speaker": "Celine",
-				"text": "Okay na siguro 'to para sa korte."
-			},
-			{
-				"speaker": "Miguel",
-				"text": "Sandali lang."
-			},
-			{
-				"speaker": "Miguel",
-				"text": "May pupuntahan pa ako na baka makatulong din sa kaso."
-			}
-		]
-	}
+  "morgue_autopsy": {
+	"dialogue_lines": [
+	  {
+		"speaker": "Miguel",
+		"text": "Good morning, Dr. Leticia Salvador. Ako si Atty. Miguel Ramos. Kailangan po namin ng autopsy report ni Leo Mendoza para sa legal case."
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Ah, Atty. Ramos. Para sa autopsy report, kailangan ninyo ng proper authorization. May court order ba kayo?"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Wala pa po kaming court order. Pero under Republic Act No. 6713, may karapatan kaming mag-access ng public records para sa legal proceedings. Under Rule 130 ng Rules of Court, kailangan namin yung medical evidence para sa defense."
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Sige, pero may warning ako. Yung report ay confidential under medical confidentiality laws. Under Rule 130, Section 24, may privilege ang medical records, pero may exception para sa legal proceedings."
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Understood po. Para lang sa legal proceedings. May nakita po ba kayong unusual sa autopsy findings?"
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Oo. May mga inconsistencies sa official police report versus yung actual findings ko."
+	  },
+	  {
+		"speaker": "Celine",
+		"text": "Ano po yung mga inconsistencies, Dr. Salvador?"
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Una, yung time of death. Police report says 11 PM, pero based sa rigor mortis at algor mortis, mas likely na 9 PM."
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Pangalawa, may defensive wounds sa kamay ni Leo - consistent sa self-defense, hindi suicide."
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Pangatlo, may ligature marks sa wrists - parang na-restrain siya bago pinatay."
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Defensive wounds? Meaning nag-fight back si Leo?"
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Oo. May bruising sa knuckles, parang nakipag-suntukan. At yung gunshot wound pattern, hindi consistent sa police training."
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "May iba pa po bang findings na hindi nasama sa official report?"
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Oo. May foreign DNA sa fingernails ni Leo. Hindi niya yung DNA. At may evidence ng struggle na hindi documented sa police report."
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Actually, may nakita akong notebook sa pocket ni Leo. May mga notes about police operations. Kinuha ng police evidence team, pero may photos ako ng ilang pages."
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Pwede po ba naming makita yung autopsy report at yung photos? Kailangan namin yan para sa chain of custody."
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Sige, pero may condition. Kapag ginamit mo yan sa court, dapat ako yung mag-testify bilang expert witness. Hindi ko pwedeng i-allow na i-misrepresent yung findings ko."
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Of course po. Kailangan namin yung medical expert testimony para sa defense under Rule 130."
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Good. Eto yung complete autopsy report at yung photos ng notebook pages. Pero remember, confidential yan. Hindi pwedeng i-leak sa media."
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Salamat po, Dr. Leticia Salvador. May sapat na ebidensya na kami para sa korte."
+	  },
+	  {
+		"speaker": "Dr. Leticia Salvador",
+		"text": "Welcome. Si Leo ay mabuting pulis. Deserve niya ng justice."
+	  },
+	  {
+		"speaker": "Celine",
+		"text": "Okay na siguro 'to para sa korte."
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Sandali lang."
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "May pupuntahan pa ako na baka makatulong din sa kaso."
+	  }
+
+	]
+  }
 }

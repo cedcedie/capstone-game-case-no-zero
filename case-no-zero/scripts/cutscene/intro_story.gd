@@ -43,7 +43,6 @@ func play_intro_animation():
 	"""Play the 'intro' animation from AnimationPlayer"""
 	if has_node("AnimationPlayer"):
 		$AnimationPlayer.play("intro")
-	else:
 
 func stop_intro_animation():
 	"""Stop the intro animation"""
@@ -182,20 +181,19 @@ func fade_out_mystery_bgm(duration: float = 2.0):
 	"""Fade out the mystery BGM"""
 	if AudioManager:
 		await AudioManager.fade_out_bgm(duration)
-	else:
+
 
 func start_mystery_bgm():
 	"""Start the mystery BGM for intro story"""
 	if AudioManager:
 		# Set a mystery BGM for intro story
 		AudioManager.set_scene_bgm("intro_story")
-	else:
+
 
 func stop_mystery_bgm():
 	"""Stop the mystery BGM immediately"""
 	if AudioManager:
 		AudioManager.stop_bgm()
-	else:
 
 # --------------------------
 # CHARACTER COLOR METHODS
@@ -206,28 +204,28 @@ func make_character_white(character_name: String):
 	var character = get_node_or_null(character_name)
 	if character:
 		character.modulate = Color.WHITE
-	else:
+
 
 func make_character_red(character_name: String):
 	"""Make a character red"""
 	var character = get_node_or_null(character_name)
 	if character:
 		character.modulate = Color.RED
-	else:
+
 
 func make_character_black(character_name: String):
 	"""Make a character black"""
 	var character = get_node_or_null(character_name)
 	if character:
 		character.modulate = Color.BLACK
-	else:
+
 
 func make_character_normal(character_name: String):
 	"""Reset character to normal color"""
 	var character = get_node_or_null(character_name)
 	if character:
 		character.modulate = Color.WHITE
-	else:
+
 
 # Specific Leo color methods for AnimationPlayer
 func make_leo_white():
