@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://cqxd0j8noyt43"]
+[gd_scene load_steps=31 format=3 uid="uid://cqxd0j8noyt43"]
 
 [ext_resource type="Texture2D" uid="uid://d21boi8y3hdvt" path="res://miravil/main character/tricycle_driver_idle.png" id="1_6eqe3"]
+[ext_resource type="Script" uid="uid://bikk2tqdas2a4" path="res://miravil/npc main character/npc_tricycle_driver.gd" id="1_wkmgs"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_wkmgs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wre4e"]
@@ -226,6 +227,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcTricycleDriver" type="CharacterBody2D"]
+script = ExtResource("1_wkmgs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1jv0d")

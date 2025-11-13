@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://bkxx1m4vbvfhf"]
+[gd_scene load_steps=52 format=4 uid="uid://bkxx1m4vbvfhf"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_4rsub"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_teyyt"]
@@ -20,11 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://hxoafuiea1jq" path="res://miravil/characters_2/npc_bc_boy8.tscn" id="17_r8rte"]
 [ext_resource type="PackedScene" uid="uid://88gk8dwdeef5" path="res://miravil/characters_2/npc_bc_girl1.tscn" id="18_0dgdf"]
 [ext_resource type="PackedScene" uid="uid://jgddn8tu8id4" path="res://miravil/characters_2/npc_bc_girl2.tscn" id="19_6ot21"]
+[ext_resource type="PackedScene" uid="uid://b231jmtpr41uk" path="res://miravil/npc main character/npc_toto_kid.tscn" id="19_yp8xo"]
 [ext_resource type="PackedScene" uid="uid://ddi78wtnxtop5" path="res://miravil/characters_2/npc_bc_girl3.tscn" id="20_v2ldm"]
 [ext_resource type="PackedScene" uid="uid://b2wpxg54ruupw" path="res://miravil/characters_2/npc_bc_girl4.tscn" id="21_w63we"]
 [ext_resource type="PackedScene" uid="uid://8b0jc1i5qgvc" path="res://miravil/characters_2/npc_bc_girl5.tscn" id="22_2unk4"]
 [ext_resource type="PackedScene" uid="uid://c5mweveda1y56" path="res://miravil/characters_2/npc_bc_furry.tscn" id="24_r1uj8"]
 [ext_resource type="Script" uid="uid://cu3hk0cpgwlho" path="res://miravil/characters_2/npc_bc_girl_5.gd" id="24_teyyt"]
+[ext_resource type="PackedScene" uid="uid://yr606c4dimcf" path="res://miravil/npc main character/npc_nanay_puring.tscn" id="27_xhnt2"]
+[ext_resource type="PackedScene" uid="uid://caecra8lw56yv" path="res://miravil/npc main character/npc_leni.tscn" id="28_jfn0t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mgmrl"]
 texture = ExtResource("1_4rsub")
@@ -22100,6 +22103,19 @@ position = Vector2(591, 810)
 animation = &"idle_left"
 autoplay = "idle_left"
 
+[node name="Area2D" parent="NpcBcBoy8" index="2"]
+position = Vector2(-233, 97)
+
+[node name="NpcTotoKid" parent="NpcBcBoy8/Area2D" index="1" instance=ExtResource("19_yp8xo")]
+z_index = 4
+position = Vector2(0, -24)
+
+[node name="AnimatedSprite2D" parent="NpcBcBoy8/Area2D/NpcTotoKid" index="0"]
+animation = &"idle_front"
+
+[node name="CollisionShape2D" parent="NpcBcBoy8/Area2D/NpcTotoKid/Area2D" index="0"]
+position = Vector2(104, 363)
+
 [node name="Label" parent="NpcBcBoy8" index="3"]
 metadata/_edit_use_anchors_ = true
 
@@ -22168,6 +22184,19 @@ position = Vector2(1292, 1116)
 [node name="AnimatedSprite2D" parent="NpcBcFurry" index="0"]
 autoplay = "idle_left"
 
+[node name="NpcNanayPuring" parent="." instance=ExtResource("27_xhnt2")]
+position = Vector2(462, 1270)
+
+[node name="AnimatedSprite2D" parent="NpcNanayPuring" index="0"]
+animation = &"idle_front"
+
+[node name="NpcLeni" parent="." instance=ExtResource("28_jfn0t")]
+z_index = 4
+position = Vector2(1105, 1178)
+
+[node name="AnimatedSprite2D" parent="NpcLeni" index="0"]
+animation = &"idle_front"
+
 [editable path="PlayerM"]
 [editable path="NpcBcBoy1"]
 [editable path="NpcBcBoy2"]
@@ -22177,9 +22206,12 @@ autoplay = "idle_left"
 [editable path="NpcBcBoy6"]
 [editable path="NpcBcBoy7"]
 [editable path="NpcBcBoy8"]
+[editable path="NpcBcBoy8/Area2D/NpcTotoKid"]
 [editable path="NpcBcGirl1"]
 [editable path="NpcBcGirl2"]
 [editable path="NpcBcGirl3"]
 [editable path="NpcBcGirl4"]
 [editable path="NpcBcGirl5"]
 [editable path="NpcBcFurry"]
+[editable path="NpcNanayPuring"]
+[editable path="NpcLeni"]

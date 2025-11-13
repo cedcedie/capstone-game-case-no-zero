@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://dvgkhr0qxnpx0"]
+[gd_scene load_steps=87 format=4 uid="uid://dvgkhr0qxnpx0"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_7v4vq"]
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="2_xphjy"]
@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://1xts0mvcynjk" path="res://miravil/vehicle_triyk/triyk_12.tscn" id="51_ax1g1"]
 [ext_resource type="PackedScene" uid="uid://dnauib5l785fw" path="res://miravil/vehicle_triyk/triyk_7.tscn" id="53_ieexf"]
 [ext_resource type="PackedScene" uid="uid://i35sxwgv6c60" path="res://miravil/vehicle_triyk/triyk_9.tscn" id="54_7iaue"]
+[ext_resource type="PackedScene" uid="uid://cqxd0j8noyt43" path="res://miravil/npc main character/npc_tricycle_driver.tscn" id="54_he11w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3ex5"]
 texture = ExtResource("1_7v4vq")
@@ -37657,6 +37658,16 @@ script = ExtResource("9_qoipj")
 position = Vector2(877, 894)
 shape = SubResource("RectangleShape2D_w58ee")
 
+[node name="NpcTricycleDriver" parent="." instance=ExtResource("54_he11w")]
+z_index = 4
+position = Vector2(648, 1044)
+
+[node name="AnimatedSprite2D" parent="NpcTricycleDriver" index="0"]
+animation = &"idle_front"
+
+[node name="CollisionShape2D" parent="NpcTricycleDriver/Area2D" index="0"]
+z_index = 4
+
 [editable path="NpcBackpackMan"]
 [editable path="NpcBeardMan"]
 [editable path="PlayerM"]
@@ -37676,3 +37687,4 @@ shape = SubResource("RectangleShape2D_w58ee")
 [editable path="NpcGirl1"]
 [editable path="NpcGuy3"]
 [editable path="NpcPinkish"]
+[editable path="NpcTricycleDriver"]

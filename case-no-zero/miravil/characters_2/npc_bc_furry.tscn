@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://c5mweveda1y56"]
+[gd_scene load_steps=31 format=3 uid="uid://c5mweveda1y56"]
 
 [ext_resource type="Texture2D" uid="uid://dhp6mh3kihrf7" path="res://miravil/sprites_2/npc_bc_furry.png" id="1_awy6c"]
+[ext_resource type="Script" uid="uid://blfa3g2sln3s5" path="res://miravil/characters_2/npc_bc_furry.gd" id="1_khxvh"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_khxvh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_awy6c"]
@@ -226,6 +227,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcBcFurry" type="CharacterBody2D"]
+script = ExtResource("1_khxvh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tr5rf")

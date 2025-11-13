@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://6r8kgubfox7e"]
+
+[ext_resource type="Texture2D" uid="uid://sm0w6qc1ht7f" path="res://assets/sprites/characters/closeup_face/triycycle_driver_closeup.png" id="1_i2amu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2xb8"]
+atlas = ExtResource("1_i2amu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2835"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2xb8")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="TriycycleDriver" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_b2835")
+animation = &"talk"

@@ -1,0 +1,24 @@
+{
+  "npc_ka_linda": {
+	"first_interaction": [
+	  {
+		"speaker": "Ka Linda",
+		"text": "Oy, magandang araw! Ako si Ka Linda, nagtitinda lang ako dito ng kung anu-anong pagkain — may kakanin, banana cue, at minsan lumpiang togue pa!"
+	  },
+	  {
+		"speaker": "Ka Linda",
+		"text": "Kahit mainit o umuulan, tuloy lang ang tinda. Basta’t may gutom, may kita, haha!"
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Ka Linda",
+		"text": "Uy, balik ka na naman! Gusto mo bang tikman ulit yung kakanin ko? Bagong luto lang ‘yan!"
+	  },
+	  {
+		"speaker": "Ka Linda",
+		"text": "Mabenta ngayon ang banana cue, naunahan ka lang ng mga estudyante kanina, hehe."
+	  }
+	]
+  }
+}

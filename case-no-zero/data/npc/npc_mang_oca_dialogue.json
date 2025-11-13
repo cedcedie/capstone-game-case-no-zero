@@ -1,0 +1,24 @@
+{
+  "npc_mang_oca": {
+	"first_interaction": [
+	  {
+		"speaker": "Mang Oca",
+		"text": "Oh, magandang araw! Ako si Mang Oca. Madalas lang ako dito sa labas ng hotel, nagpapahinga habang pinapanood ang mga dumadaan."
+	  },
+	  {
+		"speaker": "Mang Oca",
+		"text": "Ang daming tao rito—may mga turista, may mga bisita. Nakakatuwa lang tingnan habang umiinom ng kape."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Mang Oca",
+		"text": "Uy, ikaw ulit! Ang ganda pa rin ng panahon, perfect para tambay sa labas."
+	  },
+	  {
+		"speaker": "Mang Oca",
+		"text": "Tahimik pa rin dito sa labas ng hotel, pero minsan may mga interesting na eksena rin."
+	  }
+	]
+  }
+}

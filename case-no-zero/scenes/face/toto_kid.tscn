@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnahnqwidgt2a"]
+
+[ext_resource type="Texture2D" uid="uid://1iyhqq4tx8wl" path="res://assets/sprites/characters/closeup_face/totoy_kid_closeup.png" id="1_14k6e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydrw1"]
+atlas = ExtResource("1_14k6e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nio8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydrw1")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="TotoKid" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_nio8x")
+animation = &"talk"

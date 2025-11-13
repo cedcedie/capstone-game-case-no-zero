@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://c2ax58feuq8oi"]
+[gd_scene load_steps=53 format=4 uid="uid://c2ax58feuq8oi"]
 
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="1_ni3it"]
 [ext_resource type="Texture2D" uid="uid://cnn1uk4tglay" path="res://assets/sprites/environments/exterior/12_Hotel_and_Hospital_32x32.png" id="2_vkm1s"]
@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://clyj57704webl" path="res://miravil/characters_hotel_hospital/npc_htl_guy2.tscn" id="23_qvy27"]
 [ext_resource type="PackedScene" uid="uid://bnw6liaaqujv6" path="res://miravil/characters_hotel_hospital/npc_htl_girl2.tscn" id="24_vwtp4"]
 [ext_resource type="PackedScene" uid="uid://dxpkalqq3osyf" path="res://miravil/characters_hotel_hospital/npc_htl_girl1.tscn" id="25_3jp7t"]
+[ext_resource type="PackedScene" uid="uid://swf8uxbjjaft" path="res://miravil/npc main character/npc_ka_isko.tscn" id="26_qihkq"]
+[ext_resource type="PackedScene" uid="uid://dp1tfojmgv6hf" path="res://miravil/npc main character/npc_mang_oca.tscn" id="27_iq3er"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1o657"]
 texture = ExtResource("1_ni3it")
@@ -30241,6 +30243,20 @@ polygon = PackedVector2Array(1041, 0, 1200, 0, 1200, 2688, 80, 2688, 80, 0, 1019
 z_index = 5
 tile_set = SubResource("TileSet_iq3er")
 
+[node name="NpcKaIsko" parent="." instance=ExtResource("26_qihkq")]
+z_index = 4
+position = Vector2(1101, 2264)
+
+[node name="AnimatedSprite2D" parent="NpcKaIsko" index="0"]
+animation = &"idle_front"
+
+[node name="NpcMangOca" parent="." instance=ExtResource("27_iq3er")]
+z_index = 4
+position = Vector2(563, 2528)
+
+[node name="AnimatedSprite2D" parent="NpcMangOca" index="0"]
+animation = &"idle_front"
+
 [editable path="PlayerM"]
 [editable path="NpcHtlF1"]
 [editable path="NpcHtlF2"]
@@ -30255,3 +30271,5 @@ tile_set = SubResource("TileSet_iq3er")
 [editable path="NpcHtlGuy2"]
 [editable path="NpcHtlGirl2"]
 [editable path="NpcHtlGirl1"]
+[editable path="NpcKaIsko"]
+[editable path="NpcMangOca"]

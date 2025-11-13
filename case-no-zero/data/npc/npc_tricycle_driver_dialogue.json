@@ -1,0 +1,24 @@
+{
+  "npc_tricycle_driver": {
+	"first_interaction": [
+	  {
+		"speaker": "Oscar",
+		"text": "Oh, magandang araw! Ako si Oscar, tricycle driver lang dito sa may tapat ng apartment at morgue. Medyo tahimik ang lugar pero sanay na ako rito."
+	  },
+	  {
+		"speaker": "Oscar",
+		"text": "Minsan may hinahatid ako sa apartment, minsan naman sa morgue... medyo creepy minsan, pero trabaho lang ‘to, haha."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Oscar",
+		"text": "Uy, ikaw na naman! Naglalakad-lakad ka lang ba sa area na ‘to?"
+	  },
+	  {
+		"speaker": "Oscar",
+		"text": "Wala pa masyadong pasahero ngayon. Siguro mamaya, pag lumamig na ang hangin, madadagdagan na rin."
+	  }
+	]
+  }
+}

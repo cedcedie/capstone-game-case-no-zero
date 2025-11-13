@@ -1,0 +1,24 @@
+{
+  "npc_bc_furry": {
+	"first_interaction": [
+	  {
+		"speaker": "Furry Renz",
+		"text": "Oh hey! Ako si Furry Renz, madalas lang ako tumambay dito sa barangay courtroom. Medyo chill lang, wala naman akong official na ginagawa."
+	  },
+	  {
+		"speaker": "Furry Renz",
+		"text": "Naka-costume lang ako kasi trip ko lang—parang hobby ba. Huwag mo masyadong seryosohin haha."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Furry Renz",
+		"text": "Uy, ikaw ulit! Mukhang na-enjoy mo rin dito sa courtroom ah."
+	  },
+	  {
+		"speaker": "Furry Renz",
+		"text": "Wala pa rin akong ginagawa, tambay lang ulit. Pero okay lang, masaya naman!"
+	  }
+	]
+  }
+}

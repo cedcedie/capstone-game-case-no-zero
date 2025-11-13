@@ -1,0 +1,24 @@
+{
+  "npc_toto_kid": {
+	"first_interaction": [
+	  {
+		"speaker": "Toto",
+		"text": "Hi! Ang daming tao dito sa barangay court, noh? Lagi ako dito kasi ang saya manood!"
+	  },
+	  {
+		"speaker": "Toto",
+		"text": "Minsan may nag-aaway, minsan may naglalaro. Parang palabas lang sa TV hehe!"
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Toto",
+		"text": "Uy, ikaw ulit! Tignan mo oh, may nangyayari na naman doon!"
+	  },
+	  {
+		"speaker": "Toto",
+		"text": "Gusto mo sabay tayo manood? Baka may bago na namang kwento!"
+	  }
+	]
+  }
+}

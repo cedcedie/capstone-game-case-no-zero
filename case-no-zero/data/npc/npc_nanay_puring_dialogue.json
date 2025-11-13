@@ -1,0 +1,24 @@
+{
+  "npc_nanay_puring": {
+	"first_interaction": [
+	  {
+		"speaker": "Nanay Puring",
+		"text": "Ay naku, magandang araw iho! Ako si Nanay Puring, madalas lang ako dito sa garden. Mahilig akong magtanim ng mga bulaklak at halamang gamot."
+	  },
+	  {
+		"speaker": "Nanay Puring",
+		"text": "Tahimik dito tuwing umaga. Minsan may dumadaan lang na paru-paro o ibon, kaya napapangiti ako mag-isa, haha!"
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Nanay Puring",
+		"text": "Oh, ikaw ulit! Napadaan ka ba ulit dito sa garden ko?"
+	  },
+	  {
+		"speaker": "Nanay Puring",
+		"text": "Ang mga halaman ko, parang mas masigla ngayon. Siguro dahil may dumalaw na mabuting tao, hihi."
+	  }
+	]
+  }
+}

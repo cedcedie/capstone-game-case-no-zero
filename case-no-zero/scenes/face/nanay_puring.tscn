@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://knlekn71hw0y"]
+
+[ext_resource type="Texture2D" uid="uid://bnakxr8dspn1d" path="res://assets/sprites/characters/closeup_face/nanay_puring_closeup.png" id="1_mp6hw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc6dr"]
+atlas = ExtResource("1_mp6hw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3uip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc6dr")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="NanayPuring" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_v3uip")
+animation = &"talk"

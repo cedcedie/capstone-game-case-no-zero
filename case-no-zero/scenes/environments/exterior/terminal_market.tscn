@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://cij3qgvd5ycfl"]
+[gd_scene load_steps=66 format=4 uid="uid://cij3qgvd5ycfl"]
 
 [ext_resource type="Texture2D" uid="uid://c4xfteiwxsfo2" path="res://assets/sprites/environments/exterior/1_Terrains_and_Fences_32x32.png" id="1_kcm3v"]
 [ext_resource type="Texture2D" uid="uid://b4qc7r4whb0y6" path="res://assets/sprites/environments/exterior/2_City_Terrains_32x32.png" id="2_1ag0d"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://dpmo0v0p2bo06" path="res://miravil/vendor/vendor_6.tscn" id="33_gwk7j"]
 [ext_resource type="PackedScene" uid="uid://du2yvi818n20y" path="res://miravil/characters_camp/npc_cmp_b3.tscn" id="33_s6vqj"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="35_dww58"]
+[ext_resource type="PackedScene" uid="uid://brodo4dncuh3a" path="res://miravil/npc main character/npc_sari_sari_owner.tscn" id="35_s6vqj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5t6fk"]
 texture = ExtResource("1_kcm3v")
@@ -37561,7 +37562,7 @@ z_index = 4
 
 [node name="NpcTmGuy4" parent="." instance=ExtResource("14_ax3sf")]
 z_index = 4
-position = Vector2(1928, 712)
+position = Vector2(1800, 720)
 
 [node name="AnimatedSprite2D" parent="NpcTmGuy4" index="0"]
 animation = &"idle_front"
@@ -37657,7 +37658,7 @@ scale = Vector2(3.12854, 3.15989)
 [node name="Vendor6" parent="." instance=ExtResource("33_gwk7j")]
 z_index = 3
 y_sort_enabled = true
-position = Vector2(1880, 728)
+position = Vector2(1872, 728)
 scale = Vector2(1.50113, 1.58002)
 
 [node name="Vendor2" parent="." instance=ExtResource("33_dww58")]
@@ -37669,6 +37670,12 @@ scale = Vector2(3.12854, 3.15989)
 [node name="PlayerM" parent="." instance=ExtResource("35_dww58")]
 z_index = 6
 position = Vector2(768, 128)
+
+[node name="NpcSariSariOwner" parent="." instance=ExtResource("35_s6vqj")]
+position = Vector2(1920, 720)
+
+[node name="AnimatedSprite2D" parent="NpcSariSariOwner" index="0"]
+animation = &"idle_front"
 
 [editable path="NpcBoyIcecreamHair"]
 [editable path="NpcTmGuy1"]
@@ -37683,3 +37690,4 @@ position = Vector2(768, 128)
 [editable path="NpcTmGirl4"]
 [editable path="NpcTmGirl3"]
 [editable path="NpcTmGirl1"]
+[editable path="NpcSariSariOwner"]
