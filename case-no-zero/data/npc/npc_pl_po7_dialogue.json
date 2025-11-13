@@ -3,21 +3,21 @@
 	"first_interaction": [
 	  {
 		"speaker": "Daniel",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"text": "Magandang araw! Ako si PO7 Daniel. May maitutulong ba ako sa'yo?"
 	  },
 	  {
 		"speaker": "Daniel",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"text": "Kung may napansin kang kakaiba o problema sa paligid, ipaalam mo agad sa amin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
 		"speaker": "Daniel",
-		"text": "Kamusta ka na ulit?"
+		"text": "Oh, nandito ka ulit! May bago ka bang balita o concern?"
 	  },
 	  {
 		"speaker": "Daniel",
-		"text": "May iba ka pa bang kailangan?"
+		"text": "Laging tandaan, ligtas ka dito hangga’t magtutulungan tayong lahat."
 	  }
 	]
   }

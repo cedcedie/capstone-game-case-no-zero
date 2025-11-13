@@ -2,22 +2,22 @@
   "npc_guy_2": {
 	"first_interaction": [
 	  {
-		"speaker": "Mateo",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "Aaron",
+		"text": "Hey! Gusto mo bang sumubok ng vape? Medyo nakakarelax ito."
 	  },
 	  {
-		"speaker": "Mateo",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "Aaron",
+		"text": "Kung gusto mo, may dalang flavor na pwede mong subukan."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Mateo",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "Aaron",
+		"text": "Uy, ikaw na naman! Gusto mo bang mag-vape ulit?"
 	  },
 	  {
-		"speaker": "Mateo",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "Aaron",
+		"text": "Huwag kang mahihiya, sama ka na! Mas masaya kung magkasama."
 	  }
 	]
   }

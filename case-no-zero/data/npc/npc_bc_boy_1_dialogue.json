@@ -3,21 +3,21 @@
 	"first_interaction": [
 	  {
 		"speaker": "Marine Jr",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"text": "Hey! Retired marine na ako, pero nandito lang sa paligid. Ano’ng ginagawa mo?"
 	  },
 	  {
 		"speaker": "Marine Jr",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"text": "Kung gusto mo lang makipagkwentuhan o magpahinga, puwede rin tayong mag-usap."
 	  }
 	],
 	"repeated_interaction": [
 	  {
 		"speaker": "Marine Jr",
-		"text": "Kamusta ka na ulit?"
+		"text": "Uy, ikaw na naman! Kumusta ang araw mo dito sa paligid?"
 	  },
 	  {
 		"speaker": "Marine Jr",
-		"text": "May iba ka pa bang kailangan?"
+		"text": "Huwag kang mahihiya, sama ka na ulit sa kwentuhan natin."
 	  }
 	]
   }

@@ -2,22 +2,22 @@
   "npc_cmp_b2": {
 	"first_interaction": [
 	  {
-		"speaker": "Renz",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "CJ",
+		"text": "Hey! Naghahanap ako ng kasama dito sa kampo. Gusto mo bang sumama?"
 	  },
 	  {
-		"speaker": "Renz",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "CJ",
+		"text": "Mas masaya kung may makakasama ako sa paligid, baka puwede mo akong tulungan."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Renz",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "CJ",
+		"text": "Oh, ikaw na naman! May kasama ka na ba ngayon?"
 	  },
 	  {
-		"speaker": "Renz",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "CJ",
+		"text": "Patuloy pa rin akong naghahanap, kaya kung may makita ka, sabihan mo agad ha."
 	  }
 	]
   }

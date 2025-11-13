@@ -3,21 +3,21 @@
 	"first_interaction": [
 	  {
 		"speaker": "Liam",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"text": "Magandang araw! Ako si Liam, isa sa mga doktor dito sa ospital. Paano kita matutulungan?"
 	  },
 	  {
 		"speaker": "Liam",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"text": "Kung may nararamdaman kang kakaiba o may iniinda kang sakit, huwag kang mahihiyang sabihin sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
 		"speaker": "Liam",
-		"text": "Kamusta ka na ulit?"
+		"text": "Uy, ikaw na naman! Kumusta na ang pakiramdam mo ngayon?"
 	  },
 	  {
 		"speaker": "Liam",
-		"text": "May iba ka pa bang kailangan?"
+		"text": "Kung may kailangan ka pang tulong medikal, nandito lang ako para gabayan ka."
 	  }
 	]
   }

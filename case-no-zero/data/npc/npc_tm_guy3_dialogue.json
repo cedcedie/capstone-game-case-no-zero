@@ -3,21 +3,21 @@
 	"first_interaction": [
 	  {
 		"speaker": "Peter",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"text": "Oh, ngayon lang kita nakita dito! May kailangan ka ba o naghahanap ka ng lugar?"
 	  },
 	  {
 		"speaker": "Peter",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"text": "Kung may gusto kang itanong, huwag kang mahihiyang magsabi."
 	  }
 	],
 	"repeated_interaction": [
 	  {
 		"speaker": "Peter",
-		"text": "Kamusta ka na ulit?"
+		"text": "Uy, ikaw na naman! Kumusta, maayos ba lakad mo?"
 	  },
 	  {
 		"speaker": "Peter",
-		"text": "May iba ka pa bang kailangan?"
+		"text": "Sabihin mo lang kung may iba ka pang kailangan, baka matulungan kita."
 	  }
 	]
   }

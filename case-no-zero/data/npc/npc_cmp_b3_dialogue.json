@@ -2,22 +2,22 @@
   "npc_cmp_b3": {
 	"first_interaction": [
 	  {
-		"speaker": "Ryan",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "Dhustin",
+		"text": "Magandang araw! Nandito ako para siguraduhin na maayos ang lahat sa kampo. May kailangan ka ba?"
 	  },
 	  {
-		"speaker": "Ryan",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "Dhustin",
+		"text": "Kung may problema ka o kailangan ng tulong, sabihin mo lang sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Ryan",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "Dhustin",
+		"text": "Uy, ikaw na naman! Kumusta ang paligid dito sa kampo?"
 	  },
 	  {
-		"speaker": "Ryan",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "Dhustin",
+		"text": "Huwag kang mag-alala, nandito ako para tumulong kung may kailangan ka."
 	  }
 	]
   }

@@ -2,23 +2,22 @@
   "npc_bc_girl_4": {
 	"first_interaction": [
 	  {
-		"speaker": "carla",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "Carla",
+		"text": "Hi! Nandito lang ako sa garden, nag-eenjoy sa paligid. Ikaw, anong ginagawa mo dito?"
 	  },
 	  {
-		"speaker": "carla",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "Carla",
+		"text": "Kung gusto mo lang magpahinga o maglakad-lakad, sama ka na rin sa paligid."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "carla",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "Carla",
+		"text": "Uy, ikaw na naman! Kumusta ang araw mo dito sa garden?"
 	  },
 	  {
-		"speaker": "carla
-		",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "Carla",
+		"text": "Huwag kang mahihiya, puwede tayong magkwentuhan habang nag-iikot."
 	  }
 	]
   }

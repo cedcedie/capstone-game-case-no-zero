@@ -2,22 +2,22 @@
   "npc_bc_girl_5": {
 	"first_interaction": [
 	  {
-		"speaker": "yumi",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "Yumi",
+		"text": "Hi! Nandito lang ako sa labas ng barangay court. Ano'ng ginagawa mo dito?"
 	  },
 	  {
-		"speaker": "yumi",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "Yumi",
+		"text": "Kung gusto mo lang magpahinga o maghintay, puwede ka rin dito."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "yumi",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "Yumi",
+		"text": "Uy, ikaw na naman! Kumusta ang araw mo dito sa paligid?"
 	  },
 	  {
-		"speaker": "yumi",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "Yumi",
+		"text": "Huwag kang mahihiya, puwede tayong magkwentuhan habang naghihintay."
 	  }
 	]
   }

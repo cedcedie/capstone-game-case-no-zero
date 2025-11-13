@@ -2,22 +2,22 @@
   "npc_pl_po5": {
 	"first_interaction": [
 	  {
-		"speaker": "leo",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "Levi",
+		"text": "Magandang araw! Ako si PO5 Levi. May maitutulong ba ako sa'yo ngayon?"
 	  },
 	  {
-		"speaker": "leo",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "Levi",
+		"text": "Kung may napansin kang kakaibang nangyayari, ipaalam mo agad sa amin, ha?"
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "leo",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "Levi",
+		"text": "Oh, nandito ka na naman! Ligtas naman ba ang biyahe mo?"
 	  },
 	  {
-		"speaker": "leo",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "Levi",
+		"text": "Huwag kang mag-alala, binabantayan namin ang lugar. Sabihin mo lang kung may concern ka."
 	  }
 	]
   }

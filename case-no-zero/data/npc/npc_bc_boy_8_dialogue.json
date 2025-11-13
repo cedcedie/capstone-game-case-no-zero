@@ -3,21 +3,21 @@
 	"first_interaction": [
 	  {
 		"speaker": "Carl",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"text": "Uy, anong ginagawa mo dito? Nanonood lang ako ng mga nagpa-practice sa pagtakbo."
 	  },
 	  {
 		"speaker": "Carl",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"text": "Gusto mo bang sumama at panoorin natin sila nang magkasama?"
 	  }
 	],
 	"repeated_interaction": [
 	  {
 		"speaker": "Carl",
-		"text": "Kamusta ka na ulit?"
+		"text": "Uy, ikaw na naman! Napapansin mo ba ang bilis ng mga nagpa-practice?"
 	  },
 	  {
 		"speaker": "Carl",
-		"text": "May iba ka pa bang kailangan?"
+		"text": "Masaya lang dito panoorin sila, kaya huwag kang mahihiyang sumama."
 	  }
 	]
   }

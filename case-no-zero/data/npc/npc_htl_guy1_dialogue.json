@@ -2,22 +2,22 @@
   "npc_htl_guy1": {
 	"first_interaction": [
 	  {
-		"speaker": "William",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "Cedric",
+		"text": "Hi! Naghahanap ako ng minamahal ko na si Kez. Nakita mo ba siya?"
 	  },
 	  {
-		"speaker": "William",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "Cedric",
+		"text": "Baka puwede mo akong tulungan, medyo nag-aalala na ako."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "William",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "Cedric",
+		"text": "Oh, ikaw na naman! May balita ka na ba tungkol kay Kez?"
 	  },
 	  {
-		"speaker": "William",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "Cedric",
+		"text": "Patuloy pa rin akong naghahanap, kaya kung may makita ka, sabihin mo agad ha."
 	  }
 	]
   }

@@ -3,21 +3,21 @@
 	"first_interaction": [
 	  {
 		"speaker": "Henry",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"text": "Uy… May pera ka ba? Baka puwede tayong maglaro ng sugal."
 	  },
 	  {
 		"speaker": "Henry",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"text": "Kung gusto mo, may alam akong magandang laro na pwedeng subukan."
 	  }
 	],
 	"repeated_interaction": [
 	  {
 		"speaker": "Henry",
-		"text": "Kamusta ka na ulit?"
+		"text": "Hey, balik ka na naman! Tara, subukan natin ulit ang sugal."
 	  },
 	  {
 		"speaker": "Henry",
-		"text": "May iba ka pa bang kailangan?"
+		"text": "Huwag kang mahihiya, baka swertehin ka ngayon… sama ka na!"
 	  }
 	]
   }

@@ -2,22 +2,22 @@
   "npc_cmp_g2": {
 	"first_interaction": [
 	  {
-		"speaker": "Steven",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "Maya",
+		"text": "Hi! Kamusta ka? Kailangan mo ba ng tulong dito sa kampo?"
 	  },
 	  {
-		"speaker": "Steven",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "Maya",
+		"text": "Kung may problema ka o may kailangan, huwag kang mahihiyang sabihin sa akin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Steven",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "Maya",
+		"text": "Uy, ikaw na naman! Kumusta na ang paligid dito sa kampo?"
 	  },
 	  {
-		"speaker": "Steven",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "Maya",
+		"text": "Kung may kailangan ka pang tulong o impormasyon, nandito lang ako."
 	  }
 	]
   }

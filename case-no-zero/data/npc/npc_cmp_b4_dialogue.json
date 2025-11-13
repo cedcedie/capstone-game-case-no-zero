@@ -2,22 +2,22 @@
   "npc_cmp_b4": {
 	"first_interaction": [
 	  {
-		"speaker": "John",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "Wilson",
+		"text": "Hey! Nakatambay lang ako dito sa kampo. Gusto mo bang samahan ako?"
 	  },
 	  {
-		"speaker": "John",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "Wilson",
+		"text": "Kung may kailangan ka o gusto mong makipagkwentuhan, nandito lang ako."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "John",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "Wilson",
+		"text": "Uy, ikaw na naman! Kumusta ang araw mo dito sa kampo?"
 	  },
 	  {
-		"speaker": "John",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "Wilson",
+		"text": "Huwag kang mahihiya, sama ka na ulit sa tambayan natin."
 	  }
 	]
   }

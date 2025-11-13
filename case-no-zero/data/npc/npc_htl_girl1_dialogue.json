@@ -2,22 +2,22 @@
   "npc_htl_girl1": {
 	"first_interaction": [
 	  {
-		"speaker": "Jo",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "Kez",
+		"text": "Hi! Naghahanap ako ng minamahal ko na si Cedric. Nakita mo ba siya?"
 	  },
 	  {
-		"speaker": "Jo",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "Kez",
+		"text": "Baka puwede mo akong tulungan, medyo nag-aalala na ako."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Jo",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "Kez",
+		"text": "Oh, ikaw na naman! May balita ka na ba tungkol kay Cedric?"
 	  },
 	  {
-		"speaker": "Jo",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "Kez",
+		"text": "Patuloy pa rin akong naghahanap, kaya kung may makita ka, sabihin mo agad ha."
 	  }
 	]
   }

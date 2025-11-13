@@ -3,21 +3,21 @@
 	"first_interaction": [
 	  {
 		"speaker": "Peng",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"text": "Ah, isang bagong mukha! Galing ka ba sa malayong lugar?"
 	  },
 	  {
 		"speaker": "Peng",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"text": "Ako si Peng, nagsasanay ako araw-araw dito sa templo. May maitutulong ba ako sa'yo?"
 	  }
 	],
 	"repeated_interaction": [
 	  {
 		"speaker": "Peng",
-		"text": "Kamusta ka na ulit?"
+		"text": "Nandito ka na naman! Nagpapatuloy pa rin ba ang iyong paglalakbay?"
 	  },
 	  {
 		"speaker": "Peng",
-		"text": "May iba ka pa bang kailangan?"
+		"text": "Kung gusto mong magpahinga, maluwag pa sa ilalim ng punong iyon."
 	  }
 	]
   }

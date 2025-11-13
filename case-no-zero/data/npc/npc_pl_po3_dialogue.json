@@ -3,21 +3,21 @@
 	"first_interaction": [
 	  {
 		"speaker": "Jack",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"text": "Magandang araw! Ako si PO3 Jack. May maitutulong ba ako sa'yo ngayon?"
 	  },
 	  {
 		"speaker": "Jack",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"text": "Kung may nakita kang kakaibang nangyayari, ipaalam mo agad para maagapan natin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
 		"speaker": "Jack",
-		"text": "Kamusta ka na ulit?"
+		"text": "Oh, ikaw pala ulit! Ligtas naman ba ang lakad mo ngayon?"
 	  },
 	  {
 		"speaker": "Jack",
-		"text": "May iba ka pa bang kailangan?"
+		"text": "Sabihin mo lang kung may concern ka pa. Nandito lang kami para tumulong."
 	  }
 	]
   }

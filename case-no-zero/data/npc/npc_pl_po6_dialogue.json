@@ -3,21 +3,21 @@
 	"first_interaction": [
 	  {
 		"speaker": "Owen",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"text": "Magandang araw! Ako si PO6 Owen. May maitutulong ba ako sa'yo ngayon?"
 	  },
 	  {
 		"speaker": "Owen",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"text": "Kung may nakita kang kahina-hinalang galaw, huwag kang mag-atubiling sabihin sa amin."
 	  }
 	],
 	"repeated_interaction": [
 	  {
 		"speaker": "Owen",
-		"text": "Kamusta ka na ulit?"
+		"text": "Uy, ikaw ulit! Maayos naman ba ang lagay mo diyan?"
 	  },
 	  {
 		"speaker": "Owen",
-		"text": "May iba ka pa bang kailangan?"
+		"text": "Sabihin mo lang kung may kailangan ka pa. Ligtas ka dito, huwag kang mag-alala."
 	  }
 	]
   }

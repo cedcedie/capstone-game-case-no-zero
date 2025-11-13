@@ -2,22 +2,22 @@
   "npc_cmp_b7": {
 	"first_interaction": [
 	  {
-		"speaker": "Dante",
-		"text": "Kamusta ka? May kailangan ka ba?"
+		"speaker": "Nono",
+		"text": "Uy! Naghahanap ako ng isda dito sa ilog. Nakita mo ba ang ilang malalaki?"
 	  },
 	  {
-		"speaker": "Dante",
-		"text": "Kung may problema ka, sabihin mo lang sa akin."
+		"speaker": "Nono",
+		"text": "Baka puwede mo akong tulungan, medyo mahirap hanapin mag-isa."
 	  }
 	],
 	"repeated_interaction": [
 	  {
-		"speaker": "Dante",
-		"text": "Kamusta ka na ulit?"
+		"speaker": "Nono",
+		"text": "Oh, ikaw na naman! May nahanap ka bang isda sa ilog?"
 	  },
 	  {
-		"speaker": "Dante",
-		"text": "May iba ka pa bang kailangan?"
+		"speaker": "Nono",
+		"text": "Patuloy pa rin akong naghahanap, kaya kung may makita ka, sabihan mo agad ha."
 	  }
 	]
   }
