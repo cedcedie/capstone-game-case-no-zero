@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfrgtknax7tm5"]
+
+[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/limezuUI/Modern_UI_Style_1_32x32.png" id="1_407ec"]
+[ext_resource type="FontFile" uid="uid://r31pruqk51m3" path="res://scenes/ui/UI by jer/used in UI/items/Super Maples.ttf" id="2_0ott8"]
+
+[node name="DialogueBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 633.0
+offset_bottom = 245.0
+texture = ExtResource("1_407ec")
+region_rect = Rect2(26, 600, 44, 48)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 574.0
+offset_bottom = 167.0
+color = Color(0.815686, 0.745098, 0.611765, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="NinePatchRect/ColorRect"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 607.0
+offset_bottom = 47.0
+color = Color(0.639216, 0.52549, 0.407843, 1)
+
+[node name="Label" type="Label" parent="NinePatchRect/ColorRect/ColorRect2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = -300.0
+offset_bottom = 41.0
+grow_horizontal = 2
+scale = Vector2(1.00725, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0ott8")
+theme_override_font_sizes/font_size = 30
+text = "Character name:"
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 54.0
+offset_right = -4.0
+offset_bottom = 142.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0ott8")
+theme_override_font_sizes/font_size = 20
+text = "\"Keep your weapons sheathed while in the city. There's been enough trouble for one day.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button2" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 180.0
+offset_right = 574.0
+offset_bottom = 211.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_0ott8")
+theme_override_font_sizes/font_size = 15
+text = "Next >>"
+
+[node name="Button3" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 181.0
+offset_right = 137.0
+offset_bottom = 212.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_0ott8")
+theme_override_font_sizes/font_size = 15
+text = "<< Previous"

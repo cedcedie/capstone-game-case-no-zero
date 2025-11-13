@@ -78,7 +78,7 @@ func get_game_flow_status() -> String:
 	return "🎮 GAME FLOW: office_cutscene_completed=" + str(office_played) + ", lower_level_cutscene_completed=" + str(lower_played) + ", recollection_completed=" + str(recollection_played)
 
 func debug_set_phase(phase: String) -> void:
-	"""Debug: limited fresh-start phases (start, office)"""
+	"""Debug: set game phase checkpoints"""
 	clear_all_checkpoints()
 	match phase.to_lower():
 		"start":
@@ -86,8 +86,14 @@ func debug_set_phase(phase: String) -> void:
 		"office":
 			set_checkpoint(CheckpointType.OFFICE_CUTSCENE_COMPLETED)
 			print("🔄 DEBUG: Set to office cutscene completed")
+		"head_police":
+			set_checkpoint(CheckpointType.OFFICE_CUTSCENE_COMPLETED)
+			set_checkpoint(CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED)
+			set_checkpoint(CheckpointType.RECOLLECTION_COMPLETED)
+			set_checkpoint(CheckpointType.HEAD_POLICE_COMPLETED)
+			print("🔄 DEBUG: Set to head police completed (skipped past head police)")
 		_:
-			print("⚠️ DEBUG: Unknown phase. Use: start, office")
+			print("⚠️ DEBUG: Unknown phase. Use: start, office, head_police")
 
 func clear_all_checkpoints() -> void:
 	"""Clear all checkpoints without saving"""

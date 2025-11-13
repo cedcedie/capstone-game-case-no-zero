@@ -35,8 +35,11 @@ func _input(event: InputEvent) -> void:
 				if CheckpointManager:
 					CheckpointManager.debug_set_phase("start")
 			KEY_F3:
-				# Reserved (bedroom phase removed - no checkpoint)
-				print("🐛 Debug: F3 reserved - bedroom phase removed")
+				# Skip past head police checkpoint and go to security server
+				if CheckpointManager:
+					CheckpointManager.debug_set_phase("head_police")
+					print("🐛 Debug: Skipped past head police - going to security server room")
+					get_tree().change_scene_to_file("res://scenes/environments/police_station/security_server.tscn")
 			KEY_F4:
 				# Set to lower level completed
 				if CheckpointManager:

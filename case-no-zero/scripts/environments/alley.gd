@@ -58,18 +58,11 @@ func _ready() -> void:
 
 
 func end_cutscene() -> void:
-	# Hide dialogue UI
 	_hide_dialogue_ui()
-	
-	# Set checkpoint after cutscene completes
 	cutscene_active = false
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.ALLEY_CUTSCENE_COMPLETED)
-	
-	# Fade out to black after static
 	await fade_out(0.5)
-	
-	# Transition to security server scene and play security_server_cutscene_2 animation
-	await transition_to_scene("res://scenes/environments/police_station/security_server.tscn", "security_server_cutscene_2", true)
+	await transition_to_scene("res://scenes/environments/police_station/security_server.tscn", "", true)
 
 # Transition to another scene and optionally play an animation
 func transition_to_scene(target_scene_path: String, animation_name: String = "", skip_fade: bool = false) -> void:

@@ -33,36 +33,64 @@ func _ready() -> void:
 			if found is AnimationPlayer:
 				anim_player = found
 	
-	# Check if alley cutscene is completed - play security_server_cutscene_2
+	# Check if alley cutscene is completed - play security_server_cutscene_2 (priority check)
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.ALLEY_CUTSCENE_COMPLETED):
-		# Load dialogue for security_server_cutscene_2
-		_load_dialogue_if_available("security_server_cutscene_2")
-		cutscene_active = true
-		show_environment_and_characters()
+		if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_CUTSCENE_2_COMPLETED):
+			_load_dialogue_if_available("security_server_cutscene_2")
+			cutscene_active = true
+			show_environment_and_characters()
+			
+			await get_tree().process_frame
+			await get_tree().process_frame
+			await get_tree().process_frame
+			
+			var scene_root := get_tree().current_scene
+			var fade_in_node := scene_root.get_node_or_null("SceneFadeIn") if scene_root != null else null
+			if fade_in_node != null:
+				await get_tree().create_timer(0.3).timeout
+			else:
+				await get_tree().create_timer(0.2).timeout
+			
+			await fade_in()
+			
+			if anim_player == null:
+				var current_scene := get_tree().current_scene
+				if current_scene != null:
+					anim_player = current_scene.get_node_or_null("AnimationPlayer")
+					if anim_player == null:
+						anim_player = current_scene.find_child("AnimationPlayer", true, false) as AnimationPlayer
+			
+			if anim_player:
+				if anim_player.has_animation("security_server_cutscene_2"):
+					anim_player.play("security_server_cutscene_2")
+				else:
+					push_warning("Animation 'security_server_cutscene_2' not found. Available: " + str(anim_player.get_animation_list()))
+			else:
+				push_warning("AnimationPlayer not found in security_server scene")
+			_hide_task_display()
+		else:
+			await fade_in()
+			_set_player_active(true)
+	# Check if HEAD_POLICE_COMPLETED is set - play first security_server_cutscene
+	elif CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
+		if not CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_COMPLETED):
+			_load_dialogue_if_available("security_server_cutscene")
+			cutscene_active = true
+			show_environment_and_characters()
+			await fade_in()
+			if anim_player:
+				if anim_player.has_animation("security_server_cutscene"):
+					anim_player.play("security_server_cutscene")
+				elif anim_player.get_animation_list().size() > 0:
+					var first_anim = anim_player.get_animation_list()[0]
+					anim_player.play(first_anim)
+			_hide_task_display()
+		else:
+			await fade_in()
+			_set_player_active(true)
+	else:
 		await fade_in()
-		if anim_player:
-			if anim_player.has_animation("security_server_cutscene_2"):
-				anim_player.play("security_server_cutscene_2")
-		# Hide task display when cutscene plays
-		_hide_task_display()
-		
-		# Load dialogue for security_server_cutscene
-		_load_dialogue_if_available("security_server_cutscene")
-		
-		# Start cutscene for first time
-		cutscene_active = true
-		show_environment_and_characters()
-		await fade_in()
-		if anim_player:
-			# Try to play security_server_cutscene first, then fallback to first available
-			if anim_player.has_animation("security_server_cutscene"):
-				anim_player.play("security_server_cutscene")
-			elif anim_player.get_animation_list().size() > 0:
-				var first_anim = anim_player.get_animation_list()[0]
-				anim_player.play(first_anim)
-
-	
-	# If no checkpoint, don't play cutscene
+		_set_player_active(true)
 
 func end_cutscene() -> void:
 	# Dramatic fade out before scene transition
