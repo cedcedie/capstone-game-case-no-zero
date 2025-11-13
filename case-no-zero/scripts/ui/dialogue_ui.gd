@@ -6,6 +6,11 @@ extends CanvasLayer
 @onready var next_button = $Container/Button
 @onready var typing_sound = $Container/TypingSound 
 @onready var portrait_rect: TextureRect = $Container/Face/TextureRect if has_node("Container/Face/TextureRect") else null
+@onready var face_container: Control = $Container/Face if has_node("Container/Face") else null
+
+# Store current animated sprite instance for cleanup
+var current_animated_sprite_instance: Node = null
+var current_viewport_container: SubViewportContainer = null
 
 signal next_pressed
 var waiting_for_next: bool = false
@@ -18,9 +23,70 @@ var blip_interval: int = 3  # play a voice blip every N characters
 var _cached_regexes: Dictionary = {}
 var _regex_cache_initialized: bool = false
 
+# Helper function to map dialogue file paths to face scene paths
+func get_face_scene_path_from_dialogue_file(dialogue_file_path: String) -> String:
+	"""Maps NPC dialogue file path to corresponding face scene path
+	Example: res://data/npc/npc_bc_boy_1_dialogue.json -> res://scenes/face/bc_boy_1.tscn
+	Handles typos like 'diaogue' instead of 'dialogue'"""
+	var file_name = dialogue_file_path.get_file()  # e.g., "npc_bc_boy_1_dialogue.json"
+	
+	# Remove various suffixes (handles both "dialogue" and "diaogue" typo)
+	var base_name = file_name
+	base_name = base_name.replace("_dialogue.json", "")
+	base_name = base_name.replace("_diaogue.json", "")  # Handle typo in npc_bc_girl_5_diaogue.json
+	base_name = base_name.replace(".json", "")
+	# e.g., "npc_bc_boy_1" or "npc_bc_girl_5"
+	
+	# Handle special case: shaolin_boy_dialogue.json (no npc_ prefix)
+	if base_name == "shaolin_boy":
+		return "res://scenes/face/shaolin_boy.tscn"
+	
+	# Try without npc_ prefix first (most common case)
+	var face_name_without_prefix = base_name
+	if base_name.begins_with("npc_"):
+		face_name_without_prefix = base_name.substr(4)  # Remove "npc_" prefix
+	
+	var face_path_without_prefix = "res://scenes/face/" + face_name_without_prefix + ".tscn"
+	var face_path_with_prefix = "res://scenes/face/" + base_name + ".tscn"
+	
+	# Check which one exists (some face scenes keep the npc_ prefix)
+	if ResourceLoader.exists(face_path_without_prefix):
+		return face_path_without_prefix
+	elif ResourceLoader.exists(face_path_with_prefix):
+		return face_path_with_prefix
+	else:
+		# Return the one without prefix as default (most common)
+		return face_path_without_prefix
+
+func get_face_scene_path_from_dialogue_key(dialogue_key: String) -> String:
+	"""Maps dialogue key to corresponding face scene path
+	Example: npc_bc_boy_1 -> res://scenes/face/bc_boy_1.tscn
+	Example: shaolin_boy -> res://scenes/face/shaolin_boy.tscn"""
+	var base_name = dialogue_key  # e.g., "npc_bc_boy_1" or "shaolin_boy"
+	
+	# Handle special case: shaolin_boy (no npc_ prefix)
+	if base_name == "shaolin_boy":
+		return "res://scenes/face/shaolin_boy.tscn"
+	
+	# Try without npc_ prefix first (most common case)
+	var face_name_without_prefix = base_name
+	if base_name.begins_with("npc_"):
+		face_name_without_prefix = base_name.substr(4)  # Remove "npc_" prefix
+	
+	var face_path_without_prefix = "res://scenes/face/" + face_name_without_prefix + ".tscn"
+	var face_path_with_prefix = "res://scenes/face/" + base_name + ".tscn"
+	
+	# Check which one exists (some face scenes keep the npc_ prefix)
+	if ResourceLoader.exists(face_path_without_prefix):
+		return face_path_without_prefix
+	elif ResourceLoader.exists(face_path_with_prefix):
+		return face_path_with_prefix
+	else:
+		# Return the one without prefix as default (most common)
+		return face_path_without_prefix
+
 func set_cutscene_mode(enabled: bool) -> void:
 	cutscene_mode = enabled
-	print("🎬 DialogueUI cutscene mode set to:", enabled)
 	# No special handling for cutscene mode - next button works normally
 
 func _ready():
@@ -56,15 +122,42 @@ func show_ui():
 # Smooth fade-out
 func hide_ui():
 	var t = create_tween()
+	t.set_parallel(true)  # Allow multiple properties to tween simultaneously
 	t.tween_property(container, "modulate:a", 0.0, 0.4)
+	
+	# Fade out the NPC face sprite smoothly too
+	var npc_face = get_node_or_null("NPCFaceSprite")
+	if npc_face:
+		# Find all AnimatedSprite2D nodes in the wrapper and fade them out
+		var sprites = []
+		if npc_face.get_child_count() > 0:
+			var face_instance = npc_face.get_child(0)
+			if face_instance is AnimatedSprite2D:
+				sprites.append(face_instance)
+			else:
+				# Find all AnimatedSprite2D children
+				for child in face_instance.get_children():
+					if child is AnimatedSprite2D:
+						sprites.append(child)
+				# Also check recursively
+				var found = face_instance.find_children("*", "", true, false)
+				for node in found:
+					if node is AnimatedSprite2D:
+						sprites.append(node)
+		
+		# Fade out all sprites
+		for sprite in sprites:
+			t.tween_property(sprite, "modulate:a", 0.0, 0.4)
+	
 	await t.finished
+	_cleanup_animated_sprite()  # Clean up animated sprite when hiding UI
 	hide()
 
 # Typing animation with sound
-func show_dialogue_line(speaker: String, text: String, auto_advance: bool = false) -> void:
+func show_dialogue_line(speaker: String, text: String, auto_advance: bool = false, dialogue_key: String = "") -> void:
 	show_ui()
 	name_label.text = speaker
-	_apply_portrait_for_speaker(speaker)
+	_apply_portrait_for_speaker(speaker, dialogue_key)
 	next_button.hide()  # Hide next button during typing
 
 	# If this is an internal thought, do not display and auto-advance
@@ -87,7 +180,6 @@ func show_dialogue_line(speaker: String, text: String, auto_advance: bool = fals
 	dialogue_label.text = ""
 	waiting_for_next = false
 	is_typing = true
-	print("⌨️ Starting typing animation for:", speaker)
 
 	# Blips are triggered rhythmically during typing; no initial blip
 
@@ -103,38 +195,109 @@ func show_dialogue_line(speaker: String, text: String, auto_advance: bool = fals
 		await get_tree().create_timer(typing_speed).timeout
 
 	is_typing = false
-	print("⌨️ Typing animation completed")
 	
 	# Only show next button if not in auto-advance mode
 	if not auto_advance:
 		waiting_for_next = true
 		next_button.show() # Show the next button only after typing finishes
-		print("🎬 Next button shown after typing finished")
 	else:
-		print("🎬 Auto-advance mode: Next button hidden")
 
-func _apply_portrait_for_speaker(speaker: String) -> void:
-	if portrait_rect == null:
+func _apply_portrait_for_speaker(speaker: String, dialogue_key: String = "") -> void:
+	if portrait_rect == null or face_container == null:
 		return
+	
+	# Clean up previous animated sprite instance
+	_cleanup_animated_sprite()
+	
 	var tex: Texture2D = null
-	match speaker.to_lower():
-		"miguel":
-			tex = load("res://assets/sprites/characters/closeup_face/Main_character_closeup.png")
-		"erwin", "boy trip", "Erwin Boy Trip":
-			tex = load("res://assets/sprites/characters/closeup_face/erwin_tambay_closeup.png")
-		"celine":
-			tex = load("res://assets/sprites/characters/closeup_face/celine_closeup.png")
-		"kapitana palma", "kapitana", "kapitana lourdes":
-			tex = load("res://kapitana_palma_closeup.png")
-		"po1 darwin", "po1_darwin":
-			tex = load("res://assets/sprites/characters/closeup_face/po1_closeup.png")
-		"leo mendoza":
-			tex = load("res://assets/sprites/characters/closeup_face/leo_closeup.png")
-		"dr. leticia salvador", "dr leticia salvador", "leticia salvador":
-			tex = load("res://assets/sprites/characters/closeup_face/dr_leticia_salvador_closeup.png")
-		_:
-			tex = null
-	portrait_rect.texture = tex
+	var animated_sprite: AnimatedSprite2D = null
+	
+	# If dialogue_key is provided, try to load face scene from it (NPCs only)
+	if dialogue_key != "":
+		_setup_npc_face_sprite(dialogue_key)
+		return
+	
+	# Fall back to speaker name matching (for main characters) if no face scene found
+	if animated_sprite == null:
+		match speaker.to_lower():
+			"miguel":
+				tex = load("res://assets/sprites/characters/closeup_face/Main_character_closeup.png")
+			"erwin", "boy trip", "erwin boy trip":
+				tex = load("res://assets/sprites/characters/closeup_face/erwin_tambay_closeup.png")
+			"celine":
+				tex = load("res://assets/sprites/characters/closeup_face/celine_closeup.png")
+			"kapitana palma", "kapitana", "kapitana lourdes":
+				tex = load("res://kapitana_palma_closeup.png")
+			"po1 darwin", "po1_darwin":
+				tex = load("res://assets/sprites/characters/closeup_face/po1_closeup.png")
+			"leo mendoza":
+				tex = load("res://assets/sprites/characters/closeup_face/leo_closeup.png")
+			"dr. leticia salvador", "dr leticia salvador", "leticia salvador":
+				tex = load("res://assets/sprites/characters/closeup_face/dr_leticia_salvador_closeup.png")
+	
+	# Set the texture to the portrait rect for static images
+	if portrait_rect:
+		portrait_rect.texture = tex
+		portrait_rect.visible = (tex != null)
+		# Make sure any animated sprite viewport is hidden
+		if current_viewport_container:
+			current_viewport_container.visible = false
+
+func _setup_npc_face_sprite(dialogue_key: String) -> void:
+	"""Simple function to setup NPC face sprites - just instantiate and position"""
+	# Clean up any existing NPC face sprite first
+	_cleanup_animated_sprite()
+	
+	var face_scene_path = get_face_scene_path_from_dialogue_key(dialogue_key)
+	if not ResourceLoader.exists(face_scene_path):
+		return
+	
+	# Load and instantiate the face scene directly
+	var face_scene = load(face_scene_path) as PackedScene
+	if not face_scene:
+		return
+	
+	var face_instance = face_scene.instantiate()
+	if not face_instance:
+		return
+	
+	# Create a simple Node2D wrapper to position it (since CanvasLayer is Control-based)
+	var wrapper = Node2D.new()
+	wrapper.name = "NPCFaceSprite"
+	wrapper.position = Vector2(472.0, 596.0)
+	wrapper.add_child(face_instance)
+	
+	# Add to CanvasLayer
+	add_child(wrapper)
+	
+	# Store reference for cleanup
+	current_animated_sprite_instance = wrapper
+	
+	# Play animation if it's an AnimatedSprite2D
+	var animated_sprite: AnimatedSprite2D = null
+	if face_instance is AnimatedSprite2D:
+		animated_sprite = face_instance
+	else:
+		animated_sprite = face_instance.find_child("*", true, false) as AnimatedSprite2D
+	
+	if animated_sprite and animated_sprite.sprite_frames:
+		var animation_names = animated_sprite.sprite_frames.get_animation_names()
+		if animation_names.size() > 0:
+			animated_sprite.play(animation_names[0])
+		# Ensure sprite is fully visible when shown
+		animated_sprite.modulate.a = 1.0
+	
+	# Hide the TextureRect
+	portrait_rect.visible = false
+
+func _cleanup_animated_sprite() -> void:
+	# Simply find and remove the NPCFaceSprite wrapper
+	var npc_face = get_node_or_null("NPCFaceSprite")
+	if npc_face:
+		npc_face.queue_free()
+	
+	current_animated_sprite_instance = null
+	current_viewport_container = null
 
 # -----------------------------
 # Keyword bolding (BBCode)
@@ -277,7 +440,6 @@ func _initialize_regex_cache() -> void:
 			push_warning("Failed to compile regex for keyword: " + kw)
 	
 	_regex_cache_initialized = true
-	print("✅ DialogueUI: Regex cache initialized with ", _cached_regexes.size(), " compiled patterns")
 
 func _regex_escape(text: String) -> String:
 	# Escape common regex metacharacters
@@ -295,7 +457,6 @@ func _setup_autosizing():
 		name_label.clip_contents = true
 		# Use size_flags_vertical for autosizing in Godot 4.4.1
 		name_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		print("📝 Dialogue UI: Name label scrolling enabled")
 	
 	# Enable scrolling for dialogue label
 	if dialogue_label:
@@ -303,27 +464,21 @@ func _setup_autosizing():
 		dialogue_label.clip_contents = true
 		# Use size_flags_vertical for autosizing in Godot 4.4.1
 		dialogue_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		print("📝 Dialogue UI: Dialogue label scrolling enabled")
 
 func _on_next_pressed():
-	print("🔘 Next button pressed - is_typing:", is_typing, "cutscene_mode:", cutscene_mode, "waiting_for_next:", waiting_for_next)
 	
 	# Always check if typing is finished before allowing next
 	if is_typing:
-		print("⏳ Typing in progress, ignoring next button press")
 		return
 	
 	if cutscene_mode:
 		# In cutscene mode, emit signal only when typing is finished
 		if waiting_for_next:
-			print("🎬 Cutscene mode: Emitting next_pressed signal")
 			emit_signal("next_pressed")
 		else:
-			print("🎬 Cutscene mode: Not waiting for next, ignoring")
 		return
 		
 	if waiting_for_next and not is_typing:
 		waiting_for_next = false
 		next_button.hide()
-		print("📝 Normal mode: Emitting next_pressed signal")
 		emit_signal("next_pressed")

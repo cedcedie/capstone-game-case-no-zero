@@ -43,27 +43,22 @@ func play_intro_animation():
 	"""Play the 'intro' animation from AnimationPlayer"""
 	if has_node("AnimationPlayer"):
 		$AnimationPlayer.play("intro")
-		print("🎬 Playing intro animation")
 	else:
-		print("⚠️ AnimationPlayer not found")
 
 func stop_intro_animation():
 	"""Stop the intro animation"""
 	if has_node("AnimationPlayer"):
 		$AnimationPlayer.stop()
-		print("🎬 Stopped intro animation")
 
 func pause_intro_animation():
 	"""Pause the intro animation"""
 	if has_node("AnimationPlayer"):
 		$AnimationPlayer.pause()
-		print("🎬 Paused intro animation")
 
 func resume_intro_animation():
 	"""Resume the intro animation"""
 	if has_node("AnimationPlayer"):
 		$AnimationPlayer.play()
-		print("🎬 Resumed intro animation")
 
 # --------------------------
 # DIALOGUE LOADING
@@ -86,7 +81,6 @@ func load_intro_story() -> void:
 
 	dialogue_lines = parsed["Intro_story"]
 	current_line = 0
-	print("📝 Intro story loaded:", dialogue_lines.size(), "lines")
 
 # --------------------------
 # NARRATOR DIALOGUE METHODS
@@ -123,23 +117,18 @@ func fade_in_character(character_name: String, duration: float = 1.0):
 		var tween = create_tween()
 		tween.tween_property(character, "modulate:a", 1.0, duration)
 		await tween.finished
-		print("✨ Faded in character:", character_name)
 	else:
-		print("⚠️ Character not found:", character_name)
 		# Try to find character with alternative names
 		var alt_names = ["Leo", "leo", "LeoMendoza", "leo_mendoza", "Player", "PlayerM"]
 		for alt_name in alt_names:
 			character = get_node_or_null(alt_name)
 			if character:
-				print("🔍 Found character with alternative name:", alt_name)
 				character.visible = true
 				character.modulate.a = 0.0
 				var tween = create_tween()
 				tween.tween_property(character, "modulate:a", 1.0, duration)
 				await tween.finished
-				print("✨ Faded in character:", alt_name)
 				return
-		print("❌ No character found with any name")
 
 func fade_out_character(character_name: String, duration: float = 1.0):
 	"""Fade out a character by name"""
@@ -149,22 +138,17 @@ func fade_out_character(character_name: String, duration: float = 1.0):
 		tween.tween_property(character, "modulate:a", 0.0, duration)
 		await tween.finished
 		character.visible = false
-		print("✨ Faded out character:", character_name)
 	else:
-		print("⚠️ Character not found:", character_name)
 		# Try to find character with alternative names
 		var alt_names = ["Leo", "leo", "LeoMendoza", "leo_mendoza", "Player", "PlayerM"]
 		for alt_name in alt_names:
 			character = get_node_or_null(alt_name)
 			if character:
-				print("🔍 Found character with alternative name:", alt_name)
 				var tween = create_tween()
 				tween.tween_property(character, "modulate:a", 0.0, duration)
 				await tween.finished
 				character.visible = false
-				print("✨ Faded out character:", alt_name)
 				return
-		print("❌ No character found with any name")
 
 # Specific character fade methods for AnimationPlayer
 func hide_leo():
@@ -173,19 +157,14 @@ func hide_leo():
 	if leo:
 		leo.visible = true
 		leo.modulate.a = 0.0
-		print("👻 Leo hidden at 0 opacity")
 	else:
-		print("⚠️ Leo not found, trying alternative names...")
 		var alt_names = ["leo", "LeoMendoza", "leo_mendoza", "Player", "PlayerM"]
 		for alt_name in alt_names:
 			leo = get_node_or_null(alt_name)
 			if leo:
-				print("🔍 Found Leo with alternative name:", alt_name)
 				leo.visible = true
 				leo.modulate.a = 0.0
-				print("👻 Leo hidden at 0 opacity")
 				return
-		print("❌ No Leo character found")
 
 func fade_in_leo():
 	"""Fade in Leo character"""
@@ -203,26 +182,20 @@ func fade_out_mystery_bgm(duration: float = 2.0):
 	"""Fade out the mystery BGM"""
 	if AudioManager:
 		await AudioManager.fade_out_bgm(duration)
-		print("🎵 Mystery BGM faded out")
 	else:
-		print("⚠️ AudioManager not found")
 
 func start_mystery_bgm():
 	"""Start the mystery BGM for intro story"""
 	if AudioManager:
 		# Set a mystery BGM for intro story
 		AudioManager.set_scene_bgm("intro_story")
-		print("🎵 Mystery BGM started for intro story")
 	else:
-		print("⚠️ AudioManager not found")
 
 func stop_mystery_bgm():
 	"""Stop the mystery BGM immediately"""
 	if AudioManager:
 		AudioManager.stop_bgm()
-		print("🎵 Mystery BGM stopped")
 	else:
-		print("⚠️ AudioManager not found")
 
 # --------------------------
 # CHARACTER COLOR METHODS
@@ -233,36 +206,28 @@ func make_character_white(character_name: String):
 	var character = get_node_or_null(character_name)
 	if character:
 		character.modulate = Color.WHITE
-		print("⚪ Character made white:", character_name)
 	else:
-		print("⚠️ Character not found:", character_name)
 
 func make_character_red(character_name: String):
 	"""Make a character red"""
 	var character = get_node_or_null(character_name)
 	if character:
 		character.modulate = Color.RED
-		print("🔴 Character made red:", character_name)
 	else:
-		print("⚠️ Character not found:", character_name)
 
 func make_character_black(character_name: String):
 	"""Make a character black"""
 	var character = get_node_or_null(character_name)
 	if character:
 		character.modulate = Color.BLACK
-		print("⚫ Character made black:", character_name)
 	else:
-		print("⚠️ Character not found:", character_name)
 
 func make_character_normal(character_name: String):
 	"""Reset character to normal color"""
 	var character = get_node_or_null(character_name)
 	if character:
 		character.modulate = Color.WHITE
-		print("🎨 Character reset to normal:", character_name)
 	else:
-		print("⚠️ Character not found:", character_name)
 
 # Specific Leo color methods for AnimationPlayer
 func make_leo_white():
@@ -288,7 +253,6 @@ func make_leo_normal():
 
 func end_intro_cutscene():
 	"""End the intro cutscene and transition to office attorney room"""
-	print("🎬 Ending intro cutscene...")
 	
 	# Hide all characters
 	hide_leo()
@@ -296,26 +260,21 @@ func end_intro_cutscene():
 	# Set checkpoint to mark intro story as completed
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	checkpoint_manager.set_checkpoint(CheckpointManager.CheckpointType.INTRO_COMPLETED)
-	print("📋 Intro story checkpoint set")
 	
 	# Smooth audio transition - fade out intro BGM
-	print("🎵 Fading out intro BGM...")
 	await fade_out_mystery_bgm(2.0)  # 2-second fade out
 	
 	# Brief pause for smooth transition
 	await get_tree().create_timer(0.5).timeout
 	
-	print("🏢 Transitioning to office attorney room...")
 	var office_scene_path = "res://scenes/environments/office/office_attorney_room.tscn"
 	if ResourceLoader.exists(office_scene_path):
 		get_tree().change_scene_to_file(office_scene_path)
 		return
-	print("❌ Office attorney room scene not found:", office_scene_path)
 
 func hide_all_characters():
 	"""Hide all characters in the scene"""
 	hide_leo()
-	print("👻 All characters hidden")
 
 # --------------------------
 # DEBUG CONTROLS AND LINEAR FLOW
@@ -323,31 +282,24 @@ func hide_all_characters():
 
 func skip_to_bedroom():
 	"""Skip intro story and go directly to office attorney room"""
-	print("🚀 DEBUG: Skipping intro story, going to office attorney room")
 	
 	# DON'T set bedroom cutscene as completed - let the bedroom scene handle it
-	print("📋 Going to office attorney room")
 	
 	# Transition to bedroom scene
 	await get_tree().create_timer(0.5).timeout
-	print("🏢 Transitioning to office attorney room...")
 	var office_scene_path = "res://scenes/environments/office/office_attorney_room.tscn"
 	if ResourceLoader.exists(office_scene_path):
 		get_tree().change_scene_to_file(office_scene_path)
 		return
-	print("❌ Office attorney room scene not found:", office_scene_path)
 
 func debug_complete_intro():
 	"""Debug function to complete intro story instantly"""
-	print("🚀 DEBUG: Completing intro story instantly")
 	
 	# Stop any running animations
 	if $AnimationPlayer:
 		$AnimationPlayer.stop()
-		print("📋 AnimationPlayer stopped")
 	
 	# DON'T set bedroom cutscene as completed - let the bedroom scene handle it
-	print("📋 Going to bedroom scene - cutscene will play")
 	
 	# Transition to bedroom scene
 	await get_tree().create_timer(0.5).timeout
@@ -355,7 +307,6 @@ func debug_complete_intro():
 
 func debug_restart_intro():
 	"""Debug function to restart intro story from beginning"""
-	print("🔄 DEBUG: Restarting intro story from beginning")
 	
 	# Restart the intro sequence
 	start_intro()
@@ -393,7 +344,6 @@ func start_intro() -> void:
 	load_intro_story()
 	
 	# Smooth audio transition - start mystery BGM with fade in
-	print("🎵 Starting mystery BGM with smooth fade in...")
 	start_mystery_bgm()
 	
 	# Auto-play the intro animation when scene starts
@@ -406,13 +356,10 @@ func _ready() -> void:
 	# Set scene BGM using AudioManager
 	if AudioManager:
 		AudioManager.set_scene_bgm("intro_story")
-		print("🎵 Intro Story: Scene BGM set via AudioManager")
 	
 	# Clear intro checkpoint to ensure it plays (if needed)
 	var checkpoint_manager = get_node("/root/CheckpointManager")
 	checkpoint_manager.clear_checkpoint(CheckpointManager.CheckpointType.INTRO_COMPLETED)
-	print("📋 Cleared intro checkpoint - cutscene will play")
 	
-	print("📋 Starting intro story sequence")
 	# Start the intro sequence
 	start_intro()

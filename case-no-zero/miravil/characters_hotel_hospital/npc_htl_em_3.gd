@@ -249,7 +249,7 @@ func show_dialogue():
 	for line in dialogue_lines:
 		var speaker = line.get("speaker", "")
 		var text = line.get("text", "")
-		DialogueUI.show_dialogue_line(speaker, text)
+		DialogueUI.show_dialogue_line(speaker, text, false, dialogue_key)
 		
 		# Wait for player to press next
 		await DialogueUI.next_pressed

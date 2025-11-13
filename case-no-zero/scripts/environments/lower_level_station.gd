@@ -10,17 +10,12 @@ var resume_on_next: bool = false
 var cutscene_active: bool = false
 
 func _ready() -> void:
-	print("🎬 Lower level station: _ready() started")
 	# Prepare cutscene: disable player, load dialogue, and optionally auto-start animation
 	_setup_fade()
-	print("🎬 Fade setup complete")
 	player_node = _find_player()
-	print("🎬 Player found: ", player_node != null, " - Node: ", player_node)
 	if player_node != null:
-		print("🎬 Player has disable_movement method: ", player_node.has_method("disable_movement"))
 	_set_player_active(false)
 	_load_dialogue_if_available()
-	print("🎬 Dialogue loaded: ", dialogue_lines.size(), " lines")
 	# Connect DialogueUI next_pressed signal to resume animation
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui and dui.has_signal("next_pressed") and not dui.next_pressed.is_connected(_on_dialogue_next):
@@ -29,11 +24,9 @@ func _ready() -> void:
 	var cam := _get_camera_2d()
 	if cam != null:
 		original_camera_offset = cam.offset
-		print("🎬 Camera offset captured: ", original_camera_offset)
 	
 	# Check if cutscene already played
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED):
-		print("🎬 Lower level cutscene already completed, skipping...")
 		# Set positions for post-cutscene state
 		_set_post_cutscene_positions()
 		await fade_in()
@@ -42,26 +35,19 @@ func _ready() -> void:
 		return
 
 	# Start cutscene for first time
-	print("🎬 Starting fade in...")
 	# Hide task display when cutscene plays for the first time
 	_hide_task_display()
 	cutscene_active = true
 	show_environment_and_characters()
 	await fade_in()
-	print("🎬 Fade in complete, checking animation...")
 	if anim_player:
-		print("🎬 AnimationPlayer found, has 'jail_cutscene': ", anim_player.has_animation("jail_cutscene"))
 		if anim_player.has_animation("jail_cutscene"):
-			print("🎬 Playing 'jail_cutscene' animation")
 			anim_player.play("jail_cutscene")
 		else:
-			print("⚠️ No 'jail_cutscene' animation found. Available animations: ", anim_player.get_animation_list())
 	else:
-		print("⚠️ AnimationPlayer node not found!")
 
 func end_cutscene() -> void:
 	# Fade out to black for scene transition
-	print("🎬 Cutscene ending - fading out...")
 	await fade_out(0.5)
 	
 	# Hide dialogue UI during fade
@@ -70,7 +56,6 @@ func end_cutscene() -> void:
 	# Set checkpoint
 	cutscene_active = false
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED)
-	print("🎬 Lower level station cutscene completed, checkpoint set.")
 	
 	# Set characters to post-cutscene positions (including player - only after cutscene ends)
 	_set_post_cutscene_positions()
@@ -82,7 +67,6 @@ func end_cutscene() -> void:
 		if player_node is CanvasItem:
 			(player_node as CanvasItem).visible = true
 		(player_node as Node2D).global_position = Vector2(872.0, 472.0)
-		print("🎬 PlayerM positioned at (872.0, 472.0) after cutscene")
 	
 	# Set everything visible first (with new positions)
 	var root_scene := get_tree().current_scene
@@ -100,7 +84,6 @@ func end_cutscene() -> void:
 	
 	# Re-enable player control
 	_set_player_active(true)
-	print("🎬 Lower level station cutscene ended - returning to normal gameplay.")
 
 var _player_movement_disabled: bool = false  # Track if movement is already disabled
 
@@ -151,7 +134,6 @@ func hide_environment_and_characters(duration: float = 0.5) -> void:
 	if elements_to_fade.is_empty():
 		return
 
-	print("🎬 Fading out ", elements_to_fade.size(), " environment elements")
 	
 	# Ensure all elements start at full alpha and are visible
 	for element in elements_to_fade:
@@ -173,7 +155,6 @@ func hide_environment_and_characters(duration: float = 0.5) -> void:
 		element.visible = false
 		element.modulate.a = 1.0  # Reset for next time
 	
-	print("🎬 Environment fade out complete")
 
 func show_environment_and_characters(duration: float = 0.5) -> void:
 	# Smoothly fade in environment and characters
@@ -210,7 +191,6 @@ func show_environment_and_characters(duration: float = 0.5) -> void:
 		element.visible = true
 		element.modulate.a = 0.0
 	
-	print("🎬 Fading in ", elements_to_fade.size(), " environment elements (in new positions)")
 	
 	# Then fade in with smooth tween - use slower easing for smoother fade
 	var tween := create_tween()
@@ -221,7 +201,6 @@ func show_environment_and_characters(duration: float = 0.5) -> void:
 		tween.tween_property(element, "modulate:a", 1.0, duration)
 	
 	await tween.finished
-	print("🎬 Environment fade in complete")
 
 # ---- Fade helpers ----
 func _setup_fade() -> void:
@@ -240,19 +219,16 @@ func _setup_fade() -> void:
 	fade_rect.offset_right = 0
 	fade_rect.offset_bottom = 0
 	fade_layer.add_child(fade_rect)
-	print("🎬 Fade layer created with alpha: ", fade_rect.modulate.a)
 
 func fade_in(duration: float = 0.5) -> void:
 	if not fade_rect:
 		_setup_fade()
 	fade_rect.visible = true
 	fade_rect.modulate.a = 1.0
-	print("🎬 Fade in starting from alpha: ", fade_rect.modulate.a)
 	var t := create_tween()
 	t.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	t.tween_property(fade_rect, "modulate:a", 0.0, duration)
 	await t.finished
-	print("🎬 Fade in complete, alpha: ", fade_rect.modulate.a)
 	fade_rect.visible = false
 
 func fade_out(duration: float = 0.5) -> void:
@@ -275,12 +251,10 @@ func show_line(index: int, auto_advance: bool = false) -> void:
 	var text: String = String(line.get("text", ""))
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui == null:
-		print("⚠️ DialogueUI autoload not found.")
 		return
 	if dui.has_method("show_dialogue_line"):
 		dui.show_dialogue_line(speaker, text, auto_advance)
 		return
-	print("⚠️ DialogueUI missing show_dialogue_line().")
 
 func wait_for_next() -> void:
 	# Pause animation and wait for next_pressed signal
@@ -297,7 +271,6 @@ func wait_for_next() -> void:
 	resume_on_next = true
 	if anim_player:
 		anim_player.pause()
-		print("🎬 Animation paused, waiting for next_pressed")
 
 func show_line_wait(index: int) -> void:
 	# Convenience: show line and immediately pause animation until Next
@@ -311,7 +284,6 @@ func show_dialogue_line_wait(speaker: String, text: String) -> void:
 	# Helper: show line with speaker/text and pause animation
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui == null:
-		print("⚠️ DialogueUI autoload not found.")
 		return
 	# Ensure cutscene mode to gate progression on next_pressed
 	if dui.has_method("set_cutscene_mode"):
@@ -320,7 +292,6 @@ func show_dialogue_line_wait(speaker: String, text: String) -> void:
 		dui.show_dialogue_line(speaker, text, false)
 		wait_for_next()
 	else:
-		print("⚠️ DialogueUI missing show_dialogue_line().")
 
 func _on_dialogue_next() -> void:
 	# Called when DialogueUI next_pressed signal fires - resume animation
@@ -333,7 +304,6 @@ func _on_dialogue_next() -> void:
 			player_node.velocity = Vector2.ZERO
 	if resume_on_next and anim_player:
 		resume_on_next = false
-		print("🎬 Resuming animation after next_pressed")
 		anim_player.play()
 
 func show_lines_sequence(lines: Array[Dictionary]) -> void:
@@ -357,9 +327,7 @@ func _hide_task_display() -> void:
 				task_display = found
 	if task_display != null and task_display.has_method("hide_task"):
 		task_display.hide_task()
-		print("📝 Task display hidden")
 	else:
-		print("⚠️ TaskDisplay not found or missing hide_task() method")
 
 func _hide_dialogue_ui() -> void:
 	var dui: Node = get_node_or_null("/root/DialogueUI")
@@ -391,7 +359,6 @@ func _load_dialogue_if_available() -> void:
 func shake_camera(intensity: float = 6.0, duration: float = 0.3) -> void:
 	var cam: Camera2D = _get_camera_2d()
 	if cam == null:
-		print("⚠️ No Camera2D found to shake.")
 		return
 	var original_offset: Vector2 = cam.offset
 	var tween := create_tween()
@@ -433,10 +400,8 @@ func _set_post_cutscene_positions() -> void:
 	# Set all characters to their post-cutscene positions
 	var root_scene := get_tree().current_scene
 	if root_scene == null:
-		print("⚠️ Cannot set post-cutscene positions - no root scene")
 		return
 	
-	print("🎬 Setting post-cutscene positions...")
 	
 	# Find and hide Celine
 	var celine := _find_character_by_name("celine")
@@ -445,9 +410,7 @@ func _set_post_cutscene_positions() -> void:
 			(celine as CanvasItem).visible = false
 			(celine as CanvasItem).modulate.a = 0.0
 		_set_character_collision_enabled(celine, false)
-		print("🎬 Celine hidden and collision disabled")
 	else:
-		print("⚠️ Celine not found")
 	
 	# Find and position station_guard_2
 	var station_guard_2 := _find_character_by_name("station_guard_2")
@@ -457,9 +420,7 @@ func _set_post_cutscene_positions() -> void:
 			(station_guard_2 as CanvasItem).visible = true
 		(station_guard_2 as Node2D).global_position = Vector2(672.0, 496.0)
 		_set_character_animation(station_guard_2, "idle_right")
-		print("🎬 station_guard_2 positioned at (672.0, 496.0) with idle_right")
 	else:
-		print("⚠️ station_guard_2 not found")
 	
 	# Find and position station_guard
 	var station_guard := _find_character_by_name("station_guard")
@@ -469,9 +430,7 @@ func _set_post_cutscene_positions() -> void:
 			(station_guard as CanvasItem).visible = true
 		(station_guard as Node2D).global_position = Vector2(672.0, 464.0)
 		_set_character_animation(station_guard, "idle_right")
-		print("🎬 station_guard positioned at (672.0, 464.0) with idle_right")
 	else:
-		print("⚠️ station_guard not found")
 	
 	# Find and position erwin
 	var erwin := _find_character_by_name("erwin")
@@ -485,9 +444,7 @@ func _set_post_cutscene_positions() -> void:
 			(erwin as CanvasItem).visible = true
 		(erwin as Node2D).global_position = Vector2(480.0, 360.0)
 		_set_character_animation(erwin, "idle_back")
-		print("🎬 erwin positioned at (480.0, 360.0) with idle_back")
 	else:
-		print("⚠️ erwin not found")
 	
 	# Position PlayerM (Miguel)
 	if player_node == null:
@@ -496,11 +453,8 @@ func _set_post_cutscene_positions() -> void:
 		if player_node is CanvasItem:
 			(player_node as CanvasItem).visible = true
 		(player_node as Node2D).global_position = Vector2(872.0, 472.0)
-		print("🎬 PlayerM positioned at (872.0, 472.0)")
 	else:
-		print("⚠️ PlayerM not found")
 	
-	print("🎬 Post-cutscene positioning complete")
 
 func _find_character_by_name(name: String) -> Node:
 	var root_scene := get_tree().current_scene
@@ -545,7 +499,6 @@ func _set_character_animation(character: Node, animation_name: String) -> void:
 				break
 	if anim_sprite != null and anim_sprite is AnimatedSprite2D:
 		(anim_sprite as AnimatedSprite2D).play(animation_name)
-		print("🎬 Set animation '", animation_name, "' on ", character.name)
 
 # ---- Camera swipe/pan helpers ----
 func _find_first_by_name_substring(substr: String) -> Node2D:
@@ -560,14 +513,11 @@ func _find_first_by_name_substring(substr: String) -> Node2D:
 		if n is Node2D:
 			var name_lower := String(n.name).to_lower()
 			if name_lower.find(lowered) != -1:
-				print("🎬 Found target by name: ", n.name, " at position: ", (n as Node2D).global_position)
 				return n as Node2D
 	# Fallback: check direct children
 	for n in get_children():
 		if n is Node2D and String(n.name).to_lower().find(lowered) != -1:
-			print("🎬 Found target in direct children: ", n.name)
 			return n as Node2D
-	print("⚠️ Could not find node with name containing: ", substr)
 	return null
 
 func _get_node2d_global_position(n: Node) -> Vector2:
@@ -583,10 +533,8 @@ func _get_player_global_position() -> Vector2:
 func camera_swipe_through_target(target: Node, duration_in: float = 0.35, hold_s: float = 0.2, max_distance: float = 220.0) -> void:
 	var cam := _get_camera_2d()
 	if cam == null:
-		print("⚠️ Camera not found for swipe")
 		return
 	if target == null:
-		print("⚠️ Target is null for swipe")
 		return
 	# Store original offset for later return (only if not already stored)
 	if original_camera_offset == Vector2.ZERO:
@@ -594,26 +542,21 @@ func camera_swipe_through_target(target: Node, duration_in: float = 0.35, hold_s
 	
 	var player_pos := _get_player_global_position()
 	var target_pos := _get_node2d_global_position(target)
-	print("🎬 Camera swipe: Player at ", player_pos, ", Target at ", target_pos)
 	
 	var delta := target_pos - player_pos
-	print("🎬 Camera swipe: Delta = ", delta, ", Length = ", delta.length())
 	
 	# Don't clamp - use actual distance to target for proper focus
 	# But limit to reasonable max to avoid going too far
 	if delta.length() > max_distance:
 		delta = delta.normalized() * max_distance
-		print("🎬 Camera swipe: Clamped to max_distance: ", delta)
 	
 	var target_offset := original_camera_offset + delta
-	print("🎬 Camera swipe: Moving from ", cam.offset, " to ", target_offset)
 	
 	# Tween in (pan towards target) with smooth easing
 	var t_in := create_tween()
 	t_in.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)  # Smooth cubic curve
 	t_in.tween_property(cam, "offset", target_offset, duration_in)
 	await t_in.finished
-	print("🎬 Camera swipe: Reached target position")
 	
 	# Hold briefly on target (optional, can be 0.0 if you want to control timing manually)
 	if hold_s > 0.0:
@@ -644,7 +587,6 @@ func camera_swipe_to_erwin_quick() -> void:
 	if player_node == null:
 		player_node = _find_player()
 	if player_node == null:
-		print("⚠️ Player not found for camera swipe")
 		return
 	
 	# Get camera from PlayerM
@@ -655,7 +597,6 @@ func camera_swipe_to_erwin_quick() -> void:
 		cam = player_node.get_node_or_null("Camera2D")
 	
 	if cam == null:
-		print("⚠️ Camera not found on PlayerM")
 		return
 	
 	# Store original offset if not already stored
@@ -665,11 +606,6 @@ func camera_swipe_to_erwin_quick() -> void:
 	var erwin_pos := Vector2(480.0, 368.0)
 	var player_pos: Vector2 = player_node.global_position
 	
-	print("🎬 Camera swipe to Erwin:")
-	print("   Player position: ", player_pos)
-	print("   Erwin position: ", erwin_pos)
-	print("   Current camera offset: ", cam.offset)
-	print("   Current camera global: ", cam.global_position)
 	
 	# Calculate offset needed: camera.global_position = player.global_position + camera.offset
 	# We want camera.global_position to center on Erwin
@@ -684,14 +620,12 @@ func camera_swipe_to_erwin_quick() -> void:
 	if abs(target_offset.y) > max_offset.y:
 		target_offset.y = sign(target_offset.y) * max_offset.y
 	
-	print("   Target offset (clamped): ", target_offset)
 	
 	# Tween to Erwin position with smooth easing
 	var t := create_tween()
 	t.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)  # Smooth cubic curve
 	t.tween_property(cam, "offset", target_offset, 0.4)  # Slightly longer for smoother feel
 	await t.finished
-	print("🎬 Camera swipe: Reached Erwin position. Final offset: ", cam.offset, ", Final global: ", cam.global_position)
 
 # ---- Player helpers ----
 func _find_player() -> Node:
@@ -724,14 +658,12 @@ func _find_player() -> Node:
 		if String(child.name).to_lower().find("player") != -1:
 			return child
 	
-	print("⚠️ PlayerM not found in scene tree")
 	return null
 
 func _set_player_active(active: bool) -> void:
 	if player_node == null:
 		player_node = _find_player()
 	if player_node == null:
-		print("⚠️ Cannot disable player movement - player not found")
 		return
 	
 	if not active:
@@ -745,18 +677,14 @@ func _set_player_active(active: bool) -> void:
 			player_node.set_process_input(false)
 		if player_node.has_method("set_physics_process"):
 			player_node.set_physics_process(false)
-		print("🎬 Player movement disabled (control_enabled=false, AnimationPlayer controls animation)")
 	else:
 		# Re-enable movement normally
 		if player_node.has_method("enable_movement"):
 			player_node.enable_movement()
-			print("🎬 Player movement enabled via enable_movement()")
 		else:
-			print("⚠️ Player does not have enable_movement() method")
 		if player_node.has_method("set_process_input"):
 			player_node.set_process_input(true)
 		if player_node.has_method("set_physics_process"):
 			player_node.set_physics_process(true)
 		if "control_enabled" in player_node:
 			player_node.control_enabled = true
-		print("🎬 Player movement fully enabled")

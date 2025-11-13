@@ -76,7 +76,6 @@ func update_task(new_description: String):
 func _check_and_set_waypoint(task_text: String) -> void:
 	"""Check if task text contains waypoint keywords and set waypoint if found"""
 	var text_lower := task_text.to_lower()
-	print("🔍 TaskManager: Checking waypoint keywords in: '", text_lower, "'")
 	
 	# Check each waypoint keyword
 	for keyword in TASK_WAYPOINTS.keys():
@@ -84,12 +83,10 @@ func _check_and_set_waypoint(task_text: String) -> void:
 			var waypoint_data: Dictionary = TASK_WAYPOINTS[keyword]
 			var target_scene: String = waypoint_data.get("scene", "")
 			var target_pos: Vector2 = waypoint_data.get("position", Vector2.ZERO)
-			print("✅ TaskManager: Found keyword '", keyword, "' - setting waypoint to ", target_scene, " at ", target_pos)
 			set_waypoint(target_scene, target_pos)
 			return
 	
 	# If no keyword found, clear waypoint
-	print("⚠️ TaskManager: No waypoint keyword found in task text")
 	clear_waypoint()
 
 func set_waypoint(target_scene: String, target_position: Vector2) -> void:
@@ -97,7 +94,6 @@ func set_waypoint(target_scene: String, target_position: Vector2) -> void:
 	active_waypoint_scene = target_scene
 	active_waypoint_position = target_position
 	waypoint_set.emit(target_scene, target_position)
-	print("📍 TaskManager: Waypoint set to ", target_scene, " at ", target_position)
 
 func clear_waypoint() -> void:
 	"""Clear the active waypoint"""
@@ -105,7 +101,6 @@ func clear_waypoint() -> void:
 		active_waypoint_scene = ""
 		active_waypoint_position = Vector2.ZERO
 		waypoint_cleared.emit()
-		print("📍 TaskManager: Waypoint cleared")
 
 func get_current_task() -> Dictionary:
 	return current_task

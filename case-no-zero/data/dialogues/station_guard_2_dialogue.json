@@ -1,16 +1,16 @@
 {
-  "station_guard_2": {
-    "first_interaction": [
-      {
-        "speaker": "Station Guard 2",
-        "text": "Gaya ng sinabi niya, hindi ka makakapasok dito."
-      }
-    ],
-    "repeated_interaction": [
-      {
-        "speaker": "Station Guard 2",
-        "text": "Gaya ng sinabi niya, hindi ka pa rin makakapasok dito."
-      }
-    ]
-  }
+	"station_guard_2": {
+		"first_interaction": [
+			{
+				"speaker": "Station Guard 2",
+				"text": "Gaya ng sinabi niya, hindi ka makakapasok dito."
+			}
+		],
+		"repeated_interaction": [
+			{
+				"speaker": "Station Guard 2",
+				"text": "Gaya ng sinabi niya, hindi ka pa rin makakapasok dito."
+			}
+		]
+	}
 }

@@ -27,10 +27,8 @@ func _setup_autosizing():
 		label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		# Enable auto-sizing
 	
-		print("📝 TaskDisplay: Task label auto-sizing enabled")
 
 func show_task(task_name: String):
-	print("🎯 TaskDisplay: Showing task -", task_name)
 	label.text = task_name
 	
 	# Dynamic font sizing based on text length
@@ -71,17 +69,13 @@ func _adjust_font_size_for_text(text: String):
 	# Apply font size to label
 	if label and label.label_settings:
 		label.label_settings.font_size = font_size
-		print("🎯 TaskDisplay: Adjusted font size to ", font_size, " for text length: ", char_count, " chars, ", line_count, " lines")
 	elif label:
 		# Create label_settings if it doesn't exist
 		label.label_settings = LabelSettings.new()
 		label.label_settings.font_size = font_size
-		print("🎯 TaskDisplay: Created label_settings and set font size to ", font_size)
 	else:
-		print("⚠️ TaskDisplay: No label found for font adjustment")
 
 func hide_task():
-	print("👋 TaskDisplay: Hiding task")
 	
 	# Slide out animation from right to left
 	var tween = create_tween()

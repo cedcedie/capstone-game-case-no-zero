@@ -60,7 +60,6 @@ func _ready() -> void:
 	var tree := get_tree()
 	var root := tree.current_scene if tree != null else null
 	if not _is_exterior_scene(root):
-		print("[Minimap] Current scene is not exterior - disabling minimap")
 		visible = false
 		_clear_minimap()
 		# Still connect to scene changes to re-check when scene changes
@@ -70,8 +69,6 @@ func _ready() -> void:
 			elif tree.has_signal("scene_changed"):
 				tree.connect("scene_changed", Callable(self, "_on_current_scene_changed"))
 		return
-
-	print("🗺️ Minimap ready (autoload expected) - exterior scene detected.")
 
 	# Build circular masked view from the SubViewport's texture (GTA-style round minimap)
 	_setup_circular_masked_view()
@@ -179,7 +176,6 @@ func _on_current_scene_changed(_new_scene: Node) -> void:
 	
 	# Check if new scene is exterior - if not, disable minimap
 	if not _is_exterior_scene(root):
-		print("[Minimap] New scene is not exterior - disabling minimap")
 		visible = false
 		_clear_minimap()
 		# Hide waypoint marker when not in exterior scene
@@ -187,8 +183,6 @@ func _on_current_scene_changed(_new_scene: Node) -> void:
 			waypoint_marker.visible = false
 		return
 	
-	print("[Minimap] current_scene_changed: exterior scene detected, building minimap")
-
 	# Ensure waypoint marker exists before proceeding
 	if waypoint_marker == null:
 		_create_waypoint_marker()
@@ -215,13 +209,11 @@ func _on_current_scene_changed(_new_scene: Node) -> void:
 	if root != null:
 		var key := _find_cached_scene_key(root)
 		if key != "" and scene_minimap_cache.has(key):
-			print("[Minimap] Using cached minimap for:", key)
 			_use_cached_minimap(key)
 			_resolve_player()
 			if player != null:
 				minimap_camera.global_position = player.global_position
 		else:
-			print("[Minimap] No cache for:", key, " -> scanning")
 			_scan_and_build()
 	else:
 		_scan_and_build()
@@ -237,7 +229,6 @@ func _on_current_scene_changed(_new_scene: Node) -> void:
 	await get_tree().process_frame  # Wait a frame for scene to fully load
 	var task_manager := get_node_or_null("/root/TaskManager")
 	if task_manager != null and task_manager.has_waypoint():
-		print("📍 Minimap: Re-checking waypoint after scene change to ", root.name if root else "unknown")
 		# Re-trigger waypoint display with current waypoint data
 		# This will recalculate the waypoint position based on the new scene
 		var target_scene: String = task_manager.get_current_task_scene_target()
@@ -258,7 +249,6 @@ func _on_transition_start() -> void:
 func _on_transition_complete(_target_scene_path: String = "") -> void:
 	# Called after scene change has been kicked off; wait for new scene to be current and ready
 	pending_scene_path = String(_target_scene_path)
-	print("[Minimap] transition_complete: target_path=", pending_scene_path)
 	if get_tree() != null:
 		await get_tree().process_frame
 		await get_tree().process_frame
@@ -272,7 +262,6 @@ func _on_transition_complete(_target_scene_path: String = "") -> void:
 	if root2 != null:
 		var key2 := _find_cached_scene_key(root2)
 		if key2 != "" and scene_minimap_cache.has(key2):
-			print("[Minimap] Using cached minimap after transition for:", key2)
 			_use_cached_minimap(key2)
 			_resolve_player()
 			if player != null:
@@ -282,7 +271,6 @@ func _on_transition_complete(_target_scene_path: String = "") -> void:
 					player_marker.visible = false
 			emit_signal("minimap_ready")
 			return
-	print("[Minimap] No cache after transition -> scanning/building")
 	_scan_and_build()
 	if minimap_root.get_child_count() > 0:
 		emit_signal("minimap_ready")
@@ -315,23 +303,21 @@ func _scan_and_build() -> void:
 		var normalized := _normalize_exterior_path(scene_path)
 		if normalized.is_empty():
 			# Not an exterior scene - clear minimap and return
-			print("[Minimap] Scene is not an exterior scene, clearing minimap:", scene_path)
 			_clear_minimap()
 			visible = false
 			return
-	else:
-		# No scene path - try to match by name
-		var scene_name := String(root.name)
-		var is_exterior := false
-		for p in EXTERIOR_PATHS:
-			if String(p).get_file().get_basename() == scene_name:
-				is_exterior = true
-				break
-		if not is_exterior:
-			print("[Minimap] Scene name not in exterior paths, clearing minimap:", scene_name)
-			_clear_minimap()
-			visible = false
-			return
+		else:
+			# No scene path - try to match by name
+			var scene_name := String(root.name)
+			var is_exterior := false
+			for p in EXTERIOR_PATHS:
+				if String(p).get_file().get_basename() == scene_name:
+					is_exterior = true
+					break
+			if not is_exterior:
+				_clear_minimap()
+				visible = false
+				return
 	
 	if root != null:
 		# Make sure minimap is visible for exterior scenes
@@ -339,7 +325,6 @@ func _scan_and_build() -> void:
 		# If we have a cached minimap for this scene, use it immediately
 		var key := _find_cached_scene_key(root)
 		if key != "" and scene_minimap_cache.has(key):
-			print("[Minimap] scan: using cached minimap for:", key)
 			_use_cached_minimap(key)
 			# Still try to acquire player for camera centering
 			var found_cached_player := tree.get_nodes_in_group("player")
@@ -378,7 +363,6 @@ func _scan_and_build() -> void:
 		# Cache the built minimap for this scene for instant reuse later
 		var save_key := _get_scene_cache_key(root)
 		_cache_current_minimap(save_key)
-		print("[Minimap] built and cached minimap for:", save_key)
 		# If no player, center camera on map bounds
 		if player == null:
 			var bounds := _compute_map_bounds()
@@ -402,7 +386,6 @@ func _scan_and_build() -> void:
 
 func _retry_build_loop() -> void:
 	if _build_retry_attempts >= _MAX_BUILD_ATTEMPTS:
-		print("[Minimap] retry stopped: max attempts reached")
 		return
 	_build_retry_attempts += 1
 	var tree := get_tree()
@@ -413,10 +396,8 @@ func _retry_build_loop() -> void:
 			return
 		# If already built (children exist), stop
 		if minimap_root.get_child_count() > 0:
-			print("[Minimap] retry success on attempt", _build_retry_attempts)
 			emit_signal("minimap_ready")
 			return
-		print("[Minimap] retry attempt", _build_retry_attempts)
 		_scan_and_build()
 		if minimap_root.get_child_count() == 0:
 			_retry_build_loop()
@@ -449,7 +430,6 @@ func _compute_map_bounds() -> Rect2:
 
 func _cache_current_minimap(scene_path: String) -> void:
 	if scene_path.is_empty():
-		print("[Minimap] cache skipped: empty scene_path")
 		return
 	# Create a temporary root and duplicate current minimap layers under it
 	var temp_root := Node2D.new()
@@ -462,9 +442,8 @@ func _cache_current_minimap(scene_path: String) -> void:
 	var ok := packed.pack(temp_root)
 	if ok == OK:
 		scene_minimap_cache[scene_path] = packed
-		print("[Minimap] cache stored for:", scene_path)
 	else:
-		print("[Minimap] cache pack FAILED for:", scene_path)
+		push_warning("[Minimap] cache pack FAILED for: " + scene_path)
 	# Cleanup temp container (its children will be freed with it)
 	temp_root.queue_free()
 	# Clear pending target once cached
@@ -473,12 +452,11 @@ func _cache_current_minimap(scene_path: String) -> void:
 
 func _use_cached_minimap(scene_path: String) -> void:
 	if not scene_minimap_cache.has(scene_path):
-		print("[Minimap] use_cache skipped: no entry for:", scene_path)
 		return
 	_clear_minimap()
 	var inst := (scene_minimap_cache[scene_path] as PackedScene).instantiate()
 	if inst == null:
-		print("[Minimap] use_cache FAILED: instantiate returned null for:", scene_path)
+		push_warning("[Minimap] use_cache FAILED: instantiate returned null for: " + scene_path)
 		return
 	# Move children from the instantiated container into minimap_root
 	for c in inst.get_children():
@@ -513,8 +491,6 @@ func _use_cached_minimap(scene_path: String) -> void:
 		if bounds.has_area():
 			var center := bounds.get_center()
 			minimap_camera.global_position = _clamp_camera_to_bounds(center)
-		else:
-			print("[Minimap] use_cache: empty bounds after instancing for:", scene_path)
 	
 	# Re-check waypoint after using cached minimap
 	var task_manager := get_node_or_null("/root/TaskManager")
@@ -719,7 +695,6 @@ func set_player(p: Node2D) -> void:
 		push_warning("Minimap.set_player called with null")
 		return
 	player = p
-	print("🎯 Minimap: tracking player:", player)
 
 
 func set_tilemap_layers(layers: Array) -> void:
@@ -775,8 +750,6 @@ func _copy_tilemap_layers() -> void:
 				var atlas_coords = src_layer.get_cell_atlas_coords(cell)
 				dst_layer.set_cell(cell, source_id, atlas_coords)
 				total_cells += 1
-
-	print("✅ Minimap: copied", tilemap_layers.size(), "layers, total cells:", total_cells)
 
 	# After copying, ensure masked view uses the latest viewport texture
 	if masked_rect != null and viewport != null:
@@ -843,7 +816,6 @@ func _process(_delta: float) -> void:
 					waypoint_marker.get_parent().remove_child(waypoint_marker)
 				if viewport != null:
 					viewport.add_child(waypoint_marker)
-					print("📍 Minimap: Waypoint marker re-parented to viewport in _process")
 			
 			# Update waypoint position based on current scene (in case scene changed)
 			# Get base position from TaskManager and recalculate for current scene
@@ -853,7 +825,6 @@ func _process(_delta: float) -> void:
 				var updated_pos: Vector2 = _get_waypoint_position_for_current_scene(waypoint_target_scene, base_pos)
 				if updated_pos.distance_to(waypoint_position) > 10.0:  # Only update if significantly different
 					waypoint_position = updated_pos
-					print("📍 Minimap: Updated waypoint position to ", waypoint_position, " for current scene")
 			
 			# Always use the waypoint position (target location) regardless of current scene
 			waypoint_marker.global_position = waypoint_position
@@ -958,14 +929,11 @@ func update_minimap() -> void:
 		push_warning("⚠️ Minimap.update_minimap() called but no tilemap layers are set.")
 		return
 
-	print("🔄 Minimap: updating...")
 	_copy_tilemap_layers()
 
 	if player != null:
 		var clamped_pos := _clamp_camera_to_bounds(player.global_position)
 		minimap_camera.global_position = clamped_pos
-
-	print("✅ Minimap: update complete.")
 
 func _center_minimap_on_screen() -> void:
 	if masked_rect == null:
@@ -1114,11 +1082,10 @@ func _create_waypoint_marker() -> void:
 			if waypoint_marker.get_parent() != null:
 				waypoint_marker.get_parent().remove_child(waypoint_marker)
 			viewport.add_child(waypoint_marker)
-			print("📍 Minimap: Waypoint marker re-parented to viewport in _create_waypoint_marker")
 		return  # Already created
 	
 	if viewport == null:
-		print("⚠️ Minimap: Cannot create waypoint marker - viewport is null")
+		push_warning("⚠️ Minimap: Cannot create waypoint marker - viewport is null")
 		return
 	
 	# Create waypoint marker using icon_4_6.png
@@ -1133,9 +1100,8 @@ func _create_waypoint_marker() -> void:
 		# Fallback to player marker icon if available
 		if player_marker != null and player_marker.texture != null:
 			waypoint_texture = player_marker.texture
-			print("📍 Minimap: Using player marker texture as fallback")
 		else:
-			print("⚠️ Minimap: No fallback texture available for waypoint marker")
+			push_warning("⚠️ Minimap: No fallback texture available for waypoint marker")
 			return
 	
 	waypoint_marker.texture = waypoint_texture
@@ -1147,10 +1113,8 @@ func _create_waypoint_marker() -> void:
 	viewport.add_child(waypoint_marker)
 	
 	# Verify it was added correctly
-	if waypoint_marker.get_parent() == viewport:
-		print("✅ Minimap: Waypoint marker created and added to viewport (z_index: ", waypoint_marker.z_index, ", scale: ", waypoint_marker.scale, ", texture: ", "loaded" if waypoint_marker.texture != null else "MISSING", ")")
-	else:
-		print("❌ Minimap: ERROR - Waypoint marker parent is not viewport! Parent: ", waypoint_marker.get_parent())
+	if waypoint_marker.get_parent() != viewport:
+		push_error("❌ Minimap: ERROR - Waypoint marker parent is not viewport! Parent: " + str(waypoint_marker.get_parent()))
 	
 	# Create edge indicator for when waypoint is off-screen
 	_create_waypoint_edge_indicator()
@@ -1168,7 +1132,7 @@ func _create_waypoint_edge_indicator() -> void:
 		if player_marker != null and player_marker.texture != null:
 			edge_texture = player_marker.texture
 		else:
-			print("⚠️ Minimap: Cannot create edge indicator - no texture available")
+			push_warning("⚠️ Minimap: Cannot create edge indicator - no texture available")
 			return
 	
 	waypoint_edge_indicator = Sprite2D.new()
@@ -1181,7 +1145,6 @@ func _create_waypoint_edge_indicator() -> void:
 	
 	# Add to CanvasLayer (not viewport) so it's always visible
 	add_child(waypoint_edge_indicator)
-	print("✅ Minimap: Waypoint edge indicator created")
 
 func _update_waypoint_edge_indicator(camera_pos: Vector2, waypoint_pos: Vector2, viewport_size: Vector2) -> void:
 	"""Update the edge indicator position and rotation to point toward the waypoint"""
@@ -1199,11 +1162,6 @@ func _update_waypoint_edge_indicator(camera_pos: Vector2, waypoint_pos: Vector2,
 		return
 	
 	var direction := waypoint_offset.normalized()
-	
-	# Debug: Print direction info every 120 frames to verify it's pointing correctly
-	if Engine.get_process_frames() % 120 == 0:
-		var angle_deg := rad_to_deg(atan2(direction.y, direction.x))
-		print("📍 Edge Indicator: Camera at ", camera_pos, ", Waypoint at ", waypoint_pos, ", Direction: ", direction, ", Angle: ", angle_deg, "°")
 	
 	# Get minimap circle position and size
 	if masked_rect == null:
@@ -1313,13 +1271,9 @@ func _get_waypoint_position_for_current_scene(target_scene: String, base_positio
 			var collision := transition_area.find_child("CollisionShape2D", true, false)
 			if collision != null and collision is CollisionShape2D:
 				var collision_pos := (collision as CollisionShape2D).global_position
-				print("📍 Minimap: Found transition area '", transition_area_name, "' at ", collision_pos, " (Area2D: ", area_pos, ")")
 				return collision_pos
 			else:
-				print("📍 Minimap: Found transition area '", transition_area_name, "' at ", area_pos, " (no CollisionShape2D)")
 				return area_pos
-		else:
-			print("⚠️ Minimap: Transition area '", transition_area_name, "' not found in current scene")
 	
 	# Fallback to base position if transition area not found
 	return base_position
@@ -1338,7 +1292,7 @@ func _on_waypoint_set(target_scene: String, target_position: Vector2) -> void:
 	if waypoint_marker == null:
 		_create_waypoint_marker()
 		if waypoint_marker == null:
-			print("⚠️ Minimap: Failed to create waypoint marker")
+			push_warning("⚠️ Minimap: Failed to create waypoint marker")
 			return
 	
 	# Ensure edge indicator exists
@@ -1351,12 +1305,10 @@ func _on_waypoint_set(target_scene: String, target_position: Vector2) -> void:
 			waypoint_marker.get_parent().remove_child(waypoint_marker)
 		if viewport != null:
 			viewport.add_child(waypoint_marker)
-			print("📍 Minimap: Waypoint marker re-parented to viewport")
 	
 	# Check if we're in an exterior scene
 	var current_scene := get_tree().current_scene
 	if current_scene == null:
-		print("⚠️ Minimap: No current scene for waypoint")
 		waypoint_active = false
 		if waypoint_marker != null:
 			waypoint_marker.visible = false
@@ -1377,12 +1329,10 @@ func _on_waypoint_set(target_scene: String, target_position: Vector2) -> void:
 		waypoint_marker.z_index = 1000  # Above everything
 		waypoint_marker.scale = Vector2(1.0, 1.0)  # Very small - similar to minimap arrow size
 		waypoint_marker.modulate = Color(1, 0.2, 0.2, 1)  # Bright red
-		print("📍 Minimap: Waypoint shown at ", target_position, " pointing to ", target_scene, " (current scene: ", current_scene_path, ", is_exterior: ", is_exterior, ", marker visible: ", waypoint_marker.visible, ", scale: ", waypoint_marker.scale, ", z_index: ", waypoint_marker.z_index, ")")
 	else:
 		waypoint_active = false
 		if waypoint_marker != null:
 			waypoint_marker.visible = false
-		print("📍 Minimap: Waypoint set but not in exterior scene (current: ", current_scene_path, ", target: ", target_scene, ", is_exterior: ", is_exterior, ")")
 
 func _on_waypoint_cleared() -> void:
 	"""Handle waypoint cleared signal from TaskManager - called when task is completed"""
@@ -1395,5 +1345,3 @@ func _on_waypoint_cleared() -> void:
 		waypoint_marker.visible = false
 	if waypoint_edge_indicator != null:
 		waypoint_edge_indicator.visible = false
-	
-	print("📍 Minimap: Waypoint cleared - indicator hidden (task completed)")

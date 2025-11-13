@@ -10,6 +10,8 @@ var fade_layer: CanvasLayer
 var fade_rect: ColorRect
 var resume_on_next: bool = false
 var cutscene_active: bool = false
+var original_camera_offset: Vector2 = Vector2.ZERO
+var original_camera_zoom: Vector2 = Vector2.ONE
 
 func _ready() -> void:
 	_hide_celine()
@@ -461,7 +463,6 @@ func _set_celine_call_completed() -> void:
 	# Update task in TaskManager to trigger waypoint indicator change
 	if TaskManager and TaskManager.has_method("update_task"):
 		TaskManager.update_task("Pumunta sa baranggay")
-		print("📍 TaskManager: Updated task to 'Pumunta sa baranggay' - waypoint should now point to barangay hall")
 	
 	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
 		DialogueUI.set_cutscene_mode(false)
@@ -709,6 +710,114 @@ func camera_zoom_in_out(target_zoom: float = 1.5, duration: float = 0.5, hold_du
 	var tween_out := create_tween()
 	tween_out.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween_out.tween_property(cam, "zoom", original_zoom, duration)
+	await tween_out.finished
+
+func _get_node2d_global_position(node: Node) -> Vector2:
+	"""Get the global position of a Node2D, handling CharacterBody2D and regular Node2D"""
+	if node is CharacterBody2D:
+		return (node as CharacterBody2D).global_position
+	elif node is Node2D:
+		return (node as Node2D).global_position
+	else:
+		return Vector2.ZERO
+
+func _get_player_global_position() -> Vector2:
+	"""Get player's global position"""
+	if player_node == null:
+		player_node = _find_player()
+	if player_node == null:
+		return Vector2.ZERO
+	return _get_node2d_global_position(player_node)
+
+# ---- Camera position functions ----
+func camera_move_to_position(target_position: Vector2, target_zoom: float = 1.5, move_duration: float = 0.5, hold_duration: float = 0.0) -> void:
+	"""Move camera to center on specific world position with instant zoom
+	
+	Args:
+		target_position: World position to center camera on
+		target_zoom: Zoom level (applied instantly, default: 1.5)
+		move_duration: Time it takes to move camera to position (default: 0.5 seconds)
+		hold_duration: Time to stay at position before returning (0 = stay forever, default: 0.0)
+	"""
+	var cam: Camera2D = _get_camera_2d()
+	if cam == null:
+		return
+	
+	var cam_parent: Node2D = cam.get_parent() as Node2D
+	if cam_parent == null:
+		return
+	
+	# Store original position and zoom if not already stored
+	if original_camera_offset == Vector2.ZERO:
+		original_camera_offset = cam.offset
+	if original_camera_zoom == Vector2.ZERO or original_camera_zoom == Vector2.ONE:
+		original_camera_zoom = cam.zoom
+	
+	# Calculate offset needed to center on target position
+	# Camera's global position = cam_parent.global_position + cam.offset
+	var current_global_pos: Vector2 = cam_parent.global_position + cam.offset
+	var offset_needed: Vector2 = target_position - cam_parent.global_position
+	
+	var target_zoom_vec := Vector2(target_zoom, target_zoom)
+	cam.zoom = target_zoom_vec
+	
+	# Tween camera offset to move to target position
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(cam, "offset", offset_needed, move_duration)
+	await tween.finished
+	
+	if hold_duration > 0.0:
+		await get_tree().create_timer(hold_duration).timeout
+		var return_tween := create_tween()
+		return_tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		return_tween.tween_property(cam, "offset", original_camera_offset, move_duration)
+		await return_tween.finished
+		cam.zoom = original_camera_zoom
+
+func camera_zoom_to_body2d(target: CharacterBody2D, target_zoom: float = 1.5, duration_in: float = 0.5, hold_duration: float = 1.0, duration_out: float = 0.5) -> void:
+	if target == null:
+		return
+	
+	var cam: Camera2D = _get_camera_2d()
+	if cam == null:
+		return
+	
+	# Store original values if not already stored
+	if original_camera_offset == Vector2.ZERO:
+		original_camera_offset = cam.offset
+	if original_camera_zoom == Vector2.ZERO or original_camera_zoom == Vector2.ONE:
+		original_camera_zoom = cam.zoom
+	
+	var target_pos := target.global_position
+	var player_pos := _get_player_global_position()
+	
+	var delta := target_pos - player_pos
+	var max_offset := Vector2(400.0, 300.0)  # Reasonable pan distance
+	if abs(delta.x) > max_offset.x:
+		delta.x = sign(delta.x) * max_offset.x
+	if abs(delta.y) > max_offset.y:
+		delta.y = sign(delta.y) * max_offset.y
+	
+	var target_offset := original_camera_offset + delta
+	var target_zoom_vec := Vector2(target_zoom, target_zoom)
+	
+	# Zoom in and pan to character simultaneously
+	var tween_in := create_tween()
+	tween_in.set_parallel(true)
+	tween_in.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween_in.tween_property(cam, "offset", target_offset, duration_in)
+	tween_in.tween_property(cam, "zoom", target_zoom_vec, duration_in)
+	await tween_in.finished
+	
+	if hold_duration > 0.0:
+		await get_tree().create_timer(hold_duration).timeout
+	
+	var tween_out := create_tween()
+	tween_out.set_parallel(true)
+	tween_out.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween_out.tween_property(cam, "offset", original_camera_offset, duration_out)
+	tween_out.tween_property(cam, "zoom", original_camera_zoom, duration_out)
 	await tween_out.finished
 
 func _setup_fade() -> void:

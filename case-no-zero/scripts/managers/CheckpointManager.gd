@@ -17,7 +17,8 @@ enum CheckpointType {
 	SECURITY_SERVER_CUTSCENE_2_COMPLETED,
 	CELINE_CALL_COMPLETED,
 	BARANGAY_HALL_CUTSCENE_COMPLETED,
-	MORGUE_COMPLETED
+	MORGUE_CUTSCENE_COMPLETED,
+	CINEMATIC_TEXT_CUTSCENE_COMPLETED
 }
 
 # Current checkpoint states
@@ -81,19 +82,14 @@ func debug_set_phase(phase: String) -> void:
 	clear_all_checkpoints()
 	match phase.to_lower():
 		"start":
-			print("🔄 DEBUG: Reset to start - no checkpoints set")
 		"office":
 			set_checkpoint(CheckpointType.OFFICE_CUTSCENE_COMPLETED)
-			print("🔄 DEBUG: Set to office cutscene completed")
 		_:
-			print("⚠️ DEBUG: Unknown phase. Use: start, office")
 
 func clear_all_checkpoints() -> void:
 	"""Clear all checkpoints without saving"""
 	checkpoints.clear()
-	print("🔄 DEBUG: All checkpoints cleared from memory")
 
 func debug_clear_file() -> void:
 	"""Debug function to completely clear checkpoint file"""
 	clear_checkpoint_file()
-	print("🗑️ DEBUG: Checkpoint file completely deleted")

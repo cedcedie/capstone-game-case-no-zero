@@ -89,7 +89,6 @@ func get_pitch_for_speaker(speaker: String) -> float:
 
 func play_simple_tone(speaker: String):
 	"""Play a simple tone using the system beep"""
-	print("🎵 Playing simple tone for: " + speaker)
 	# Just play a short beep with character-specific pitch
 	voice_blip_player.volume_db = 0
 	voice_blip_player.pitch_scale = get_pitch_for_speaker(speaker)
@@ -100,7 +99,6 @@ func play_synthesized_voice(freq: float, duration: float, volume: float):
 	if not voice_blip_player:
 		return
 	
-	print("🎵 Generating voice blip: freq=" + str(freq) + ", duration=" + str(duration))
 	
 	# Create a simple generator for voice blips
 	var gen = AudioStreamGenerator.new()
@@ -111,13 +109,11 @@ func play_synthesized_voice(freq: float, duration: float, volume: float):
 	
 	# Start playing first
 	voice_blip_player.play()
-	print("🎵 Voice blip player started")
 	
 	# Get playback after starting
 	await get_tree().process_frame  # Wait one frame for playback to be available
 	var playback = voice_blip_player.get_stream_playback()
 	if not playback:
-		print("⚠️ No playback available after waiting!")
 		voice_blip_player.stop()
 		return
 	
@@ -145,12 +141,10 @@ func play_synthesized_voice(freq: float, duration: float, volume: float):
 		
 		playback.push_frame(Vector2(wave, wave))
 	
-	print("🎵 Voice blip generation complete")
 	
 	# Stop after duration
 	await get_tree().create_timer(duration).timeout
 	voice_blip_player.stop()
-	print("🎵 Voice blip finished")
 
 func play_ringtone(ring_count: int = 3, ring_duration: float = 0.2, pause_duration: float = 0.3) -> float:
 	"""Play bleep009 in a ringtone pattern (ring-pause-ring-pause-ring)
@@ -180,10 +174,8 @@ func play_ringtone(ring_count: int = 3, ring_duration: float = 0.2, pause_durati
 				# Get actual duration of the sound file
 				if stream is AudioStream:
 					var actual_duration = (stream as AudioStream).get_length()
-					print("📞 Ringtone sound duration: ", actual_duration, " seconds")
 	
 	if not stream:
-		print("⚠️ Failed to load ringtone sound: ", ringtone_path)
 		return 0.0
 	
 	# Calculate total duration
@@ -208,5 +200,4 @@ func play_ringtone(ring_count: int = 3, ring_duration: float = 0.2, pause_durati
 			await get_tree().create_timer(pause_duration).timeout
 			total_duration += pause_duration
 	
-	print("📞 Ringtone finished. Total duration: ", total_duration, " seconds")
 	return total_duration

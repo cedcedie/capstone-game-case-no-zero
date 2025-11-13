@@ -12,17 +12,12 @@ var original_camera_zoom: Vector2 = Vector2.ONE
 var audio_player: AudioStreamPlayer = null
 
 func _ready() -> void:
-	print("🎬 Alley: _ready() started")
 	# Prepare cutscene: disable player, load dialogue, and optionally auto-start animation
 	_setup_fade()
-	print("🎬 Fade setup complete")
 	player_node = _find_player()
-	print("🎬 Player found: ", player_node != null, " - Node: ", player_node)
 	if player_node != null:
-		print("🎬 Player has disable_movement method: ", player_node.has_method("disable_movement"))
 	_set_player_active(false)
 	_load_dialogue_if_available()
-	print("🎬 Dialogue loaded: ", dialogue_lines.size(), " lines")
 	# Connect DialogueUI next_pressed signal to resume animation
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui and dui.has_signal("next_pressed") and not dui.next_pressed.is_connected(_on_dialogue_next):
@@ -46,29 +41,21 @@ func _ready() -> void:
 	if cam != null:
 		original_camera_offset = cam.offset
 		original_camera_zoom = cam.zoom
-		print("🎬 Camera offset and zoom captured: ", original_camera_offset, ", ", original_camera_zoom)
 	
 	# Start cutscene - play alley_cutscene animation
-	print("🎬 Starting fade in...")
 	cutscene_active = true
 	show_environment_and_characters()
 	await fade_in()
-	print("🎬 Fade in complete, checking animation...")
 	if anim_player:
-		print("🎬 AnimationPlayer found, available animations: ", anim_player.get_animation_list())
 		# Play the alley_cutscene animation specifically
 		if anim_player.has_animation("alley_cutscene"):
-			print("🎬 Playing 'alley_cutscene' animation")
 			anim_player.play("alley_cutscene")
 		else:
-			print("⚠️ No 'alley_cutscene' animation found. Available animations: ", anim_player.get_animation_list())
 			# Fallback to first available animation
 			if anim_player.get_animation_list().size() > 0:
 				var first_anim = anim_player.get_animation_list()[0]
-				print("🎬 Playing first available animation: ", first_anim)
 				anim_player.play(first_anim)
 	else:
-		print("⚠️ AnimationPlayer node not found!")
 
 func end_cutscene() -> void:
 	# Hide dialogue UI
@@ -77,10 +64,8 @@ func end_cutscene() -> void:
 	# Set checkpoint after cutscene completes
 	cutscene_active = false
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.ALLEY_CUTSCENE_COMPLETED)
-	print("🎬 Alley cutscene completed - checkpoint set.")
 	
 	# Fade out to black after static
-	print("🎬 Fading out after static...")
 	await fade_out(0.5)
 	
 	# Transition to security server scene and play security_server_cutscene_2 animation
@@ -89,7 +74,6 @@ func end_cutscene() -> void:
 # Transition to another scene and optionally play an animation
 func transition_to_scene(target_scene_path: String, animation_name: String = "", skip_fade: bool = false) -> void:
 	"""Transition to another scene and optionally play an animation there"""
-	print("🎬 Transitioning to scene: ", target_scene_path)
 	
 	# Dramatic fade out current scene before transition (unless already faded)
 	if not skip_fade:
@@ -101,20 +85,16 @@ func transition_to_scene(target_scene_path: String, animation_name: String = "",
 	# Change scene
 	var tree := get_tree()
 	if tree == null:
-		print("⚠️ Cannot transition - tree is null")
 		return
 	
 	var result: Error
 	if ScenePreloader and ScenePreloader.is_scene_preloaded(target_scene_path):
-		print("🚀 Using preloaded scene: ", target_scene_path.get_file())
 		var preloaded_scene = ScenePreloader.get_preloaded_scene(target_scene_path)
 		result = tree.change_scene_to_packed(preloaded_scene)
 	else:
-		print("📁 Loading scene from file: ", target_scene_path.get_file())
 		result = tree.change_scene_to_file(target_scene_path)
 	
 	if result != OK:
-		print("❌ Failed to change scene to: ", target_scene_path)
 		return
 	
 	# Wait for scene to be ready
@@ -131,10 +111,8 @@ func transition_to_scene(target_scene_path: String, animation_name: String = "",
 				new_anim_player = new_scene.find_child("AnimationPlayer", true, false) as AnimationPlayer
 			
 			if new_anim_player and new_anim_player.has_animation(animation_name):
-				print("🎬 Playing animation '", animation_name, "' in new scene")
 				new_anim_player.play(animation_name)
 			else:
-				print("⚠️ AnimationPlayer not found or animation '", animation_name, "' not available in new scene")
 	
 	# Note: SceneFadeIn autoload handles fade-in automatically, no need to fade here
 
@@ -178,7 +156,6 @@ func hide_environment_and_characters(duration: float = 0.5) -> void:
 	if elements_to_fade.is_empty():
 		return
 
-	print("🎬 Fading out ", elements_to_fade.size(), " environment elements")
 	
 	for element in elements_to_fade:
 		element.modulate.a = 1.0
@@ -197,7 +174,6 @@ func hide_environment_and_characters(duration: float = 0.5) -> void:
 		element.visible = false
 		element.modulate.a = 1.0
 	
-	print("🎬 Environment fade out complete")
 
 func show_environment_and_characters(duration: float = 0.5) -> void:
 	var root_scene := get_tree().current_scene
@@ -227,7 +203,6 @@ func show_environment_and_characters(duration: float = 0.5) -> void:
 		element.visible = true
 		element.modulate.a = 0.0
 	
-	print("🎬 Fading in ", elements_to_fade.size(), " environment elements")
 	
 	var tween := create_tween()
 	tween.set_parallel(true)
@@ -237,7 +212,6 @@ func show_environment_and_characters(duration: float = 0.5) -> void:
 		tween.tween_property(element, "modulate:a", 1.0, duration)
 	
 	await tween.finished
-	print("🎬 Environment fade in complete")
 
 # ---- Fade helpers ----
 func _setup_fade() -> void:
@@ -256,19 +230,16 @@ func _setup_fade() -> void:
 	fade_rect.offset_right = 0
 	fade_rect.offset_bottom = 0
 	fade_layer.add_child(fade_rect)
-	print("🎬 Fade layer created with alpha: ", fade_rect.modulate.a)
 
 func fade_in(duration: float = 0.5) -> void:
 	if not fade_rect:
 		_setup_fade()
 	fade_rect.visible = true
 	fade_rect.modulate.a = 1.0
-	print("🎬 Fade in starting from alpha: ", fade_rect.modulate.a)
 	var t := create_tween()
 	t.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	t.tween_property(fade_rect, "modulate:a", 0.0, duration)
 	await t.finished
-	print("🎬 Fade in complete, alpha: ", fade_rect.modulate.a)
 	fade_rect.visible = false
 
 func fade_out(duration: float = 0.5) -> void:
@@ -286,7 +257,6 @@ func dramatic_footage_static(static_duration: float = 3.0) -> void:
 	if not fade_rect:
 		_setup_fade()
 	
-	print("🎬 Corrupted SD card video effect starting...")
 	
 	# Smooth updates for video corruption effect
 	var static_frames := int(static_duration * 60.0)  # 60 fps
@@ -392,7 +362,6 @@ func dramatic_footage_static(static_duration: float = 3.0) -> void:
 	# Reset to black
 	fade_rect.color = Color.BLACK
 	fade_rect.modulate.a = 1.0
-	print("🎬 Corrupted SD card video effect complete")
 
 func ease_in_out_cubic(t: float) -> float:
 	"""Smooth ease in/out cubic curve for intensity progression"""
@@ -408,7 +377,6 @@ func show_line(index: int, auto_advance: bool = false) -> void:
 	var text: String = String(line.get("text", ""))
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui == null:
-		print("⚠️ DialogueUI autoload not found.")
 		return
 	if dui.has_method("show_dialogue_line"):
 		dui.show_dialogue_line(speaker, text, auto_advance)
@@ -428,9 +396,7 @@ func show_line(index: int, auto_advance: bool = false) -> void:
 			# Auto-advance by emitting next_pressed signal
 			if dui.has_signal("next_pressed"):
 				dui.emit_signal("next_pressed")
-				print("🎬 Auto-advanced after typing + 2s delay")
 		return
-	print("⚠️ DialogueUI missing show_dialogue_line().")
 
 func show_line_auto_advance(index: int, delay_after: float = 2.0) -> void:
 	"""Show a line with auto-advance: wait for typing to finish + delay, then auto-advance"""
@@ -457,7 +423,6 @@ func show_line_auto_advance(index: int, delay_after: float = 2.0) -> void:
 	
 	# Total time calculation for reference
 	var total_time: float = typing_duration + delay_after
-	print("🎬 Auto-advance: Text length=", text_length, " chars, Typing=", typing_duration, "s, Delay=", delay_after, "s, Total=", total_time, "s")
 	
 	# Auto-advance by emitting next_pressed signal
 	var dui: Node = get_node_or_null("/root/DialogueUI")
@@ -474,7 +439,6 @@ func wait_for_next() -> void:
 	resume_on_next = true
 	if anim_player:
 		anim_player.pause()
-		print("🎬 Animation paused, waiting for next_pressed")
 
 func show_line_wait(index: int) -> void:
 	if index < 0 or index >= dialogue_lines.size():
@@ -486,7 +450,6 @@ func show_line_wait(index: int) -> void:
 func show_dialogue_line_wait(speaker: String, text: String) -> void:
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui == null:
-		print("⚠️ DialogueUI autoload not found.")
 		return
 	if dui.has_method("set_cutscene_mode"):
 		dui.set_cutscene_mode(true)
@@ -494,7 +457,6 @@ func show_dialogue_line_wait(speaker: String, text: String) -> void:
 		dui.show_dialogue_line(speaker, text, false)
 		wait_for_next()
 	else:
-		print("⚠️ DialogueUI missing show_dialogue_line().")
 
 func _on_dialogue_next() -> void:
 	if player_node != null:
@@ -504,7 +466,6 @@ func _on_dialogue_next() -> void:
 			player_node.velocity = Vector2.ZERO
 	if resume_on_next and anim_player:
 		resume_on_next = false
-		print("🎬 Resuming animation after next_pressed")
 		anim_player.play()
 
 func show_lines_sequence(lines: Array[Dictionary]) -> void:
@@ -524,20 +485,16 @@ func _hide_dialogue_ui() -> void:
 func _load_dialogue_if_available() -> void:
 	var path := "res://data/dialogues/alley_cutscene.json"
 	if not ResourceLoader.exists(path):
-		print("⚠️ Dialogue file not found: ", path)
 		return
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
-		print("⚠️ Cannot open dialogue file: ", path)
 		return
 	var parsed: Variant = JSON.parse_string(file.get_as_text())
 	file.close()
 	if typeof(parsed) != TYPE_DICTIONARY:
-		print("⚠️ Invalid dialogue JSON format")
 		return
 	var section: Variant = (parsed as Dictionary).get("alley_cutscene", {})
 	if typeof(section) != TYPE_DICTIONARY:
-		print("⚠️ Missing 'alley_cutscene' section in dialogue file")
 		return
 	var arr: Variant = (section as Dictionary).get("dialogue_lines", [])
 	if typeof(arr) == TYPE_ARRAY:
@@ -549,7 +506,6 @@ func _load_dialogue_if_available() -> void:
 func shake_camera(intensity: float = 6.0, duration: float = 0.3) -> void:
 	var cam: Camera2D = _get_camera_2d()
 	if cam == null:
-		print("⚠️ No Camera2D found to shake.")
 		return
 	var original_offset: Vector2 = cam.offset
 	var tween := create_tween()
@@ -592,7 +548,6 @@ func _get_camera_2d() -> Camera2D:
 			else:
 				cam = leo_mendoza.get_node_or_null("Camera2D")
 			if cam is Camera2D:
-				print("🎬 Camera found from leo_mendoza")
 				return cam
 	
 	return null
@@ -658,13 +613,11 @@ func camera_move_to_position(target_position: Vector2, target_zoom: float = 1.5,
 	"""
 	var cam: Camera2D = _get_camera_2d()
 	if cam == null:
-		print("⚠️ No Camera2D found for position move")
 		return
 	
 	# Get the camera's parent (likely the character node)
 	var cam_parent: Node2D = cam.get_parent() as Node2D
 	if cam_parent == null:
-		print("⚠️ Camera parent not found or not a Node2D")
 		return
 	
 	# Store original position and zoom if not already stored
@@ -678,44 +631,34 @@ func camera_move_to_position(target_position: Vector2, target_zoom: float = 1.5,
 	var current_global_pos: Vector2 = cam_parent.global_position + cam.offset
 	var offset_needed: Vector2 = target_position - cam_parent.global_position
 	
-	print("🎬 Camera moving to position: ", target_position)
-	print("   Target zoom: ", target_zoom, " (instant)")
-	print("   Move duration: ", move_duration, "s")
-	print("   Hold duration: ", hold_duration, "s (0 = stay forever)")
 	
 	# Apply zoom instantly
 	var target_zoom_vec := Vector2(target_zoom, target_zoom)
 	cam.zoom = target_zoom_vec
-	print("🎬 Camera zoom set instantly to: ", target_zoom_vec)
 	
 	# Tween camera offset to move to target position
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(cam, "offset", offset_needed, move_duration)
 	await tween.finished
-	print("🎬 Camera moved to position: ", target_position)
 	
 	# If hold_duration > 0, wait then return to original position
 	if hold_duration > 0.0:
 		await get_tree().create_timer(hold_duration).timeout
-		print("🎬 Returning camera to original position...")
 		var return_tween := create_tween()
 		return_tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 		return_tween.tween_property(cam, "offset", original_camera_offset, move_duration)
 		await return_tween.finished
 		# Return zoom to original
 		cam.zoom = original_camera_zoom
-		print("🎬 Camera returned to original position and zoom")
 
 func camera_zoom_to_body2d(target: CharacterBody2D, target_zoom: float = 1.5, duration_in: float = 0.5, hold_duration: float = 1.0, duration_out: float = 0.5) -> void:
 	"""Zoom camera to a specific CharacterBody2D node"""
 	if target == null:
-		print("⚠️ Target CharacterBody2D is null")
 		return
 	
 	var cam: Camera2D = _get_camera_2d()
 	if cam == null:
-		print("⚠️ No Camera2D found for zoom")
 		return
 	
 	# Store original values if not already stored
@@ -727,7 +670,6 @@ func camera_zoom_to_body2d(target: CharacterBody2D, target_zoom: float = 1.5, du
 	var target_pos := target.global_position
 	var player_pos := _get_player_global_position()
 	
-	print("🎬 Camera zoom to Body2D at: ", target_pos)
 	
 	# Calculate target offset to center on character
 	var delta := target_pos - player_pos
@@ -747,7 +689,6 @@ func camera_zoom_to_body2d(target: CharacterBody2D, target_zoom: float = 1.5, du
 	tween_in.tween_property(cam, "offset", target_offset, duration_in)
 	tween_in.tween_property(cam, "zoom", target_zoom_vec, duration_in)
 	await tween_in.finished
-	print("🎬 Camera zoomed and panned to Body2D")
 	
 	# Hold at zoomed position
 	if hold_duration > 0.0:
@@ -760,7 +701,6 @@ func camera_zoom_to_body2d(target: CharacterBody2D, target_zoom: float = 1.5, du
 	tween_out.tween_property(cam, "offset", original_camera_offset, duration_out)
 	tween_out.tween_property(cam, "zoom", original_camera_zoom, duration_out)
 	await tween_out.finished
-	print("🎬 Camera zoomed back to original position")
 
 # ---- Player helpers ----
 func _find_player() -> Node:
@@ -783,7 +723,6 @@ func _set_player_active(active: bool) -> void:
 	if player_node == null:
 		player_node = _find_player()
 	if player_node == null:
-		print("⚠️ Cannot set player active - player not found")
 		return
 	
 	if not active:
@@ -795,7 +734,6 @@ func _set_player_active(active: bool) -> void:
 			player_node.set_process_input(false)
 		if player_node.has_method("set_physics_process"):
 			player_node.set_physics_process(false)
-		print("🎬 Player movement disabled")
 	else:
 		if player_node.has_method("enable_movement"):
 			player_node.enable_movement()
@@ -805,31 +743,25 @@ func _set_player_active(active: bool) -> void:
 			player_node.set_physics_process(true)
 		if "control_enabled" in player_node:
 			player_node.control_enabled = true
-		print("🎬 Player movement enabled")
 
 # ---- Audio helpers ----
 func stop_audio_fade(audio_node_path: NodePath, fade_duration: float = 0.5) -> void:
 	"""Stop AudioStreamPlayer with fade out - call from AnimationPlayer with NodePath to the AudioStreamPlayer"""
 	var root_scene := get_tree().current_scene
 	if root_scene == null:
-		print("⚠️ Scene not found")
 		return
 	
 	var audio_node: Node = root_scene.get_node_or_null(audio_node_path)
 	if audio_node == null:
-		print("⚠️ AudioStreamPlayer not found at path: ", audio_node_path)
 		return
 	
 	if not audio_node is AudioStreamPlayer:
-		print("⚠️ Node at path is not an AudioStreamPlayer: ", audio_node_path)
 		return
 	
 	var audio_player: AudioStreamPlayer = audio_node as AudioStreamPlayer
 	if not audio_player.playing:
-		print("🎵 AudioStreamPlayer (", audio_node_path, ") is not playing")
 		return
 	
-	print("🎵 Fading out AudioStreamPlayer (", audio_node_path, ")...")
 	var original_volume: float = audio_player.volume_db
 	var fade_tween := create_tween()
 	fade_tween.set_ease(Tween.EASE_IN_OUT)
@@ -838,13 +770,11 @@ func stop_audio_fade(audio_node_path: NodePath, fade_duration: float = 0.5) -> v
 	await fade_tween.finished
 	audio_player.stop()
 	audio_player.volume_db = original_volume
-	print("🎵 AudioStreamPlayer (", audio_node_path, ") stopped with fade out")
 
 func stop_main_bg(fade_duration: float = 0.5) -> void:
 	"""Stop MainBG AudioStreamPlayer with fade out (can be called from AnimationPlayer)"""
 	var root_scene := get_tree().current_scene
 	if root_scene == null:
-		print("⚠️ Scene not found")
 		return
 	
 	var main_bg: AudioStreamPlayer = root_scene.get_node_or_null("MainBG") as AudioStreamPlayer
@@ -852,14 +782,11 @@ func stop_main_bg(fade_duration: float = 0.5) -> void:
 		main_bg = root_scene.find_child("MainBG", true, false) as AudioStreamPlayer
 	
 	if main_bg == null:
-		print("⚠️ MainBG AudioStreamPlayer not found")
 		return
 	
 	if not main_bg.playing:
-		print("🎵 MainBG is not playing")
 		return
 	
-	print("🎵 Fading out MainBG...")
 	var original_volume: float = main_bg.volume_db
 	var fade_tween := create_tween()
 	fade_tween.set_ease(Tween.EASE_IN_OUT)
@@ -868,13 +795,11 @@ func stop_main_bg(fade_duration: float = 0.5) -> void:
 	await fade_tween.finished
 	main_bg.stop()
 	main_bg.volume_db = original_volume
-	print("🎵 MainBG stopped with fade out")
 
 func stop_suspense_bg(fade_duration: float = 0.5) -> void:
 	"""Stop SuspenseBG AudioStreamPlayer with fade out (can be called from AnimationPlayer)"""
 	var root_scene := get_tree().current_scene
 	if root_scene == null:
-		print("⚠️ Scene not found")
 		return
 	
 	var suspense_bg: AudioStreamPlayer = root_scene.get_node_or_null("SuspenseBG") as AudioStreamPlayer
@@ -882,14 +807,11 @@ func stop_suspense_bg(fade_duration: float = 0.5) -> void:
 		suspense_bg = root_scene.find_child("SuspenseBG", true, false) as AudioStreamPlayer
 	
 	if suspense_bg == null:
-		print("⚠️ SuspenseBG AudioStreamPlayer not found")
 		return
 	
 	if not suspense_bg.playing:
-		print("🎵 SuspenseBG is not playing")
 		return
 	
-	print("🎵 Fading out SuspenseBG...")
 	var original_volume: float = suspense_bg.volume_db
 	var fade_tween := create_tween()
 	fade_tween.set_ease(Tween.EASE_IN_OUT)
@@ -898,13 +820,11 @@ func stop_suspense_bg(fade_duration: float = 0.5) -> void:
 	await fade_tween.finished
 	suspense_bg.stop()
 	suspense_bg.volume_db = original_volume
-	print("🎵 SuspenseBG stopped with fade out")
 
 func start_main_bg() -> void:
 	"""Start MainBG AudioStreamPlayer (no fade in) - can be called from AnimationPlayer"""
 	var root_scene := get_tree().current_scene
 	if root_scene == null:
-		print("⚠️ Scene not found")
 		return
 	
 	# Try multiple ways to find the node
@@ -915,25 +835,20 @@ func start_main_bg() -> void:
 		main_bg = root_scene.find_child("MainBG", true, false) as AudioStreamPlayer
 	
 	if main_bg == null:
-		print("⚠️ MainBG AudioStreamPlayer not found. Scene root: ", root_scene.name)
 		var children_names: Array[String] = []
 		for child in root_scene.get_children():
 			children_names.append(child.name)
-		print("   Available children: ", children_names)
 		return
 	
 	if main_bg.playing:
-		print("🎵 MainBG is already playing")
 		return
 	
-	print("🎵 Starting MainBG...")
 	main_bg.play()
 
 func start_suspense_bg() -> void:
 	"""Start SuspenseBG AudioStreamPlayer (no fade in) - can be called from AnimationPlayer"""
 	var root_scene := get_tree().current_scene
 	if root_scene == null:
-		print("⚠️ Scene not found")
 		return
 	
 	# Try multiple ways to find the node
@@ -944,16 +859,12 @@ func start_suspense_bg() -> void:
 		suspense_bg = root_scene.find_child("SuspenseBG", true, false) as AudioStreamPlayer
 	
 	if suspense_bg == null:
-		print("⚠️ SuspenseBG AudioStreamPlayer not found. Scene root: ", root_scene.name)
 		var children_names: Array[String] = []
 		for child in root_scene.get_children():
 			children_names.append(child.name)
-		print("   Available children: ", children_names)
 		return
 	
 	if suspense_bg.playing:
-		print("🎵 SuspenseBG is already playing")
 		return
 	
-	print("🎵 Starting SuspenseBG...")
 	suspense_bg.play()

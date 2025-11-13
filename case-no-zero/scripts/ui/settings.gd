@@ -33,7 +33,6 @@ func _ready():
 	# Setup button connections
 	_setup_buttons()
 	
-	print("📋 Settings UI initialized (hidden by default)")
 
 func _get_ui_references():
 	"""Get references to UI elements"""
@@ -64,7 +63,6 @@ func show_settings():
 			tween.set_parallel(true)
 			tween.tween_property(ui_container, "modulate", Color.WHITE, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 			tween.tween_property(ui_container, "scale", Vector2.ONE, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-		print("📋 Settings: Shown with smooth center scale animation")
 
 func hide_settings():
 	"""Hide settings with smooth animation"""
@@ -81,7 +79,6 @@ func hide_settings():
 			tween.tween_property(ui_container, "scale", Vector2(0.1, 0.1), 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
 			await tween.finished
 		hide()
-		print("📋 Settings: Hidden with smooth center scale animation")
 
 # Tab press functions removed - icons are no longer clickable
 

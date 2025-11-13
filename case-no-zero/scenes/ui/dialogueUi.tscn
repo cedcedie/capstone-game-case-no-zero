@@ -1,9 +1,40 @@
-[gd_scene load_steps=6 format=3 uid="uid://4ow32s47c3o"]
+[gd_scene load_steps=37 format=3 uid="uid://4ow32s47c3o"]
 
 [ext_resource type="FontFile" uid="uid://4thqnqltwp3x" path="res://assets/fonts/PixelOperatorSC.ttf" id="1_4ubpf"]
 [ext_resource type="Script" uid="uid://dyx4vg5kqme13" path="res://scripts/ui/dialogue_ui.gd" id="1_mlr52"]
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/limezuUI/Modern_UI_Style_1_32x32.png" id="2_i8ph7"]
 [ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperator-Bold.ttf" id="4_nyru1"]
+[ext_resource type="PackedScene" uid="uid://dqmxmbn83tljk" path="res://scenes/face/bc_boy_1.tscn" id="5_fg7gj"]
+[ext_resource type="PackedScene" uid="uid://cfemm11m5rqyi" path="res://scenes/face/cmp_b2.tscn" id="5_k8gt2"]
+[ext_resource type="PackedScene" uid="uid://phusfgqio8no" path="res://scenes/face/bc_boy_2.tscn" id="6_nwkll"]
+[ext_resource type="PackedScene" uid="uid://bvijrcw0lauyf" path="res://scenes/face/bc_boy_8.tscn" id="7_2tmcv"]
+[ext_resource type="PackedScene" uid="uid://b1oyvdh6gt3dn" path="res://scenes/face/bc_girl_4.tscn" id="8_ghuwx"]
+[ext_resource type="PackedScene" uid="uid://blyhgyq11vsr5" path="res://scenes/face/bc_girl_5.tscn" id="9_qeaml"]
+[ext_resource type="PackedScene" uid="uid://6hvjcmf0swd7" path="res://scenes/face/beard_man.tscn" id="10_l8utr"]
+[ext_resource type="PackedScene" uid="uid://dw4687s684x24" path="res://scenes/face/cmp_b4.tscn" id="12_shrmi"]
+[ext_resource type="PackedScene" uid="uid://ycffvj7lpok" path="res://scenes/face/cmp_b7.tscn" id="13_077jt"]
+[ext_resource type="PackedScene" uid="uid://k4y4nr401dc2" path="res://scenes/face/cmp_g2.tscn" id="14_7ebpl"]
+[ext_resource type="PackedScene" uid="uid://qtrtqes7s67l" path="res://scenes/face/Girl_4.tscn" id="15_76bri"]
+[ext_resource type="PackedScene" uid="uid://c1wlf1juoskig" path="res://scenes/face/guy_2.tscn" id="16_fgl14"]
+[ext_resource type="PackedScene" uid="uid://dtw2hvie7yvmk" path="res://scenes/face/guy_3.tscn" id="17_rb6kv"]
+[ext_resource type="PackedScene" uid="uid://qcgye8atqda3" path="res://scenes/face/htl_girl1.tscn" id="18_51ms8"]
+[ext_resource type="PackedScene" uid="uid://8wxjrmpmxemy" path="res://scenes/face/htl_girl2.tscn" id="19_eocqd"]
+[ext_resource type="PackedScene" uid="uid://cdvq7ukxanryp" path="res://scenes/face/htl_guy1.tscn" id="20_h1mr1"]
+[ext_resource type="PackedScene" uid="uid://bwrv04y0a2dma" path="res://scenes/face/npc_cmp_b3.tscn" id="21_1pr3a"]
+[ext_resource type="PackedScene" uid="uid://dqq44qj6vfdxn" path="res://scenes/face/npc_em1.tscn" id="22_cp0uj"]
+[ext_resource type="PackedScene" uid="uid://eiefqu0jjfsd" path="res://scenes/face/npc_em3.tscn" id="23_4eruy"]
+[ext_resource type="PackedScene" uid="uid://cc0eu838sq3e4" path="res://scenes/face/npc_em7.tscn" id="24_rcmr8"]
+[ext_resource type="PackedScene" uid="uid://bdyejoo2ldkft" path="res://scenes/face/pl_guy2.tscn" id="25_s5mwg"]
+[ext_resource type="PackedScene" uid="uid://chgt43ghwwj6f" path="res://scenes/face/pl_po3.tscn" id="26_b177k"]
+[ext_resource type="PackedScene" uid="uid://snxowb777y4s" path="res://scenes/face/pl_po5.tscn" id="27_jvcel"]
+[ext_resource type="PackedScene" uid="uid://r4iefj3m2ptd" path="res://scenes/face/pl_po6.tscn" id="28_6kb0g"]
+[ext_resource type="PackedScene" uid="uid://befnbp4gps6t5" path="res://scenes/face/pl_po7.tscn" id="29_xyo83"]
+[ext_resource type="PackedScene" uid="uid://0utibiaxtplv" path="res://scenes/face/shaolin_boy.tscn" id="30_rjomt"]
+[ext_resource type="PackedScene" uid="uid://c8py0hlvpwqs6" path="res://scenes/face/tm_girl1.tscn" id="31_ii745"]
+[ext_resource type="PackedScene" uid="uid://cd3ngpq2c8iej" path="res://scenes/face/tm_girl2.tscn" id="32_ex26k"]
+[ext_resource type="PackedScene" uid="uid://drafkqr0ltxtc" path="res://scenes/face/tm_guy3.tscn" id="33_k4bmo"]
+[ext_resource type="PackedScene" uid="uid://bdeume2onati5" path="res://scenes/face/tm_guy6.tscn" id="34_40gka"]
+[ext_resource type="PackedScene" uid="uid://by1olwd2gmblo" path="res://scenes/face/tm_guy8.tscn" id="35_83qm5"]
 
 [sub_resource type="Theme" id="Theme_owpfv"]
 default_font = ExtResource("1_4ubpf")
@@ -126,3 +157,96 @@ theme = SubResource("Theme_owpfv")
 text = "next"
 
 [node name="TypingSound" type="AudioStreamPlayer" parent="Container"]
+
+[node name="BcBoy1" parent="." instance=ExtResource("5_fg7gj")]
+position = Vector2(-31, -32)
+
+[node name="BcBoy2" parent="." instance=ExtResource("6_nwkll")]
+position = Vector2(-31, -32)
+
+[node name="BcBoy8" parent="." instance=ExtResource("7_2tmcv")]
+position = Vector2(-31, -32)
+
+[node name="BcGirl4" parent="." instance=ExtResource("8_ghuwx")]
+position = Vector2(-31, -32)
+
+[node name="BcGirl5" parent="." instance=ExtResource("9_qeaml")]
+position = Vector2(-31, -32)
+
+[node name="BeardMan" parent="." instance=ExtResource("10_l8utr")]
+position = Vector2(-31, -32)
+
+[node name="CmpB2" parent="." instance=ExtResource("5_k8gt2")]
+position = Vector2(-31, -32)
+
+[node name="CmpB4" parent="." instance=ExtResource("12_shrmi")]
+position = Vector2(-31, -32)
+
+[node name="CmpB7" parent="." instance=ExtResource("13_077jt")]
+position = Vector2(-31, -32)
+
+[node name="CmpG2" parent="." instance=ExtResource("14_7ebpl")]
+position = Vector2(-31, -32)
+
+[node name="Girl4" parent="." instance=ExtResource("15_76bri")]
+position = Vector2(-31, -32)
+
+[node name="Guy2" parent="." instance=ExtResource("16_fgl14")]
+position = Vector2(-31, -32)
+
+[node name="Guy3" parent="." instance=ExtResource("17_rb6kv")]
+position = Vector2(-31, -32)
+
+[node name="HtlGirl1" parent="." instance=ExtResource("18_51ms8")]
+position = Vector2(-31, -32)
+
+[node name="HtlGirl2" parent="." instance=ExtResource("19_eocqd")]
+position = Vector2(-31, -32)
+
+[node name="HtlGuy1" parent="." instance=ExtResource("20_h1mr1")]
+position = Vector2(-31, -32)
+
+[node name="NpcCmpB3" parent="." instance=ExtResource("21_1pr3a")]
+position = Vector2(-31, -32)
+
+[node name="NpcEm1" parent="." instance=ExtResource("22_cp0uj")]
+position = Vector2(-31, -32)
+
+[node name="NpcEm3" parent="." instance=ExtResource("23_4eruy")]
+position = Vector2(-31, -32)
+
+[node name="NpcEm7" parent="." instance=ExtResource("24_rcmr8")]
+position = Vector2(-31, -32)
+
+[node name="PlGuy2" parent="." instance=ExtResource("25_s5mwg")]
+position = Vector2(-31, -32)
+
+[node name="PlPo3" parent="." instance=ExtResource("26_b177k")]
+position = Vector2(-31, -32)
+
+[node name="PlPo5" parent="." instance=ExtResource("27_jvcel")]
+position = Vector2(-31, -32)
+
+[node name="PlPo6" parent="." instance=ExtResource("28_6kb0g")]
+position = Vector2(-31, -32)
+
+[node name="PlPo7" parent="." instance=ExtResource("29_xyo83")]
+position = Vector2(-31, -32)
+
+[node name="ShaolinBoy" parent="." instance=ExtResource("30_rjomt")]
+position = Vector2(-31, -32)
+
+[node name="TmGirl1" parent="." instance=ExtResource("31_ii745")]
+position = Vector2(-31, -32)
+
+[node name="TmGirl2" parent="." instance=ExtResource("32_ex26k")]
+position = Vector2(-31, -32)
+
+[node name="TmGuy3" parent="." instance=ExtResource("33_k4bmo")]
+position = Vector2(-31, -32)
+
+[node name="TmGuy6" parent="." instance=ExtResource("34_40gka")]
+position = Vector2(-31, -32)
+
+[node name="TmGuy8" parent="." instance=ExtResource("35_83qm5")]
+position = Vector2(-31, -32)

@@ -1,80 +1,80 @@
 {
-  "npc_police": {
-	"story_first_interaction": [
-	  {
-		"speaker": "Pulis",
-		"text": "Maligayang pagdating sa istasyon ng pulis. Ano ang maitutulong ko sa iyo?"
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Saan banda ang detention cell? May client kaming nakakulong."
-	  },
-	  {
-		"speaker": "Pulis",
-		"text": "Ang detention cell ay nasa ibabang lobby. Bumaba ka lang sa hagdan, makikita mo agad."
-	  },
-	  {
-		"speaker": "Pulis",
-		"text": "Mag-ingat ka roon. Sabihin mo kung may iba ka pang kailangan."
-	  }
-	],
-	"story_repeated_interaction": [
-	  {
-		"speaker": "Pulis",
-		"text": "Ang detention cell ay nasa ibabang lobby."
-	  },
-	  {
-		"speaker": "Pulis",
-		"text": "May iba ka pa bang kailangan?"
-	  }
-	],
-	"modern_first_interaction": [
-	  {
-		"speaker": "Pulis",
-		"text": "Kamusta ka? May kailangan ka ba?"
-	  },
-	  {
-		"speaker": "Pulis",
-		"text": "Kung may problema ka, sabihin mo lang sa amin."
-	  },
-	  {
-		"speaker": "Pulis",
-		"text": "Ingat ka sa paglalakad ha."
-	  }
-	],
-	"modern_repeated_interaction": [
-	  {
-		"speaker": "Pulis",
-		"text": "Kamusta ka na ulit?"
-	  },
-	  {
-		"speaker": "Pulis",
-		"text": "Ingat ka sa paglalakad."
-	  }
-	],
-	"recollection_completed": [
-	  {
-		"speaker": "Miguel",
-		"text": "Pwede makausap po yung head police nyo po."
-	  },
-	  {
-		"speaker": "Pulis",
-		"text": "Ah, si Chief. Nasa taas siya sa kanyang opisina."
-	  },
-	  {
-		"speaker": "Pulis",
-		"text": "Punta ka sa taas, makikita mo ang kanyang opisina."
-	  }
-	],
-	"recollection_repeated": [
-	  {
-		"speaker": "Pulis",
-		"text": "Si Chief ay nasa taas sa kanyang opisina."
-	  },
-	  {
-		"speaker": "Pulis",
-		"text": "May iba ka pa bang kailangan?"
-	  }
-	]
-  }
+	"npc_police": {
+		"story_first_interaction": [
+			{
+				"speaker": "Pulis",
+				"text": "Maligayang pagdating sa istasyon ng pulis. Ano ang maitutulong ko sa iyo?"
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Saan banda ang detention cell? May client kaming nakakulong."
+			},
+			{
+				"speaker": "Pulis",
+				"text": "Ang detention cell ay nasa ibabang lobby. Bumaba ka lang sa hagdan, makikita mo agad."
+			},
+			{
+				"speaker": "Pulis",
+				"text": "Mag-ingat ka roon. Sabihin mo kung may iba ka pang kailangan."
+			}
+		],
+		"story_repeated_interaction": [
+			{
+				"speaker": "Pulis",
+				"text": "Ang detention cell ay nasa ibabang lobby."
+			},
+			{
+				"speaker": "Pulis",
+				"text": "May iba ka pa bang kailangan?"
+			}
+		],
+		"modern_first_interaction": [
+			{
+				"speaker": "Pulis",
+				"text": "Kamusta ka? May kailangan ka ba?"
+			},
+			{
+				"speaker": "Pulis",
+				"text": "Kung may problema ka, sabihin mo lang sa amin."
+			},
+			{
+				"speaker": "Pulis",
+				"text": "Ingat ka sa paglalakad ha."
+			}
+		],
+		"modern_repeated_interaction": [
+			{
+				"speaker": "Pulis",
+				"text": "Kamusta ka na ulit?"
+			},
+			{
+				"speaker": "Pulis",
+				"text": "Ingat ka sa paglalakad."
+			}
+		],
+		"recollection_completed": [
+			{
+				"speaker": "Miguel",
+				"text": "Pwede makausap po yung head police nyo po."
+			},
+			{
+				"speaker": "Pulis",
+				"text": "Ah, si Chief. Nasa taas siya sa kanyang opisina."
+			},
+			{
+				"speaker": "Pulis",
+				"text": "Punta ka sa taas, makikita mo ang kanyang opisina."
+			}
+		],
+		"recollection_repeated": [
+			{
+				"speaker": "Pulis",
+				"text": "Si Chief ay nasa taas sa kanyang opisina."
+			},
+			{
+				"speaker": "Pulis",
+				"text": "May iba ka pa bang kailangan?"
+			}
+		]
+	}
 }

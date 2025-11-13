@@ -83,7 +83,6 @@ func show_evidence_inventory():
 		
 		# Emit signal
 		evidence_inventory_opened.emit()
-		print("📋 Evidence inventory opened")
 		
 		# Start with transparent and slightly scaled down
 		if ui_container:
@@ -140,7 +139,6 @@ func hide_evidence_inventory():
 	
 	# Emit signal
 	evidence_inventory_closed.emit()
-	print("📋 Evidence inventory closed")
 	
 	hide()
 
@@ -168,11 +166,8 @@ func _load_evidence_data():
 		
 		if parse_result == OK:
 			evidence_data = json.data
-			print("📋 Evidence data loaded successfully")
 		else:
-			print("⚠️ Failed to parse evidence data JSON")
 	else:
-		print("⚠️ Failed to load evidence data file")
 
 func _get_ui_references():
 	"""Get references to UI elements"""
@@ -200,7 +195,6 @@ func _setup_evidence_slots():
 				button.pressed.connect(_on_evidence_slot_pressed.bind(i - 1))  # Use 0-based index
 				button.mouse_entered.connect(_on_evidence_slot_hover.bind(i - 1, true))
 				button.mouse_exited.connect(_on_evidence_slot_hover.bind(i - 1, false))
-				print("📋 Evidence slot", i, "connected to evidence ID:", evidence_mapping[i-1])
 
 func _initialize_evidence_visibility():
 	"""Initialize evidence visibility - hide all evidence initially"""
@@ -222,9 +216,7 @@ func _select_evidence(evidence_index: int):
 	if evidence_id in evidence_data.evidence:
 		current_evidence = evidence_id
 		_display_evidence(evidence_id)
-		print("📋 Evidence selected:", evidence_id, "from slot", evidence_index + 1)
 	else:
-		print("⚠️ Evidence not found in data:", evidence_id)
 
 func _display_evidence(evidence_id: String):
 	"""Display evidence information in the description panel"""
@@ -245,7 +237,6 @@ func _display_evidence(evidence_id: String):
 	
 	# Emit signal for evidence display
 	evidence_displayed.emit(evidence_id)
-	print("📋 Evidence displayed:", evidence_id)
 	
 	# Add click detection for detailed examination
 	_setup_evidence_click_detection(evidence_id)
@@ -255,13 +246,35 @@ func _get_evidence_texture(evidence_id: String) -> Texture2D:
 	if evidence_textures.has(evidence_id):
 		return evidence_textures[evidence_id]
 	else:
-		print("⚠️ Evidence texture not found for:", evidence_id)
 		return null
 
 func add_evidence(evidence_id: String):
 	"""Add new evidence to the collection and emit signal"""
 	if evidence_id not in collected_evidence:
 		collected_evidence.append(evidence_id)
+		
+		# If this is the last evidence (leos_notebook), mask it as ???????????
+		if evidence_id == "leos_notebook":
+			# Ensure evidence data is loaded
+			if evidence_data.is_empty() or not evidence_data.has("evidence"):
+				_load_evidence_data()
+			
+			# Store original values if not already stored
+			if not evidence_data.evidence.has(evidence_id):
+				push_error("⚠️ Evidence data not found for: " + evidence_id)
+			else:
+				# Check if we need to mask it (first time adding)
+				var evidence_info = evidence_data.evidence[evidence_id]
+				# Only mask if it's not already masked
+				if evidence_info.name != "???????????":
+					# Store original values in a temporary location (we'll restore them later)
+					if not has_meta("original_leos_notebook_name"):
+						set_meta("original_leos_notebook_name", evidence_info.name)
+						set_meta("original_leos_notebook_description", evidence_info.get("description", ""))
+					
+					# Mask the evidence data
+					evidence_info.name = "???????????"
+					evidence_info.description = "???????????"
 		
 		# Show the corresponding evidence slot
 		var slot_index = collected_evidence.size() - 1
@@ -274,7 +287,6 @@ func add_evidence(evidence_id: String):
 		
 		# Emit signal for evidence collection
 		evidence_collected.emit(evidence_id)
-		print("📋 Evidence collected:", evidence_id, "Total evidence:", collected_evidence.size())
 
 func _update_settings_tab_state():
 	"""Update Settings tab state based on evidence collection phase"""
@@ -470,11 +482,8 @@ func _show_evidence_details(evidence_id: String):
 		# Show detailed information (you can modify this to show in a popup or expand the description)
 		evidence_description.text = evidence_info.description + "\n\n" + "=== DETALYADONG IMPORMASYON ===\n\n" + detail_text
 		
-		print("🔍 Detailed examination of " + evidence_info.name + ":")
 		for key in details:
-			print("  " + key + ": " + details[key])
 	else:
-		print("⚠️ No detailed information available for " + evidence_info.name)
 
 func _on_evidence_description_gui_input(event: InputEvent) -> void:
 	pass # Replace with function body.

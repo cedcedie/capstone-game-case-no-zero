@@ -6135,7 +6135,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_tmrtk"]
 resource_name = "security_server_cutscene_2"
-length = 15.0
+length = 13.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true

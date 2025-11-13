@@ -1,71 +1,70 @@
 {
-  "barangay_hall_investigation": {
-	"dialogue_lines": [
-	  {
-		"speaker": "Celine",
-		"text": "Late ka na naman. May inasikaso ka ba? Kailangan na nating mag-proceed sa investigation."
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Pasensya na, Celine. May inasikaso lang ako sa office. Dito na tayo sa barangay hall?"
-	  },
-	  {
-		"speaker": "Celine",
-		"text": "Oo, dito na tayo. Kailangan nating makausap si Kapitana Lourdes para sa records tungkol kay Leo."
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Good morning! Welcome sa barangay hall. May kailangan ba kayo?"
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Good morning po, Kapitana. Kami po si Miguel at Celine. Nag-iinvestigate po kami tungkol kay PO1 Leo Mendoza. May mga tanong po kami."
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Ah, kayo pala yung nag-iinvestigate. Si Leo ay mabuting pulis. Ano ba ang gusto ninyong malaman?"
-	  },
-	  {
-		"speaker": "Celine",
-		"text": "Salamat po, Kapitana. Pwede po ba naming makita yung patrol logbook? Kailangan po namin i-examine bilang documentary evidence."
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Oo, sige. Nandiyan lang yung logbook sa desk. Pwede ninyong tingnan."
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Sige po, Kapitana. Salamat po."
-	  },
-	  {
-		"speaker": "Kapitana Lourdes",
-		"text": "Pasensya na, may kailangan akong asikasuhin. Kayo muna dito. Babalik ako teka lang."
-	  },
-	  {
-		"speaker": "Celine",
-		"text": "Sige po, Kapitana. Salamat po."
-	  },
-	  {
-		"speaker": "Celine",
-		"text": "Miguel, tingnan mo yung signature dito sa logbook. May slight discrepancy sa handwriting."
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "Oo nga, Celine. May discrepancy yung signature. Pero hindi tayo sure kasi di naman nagkakalayo. Pwede ring natural variation lang sa handwriting."
-	  },
-	  {
-		"speaker": "Celine",
-		"text": "Tama ka, Miguel. Hindi conclusive kung tampering o forgery ito. Kailangan nating i-document ito, pero kailangan natin ng further examination."
-	  },
-	  {
-		"speaker": "Miguel",
-		"text": "I-check natin yung morgue? Para sa autopsy report."
-	  },
-	  {
-		"speaker": "Celine",
-		"text": "Kailangan natin yan. Tara, pumunta na tayo."
-	  }
-	
-	]
-  }
+	"barangay_hall_investigation": {
+		"dialogue_lines": [
+			{
+				"speaker": "Celine",
+				"text": "Late ka na naman. May inasikaso ka ba? Kailangan na nating mag-proceed sa investigation."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Pasensya na, Celine. May inasikaso lang ako sa office. Dito na tayo sa barangay hall?"
+			},
+			{
+				"speaker": "Celine",
+				"text": "Oo, dito na tayo. Kailangan nating makausap si Kapitana Lourdes para sa records tungkol kay Leo."
+			},
+			{
+				"speaker": "Kapitana Lourdes",
+				"text": "Good morning! Welcome sa barangay hall. May kailangan ba kayo?"
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Good morning po, Kapitana. Kami po si Miguel at Celine. Nag-iinvestigate po kami tungkol kay PO1 Leo Mendoza. May mga tanong po kami."
+			},
+			{
+				"speaker": "Kapitana Lourdes",
+				"text": "Ah, kayo pala yung nag-iinvestigate. Si Leo ay mabuting pulis. Ano ba ang gusto ninyong malaman?"
+			},
+			{
+				"speaker": "Celine",
+				"text": "Salamat po, Kapitana. Pwede po ba naming makita yung patrol logbook? Kailangan po namin i-examine bilang documentary evidence."
+			},
+			{
+				"speaker": "Kapitana Lourdes",
+				"text": "Oo, sige. Nandiyan lang yung logbook sa desk. Pwede ninyong tingnan."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Sige po, Kapitana. Salamat po."
+			},
+			{
+				"speaker": "Kapitana Lourdes",
+				"text": "Pasensya na, may kailangan akong asikasuhin. Kayo muna dito. Babalik ako teka lang."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Sige po, Kapitana. Salamat po."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Miguel, tingnan mo yung signature dito sa logbook. May slight discrepancy sa handwriting."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "Oo nga, Celine. May discrepancy yung signature. Pero hindi tayo sure kasi di naman nagkakalayo. Pwede ring natural variation lang sa handwriting."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Tama ka, Miguel. Hindi conclusive kung tampering o forgery ito. Kailangan nating i-document ito, pero kailangan natin ng further examination."
+			},
+			{
+				"speaker": "Miguel",
+				"text": "I-check natin yung morgue? Para sa autopsy report."
+			},
+			{
+				"speaker": "Celine",
+				"text": "Kailangan natin yan. Tara, pumunta na tayo."
+			}
+		]
+	}
 }

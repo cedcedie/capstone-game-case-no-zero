@@ -29,7 +29,6 @@ var player_camera: Camera2D = null
 var last_scene_path: String = ""
 
 func _ready():
-	print("📷 CameraZoomManager: Ready")
 	get_tree().tree_changed.connect(_on_tree_changed)
 	call_deferred("find_player_camera")
 
@@ -38,7 +37,6 @@ func find_player_camera():
 	await get_tree().process_frame
 	
 	if not get_tree().current_scene:
-		print("📷 CameraZoomManager: No current scene in find_player_camera")
 		return
 	
 	var scene_root = get_tree().current_scene
@@ -50,23 +48,18 @@ func find_player_camera():
 		if player:
 			player_camera = player.get_node_or_null("Camera2D")
 			if player_camera:
-				print("📷 CameraZoomManager: Player camera found")
 				set_zoom_for_current_scene()
 				set_camera_limits_for_scene()
 			else:
-				print("⚠️ CameraZoomManager: Player camera not found")
 		else:
-			print("⚠️ CameraZoomManager: Player not found")
 
 func set_zoom_for_current_scene():
 	if not get_tree().current_scene:
-		print("📷 CameraZoomManager: No current scene in set_zoom_for_current_scene")
 		return
 	
 	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
 	var target_zoom = get_zoom_for_scene(scene_name) + PLAYER_POV_BOOST
 	set_camera_zoom(target_zoom)
-	print("📷 CameraZoomManager: Set zoom to ", target_zoom, " for scene: ", scene_name)
 
 func get_zoom_for_scene(scene_name: String) -> float:
 	if zoom_settings.has(scene_name):
@@ -94,7 +87,6 @@ func get_zoom_for_scene(scene_name: String) -> float:
 
 func set_camera_zoom(zoom_level: float, animate: bool = true):
 	if not player_camera:
-		print("⚠️ CameraZoomManager: No camera found, cannot set zoom")
 		return
 	
 	current_zoom = zoom_level
@@ -121,7 +113,6 @@ func set_camera_limits_for_scene():
 		return
 	
 	if not get_tree().current_scene:
-		print("📷 CameraZoomManager: No current scene in set_camera_limits_for_scene")
 		return
 	
 	var scene_name = get_tree().current_scene.scene_file_path.get_file().get_basename()
@@ -171,13 +162,11 @@ func set_camera_limits_for_scene():
 func _on_tree_changed():
 	"""Called when tree changes - check if scene changed"""
 	if not get_tree().current_scene:
-		print("📷 CameraZoomManager: No current scene, skipping...")
 		return
 	
 	var current_scene_path = get_tree().current_scene.scene_file_path
 	
 	if current_scene_path != last_scene_path and current_scene_path != "":
-		print("📷 CameraZoomManager: Scene changed from ", last_scene_path, " to ", current_scene_path)
 		last_scene_path = current_scene_path
 		await get_tree().process_frame
 		find_player_camera()

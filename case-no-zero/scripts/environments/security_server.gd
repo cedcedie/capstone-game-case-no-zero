@@ -9,17 +9,12 @@ var resume_on_next: bool = false
 var cutscene_active: bool = false
 
 func _ready() -> void:
-	print("🎬 Security server: _ready() started")
 	# Prepare cutscene: disable player, load dialogue, and optionally auto-start animation
 	_setup_fade()
-	print("🎬 Fade setup complete")
 	player_node = _find_player()
-	print("🎬 Player found: ", player_node != null, " - Node: ", player_node)
 	if player_node != null:
-		print("🎬 Player has disable_movement method: ", player_node.has_method("disable_movement"))
 	_set_player_active(false)
 	# Load dialogue will be determined based on which cutscene plays
-	print("🎬 Dialogue loaded: ", dialogue_lines.size(), " lines")
 	# Connect DialogueUI next_pressed signal to resume animation
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui and dui.has_signal("next_pressed") and not dui.next_pressed.is_connected(_on_dialogue_next):
@@ -40,19 +35,15 @@ func _ready() -> void:
 	
 	# Check if alley cutscene is completed - play security_server_cutscene_2
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.ALLEY_CUTSCENE_COMPLETED):
-		print("🎬 Alley cutscene completed - playing security_server_cutscene_2")
 		# Load dialogue for security_server_cutscene_2
 		_load_dialogue_if_available("security_server_cutscene_2")
-		print("🎬 Dialogue loaded for security_server_cutscene_2: ", dialogue_lines.size(), " lines")
 		cutscene_active = true
 		show_environment_and_characters()
 		await fade_in()
 		if anim_player:
 			if anim_player.has_animation("security_server_cutscene_2"):
-				print("🎬 Playing 'security_server_cutscene_2' animation")
 				anim_player.play("security_server_cutscene_2")
 			else:
-				print("⚠️ Animation 'security_server_cutscene_2' not found")
 		return
 	
 	# DEBUG MODE: Set to true to play cutscene regardless of checkpoint
@@ -61,46 +52,33 @@ func _ready() -> void:
 	# Check if HEAD_POLICE_COMPLETED checkpoint is set (or DEBUG_MODE)
 	if DEBUG_MODE or CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED):
 		if DEBUG_MODE:
-			print("🎬 DEBUG MODE: Playing cutscene regardless of checkpoint")
 		else:
-			print("🎬 HEAD_POLICE_COMPLETED checkpoint found - playing security_server_cutscene")
 		
 		# Hide task display when cutscene plays
 		_hide_task_display()
 		
 		# Load dialogue for security_server_cutscene
 		_load_dialogue_if_available("security_server_cutscene")
-		print("🎬 Dialogue loaded for security_server_cutscene: ", dialogue_lines.size(), " lines")
 		
 		# Start cutscene for first time
-		print("🎬 Starting fade in...")
 		cutscene_active = true
 		show_environment_and_characters()
 		await fade_in()
-		print("🎬 Fade in complete, checking animation...")
 		if anim_player:
-			print("🎬 AnimationPlayer found, available animations: ", anim_player.get_animation_list())
 			# Try to play security_server_cutscene first, then fallback to first available
 			if anim_player.has_animation("security_server_cutscene"):
-				print("🎬 Playing 'security_server_cutscene' animation")
 				anim_player.play("security_server_cutscene")
 			elif anim_player.get_animation_list().size() > 0:
 				var first_anim = anim_player.get_animation_list()[0]
-				print("🎬 Playing first available animation: ", first_anim)
 				anim_player.play(first_anim)
 			else:
-				print("⚠️ No animations found in AnimationPlayer")
 		else:
-			print("⚠️ AnimationPlayer node not found!")
 		return
 	
 	# If no checkpoint, don't play cutscene
-	print("⚠️ HEAD_POLICE_COMPLETED checkpoint not set. Cutscene will not play.")
-	print("   Set DEBUG_MODE = true in _ready() to test the cutscene.")
 
 func end_cutscene() -> void:
 	# Dramatic fade out before scene transition
-	print("🎬 Cutscene ending - dramatic fade out...")
 	await dramatic_fade_out(2.0)
 	
 	# Hide dialogue UI during fade
@@ -109,7 +87,6 @@ func end_cutscene() -> void:
 	# Set checkpoint before transitioning
 	cutscene_active = false
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_COMPLETED)
-	print("🎬 Security server cutscene completed - checkpoint set.")
 	
 	# Transition to alley scene and play alley_cutscene animation
 	# Skip fade since we already did dramatic_fade_out above
@@ -123,16 +100,13 @@ func end_cutscene_2() -> void:
 	# Set checkpoint after cutscene completes
 	cutscene_active = false
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_CUTSCENE_2_COMPLETED)
-	print("🎬 Security server cutscene 2 completed - checkpoint set.")
 	
 	# Re-enable player control
 	_set_player_active(true)
-	print("🎬 Security server cutscene 2 ended - returning to normal gameplay.")
 
 # Transition to another scene and optionally play an animation
 func transition_to_scene(target_scene_path: String, animation_name: String = "", skip_fade: bool = false) -> void:
 	"""Transition to another scene and optionally play an animation there"""
-	print("🎬 Transitioning to scene: ", target_scene_path)
 	
 	# Dramatic fade out current scene before transition (unless already faded)
 	if not skip_fade:
@@ -144,20 +118,16 @@ func transition_to_scene(target_scene_path: String, animation_name: String = "",
 	# Change scene
 	var tree := get_tree()
 	if tree == null:
-		print("⚠️ Cannot transition - tree is null")
 		return
 	
 	var result: Error
 	if ScenePreloader and ScenePreloader.is_scene_preloaded(target_scene_path):
-		print("🚀 Using preloaded scene: ", target_scene_path.get_file())
 		var preloaded_scene = ScenePreloader.get_preloaded_scene(target_scene_path)
 		result = tree.change_scene_to_packed(preloaded_scene)
 	else:
-		print("📁 Loading scene from file: ", target_scene_path.get_file())
 		result = tree.change_scene_to_file(target_scene_path)
 	
 	if result != OK:
-		print("❌ Failed to change scene to: ", target_scene_path)
 		return
 	
 	# Wait for scene to be ready
@@ -174,10 +144,8 @@ func transition_to_scene(target_scene_path: String, animation_name: String = "",
 				new_anim_player = new_scene.find_child("AnimationPlayer", true, false) as AnimationPlayer
 			
 			if new_anim_player and new_anim_player.has_animation(animation_name):
-				print("🎬 Playing animation '", animation_name, "' in new scene")
 				new_anim_player.play(animation_name)
 			else:
-				print("⚠️ AnimationPlayer not found or animation '", animation_name, "' not available in new scene")
 	
 	# Note: SceneFadeIn autoload handles fade-in automatically, no need to fade here
 
@@ -221,7 +189,6 @@ func hide_environment_and_characters(duration: float = 0.5) -> void:
 	if elements_to_fade.is_empty():
 		return
 
-	print("🎬 Fading out ", elements_to_fade.size(), " environment elements")
 	
 	for element in elements_to_fade:
 		element.modulate.a = 1.0
@@ -240,7 +207,6 @@ func hide_environment_and_characters(duration: float = 0.5) -> void:
 		element.visible = false
 		element.modulate.a = 1.0
 	
-	print("🎬 Environment fade out complete")
 
 func show_environment_and_characters(duration: float = 0.5) -> void:
 	var root_scene := get_tree().current_scene
@@ -270,7 +236,6 @@ func show_environment_and_characters(duration: float = 0.5) -> void:
 		element.visible = true
 		element.modulate.a = 0.0
 	
-	print("🎬 Fading in ", elements_to_fade.size(), " environment elements")
 	
 	var tween := create_tween()
 	tween.set_parallel(true)
@@ -280,7 +245,6 @@ func show_environment_and_characters(duration: float = 0.5) -> void:
 		tween.tween_property(element, "modulate:a", 1.0, duration)
 	
 	await tween.finished
-	print("🎬 Environment fade in complete")
 
 # ---- Fade helpers ----
 func _setup_fade() -> void:
@@ -299,19 +263,16 @@ func _setup_fade() -> void:
 	fade_rect.offset_right = 0
 	fade_rect.offset_bottom = 0
 	fade_layer.add_child(fade_rect)
-	print("🎬 Fade layer created with alpha: ", fade_rect.modulate.a)
 
 func fade_in(duration: float = 0.5) -> void:
 	if not fade_rect:
 		_setup_fade()
 	fade_rect.visible = true
 	fade_rect.modulate.a = 1.0
-	print("🎬 Fade in starting from alpha: ", fade_rect.modulate.a)
 	var t := create_tween()
 	t.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	t.tween_property(fade_rect, "modulate:a", 0.0, duration)
 	await t.finished
-	print("🎬 Fade in complete, alpha: ", fade_rect.modulate.a)
 	fade_rect.visible = false
 
 func fade_out(duration: float = 0.5) -> void:
@@ -335,7 +296,6 @@ func dramatic_fade_out(duration: float = 2.0) -> void:
 	t.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 	t.tween_property(fade_rect, "modulate:a", 1.0, duration)
 	await t.finished
-	print("🎬 Dramatic fade out complete")
 
 # ---- Dialogue helpers ----
 func show_line(index: int, auto_advance: bool = false) -> void:
@@ -347,12 +307,10 @@ func show_line(index: int, auto_advance: bool = false) -> void:
 	var text: String = String(line.get("text", ""))
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui == null:
-		print("⚠️ DialogueUI autoload not found.")
 		return
 	if dui.has_method("show_dialogue_line"):
 		dui.show_dialogue_line(speaker, text, auto_advance)
 		return
-	print("⚠️ DialogueUI missing show_dialogue_line().")
 
 func wait_for_next() -> void:
 	_set_player_active(false)
@@ -364,7 +322,6 @@ func wait_for_next() -> void:
 	resume_on_next = true
 	if anim_player:
 		anim_player.pause()
-		print("🎬 Animation paused, waiting for next_pressed")
 
 func show_line_wait(index: int) -> void:
 	if index < 0 or index >= dialogue_lines.size():
@@ -376,7 +333,6 @@ func show_line_wait(index: int) -> void:
 func show_dialogue_line_wait(speaker: String, text: String) -> void:
 	var dui: Node = get_node_or_null("/root/DialogueUI")
 	if dui == null:
-		print("⚠️ DialogueUI autoload not found.")
 		return
 	if dui.has_method("set_cutscene_mode"):
 		dui.set_cutscene_mode(true)
@@ -384,7 +340,6 @@ func show_dialogue_line_wait(speaker: String, text: String) -> void:
 		dui.show_dialogue_line(speaker, text, false)
 		wait_for_next()
 	else:
-		print("⚠️ DialogueUI missing show_dialogue_line().")
 
 func _on_dialogue_next() -> void:
 	if player_node != null:
@@ -394,7 +349,6 @@ func _on_dialogue_next() -> void:
 			player_node.velocity = Vector2.ZERO
 	if resume_on_next and anim_player:
 		resume_on_next = false
-		print("🎬 Resuming animation after next_pressed")
 		anim_player.play()
 
 func show_lines_sequence(lines: Array[Dictionary]) -> void:
@@ -414,20 +368,16 @@ func _hide_dialogue_ui() -> void:
 func _load_dialogue_if_available(dialogue_key: String = "security_server_cutscene") -> void:
 	var path := "res://data/dialogues/security_server_cutscene.json"
 	if not ResourceLoader.exists(path):
-		print("⚠️ Dialogue file not found: ", path)
 		return
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
-		print("⚠️ Cannot open dialogue file: ", path)
 		return
 	var parsed: Variant = JSON.parse_string(file.get_as_text())
 	file.close()
 	if typeof(parsed) != TYPE_DICTIONARY:
-		print("⚠️ Invalid dialogue JSON format")
 		return
 	var section: Variant = (parsed as Dictionary).get(dialogue_key, {})
 	if typeof(section) != TYPE_DICTIONARY:
-		print("⚠️ Missing '", dialogue_key, "' section in dialogue file")
 		return
 	var arr: Variant = (section as Dictionary).get("dialogue_lines", [])
 	if typeof(arr) == TYPE_ARRAY:
@@ -439,7 +389,6 @@ func _load_dialogue_if_available(dialogue_key: String = "security_server_cutscen
 func shake_camera(intensity: float = 6.0, duration: float = 0.3) -> void:
 	var cam: Camera2D = _get_camera_2d()
 	if cam == null:
-		print("⚠️ No Camera2D found to shake.")
 		return
 	var original_offset: Vector2 = cam.offset
 	var tween := create_tween()
@@ -461,23 +410,19 @@ func _unlock_radio_log() -> void:
 	"""Unlock radio log evidence and add it to inventory"""
 	var eis: Node = get_node_or_null("/root/EvidenceInventorySettings")
 	if eis == null:
-		print("⚠️ EvidenceInventorySettings node not found at /root/EvidenceInventorySettings")
 		return
 	
 	# Use add_evidence method with evidence ID string
 	if eis.has_method("add_evidence"):
 		eis.add_evidence("radio_log")
-		print("🔎 Radio log evidence added via add_evidence(\"radio_log\")")
 		return
 	
 	# Fallback methods if add_evidence doesn't exist
 	if eis.has_method("unlock_evidence"):
 		# radio_log is Evidence2 in the mapping (index 1)
 		eis.unlock_evidence(2)
-		print("🔎 Evidence unlocked via unlock_evidence(2)")
 		return
 	
-	print("⚠️ Could not find a method to add radio log evidence on EvidenceInventorySettings")
 
 func add_radio_log_evidence() -> void:
 	"""Add radio log evidence and briefly show inventory (3 seconds) - call from AnimationPlayer"""
@@ -488,7 +433,6 @@ func _show_inventory_brief(seconds: float = 3.0) -> void:
 	"""Briefly show the evidence inventory for a few seconds"""
 	var inv: Node = get_node_or_null("/root/EvidenceInventorySettings")
 	if inv == null:
-		print("⚠️ EvidenceInventorySettings not found for brief show")
 		return
 	
 	# Use the proper API method to show the inventory
@@ -552,9 +496,7 @@ func _hide_task_display() -> void:
 				task_display = found
 	if task_display != null and task_display.has_method("hide_task"):
 		task_display.hide_task()
-		print("📝 Task display hidden")
 	else:
-		print("⚠️ TaskDisplay not found or missing hide_task() method")
 
 # ---- Player helpers ----
 func _find_player() -> Node:
@@ -577,7 +519,6 @@ func _set_player_active(active: bool) -> void:
 	if player_node == null:
 		player_node = _find_player()
 	if player_node == null:
-		print("⚠️ Cannot set player active - player not found")
 		return
 	
 	if not active:
@@ -589,7 +530,6 @@ func _set_player_active(active: bool) -> void:
 			player_node.set_process_input(false)
 		if player_node.has_method("set_physics_process"):
 			player_node.set_physics_process(false)
-		print("🎬 Player movement disabled")
 	else:
 		if player_node.has_method("enable_movement"):
 			player_node.enable_movement()
@@ -599,7 +539,6 @@ func _set_player_active(active: bool) -> void:
 			player_node.set_physics_process(true)
 		if "control_enabled" in player_node:
 			player_node.control_enabled = true
-		print("🎬 Player movement enabled")
 func _input(event: InputEvent) -> void:
 	# Debug controls
 	if event is InputEventKey and event.pressed and not event.echo:

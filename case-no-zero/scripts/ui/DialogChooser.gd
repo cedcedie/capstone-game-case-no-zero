@@ -43,14 +43,12 @@ func _setup_autosizing():
 		label1.clip_contents = false
 		# Use size_flags_vertical for autosizing in Godot 4.4.1
 		label1.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		print("📝 DialogChooser: Choice 1 label autosizing enabled")
 	
 	if label2:
 		label2.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		label2.clip_contents = false
 		# Use size_flags_vertical for autosizing in Godot 4.4.1
 		label2.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		print("📝 DialogChooser: Choice 2 label autosizing enabled")
 
 func find_player():
 	"""Find the player character (kept for compatibility)"""
@@ -64,7 +62,6 @@ func find_player():
 			if not player:
 				player = current_scene.get_node_or_null("Miguel")
 	
-	print("🎯 DialogChooser: Player found:", player != null)
 
 func show_choices(choices: Array):
 	"""Show 2 choices following the player"""
@@ -101,7 +98,6 @@ func position_canvas_following_player():
 	# Position choice2 below center  
 	choice2.position = Vector2(center_x - choice2.size.x / 2, center_y + 20)
 	
-	print("🎯 DialogChooser: Choices positioned at center of screen")
 
 func hide_all_choices():
 	"""Hide all choice boxes"""

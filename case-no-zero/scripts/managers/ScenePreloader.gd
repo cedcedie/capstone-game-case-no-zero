@@ -271,10 +271,8 @@ var preload_progress: int = 0
 
 func _ready():
 	if OS.has_feature("editor"):
-		print("🚫 ScenePreloader: Running inside editor - skipping automatic preload to avoid progress dialog warnings.")
 		return
 	
-	print("🚀 ScenePreloader: Ready - preloading all scenes for optimal performance")
 	# Preloading enabled for exported game
 	await get_tree().create_timer(0.5).timeout
 	preload_all_scenes()
@@ -282,28 +280,23 @@ func _ready():
 func preload_all_scenes():
 	"""Preload all scenes in the background"""
 	if is_preloading:
-		print("⚠️ ScenePreloader: Already preloading scenes")
 		return
 	
 	is_preloading = true
 	preload_progress = 0
 	
-	print("📦 ScenePreloader: Preloading ", scenes_to_preload.size(), " scenes...")
 	
 	for scene_path in scenes_to_preload:
 		await preload_single_scene(scene_path)
 		preload_progress += 1
 		var progress_percent = (preload_progress * 100) / scenes_to_preload.size()
-		print("📦 ScenePreloader: Progress ", progress_percent, "% - Preloaded: ", scene_path.get_file())
 	
 	is_preloading = false
-	print("✅ ScenePreloader: All scenes preloaded successfully!")
 	all_scenes_preloaded.emit()
 
 func preload_single_scene(scene_path: String):
 	"""Preload a single scene"""
 	if preloaded_scenes.has(scene_path):
-		print("📦 ScenePreloader: Scene already preloaded: ", scene_path.get_file())
 		return
 	
 	# Load the scene resource
@@ -311,16 +304,13 @@ func preload_single_scene(scene_path: String):
 	if scene_resource:
 		preloaded_scenes[scene_path] = scene_resource
 		scene_preloaded.emit(scene_path)
-		print("📦 ScenePreloader: Preloaded: ", scene_path.get_file())
 	else:
-		print("⚠️ ScenePreloader: Failed to preload: ", scene_path)
 
 func get_preloaded_scene(scene_path: String) -> PackedScene:
 	"""Get a preloaded scene"""
 	if preloaded_scenes.has(scene_path):
 		return preloaded_scenes[scene_path]
 	else:
-		print("⚠️ ScenePreloader: Scene not preloaded: ", scene_path)
 		return null
 
 func is_scene_preloaded(scene_path: String) -> bool:
@@ -344,7 +334,6 @@ func get_total_scenes_count() -> int:
 func clear_preloaded_scenes():
 	"""Clear all preloaded scenes (for memory management if needed)"""
 	preloaded_scenes.clear()
-	print("🗑️ ScenePreloader: Cleared all preloaded scenes")
 
 func get_debug_info() -> String:
 	"""Get debug information about preloaded scenes"""

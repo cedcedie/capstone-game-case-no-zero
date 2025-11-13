@@ -50,7 +50,6 @@ func _on_scene_changed():
 		# Mark as fading immediately to prevent double fade from _fade_in_initial_scene
 		is_fading = true
 		has_faded_scene = true
-		print("🎬 SceneFadeIn: Auto-fading in scene:", get_tree().current_scene.scene_file_path.get_file())
 		await _fade_in_scene()
 
 func _fade_in_initial_scene():
@@ -73,12 +72,10 @@ func _fade_in_scene():
 	"""Create and execute fade-in effect for current scene"""
 	# Double-check: if already fading, return immediately (safety check)
 	if is_fading:
-		print("⚠️ SceneFadeIn: Already fading, skipping duplicate fade")
 		return
 	
 	# Check if there's already a fade overlay active
 	if current_fade_overlay != null and is_instance_valid(current_fade_overlay):
-		print("⚠️ SceneFadeIn: Fade overlay already exists, skipping duplicate fade")
 		return
 	
 	# Mark as fading immediately to prevent any other calls
@@ -101,7 +98,6 @@ func _fade_in_scene():
 		current_scene.add_child(canvas_layer)
 		current_fade_overlay = canvas_layer
 	else:
-		print("⚠️ SceneFadeIn: current_scene is null, cannot add fade overlay")
 		is_fading = false
 		return
 	
@@ -122,7 +118,6 @@ func _fade_in_scene():
 		current_fade_overlay = null
 	
 	is_fading = false
-	print("🎬 SceneFadeIn: Scene fade-in completed")
 
 func _wait_for_scene_ready():
 	"""Universal approach - wait for scene to be processed and settled"""

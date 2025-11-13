@@ -21,7 +21,6 @@ var label_slide_offset: float = 10.0
 var label_show_position: float = -72.0  # Position above the NPC's head
 
 func _ready():
-	print("🔍 npc_police: _ready() called")
 	# Hide label initially
 	interaction_label.modulate = Color(1.0, 1.0, 0.0, 0.0)  # Yellow color, transparent initially
 	interaction_label.position.y = label_show_position + label_slide_offset  # Start slightly lower
@@ -31,9 +30,7 @@ func _ready():
 	if interaction_area:
 		interaction_area.connect("body_entered", Callable(self, "_on_body_entered"))
 		interaction_area.connect("body_exited", Callable(self, "_on_body_exited"))
-		print("🔍 npc_police: Area2D signals connected")
 	else:
-		print("⚠️ npc_police: No Area2D found!")
 	
 	# Load dialogue
 	load_dialogue()
@@ -41,7 +38,6 @@ func _ready():
 	# Play idle animation
 	if animated_sprite:
 		animated_sprite.play("idle_front")
-		print("🔍 npc_police: Animation started")
 
 func _process(_delta):
 	# Check for interaction input when player is nearby and not in dialogue
@@ -63,16 +59,13 @@ func load_dialogue():
 		return
 	
 	dialogue_data = parsed["npc_police"]
-	print("✅ Loaded NPC Police dialogue")
 
 func _on_body_entered(body):
-	print("🔍 npc_police: Body entered - ", body.name)
 	if body.name == "PlayerM":
 		is_player_nearby = true
 		player_reference = body
 		face_player(body.global_position)
 		show_interaction_label()
-		print("👮 Player near police officer")
 
 func _on_body_exited(body):
 	if body == player_reference:
@@ -80,10 +73,8 @@ func _on_body_exited(body):
 		player_reference = null
 		restore_original_animation()  # Return to original pose when player leaves
 		hide_interaction_label()
-		print("👮 Player left police officer")
 
 func show_interaction_label():
-	print("🔍 npc_police: Showing interaction label")
 	# Slide up and fade in animation
 	var tween = create_tween()
 	tween.set_parallel(true)
@@ -125,14 +116,12 @@ func restore_original_animation():
 	animated_sprite.play("idle_front")
 
 func interact():
-	print("💬 Interacting with police officer")
 	is_in_dialogue = true  # Prevent E key spam
 	hide_interaction_label()
 	
 	# Disable player movement during dialogue
 	if player_reference and player_reference.has_method("disable_movement"):
 		player_reference.disable_movement()
-		print("👮 NPC Police: Disabled player movement (control_enabled only)")
 	
 	# Choose dialogue based on checkpoint state and interaction history
 	var has_recollection: bool = CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED)
@@ -146,38 +135,30 @@ func interact():
 				_hide_station_lobby_nodes()
 			dialogue_lines = dialogue_data.get("recollection_completed", [])
 			recollection_has_interacted = true
-			print("💬 Using recollection_completed dialogue (first time)")
 		else:
 			dialogue_lines = dialogue_data.get("recollection_repeated", [])
-			print("💬 Using recollection_repeated dialogue")
 	elif has_office and not has_recollection:
 		# Only office completed - use story dialogue
 		if not story_has_interacted:
 			dialogue_lines = dialogue_data.get("story_first_interaction", [])
 			story_has_interacted = true
-			print("💬 Using story_first_interaction dialogue (first time)")
 		else:
 			dialogue_lines = dialogue_data.get("story_repeated_interaction", [])
-			print("💬 Using story_repeated_interaction dialogue")
 	else:
 		# Default/modern dialogue
 		if not has_interacted:
 			dialogue_lines = dialogue_data.get("modern_first_interaction", [])
 			has_interacted = true
-			print("💬 Using modern_first_interaction dialogue")
 		else:
 			dialogue_lines = dialogue_data.get("modern_repeated_interaction", [])
-			print("💬 Using modern_repeated_interaction dialogue")
 
 	# Start showing dialogue
 	if dialogue_lines.size() > 0:
 		show_dialogue()
 	else:
-		print("⚠️ No dialogue lines loaded")
 		is_in_dialogue = false  # Reset if no dialogue
 		# Re-enable player movement if no dialogue - fully restore all processing
 		if player_reference:
-			print("🔧 NPC Police: Restoring player movement (no dialogue)...")
 			# Re-enable processing mode first
 			if "process_mode" in player_reference:
 				player_reference.process_mode = Node.PROCESS_MODE_INHERIT
@@ -199,23 +180,16 @@ func interact():
 			if "control_enabled" in player_reference:
 				player_reference.control_enabled = true
 			
-			print("👮 NPC Police: Player movement fully restored (no dialogue)")
 		else:
-			print("⚠️ NPC Police: player_reference is null! Cannot restore movement (no dialogue)!")
 
 func show_dialogue():
 	# Use the global DialogueUI autoload
 	if not DialogueUI:
-		print("⚠️ DialogueUI autoload not found")
 		return
 	
-	print("==================================================")
-	print("📋 NPC POLICE DIALOGUE:")
 	for line in dialogue_lines:
 		var speaker = line.get("speaker", "")
 		var text = line.get("text", "")
-		print(speaker + ": " + text)
-	print("==================================================")
 	
 	# Show each dialogue line using the global DialogueUI
 	for line in dialogue_lines:
@@ -232,7 +206,6 @@ func show_dialogue():
 	# Reset cutscene mode in DialogueUI to allow normal input
 	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
 		DialogueUI.set_cutscene_mode(false)
-		print("👮 NPC Police: Reset DialogueUI cutscene_mode to false")
 	
 	# Reset dialogue state
 	is_in_dialogue = false
@@ -252,12 +225,10 @@ func show_dialogue():
 					task_display = found
 		if task_display != null and task_display.has_method("hide_task"):
 			task_display.hide_task()
-			print("📝 Task display 'Tanungin ang pulis' hidden after talking to NPC police")
 	
 	# Reset cutscene mode in DialogueUI FIRST to allow normal input
 	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
 		DialogueUI.set_cutscene_mode(false)
-		print("👮 NPC Police: Reset DialogueUI cutscene_mode to false")
 	
 	# Re-enable player movement after dialogue - fully restore all processing
 	# Try to get player reference if it's null
@@ -273,36 +244,26 @@ func show_dialogue():
 					player_reference = found
 	
 	if player_reference:
-		print("🔧 NPC Police: Restoring player movement...")
-		print("   Player node: ", player_reference)
-		print("   Has process_mode: ", "process_mode" in player_reference)
-		print("   Current process_mode: ", player_reference.get("process_mode") if "process_mode" in player_reference else "N/A")
-		print("   Current control_enabled: ", player_reference.get("control_enabled") if "control_enabled" in player_reference else "N/A")
 		
 		# Force enable processing mode - ensure it's not INHERIT if parent is disabled
 		if "process_mode" in player_reference:
 			var current_mode = player_reference.process_mode
 			# Use PROCESS_MODE_PAUSABLE or PROCESS_MODE_ALWAYS to ensure it works
 			player_reference.process_mode = Node.PROCESS_MODE_INHERIT
-			print("   Changed process_mode from ", current_mode, " to ", Node.PROCESS_MODE_INHERIT)
 		
 		# Enable input/physics processing - CRITICAL
 		if player_reference.has_method("set_process_input"):
 			player_reference.set_process_input(true)
-			print("   ✅ Enabled set_process_input(true)")
 		if player_reference.has_method("set_physics_process"):
 			player_reference.set_physics_process(true)
-			print("   ✅ Enabled set_physics_process(true)")
 		
 		# Enable movement control - call enable_movement() which sets control_enabled
 		if player_reference.has_method("enable_movement"):
 			player_reference.enable_movement()
-			print("   ✅ Called enable_movement()")
 		
 		# Force set control_enabled to true - make absolutely sure
 		if "control_enabled" in player_reference:
 			player_reference.control_enabled = true
-			print("   ✅ Force set control_enabled = true")
 		
 		# Wait a frame to ensure everything is applied
 		await get_tree().process_frame
@@ -312,12 +273,7 @@ func show_dialogue():
 		var final_mode = player_reference.get("process_mode") if "process_mode" in player_reference else "N/A"
 		var final_process_input = player_reference.get_process_input() if player_reference.has_method("get_process_input") else "N/A"
 		var final_physics = player_reference.get_physics_process() if player_reference.has_method("get_physics_process") else "N/A"
-		print("   Final state - control_enabled: ", final_control, ", process_mode: ", final_mode)
-		print("   Final state - process_input: ", final_process_input, ", physics_process: ", final_physics)
-		print("👮 NPC Police: Player movement fully restored after dialogue - YOU SHOULD BE ABLE TO MOVE NOW!")
 	else:
-		print("⚠️ NPC Police: player_reference is null! Cannot restore movement!")
-		print("   Tried to find player in scene but failed")
 	
 	# Show the label again if player is still nearby
 	if is_player_nearby:
@@ -328,7 +284,6 @@ func _hide_station_lobby_nodes() -> void:
 	# These are direct children of the scene root
 	var root_scene := get_tree().current_scene
 	if root_scene == null:
-		print("⚠️ Cannot hide station lobby nodes - no root scene")
 		return
 	
 	# Hide station_lobby and disable collision
@@ -337,9 +292,7 @@ func _hide_station_lobby_nodes() -> void:
 		if station_lobby is CanvasItem:
 			(station_lobby as CanvasItem).visible = false
 		_set_node_collision_enabled(station_lobby, false)
-		print("🎬 Hidden station_lobby and disabled collision")
 	else:
-		print("⚠️ station_lobby node not found in scene root")
 	
 	# Hide StationLobby2 and disable collision
 	var station_lobby2 := root_scene.get_node_or_null("StationLobby2")
@@ -347,9 +300,7 @@ func _hide_station_lobby_nodes() -> void:
 		if station_lobby2 is CanvasItem:
 			(station_lobby2 as CanvasItem).visible = false
 		_set_node_collision_enabled(station_lobby2, false)
-		print("🎬 Hidden StationLobby2 and disabled collision")
 	else:
-		print("⚠️ StationLobby2 node not found in scene root")
 
 func _set_node_collision_enabled(node: Node, enabled: bool) -> void:
 	# Recursively disable/enable all CollisionShape2D nodes within the given node

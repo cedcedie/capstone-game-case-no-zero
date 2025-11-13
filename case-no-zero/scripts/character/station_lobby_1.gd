@@ -19,7 +19,6 @@ var label_slide_offset: float = 10.0
 var label_show_position: float = -72.0  # Position above the NPC's head
 
 func _ready():
-	print("🔍 station_lobby_1: _ready() called")
 	# Hide label initially
 	interaction_label.modulate = Color(1.0, 1.0, 0.0, 0.0)  # Yellow color, transparent initially
 	interaction_label.position.y = label_show_position + label_slide_offset  # Start slightly lower
@@ -29,9 +28,7 @@ func _ready():
 	if interaction_area:
 		interaction_area.connect("body_entered", Callable(self, "_on_body_entered"))
 		interaction_area.connect("body_exited", Callable(self, "_on_body_exited"))
-		print("🔍 station_lobby_1: Area2D signals connected")
 	else:
-		print("⚠️ station_lobby_1: No Area2D found!")
 	
 	# Load dialogue
 	load_dialogue()
@@ -39,7 +36,6 @@ func _ready():
 	# Play idle animation
 	if animated_sprite:
 		animated_sprite.play("idle_right")
-		print("🔍 station_lobby_1: Animation started")
 
 func _process(_delta):
 	# Check for interaction input when player is nearby and not in dialogue
@@ -61,16 +57,13 @@ func load_dialogue():
 		return
 	
 	dialogue_data = parsed["station_lobby_1"]
-	print("✅ Loaded Station Lobby 1 dialogue")
 
 func _on_body_entered(body):
-	print("🔍 station_lobby_1: Body entered - ", body.name)
 	if body.name == "PlayerM":
 		is_player_nearby = true
 		player_reference = body
 		face_player(body.global_position)
 		show_interaction_label()
-		print("👮 Player near station lobby 1")
 
 func _on_body_exited(body):
 	if body == player_reference:
@@ -78,10 +71,8 @@ func _on_body_exited(body):
 		player_reference = null
 		restore_original_animation()  # Return to original pose when player leaves
 		hide_interaction_label()
-		print("👮 Player left station lobby 1")
 
 func show_interaction_label():
-	print("🔍 station_lobby_1: Showing interaction label")
 	# Slide up and fade in animation
 	var tween = create_tween()
 	tween.set_parallel(true)
@@ -123,7 +114,6 @@ func restore_original_animation():
 	animated_sprite.play("idle_right")
 
 func interact():
-	print("💬 Interacting with station lobby 1")
 	is_in_dialogue = true  # Prevent E key spam
 	hide_interaction_label()
 	
@@ -142,7 +132,6 @@ func interact():
 	if dialogue_lines.size() > 0:
 		show_dialogue()
 	else:
-		print("⚠️ No dialogue lines loaded")
 		is_in_dialogue = false  # Reset if no dialogue
 		# Re-enable player movement if no dialogue
 		if player_reference and player_reference.has_method("enable_movement"):
@@ -150,16 +139,11 @@ func interact():
 
 func show_dialogue():
 	if not DialogueUI:
-		print("⚠️ DialogueUI autoload not found")
 		return
 	
-	print("==================================================")
-	print("📋 STATION LOBBY 1 DIALOGUE:")
 	for line in dialogue_lines:
 		var speaker = line.get("speaker", "")
 		var text = line.get("text", "")
-		print(speaker + ": " + text)
-	print("==================================================")
 	
 	# Show each dialogue line using the global DialogueUI
 	for line in dialogue_lines:

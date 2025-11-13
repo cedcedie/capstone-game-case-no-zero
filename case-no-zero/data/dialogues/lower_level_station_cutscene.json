@@ -1,43 +1,37 @@
 {
-  "lower_level_station_cutscene": {
-	"dialogue_lines": [
-	  { "speaker": "Station Guard", "text": "Sino ang bibisitahin mo?" },
-	  { "speaker": "Miguel", "text": "Si Erwin." },
-	  { "speaker": "Station Guard", "text": "Mag-log muna kayo sa visitor's log. Valid ID, at bawal ang recording devices (BJMP visitation rules)." },
-	  { "speaker": "Miguel", "text": "Noted. Susundin namin ang patakaran." },
-	  { "speaker": "Station Guard", "text": "Medyo maingay siya minsan. Kaya ninyo ba?" },
-	  { "speaker": "Erwin", "text": "Hoy, naririnig ko kayo. Hindi naman ako speaker system." },
-
-	  { "speaker": "Erwin", "text": "Uy, abogado! Kala mo ha, may entrance fee ang ngiti mo." },
-	  { "speaker": "Miguel", "text": "Paano kita kakalimutan? Ikaw pa. Pero seryoso tayo ngayon." },
-	  { "speaker": "Erwin", "text": "Sige na nga. Pero pwede bang may konting tawa? Bawal ba 'yon sa Rule 130?" },
-	  { "speaker": "Celine", "text": "Bawal ang corny. Pero sige, proceed ka na bago ko i-cite ang CPRA sa 'yo." },
-
-	  { "speaker": "Miguel", "text": "Erwin, tandaan mo — may due process (1987 Const. Art. III, Sec. 1)." },
-	  { "speaker": "Miguel", "text": "At may presumption of innocence (Sec. 14(2))." },
-	  { "speaker": "Celine", "text": "At burden ay nasa prosecution (Rule 133)." },
-	  { "speaker": "Celine", "text": "Hindi tayo hula; ebidensya ang usapan (Rule 130)." },
-
-	  { "speaker": "Miguel", "text": "Kamusta ka? Matagal na tayong 'di nagkita." },
-	  { "speaker": "Erwin", "text": "Ayos lang... kung ayos ang tawag sa kulungan. Pero sige — buhay pa rin." },
-	  { "speaker": "Miguel", "text": "Hindi ka 'yan. Hindi ikaw ang gumawa nito." },
-	  { "speaker": "Miguel", "text": "Pero may mga bagay na di nagtutugma..." },
-	  { "speaker": "Erwin", "text": "Gets. Kahit kaibigan tayo, magdududa ka pa rin. Tama lang 'yan." },
-	  { "speaker": "Miguel", "text": "Ano bang nakita mo noong gabing nangyari 'yon kay Leo?" },
-	  { "speaker": "Erwin", "text": "May sigaw at parang may nagtulakan." },
-	  { "speaker": "Erwin", "text": "May narinig akong yabag na mabilis palayo." },
-	  { "speaker": "Erwin", "text": "Madilim, walang klarong sandata." },
-	  { "speaker": "Erwin", "text": "'Yung CCTV sa koridor daw — sira sabi ng pulis." },
-
-	  
-	  { "speaker": "Miguel", "text": "Kailangan natin ng preliminary investigation (Rule 112)." },
-	  { "speaker": "Miguel", "text": "At ayusin ang impormasyon kung aabot (Rule 110)." },
-	  { "speaker": "Celine", "text": "Ilagay natin lahat sa maayos na case theory." },
-	  { "speaker": "Celine", "text": "CPRA (2023) — panindigan ang pagiging patas at tapat." },
-
-	  { "speaker": "Station Guard", "text": "Ubos na ang oras. Tapos na ang bisita." },
-	  { "speaker": "Erwin", "text": "Miguel, tulungan mo 'ko. Alam mong hindi ako 'to. Huwag mo 'kong pabayaan." },
-	  { "speaker": "Miguel", "text": "Gagawin ko ang kaya ko. Katotohanan ang habol natin." }
-	]
-  }
+	"lower_level_station_cutscene": {
+		"dialogue_lines": [
+			{ "speaker": "Station Guard", "text": "Sino ang bibisitahin mo?" },
+			{ "speaker": "Miguel", "text": "Si Erwin." },
+			{ "speaker": "Station Guard", "text": "Mag-log muna kayo sa visitor's log. Valid ID, at bawal ang recording devices (BJMP visitation rules)." },
+			{ "speaker": "Miguel", "text": "Noted. Susundin namin ang patakaran." },
+			{ "speaker": "Station Guard", "text": "Medyo maingay siya minsan. Kaya ninyo ba?" },
+			{ "speaker": "Erwin", "text": "Hoy, naririnig ko kayo. Hindi naman ako speaker system." },
+			{ "speaker": "Erwin", "text": "Uy, abogado! Kala mo ha, may entrance fee ang ngiti mo." },
+			{ "speaker": "Miguel", "text": "Paano kita kakalimutan? Ikaw pa. Pero seryoso tayo ngayon." },
+			{ "speaker": "Erwin", "text": "Sige na nga. Pero pwede bang may konting tawa? Bawal ba 'yon sa Rule 130?" },
+			{ "speaker": "Celine", "text": "Bawal ang corny. Pero sige, proceed ka na bago ko i-cite ang CPRA sa 'yo." },
+			{ "speaker": "Miguel", "text": "Erwin, tandaan mo — may due process (1987 Const. Art. III, Sec. 1)." },
+			{ "speaker": "Miguel", "text": "At may presumption of innocence (Sec. 14(2))." },
+			{ "speaker": "Celine", "text": "At burden ay nasa prosecution (Rule 133)." },
+			{ "speaker": "Celine", "text": "Hindi tayo hula; ebidensya ang usapan (Rule 130)." },
+			{ "speaker": "Miguel", "text": "Kamusta ka? Matagal na tayong 'di nagkita." },
+			{ "speaker": "Erwin", "text": "Ayos lang... kung ayos ang tawag sa kulungan. Pero sige — buhay pa rin." },
+			{ "speaker": "Miguel", "text": "Hindi ka 'yan. Hindi ikaw ang gumawa nito." },
+			{ "speaker": "Miguel", "text": "Pero may mga bagay na di nagtutugma..." },
+			{ "speaker": "Erwin", "text": "Gets. Kahit kaibigan tayo, magdududa ka pa rin. Tama lang 'yan." },
+			{ "speaker": "Miguel", "text": "Ano bang nakita mo noong gabing nangyari 'yon kay Leo?" },
+			{ "speaker": "Erwin", "text": "May sigaw at parang may nagtulakan." },
+			{ "speaker": "Erwin", "text": "May narinig akong yabag na mabilis palayo." },
+			{ "speaker": "Erwin", "text": "Madilim, walang klarong sandata." },
+			{ "speaker": "Erwin", "text": "'Yung CCTV sa koridor daw — sira sabi ng pulis." },
+			{ "speaker": "Miguel", "text": "Kailangan natin ng preliminary investigation (Rule 112)." },
+			{ "speaker": "Miguel", "text": "At ayusin ang impormasyon kung aabot (Rule 110)." },
+			{ "speaker": "Celine", "text": "Ilagay natin lahat sa maayos na case theory." },
+			{ "speaker": "Celine", "text": "CPRA (2023) — panindigan ang pagiging patas at tapat." },
+			{ "speaker": "Station Guard", "text": "Ubos na ang oras. Tapos na ang bisita." },
+			{ "speaker": "Erwin", "text": "Miguel, tulungan mo 'ko. Alam mong hindi ako 'to. Huwag mo 'kong pabayaan." },
+			{ "speaker": "Miguel", "text": "Gagawin ko ang kaya ko. Katotohanan ang habol natin." }
+		]
+	}
 }

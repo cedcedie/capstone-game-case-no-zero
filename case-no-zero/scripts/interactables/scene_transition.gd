@@ -35,7 +35,6 @@ func _set_entry_point_for_target(target_scene_path: String):
 	"""Set the entry point information in SpawnManager"""
 	var current_scene = get_tree().current_scene
 	if not current_scene:
-		print("⚠️ Scene Transition: current_scene is null, cannot set entry point")
 		return
 	
 	var current_scene_name = current_scene.scene_file_path.get_file().get_basename()
@@ -120,7 +119,6 @@ func _set_entry_point_for_target(target_scene_path: String):
 		spawn_manager.set_entry_point(current_scene_name, _entry_point)
 		# print("🔄 Scene Transition: Set entry point from ", current_scene_name, " to ", target_scene_name, " via ", _entry_point)
 	else:
-		print("⚠️ Scene Transition: SpawnManager not found!")
 
 func _get_target_scene_path_from_area_name() -> String:
 	# Get the scene path based on the Area2D's name
@@ -310,22 +308,15 @@ func _get_target_scene_path_from_area_name() -> String:
 func _check_and_complete_task(target_scene_path: String):
 	"""Check if we're completing a task before changing scenes"""
 	if TaskManager:
-		print("🔍 DEBUG: TaskManager found in scene transition")
 		if TaskManager.is_task_active():
 			var current_target = TaskManager.get_current_task_scene_target()
 			var target_scene_name = target_scene_path.get_file().get_basename()
-			print("🔍 DEBUG: Active task target:", current_target)
-			print("🔍 DEBUG: Scene transition target:", target_scene_name)
 			
 			if target_scene_name.to_lower().contains(current_target.to_lower()):
-				print("✅ DEBUG: Target matches! Completing task before scene change")
 				TaskManager.complete_current_task()
 			else:
-				print("⚠️ DEBUG: Target doesn't match - not completing task")
 		else:
-			print("⚠️ DEBUG: No active task")
 	else:
-		print("⚠️ DEBUG: TaskManager not found")
 
 func _check_barangay_hall_access(target_scene_path: String) -> bool:
 	"""Check if player has access to barangay hall"""
@@ -343,7 +334,6 @@ func _start_transition(target_scene_path: String):
 	is_transitioning = true
 	var tree := get_tree()
 	if tree == null or tree.root == null:
-		print("⚠️ Scene Transition: tree/root is null; aborting transition hooks")
 		return
 
 	# Notify minimap to clear immediately to avoid showing old map during fade
@@ -364,7 +354,6 @@ func _start_transition(target_scene_path: String):
 	if current_scene:
 		current_scene.add_child(canvas_layer)
 	else:
-		print("⚠️ Scene Transition: current_scene is null, cannot add canvas layer")
 		return
 	
 	# Move canvas layer to be on top of everything
@@ -383,16 +372,12 @@ func _start_transition(target_scene_path: String):
 	# Use preloaded scenes for optimal performance in exported game
 	var result = OK
 	if ScenePreloader and ScenePreloader.is_scene_preloaded(target_scene_path):
-		print("🚀 Using preloaded scene: ", target_scene_path.get_file())
 		var preloaded_scene = ScenePreloader.get_preloaded_scene(target_scene_path)
 		result = tree.change_scene_to_packed(preloaded_scene)
 	else:
-		print("📁 Loading scene from file: ", target_scene_path.get_file())
 		result = tree.change_scene_to_file(target_scene_path)
 	
 	if result != OK:
-		print("❌ Failed to change scene to: ", target_scene_path)
-		print("❌ Scene transition error - possible file path issue or scene corruption")
 		is_transitioning = false
 		# If scene change failed, fade out and reset state
 		_fade_out_and_cleanup(canvas_layer)

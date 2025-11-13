@@ -24,7 +24,6 @@ func _ready() -> void:
 	
 	# Check if cutscene already played
 	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.OFFICE_CUTSCENE_COMPLETED):
-		print("🎬 Office cutscene already completed, skipping...")
 		await fade_in()
 		show_environment_and_characters()
 		_set_player_active(true)
@@ -82,11 +81,9 @@ func play_cutscene() -> void:
 func end_cutscene() -> void:
 	# Called when the office cutscene ends (or via AnimationPlayer method track)
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.OFFICE_CUTSCENE_COMPLETED)
-	print("🎬 Office cutscene completed, checkpoint set.")
 	
 	# Mark cutscene as inactive FIRST - this stops _process() from disabling movement
 	cutscene_active = false
-	print("🎬 cutscene_active set to FALSE - _process() will stop disabling movement")
 	
 	# Re-enable player movement
 	_set_player_active(true)
@@ -96,14 +93,12 @@ func end_cutscene() -> void:
 		# CRITICAL: Reset cutscene mode to allow normal input
 		if DialogueUI.has_method("set_cutscene_mode"):
 			DialogueUI.set_cutscene_mode(false)
-			print("🎬 Office: Reset DialogueUI cutscene_mode to false")
 	# Update next task (no-op safe)
 	if Engine.has_singleton("TaskManager") or typeof(TaskManager) != TYPE_NIL:
 		if TaskManager.has_method("update_task"):
 			TaskManager.update_task("Pumunta sa kulungan")
 		if TaskManager.has_method("set_current_task"):
 			TaskManager.set_current_task("go_to_jail")
-	print("📝 Next task: Pumunta sa kulungan")
 
 	# Unlock first evidence: Broken Body Cam
 	_unlock_broken_body_cam()
@@ -119,33 +114,26 @@ func _unlock_broken_body_cam() -> void:
 	# Autoload path (if configured): /root/EvidenceInventorySettings
 	var eis: Node = get_node_or_null("/root/EvidenceInventorySettings")
 	if eis == null:
-		print("⚠️ EvidenceInventorySettings node not found at /root/EvidenceInventorySettings")
 		return
 	# Try common method names
 	if eis.has_method("unlock_evidence"):
 		eis.unlock_evidence(1)
-		print("🔎 Evidence unlocked via unlock_evidence(1)")
 		return
 	elif eis.has_method("add_evidence"):
 		# Some implementations expect a String identifier; try common forms
 		eis.add_evidence("1")
-		print("🔎 Evidence unlocked via add_evidence(\"1\")")
 		return
 	elif eis.has_method("set_evidence_unlocked"):
 		# Try both int and string ids
 		if eis.get_method_argument_count("set_evidence_unlocked") >= 2:
 			eis.set_evidence_unlocked("1", true)
-			print("🔎 Evidence unlocked via set_evidence_unlocked(\"1\", true)")
 		else:
 			eis.set_evidence_unlocked(1, true)
-			print("🔎 Evidence unlocked via set_evidence_unlocked(1, true)")
 		return
 	elif eis.has_method("mark_found"):
 		# String id fallback
 		eis.mark_found("1")
-		print("🔎 Evidence unlocked via mark_found(\"1\")")
 		return
-	print("⚠️ Could not find a method to unlock evidence id 1 on EvidenceInventorySettings")
 
 func show_line(index: int, auto_advance: bool = false) -> void:
 	if index < 0 or index >= dialogue_lines.size():
@@ -380,15 +368,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_F1:
 				# Reset office cutscene checkpoint and replay
 				CheckpointManager.clear_checkpoint(CheckpointManager.CheckpointType.OFFICE_CUTSCENE_COMPLETED)
-				print("🔄 F1: Reset office cutscene checkpoint, replaying...")
 				play_cutscene()
 			KEY_F2:
 				# Force play cutscene (even if already completed)
-				print("🎬 F2: Force playing office cutscene...")
 				play_cutscene()
 			KEY_F3:
 				# Skip to end of cutscene
-				print("⏭️ F3: Skipping to end of cutscene...")
 				CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.OFFICE_CUTSCENE_COMPLETED)
 				show_environment_and_characters()
 				hide_ui()
@@ -436,41 +421,31 @@ func _disable_player_movement() -> void:
 	if player_node.has_method("set_physics_process"):
 		player_node.set_physics_process(false)
 	# DO NOT disable process_mode - AnimationPlayer needs it to control animations
-	print("🎬 Office: Player movement disabled")
 
 func _enable_player_movement() -> void:
 	"""Enable player movement after dialogue/cutscene"""
 	if player_node == null:
 		player_node = _find_player()
 	if player_node == null:
-		print("⚠️ Office: Cannot enable movement - player not found!")
 		return
 	
-	print("🔧 Office: Enabling player movement...")
-	print("   Before - control_enabled: ", player_node.get("control_enabled") if "control_enabled" in player_node else "N/A")
 	
 	# Re-enable input/physics processing FIRST
 	if player_node.has_method("set_process_input"):
 		player_node.set_process_input(true)
-		print("   ✅ Enabled set_process_input")
 	if player_node.has_method("set_physics_process"):
 		player_node.set_physics_process(true)
-		print("   ✅ Enabled set_physics_process")
 	
 	# Re-enable movement control
 	if player_node.has_method("enable_movement"):
 		player_node.enable_movement()
-		print("   ✅ Called enable_movement()")
 	
 	# Enable control_enabled property
 	if "control_enabled" in player_node:
 		player_node.control_enabled = true
-		print("   ✅ Set control_enabled = true")
 	
 	# Final check
 	var final_control = player_node.get("control_enabled") if "control_enabled" in player_node else "N/A"
-	print("   After - control_enabled: ", final_control)
-	print("🎬 Office: Player movement fully enabled - you should be able to move now!")
 
 # =============================
 # CHARACTER FADE HELPERS (CELINE)
@@ -530,7 +505,6 @@ func _despawn_celine_if_completed() -> void:
 func _show_inventory_brief(seconds: float = 3.0) -> void:
 	var inv: Node = get_node_or_null("/root/EvidenceInventorySettings")
 	if inv == null:
-		print("⚠️ EvidenceInventorySettings not found for brief show")
 		return
 	# If it's a CanvasItem, tween it in/out for a quick popup effect
 	if inv is CanvasItem:
