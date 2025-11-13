@@ -458,6 +458,11 @@ func _set_celine_call_completed() -> void:
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED)
 	_show_task_display("Pumunta sa baranggay")
 	
+	# Update task in TaskManager to trigger waypoint indicator change
+	if TaskManager and TaskManager.has_method("update_task"):
+		TaskManager.update_task("Pumunta sa baranggay")
+		print("📍 TaskManager: Updated task to 'Pumunta sa baranggay' - waypoint should now point to barangay hall")
+	
 	if DialogueUI and DialogueUI.has_method("set_cutscene_mode"):
 		DialogueUI.set_cutscene_mode(false)
 

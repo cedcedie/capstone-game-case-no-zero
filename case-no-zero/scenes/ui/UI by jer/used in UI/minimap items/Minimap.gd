@@ -92,9 +92,9 @@ func _ready() -> void:
 		minimap_camera.enabled = true
 
 	minimap_camera.zoom = Vector2(MINIMAP_ZOOM, MINIMAP_ZOOM)
-	# Enlarge player indicator on the minimap
+	# Hide player indicator on the minimap
 	if player_marker != null:
-		player_marker.scale = Vector2(PLAYER_MARKER_SCALE, PLAYER_MARKER_SCALE)
+		player_marker.visible = false
 	visible = true
 
 	# DO NOT prebake - causes crashes. Only build when actually needed.
@@ -279,6 +279,7 @@ func _on_transition_complete(_target_scene_path: String = "") -> void:
 				minimap_camera.global_position = player.global_position
 				if player_marker != null:
 					player_marker.global_position = player.global_position
+					player_marker.visible = false
 			emit_signal("minimap_ready")
 			return
 	print("[Minimap] No cache after transition -> scanning/building")
@@ -506,6 +507,7 @@ func _use_cached_minimap(scene_path: String) -> void:
 		minimap_camera.global_position = clamped_pos
 		if player_marker != null:
 			player_marker.global_position = player.global_position
+			player_marker.visible = false
 	else:
 		var bounds := _compute_cached_minimap_bounds()
 		if bounds.has_area():
@@ -826,6 +828,7 @@ func _process(_delta: float) -> void:
 		minimap_camera.global_position = clamped_pos
 		if player_marker != null:
 			player_marker.global_position = player.global_position
+			player_marker.visible = false
 
 	# Update waypoint marker position if active
 	if waypoint_active:
@@ -931,9 +934,10 @@ func _apply_consistent_style() -> void:
 			minimap_camera.enabled = true
 		minimap_camera.zoom = Vector2(MINIMAP_ZOOM, MINIMAP_ZOOM)
 
-	# Player marker scale
+	# Player marker scale (hidden)
 	if player_marker != null:
 		player_marker.scale = Vector2(PLAYER_MARKER_SCALE, PLAYER_MARKER_SCALE)
+		player_marker.visible = false
 
 	# Ensure masked texture is the current viewport texture
 	if masked_rect != null and viewport != null:

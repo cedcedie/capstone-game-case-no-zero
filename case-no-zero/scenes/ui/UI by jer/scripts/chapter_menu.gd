@@ -1,10 +1,31 @@
 extends Control
 
+# Audio players for UI sounds
+var confirm_player: AudioStreamPlayer = null
+var close_player: AudioStreamPlayer = null
+
+func _ready():
+	# Setup audio players for UI sounds
+	confirm_player = AudioStreamPlayer.new()
+	confirm_player.stream = load("res://assets/audio/sfx/SoupTonic UI1 SFX Pack 1 - ogg/SFX_UI_Confirm.ogg")
+	confirm_player.bus = "SFX"
+	add_child(confirm_player)
+	
+	close_player = AudioStreamPlayer.new()
+	close_player.stream = load("res://assets/audio/sfx/SoupTonic UI1 SFX Pack 1 - ogg/SFX_UI_CloseMenu.ogg")
+	close_player.bus = "SFX"
+	add_child(close_player)
+
 func _on_back_to_menu_pressed() -> void:
+	if close_player:
+		close_player.play()
+	await get_tree().create_timer(0.1).timeout  # Small delay for sound
 	get_tree().change_scene_to_file("res://scenes/ui/UI by jer/design/main_menu.tscn")
 
 func _on_chapter_1_pressed() -> void:
 	"""Start Chapter 1 with full menu fade out and delay"""
+	if confirm_player:
+		confirm_player.play()
 	print("🎬 Chapter Menu: Starting Chapter 1 with full fade out")
 	
 	# Fade out the menu audio

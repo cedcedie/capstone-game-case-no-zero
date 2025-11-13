@@ -12,11 +12,20 @@ signal settings_press
 var is_visible = false
 var just_closed = false  # Flag to prevent Evidence Inventory from opening when Settings closes
 
+# Audio player for UI sounds
+var close_player: AudioStreamPlayer = null
+
 func _ready():
 	"""Initialize the settings UI"""
 	# Start completely hidden - only show when Settings tab is clicked from Evidence Inventory
 	hide()
 	is_visible = false
+	
+	# Setup audio player for UI sounds
+	close_player = AudioStreamPlayer.new()
+	close_player.stream = load("res://assets/audio/sfx/SoupTonic UI1 SFX Pack 1 - ogg/SFX_UI_CloseMenu.ogg")
+	close_player.bus = "SFX"
+	add_child(close_player)
 	
 	# Get UI references
 	_get_ui_references()
@@ -60,6 +69,9 @@ func show_settings():
 func hide_settings():
 	"""Hide settings with smooth animation"""
 	if is_visible:
+		# Play close sound
+		if close_player:
+			close_player.play()
 		is_visible = false
 		if ui_container:
 			ui_container.pivot_offset = ui_container.size / 2
