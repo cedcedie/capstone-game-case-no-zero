@@ -8,8 +8,10 @@ signal settings_press
 @onready var ui_container = $UIContainer
 @onready var evidence_tab: Node = null
 @onready var settings_tab: Node = null
+@onready var glossary_content_bg: NinePatchRect = null
 
 var is_visible = false
+var glossary_visible = false
 var just_closed = false  # Flag to prevent Evidence Inventory from opening when Settings closes
 
 # Audio player for UI sounds
@@ -36,8 +38,11 @@ func _ready():
 
 func _get_ui_references():
 	"""Get references to UI elements"""
-	evidence_tab = ui_container.get_node("EvidenceTab/Button")
-	settings_tab = ui_container.get_node("SettingsTab/Button")
+	if ui_container.has_node("EvidenceTab/Button"):
+		evidence_tab = ui_container.get_node("EvidenceTab/Button")
+	if ui_container.has_node("SettingsTab/Button"):
+		settings_tab = ui_container.get_node("SettingsTab/Button")
+	glossary_content_bg = ui_container.get_node("GlossaryContentBG")
 
 func _setup_buttons():
 	"""Setup button connections - icons are no longer clickable"""
@@ -155,3 +160,41 @@ func _input(event):
 		get_viewport().set_input_as_handled()
 
 # Hover functions removed - icons are no longer interactive
+
+func _on_glossary_button_pressed():
+	"""Show glossary when glossary button is pressed"""
+	show_glossary()
+
+func _on_glossary_exit_pressed():
+	"""Hide glossary when exit button is pressed"""
+	hide_glossary()
+
+func show_glossary():
+	"""Show glossary with smooth animation"""
+	if not glossary_visible:
+		glossary_visible = true
+		if glossary_content_bg:
+			glossary_content_bg.visible = true
+			glossary_content_bg.modulate = Color.TRANSPARENT
+			glossary_content_bg.scale = Vector2(0.1, 0.1)
+			glossary_content_bg.pivot_offset = glossary_content_bg.size / 2
+			var tween = create_tween()
+			tween.set_parallel(true)
+			tween.tween_property(glossary_content_bg, "modulate", Color(0.98, 0.96, 0.9, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+			tween.tween_property(glossary_content_bg, "scale", Vector2.ONE, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+
+func hide_glossary():
+	"""Hide glossary with smooth animation"""
+	if glossary_visible:
+		# Play close sound
+		if close_player:
+			close_player.play()
+		glossary_visible = false
+		if glossary_content_bg:
+			glossary_content_bg.pivot_offset = glossary_content_bg.size / 2
+			var tween = create_tween()
+			tween.set_parallel(true)
+			tween.tween_property(glossary_content_bg, "modulate", Color.TRANSPARENT, 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
+			tween.tween_property(glossary_content_bg, "scale", Vector2(0.1, 0.1), 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+			await tween.finished
+			glossary_content_bg.visible = false

@@ -65,16 +65,16 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 10
 theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("3_503p4")
-theme_override_font_sizes/font_size = 39
+theme_override_font_sizes/font_size = 30
 text = "W - To walk up 
 A - To walk left 
 S - To walk down
 D - To walk right
-TAB - To open inventory
+TAB - To open/close inventory
 Spacebar - to skip dialogue
 Q -  for \"OBJECTION!!!\"
 R -  Press a witness
-Esc - To open settings 
+Esc - To open/close settings 
 Shift - To run
 E -  To interact with characters  "
 

@@ -247,7 +247,86 @@ offset_right = 40.0
 offset_bottom = 40.0
 flat = true
 
+[node name="GlossaryTab" type="NinePatchRect" parent="UIContainer"]
+layout_mode = 0
+offset_left = 43.0
+offset_right = 123.0
+offset_bottom = 40.0
+texture = ExtResource("2_y33ve")
+region_rect = Rect2(928, 384, 32, 32)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Button" type="Button" parent="UIContainer/GlossaryTab"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 40.0
+flat = true
+
+[node name="GlossaryLabel" type="Label" parent="UIContainer/GlossaryTab"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 74.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_e0ywh")
+theme_override_font_sizes/font_size = 10
+text = "Glossary"
+vertical_alignment = 1
+
+[node name="GlossaryContentBG" type="NinePatchRect" parent="UIContainer"]
+visible = false
+modulate = Color(0.98, 0.96, 0.9, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y33ve")
+region_rect = Rect2(24, 502, 48, 50)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="ExitButton" type="Button" parent="UIContainer/GlossaryContentBG"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_e0ywh")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_blqn1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j7x76")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71mvm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8uskx")
+text = "X"
+
 [connection signal="value_changed" from="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainerMusic/Music Control" to="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainerMusic/Music Control" method="_on_value_changed"]
 [connection signal="value_changed" from="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainerSFX/SFX Control" to="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainerSFX/SFX Control" method="_on_value_changed"]
 [connection signal="toggled" from="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer2/Fullscreen Control" to="UIContainer/SettingsContentBG/VBoxContainer/HBoxContainer2/Fullscreen Control" method="_on_toggled"]
 [connection signal="pressed" from="UIContainer/SettingsContentBG/back" to="UIContainer/SettingsContentBG/back" method="_on_pressed"]
+[connection signal="pressed" from="UIContainer/GlossaryTab/Button" to="." method="_on_glossary_button_pressed"]
+[connection signal="pressed" from="UIContainer/GlossaryContentBG/ExitButton" to="." method="_on_glossary_exit_pressed"]
