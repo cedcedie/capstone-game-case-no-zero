@@ -366,6 +366,13 @@ var spawn_positions: Dictionary = {
 			
 			
 		},
+		"from_apartment_lobby_to_leo's_apartment": {
+			"position": Vector2(320.0, 400.0),
+			"animation": "idle_back"
+			
+			
+		},
+		
 	
 		"apartment_exterior": {
 			"position": Vector2(864.0, 344.0),
@@ -431,6 +438,12 @@ var spawn_positions: Dictionary = {
 			"position": Vector2(544.0, 426.0),
 			"animation": "idle_back"
 	},
+	"from_leo's_apartment_to_apartment_lobby": {
+			"position": Vector2(640.0, 344.0),
+			"animation": "idle_down"
+			
+			
+		},
 }
 	
 	

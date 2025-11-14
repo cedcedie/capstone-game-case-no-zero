@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://b30mu58jiqt5x"]
+[gd_scene load_steps=46 format=4 uid="uid://b30mu58jiqt5x"]
 
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="1_th3li"]
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="2_ps3tc"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dq472mj2tndm4" path="res://miravil/character_police_station/npc_pl_guy9.tscn" id="12_vsab5"]
 [ext_resource type="PackedScene" uid="uid://31iyw6734iog" path="res://miravil/characters_camp/npc_cmp_b5.tscn" id="13_0y3i7"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="14_vsab5"]
+[ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="15_0y3i7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1cifo"]
 texture = ExtResource("1_th3li")
@@ -16755,6 +16756,9 @@ _data = {
 &"apartment_cutscene": SubResource("Animation_0y3i7")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsab5"]
+size = Vector2(64, 20)
+
 [node name="Apartment3" type="Node2D"]
 
 [node name="ground wall" type="TileMapLayer" parent="."]
@@ -16797,3 +16801,10 @@ position = Vector2(320, 400)
 libraries = {
 &"": SubResource("AnimationLibrary_24v2p")
 }
+
+[node name="from_leo\'s_apartment_to_apartment_lobby" type="Area2D" parent="."]
+position = Vector2(320, 440)
+script = ExtResource("15_0y3i7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_leo\'s_apartment_to_apartment_lobby"]
+shape = SubResource("RectangleShape2D_vsab5")

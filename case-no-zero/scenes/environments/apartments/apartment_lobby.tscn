@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cybycrgdql65l"]
+[gd_scene load_steps=27 format=4 uid="uid://cybycrgdql65l"]
 
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_74m4i"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_oi8pj"]
@@ -6628,6 +6628,9 @@ size = Vector2(32, 16.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qni5b"]
 size = Vector2(40, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agxxj"]
+size = Vector2(32, 20)
+
 [node name="ApartmentLobby" type="Node2D"]
 
 [node name="Ground wall" type="TileMapLayer" parent="."]
@@ -6658,7 +6661,7 @@ shape = SubResource("RectangleShape2D_wflm8")
 
 [node name="PlayerM" parent="." instance=ExtResource("8_ix6sl")]
 z_index = 4
-position = Vector2(1034, 360)
+position = Vector2(640, 344)
 
 [node name="Area2D_lobby_to_exterior_apartment" type="Area2D" parent="."]
 script = ExtResource("7_0q54g")
@@ -6676,4 +6679,11 @@ position = Vector2(408, 331)
 
 [node name="NpcCmpB7" parent="." instance=ExtResource("11_m2yrk")]
 z_index = 4
-position = Vector2(605, 329)
+position = Vector2(560, 329)
+
+[node name="from_apartment_lobby_to_leo\'s_apartment" type="Area2D" parent="."]
+position = Vector2(640, 288)
+script = ExtResource("7_0q54g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from_apartment_lobby_to_leo\'s_apartment"]
+shape = SubResource("RectangleShape2D_agxxj")

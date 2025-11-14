@@ -109,7 +109,9 @@ func _set_entry_point_for_target(target_scene_path: String):
 		"from_abadoned_court":"from_abadoned_court",
 		"from_inside_abandoned_court":"from_inside_abandoned_court",
 		"from_apartment_morgue_to_apartment_1":"from_apartment_morgue_to_apartment_1",
-		"from_apartment_1_to_apartment_morgue":"from_apartment_1_to_apartment_morgue"
+		"from_apartment_1_to_apartment_morgue":"from_apartment_1_to_apartment_morgue",
+		"from_apartment_lobby_to_leo's_apartment":"from_apartment_lobby_to_leo's_apartment",
+		"from_leo's_apartment_to_apartment_lobby":"from_leo's_apartment_to_apartment_lobby"
 		
 	}
 	
@@ -301,6 +303,10 @@ func _get_target_scene_path_from_area_name() -> String:
 			return "res://scenes/environments/apartments/apartment_1.tscn"
 		"from_apartment_1_to_apartment_morgue":
 			return "res://scenes/environments/exterior/apartment_morgue.tscn"
+		"from_apartment_lobby_to_leo's_apartment":
+			return "res://scenes/environments/apartments/leo's apartment.tscn"
+		"from_leo's_apartment_to_apartment_lobby":
+			return "res://scenes/environments/apartments/apartment_lobby.tscn"
 		_:
 			return ""
 
