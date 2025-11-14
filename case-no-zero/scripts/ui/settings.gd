@@ -15,6 +15,7 @@ var glossary_visible = false
 var just_closed = false  # Flag to prevent Evidence Inventory from opening when Settings closes
 
 # Audio player for UI sounds
+var open_player: AudioStreamPlayer = null
 var close_player: AudioStreamPlayer = null
 
 func _ready():
@@ -23,7 +24,12 @@ func _ready():
 	hide()
 	is_visible = false
 	
-	# Setup audio player for UI sounds
+	# Setup audio players for UI sounds
+	open_player = AudioStreamPlayer.new()
+	open_player.stream = load("res://assets/audio/sfx/SoupTonic UI1 SFX Pack 1 - ogg/SFX_UI_OpenMenu.ogg")
+	open_player.bus = "SFX"
+	add_child(open_player)
+	
 	close_player = AudioStreamPlayer.new()
 	close_player.stream = load("res://assets/audio/sfx/SoupTonic UI1 SFX Pack 1 - ogg/SFX_UI_CloseMenu.ogg")
 	close_player.bus = "SFX"
@@ -52,6 +58,10 @@ func _setup_buttons():
 func show_settings():
 	"""Show settings with smooth animation"""
 	if not is_visible:
+		# Play open sound
+		if open_player:
+			open_player.play()
+		
 		# Make sure Evidence Inventory is hidden before showing Settings
 		if has_node("/root/EvidenceInventorySettings"):
 			var evidence_ui = get_node("/root/EvidenceInventorySettings")

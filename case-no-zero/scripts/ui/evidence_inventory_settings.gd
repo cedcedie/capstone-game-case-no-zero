@@ -26,6 +26,10 @@ var evidence_description: Label
 var evidence_tab: NinePatchRect
 var settings_tab: NinePatchRect
 
+# Audio players for UI sounds
+var open_player: AudioStreamPlayer = null
+var close_player: AudioStreamPlayer = null
+
 # Evidence system with 6 evidence types and proper signals
 signal evidence_collected(evidence_id: String)
 signal evidence_displayed(evidence_id: String)
@@ -57,6 +61,17 @@ func _ready():
 	hide()
 	ui_container = $UIContainer
 	
+	# Setup audio players for UI sounds
+	open_player = AudioStreamPlayer.new()
+	open_player.stream = load("res://assets/audio/sfx/SoupTonic UI1 SFX Pack 1 - ogg/SFX_UI_OpenMenu.ogg")
+	open_player.bus = "SFX"
+	add_child(open_player)
+	
+	close_player = AudioStreamPlayer.new()
+	close_player.stream = load("res://assets/audio/sfx/SoupTonic UI1 SFX Pack 1 - ogg/SFX_UI_CloseMenu.ogg")
+	close_player.bus = "SFX"
+	add_child(close_player)
+	
 	# Load evidence data
 	_load_evidence_data()
 	
@@ -72,6 +87,10 @@ func _ready():
 func show_evidence_inventory():
 	"""Show the evidence inventory UI with smooth fade animation from center"""
 	if not is_visible:
+		# Play open sound
+		if open_player:
+			open_player.play()
+		
 		# Make sure Settings is hidden before showing Evidence Inventory
 		if has_node("/root/Settings"):
 			var settings_ui = get_node("/root/Settings")
@@ -116,6 +135,10 @@ func show_evidence_inventory():
 func hide_evidence_inventory():
 	"""Hide the evidence inventory UI with smooth fade animation to center"""
 	if is_visible:
+		# Play close sound
+		if close_player:
+			close_player.play()
+		
 		is_visible = false
 		
 		if ui_container:
