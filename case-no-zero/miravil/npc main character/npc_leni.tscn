@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://caecra8lw56yv"]
+[gd_scene load_steps=31 format=3 uid="uid://caecra8lw56yv"]
 
 [ext_resource type="Texture2D" uid="uid://3bd0jb5lsh6m" path="res://miravil/main character/leni_idle (2).png" id="1_nnvi1"]
+[ext_resource type="Script" uid="uid://cvwt0h4o0te0r" path="res://miravil/npc main character/npc_leni.gd" id="1_qg5kl"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_qg5kl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nnvi1"]
@@ -226,6 +227,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcLeni" type="CharacterBody2D"]
+script = ExtResource("1_qg5kl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dggx3")

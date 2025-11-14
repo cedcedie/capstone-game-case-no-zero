@@ -1,0 +1,24 @@
+{
+  "npc_nikko": {
+	"first_interaction": [
+	  {
+		"speaker": "Nikko",
+		"text": "Oh, hi! Welcome! Ako si Nikko, staff lang dito sa supermarket. Nag-aayos lang ako ng mga paninda dito sa aisle."
+	  },
+	  {
+		"speaker": "Nikko",
+		"text": "Medyo busy minsan, pero okay lang. Masaya rin makita yung mga tao na paikot-ikot sa shelves, naghahanap ng mga gusto nila."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Nikko",
+		"text": "Uy, ikaw ulit! Balik ka na naman dito sa area ko ah."
+	  },
+	  {
+		"speaker": "Nikko",
+		"text": "Kung may hinahanap ka, sabihin mo lang. Pero kung tambay ka lang dito, okay lang din haha."
+	  }
+	]
+  }
+}

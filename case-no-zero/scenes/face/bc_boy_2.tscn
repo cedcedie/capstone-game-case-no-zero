@@ -1,3 +1,85 @@
-[gd_scene format=3 uid="uid://phusfgqio8no"]
+[gd_scene load_steps=13 format=3 uid="uid://phusfgqio8no"]
+
+[ext_resource type="Texture2D" uid="uid://dh1sjk777h0ue" path="res://miravil/face_baranggay_court/face_bc_boy_2.png" id="1_uvx4o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0axc"]
+atlas = ExtResource("1_uvx4o")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfbuy"]
+atlas = ExtResource("1_uvx4o")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr2j5"]
+atlas = ExtResource("1_uvx4o")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7o43"]
+atlas = ExtResource("1_uvx4o")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n25ph"]
+atlas = ExtResource("1_uvx4o")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxkxc"]
+atlas = ExtResource("1_uvx4o")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoqhg"]
+atlas = ExtResource("1_uvx4o")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvvhm"]
+atlas = ExtResource("1_uvx4o")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgujt"]
+atlas = ExtResource("1_uvx4o")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4lyo"]
+atlas = ExtResource("1_uvx4o")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcrhc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0axc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfbuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr2j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7o43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n25ph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxkxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoqhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvvhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgujt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4lyo")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
 
 [node name="BcBoy2" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_pcrhc")
+animation = &"talk"

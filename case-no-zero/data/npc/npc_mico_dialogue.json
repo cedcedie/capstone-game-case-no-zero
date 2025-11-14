@@ -1,0 +1,24 @@
+{
+  "npc_mico": {
+	"first_interaction": [
+	  {
+		"speaker": "Mico",
+		"text": "Hello po! Ako si Mico, naka-assign dito sa cashier counter. Kung may bibilhin ka, diretsyo lang dito sa akin."
+	  },
+	  {
+		"speaker": "Mico",
+		"text": "Medyo maingay minsan dito sa counter, pero nasanay na rin ako. Ang daming tao kasi lagi, haha!"
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Mico",
+		"text": "Uy, ikaw ulit! May idadagdag ka pa ba sa bibilhin mo?"
+	  },
+	  {
+		"speaker": "Mico",
+		"text": "Kung ready ka na magbayad, sabihin mo lang ha. Dito lang ako, standby lang naman."
+	  }
+	]
+  }
+}

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c314a7wb4qqh3"]
+
+[ext_resource type="Texture2D" uid="uid://c2n0feixu1p1s" path="res://assets/sprites/characters/closeup_face/leni_closeup.png" id="1_evyv4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utbdt"]
+atlas = ExtResource("1_evyv4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m66le"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utbdt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Leni" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_m66le")

@@ -14,9 +14,9 @@ extends CharacterBody2D
 # ============================================
 # CONFIGURATION - CHANGE THESE FOR EACH NPC
 # ============================================
-@export var dialogue_file_path: String = "res://data/npc/npc_htl_guy1_dialogue.json"
-@export var dialogue_key: String = "npc_htl_guy1"
-@export var default_idle_animation: String = "idle_back"  # Animation to restore when player leaves
+@export var dialogue_file_path: String = "res://data/npc/npc_ka_isko_dialogue.json"
+@export var dialogue_key: String = "npc_ka_isko"
+@export var default_idle_animation: String = "idle_front"  # Animation to restore when player leaves
 
 # Node references
 @onready var interaction_label: Label = $Label
@@ -249,7 +249,7 @@ func show_dialogue():
 	for line in dialogue_lines:
 		var speaker = line.get("speaker", "")
 		var text = line.get("text", "")
-		DialogueUI.show_dialogue_line(speaker, text, false, dialogue_key)
+		DialogueUI.show_dialogue_line(speaker, text)
 		
 		# Wait for player to press next
 		await DialogueUI.next_pressed

@@ -1,0 +1,24 @@
+{
+  "npc_leni": {
+	"first_interaction": [
+	  {
+		"speaker": "Leni",
+		"text": "Uy, kumusta ka! Ako si Leni, madalas lang ako dito sa kanto kasi hilig ko lang makinig sa tsismis ng mga tao."
+	  },
+	  {
+		"speaker": "Leni",
+		"text": "Wala akong ginagawa, puro chika lang. Basta may bago kang kwento, ikwento mo din sa akin ha!"
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Leni",
+		"text": "Uy, ikaw na naman! Ang dami ko pang narinig na chika mula sa paligid."
+	  },
+	  {
+		"speaker": "Leni",
+		"text": "Halika dito, baka may bago akong marinig na kwento na gusto mo ding malaman!"
+	  }
+	]
+  }
+}

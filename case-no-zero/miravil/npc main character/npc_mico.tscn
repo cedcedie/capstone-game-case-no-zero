@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://dv8mw4p6bv2a8"]
+[gd_scene load_steps=31 format=3 uid="uid://dv8mw4p6bv2a8"]
 
 [ext_resource type="Texture2D" uid="uid://bc34hqy454qrt" path="res://miravil/main character/mico_idle.png" id="1_817nx"]
+[ext_resource type="Script" uid="uid://c6e38fd4grxym" path="res://miravil/npc main character/npc_mico.gd" id="1_ubchn"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_ubchn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_817nx"]
@@ -226,6 +227,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcMico" type="CharacterBody2D"]
+script = ExtResource("1_ubchn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wagun")

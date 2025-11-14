@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvxcdc2exs281"]
+
+[ext_resource type="Texture2D" uid="uid://o6n6u2xrbjym" path="res://assets/sprites/characters/closeup_face/mikko_closeup.png" id="1_hcsxn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w3xx"]
+atlas = ExtResource("1_hcsxn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fdl18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7w3xx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Mico" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fdl18")

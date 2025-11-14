@@ -1,0 +1,24 @@
+{
+  "npc_isko": {
+	"first_interaction": [
+	  {
+		"speaker": "Isko",
+		"text": "Oy, kumusta! Ako si Isko, tambay lang dito sa kanto habang pinapanood ang mga tao."
+	  },
+	  {
+		"speaker": "Isko",
+		"text": "Wala akong ginagawa, chill lang. Basta relax lang dito at tinitingnan ang paligid."
+	  }
+	],
+	"repeated_interaction": [
+	  {
+		"speaker": "Isko",
+		"text": "Uy, ikaw na naman! Nakikita kita dito sa kanto palagi."
+	  },
+	  {
+		"speaker": "Isko",
+		"text": "Tambay lang ako dito, pero masaya rin kasi laging may nakikita kang kakaiba sa paligid."
+	  }
+	]
+  }
+}

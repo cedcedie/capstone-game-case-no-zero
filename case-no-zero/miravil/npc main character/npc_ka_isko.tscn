@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://swf8uxbjjaft"]
+[gd_scene load_steps=33 format=3 uid="uid://swf8uxbjjaft"]
 
+[ext_resource type="Script" uid="uid://c20tu6gyrutj7" path="res://miravil/npc main character/npc_ka_isko.gd" id="1_4goc8"]
 [ext_resource type="Texture2D" uid="uid://b5nuc6q6es8n1" path="res://miravil/main character/ka_isko_idle.png" id="1_bm5t2"]
 [ext_resource type="Texture2D" uid="uid://3bd0jb5lsh6m" path="res://miravil/main character/leni_idle (2).png" id="2_4goc8"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_xdp63"]
@@ -234,6 +235,7 @@ size = Vector2(20, 17)
 radius = 26.0192
 
 [node name="NpcKaIsko" type="CharacterBody2D"]
+script = ExtResource("1_4goc8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ymhbd")
