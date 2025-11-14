@@ -25,8 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://clyj57704webl" path="res://miravil/characters_hotel_hospital/npc_htl_guy2.tscn" id="23_qvy27"]
 [ext_resource type="PackedScene" uid="uid://bnw6liaaqujv6" path="res://miravil/characters_hotel_hospital/npc_htl_girl2.tscn" id="24_vwtp4"]
 [ext_resource type="PackedScene" uid="uid://dxpkalqq3osyf" path="res://miravil/characters_hotel_hospital/npc_htl_girl1.tscn" id="25_3jp7t"]
-[ext_resource type="PackedScene" uid="uid://swf8uxbjjaft" path="res://miravil/npc main character/npc_ka_isko.tscn" id="26_qihkq"]
-[ext_resource type="PackedScene" uid="uid://dp1tfojmgv6hf" path="res://miravil/npc main character/npc_mang_oca.tscn" id="27_iq3er"]
+[ext_resource type="PackedScene" uid="uid://cd6dvwiurthvs" path="res://miravil/npc main character/npc_ka_isko.tscn" id="26_qihkq"]
+[ext_resource type="PackedScene" uid="uid://dlcjdccea5gjr" path="res://miravil/npc main character/npc_mang_oca.tscn" id="27_iq3er"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1o657"]
 texture = ExtResource("1_ni3it")

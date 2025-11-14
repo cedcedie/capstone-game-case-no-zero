@@ -34,7 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://dpmo0v0p2bo06" path="res://miravil/vendor/vendor_6.tscn" id="33_gwk7j"]
 [ext_resource type="PackedScene" uid="uid://du2yvi818n20y" path="res://miravil/characters_camp/npc_cmp_b3.tscn" id="33_s6vqj"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="35_dww58"]
-[ext_resource type="PackedScene" uid="uid://brodo4dncuh3a" path="res://miravil/npc main character/npc_sari_sari_owner.tscn" id="35_s6vqj"]
+[ext_resource type="PackedScene" uid="uid://cs5bth2ynpcpf" path="res://miravil/npc main character/npc_sari_sari_owner.tscn" id="35_s6vqj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5t6fk"]
 texture = ExtResource("1_kcm3v")
