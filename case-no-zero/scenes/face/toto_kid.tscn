@@ -13,10 +13,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_ydrw1")
 }],
 "loop": true,
-"name": &"talk",
+"name": &"image",
 "speed": 5.0
 }]
 
 [node name="TotoKid" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_nio8x")
-animation = &"talk"
+animation = &"image"

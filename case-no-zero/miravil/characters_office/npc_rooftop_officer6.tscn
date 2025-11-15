@@ -3,29 +3,29 @@
 [ext_resource type="Texture2D" uid="uid://bc60s11ric75w" path="res://miravil/sprites office/npc_rooftop_officer6.png" id="1_edon3"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_f8aob"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_edon3"]
+atlas = ExtResource("1_edon3")
+region = Rect2(192, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8aob"]
+atlas = ExtResource("1_edon3")
+region = Rect2(224, 64, 32, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7gvx"]
 atlas = ExtResource("1_edon3")
-region = Rect2(0, 64, 32, 64)
+region = Rect2(256, 64, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n404s"]
 atlas = ExtResource("1_edon3")
-region = Rect2(32, 64, 32, 64)
+region = Rect2(288, 64, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3cp3"]
 atlas = ExtResource("1_edon3")
-region = Rect2(64, 64, 32, 64)
+region = Rect2(320, 64, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bu1sl"]
 atlas = ExtResource("1_edon3")
-region = Rect2(96, 64, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rl2m"]
-atlas = ExtResource("1_edon3")
-region = Rect2(128, 64, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjtk6"]
-atlas = ExtResource("1_edon3")
-region = Rect2(160, 64, 32, 64)
+region = Rect2(352, 64, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dvpy"]
 atlas = ExtResource("1_edon3")
@@ -103,6 +103,12 @@ region = Rect2(160, 64, 32, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_edon3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8aob")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_b7gvx")
 }, {
 "duration": 1.0,
@@ -113,12 +119,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bu1sl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6rl2m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rjtk6")
 }],
 "loop": true,
 "name": &"idle_back",
@@ -230,7 +230,7 @@ radius = 26.0192
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fm3ih")
 animation = &"idle_back"
-autoplay = "idle_front"
+autoplay = "idle_back"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

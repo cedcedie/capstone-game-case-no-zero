@@ -22110,9 +22110,6 @@ position = Vector2(-233, 97)
 z_index = 4
 position = Vector2(0, -24)
 
-[node name="AnimatedSprite2D" parent="NpcBcBoy8/Area2D/NpcTotoKid" index="0"]
-animation = &"idle_front"
-
 [node name="CollisionShape2D" parent="NpcBcBoy8/Area2D/NpcTotoKid/Area2D" index="0"]
 position = Vector2(104, 363)
 

@@ -231,7 +231,7 @@ script = ExtResource("1_eolvn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3c1ty")
-animation = &"idle_back"
+animation = &"idle_front"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

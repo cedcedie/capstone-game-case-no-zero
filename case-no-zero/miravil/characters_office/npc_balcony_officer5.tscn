@@ -1,7 +1,55 @@
-[gd_scene load_steps=30 format=3 uid="uid://dcetv2v0mjpsi"]
+[gd_scene load_steps=42 format=3 uid="uid://dcetv2v0mjpsi"]
 
 [ext_resource type="Texture2D" uid="uid://6kc6mg48vak" path="res://miravil/sprites office/npc_balcony_officer5.png" id="1_lk7nx"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_j8ywl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk7nx"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(0, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8ywl"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(32, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtsis"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(64, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3mf4"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(96, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h41c"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(128, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adgvw"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(160, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjubg"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(192, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1ggb"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(224, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk12v"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(256, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2w1d"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(288, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmy3k"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(320, 384, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vduf"]
+atlas = ExtResource("1_lk7nx")
+region = Rect2(352, 384, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxv3l"]
 atlas = ExtResource("1_lk7nx")
@@ -103,6 +151,47 @@ region = Rect2(160, 64, 32, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lk7nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8ywl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtsis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3mf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h41c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adgvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjubg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1ggb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk12v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2w1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmy3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vduf")
+}],
+"loop": true,
+"name": &"cellphone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_lxv3l")
 }, {
 "duration": 1.0,
@@ -195,11 +284,6 @@ animations = [{
 }, {
 "frames": [],
 "loop": true,
-"name": &"read_front",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
 "name": &"walk_back",
 "speed": 5.0
 }, {
@@ -229,8 +313,10 @@ radius = 26.0192
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xtsis")
-animation = &"idle_front"
-autoplay = "idle_front"
+animation = &"cellphone"
+autoplay = "cellphone"
+frame = 10
+frame_progress = 0.465118
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

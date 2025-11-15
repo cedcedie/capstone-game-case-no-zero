@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cgq000v2pyp08"]
+[gd_scene load_steps=19 format=4 uid="uid://cgq000v2pyp08"]
 
 [ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="2_nlnmq"]
 [ext_resource type="Texture2D" uid="uid://dlk6j6ef6wm6c" path="res://assets/sprites/environments/interior/19_Hospital_32x32.png" id="2_utr5v"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://nde6jt45ypt8" path="res://assets/sprites/environments/exterior/16_Office_32x32.png" id="4_qq8va"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="5_6w6ak"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="5_qq8va"]
+[ext_resource type="PackedScene" uid="uid://cfuf24oen40ow" path="res://miravil/characters_office/npc_rooftop_officer6.tscn" id="7_f8p42"]
+[ext_resource type="PackedScene" uid="uid://t1ju7htl6uec" path="res://miravil/characters_office/npc_rooftop_officer8.tscn" id="8_akbsb"]
+[ext_resource type="PackedScene" uid="uid://dbw0pt32ly4jd" path="res://miravil/characters_office/npc_rooftop_officer7.tscn" id="9_bp50v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f8p42"]
 texture = ExtResource("4_qq8va")
@@ -8983,3 +8986,22 @@ position = Vector2(390, 363)
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = SubResource("GDScript_6w6ak")
+
+[node name="NpcRooftopOfficer6" parent="." instance=ExtResource("7_f8p42")]
+position = Vector2(740, 201)
+
+[node name="NpcRooftopOfficer8" parent="." instance=ExtResource("8_akbsb")]
+position = Vector2(353, 498)
+
+[node name="AnimatedSprite2D" parent="NpcRooftopOfficer8" index="0"]
+animation = &"idle_front"
+
+[node name="NpcRooftopOfficer7" parent="." instance=ExtResource("9_bp50v")]
+position = Vector2(753, 513)
+
+[node name="AnimatedSprite2D" parent="NpcRooftopOfficer7" index="0"]
+animation = &"idle_left"
+
+[editable path="NpcRooftopOfficer6"]
+[editable path="NpcRooftopOfficer8"]
+[editable path="NpcRooftopOfficer7"]

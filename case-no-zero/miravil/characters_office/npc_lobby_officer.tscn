@@ -1,7 +1,31 @@
-[gd_scene load_steps=30 format=3 uid="uid://dixo4an32863k"]
+[gd_scene load_steps=36 format=3 uid="uid://dixo4an32863k"]
 
 [ext_resource type="Texture2D" uid="uid://by50eetp8vmao" path="res://miravil/sprites office/npc_lobby_officer1.png" id="1_75ugj"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_1xyh3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75ugj"]
+atlas = ExtResource("1_75ugj")
+region = Rect2(0, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xyh3"]
+atlas = ExtResource("1_75ugj")
+region = Rect2(32, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nha10"]
+atlas = ExtResource("1_75ugj")
+region = Rect2(64, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fh0w"]
+atlas = ExtResource("1_75ugj")
+region = Rect2(96, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpvlc"]
+atlas = ExtResource("1_75ugj")
+region = Rect2(128, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlm3q"]
+atlas = ExtResource("1_75ugj")
+region = Rect2(160, 192, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8h4un"]
 atlas = ExtResource("1_75ugj")
@@ -103,6 +127,29 @@ region = Rect2(160, 64, 32, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_75ugj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xyh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nha10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fh0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpvlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlm3q")
+}],
+"loop": true,
+"name": &"head",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8h4un")
 }, {
 "duration": 1.0,
@@ -200,11 +247,6 @@ animations = [{
 }, {
 "frames": [],
 "loop": true,
-"name": &"walk_back",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
 "name": &"walk_down",
 "speed": 5.0
 }, {
@@ -229,7 +271,7 @@ radius = 26.0192
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nha10")
-animation = &"idle_front"
+animation = &"head"
 autoplay = "idle_front"
 offset = Vector2(0, -32)
 

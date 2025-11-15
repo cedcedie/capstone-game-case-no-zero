@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://il1sq3plp1ba"]
+[gd_scene load_steps=36 format=3 uid="uid://il1sq3plp1ba"]
 
 [ext_resource type="Texture2D" uid="uid://c8aiwn3dhen5g" path="res://miravil/sprites office/npc_lobby_officer3.png" id="1_wbjss"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_q8t51"]
@@ -99,6 +99,30 @@ region = Rect2(512, 64, 32, 64)
 atlas = ExtResource("1_wbjss")
 region = Rect2(544, 64, 32, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbjss"]
+atlas = ExtResource("1_wbjss")
+region = Rect2(0, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8t51"]
+atlas = ExtResource("1_wbjss")
+region = Rect2(32, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4myf"]
+atlas = ExtResource("1_wbjss")
+region = Rect2(64, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sne46"]
+atlas = ExtResource("1_wbjss")
+region = Rect2(96, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj5af"]
+atlas = ExtResource("1_wbjss")
+region = Rect2(128, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m2il"]
+atlas = ExtResource("1_wbjss")
+region = Rect2(160, 256, 32, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h4myf"]
 animations = [{
 "frames": [{
@@ -193,9 +217,27 @@ animations = [{
 "name": &"idle_right",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbjss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8t51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4myf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sne46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj5af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7m2il")
+}],
 "loop": true,
-"name": &"read_front",
+"name": &"sit",
 "speed": 5.0
 }, {
 "frames": [],
@@ -229,8 +271,8 @@ radius = 26.0192
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h4myf")
-animation = &"idle_front"
-autoplay = "idle_front"
+animation = &"sit"
+autoplay = "sit"
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

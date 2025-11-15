@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://ssc4hx35js88"]
+[gd_scene load_steps=15 format=4 uid="uid://ssc4hx35js88"]
 
 [ext_resource type="Texture2D" uid="uid://nde6jt45ypt8" path="res://assets/sprites/environments/exterior/16_Office_32x32.png" id="1_2twgu"]
 [ext_resource type="Texture2D" uid="uid://bustag5k6b4ah" path="res://assets/sprites/environments/exterior/3_City_Props_32x32.png" id="2_jfjti"]
 [ext_resource type="Texture2D" uid="uid://4xc3m255sbyc" path="res://assets/sprites/environments/interior/1_Generic_32x32.png" id="3_86viw"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="4_86viw"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="5_vu4ba"]
+[ext_resource type="PackedScene" uid="uid://dcetv2v0mjpsi" path="res://miravil/characters_office/npc_balcony_officer5.tscn" id="6_1guus"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5xwbw"]
 texture = ExtResource("1_2twgu")
@@ -6130,3 +6131,8 @@ position = Vector2(816, 376)
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = SubResource("GDScript_vu4ba")
+
+[node name="NpcBalconyOfficer5" parent="." instance=ExtResource("6_1guus")]
+position = Vector2(613, 363)
+
+[editable path="NpcBalconyOfficer5"]

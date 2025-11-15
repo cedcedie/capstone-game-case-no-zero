@@ -10899,8 +10899,8 @@ position = Vector2(525, 155)
 animation = &"idle_front"
 
 [node name="NpcMico" parent="." instance=ExtResource("13_p38oj")]
-z_index = 4
-position = Vector2(717, 252)
+z_index = 5
+position = Vector2(684, 255)
 
 [node name="AnimatedSprite2D" parent="NpcMico" index="0"]
 animation = &"idle_left"

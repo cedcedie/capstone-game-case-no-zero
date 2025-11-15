@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cbi8obhfiufff"]
+[gd_scene load_steps=29 format=4 uid="uid://cbi8obhfiufff"]
 
 [ext_resource type="Texture2D" uid="uid://t4ovk0bdernq" path="res://assets/sprites/environments/interior/Room_Builder_borders_32x32.png" id="1_1s7ot"]
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="2_7vg6k"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cqn2g1cxl6v7w" path="res://assets/sprites/environments/interior/14_Basement_32x32.png" id="7_xx8gb"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="8_xx8gb"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="9_7g5rn"]
+[ext_resource type="PackedScene" uid="uid://dixo4an32863k" path="res://miravil/characters_office/npc_lobby_officer.tscn" id="10_eilsa"]
+[ext_resource type="PackedScene" uid="uid://dw7oxdbpyxnb8" path="res://miravil/characters_office/npc_lobby_officer2.tscn" id="11_lnos1"]
+[ext_resource type="PackedScene" uid="uid://il1sq3plp1ba" path="res://miravil/characters_office/npc_lobby_officer3.tscn" id="12_5o8tu"]
+[ext_resource type="PackedScene" uid="uid://c556s2663bfe4" path="res://miravil/characters_office/npc_lobby_officer4.tscn" id="13_s1ftw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hpewf"]
 texture = ExtResource("1_1s7ot")
@@ -6867,6 +6871,7 @@ tile_set = SubResource("TileSet_7g5rn")
 collision_visibility_mode = 1
 
 [node name="layer 1" type="TileMapLayer" parent="."]
+z_index = 1
 position = Vector2(320, 0)
 tile_map_data = PackedByteArray("AAAHAAQAAgAFAAAAAAAHAAUAAgAFAAEAAAAHAAYAAgAFAAIAAAAIAAUAAgAGAAAAAAAIAAYAAgAGAAIAAAAJAAUAAgAHAAAAAAAJAAYAAgAGAAIAAAAKAAUAAgAGAAEAAAAKAAYAAgAGAAIAAAALAAUAAgAGAAEAAAALAAYAAgAGAAIAAAAMAAUAAgAGAAAAAAAMAAYAAgAGAAIAAAANAAUAAgAHAAAAAAANAAYAAgAGAAIAAAAOAAQAAgAIAAAAAAAOAAUAAgAIAAEAAAAOAAYAAgAIAAIAAAADAAMAAwAAABUAAAADAAQAAwAAABYAAAAEAAMAAwABABUAAAAEAAQAAwABABYAAAAFAAMAAwACABUAAAAFAAQAAwACABYAAAAGAAQAAwAIACAAAAASAAMAAgAIACoAAAASAAQAAgAIACsAAAASAAUAAgAIACwAAAATAAMAAgAJACoAAAATAAQAAgAJACsAAAATAAUAAgAJACwAAAAPAAMAAgACAC0AAAAPAAQAAgAAAC4AAAAPAAUAAgACAC8AAAAQAAMAAgADAC0AAAAQAAQAAgABAC4AAAAQAAUAAgADAC8AAAARAAQAAgAAACwAAAARAAUAAgABACsAAAACAAMAAwAPABwAAAACAAQAAwAPAB0AAAACAAUAAwAPAB4AAAAPAAoAAwAGACMAAAAPAAsAAwAGACQAAAAQAAoAAwAHACMAAAAQAAsAAwAHACQAAAAFAAoAAwAGACMAAAAFAAsAAwAGACQAAAAGAAoAAwAHACMAAAAGAAsAAwAHACQAAAACAAoABAAFACEAAAADAAkABAAGACAAAAADAAoABAAGACEAAAACAAsABAAFACIAAAADAAsABAAGACIAAAACAAkABAAFACAAAAAHAAwABAAEABwAAAAIAAwABAAGABwAAAADAAwABAAEABwAAAAEAAwABAAFABwAAAAFAAwABAAGABwAAAANAAwABAAEABwAAAAOAAwABAAGABwAAAAQAAwABAAEABwAAAARAAwABAAFABwAAAASAAwABAAGABwAAAASAAkABAADACAAAAASAAoABAADACEAAAASAAsABAADACIAAAATAAkABAAEACAAAAATAAoABAAEACEAAAATAAsABAAEACIAAAACAAwABAAMAAAAAAATAAwABAAMAAAAAAAEAAkAAwAFACIAAAAEAAoAAwAFACMAAAAEAAsAAwAFACQAAAAFAAkAAwAGACIAAAAGAAkAAwAHACIAAAAHAAkAAwAIACIAAAAHAAoAAwAIACMAAAAHAAsAAwAIACQAAAAOAAkAAwAFACIAAAAOAAoAAwAFACMAAAAOAAsAAwAFACQAAAAPAAkAAwAGACIAAAAQAAkAAwAHACIAAAARAAkAAwAIACIAAAARAAoAAwAIACMAAAARAAsAAwAIACQAAAA=")
 tile_set = SubResource("TileSet_t6gdl")
@@ -6879,6 +6884,7 @@ tile_set = SubResource("TileSet_5o8tu")
 collision_visibility_mode = 1
 
 [node name="PlayerM" parent="." instance=ExtResource("8_xx8gb")]
+z_index = 1
 position = Vector2(672, 464)
 
 [node name="from_office_lobby_to_office_main" type="Area2D" parent="."]
@@ -6897,3 +6903,33 @@ shape = SubResource("RectangleShape2D_7g5rn")
 
 [node name="SceneFadeIn" type="Node2D" parent="."]
 script = SubResource("GDScript_7g5rn")
+
+[node name="NpcLobbyOfficer" parent="." instance=ExtResource("10_eilsa")]
+position = Vector2(605, 187)
+
+[node name="AnimatedSprite2D" parent="NpcLobbyOfficer" index="0"]
+animation = &"idle_front"
+frame = 2
+frame_progress = 0.208332
+
+[node name="NpcLobbyOfficer2" parent="." instance=ExtResource("11_lnos1")]
+position = Vector2(733, 186)
+
+[node name="AnimatedSprite2D" parent="NpcLobbyOfficer2" index="0"]
+animation = &"idle_front"
+
+[node name="NpcLobbyOfficer3" parent="." instance=ExtResource("12_5o8tu")]
+z_index = 2
+position = Vector2(414, 351)
+
+[node name="NpcLobbyOfficer4" parent="." instance=ExtResource("13_s1ftw")]
+z_index = 1
+position = Vector2(926, 201)
+
+[node name="AnimatedSprite2D" parent="NpcLobbyOfficer4" index="0"]
+autoplay = "idle_back"
+
+[editable path="NpcLobbyOfficer"]
+[editable path="NpcLobbyOfficer2"]
+[editable path="NpcLobbyOfficer3"]
+[editable path="NpcLobbyOfficer4"]

@@ -34,7 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://dpmo0v0p2bo06" path="res://miravil/vendor/vendor_6.tscn" id="33_gwk7j"]
 [ext_resource type="PackedScene" uid="uid://du2yvi818n20y" path="res://miravil/characters_camp/npc_cmp_b3.tscn" id="33_s6vqj"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="35_dww58"]
-[ext_resource type="PackedScene" uid="uid://cs5bth2ynpcpf" path="res://miravil/npc main character/npc_sari_sari_owner.tscn" id="35_s6vqj"]
+[ext_resource type="PackedScene" uid="uid://brodo4dncuh3a" path="res://miravil/npc main character/npc_sari_sari_owner.tscn" id="35_s6vqj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5t6fk"]
 texture = ExtResource("1_kcm3v")
@@ -37562,7 +37562,7 @@ z_index = 4
 
 [node name="NpcTmGuy4" parent="." instance=ExtResource("14_ax3sf")]
 z_index = 4
-position = Vector2(1800, 720)
+position = Vector2(1741, 558)
 
 [node name="AnimatedSprite2D" parent="NpcTmGuy4" index="0"]
 animation = &"idle_front"
@@ -37617,7 +37617,7 @@ position = Vector2(1104, 488)
 animation = &"idle_left"
 
 [node name="NpcTmGirl3" parent="." instance=ExtResource("24_gfxba")]
-z_index = 7
+z_index = 8
 position = Vector2(1584, 704)
 
 [node name="AnimatedSprite2D" parent="NpcTmGirl3" index="0"]
@@ -37644,7 +37644,7 @@ position = Vector2(2032, 740)
 scale = Vector2(3.12854, 3.15989)
 
 [node name="Vendor4" parent="." instance=ExtResource("30_pw44w")]
-z_index = 6
+z_index = 7
 y_sort_enabled = true
 position = Vector2(1600, 696)
 scale = Vector2(3.12854, 3.15989)
