@@ -14,6 +14,7 @@ func _ready() -> void:
 	
 	# Setup fade layer
 	_setup_fade()
+	await fade_in()
 	
 	# Find AnimationPlayer (sibling node in scene root)
 	var root_scene := get_tree().current_scene
@@ -142,13 +143,26 @@ func _load_dialogue_if_available() -> void:
 	
 	var dialogue_data = parsed[dialogue_key]
 	if dialogue_data.has("dialogue_lines"):
-		dialogue_lines = dialogue_data["dialogue_lines"]
-		print("✅ Loaded morgue dialogue: ", dialogue_lines.size(), " lines")
+		var raw_lines: Variant = dialogue_data["dialogue_lines"]
+		dialogue_lines.clear()
+		if typeof(raw_lines) == TYPE_ARRAY:
+			for item in (raw_lines as Array):
+				if typeof(item) == TYPE_DICTIONARY:
+					dialogue_lines.append(item as Dictionary)
+			print("✅ Loaded morgue dialogue: ", dialogue_lines.size(), " lines")
+		else:
+			print("⚠️ Morgue dialogue 'dialogue_lines' is not an array")
 	else:
 		print("⚠️ Morgue dialogue data missing 'dialogue_lines' key")
 
 func _on_dialogue_next() -> void:
-	resume_on_next = true
+	if not cutscene_active:
+		return
+	
+	resume_on_next = false
+	if anim_player:
+		print("🎬 Morgue: resuming animation after next_pressed")
+		anim_player.play()
 
 
 func show_line(index: int, auto_advance: bool = false) -> void:
@@ -161,16 +175,19 @@ func show_line(index: int, auto_advance: bool = false) -> void:
 	var text = line.get("text", "")
 	
 	if DialogueUI:
-		DialogueUI.show_dialogue_line(speaker, text)
-		if not auto_advance:
-			resume_on_next = false
-			await wait_for_next()
+		DialogueUI.show_dialogue_line(speaker, text, false)
+		resume_on_next = true
+		await wait_for_next()
 	else:
 		print("⚠️ DialogueUI not found")
 
 func wait_for_next() -> void:
-	resume_on_next = false
-	while not resume_on_next:
+	resume_on_next = true
+	if anim_player:
+		anim_player.pause()
+		print("🎬 Morgue: animation paused, waiting for next_pressed")
+	
+	while resume_on_next:
 		await get_tree().process_frame
 
 func _hide_dialogue_ui() -> void:

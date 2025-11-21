@@ -195,6 +195,12 @@ func show_line_wait(index: int) -> void:
 	wait_for_next()
 
 func _on_dialogue_next() -> void:
+	# Ignore DialogueUI next presses when the cutscene is no longer active.
+	# Without this guard, every normal conversation in the game would call
+	# this handler (signal stays connected) and permanently disable player input.
+	if not cutscene_active:
+		return
+	
 	if player_node != null:
 		if "control_enabled" in player_node:
 			player_node.control_enabled = false

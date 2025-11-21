@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://b30mu58jiqt5x"]
+[gd_scene load_steps=45 format=4 uid="uid://b30mu58jiqt5x"]
 
 [ext_resource type="Texture2D" uid="uid://ci5epprkpxg6j" path="res://assets/sprites/environments/interior/Room_Builder_Floors_32x32.png" id="1_th3li"]
 [ext_resource type="Texture2D" uid="uid://b2eujdd0v03wq" path="res://assets/sprites/environments/interior/Room_Builder_Walls_32x32.png" id="2_ps3tc"]
@@ -10,11 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/sprites/environments/interior/4_Bedroom_32x32.png" id="8_2kna3"]
 [ext_resource type="Texture2D" uid="uid://b7bqhnbtmse4b" path="res://assets/sprites/environments/interior/5_Classroom_and_library_32x32.png" id="9_vq18a"]
 [ext_resource type="Texture2D" uid="uid://cqn2g1cxl6v7w" path="res://assets/sprites/environments/interior/14_Basement_32x32.png" id="10_p2u4b"]
-[ext_resource type="PackedScene" uid="uid://cm7e8tdl8gnj6" path="res://miravil/character_police_station/npc_pl_guy4.tscn" id="11_1vkke"]
-[ext_resource type="PackedScene" uid="uid://dq472mj2tndm4" path="res://miravil/character_police_station/npc_pl_guy9.tscn" id="12_vsab5"]
-[ext_resource type="PackedScene" uid="uid://31iyw6734iog" path="res://miravil/characters_camp/npc_cmp_b5.tscn" id="13_0y3i7"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="14_vsab5"]
 [ext_resource type="Script" uid="uid://2u6qqkj1elay" path="res://scripts/interactables/scene_transition.gd" id="15_0y3i7"]
+[ext_resource type="Script" uid="uid://cx5yybvytlwm2" path="res://scripts/environments/leo_apartment_manager.gd" id="16_kp9xw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1cifo"]
 texture = ExtResource("1_th3li")
@@ -16748,11 +16746,87 @@ sources/1 = SubResource("TileSetAtlasSource_0rwn4")
 sources/2 = SubResource("TileSetAtlasSource_s4tpy")
 sources/3 = SubResource("TileSetAtlasSource_j0j16")
 
+[sub_resource type="Animation" id="Animation_0m2b1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerM:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
 [sub_resource type="Animation" id="Animation_0y3i7"]
 resource_name = "apartment_cutscene"
+length = 4.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerM:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(592, 536), Vector2(592, 288), Vector2(624, 288), Vector2(624, 272)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerM/AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"walk_back", &"walk_right", &"walk_back", &"idle_back"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.8, 4.5, 8, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [-1.0],
+"method": &"fade_scene_elements"
+}, {
+"args": [],
+"method": &"end_cutscene"
+}, {
+"args": [],
+"method": &"fade_scene_elements"
+}, {
+"args": [],
+"method": &"end_cutscene"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_24v2p"]
 _data = {
+&"RESET": SubResource("Animation_0m2b1"),
 &"apartment_cutscene": SubResource("Animation_0y3i7")
 }
 
@@ -16760,8 +16834,10 @@ _data = {
 size = Vector2(64, 20)
 
 [node name="Apartment3" type="Node2D"]
+script = ExtResource("16_kp9xw")
 
 [node name="ground wall" type="TileMapLayer" parent="."]
+position = Vector2(272, 128)
 tile_map_data = PackedByteArray("AAACAAAACwAMAA4AAAADAAAACwAMAA4AAAAEAAAACwAMAA4AAAAFAAAACwAMAA4AAAAGAAAACwAMAA4AAAAHAAAACwAMAA4AAAAIAAAACwAMAA4AAAAJAAAACwAMAA4AAAAKAAAACwAMAA4AAAALAAAACwAMAA4AAAAMAAAACwAMAA4AAAANAAAACwAMAA4AAAAOAAAACQAKAAUAAAAPAAAACwAMAA4AAAAQAAAACwAMAA4AAAARAAAACwAMAA4AAAASAAAACwAMAA4AAAATAAAACwAMAA4AAAAUAAAACwAMAA4AAAABAAAACQAGAAYAAAABAAEACQAGAAcAAAABAAIACQAGAAcAAAABAAMACQAGAAcAAAABAAQACQAGAAcAAAABAAUACQAGAAcAAAABAAYACQAGAAcAAAABAAcACQAGAAcAAAABAAgACQAGAAcAAAABAAkACQAGAAgAAAACAAkACQAHAAgAAAADAAkACQAHAAgAAAAEAAkACQAHAAgAAAAFAAkACQAHAAgAAAAGAAkACQAHAAgAAAAHAAkACQAEAAYAAAAHAAoACQAGAAcAAAAHAAsACQAGAAcAAAAHAAwACQAGAAcAAAAHAA0ACQAGAAgAAAAIAA0ACQAEAAYAAAALAA0ACQAFAAYAAAAMAA0ACQAIAAgAAAAMAAwACQAIAAcAAAAMAAsACQAIAAcAAAAMAAoACQAIAAcAAAAMAAkACQAFAAYAAAANAAkACQAHAAYAAAAOAAkACQAHAAYAAAAPAAkACQAHAAYAAAAQAAkACQAHAAYAAAARAAkACQAHAAYAAAASAAkACQAHAAYAAAATAAkACQAHAAYAAAAUAAkACQAHAAYAAAAKAA0ACQAHAAUAAAAJAA0ACQAHAAUAAAAVAAAACQAIAAYAAAAVAAEACQAIAAcAAAAVAAIACQAIAAcAAAAVAAMACQAIAAcAAAAVAAQACQAIAAcAAAAVAAUACQAIAAcAAAAVAAYACQAIAAcAAAAVAAcACQAIAAcAAAAVAAgACQAIAAcAAAAVAAkACQAIAAgAAAAOAAgACQAKAAYAAAAOAAcACQAKAAYAAAAOAAYACQAKAAYAAAAOAAEACwAOAA4AAAAOAAIACwAQAA8AAAAOAAMACwAOAA8AAAAOAAUACQALAAYAAAACAAEACwAQAA4AAAADAAEACwAQAA4AAAAEAAEACwAQAA4AAAAFAAEACwAQAA4AAAAGAAEACwAQAA4AAAAHAAEACwAQAA4AAAAIAAEACwAQAA4AAAAJAAEACwAQAA4AAAAKAAEACwAQAA4AAAALAAEACwAQAA4AAAAMAAEACwAQAA4AAAANAAEACwAQAA4AAAAPAAEACwAQAA4AAAAQAAEACwAQAA4AAAARAAEACwAQAA4AAAASAAEACwAQAA4AAAATAAEACwAQAA4AAAAUAAEACwAQAA4AAAAUAAIACwAMAA8AAAATAAIACwAMAA8AAAASAAIACwAMAA8AAAARAAIACwAMAA8AAAAQAAIACwAMAA8AAAAPAAIACwAMAA8AAAACAAIACwAMAA8AAAADAAIACwAMAA8AAAAEAAIACwAMAA8AAAAFAAIACwAMAA8AAAAGAAIACwAMAA8AAAAHAAIACwAMAA8AAAAIAAIACwAMAA8AAAAJAAIACwAMAA8AAAAKAAIACwAMAA8AAAALAAIACwAMAA8AAAAMAAIACwAMAA8AAAANAAIACwAMAA8AAAACAAMACgAFACEAAAADAAMACgAFACEAAAADAAQACgAFACEAAAAEAAQACgAFACEAAAAFAAQACgAFACEAAAAGAAQACgAFACEAAAAHAAQACgAFACEAAAAIAAQACgAFACEAAAAJAAQACgAFACEAAAAJAAUACgAFACEAAAAIAAUACgAFACEAAAAKAAUACgAFACEAAAALAAUACgAFACEAAAAEAAUACgAFACEAAAAFAAUACgAFACEAAAAGAAUACgAFACEAAAAGAAYACgAFACEAAAAHAAYACgAFACEAAAAIAAYACgAFACEAAAAIAAcACgAFACEAAAAJAAcACgAFACEAAAAKAAcACgAFACEAAAALAAcACgAFACEAAAALAAgACgAFACEAAAAMAAgACgAFACEAAAANAAgACgAFACEAAAANAAcACgAFACEAAAAMAAcACgAFACEAAAACAAQACgAFACEAAAACAAUACgAFACEAAAACAAYACgAFACEAAAACAAcACgAFACEAAAACAAgACgAFACEAAAADAAUACgAFACEAAAADAAYACgAFACEAAAADAAcACgAFACEAAAADAAgACgAFACEAAAAEAAMACgAFACEAAAAEAAYACgAFACEAAAAEAAcACgAFACEAAAAEAAgACgAFACEAAAAFAAMACgAFACEAAAAFAAYACgAFACEAAAAFAAcACgAFACEAAAAFAAgACgAFACEAAAAGAAMACgAFACEAAAAGAAcACgAFACEAAAAGAAgACgAFACEAAAAHAAMACgAFACEAAAAHAAUACgAFACEAAAAHAAcACgAFACEAAAAHAAgACgAFACEAAAAIAAMACgAFACEAAAAIAAgACgAFACEAAAAJAAMACgAFACEAAAAJAAYACgAFACEAAAAJAAgACgAFACEAAAAKAAMACgAFACEAAAAKAAQACgAFACEAAAAKAAYACgAFACEAAAAKAAgACgAFACEAAAALAAMACgAFACEAAAALAAQACgAFACEAAAALAAYACgAFACEAAAAMAAMACgAFACEAAAAMAAQACgAFACEAAAAMAAUACgAFACEAAAAMAAYACgAFACEAAAANAAMACgAFACEAAAANAAQACgAFACEAAAANAAUACgAFACEAAAANAAYACgAFACEAAAAOAAQACgAFACEAAAAPAAMACgAFACEAAAAPAAQACgAFACEAAAAPAAUACgAFACEAAAAPAAYACgAFACEAAAAPAAcACgAFACEAAAAPAAgACgAFACEAAAAQAAMACgAFACEAAAAQAAQACgAFACEAAAAQAAUACgAFACEAAAAQAAYACgAFACEAAAAQAAcACgAFACEAAAAQAAgACgAFACEAAAARAAMACgAFACEAAAARAAQACgAFACEAAAARAAUACgAFACEAAAARAAYACgAFACEAAAARAAcACgAFACEAAAARAAgACgAFACEAAAASAAMACgAFACEAAAASAAQACgAFACEAAAASAAUACgAFACEAAAASAAYACgAFACEAAAASAAcACgAFACEAAAASAAgACgAFACEAAAATAAMACgAFACEAAAATAAQACgAFACEAAAATAAUACgAFACEAAAATAAYACgAFACEAAAATAAcACgAFACEAAAATAAgACgAFACEAAAAUAAMACgAFACEAAAAUAAQACgAFACEAAAAUAAUACgAFACEAAAAUAAYACgAFACEAAAAUAAcACgAFACEAAAAUAAgACgAFACEAAAAIAAkACgAFACEAAAAIAAoACgAFACEAAAAIAAsACgAFACEAAAAIAAwACgAFACEAAAAJAAkACgAFACEAAAAJAAoACgAFACEAAAAJAAsACgAFACEAAAAJAAwACgAFACEAAAAKAAkACgAFACEAAAAKAAoACgAFACEAAAAKAAsACgAFACEAAAAKAAwACgAFACEAAAALAAkACgAFACEAAAALAAoACgAFACEAAAALAAsACgAFACEAAAALAAwACgAFACEAAAAKAA4ACQAHAAgAAAAJAA4ACQAHAAgAAAALAA4ACQAIAAgAAAAIAA4ACQAGAAgAAAA=")
 tile_set = SubResource("TileSet_atwaq")
 
@@ -16785,17 +16861,14 @@ z_index = 2
 tile_map_data = PackedByteArray("AAAEAAUAAgAGAC4AAAAFAAYAAgAFADAAAAAFAAUAAgAKACEAAAACAAUAAwALACMAAAACAAYAAwALACQAAAALAAsAAAAHADgAAAALAAwAAAAHADkAAAAIAAsAAAAHADgAAAAIAAwAAAAHADkAAAA=")
 tile_set = SubResource("TileSet_ws01n")
 
-[node name="NpcPlGuy4" parent="." instance=ExtResource("11_1vkke")]
-position = Vector2(93, 163)
-
-[node name="NpcPlGuy9" parent="." instance=ExtResource("12_vsab5")]
-position = Vector2(353, 165)
-
-[node name="NpcCmpB5" parent="." instance=ExtResource("13_0y3i7")]
-position = Vector2(658, 252)
-
 [node name="PlayerM" parent="." instance=ExtResource("14_vsab5")]
-position = Vector2(320, 400)
+z_index = 2
+position = Vector2(624, 272)
+
+[node name="AnimatedSprite2D" parent="PlayerM" index="0"]
+animation = &"idle_back"
+frame = 0
+frame_progress = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -16807,4 +16880,7 @@ position = Vector2(320, 440)
 script = ExtResource("15_0y3i7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="from_leo\'s_apartment_to_apartment_lobby"]
+position = Vector2(272, 128)
 shape = SubResource("RectangleShape2D_vsab5")
+
+[editable path="PlayerM"]
