@@ -141,6 +141,32 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
+[node name="SettingsTab" type="NinePatchRect" parent="UIContainer"]
+z_index = 1
+offset_left = 40.0
+offset_right = 80.0
+offset_bottom = 40.0
+texture = ExtResource("1_1075l")
+region_rect = Rect2(928, 384, 32, 32)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="SettingsIcon" type="NinePatchRect" parent="UIContainer/SettingsTab"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 33.0
+offset_bottom = 34.0
+scale = Vector2(1.04651, 0.987863)
+texture = ExtResource("1_1075l")
+region_rect = Rect2(320, 370, 30, 30)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
 [node name="EvidenceBoxListBG" type="NinePatchRect" parent="UIContainer"]
 layout_mode = 1
 anchors_preset = 10

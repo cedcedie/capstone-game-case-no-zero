@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuwg1bgfvlkxr"]
+
+[ext_resource type="Texture2D" uid="uid://gmvskpy40jd7" path="res://scenes/environments/courtroom/frame 1.png" id="1_xhmvb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53k6t"]
+atlas = ExtResource("1_xhmvb")
+region = Rect2(0, 0, 1366, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ul3p"]
+atlas = ExtResource("1_xhmvb")
+region = Rect2(1366, 0, 1366, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v6pab"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53k6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ul3p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gavel" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_v6pab")

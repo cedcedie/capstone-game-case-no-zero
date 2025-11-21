@@ -446,6 +446,192 @@
 		"emotion": "neutral"
 	  },
 	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, mayroon akong isa pang saksi na gusto kong tawagin sa witness stand.",
+		"action": "camera_focus_judge",
+		"emotion": "determined"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sino ang saksi na gusto mong tawagin?",
+		"action": "camera_focus_judge",
+		"emotion": "neutral"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, gusto kong tawagin si Celine.",
+		"action": "camera_focus_celine",
+		"emotion": "confident"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Maaari. Celine, tumayo ka at sumumpa sa katotohanan ng iyong testimonya.",
+		"action": "camera_focus_celine",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Celine",
+		"text": "Your Honor... may gusto akong sabihin. May kasalanan ako.",
+		"action": "camera_focus_celine",
+		"emotion": "guilty"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Ano ang gusto mong sabihin, Celine?",
+		"action": "camera_focus_celine",
+		"emotion": "serious"
+	  },
+	  {
+		"speaker": "Celine",
+		"text": "Ako... ako ang nagtago ng ebidensya. Pero hindi ako ang pumatay kay Leo.",
+		"action": "camera_focus_celine",
+		"emotion": "confessed"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Celine, bakit mo ginawa iyon? Sino ang nag-utos sa iyo?",
+		"action": "camera_focus_celine",
+		"emotion": "questioning"
+	  },
+	  {
+		"speaker": "Celine",
+		"text": "Natatakot ako... Natatakot ako na baka may mangyari sa akin kung hindi ko sinunod.",
+		"action": "camera_focus_celine",
+		"emotion": "afraid"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Sino ang nag-utos sa iyo, Celine? Kailangan nating malaman ang katotohanan.",
+		"action": "camera_focus_celine",
+		"emotion": "urgent"
+	  },
+	  {
+		"speaker": "Celine",
+		"text": "Si... si Kapitana. Siya ang nag-utos sa akin na itago ang ebidensya.",
+		"action": "camera_focus_kapitana",
+		"emotion": "afraid"
+	  },
+	  {
+		"speaker": "Kapitana",
+		"text": "Huwag kang magsinungaling, Celine! Wala akong kinalaman diyan!",
+		"action": "camera_focus_kapitana",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Kapitana, tumahimik ka. Magpatuloy, Celine.",
+		"action": "show_gavel",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Celine",
+		"text": "Si Kapitana ang nag-utos sa akin na itago ang notebook ni Leo. Sinabi niya na kung hindi ko gagawin, may mangyayari sa akin.",
+		"action": "camera_focus_celine",
+		"emotion": "emotional"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, ipakita ko ang notebook ni Leo. Nandito ang lahat ng ebidensya laban kay Kapitana.",
+		"action": "camera_focus_judge",
+		"emotion": "determined"
+	  },
+	  {
+		"speaker": "Kapitana",
+		"text": "Hindi! Hindi totoo iyan! Ang notebook na iyan ay peke!",
+		"action": "play_objection_bgm",
+		"emotion": "panicked"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Objection! Your Honor, ang notebook ay may handwriting analysis na nagpapatunay na ito ay tunay!",
+		"action": "objection_shake",
+		"emotion": "defiant"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Sustained. Ipakita mo ang notebook, Abogado.",
+		"action": "camera_focus_judge",
+		"emotion": "authoritative"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, ang notebook ni Leo ay naglalaman ng mga pangalan, petsa, at code words tungkol sa corruption. At dito, makikita ninyo ang pangalan ni Kapitana.",
+		"action": "camera_focus_judge",
+		"emotion": "triumphant"
+	  },
+	  {
+		"speaker": "Kapitana",
+		"text": "Hindi! Hindi ako ang pumatay kay Leo!",
+		"action": "camera_focus_kapitana",
+		"emotion": "desperate"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Kapitana, ang notebook ay nagpapakita na ikaw ang may pakana sa lahat. Ikaw ang nag-utos na itago ang ebidensya, at ikaw ang may motibo.",
+		"action": "camera_focus_kapitana",
+		"emotion": "accusing"
+	  },
+	  {
+		"speaker": "PO1 Cordero",
+		"text": "Your Honor, maaari akong magsalita? Mayroon akong impormasyon tungkol kay Kapitana.",
+		"action": "camera_focus_po1_cordero",
+		"emotion": "nervous"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Maaari, PO1 Cordero. Ano ang gusto mong sabihin?",
+		"action": "camera_focus_po1_cordero",
+		"emotion": "neutral"
+	  },
+	  {
+		"speaker": "PO1 Cordero",
+		"text": "Your Honor, nakita ko si Kapitana sa crime scene noong gabing iyon. At mayroon siyang access sa lahat ng police records.",
+		"action": "camera_focus_po1_cordero",
+		"emotion": "determined"
+	  },
+	  {
+		"speaker": "Kapitana",
+		"text": "Huwag kang maniwala sa kanya! Siya ay nagsisinungaling!",
+		"action": "play_objection_bgm",
+		"emotion": "angry"
+	  },
+	  {
+		"speaker": "Dr. Leticia",
+		"text": "Your Honor, maaari din akong magsalita? Ang autopsy report ay nagpapakita ng defensive wounds. May nag-fight back si Leo. At ang DNA ay hindi kay Erwin.",
+		"action": "camera_focus_dr_leticia",
+		"emotion": "professional"
+	  },
+	  {
+		"speaker": "Miguel",
+		"text": "Your Honor, lahat ng ebidensya ay nagtuturo kay Kapitana. Siya ang may motibo, pagkakataon, at kakayahan na pumatay kay Leo.",
+		"action": "camera_focus_judge",
+		"emotion": "confident"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Kapitana, mayroon ka bang sasabihin sa lahat ng ebidensyang ito?",
+		"action": "camera_focus_kapitana",
+		"emotion": "serious"
+	  },
+	  {
+		"speaker": "Kapitana",
+		"text": "...",
+		"action": "camera_focus_kapitana",
+		"emotion": "defeated"
+	  },
+	  {
+		"speaker": "Celine",
+		"text": "Patawad po, Your Honor. Patawad sa lahat. Hindi ko dapat sinunod si Kapitana. Pero natatakot ako.",
+		"action": "camera_focus_celine",
+		"emotion": "remorseful"
+	  },
+	  {
+		"speaker": "Hukom",
+		"text": "Ang hukuman ay kailangan ng oras upang pag-aralan ang lahat ng ebidensya. Magkakaroon tayo ng deliberation.",
+		"action": "camera_return",
+		"emotion": "serious"
+	  },
+	  {
 		"speaker": "Fiscal",
 		"text": "Your Honor, ang prosecution ay nagpapatunay na ang akusado ay nagkasala beyond reasonable doubt!",
 		"action": "camera_focus_judge",

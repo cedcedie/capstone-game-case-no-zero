@@ -6,6 +6,7 @@ var DEBUG_CHECKPOINTS: Array = []
 const BARANGAY_COURT_SCENE := "res://scenes/environments/exterior/baranggay_court.tscn"
 const MORGUE_SCENE := "res://scenes/environments/morgue/morgue.tscn"
 const LEO_APARTMENT_SCENE := "res://scenes/environments/apartments/leo's apartment.tscn"
+const COURTROOM_SCENE := "res://scenes/environments/Courtroom/courtroom.tscn"
 
 @onready var mainbuttons: HBoxContainer = $mainbuttons
 @onready var options: Panel = $Options
@@ -233,6 +234,44 @@ func _on_debug_jump_leo_apartment_pressed() -> void:
 		SpawnManager.set_entry_point("debug_main_menu", "default")
 	debugger_panel.visible = false
 	get_tree().change_scene_to_file(LEO_APARTMENT_SCENE)
+
+func _on_debug_jump_courtroom_pressed() -> void:
+	"""Jump to courtroom and auto-play intro animation"""
+	_apply_selected_checkpoints()
+	if CheckpointManager:
+		# Set all required checkpoints for courtroom
+		var required := [
+			CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED,
+			CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED,
+			CheckpointManager.CheckpointType.MORGUE_CUTSCENE_COMPLETED,
+			CheckpointManager.CheckpointType.CINEMATIC_TEXT_CUTSCENE_COMPLETED
+		]
+		for checkpoint in required:
+			if not CheckpointManager.has_checkpoint(checkpoint):
+				CheckpointManager.set_checkpoint(checkpoint)
+		print("🐛 Debug: Jumping to courtroom with checkpoints -> ", CheckpointManager.get_debug_info())
+		# Auto-add all evidence for courtroom
+		_auto_add_evidence_for_checkpoints()
+		# Ensure all evidence is added
+		_ensure_all_evidence_added()
+	if SpawnManager:
+		SpawnManager.set_entry_point("debug_main_menu", "default")
+	debugger_panel.visible = false
+	get_tree().change_scene_to_file(COURTROOM_SCENE)
+
+func _ensure_all_evidence_added() -> void:
+	"""Ensure all evidence is added for courtroom testing"""
+	var evidence_manager = get_node_or_null("/root/EvidenceInventorySettings")
+	if not evidence_manager or not evidence_manager.has_method("add_evidence"):
+		return
+	
+	var all_evidence = ["radio_log", "logbook", "handwriting_sample", "autopsy_report", "broken_body_cam", "leos_notebook"]
+	var collected_evidence: Array = evidence_manager.collected_evidence
+	
+	for evidence_id in all_evidence:
+		if evidence_id not in collected_evidence:
+			evidence_manager.add_evidence(evidence_id)
+			print("🐛 Debug: Auto-added ", evidence_id, " evidence for courtroom")
 
 func _auto_add_evidence_for_checkpoints() -> void:
 	"""Automatically add evidence based on completed checkpoints"""

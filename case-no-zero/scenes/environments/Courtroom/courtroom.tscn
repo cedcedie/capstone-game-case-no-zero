@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://dfyuuvfmltt7m"]
+[gd_scene load_steps=73 format=4 uid="uid://dfyuuvfmltt7m"]
 
 [ext_resource type="Texture2D" uid="uid://ca2o3d64xiq0x" path="res://assets/sprites/environments/interior/17_Visibile_Upstairs_System_32x32.png" id="1_gks7r"]
 [ext_resource type="Script" uid="uid://s1ybtnbc02p6" path="res://scripts/environments/courtroom_manager.gd" id="1_qfslm"]
@@ -22,6 +22,12 @@
 [ext_resource type="Texture2D" uid="uid://b7bqhnbtmse4b" path="res://assets/sprites/environments/interior/5_Classroom_and_library_32x32.png" id="19_6brge"]
 [ext_resource type="Texture2D" uid="uid://leegdukxhro8" path="res://assets/sprites/environments/interior/4_Bedroom_32x32.png" id="20_o61oj"]
 [ext_resource type="PackedScene" uid="uid://ceu1nuqpr7lak" path="res://scenes/characters/main_characters/playerM.tscn" id="21_0sx17"]
+[ext_resource type="PackedScene" uid="uid://7x3miw42cliy" path="res://scenes/characters/main_characters/celine_navarro.tscn" id="23_ikpm3"]
+[ext_resource type="PackedScene" uid="uid://c51hdm5vg2hjd" path="res://scenes/characters/main_characters/erwin.tscn" id="24_3gsop"]
+[ext_resource type="PackedScene" uid="uid://bqgrx7frrb7wi" path="res://scenes/characters/main_characters/judge.tscn" id="25_sjfly"]
+[ext_resource type="PackedScene" uid="uid://cuwg1bgfvlkxr" path="res://gavel.tscn" id="26_ux7jt"]
+[ext_resource type="PackedScene" uid="uid://bqr0txu1h7bch" path="res://miravil/character_police_station/po1Darwin.tscn" id="27_sjfly"]
+[ext_resource type="PackedScene" uid="uid://chn70jwwn80pw" path="res://objection.tscn" id="28_ux7jt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_phr0s"]
 texture = ExtResource("1_gks7r")
@@ -23281,9 +23287,56 @@ collision_visibility_mode = 2
 
 [node name="PlayerM" parent="." instance=ExtResource("21_0sx17")]
 z_index = 4
-position = Vector2(53, 753)
+position = Vector2(512, 448)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="anim_player" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ke40d")
 }
+
+[node name="celine" parent="." instance=ExtResource("23_ikpm3")]
+z_index = 1
+position = Vector2(448, 448)
+
+[node name="erwin" parent="." instance=ExtResource("24_3gsop")]
+z_index = 1
+position = Vector2(480, 448)
+
+[node name="Judge" parent="." instance=ExtResource("25_sjfly")]
+z_index = 1
+position = Vector2(688, 152)
+
+[node name="GavelSprite" parent="." instance=ExtResource("26_ux7jt")]
+visible = false
+z_index = 6
+position = Vector2(688, 416)
+frame_progress = 0.819506
+
+[node name="NpcPlPo1Darwin" parent="." instance=ExtResource("27_sjfly")]
+z_index = 3
+position = Vector2(248, 248)
+
+[node name="ObjectionSprite" parent="." instance=ExtResource("28_ux7jt")]
+visible = false
+z_index = 9
+position = Vector2(520, 448)
+
+[node name="EvidenceDisplaySprite" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+position = Vector2(640, 360)
+modulate = Color(1, 1, 1, 0)
+
+[node name="EvidenceAnimPlayers" type="Node" parent="."]
+
+[node name="BrokenBodyCamAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]
+
+[node name="LogbookAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]
+
+[node name="HandwritingSampleAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]
+
+[node name="RadioLogAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]
+
+[node name="AutopsyReportAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]
+
+[node name="LeosNotebookAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]

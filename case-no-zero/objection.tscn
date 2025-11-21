@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://chn70jwwn80pw"]
+
+[ext_resource type="Texture2D" uid="uid://b6aerbjq86jqr" path="res://assets/sprites/gavel/objection.png" id="1_w0f3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ffe"]
+atlas = ExtResource("1_w0f3y")
+region = Rect2(0, 0, 1280, 550)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ninpb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0ffe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Objection" type="AnimatedSprite2D"]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_ninpb")
