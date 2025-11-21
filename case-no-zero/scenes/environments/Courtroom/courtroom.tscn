@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://dfyuuvfmltt7m"]
+[gd_scene load_steps=75 format=4 uid="uid://dfyuuvfmltt7m"]
 
 [ext_resource type="Texture2D" uid="uid://ca2o3d64xiq0x" path="res://assets/sprites/environments/interior/17_Visibile_Upstairs_System_32x32.png" id="1_gks7r"]
 [ext_resource type="Script" uid="uid://s1ybtnbc02p6" path="res://scripts/environments/courtroom_manager.gd" id="1_qfslm"]
@@ -23246,12 +23246,94 @@ sources/1 = SubResource("TileSetAtlasSource_23el0")
 sources/2 = SubResource("TileSetAtlasSource_f0iey")
 sources/3 = SubResource("TileSetAtlasSource_csyt1")
 
-[sub_resource type="Animation" id="Animation_if1ri"]
-resource_name = "courtroom_animation"
+[sub_resource type="Animation" id="Animation_sjfly"]
+resource_name = "camera_focus_judge"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerM/Camera2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(712, 312), Vector2(688, 178)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerM/Camera2D:zoom")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_ux7jt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerM/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerM/Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_qfslm"]
+resource_name = "camera_focus_defendant"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerM/Camera2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerM/Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1.2, 1.2)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ke40d"]
 _data = {
-&"courtroom_animation": SubResource("Animation_if1ri")
+&"RESET": SubResource("Animation_ux7jt"),
+&"camera_focus_defendant": SubResource("Animation_qfslm"),
+&"camera_focus_judge": SubResource("Animation_sjfly")
 }
 
 [node name="Courtroom" type="Node2D"]
@@ -23323,9 +23405,9 @@ position = Vector2(520, 448)
 
 [node name="EvidenceDisplaySprite" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0)
 z_index = 10
 position = Vector2(640, 360)
-modulate = Color(1, 1, 1, 0)
 
 [node name="EvidenceAnimPlayers" type="Node" parent="."]
 
@@ -23340,3 +23422,9 @@ modulate = Color(1, 1, 1, 0)
 [node name="AutopsyReportAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]
 
 [node name="LeosNotebookAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(688, 178)
+zoom = Vector2(2, 2)
+
+[editable path="PlayerM"]
