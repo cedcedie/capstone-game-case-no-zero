@@ -1,23 +1,11 @@
 extends Control
 
-const DEBUG_CHECKPOINTS := [
-	{"label": "Intro Completed", "type": CheckpointManager.CheckpointType.INTRO_COMPLETED},
-	{"label": "Office Cutscene Completed", "type": CheckpointManager.CheckpointType.OFFICE_CUTSCENE_COMPLETED},
-	{"label": "Lower Level Cutscene Completed", "type": CheckpointManager.CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED},
-	{"label": "Recollection Completed", "type": CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED},
-	{"label": "Head Police Completed", "type": CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED},
-	{"label": "Follow Darwin Completed", "type": CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED},
-	{"label": "Security Server Completed", "type": CheckpointManager.CheckpointType.SECURITY_SERVER_COMPLETED},
-	{"label": "Alley Cutscene Completed", "type": CheckpointManager.CheckpointType.ALLEY_CUTSCENE_COMPLETED},
-	{"label": "Security Server Cutscene 2", "type": CheckpointManager.CheckpointType.SECURITY_SERVER_CUTSCENE_2_COMPLETED},
-	{"label": "Celine Call Completed", "type": CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED},
-	{"label": "Barangay Hall Cutscene Completed", "type": CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED},
-	{"label": "Morgue Cutscene Completed", "type": CheckpointManager.CheckpointType.MORGUE_CUTSCENE_COMPLETED},
-	{"label": "Cinematic Text Cutscene Completed", "type": CheckpointManager.CheckpointType.CINEMATIC_TEXT_CUTSCENE_COMPLETED}
-]
+# DEBUG_CHECKPOINTS will be initialized in _ready() to avoid autoload access in const
+var DEBUG_CHECKPOINTS: Array = []
 
 const BARANGAY_COURT_SCENE := "res://scenes/environments/exterior/baranggay_court.tscn"
 const MORGUE_SCENE := "res://scenes/environments/morgue/morgue.tscn"
+const LEO_APARTMENT_SCENE := "res://scenes/environments/apartments/leo's apartment.tscn"
 
 @onready var mainbuttons: HBoxContainer = $mainbuttons
 @onready var options: Panel = $Options
@@ -34,6 +22,24 @@ func _ready():
 	mainbuttons.visible = true
 	options.visible = false
 	debugger_panel.visible = false
+	
+	# Initialize DEBUG_CHECKPOINTS here to access CheckpointManager autoload
+	if CheckpointManager:
+		DEBUG_CHECKPOINTS = [
+			{"label": "Intro Completed", "type": CheckpointManager.CheckpointType.INTRO_COMPLETED},
+			{"label": "Office Cutscene Completed", "type": CheckpointManager.CheckpointType.OFFICE_CUTSCENE_COMPLETED},
+			{"label": "Lower Level Cutscene Completed", "type": CheckpointManager.CheckpointType.LOWER_LEVEL_CUTSCENE_COMPLETED},
+			{"label": "Recollection Completed", "type": CheckpointManager.CheckpointType.RECOLLECTION_COMPLETED},
+			{"label": "Head Police Completed", "type": CheckpointManager.CheckpointType.HEAD_POLICE_COMPLETED},
+			{"label": "Follow Darwin Completed", "type": CheckpointManager.CheckpointType.FOLLOW_DARWIN_COMPLETED},
+			{"label": "Security Server Completed", "type": CheckpointManager.CheckpointType.SECURITY_SERVER_COMPLETED},
+			{"label": "Alley Cutscene Completed", "type": CheckpointManager.CheckpointType.ALLEY_CUTSCENE_COMPLETED},
+			{"label": "Security Server Cutscene 2", "type": CheckpointManager.CheckpointType.SECURITY_SERVER_CUTSCENE_2_COMPLETED},
+			{"label": "Celine Call Completed", "type": CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED},
+			{"label": "Barangay Hall Cutscene Completed", "type": CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED},
+			{"label": "Morgue Cutscene Completed", "type": CheckpointManager.CheckpointType.MORGUE_CUTSCENE_COMPLETED},
+			{"label": "Cinematic Text Cutscene Completed", "type": CheckpointManager.CheckpointType.CINEMATIC_TEXT_CUTSCENE_COMPLETED}
+		]
 	
 	# Setup audio players for UI sounds
 	confirm_player = AudioStreamPlayer.new()
@@ -183,6 +189,8 @@ func _on_debug_jump_barangay_pressed() -> void:
 			CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED)
 			print("🐛 Debug: Auto-set CELINE_CALL_COMPLETED to allow barangay access.")
 		print("🐛 Debug: Jumping to barangay court with checkpoints -> ", CheckpointManager.get_debug_info())
+		# Auto-add evidence based on checkpoints
+		_auto_add_evidence_for_checkpoints()
 	if SpawnManager:
 		SpawnManager.set_entry_point("debug_main_menu", "default")
 	debugger_panel.visible = false
@@ -199,7 +207,82 @@ func _on_debug_jump_morgue_pressed() -> void:
 			if not CheckpointManager.has_checkpoint(checkpoint):
 				CheckpointManager.set_checkpoint(checkpoint)
 		print("🐛 Debug: Jumping to morgue with checkpoints -> ", CheckpointManager.get_debug_info())
+		# Auto-add evidence based on checkpoints
+		_auto_add_evidence_for_checkpoints()
 	if SpawnManager:
 		SpawnManager.set_entry_point("debug_main_menu", "default")
 	debugger_panel.visible = false
 	get_tree().change_scene_to_file(MORGUE_SCENE)
+
+func _on_debug_jump_leo_apartment_pressed() -> void:
+	_apply_selected_checkpoints()
+	if CheckpointManager:
+		# Set required checkpoints to access Leo's apartment after morgue
+		var required := [
+			CheckpointManager.CheckpointType.CELINE_CALL_COMPLETED,
+			CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED,
+			CheckpointManager.CheckpointType.MORGUE_CUTSCENE_COMPLETED
+		]
+		for checkpoint in required:
+			if not CheckpointManager.has_checkpoint(checkpoint):
+				CheckpointManager.set_checkpoint(checkpoint)
+		print("🐛 Debug: Jumping to Leo's apartment with checkpoints -> ", CheckpointManager.get_debug_info())
+		# Auto-add evidence based on checkpoints
+		_auto_add_evidence_for_checkpoints()
+	if SpawnManager:
+		SpawnManager.set_entry_point("debug_main_menu", "default")
+	debugger_panel.visible = false
+	get_tree().change_scene_to_file(LEO_APARTMENT_SCENE)
+
+func _auto_add_evidence_for_checkpoints() -> void:
+	"""Automatically add evidence based on completed checkpoints"""
+	var evidence_manager = get_node_or_null("/root/EvidenceInventorySettings")
+	if not evidence_manager:
+		print("⚠️ Debug: EvidenceInventorySettings not found")
+		return
+	
+	if not evidence_manager.has_method("add_evidence"):
+		print("⚠️ Debug: EvidenceInventorySettings missing add_evidence method")
+		return
+	
+	if not CheckpointManager:
+		return
+	
+	# Get collected_evidence array - access directly as it's a public property
+	var collected_evidence: Array = evidence_manager.collected_evidence
+	
+	# Map checkpoints to evidence that should be collected
+	# Evidence collected in order: radio_log, logbook, handwriting_sample, autopsy_report, broken_body_cam, leos_notebook
+	
+	# Security Server completed -> radio_log
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_COMPLETED):
+		if "radio_log" not in collected_evidence:
+			evidence_manager.add_evidence("radio_log")
+			print("🐛 Debug: Auto-added radio_log evidence")
+	
+	# Barangay Hall completed -> logbook and handwriting_sample
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.BARANGAY_HALL_CUTSCENE_COMPLETED):
+		if "logbook" not in collected_evidence:
+			evidence_manager.add_evidence("logbook")
+			print("🐛 Debug: Auto-added logbook evidence")
+		if "handwriting_sample" not in collected_evidence:
+			evidence_manager.add_evidence("handwriting_sample")
+			print("🐛 Debug: Auto-added handwriting_sample evidence")
+	
+	# Morgue completed -> autopsy_report (evidence_texts.json uses "autopsy_report")
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.MORGUE_CUTSCENE_COMPLETED):
+		# Check both possible IDs
+		var has_autopsy = "autopsy" in collected_evidence or "autopsy_report" in collected_evidence
+		if not has_autopsy:
+			evidence_manager.add_evidence("autopsy_report")  # Use autopsy_report as it matches evidence_texts.json
+			print("🐛 Debug: Auto-added autopsy_report evidence")
+	
+	# Add broken_body_cam if security server is completed (usually collected around that time)
+	if CheckpointManager.has_checkpoint(CheckpointManager.CheckpointType.SECURITY_SERVER_COMPLETED):
+		if "broken_body_cam" not in collected_evidence:
+			evidence_manager.add_evidence("broken_body_cam")
+			print("🐛 Debug: Auto-added broken_body_cam evidence")
+	
+	# Update collected_evidence reference after adding
+	collected_evidence = evidence_manager.collected_evidence
+	print("🐛 Debug: Total evidence collected: ", collected_evidence.size())

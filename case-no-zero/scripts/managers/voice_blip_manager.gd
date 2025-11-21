@@ -18,6 +18,7 @@ func play_voice_blip(speaker: String):
 	"""Play character-specific voice blip sounds like in Undertale"""
 	
 	if not voice_blip_player:
+		print("⚠️ VoiceBlipManager: voice_blip_player not available")
 		return
 	
 	# Stop any currently playing sound to allow rapid typing
@@ -34,18 +35,20 @@ func play_voice_blip(speaker: String):
 			stream = load(path)
 			if stream:
 				bleep_cache[path] = stream
+				print("🔊 VoiceBlipManager: Loaded audio for speaker '", speaker, "' from ", path)
 			else:
-				pass  # Failed to load stream; ignore
+				print("⚠️ VoiceBlipManager: Failed to load stream from ", path, " for speaker '", speaker, "'")
 		else:
-			pass  # File missing; ignore
+			print("⚠️ VoiceBlipManager: File not found: ", path, " for speaker '", speaker, "'")
 
 	if stream:
 		voice_blip_player.stream = stream
-		voice_blip_player.volume_db = 0
+		voice_blip_player.volume_db = 5.0  # Increased from 0 dB to 5 dB for better audibility
 		voice_blip_player.pitch_scale = get_pitch_for_speaker(speaker)
 		voice_blip_player.play()
+		print("🔊 VoiceBlipManager: Playing beep for '", speaker, "' at ", voice_blip_player.volume_db, " dB")
 	else:
-		pass  # No stream available; skip
+		print("⚠️ VoiceBlipManager: No stream available for speaker '", speaker, "' (path: ", path, ")")
 
 func get_beep_for_speaker(speaker: String) -> String:
 	"""Get specific beep file for each character"""
@@ -183,7 +186,7 @@ func play_ringtone(ring_count: int = 3, ring_duration: float = 0.2, pause_durati
 	for i in range(ring_count):
 		# Play the ring
 		voice_blip_player.stream = stream
-		voice_blip_player.volume_db = 0
+		voice_blip_player.volume_db = 5.0  # Increased from 0 dB to 5 dB for better audibility
 		voice_blip_player.pitch_scale = 1.0  # Normal pitch for ringtone
 		voice_blip_player.play()
 		

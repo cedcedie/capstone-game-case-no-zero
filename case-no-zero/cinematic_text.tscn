@@ -1,92 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://684ayj0gb7mm"]
+[gd_scene load_steps=2 format=3 uid="uid://684ayj0gb7mm"]
 
 [ext_resource type="Script" uid="uid://bpxuiacnfm8yr" path="res://scripts/cutscene/cinematic_text.gd" id="1_cinematic_script"]
-[ext_resource type="FontFile" uid="uid://cv80ky52wtk6c" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_u51wu"]
-
-[sub_resource type="Animation" id="Animation_c3uwj"]
-resource_name = "cinematic_text_cutscene"
-length = 16.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(2, 11),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [1.5, 2.0, 1.5],
-"method": &"show_sinister_text"
-}, {
-"args": [3.0],
-"method": &"show_inventory_with_masked_last_evidence"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u51wu"]
-_data = {
-&"cinematic_text_cutscene": SubResource("Animation_c3uwj")
-}
-
-[sub_resource type="LabelSettings" id="LabelSettings_o0dir"]
-font = ExtResource("2_u51wu")
 
 [node name="CinematicText" type="Node2D"]
 script = ExtResource("1_cinematic_script")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_u51wu")
-}
-
 [node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 440.0
-offset_top = 360.0
-offset_right = 840.0
-offset_bottom = 390.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "May pupuntahan pa ako na baka makatulong din sa kaso."
-label_settings = SubResource("LabelSettings_o0dir")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+offset_right = 40.0
+offset_bottom = 22.3333

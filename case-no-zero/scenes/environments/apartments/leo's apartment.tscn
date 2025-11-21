@@ -16863,10 +16863,10 @@ tile_set = SubResource("TileSet_ws01n")
 
 [node name="PlayerM" parent="." instance=ExtResource("14_vsab5")]
 z_index = 2
-position = Vector2(624, 272)
+position = Vector2(592, 536)
 
 [node name="AnimatedSprite2D" parent="PlayerM" index="0"]
-animation = &"idle_back"
+animation = &"walk_back"
 frame = 0
 frame_progress = 0.0
 

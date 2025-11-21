@@ -49,8 +49,9 @@ func _ready() -> void:
 			await get_tree().process_frame
 			await get_tree().process_frame
 			
-			var scene_root := get_tree().current_scene
-			var fade_in_node := scene_root.get_node_or_null("SceneFadeIn") if scene_root != null else null
+			# Get scene root for fade check (after await, get fresh reference)
+			var current_scene := get_tree().current_scene
+			var fade_in_node := current_scene.get_node_or_null("SceneFadeIn") if current_scene != null else null
 			if fade_in_node != null:
 				await get_tree().create_timer(0.3).timeout
 			else:
@@ -350,24 +351,83 @@ func transition_to_scene(target_scene_path: String, animation_name: String = "",
 		print("❌ Failed to change scene to: ", target_scene_path)
 		return
 	
-	# Wait for scene to be ready
+	# Wait for scene to be ready - wait longer to ensure everything is initialized
 	await tree.process_frame
 	await tree.process_frame
+	await tree.process_frame
+	await tree.process_frame
+	# Additional wait for scene scripts to run _ready()
+	await get_tree().create_timer(0.5).timeout
 	
 	# If animation name is provided, play it in the new scene
 	if animation_name != "":
 		var new_scene := tree.current_scene
 		if new_scene:
-			# Find AnimationPlayer in new scene
-			var new_anim_player: AnimationPlayer = new_scene.get_node_or_null("AnimationPlayer")
-			if new_anim_player == null:
-				new_anim_player = new_scene.find_child("AnimationPlayer", true, false) as AnimationPlayer
+			# Find AnimationPlayer in new scene - try multiple times with delays
+			var new_anim_player: AnimationPlayer = null
+			var attempts = 0
+			while new_anim_player == null and attempts < 8:
+				new_anim_player = new_scene.get_node_or_null("AnimationPlayer")
+				if new_anim_player == null:
+					new_anim_player = new_scene.find_child("AnimationPlayer", true, false) as AnimationPlayer
+				if new_anim_player == null:
+					await get_tree().create_timer(0.15).timeout
+					attempts += 1
 			
 			if new_anim_player and new_anim_player.has_animation(animation_name):
-				print("🎬 Playing animation '", animation_name, "' in new scene")
+				print("🎬 Morgue Manager: Playing animation '", animation_name, "' in new scene (Leo's Apartment)")
+				# Disable player in the new scene
+				var player = _find_player_in_scene(new_scene)
+				if player:
+					_set_player_active_in_scene(player, false)
 				new_anim_player.play(animation_name)
 			else:
-				print("⚠️ Animation '", animation_name, "' not found in new scene. Available animations: ", new_anim_player.get_animation_list() if new_anim_player else "No AnimationPlayer found")
+				print("⚠️ Morgue Manager: Animation '", animation_name, "' not found in new scene. Available animations: ", new_anim_player.get_animation_list() if new_anim_player else "No AnimationPlayer found")
+				print("⚠️ Morgue Manager: Scene script (leo_apartment_manager) should handle cutscene playback")
+
+func _find_player_in_scene(scene: Node) -> Node:
+	"""Find player node in a given scene"""
+	if scene == null:
+		return null
+	
+	# Try direct child first
+	var direct := scene.get_node_or_null("PlayerM")
+	if direct != null:
+		return direct
+	
+	# Try recursive search
+	var candidates := scene.find_children("*", "", true, false)
+	for n in candidates:
+		if String(n.name).to_lower().contains("playerm") or String(n.name).to_lower().contains("player"):
+			return n
+	
+	return null
+
+func _set_player_active_in_scene(player: Node, active: bool) -> void:
+	"""Set player active state in a given scene"""
+	if player == null:
+		return
+	
+	if not active:
+		if "control_enabled" in player:
+			player.control_enabled = false
+		if "velocity" in player:
+			player.velocity = Vector2.ZERO
+		if player.has_method("set_process_input"):
+			player.set_process_input(false)
+		if player.has_method("set_physics_process"):
+			player.set_physics_process(false)
+		print("🎬 Morgue Manager: Player movement disabled in new scene")
+	else:
+		if player.has_method("enable_movement"):
+			player.enable_movement()
+		if player.has_method("set_process_input"):
+			player.set_process_input(true)
+		if player.has_method("set_physics_process"):
+			player.set_physics_process(true)
+		if "control_enabled" in player:
+			player.control_enabled = true
+		print("🎬 Morgue Manager: Player movement enabled in new scene")
 
 func end_cutscene() -> void:
 	"""End the cutscene - callable from AnimationPlayer"""
@@ -386,7 +446,7 @@ func end_cutscene() -> void:
 	# Set checkpoint before transitioning
 	cutscene_active = false
 	CheckpointManager.set_checkpoint(CheckpointManager.CheckpointType.MORGUE_CUTSCENE_COMPLETED)
-	print("🎬 Morgue cutscene completed - checkpoint set.")
+	print("🎬 Morgue cutscene completed - checkpoint set. Transitioning to Leo's apartment...")
 	
 	# Reset DialogueUI cutscene mode
 	if DialogueUI:
@@ -395,3 +455,4 @@ func end_cutscene() -> void:
 	# Transition to apartment scene and play apartment_cutscene animation
 	# Skip fade since we already did dramatic_fade_out above
 	await transition_to_scene("res://scenes/environments/apartments/leo's apartment.tscn", "apartment_cutscene", true)
+	print("🎬 Morgue Manager: Transition to Leo's apartment completed")
