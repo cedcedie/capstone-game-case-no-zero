@@ -133,18 +133,18 @@ Courtroom (Node2D) - has courtroom_manager.gd
 │   └── AnimationPlayer (optional)
 │       └── Animation: cross_examine
 └── EvidenceAnimPlayers (Node)
-    ├── BrokenBodyCamAnim (AnimationPlayer)
-    │   └── Animation: cross_examine
-    ├── LogbookAnim (AnimationPlayer)
-    │   └── Animation: cross_examine
-    ├── HandwritingSampleAnim (AnimationPlayer)
-    │   └── Animation: cross_examine
-    ├── RadioLogAnim (AnimationPlayer)
-    │   └── Animation: cross_examine
-    ├── AutopsyReportAnim (AnimationPlayer)
-    │   └── Animation: cross_examine
-    └── LeosNotebookAnim (AnimationPlayer)
-        └── Animation: cross_examine
+	├── BrokenBodyCamAnim (AnimationPlayer)
+	│   └── Animation: cross_examine
+	├── LogbookAnim (AnimationPlayer)
+	│   └── Animation: cross_examine
+	├── HandwritingSampleAnim (AnimationPlayer)
+	│   └── Animation: cross_examine
+	├── RadioLogAnim (AnimationPlayer)
+	│   └── Animation: cross_examine
+	├── AutopsyReportAnim (AnimationPlayer)
+	│   └── Animation: cross_examine
+	└── LeosNotebookAnim (AnimationPlayer)
+		└── Animation: cross_examine
 ```
 
 ---
@@ -156,4 +156,3 @@ Courtroom (Node2D) - has courtroom_manager.gd
 **Evidence Display**: `evidence_display_anim_player` - Optional AnimationPlayer for evidence sprite
 
 **All variables are found automatically** - you just need to create the nodes in the scene!
-

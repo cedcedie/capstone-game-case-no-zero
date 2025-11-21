@@ -252,4 +252,3 @@ Time  | Track Type        | Method/Property        | Args/Value
 ### `_hide_evidence_display()`
 - Hides evidence sprite
 - **Usage**: Call after evidence presentation ends
-

@@ -29,10 +29,10 @@ case-no-zero/
 │       └── main_menu.gd                           # ✅ Updated with courtroom debug function
 │
 └── (Documentation files - optional)
-    ├── COURTROOM_SETUP_GUIDE.md                  # Setup instructions
-    ├── COURTROOM_ANIMATION_INSTRUCTIONS.md        # Animation setup
-    ├── COURTROOM_ANIMATION_TRACK_GUIDE.md        # Track-by-track guide
-    └── COURTROOM_ANIMATION_PLAYER_VARIABLES.md   # Variables reference
+	├── COURTROOM_SETUP_GUIDE.md                  # Setup instructions
+	├── COURTROOM_ANIMATION_INSTRUCTIONS.md        # Animation setup
+	├── COURTROOM_ANIMATION_TRACK_GUIDE.md        # Track-by-track guide
+	└── COURTROOM_ANIMATION_PLAYER_VARIABLES.md   # Variables reference
 ```
 
 ---
@@ -79,18 +79,18 @@ Courtroom (Node2D)
 │       └── Animation: cross_examine (optional)
 │
 └── EvidenceAnimPlayers (Node)                    # ⚠️ CREATE THIS CONTAINER
-    ├── BrokenBodyCamAnim (AnimationPlayer)       # ⚠️ CREATE THIS
-    │   └── Animation: cross_examine
-    ├── LogbookAnim (AnimationPlayer)            # ⚠️ CREATE THIS
-    │   └── Animation: cross_examine
-    ├── HandwritingSampleAnim (AnimationPlayer)  # ⚠️ CREATE THIS
-    │   └── Animation: cross_examine
-    ├── RadioLogAnim (AnimationPlayer)            # ⚠️ CREATE THIS
-    │   └── Animation: cross_examine
-    ├── AutopsyReportAnim (AnimationPlayer)       # ⚠️ CREATE THIS
-    │   └── Animation: cross_examine
-    └── LeosNotebookAnim (AnimationPlayer)       # ⚠️ CREATE THIS
-        └── Animation: cross_examine
+	├── BrokenBodyCamAnim (AnimationPlayer)       # ⚠️ CREATE THIS
+	│   └── Animation: cross_examine
+	├── LogbookAnim (AnimationPlayer)            # ⚠️ CREATE THIS
+	│   └── Animation: cross_examine
+	├── HandwritingSampleAnim (AnimationPlayer)  # ⚠️ CREATE THIS
+	│   └── Animation: cross_examine
+	├── RadioLogAnim (AnimationPlayer)            # ⚠️ CREATE THIS
+	│   └── Animation: cross_examine
+	├── AutopsyReportAnim (AnimationPlayer)       # ⚠️ CREATE THIS
+	│   └── Animation: cross_examine
+	└── LeosNotebookAnim (AnimationPlayer)       # ⚠️ CREATE THIS
+		└── Animation: cross_examine
 ```
 
 ---
@@ -243,4 +243,3 @@ Select the main `AnimationPlayer` node and create these animations:
 - **Animations**: See `COURTROOM_ANIMATION_INSTRUCTIONS.md`
 - **Tracks**: See `COURTROOM_ANIMATION_TRACK_GUIDE.md`
 - **Variables**: See `COURTROOM_ANIMATION_PLAYER_VARIABLES.md`
-

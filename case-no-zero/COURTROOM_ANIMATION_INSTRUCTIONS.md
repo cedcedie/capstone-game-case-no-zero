@@ -133,8 +133,8 @@ Create these animations to move the camera to different positions:
 3. **Add Keyframe**:
    - At time `0.0`: Click keyframe icon
    - In the keyframe properties, set:
-     - Method: `_perform_objection_shake`
-     - Args: (leave empty)
+	 - Method: `_perform_objection_shake`
+	 - Args: (leave empty)
 
 ## Important Notes
 
@@ -161,4 +161,3 @@ If your camera is attached to the PlayerM node, you'll need to:
 1. Either move the camera to a separate node, OR
 2. Adjust the camera positions in the code to account for player position, OR
 3. Use a RemoteTransform2D or other method to control camera independently
-
