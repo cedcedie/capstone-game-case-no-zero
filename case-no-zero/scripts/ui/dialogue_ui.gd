@@ -211,8 +211,12 @@ func _apply_portrait_for_speaker(speaker: String, dialogue_key: String = "") -> 
 	if portrait_rect == null or face_container == null:
 		return
 	
-	# Clean up previous animated sprite instance
+	# Always clean up previous portrait first to prevent persistence
 	_cleanup_animated_sprite()
+	# Clear and hide portrait rect initially
+	if portrait_rect:
+		portrait_rect.texture = null
+		portrait_rect.visible = false
 	
 	var tex: Texture2D = null
 	var animated_sprite: AnimatedSprite2D = null
@@ -239,11 +243,22 @@ func _apply_portrait_for_speaker(speaker: String, dialogue_key: String = "") -> 
 				tex = load("res://assets/sprites/characters/closeup_face/leo_closeup.png")
 			"dr. leticia salvador", "dr leticia salvador", "leticia salvador":
 				tex = load("res://assets/sprites/characters/closeup_face/dr_leticia_salvador_closeup.png")
+			"hukom", "judge":
+				tex = load("res://assets/sprites/characters/closeup_face/judge_closeup.png") if ResourceLoader.exists("res://assets/sprites/characters/closeup_face/judge_closeup.png") else null
+			"fiscal", "prosecutor":
+				tex = load("res://assets/sprites/characters/closeup_face/fiscal_closeup.png") if ResourceLoader.exists("res://assets/sprites/characters/closeup_face/fiscal_closeup.png") else null
+			"po1 cordero":
+				tex = load("res://assets/sprites/characters/closeup_face/po1_cordero_closeup.png") if ResourceLoader.exists("res://assets/sprites/characters/closeup_face/po1_cordero_closeup.png") else null
 	
 	# Set the texture to the portrait rect for static images
 	if portrait_rect:
-		portrait_rect.texture = tex
-		portrait_rect.visible = (tex != null)
+		if tex != null:
+			portrait_rect.texture = tex
+			portrait_rect.visible = true
+		else:
+			# No texture found - clear and hide to prevent persistence
+			portrait_rect.texture = null
+			portrait_rect.visible = false
 		# Make sure any animated sprite viewport is hidden
 		if current_viewport_container:
 			current_viewport_container.visible = false

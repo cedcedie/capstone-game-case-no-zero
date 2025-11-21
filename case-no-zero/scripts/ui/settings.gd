@@ -44,16 +44,84 @@ func _ready():
 
 func _get_ui_references():
 	"""Get references to UI elements"""
-	if ui_container.has_node("EvidenceTab/Button"):
-		evidence_tab = ui_container.get_node("EvidenceTab/Button")
-	if ui_container.has_node("SettingsTab/Button"):
-		settings_tab = ui_container.get_node("SettingsTab/Button")
+	# Get the tab nodes directly (they're NinePatchRect, not buttons)
+	# EvidenceTab might be in a different location, check both
+	if ui_container.has_node("EvidenceTab"):
+		evidence_tab = ui_container.get_node("EvidenceTab")
+	elif ui_container.has_node("EvidenceBoxDesvriptionBG/EvidenceTab"):
+		evidence_tab = ui_container.get_node("EvidenceBoxDesvriptionBG/EvidenceTab")
+	
+	if ui_container.has_node("SettingsTab"):
+		settings_tab = ui_container.get_node("SettingsTab")
+	
 	glossary_content_bg = ui_container.get_node("GlossaryContentBG")
 
 func _setup_buttons():
-	"""Setup button connections - icons are no longer clickable"""
-	# Icons are now non-interactive - only for visual indication
-	pass
+	"""Setup button connections and tab interactions"""
+	# Setup tab interactions (hover and click)
+	_setup_tab_interactions()
+
+func _setup_tab_interactions():
+	"""Setup hover and click interactions for Evidence and Settings tabs"""
+	if evidence_tab:
+		# Make evidence tab interactive
+		evidence_tab.mouse_filter = Control.MOUSE_FILTER_STOP
+		evidence_tab.mouse_entered.connect(_on_evidence_tab_hover.bind(true))
+		evidence_tab.mouse_exited.connect(_on_evidence_tab_hover.bind(false))
+		evidence_tab.gui_input.connect(_on_evidence_tab_input)
+	
+	if settings_tab:
+		# Make settings tab interactive
+		settings_tab.mouse_filter = Control.MOUSE_FILTER_STOP
+		settings_tab.mouse_entered.connect(_on_settings_tab_hover.bind(true))
+		settings_tab.mouse_exited.connect(_on_settings_tab_hover.bind(false))
+		# Settings tab in settings view is always active, no click needed
+
+func _on_evidence_tab_hover(is_hovering: bool):
+	"""Handle evidence tab hover effect in settings view"""
+	if not evidence_tab:
+		return
+	
+	var tween = create_tween()
+	if is_hovering:
+		# Hover effect: slightly scale up and brighten
+		tween.set_parallel(true)
+		tween.tween_property(evidence_tab, "scale", Vector2(1.1, 1.1), 0.15).set_ease(Tween.EASE_OUT)
+		tween.tween_property(evidence_tab, "modulate", Color(1.2, 1.2, 1.2, 1.0), 0.15)
+	else:
+		# Return to normal
+		tween.set_parallel(true)
+		tween.tween_property(evidence_tab, "scale", Vector2.ONE, 0.15).set_ease(Tween.EASE_IN)
+		tween.tween_property(evidence_tab, "modulate", Color.WHITE, 0.15)
+
+func _on_settings_tab_hover(is_hovering: bool):
+	"""Handle settings tab hover effect in settings view"""
+	if not settings_tab:
+		return
+	
+	var tween = create_tween()
+	if is_hovering:
+		# Hover effect: slightly scale up and brighten
+		tween.set_parallel(true)
+		tween.tween_property(settings_tab, "scale", Vector2(1.1, 1.1), 0.15).set_ease(Tween.EASE_OUT)
+		tween.tween_property(settings_tab, "modulate", Color(1.2, 1.2, 1.2, 1.0), 0.15)
+	else:
+		# Return to normal
+		tween.set_parallel(true)
+		tween.tween_property(settings_tab, "scale", Vector2.ONE, 0.15).set_ease(Tween.EASE_IN)
+		tween.tween_property(settings_tab, "modulate", Color.WHITE, 0.15)
+
+func _on_evidence_tab_input(event: InputEvent):
+	"""Handle evidence tab click in settings view"""
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# Clicked evidence tab - switch to evidence inventory
+		if has_node("/root/EvidenceInventorySettings"):
+			var evidence_ui = get_node("/root/EvidenceInventorySettings")
+			if not evidence_ui.is_visible:
+				# We're in settings, switch to evidence
+				hide_settings()
+				evidence_ui.show_evidence_inventory()
+				print("📋 Switched from Settings to Evidence Inventory")
 
 func show_settings():
 	"""Show settings with smooth animation"""

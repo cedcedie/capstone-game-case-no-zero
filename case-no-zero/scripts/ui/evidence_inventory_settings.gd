@@ -81,6 +81,9 @@ func _ready():
 	# Setup evidence slots
 	_setup_evidence_slots()
 	
+	# Setup tab interactions (hover and click)
+	_setup_tab_interactions()
+	
 	# Initially hide all evidence except the first one
 	_initialize_evidence_visibility()
 
@@ -203,7 +206,8 @@ func _get_ui_references():
 	evidence_label = ui_container.get_node("EvidenceBoxDesvriptionBG/EvidenceLabel")
 	evidence_name = ui_container.get_node("EvidenceBoxDesvriptionBG/EvidenceName")
 	evidence_description = ui_container.get_node("EvidenceBoxDesvriptionBG/EvidenceDescription")
-	evidence_tab = ui_container.get_node("EvidenceTab")
+	# Get tabs - EvidenceTab is inside EvidenceBoxDesvriptionBG, SettingsTab is direct child
+	evidence_tab = ui_container.get_node("EvidenceBoxDesvriptionBG/EvidenceTab")
 	settings_tab = ui_container.get_node("SettingsTab")
 	
 
@@ -481,9 +485,87 @@ func _on_evidence_slot_hover(evidence_index: int, is_hovering: bool):
 			tween.tween_property(evidence_slot, "modulate", Color.WHITE, 0.1)
 			tween.tween_property(evidence_slot, "scale", Vector2.ONE, 0.1)
 
-# Tab hover functions removed - icons are no longer interactive
+func _setup_tab_interactions():
+	"""Setup hover and click interactions for Evidence and Settings tabs"""
+	if evidence_tab:
+		# Make evidence tab interactive
+		evidence_tab.mouse_filter = Control.MOUSE_FILTER_STOP
+		evidence_tab.mouse_entered.connect(_on_evidence_tab_hover.bind(true))
+		evidence_tab.mouse_exited.connect(_on_evidence_tab_hover.bind(false))
+		evidence_tab.gui_input.connect(_on_evidence_tab_input)
+	
+	if settings_tab:
+		# Make settings tab interactive
+		settings_tab.mouse_filter = Control.MOUSE_FILTER_STOP
+		settings_tab.mouse_entered.connect(_on_settings_tab_hover.bind(true))
+		settings_tab.mouse_exited.connect(_on_settings_tab_hover.bind(false))
+		settings_tab.gui_input.connect(_on_settings_tab_input)
 
-# Tab click functions removed - icons are no longer clickable
+func _on_evidence_tab_hover(is_hovering: bool):
+	"""Handle evidence tab hover effect"""
+	if not evidence_tab:
+		return
+	
+	var tween = create_tween()
+	if is_hovering:
+		# Hover effect: slightly scale up and brighten
+		tween.set_parallel(true)
+		tween.tween_property(evidence_tab, "scale", Vector2(1.1, 1.1), 0.15).set_ease(Tween.EASE_OUT)
+		tween.tween_property(evidence_tab, "modulate", Color(1.2, 1.2, 1.2, 1.0), 0.15)
+	else:
+		# Return to normal
+		tween.set_parallel(true)
+		tween.tween_property(evidence_tab, "scale", Vector2.ONE, 0.15).set_ease(Tween.EASE_IN)
+		tween.tween_property(evidence_tab, "modulate", Color.WHITE, 0.15)
+
+func _on_settings_tab_hover(is_hovering: bool):
+	"""Handle settings tab hover effect"""
+	if not settings_tab:
+		return
+	
+	# Check if settings tab is disabled (grayed out)
+	var is_disabled = settings_tab.modulate == Color(0.5, 0.5, 0.5, 1.0)
+	if is_disabled:
+		return  # Don't hover if disabled
+	
+	var tween = create_tween()
+	if is_hovering:
+		# Hover effect: slightly scale up and brighten
+		tween.set_parallel(true)
+		tween.tween_property(settings_tab, "scale", Vector2(1.1, 1.1), 0.15).set_ease(Tween.EASE_OUT)
+		tween.tween_property(settings_tab, "modulate", Color(1.2, 1.2, 1.2, 1.0), 0.15)
+	else:
+		# Return to normal
+		tween.set_parallel(true)
+		tween.tween_property(settings_tab, "scale", Vector2.ONE, 0.15).set_ease(Tween.EASE_IN)
+		tween.tween_property(settings_tab, "modulate", Color.WHITE, 0.15)
+
+func _on_evidence_tab_input(event: InputEvent):
+	"""Handle evidence tab click"""
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# Clicked evidence tab - show evidence inventory
+		if has_node("/root/Settings"):
+			var settings_ui = get_node("/root/Settings")
+			if settings_ui.is_visible:
+				# We're in settings, switch to evidence
+				show_evidence_inventory()
+				print("📋 Switched from Settings to Evidence Inventory")
+
+func _on_settings_tab_input(event: InputEvent):
+	"""Handle settings tab click"""
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# Check if settings tab is disabled
+		var is_disabled = settings_tab.modulate == Color(0.5, 0.5, 0.5, 1.0)
+		if is_disabled:
+			return  # Don't allow click if disabled
+		
+		# Clicked settings tab - show settings
+		if has_node("/root/Settings"):
+			var settings_ui = get_node("/root/Settings")
+			if not settings_ui.is_visible:
+				# We're in evidence, switch to settings
+				settings_ui.show_settings()
+				print("⚙️ Switched from Evidence Inventory to Settings")
 
 
 func _setup_evidence_click_detection(evidence_id: String):
