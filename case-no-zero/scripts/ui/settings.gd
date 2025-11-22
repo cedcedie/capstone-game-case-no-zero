@@ -122,6 +122,10 @@ func _on_settings_tab_hover(is_hovering: bool):
 func _on_evidence_tab_input(event: InputEvent):
 	"""Handle evidence tab click in settings view"""
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# Hide glossary if visible
+		if glossary_visible:
+			hide_glossary()
+		
 		# Clicked evidence tab - switch to evidence inventory
 		if has_node("/root/EvidenceInventorySettings"):
 			var evidence_ui = get_node("/root/EvidenceInventorySettings")
@@ -193,29 +197,34 @@ func _input(event):
 	# Check if we're in a cutscene (any scene with cutscene_played = false)
 	var in_cutscene = false
 	if current_scene and current_scene.has_method("_input"):
+		# Special case: Allow settings/glossary in courtroom scene
+		var scene_name = current_scene.name.to_lower()
+		if "courtroom" in scene_name:
+			in_cutscene = false  # Allow settings/glossary in courtroom
 		# Check if this scene has cutscene_played property and it's false
-		if "cutscene_played" in current_scene and not current_scene.cutscene_played:
+		elif "cutscene_played" in current_scene and not current_scene.cutscene_played:
 			in_cutscene = true
 		
-		# Check for Tween and AnimationPlayer cutscenes
-		var tweens = get_tree().get_nodes_in_group("tween")
-		for tween in tweens:
-			if tween.is_valid() and tween.is_running():
-				in_cutscene = true
-				break
-		
-		var animation_players = get_tree().get_nodes_in_group("animation_player")
-		for anim_player in animation_players:
-			if anim_player.is_playing():
-				in_cutscene = true
-				break
-		
-		# Check for any running animations in the current scene
-		var scene_animations = current_scene.get_tree().get_nodes_in_group("animation")
-		for anim in scene_animations:
-			if anim.is_playing():
-				in_cutscene = true
-				break
+		# Check for Tween and AnimationPlayer cutscenes (but not in courtroom)
+		if "courtroom" not in scene_name:
+			var tweens = get_tree().get_nodes_in_group("tween")
+			for tween in tweens:
+				if tween.is_valid() and tween.is_running():
+					in_cutscene = true
+					break
+			
+			var animation_players = get_tree().get_nodes_in_group("animation_player")
+			for anim_player in animation_players:
+				if anim_player.is_playing():
+					in_cutscene = true
+					break
+			
+			# Check for any running animations in the current scene
+			var scene_animations = current_scene.get_tree().get_nodes_in_group("animation")
+			for anim in scene_animations:
+				if anim.is_playing():
+					in_cutscene = true
+					break
 		
 		# Special case: check if we're in evidence collection phase (line 12 exception)
 		if "evidence_collection_phase" in current_scene and current_scene.evidence_collection_phase:
@@ -317,39 +326,54 @@ func _populate_glossary_list():
 		empty_label.text = "No glossary terms available yet."
 		empty_label.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5, 1))
 		empty_label.add_theme_font_size_override("font_size", 12)
+		empty_label.visible_characters = -1  # Show all characters immediately
 		glossary_list.add_child(empty_label)
 		return
 	
 	for term in available_terms:
 		var term_container = VBoxContainer.new()
 		term_container.add_theme_constant_override("separation", 5)
+		term_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
 		# Term label (bold)
 		var term_label = Label.new()
-		term_label.text = term.get("label", "Unknown Term")
+		var term_text = term.get("label", "Unknown Term")
+		term_label.text = term_text
 		term_label.add_theme_color_override("font_color", Color(0.1, 0.1, 0.1, 1))
 		term_label.add_theme_font_size_override("font_size", 14)
 		term_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		term_label.clip_contents = true  # Clip to prevent overflow
+		term_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		term_label.visible_characters = -1  # Show all characters immediately
 		term_container.add_child(term_label)
 		
 		# Description
 		var desc_label = Label.new()
-		desc_label.text = term.get("description", "")
+		var desc_text = term.get("description", "")
+		desc_label.text = desc_text
 		desc_label.add_theme_color_override("font_color", Color(0.3, 0.3, 0.3, 1))
 		desc_label.add_theme_font_size_override("font_size", 11)
 		desc_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		desc_label.clip_contents = true  # Clip to prevent overflow
+		desc_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		desc_label.visible_characters = -1  # Show all characters immediately
 		term_container.add_child(desc_label)
 		
 		# Citation
 		var citation_label = Label.new()
-		citation_label.text = "Citation: " + term.get("citation", "")
+		var citation_text = "Citation: " + term.get("citation", "")
+		citation_label.text = citation_text
 		citation_label.add_theme_color_override("font_color", Color(0.4, 0.4, 0.4, 1))
 		citation_label.add_theme_font_size_override("font_size", 10)
 		citation_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		citation_label.clip_contents = true  # Clip to prevent overflow
+		citation_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		citation_label.visible_characters = -1  # Show all characters immediately
 		term_container.add_child(citation_label)
 		
 		# Separator
 		var separator = HSeparator.new()
+		separator.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		term_container.add_child(separator)
 		
 		glossary_list.add_child(term_container)

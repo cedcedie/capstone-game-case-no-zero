@@ -3,6 +3,15 @@
 ## Overview
 This guide shows you exactly where to add method tracks in your AnimationPlayer for Phoenix Wright-style gameplay.
 
+## Important: Camera Setup
+
+**The courtroom uses a dedicated Camera2D, NOT the player's camera.**
+
+- **Courtroom Camera**: Add a `Camera2D` node to the courtroom scene root
+- **Name it**: `"CourtroomCamera"` (preferred) or `"Camera2D"`
+- **Player Camera**: Automatically disabled when entering courtroom
+- **Camera Path in AnimationPlayer**: Use `"CourtroomCamera"` or `"Camera2D"` (not `"PlayerM/Camera2D"`)
+
 ## Main AnimationPlayer Structure
 
 ### Evidence-Specific AnimationPlayers
@@ -28,9 +37,16 @@ Each evidence has its own AnimationPlayer for cross-examination sequences.
 **Track 1: Camera Focus (Position 2D)**
 - **Time**: 0.0s
 - **Track Type**: Position (2D)
-- **Path**: `Camera2D` (or your camera path)
+- **Path**: `CourtroomCamera` or `Camera2D` (dedicated courtroom camera, NOT player camera)
 - **Keyframe**: Move camera to evidence display position
 - **Purpose**: Focus camera on evidence
+
+**Track 1b: Camera Zoom (Optional)**
+- **Time**: 0.0s (same time as Position track)
+- **Track Type**: Scale (2D) or create custom property track for `zoom`
+- **Path**: `CourtroomCamera` or `Camera2D`
+- **Keyframe**: Set zoom to `(2.5, 2.5)` for close-up, `(2.0, 2.0)` for normal
+- **Purpose**: Zoom in when focusing on evidence
 
 **Track 2: Show Evidence (Method)**
 - **Time**: 0.5s
@@ -38,7 +54,7 @@ Each evidence has its own AnimationPlayer for cross-examination sequences.
 - **Path**: `.` (root - courtroom_manager)
 - **Method**: `_play_evidence_animation`
 - **Args**: `["evidence_id"]` (e.g., `["broken_body_cam"]`)
-- **Purpose**: Display evidence sprite
+- **Purpose**: Display evidence sprite with fade-in animation
 
 **Track 3: Advance Dialogue Lines (Method)**
 - **Time**: 2.0s
@@ -83,8 +99,8 @@ Each evidence has its own AnimationPlayer for cross-examination sequences.
 **Track 8: Camera Return (Position 2D)**
 - **Time**: 14.0s
 - **Track Type**: Position (2D)
-- **Path**: `Camera2D`
-- **Keyframe**: Return camera to center
+- **Path**: `CourtroomCamera` or `Camera2D` (dedicated courtroom camera)
+- **Keyframe**: Return camera to center position `(712, 312)`
 - **Purpose**: Return camera to normal view
 
 ## Main Courtroom AnimationPlayer
@@ -106,8 +122,14 @@ Each evidence has its own AnimationPlayer for cross-examination sequences.
 **Track 2: Camera Focus Judge (Position 2D)**
 - **Time**: 10.0s
 - **Track Type**: Position (2D)
-- **Path**: `Camera2D`
-- **Keyframe**: Focus on judge
+- **Path**: `CourtroomCamera` or `Camera2D` (dedicated courtroom camera)
+- **Keyframe**: Focus on judge at position `(640, 200)`
+
+**Track 2b: Camera Zoom Judge (Optional)**
+- **Time**: 10.0s (same time as Position track)
+- **Track Type**: Scale (2D) or custom property track for `zoom`
+- **Path**: `CourtroomCamera` or `Camera2D`
+- **Keyframe**: Set zoom to `(2.5, 2.5)` for close-up
 
 **Track 3: Advance Dialogue (Method)**
 - **Time**: 11.0s
@@ -140,8 +162,8 @@ Each evidence has its own AnimationPlayer for cross-examination sequences.
 **Track 7: Camera Focus Celine (Position 2D) - When Celine Testifies**
 - **Time**: 50.0s
 - **Track Type**: Position (2D)
-- **Path**: `Camera2D`
-- **Keyframe**: Focus on Celine
+- **Path**: `CourtroomCamera` or `Camera2D` (dedicated courtroom camera)
+- **Keyframe**: Focus on Celine at position `(500, 450)` with zoom `(2.5, 2.5)`
 
 **Track 8: Advance Celine Dialogue (Method)**
 - **Time**: 51.0s
@@ -153,8 +175,8 @@ Each evidence has its own AnimationPlayer for cross-examination sequences.
 **Track 9: Camera Focus Kapitana (Position 2D) - When Kapitana is Exposed**
 - **Time**: 70.0s
 - **Track Type**: Position (2D)
-- **Path**: `Camera2D`
-- **Keyframe**: Focus on Kapitana
+- **Path**: `CourtroomCamera` or `Camera2D` (dedicated courtroom camera)
+- **Keyframe**: Focus on Kapitana at position `(400, 500)` with zoom `(2.5, 2.5)`
 
 **Track 10: Objection (Method) - When Kapitana Objects**
 - **Time**: 75.0s
@@ -211,14 +233,14 @@ Add `_show_gavel` method tracks:
 ```
 Time  | Track Type        | Method/Property        | Args/Value
 ------|-------------------|------------------------|------------
-0.0s  | Position 2D       | Camera2D position      | Evidence position
+0.0s  | Position 2D       | CourtroomCamera position| Evidence position
 0.5s  | Method            | _play_evidence_animation| ["broken_body_cam"]
 2.0s  | Method            | advance_dialogue_lines  | [3]
 8.0s  | Method            | _show_objection        | []
 9.0s  | Method            | advance_dialogue_lines  | [2]
 12.0s | Method            | _show_gavel            | []
 13.0s | Method            | _hide_evidence_display  | []
-14.0s | Position 2D       | Camera2D position      | Center
+14.0s | Position 2D       | CourtroomCamera position| Center (712, 312)
 ```
 
 ## Tips
@@ -246,9 +268,17 @@ Time  | Track Type        | Method/Property        | Args/Value
 - **Usage**: Call from method track when judge makes ruling
 
 ### `_play_evidence_animation(evidence_id: String)`
-- Displays evidence sprite
+- Displays evidence sprite with fade-in/scale animation
+- Automatically loads texture from EvidenceInventorySettings
+- Plays `cross_examine` animation if available on EvidenceDisplaySprite
 - **Usage**: `_play_evidence_animation("broken_body_cam")`
+- **Evidence IDs**: `"broken_body_cam"`, `"radio_log"`, `"logbook"`, `"handwriting_sample"`, `"autopsy_report"`, `"leos_notebook"`
 
 ### `_hide_evidence_display()`
-- Hides evidence sprite
+- Hides evidence sprite immediately
 - **Usage**: Call after evidence presentation ends
+
+### `show_line(speaker: String, text: String)`
+- Directly displays a single dialogue line
+- **Usage**: `show_line("Miguel", "Your Honor...")`
+- **Note**: Use this for dialogue controlled by AnimationPlayer, or use `advance_dialogue_lines()` for auto-advancing multiple lines

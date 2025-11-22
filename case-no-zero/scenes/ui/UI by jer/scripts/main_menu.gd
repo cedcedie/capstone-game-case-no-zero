@@ -11,6 +11,7 @@ const COURTROOM_SCENE := "res://scenes/environments/Courtroom/courtroom.tscn"
 @onready var mainbuttons: HBoxContainer = $mainbuttons
 @onready var options: Panel = $Options
 @onready var debugger_panel: Panel = $DebuggerPanel
+@onready var debugger_toggle: Button = $DebuggerToggle
 @onready var checkpoint_list: VBoxContainer = $DebuggerPanel/VBoxContainer/ScrollContainer/CheckpointList
 
 # Audio players for UI sounds
@@ -23,6 +24,9 @@ func _ready():
 	mainbuttons.visible = true
 	options.visible = false
 	debugger_panel.visible = false
+	# Show debugger toggle button
+	if debugger_toggle:
+		debugger_toggle.visible = true
 	
 	# Initialize DEBUG_CHECKPOINTS here to access CheckpointManager autoload
 	if CheckpointManager:

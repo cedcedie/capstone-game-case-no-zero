@@ -16,6 +16,7 @@ var _last_scene_check_frame: int = -1
 var evidence_data: Dictionary = {}
 var collected_evidence: Array = []
 var current_evidence: String = ""
+var courtroom_mode: bool = false  # Flag to track if we're in courtroom evidence selection mode
 
 # UI References
 var evidence_slots: Array = []
@@ -35,6 +36,7 @@ signal evidence_collected(evidence_id: String)
 signal evidence_displayed(evidence_id: String)
 signal evidence_inventory_opened()
 signal evidence_inventory_closed()
+signal evidence_selected_for_courtroom(evidence_id: String)  # New signal for courtroom evidence selection
 
 # Evidence mapping: Evidence1-6 to evidence IDs
 var evidence_mapping: Array = [
@@ -87,8 +89,15 @@ func _ready():
 	# Initially hide all evidence except the first one
 	_initialize_evidence_visibility()
 
-func show_evidence_inventory():
+func show_evidence_inventory(courtroom_mode_enabled: bool = false):
 	"""Show the evidence inventory UI with smooth fade animation from center"""
+	courtroom_mode = courtroom_mode_enabled  # Set courtroom mode flag
+	print("📋 Evidence Inventory: Showing with courtroom_mode = ", courtroom_mode, " | Evidence slots visible: ", evidence_slots.size())
+	# Debug: Print which evidence slots are visible
+	for i in range(evidence_slots.size()):
+		if i < collected_evidence.size():
+			var evidence_id = evidence_mapping[i]
+			print("📋 Evidence slot ", i, " (", evidence_id, ") visible: ", evidence_slots[i].visible)
 	if not is_visible:
 		# Play open sound
 		if open_player:
@@ -99,13 +108,16 @@ func show_evidence_inventory():
 			var settings_ui = get_node("/root/Settings")
 			if settings_ui.is_visible:
 				await settings_ui.hide_settings()
+			# Also hide glossary if visible
+			if settings_ui.glossary_visible:
+				settings_ui.hide_glossary()
 		
 		is_visible = true
 		show()
 		
 		# Emit signal
 		evidence_inventory_opened.emit()
-		print("📋 Evidence inventory opened")
+		print("📋 Evidence inventory opened (courtroom_mode: ", courtroom_mode, ")")
 		
 		# Start with transparent and slightly scaled down
 		if ui_container:
@@ -137,6 +149,7 @@ func show_evidence_inventory():
 
 func hide_evidence_inventory():
 	"""Hide the evidence inventory UI with smooth fade animation to center"""
+	courtroom_mode = false  # Reset courtroom mode when hiding
 	if is_visible:
 		# Play close sound
 		if close_player:
@@ -240,16 +253,29 @@ func _on_evidence_slot_pressed(evidence_index: int):
 
 func _select_evidence(evidence_index: int):
 	"""Select and display evidence"""
+	print("📋 _select_evidence called with index: ", evidence_index, " | collected_evidence.size(): ", collected_evidence.size())
 	# Check if this evidence slot is visible (has collected evidence)
 	if evidence_index >= collected_evidence.size():
+		print("⚠️ Evidence index out of range!")
 		return
 	
 	# Get the evidence ID from the mapping
 	var evidence_id = evidence_mapping[evidence_index]
+	print("📋 Evidence ID from mapping: ", evidence_id)
 	if evidence_id in evidence_data.evidence:
 		current_evidence = evidence_id
 		_display_evidence(evidence_id)
 		print("📋 Evidence selected:", evidence_id, "from slot", evidence_index + 1)
+		
+		# If in courtroom mode, ALWAYS emit signal for courtroom selection (even during dialogue)
+		print("📋 Evidence selection - courtroom_mode: ", courtroom_mode, " evidence_id: ", evidence_id)
+		if courtroom_mode:
+			print("📋 Emitting evidence_selected_for_courtroom signal for: ", evidence_id)
+			# Emit signal immediately - this should work even during dialogue
+			evidence_selected_for_courtroom.emit(evidence_id)
+			print("📋 Courtroom: Evidence selected for presentation:", evidence_id)
+		else:
+			print("⚠️ Evidence clicked but NOT in courtroom mode! courtroom_mode = ", courtroom_mode)
 	else:
 		print("⚠️ Evidence not found in data:", evidence_id)
 
@@ -607,3 +633,12 @@ func _show_evidence_details(evidence_id: String):
 
 func _on_evidence_description_gui_input(event: InputEvent) -> void:
 	pass # Replace with function body.
+
+func set_evidence_slot_visibility(evidence_id: String, visible: bool) -> void:
+	"""Set visibility of a specific evidence slot by evidence ID"""
+	var evidence_index = evidence_mapping.find(evidence_id)
+	if evidence_index >= 0 and evidence_index < evidence_slots.size():
+		evidence_slots[evidence_index].visible = visible
+		print("📋 Evidence slot visibility set: ", evidence_id, " = ", visible)
+	else:
+		print("⚠️ Evidence ID not found in mapping: ", evidence_id)

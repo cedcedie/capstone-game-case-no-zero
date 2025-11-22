@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://la4bedt2nil"]
+[gd_scene load_steps=77 format=4 uid="uid://la4bedt2nil"]
 
 [ext_resource type="Texture2D" uid="uid://ca2o3d64xiq0x" path="res://assets/sprites/environments/interior/17_Visibile_Upstairs_System_32x32.png" id="1_gks7r"]
 [ext_resource type="Script" uid="uid://s1ybtnbc02p6" path="res://scripts/environments/courtroom_manager.gd" id="1_qfslm"]
@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://c51hdm5vg2hjd" path="res://scenes/characters/main_characters/erwin.tscn" id="24_3gsop"]
 [ext_resource type="PackedScene" uid="uid://bqgrx7frrb7wi" path="res://scenes/characters/main_characters/judge.tscn" id="25_sjfly"]
 [ext_resource type="PackedScene" uid="uid://cuwg1bgfvlkxr" path="res://gavel.tscn" id="26_ux7jt"]
-[ext_resource type="PackedScene" uid="uid://bqr0txu1h7bch" path="res://miravil/character_police_station/po1Darwin.tscn" id="27_sjfly"]
+[ext_resource type="PackedScene" uid="uid://cfuf24oen40ow" path="res://miravil/characters_office/npc_rooftop_officer6.tscn" id="28_sjfly"]
 [ext_resource type="PackedScene" uid="uid://chn70jwwn80pw" path="res://objection.tscn" id="28_ux7jt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_phr0s"]
@@ -23256,12 +23256,44 @@ length = 0.8
 [sub_resource type="Animation" id="Animation_sjfly"]
 resource_name = "camera_focus_judge"
 length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerM/AnimatedSprite2D:speed_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ke40d"]
 _data = {
 &"RESET": SubResource("Animation_ux7jt"),
 &"camera_focus_defendant": SubResource("Animation_qfslm"),
 &"camera_focus_judge": SubResource("Animation_sjfly")
+}
+
+[sub_resource type="Animation" id="Animation_f46ra"]
+resource_name = "cross_examine"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CourtroomCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6bvv"]
+_data = {
+&"cross_examine": SubResource("Animation_f46ra")
 }
 
 [node name="Courtroom2" type="Node2D"]
@@ -23297,9 +23329,15 @@ collision_visibility_mode = 2
 
 [node name="PlayerM" parent="." instance=ExtResource("21_0sx17")]
 z_index = 4
-position = Vector2(512, 448)
+position = Vector2(512, 440)
+
+[node name="AnimatedSprite2D" parent="PlayerM" index="0"]
+animation = &"idle_back"
+frame = 0
+frame_progress = 0.0
 
 [node name="Camera2D" parent="PlayerM" index="2"]
+visible = false
 position = Vector2(712, 312)
 zoom = Vector2(1.2, 1.2)
 
@@ -23310,11 +23348,15 @@ libraries = {
 
 [node name="celine" parent="." instance=ExtResource("23_ikpm3")]
 z_index = 1
-position = Vector2(448, 448)
+position = Vector2(448, 440)
+
+[node name="AnimatedSprite2D" parent="celine" index="0"]
+animation = &"idle_back"
+autoplay = "idle_back"
 
 [node name="erwin" parent="." instance=ExtResource("24_3gsop")]
 z_index = 1
-position = Vector2(480, 448)
+position = Vector2(480, 440)
 
 [node name="Judge" parent="." instance=ExtResource("25_sjfly")]
 z_index = 1
@@ -23326,14 +23368,10 @@ z_index = 6
 position = Vector2(688, 416)
 frame_progress = 0.819506
 
-[node name="NpcPlPo1Darwin" parent="." instance=ExtResource("27_sjfly")]
-z_index = 3
-position = Vector2(248, 248)
-
 [node name="ObjectionSprite" parent="." instance=ExtResource("28_ux7jt")]
 visible = false
 z_index = 9
-position = Vector2(520, 448)
+position = Vector2(688, 296)
 
 [node name="EvidenceDisplaySprite" type="Sprite2D" parent="."]
 visible = false
@@ -23344,6 +23382,9 @@ position = Vector2(640, 360)
 [node name="EvidenceAnimPlayers" type="Node" parent="."]
 
 [node name="BrokenBodyCamAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]
+libraries = {
+&"": SubResource("AnimationLibrary_t6bvv")
+}
 
 [node name="LogbookAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]
 
@@ -23356,7 +23397,15 @@ position = Vector2(640, 360)
 [node name="LeosNotebookAnim" type="AnimationPlayer" parent="EvidenceAnimPlayers"]
 
 [node name="CourtroomCamera" type="Camera2D" parent="."]
-position = Vector2(688, 178)
-zoom = Vector2(2, 2)
+position = Vector2(688, 312)
+zoom = Vector2(1.2, 1.2)
+
+[node name="fiscal" parent="." instance=ExtResource("28_sjfly")]
+z_index = 2
+position = Vector2(896, 440)
 
 [editable path="PlayerM"]
+[editable path="celine"]
+[editable path="erwin"]
+[editable path="Judge"]
+[editable path="fiscal"]

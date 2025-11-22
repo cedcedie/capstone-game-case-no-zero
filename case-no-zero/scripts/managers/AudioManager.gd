@@ -91,10 +91,21 @@ var scene_bgm_map: Dictionary = {
 	"office_rooftop": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
 	"office rooftop": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",  # Scene file name has space
 	"office_attorney_room": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
-	"office_lobby": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg"
+	"office_lobby": "res://assets/audio/deltarune/A CYBER'S WORLD？.ogg",
+	# Courtroom BGM
+	"courtroom": "res://assets/audio/deltarune/Hammer of Justice.ogg"
 }
 
 # Cutscene BGM mapping removed - scenes handle their own cutscene audio
+
+# Courtroom special audio mapping (for evidence, objection, verdict, victory)
+var courtroom_audio_map: Dictionary = {
+	"evidence_bgm": "res://assets/audio/deltarune/Hammer of Justice.ogg",
+	"objection_bgm": "res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 46 Spear of Justice.mp3",
+	"verdict_bgm": "res://assets/audio/deltarune/Hammer of Justice.ogg",
+	"victory_bgm": "res://assets/audio/undertale/toby fox - UNDERTALE Soundtrack - 46 Spear of Justice.mp3",
+	"courtroom_intro": "res://assets/audio/deltarune/Hammer of Justice.ogg"
+}
 
 func _ready():
 	print("🎵 AudioManager: Ready")
@@ -247,29 +258,40 @@ func restore_scene_bgm():
 		print("⚠️ AudioManager: No scene BGM to restore")
 
 func play_bgm(bgm_path: String):
-	"""Play a BGM file with fade-in"""
+	"""Play a BGM file with fade-in - accepts both file paths and special names"""
 	print("🎵 AudioManager: play_bgm called with:", bgm_path)
 	if not bgm_player:
 		print("⚠️ AudioManager: BGM player not available")
 		return
 	
+	# Check if it's a special courtroom audio name
+	var actual_path = bgm_path
+	if bgm_path in courtroom_audio_map:
+		actual_path = courtroom_audio_map[bgm_path]
+		print("🎵 AudioManager: Mapped courtroom audio:", bgm_path, "->", actual_path)
+	
+	# Check if the same BGM is already playing - don't restart it
+	if bgm_player.playing and current_bgm == actual_path:
+		print("🎵 AudioManager: Same BGM already playing, skipping:", actual_path)
+		return
+	
 	# Load and play the BGM
-	print("🎵 AudioManager: Loading BGM file:", bgm_path)
-	var bgm_stream = load(bgm_path)
+	print("🎵 AudioManager: Loading BGM file:", actual_path)
+	var bgm_stream = load(actual_path)
 	if bgm_stream:
 		print("🎵 AudioManager: BGM loaded successfully")
 		bgm_player.stream = bgm_stream
 		bgm_player.volume_db = -10  # Set to -10 dB as requested
 		bgm_player.play()
-		current_bgm = bgm_path
-		bgm_changed.emit(bgm_path)
-		print("🎵 AudioManager: Playing BGM:", bgm_path, "at -10 dB")
+		current_bgm = actual_path
+		bgm_changed.emit(actual_path)
+		print("🎵 AudioManager: Playing BGM:", actual_path, "at -10 dB")
 		print("🎵 AudioManager: BGM playing:", bgm_player.playing)
 		
 		# Fade in the new BGM
 		await fade_in_bgm(0.3)
 	else:
-		print("⚠️ AudioManager: Failed to load BGM:", bgm_path)
+		print("⚠️ AudioManager: Failed to load BGM:", actual_path)
 
 func stop_bgm():
 	"""Stop the current BGM"""

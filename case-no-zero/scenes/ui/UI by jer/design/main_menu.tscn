@@ -168,7 +168,6 @@ offset_bottom = 80.0
 text = "Debugger"
 
 [node name="DebuggerPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 offset_left = 40.0
 offset_top = 100.0
@@ -338,7 +337,7 @@ audio_bus_name = "Music"
 
 [node name="HBoxContainerSFX" type="HBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 47
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainerSFX"]
 layout_mode = 2

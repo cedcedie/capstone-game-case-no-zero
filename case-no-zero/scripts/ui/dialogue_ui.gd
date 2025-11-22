@@ -11,6 +11,7 @@ extends CanvasLayer
 # Store current animated sprite instance for cleanup
 var current_animated_sprite_instance: Node = null
 var current_viewport_container: SubViewportContainer = null
+var current_speaker: String = ""  # Track current speaker to detect changes
 
 signal next_pressed
 var waiting_for_next: bool = false
@@ -152,6 +153,7 @@ func hide_ui():
 	
 	await t.finished
 	_cleanup_animated_sprite()  # Clean up animated sprite when hiding UI
+	current_speaker = ""  # Reset speaker tracking when hiding UI
 	hide()
 
 # Typing animation with sound
@@ -211,12 +213,25 @@ func _apply_portrait_for_speaker(speaker: String, dialogue_key: String = "") -> 
 	if portrait_rect == null or face_container == null:
 		return
 	
-	# Always clean up previous portrait first to prevent persistence
+	# Check if speaker changed
+	var speaker_changed = (current_speaker != speaker)
+	
+	# Always clean up animated sprites to prevent stacking (they might persist)
 	_cleanup_animated_sprite()
-	# Clear and hide portrait rect initially
-	if portrait_rect:
-		portrait_rect.texture = null
-		portrait_rect.visible = false
+	
+	# Clear portrait rect when speaker changes or when setting up animated/portrait scenes
+	if speaker_changed or dialogue_key != "":
+		if portrait_rect:
+			portrait_rect.texture = null
+			portrait_rect.visible = false
+			portrait_rect.modulate.a = 1.0  # Reset alpha
+		
+		# Also hide any viewport containers
+		if current_viewport_container:
+			current_viewport_container.visible = false
+	
+	# Update current speaker
+	current_speaker = speaker
 	
 	var tex: Texture2D = null
 	var animated_sprite: AnimatedSprite2D = null
@@ -244,9 +259,13 @@ func _apply_portrait_for_speaker(speaker: String, dialogue_key: String = "") -> 
 			"dr. leticia salvador", "dr leticia salvador", "leticia salvador":
 				tex = load("res://assets/sprites/characters/closeup_face/dr_leticia_salvador_closeup.png")
 			"hukom", "judge":
-				tex = load("res://assets/sprites/characters/closeup_face/judge_closeup.png") if ResourceLoader.exists("res://assets/sprites/characters/closeup_face/judge_closeup.png") else null
+				# Use portrait scene for judge
+				_setup_portrait_scene("res://assets/sprites/characters/side_characters/judge_portrait.tscn")
+				return
 			"fiscal", "prosecutor":
-				tex = load("res://assets/sprites/characters/closeup_face/fiscal_closeup.png") if ResourceLoader.exists("res://assets/sprites/characters/closeup_face/fiscal_closeup.png") else null
+				# Use portrait scene for fiscal
+				_setup_portrait_scene("res://assets/sprites/characters/side_characters/portrait_prosecutor.tscn")
+				return
 			"po1 cordero":
 				tex = load("res://assets/sprites/characters/closeup_face/po1_cordero_closeup.png") if ResourceLoader.exists("res://assets/sprites/characters/closeup_face/po1_cordero_closeup.png") else null
 	
@@ -265,8 +284,11 @@ func _apply_portrait_for_speaker(speaker: String, dialogue_key: String = "") -> 
 
 func _setup_npc_face_sprite(dialogue_key: String) -> void:
 	"""Simple function to setup NPC face sprites - just instantiate and position"""
-	# Clean up any existing NPC face sprite first
-	_cleanup_animated_sprite()
+	# Don't clean up here - already done in _apply_portrait_for_speaker if speaker changed
+	# Just ensure portrait rect is hidden
+	if portrait_rect:
+		portrait_rect.visible = false
+		portrait_rect.texture = null
 	
 	var face_scene_path = get_face_scene_path_from_dialogue_key(dialogue_key)
 	if not ResourceLoader.exists(face_scene_path):
@@ -310,14 +332,84 @@ func _setup_npc_face_sprite(dialogue_key: String) -> void:
 	# Hide the TextureRect
 	portrait_rect.visible = false
 
+func _setup_portrait_scene(portrait_scene_path: String) -> void:
+	"""Setup portrait scene for judge and fiscal"""
+	# Don't clean up here - already done in _apply_portrait_for_speaker if speaker changed
+	# Just ensure portrait rect is hidden
+	if portrait_rect:
+		portrait_rect.visible = false
+		portrait_rect.texture = null
+	
+	if not ResourceLoader.exists(portrait_scene_path):
+		print("⚠️ DialogueUI: Portrait scene not found: ", portrait_scene_path)
+		return
+	
+	# Load and instantiate the portrait scene
+	var portrait_scene = load(portrait_scene_path) as PackedScene
+	if not portrait_scene:
+		return
+	
+	var portrait_instance = portrait_scene.instantiate()
+	if not portrait_instance:
+		return
+	
+	# Create a simple Node2D wrapper to position it (since CanvasLayer is Control-based)
+	var wrapper = Node2D.new()
+	wrapper.name = "PortraitSprite"
+	wrapper.position = Vector2(472.0, 596.0)
+	wrapper.add_child(portrait_instance)
+	
+	# Add to CanvasLayer
+	add_child(wrapper)
+	
+	# Store reference for cleanup
+	current_animated_sprite_instance = wrapper
+	
+	# Play animation if it's an AnimatedSprite2D
+	var animated_sprite: AnimatedSprite2D = null
+	if portrait_instance is AnimatedSprite2D:
+		animated_sprite = portrait_instance
+	else:
+		animated_sprite = portrait_instance.find_child("*", true, false) as AnimatedSprite2D
+	
+	if animated_sprite and animated_sprite.sprite_frames:
+		var animation_names = animated_sprite.sprite_frames.get_animation_names()
+		if animation_names.size() > 0:
+			animated_sprite.play(animation_names[0])
+		# Ensure sprite is fully visible when shown
+		animated_sprite.modulate.a = 1.0
+	
+	# Hide the TextureRect
+	if portrait_rect:
+		portrait_rect.visible = false
+
 func _cleanup_animated_sprite() -> void:
-	# Simply find and remove the NPCFaceSprite wrapper
+	# Find and immediately remove the NPCFaceSprite wrapper (don't queue, remove immediately)
 	var npc_face = get_node_or_null("NPCFaceSprite")
 	if npc_face:
+		# Remove all children first to prevent any lingering references
+		for child in npc_face.get_children():
+			child.queue_free()
+		# Remove the wrapper itself immediately
 		npc_face.queue_free()
+		# Also try to remove it from tree immediately if possible
+		if is_instance_valid(npc_face) and npc_face.get_parent():
+			npc_face.get_parent().remove_child(npc_face)
+		npc_face = null
+	
+	# Also check for PortraitSprite (for judge/fiscal)
+	var portrait_sprite = get_node_or_null("PortraitSprite")
+	if portrait_sprite:
+		for child in portrait_sprite.get_children():
+			child.queue_free()
+		portrait_sprite.queue_free()
+		if is_instance_valid(portrait_sprite) and portrait_sprite.get_parent():
+			portrait_sprite.get_parent().remove_child(portrait_sprite)
+		portrait_sprite = null
 	
 	current_animated_sprite_instance = null
 	current_viewport_container = null
+
 
 # -----------------------------
 # Keyword bolding (BBCode)

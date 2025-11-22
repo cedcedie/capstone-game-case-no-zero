@@ -12,6 +12,9 @@ var evidence_added: bool = false  # Prevent duplicate evidence addition
 func _ready() -> void:
 	print("🎬 Morgue cutscene: _ready() started")
 	
+	# Hide task display when entering morgue (clear "Pumunta sa morgue" task)
+	_hide_task_display()
+	
 	# Setup fade layer
 	_setup_fade()
 	await fade_in()
@@ -456,3 +459,19 @@ func end_cutscene() -> void:
 	# Skip fade since we already did dramatic_fade_out above
 	await transition_to_scene("res://scenes/environments/apartments/leo's apartment.tscn", "apartment_cutscene", true)
 	print("🎬 Morgue Manager: Transition to Leo's apartment completed")
+
+func _hide_task_display() -> void:
+	"""Hide the task display"""
+	var task_display: Node = get_node_or_null("/root/TaskDisplay")
+	if task_display == null:
+		# Try to find it in scene tree
+		var tree := get_tree()
+		if tree:
+			var found := tree.get_first_node_in_group("task_display")
+			if found:
+				task_display = found
+	if task_display != null and task_display.has_method("hide_task"):
+		task_display.hide_task()
+		print("📝 Task display hidden")
+	else:
+		print("⚠️ TaskDisplay not found or missing hide_task() method")
