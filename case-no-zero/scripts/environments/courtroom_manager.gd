@@ -4,6 +4,7 @@ extends Node
 
 @onready var anim_player: AnimationPlayer = get_node_or_null("../AnimationPlayer")
 var camera: Camera2D = null
+var player_camera: Camera2D = null  # Store player's camera to disable it
 
 # Evidence display sprite (shows evidence from EvidenceInventorySettings)
 var evidence_display_sprite: Sprite2D = null
@@ -66,8 +67,11 @@ func _ready() -> void:
 		else:
 			print("⚠️ Courtroom Manager: AnimationPlayer not found")
 	
-	# Find camera
+	# Find camera (dedicated courtroom camera)
 	_find_camera()
+	
+	# Disable player camera and enable courtroom camera
+	_setup_camera()
 	
 	# Find DialogChooser
 	_find_dialog_chooser()
@@ -799,18 +803,41 @@ func _enable_player_movement() -> void:
 		print("🎬 Courtroom: Player movement enabled")
 
 func _find_camera() -> void:
-	"""Find the camera in the scene"""
-	camera = get_tree().current_scene.get_node_or_null("Camera2D")
+	"""Find the dedicated courtroom camera in the scene"""
+	# First, try to find a dedicated courtroom camera (preferred)
+	camera = get_tree().current_scene.get_node_or_null("CourtroomCamera")
 	if not camera:
-		# Try to find player camera
-		var player = get_tree().current_scene.get_node_or_null("PlayerM")
-		if player:
-			camera = player.get_node_or_null("Camera2D")
+		camera = get_tree().current_scene.get_node_or_null("Camera2D")
 	
 	if camera:
-		print("🎬 Courtroom: Camera found at ", camera.global_position)
+		print("🎬 Courtroom: Dedicated camera found at ", camera.global_position)
 	else:
-		print("⚠️ Courtroom: No camera found - camera movements will be skipped")
+		print("⚠️ Courtroom: No dedicated camera found - camera movements will be skipped")
+		print("💡 Tip: Add a Camera2D node named 'CourtroomCamera' or 'Camera2D' to the courtroom scene root")
+
+func _setup_camera() -> void:
+	"""Setup camera: disable player camera and enable courtroom camera"""
+	# Find player and their camera
+	var player = get_tree().current_scene.get_node_or_null("PlayerM")
+	if player:
+		player_camera = player.get_node_or_null("Camera2D")
+		
+		if player_camera:
+			# Disable player camera
+			player_camera.enabled = false
+			print("🎬 Courtroom: Player camera disabled")
+		else:
+			print("⚠️ Courtroom: Player camera not found")
+	else:
+		print("⚠️ Courtroom: PlayerM not found")
+	
+	# Enable courtroom camera if found
+	if camera:
+		camera.enabled = true
+		camera.current = true
+		print("🎬 Courtroom: Courtroom camera enabled and set as current")
+	else:
+		print("⚠️ Courtroom: No courtroom camera to enable")
 
 # NOTE: Create AnimationPlayer tracks manually in the editor
 # See COURTROOM_ANIMATION_INSTRUCTIONS.md for details

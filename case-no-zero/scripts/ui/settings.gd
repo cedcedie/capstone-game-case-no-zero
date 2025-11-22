@@ -9,10 +9,12 @@ signal settings_press
 @onready var evidence_tab: Node = null
 @onready var settings_tab: Node = null
 @onready var glossary_content_bg: NinePatchRect = null
+@onready var glossary_list: VBoxContainer = null
 
 var is_visible = false
 var glossary_visible = false
 var just_closed = false  # Flag to prevent Evidence Inventory from opening when Settings closes
+var glossary_data: Dictionary = {}
 
 # Audio player for UI sounds
 var open_player: AudioStreamPlayer = null
@@ -38,6 +40,9 @@ func _ready():
 	# Get UI references
 	_get_ui_references()
 	
+	# Load glossary data
+	_load_glossary_data()
+	
 	# Setup button connections
 	_setup_buttons()
 	
@@ -54,7 +59,10 @@ func _get_ui_references():
 	if ui_container.has_node("SettingsTab"):
 		settings_tab = ui_container.get_node("SettingsTab")
 	
-	glossary_content_bg = ui_container.get_node("GlossaryContentBG")
+	if ui_container.has_node("GlossaryContentBG"):
+		glossary_content_bg = ui_container.get_node("GlossaryContentBG")
+		if glossary_content_bg.has_node("ScrollContainer/GlossaryList"):
+			glossary_list = glossary_content_bg.get_node("ScrollContainer/GlossaryList")
 
 func _setup_buttons():
 	"""Setup button connections and tab interactions"""
@@ -75,7 +83,7 @@ func _setup_tab_interactions():
 		settings_tab.mouse_filter = Control.MOUSE_FILTER_STOP
 		settings_tab.mouse_entered.connect(_on_settings_tab_hover.bind(true))
 		settings_tab.mouse_exited.connect(_on_settings_tab_hover.bind(false))
-		# Settings tab in settings view is always active, no click needed
+		settings_tab.gui_input.connect(_on_settings_tab_input)
 
 func _on_evidence_tab_hover(is_hovering: bool):
 	"""Handle evidence tab hover effect in settings view"""
@@ -122,6 +130,12 @@ func _on_evidence_tab_input(event: InputEvent):
 				hide_settings()
 				evidence_ui.show_evidence_inventory()
 				print("📋 Switched from Settings to Evidence Inventory")
+
+func _on_settings_tab_input(event: InputEvent):
+	"""Handle settings tab click in settings view"""
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# Clicked settings tab - already in settings, do nothing or refresh
+		pass
 
 func show_settings():
 	"""Show settings with smooth animation"""
@@ -239,8 +253,110 @@ func _input(event):
 
 # Hover functions removed - icons are no longer interactive
 
+func _load_glossary_data():
+	"""Load glossary data from JSON file"""
+	var file = FileAccess.open("res://data/glossary/legal_terms.json", FileAccess.READ)
+	if file:
+		var json_string = file.get_as_text()
+		file.close()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)
+		if parse_result == OK:
+			glossary_data = json.data
+			print("📚 Glossary data loaded: ", glossary_data.get("terms", []).size(), " terms")
+		else:
+			print("⚠️ Failed to parse glossary JSON")
+	else:
+		print("⚠️ Failed to load glossary JSON file")
+
+func _get_available_glossary_terms() -> Array:
+	"""Get glossary terms that are unlocked based on checkpoints"""
+	if not CheckpointManager:
+		return []
+	
+	var available_terms = []
+	var terms = glossary_data.get("terms", [])
+	
+	for term in terms:
+		var unlock_checkpoint = term.get("unlocks_after", "")
+		if unlock_checkpoint == "":
+			# No checkpoint required, always available
+			available_terms.append(term)
+		else:
+			# Check if checkpoint exists by matching enum keys
+			var checkpoint_found = false
+			for checkpoint_type in CheckpointManager.CheckpointType.values():
+				var checkpoint_name = CheckpointManager.CheckpointType.keys()[checkpoint_type]
+				if checkpoint_name == unlock_checkpoint:
+					if CheckpointManager.has_checkpoint(checkpoint_type):
+						available_terms.append(term)
+						checkpoint_found = true
+					break
+			
+			# If checkpoint not found in enum, check by string name in checkpoints dict
+			if not checkpoint_found:
+				# Try to find checkpoint by string matching in checkpoints dictionary
+				if CheckpointManager.checkpoints.has(unlock_checkpoint):
+					available_terms.append(term)
+	
+	return available_terms
+
+func _populate_glossary_list():
+	"""Populate the glossary list with available terms"""
+	if not glossary_list:
+		return
+	
+	# Clear existing items
+	for child in glossary_list.get_children():
+		child.queue_free()
+	
+	var available_terms = _get_available_glossary_terms()
+	
+	if available_terms.is_empty():
+		var empty_label = Label.new()
+		empty_label.text = "No glossary terms available yet."
+		empty_label.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5, 1))
+		empty_label.add_theme_font_size_override("font_size", 12)
+		glossary_list.add_child(empty_label)
+		return
+	
+	for term in available_terms:
+		var term_container = VBoxContainer.new()
+		term_container.add_theme_constant_override("separation", 5)
+		
+		# Term label (bold)
+		var term_label = Label.new()
+		term_label.text = term.get("label", "Unknown Term")
+		term_label.add_theme_color_override("font_color", Color(0.1, 0.1, 0.1, 1))
+		term_label.add_theme_font_size_override("font_size", 14)
+		term_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		term_container.add_child(term_label)
+		
+		# Description
+		var desc_label = Label.new()
+		desc_label.text = term.get("description", "")
+		desc_label.add_theme_color_override("font_color", Color(0.3, 0.3, 0.3, 1))
+		desc_label.add_theme_font_size_override("font_size", 11)
+		desc_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		term_container.add_child(desc_label)
+		
+		# Citation
+		var citation_label = Label.new()
+		citation_label.text = "Citation: " + term.get("citation", "")
+		citation_label.add_theme_color_override("font_color", Color(0.4, 0.4, 0.4, 1))
+		citation_label.add_theme_font_size_override("font_size", 10)
+		citation_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		term_container.add_child(citation_label)
+		
+		# Separator
+		var separator = HSeparator.new()
+		term_container.add_child(separator)
+		
+		glossary_list.add_child(term_container)
+
 func _on_glossary_button_pressed():
 	"""Show glossary when glossary button is pressed"""
+	_populate_glossary_list()
 	show_glossary()
 
 func _on_glossary_exit_pressed():
