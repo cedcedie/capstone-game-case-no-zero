@@ -132,4 +132,3 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
 text = "Try Again"
 
 [connection signal="pressed" from="Container/ContentPanel/TryAgainButton" to="." method="_on_try_again_pressed"]
-

@@ -44,7 +44,7 @@ const TASK_WAYPOINTS := {
 	},
 	"morgue": {
 		"scene": "res://scenes/environments/exterior/apartment_morgue.tscn",
-		"position": Vector2(361.0, 776.0)
+		"position": Vector2(359.0, 768.0)
 	}
 }
 

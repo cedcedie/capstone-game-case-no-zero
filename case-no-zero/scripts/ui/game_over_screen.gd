@@ -91,4 +91,3 @@ func _on_try_again_pressed():
 	# Hide screen
 	hide_game_over()
 
-
