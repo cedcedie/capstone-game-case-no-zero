@@ -1,8 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://swf8uxbjjaft"]
+[gd_scene load_steps=31 format=3 uid="uid://swf8uxbjjaft"]
 
 [ext_resource type="Script" uid="uid://c20tu6gyrutj7" path="res://miravil/npc main character/npc_ka_isko.gd" id="1_4goc8"]
 [ext_resource type="Texture2D" uid="uid://b5nuc6q6es8n1" path="res://miravil/main character/ka_isko_idle.png" id="1_bm5t2"]
-[ext_resource type="Texture2D" uid="uid://3bd0jb5lsh6m" path="res://miravil/main character/leni_idle (2).png" id="2_4goc8"]
 [ext_resource type="FontFile" uid="uid://d38tndrcjm5ro" path="res://assets/fonts/PixelOperator.ttf" id="2_xdp63"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7et2y"]
@@ -53,31 +52,27 @@ region = Rect2(128, 0, 32, 64)
 atlas = ExtResource("1_bm5t2")
 region = Rect2(160, 0, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sd2v1"]
-atlas = ExtResource("2_4goc8")
-region = Rect2(352, 64, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4ohv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdp63"]
 atlas = ExtResource("1_bm5t2")
 region = Rect2(192, 64, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fh3mr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4goc8"]
 atlas = ExtResource("1_bm5t2")
 region = Rect2(224, 64, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aamy2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd2v1"]
 atlas = ExtResource("1_bm5t2")
 region = Rect2(256, 64, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ytrpn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4ohv"]
 atlas = ExtResource("1_bm5t2")
 region = Rect2(288, 64, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8q2f5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh3mr"]
 atlas = ExtResource("1_bm5t2")
 region = Rect2(320, 64, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bdyng"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aamy2"]
 atlas = ExtResource("1_bm5t2")
 region = Rect2(352, 64, 32, 64)
 
@@ -155,6 +150,12 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xdp63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4goc8")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_sd2v1")
 }, {
 "duration": 1.0,
@@ -165,15 +166,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_aamy2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ytrpn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8q2f5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bdyng")
 }],
 "loop": true,
 "name": &"idle_left",
