@@ -92,9 +92,9 @@ func _ready() -> void:
 		minimap_camera.enabled = true
 
 	minimap_camera.zoom = Vector2(MINIMAP_ZOOM, MINIMAP_ZOOM)
-	# Hide player indicator on the minimap
+	# Show player indicator on the minimap
 	if player_marker != null:
-		player_marker.visible = false
+		player_marker.visible = true
 	visible = true
 
 	# DO NOT prebake - causes crashes. Only build when actually needed.
@@ -277,9 +277,9 @@ func _on_transition_complete(_target_scene_path: String = "") -> void:
 			_resolve_player()
 			if player != null:
 				minimap_camera.global_position = player.global_position
-				if player_marker != null:
-					player_marker.global_position = player.global_position
-					player_marker.visible = false
+		if player_marker != null:
+			player_marker.global_position = player.global_position
+			player_marker.visible = true
 			emit_signal("minimap_ready")
 			return
 	print("[Minimap] No cache after transition -> scanning/building")
@@ -507,7 +507,7 @@ func _use_cached_minimap(scene_path: String) -> void:
 		minimap_camera.global_position = clamped_pos
 		if player_marker != null:
 			player_marker.global_position = player.global_position
-			player_marker.visible = false
+			player_marker.visible = true
 	else:
 		var bounds := _compute_cached_minimap_bounds()
 		if bounds.has_area():
@@ -828,7 +828,7 @@ func _process(_delta: float) -> void:
 		minimap_camera.global_position = clamped_pos
 		if player_marker != null:
 			player_marker.global_position = player.global_position
-			player_marker.visible = false
+			player_marker.visible = true
 
 	# Update waypoint marker position if active
 	if waypoint_active:
@@ -934,10 +934,10 @@ func _apply_consistent_style() -> void:
 			minimap_camera.enabled = true
 		minimap_camera.zoom = Vector2(MINIMAP_ZOOM, MINIMAP_ZOOM)
 
-	# Player marker scale (hidden)
+	# Player marker scale (visible)
 	if player_marker != null:
 		player_marker.scale = Vector2(PLAYER_MARKER_SCALE, PLAYER_MARKER_SCALE)
-		player_marker.visible = false
+		player_marker.visible = true
 
 	# Ensure masked texture is the current viewport texture
 	if masked_rect != null and viewport != null:
@@ -1301,7 +1301,7 @@ func _get_waypoint_position_for_current_scene(target_scene: String, base_positio
 		if is_target_police:
 			transition_area_name = "from_barangay_to_police_station"
 		elif is_target_morgue:
-			transition_area_name = "from_barangay_to_police_station"
+			transition_area_name = "from_barangay_to_camp"  # First step towards morgue: barangay -> camp
 	
 	# Find the transition area in the current scene
 	if transition_area_name != "":

@@ -1,0 +1,135 @@
+[gd_scene load_steps=10 format=3 uid="uid://blc324tdv3gd6"]
+
+[ext_resource type="Script" uid="uid://wcqmq6d4vpsl" path="res://scripts/ui/game_over_screen.gd" id="1_gameover"]
+[ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/limezuUI/Modern_UI_Style_1_32x32.png" id="2_y33ve"]
+[ext_resource type="FontFile" uid="uid://cosmobyr7yxle" path="res://assets/fonts/PixelOperatorMono-Bold.ttf" id="3_558kw"]
+[ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="4_e0ywh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+line_spacing = 2.0
+font = ExtResource("3_558kw")
+font_size = 32
+font_color = Color(0.9, 0.1, 0.1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+bg_color = Color(0.804743, 0.804743, 0.804743, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+bg_color = Color(0.43134, 0.43134, 0.43134, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[node name="GameOverScreen" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_gameover")
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="ContentPanel" type="NinePatchRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -84.0
+offset_right = 105.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y33ve")
+region_rect = Rect2(24, 502, 48, 50)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="GameOverLabel" type="Label" parent="Container/ContentPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -84.0
+offset_right = 103.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="Container/ContentPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -24.0
+offset_right = 65.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_e0ywh")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/focus = SubResource("StyleBoxEmpty_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+text = "Try Again"
+
+[connection signal="pressed" from="Container/ContentPanel/TryAgainButton" to="." method="_on_try_again_pressed"]
+

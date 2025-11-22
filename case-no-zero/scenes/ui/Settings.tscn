@@ -65,12 +65,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = -8.0
-offset_right = 410.0
-offset_bottom = 268.0
+offset_left = -265.0
+offset_top = -154.0
+offset_right = 265.0
+offset_bottom = 154.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="SettingsContentBG" type="NinePatchRect" parent="UIContainer"]
 layout_mode = 1
@@ -78,10 +79,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -155.0
-offset_top = -388.0
-offset_right = -273.0
-offset_bottom = -205.0
+offset_left = 57.0
+offset_top = -306.0
+offset_right = -61.0
+offset_bottom = -123.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.950997, 1)
@@ -217,10 +218,10 @@ script = ExtResource("7_pagh7")
 
 [node name="EvidenceTab" type="NinePatchRect" parent="UIContainer"]
 layout_mode = 0
-offset_left = -155.0
-offset_top = -136.0
-offset_right = -115.0
-offset_bottom = -96.0
+offset_left = 57.0
+offset_top = -22.0
+offset_right = 97.0
+offset_bottom = 18.0
 texture = ExtResource("2_y33ve")
 region_rect = Rect2(928, 384, 32, 32)
 patch_margin_left = 16
@@ -243,10 +244,10 @@ patch_margin_bottom = 8
 
 [node name="SettingsTab" type="NinePatchRect" parent="UIContainer"]
 layout_mode = 0
-offset_left = -112.0
-offset_top = -136.0
-offset_right = -72.0
-offset_bottom = -96.0
+offset_left = 100.0
+offset_top = -22.0
+offset_right = 140.0
+offset_bottom = 18.0
 texture = ExtResource("2_y33ve")
 region_rect = Rect2(928, 384, 32, 32)
 patch_margin_left = 16
@@ -269,10 +270,10 @@ patch_margin_bottom = 8
 
 [node name="GlossaryTab" type="NinePatchRect" parent="UIContainer"]
 layout_mode = 0
-offset_left = -112.0
-offset_top = -136.0
-offset_right = -32.0
-offset_bottom = -96.0
+offset_left = 100.0
+offset_top = -22.0
+offset_right = 180.0
+offset_bottom = 18.0
 texture = ExtResource("2_y33ve")
 region_rect = Rect2(928, 384, 32, 32)
 patch_margin_left = 16
@@ -323,17 +324,15 @@ patch_margin_bottom = 32
 
 [node name="TitleLabel" type="Label" parent="UIContainer/GlossaryContentBG"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -230.0
-offset_right = 80.0
-offset_bottom = -200.0
+anchor_bottom = 0.104
+offset_left = -70.5
+offset_top = 8.0
+offset_right = 70.5
+offset_bottom = 7.968
 grow_horizontal = 2
-grow_vertical = 0
 text = "Glossary"
 label_settings = SubResource("LabelSettings_kplyb")
 horizontal_alignment = 1
@@ -345,14 +344,15 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 30.0
-offset_top = -190.0
+offset_top = 40.0
 offset_right = -30.0
-offset_bottom = -50.0
+offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GlossaryList" type="VBoxContainer" parent="UIContainer/GlossaryContentBG/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
 [node name="ExitButton" type="Button" parent="UIContainer/GlossaryContentBG"]

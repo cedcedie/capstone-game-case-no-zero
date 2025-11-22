@@ -319,6 +319,15 @@ func _populate_glossary_list():
 	for child in glossary_list.get_children():
 		child.queue_free()
 	
+	# Ensure GlossaryList fills the ScrollContainer width
+	if glossary_list:
+		glossary_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		# Get the parent ScrollContainer to set width
+		var scroll_container = glossary_list.get_parent()
+		if scroll_container is ScrollContainer:
+			# Disable horizontal scrolling - we want text to wrap instead
+			scroll_container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	
 	var available_terms = _get_available_glossary_terms()
 	
 	if available_terms.is_empty():
@@ -326,8 +335,12 @@ func _populate_glossary_list():
 		empty_label.text = "No glossary terms available yet."
 		empty_label.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5, 1))
 		empty_label.add_theme_font_size_override("font_size", 12)
+		empty_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		empty_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		empty_label.visible_characters = -1  # Show all characters immediately
 		glossary_list.add_child(empty_label)
+		# Ensure GlossaryList width matches ScrollContainer after adding empty label
+		call_deferred("_update_glossary_list_width")
 		return
 	
 	for term in available_terms:
@@ -377,6 +390,31 @@ func _populate_glossary_list():
 		term_container.add_child(separator)
 		
 		glossary_list.add_child(term_container)
+	
+	# Ensure GlossaryList width matches ScrollContainer after adding items
+	call_deferred("_update_glossary_list_width")
+
+func _update_glossary_list_width():
+	"""Update GlossaryList width to match ScrollContainer's available width"""
+	if not glossary_list:
+		return
+	
+	var scroll_container = glossary_list.get_parent()
+	if scroll_container is ScrollContainer:
+		# Disable horizontal scrolling - we want text to wrap instead
+		scroll_container.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+		
+		# Get available width from ScrollContainer
+		var available_width = scroll_container.size.x
+		if available_width <= 0:
+			# If size not ready yet, use the visible rect
+			available_width = scroll_container.get_visible_rect().size.x
+		
+		if available_width > 0:
+			# Set minimum width so VBoxContainer fills the ScrollContainer
+			glossary_list.custom_minimum_size.x = available_width
+			# Ensure it expands to fill
+			glossary_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 func _on_glossary_button_pressed():
 	"""Show glossary when glossary button is pressed"""

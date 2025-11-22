@@ -43,6 +43,10 @@ var max_lives: int = 4
 var current_lives: int = 4
 var lifebar_ui: Control = null
 
+# Game Over screen
+var game_over_screen: CanvasLayer = null
+var game_over_screen_scene = preload("res://scenes/ui/GameOverScreen.tscn")
+
 # Character positions for camera (exact positions from user)
 var camera_positions: Dictionary = {
 	"judge": Vector2(688.0, 152.0),
@@ -83,6 +87,7 @@ func _ready() -> void:
 	_setup_courtroom_audio()
 	_setup_dialogue_listener()
 	_setup_lifebar()
+	_setup_game_over_screen()
 	_disable_player_movement()
 	
 	await get_tree().create_timer(0.5).timeout
@@ -230,9 +235,24 @@ func lose_life() -> void:
 	else:
 		_game_over()
 
+func _setup_game_over_screen() -> void:
+	"""Setup game over screen instance"""
+	if not game_over_screen:
+		var game_over_instance = game_over_screen_scene.instantiate()
+		add_child(game_over_instance)
+		game_over_screen = game_over_instance
+		
+		# Wait for the screen to be ready before connecting signal
+		await get_tree().process_frame
+		
+		# Connect try again signal
+		if game_over_screen.has_signal("try_again_pressed"):
+			game_over_screen.try_again_pressed.connect(_on_try_again_pressed)
+		print("💀 Courtroom: Game Over screen setup complete")
+
 func _game_over() -> void:
-	"""Handle game over when all lives are lost - restart courtroom sequence"""
-	print("💀 Courtroom: Game Over - All lives lost! Restarting courtroom sequence...")
+	"""Handle game over when all lives are lost - show try again screen"""
+	print("💀 Courtroom: Game Over - All lives lost! Showing try again screen...")
 	
 	# Hide dialogue UI
 	if DialogueUI:
@@ -241,6 +261,60 @@ func _game_over() -> void:
 	# Hide evidence inventory if visible
 	if EvidenceInventorySettings:
 		EvidenceInventorySettings.hide_evidence_inventory()
+	
+	# Show game over screen
+	if game_over_screen and game_over_screen.has_method("show_game_over"):
+		game_over_screen.show_game_over()
+		# Wait for try again button press
+		await game_over_screen.try_again_pressed
+	else:
+		# Fallback: wait a bit then restart if screen not available
+		print("⚠️ Courtroom: Game Over screen not available, using fallback")
+		await get_tree().create_timer(2.0).timeout
+	
+	# Restart courtroom after try again is pressed
+	_restart_courtroom_sequence()
+
+func _restart_courtroom_sequence() -> void:
+	"""Restart the courtroom sequence from the beginning - close all UI windows"""
+	print("🎬 Courtroom: Restarting sequence from the beginning... Closing all UI windows...")
+	
+	# Close all open UI windows for a clean reset
+	
+	# 1. Close Dialogue UI
+	if DialogueUI:
+		if DialogueUI.visible or (DialogueUI.has_method("is_visible") and DialogueUI.is_visible()):
+			DialogueUI.hide_ui()
+	
+	# 2. Close Evidence Inventory
+	if EvidenceInventorySettings:
+		if EvidenceInventorySettings.is_visible:
+			await EvidenceInventorySettings.hide_evidence_inventory()
+	
+	# 3. Close Settings (if open)
+	if has_node("/root/Settings"):
+		var settings_ui = get_node("/root/Settings")
+		if settings_ui.is_visible:
+			await settings_ui.hide_settings()
+		# Also close glossary if it's open
+		if settings_ui.glossary_visible:
+			settings_ui.hide_glossary()
+	
+	# 4. Close Task Display (if visible)
+	if has_node("/root/TaskDisplay"):
+		var task_display = get_node("/root/TaskDisplay")
+		if task_display and task_display.has_method("hide"):
+			task_display.hide()
+	
+	# 5. Close DialogChooser (if visible)
+	if dialog_chooser:
+		if dialog_chooser.has_method("hide_all_choices"):
+			dialog_chooser.hide_all_choices()
+		elif dialog_chooser.visible:
+			dialog_chooser.visible = false
+	
+	# Wait a bit for UI animations to finish
+	await get_tree().create_timer(0.3).timeout
 	
 	# Reset all state variables
 	current_lives = max_lives
@@ -264,11 +338,16 @@ func _game_over() -> void:
 		camera.zoom = camera_zoom_levels["center"]
 	
 	# Small delay before restarting
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
+	
+	print("🎬 Courtroom: All UI windows closed, restarting sequence...")
 	
 	# Restart the courtroom sequence
-	print("🎬 Courtroom: Restarting sequence from the beginning...")
 	_start_courtroom_sequence()
+
+func _on_try_again_pressed() -> void:
+	"""Handle try again button press - already handled in _game_over() via await"""
+	print("💀 Courtroom: Try again button pressed")
 
 func _on_dialogue_next_pressed() -> void:
 	"""Handle dialogue next_pressed signal"""

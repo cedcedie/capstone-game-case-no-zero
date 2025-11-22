@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://f41bx4kq48y2"]
+[gd_scene load_steps=13 format=3 uid="uid://f41bx4kq48y2"]
 
 [ext_resource type="Texture2D" uid="uid://opd72pklwpof" path="res://assets/sprites/limezuUI/Modern_UI_Style_1_32x32.png" id="1_1075l"]
 [ext_resource type="Script" uid="uid://bnwo4ujfjlg4u" path="res://scripts/ui/evidence_inventory_settings.gd" id="1_evidence_script"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://db3e4htmfrqb5" path="res://assets/sprites/evidence/radio_log_evidence.png" id="9_qy8d8"]
 [ext_resource type="Texture2D" uid="uid://7eyqc8ci3vkk" path="res://assets/sprites/evidence/autopsy_evidence.png" id="10_b6idw"]
 [ext_resource type="Texture2D" uid="uid://bhy7qjtrwwacl" path="res://assets/sprites/evidence/leos_notebook_evidence.png" id="11_nob0d"]
-[ext_resource type="FontFile" uid="uid://cone5puvg7kn3" path="res://assets/fonts/PixelOperator8.ttf" id="11_xm5px"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kplyb"]
 line_spacing = 2.0
@@ -22,41 +21,6 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("4_g1gxs")
 font_size = 13
 font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_xm5px"]
-line_spacing = 2.0
-font = ExtResource("3_kplyb")
-font_size = 19
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_23ysy"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n47ac"]
-bg_color = Color(0.804743, 0.804743, 0.804743, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 4)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euo58"]
-bg_color = Color(0.43134, 0.43134, 0.43134, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 4)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqqrk"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 4)
 
 [node name="EvidenceInventory" type="CanvasLayer"]
 script = ExtResource("1_evidence_script")
@@ -338,38 +302,6 @@ layout_mode = 0
 offset_right = 48.0
 offset_bottom = 48.0
 
-[node name="GlossaryTab" type="NinePatchRect" parent="UIContainer"]
-layout_mode = 0
-offset_left = 89.0
-offset_right = 169.0
-offset_bottom = 40.0
-texture = ExtResource("1_1075l")
-region_rect = Rect2(928, 384, 32, 32)
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="Button" type="Button" parent="UIContainer/GlossaryTab"]
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 40.0
-flat = true
-
-[node name="GlossaryLabel" type="Label" parent="UIContainer/GlossaryTab"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 8.0
-offset_right = 74.0
-offset_bottom = 32.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("11_xm5px")
-theme_override_font_sizes/font_size = 10
-text = "Glossary"
-vertical_alignment = 1
-
 [node name="EvidenceTab" type="NinePatchRect" parent="."]
 z_index = 1
 offset_left = 408.0
@@ -396,82 +328,3 @@ patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 9
-
-[node name="GlossaryContentBG" type="NinePatchRect" parent="."]
-visible = false
-modulate = Color(0.98, 0.96, 0.9, 1)
-z_index = 5
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -450.0
-offset_top = -250.0
-offset_right = 450.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_1075l")
-region_rect = Rect2(24, 502, 48, 50)
-patch_margin_left = 32
-patch_margin_top = 32
-patch_margin_right = 32
-patch_margin_bottom = 32
-
-[node name="TitleLabel" type="Label" parent="GlossaryContentBG"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -230.0
-offset_right = 80.0
-offset_bottom = -200.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Glossary"
-label_settings = SubResource("LabelSettings_xm5px")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="GlossaryContentBG"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = -190.0
-offset_right = -30.0
-offset_bottom = -50.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GlossaryList" type="VBoxContainer" parent="GlossaryContentBG/ScrollContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="ExitButton" type="Button" parent="GlossaryContentBG"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = 40.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("11_xm5px")
-theme_override_font_sizes/font_size = 10
-theme_override_styles/focus = SubResource("StyleBoxEmpty_23ysy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_n47ac")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_euo58")
-theme_override_styles/normal = SubResource("StyleBoxFlat_sqqrk")
-text = "X"
