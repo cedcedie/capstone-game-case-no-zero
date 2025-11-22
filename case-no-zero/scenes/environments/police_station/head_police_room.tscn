@@ -11260,7 +11260,7 @@ position = Vector2(832, 536)
 shape = SubResource("RectangleShape2D_1xebd")
 
 [node name="NpcPlPo1Darwin" parent="." instance=ExtResource("14_nccxo")]
-z_index = 4
+z_index = 5
 position = Vector2(520, 376)
 
 [node name="AnimatedSprite2D" parent="NpcPlPo1Darwin" index="0"]
